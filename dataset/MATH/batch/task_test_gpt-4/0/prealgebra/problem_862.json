@@ -1,0 +1,150 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"6 \\<le> n \\<and> n \\<le> 9\"\nand h1 : \"n dvd 60 + n\"\nshows  \"card {n. 6 \\<le> n \\<and> n \\<le> 9 \\<and> n dvd 60 + n} = 6\"",
+        "formal solution": "(* ### Problem\n For how many different digits $n$ is the two-digit number $\\underline{6}\\underline{n}$ divisible by $n$? (The expression $\\underline{6}\\underline{n}$ should be interpreted as a two-digit integer with tens digit 6 and units digit $n$, not as 6 times $n$.) The final Answer is 6\n ### Proof\n Casework is unavoidable.\n However, we can tell that 1, 2, 3, 5, and 6 will work because of their respective divisibility rules. (We know that 1 works because every integer is divisible by 1.\n We know that 2 works because any number with an even units digit is divisible by 2.\n We know that 3 works because the sum of the digits of $63$ is $6 + 3 = 9$, and 9 is divisible by 3.\n We know that 5 works because any number with a units digit of 5 is divisible by 5.\n We know that 6 works because $66$ is divisible by 2, since the units digit is even, and by 3, since $6 + 6 = 12$, and 12 is divisible by 3.) The remaining digits are 0, 4, 7, 8, and 9. No dividing by 0!\n So, we can't have $n=0$. Testing $n = 4$, we see that 64 is indeed divisible by 4. Testing $n = 7$, we see by dividing that 67 is not divisible by 7. Testing $n = 8$, we see by dividing that 68 is not divisible by 8.\n Testing $n = 9$, we see using the divisibility rule for 9 that 69 is not divisible by 9 (since the sum of its digits is $6+9=15$ is not divisible by 9).\n Thus, the answer is 1,2,3,4,5,6, which is $\\boxed{6}$ digits.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"6 \\<le> n \\<and> n \\<le> 9\"\nand h1 : \"n dvd 60 + n\"\nshows  \"card {n. 6 \\<le> n \\<and> n \\<le> 9 \\<and> n dvd 60 + n} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many integers between 6 and 9 inclusive are divisors of the number obtained by adding the integer itself to 60? The final answer is 6.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8404988646507263,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem \nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n \\<le> 9\"\nand h2 : \"\\<exists> k. 60 + n = k * n\"\nshows  \"card {n. n \\<ge> 1 \\<and> n \\<le> 9 \\<and> (\\<exists> k. 60 + n = k * n)} = 6\"",
+        "formal solution": "(* ### Problem\n For how many different digits $n$ is the two-digit number $\\underline{6}\\underline{n}$ divisible by $n$? (The expression $\\underline{6}\\underline{n}$ should be interpreted as a two-digit integer with tens digit 6 and units digit $n$, not as 6 times $n$.) The final Answer is 6\n ### Proof\n Casework is unavoidable.\n However, we can tell that 1, 2, 3, 5, and 6 will work because of their respective divisibility rules. (We know that 1 works because every integer is divisible by 1.\n We know that 2 works because any number with an even units digit is divisible by 2.\n We know that 3 works because the sum of the digits of $63$ is $6 + 3 = 9$, and 9 is divisible by 3.\n We know that 5 works because any number with a units digit of 5 is divisible by 5.\n We know that 6 works because $66$ is divisible by 2, since the units digit is even, and by 3, since $6 + 6 = 12$, and 12 is divisible by 3.) The remaining digits are 0, 4, 7, 8, and 9. No dividing by 0!\n So, we can't have $n=0$. Testing $n = 4$, we see that 64 is indeed divisible by 4. Testing $n = 7$, we see by dividing that 67 is not divisible by 7. Testing $n = 8$, we see by dividing that 68 is not divisible by 8.\n Testing $n = 9$, we see using the divisibility rule for 9 that 69 is not divisible by 9 (since the sum of its digits is $6+9=15$ is not divisible by 9).\n Thus, the answer is 1,2,3,4,5,6, which is $\\boxed{6}$ digits.\n *)\n\ntheorem \nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n \\<le> 9\"\nand h2 : \"\\<exists> k. 60 + n = k * n\"\nshows  \"card {n. n \\<ge> 1 \\<and> n \\<le> 9 \\<and> (\\<exists> k. 60 + n = k * n)} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many natural numbers between 1 and 9 inclusive satisfy the property that there exists a natural number $k$ such that $60 + n$ equals $k$ times $n$? The answer is 6.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8612186312675476,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 0\"\nand h1 : \"n \\<le> 9\"\nand h2 : \"\\<forall> n. n divides (60 + n)\"\nshows  \"card {n. n divides (60 + n)} = 6\"",
+        "formal solution": "(* ### Problem\n For how many different digits $n$ is the two-digit number $\\underline{6}\\underline{n}$ divisible by $n$? (The expression $\\underline{6}\\underline{n}$ should be interpreted as a two-digit integer with tens digit 6 and units digit $n$, not as 6 times $n$.) The final Answer is 6\n ### Proof\n Casework is unavoidable.\n However, we can tell that 1, 2, 3, 5, and 6 will work because of their respective divisibility rules. (We know that 1 works because every integer is divisible by 1.\n We know that 2 works because any number with an even units digit is divisible by 2.\n We know that 3 works because the sum of the digits of $63$ is $6 + 3 = 9$, and 9 is divisible by 3.\n We know that 5 works because any number with a units digit of 5 is divisible by 5.\n We know that 6 works because $66$ is divisible by 2, since the units digit is even, and by 3, since $6 + 6 = 12$, and 12 is divisible by 3.) The remaining digits are 0, 4, 7, 8, and 9. No dividing by 0!\n So, we can't have $n=0$. Testing $n = 4$, we see that 64 is indeed divisible by 4. Testing $n = 7$, we see by dividing that 67 is not divisible by 7. Testing $n = 8$, we see by dividing that 68 is not divisible by 8.\n Testing $n = 9$, we see using the divisibility rule for 9 that 69 is not divisible by 9 (since the sum of its digits is $6+9=15$ is not divisible by 9).\n Thus, the answer is 1,2,3,4,5,6, which is $\\boxed{6}$ digits.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 0\"\nand h1 : \"n \\<le> 9\"\nand h2 : \"\\<forall> n. n divides (60 + n)\"\nshows  \"card {n. n divides (60 + n)} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of non-negative integers $n \\leq 9$ that divide $60 + n$. The final answer is 6.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9815433025360107,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n \\<le> 9\"\nshows  \"card {n. 60 + n mod n = 0} = 6\"",
+        "formal solution": "(* ### Problem\n For how many different digits $n$ is the two-digit number $\\underline{6}\\underline{n}$ divisible by $n$? (The expression $\\underline{6}\\underline{n}$ should be interpreted as a two-digit integer with tens digit 6 and units digit $n$, not as 6 times $n$.) The final Answer is 6\n ### Proof\n Casework is unavoidable.\n However, we can tell that 1, 2, 3, 5, and 6 will work because of their respective divisibility rules. (We know that 1 works because every integer is divisible by 1.\n We know that 2 works because any number with an even units digit is divisible by 2.\n We know that 3 works because the sum of the digits of $63$ is $6 + 3 = 9$, and 9 is divisible by 3.\n We know that 5 works because any number with a units digit of 5 is divisible by 5.\n We know that 6 works because $66$ is divisible by 2, since the units digit is even, and by 3, since $6 + 6 = 12$, and 12 is divisible by 3.) The remaining digits are 0, 4, 7, 8, and 9. No dividing by 0!\n So, we can't have $n=0$. Testing $n = 4$, we see that 64 is indeed divisible by 4. Testing $n = 7$, we see by dividing that 67 is not divisible by 7. Testing $n = 8$, we see by dividing that 68 is not divisible by 8.\n Testing $n = 9$, we see using the divisibility rule for 9 that 69 is not divisible by 9 (since the sum of its digits is $6+9=15$ is not divisible by 9).\n Thus, the answer is 1,2,3,4,5,6, which is $\\boxed{6}$ digits.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n \\<le> 9\"\nshows  \"card {n. 60 + n mod n = 0} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of integers between 1 and 9 (inclusive) that divide evenly into 60. The answer is 6.",
+        "label": 1,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9324091672897339,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 0\"\nand h1 : \"n \\<le> 9\"\nshows  \"card {n. (60 + n) mod n = 0} = 6\"",
+        "formal solution": "(* ### Problem\n For how many different digits $n$ is the two-digit number $\\underline{6}\\underline{n}$ divisible by $n$? (The expression $\\underline{6}\\underline{n}$ should be interpreted as a two-digit integer with tens digit 6 and units digit $n$, not as 6 times $n$.) The final Answer is 6\n ### Proof\n Casework is unavoidable.\n However, we can tell that 1, 2, 3, 5, and 6 will work because of their respective divisibility rules. (We know that 1 works because every integer is divisible by 1.\n We know that 2 works because any number with an even units digit is divisible by 2.\n We know that 3 works because the sum of the digits of $63$ is $6 + 3 = 9$, and 9 is divisible by 3.\n We know that 5 works because any number with a units digit of 5 is divisible by 5.\n We know that 6 works because $66$ is divisible by 2, since the units digit is even, and by 3, since $6 + 6 = 12$, and 12 is divisible by 3.) The remaining digits are 0, 4, 7, 8, and 9. No dividing by 0!\n So, we can't have $n=0$. Testing $n = 4$, we see that 64 is indeed divisible by 4. Testing $n = 7$, we see by dividing that 67 is not divisible by 7. Testing $n = 8$, we see by dividing that 68 is not divisible by 8.\n Testing $n = 9$, we see using the divisibility rule for 9 that 69 is not divisible by 9 (since the sum of its digits is $6+9=15$ is not divisible by 9).\n Thus, the answer is 1,2,3,4,5,6, which is $\\boxed{6}$ digits.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 0\"\nand h1 : \"n \\<le> 9\"\nshows  \"card {n. (60 + n) mod n = 0} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of non-negative integers $n$, $0 \\leq n \\leq 9$, such that $(60 + n)$ is divisible by $n$. The final answer is 6.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.956044614315033,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: \"int\"\nassumes h0 : \"\\<exists>n::int. 0 \\<le> n \\<and> n \\<le> 9 \\<and> (60 + n) mod n = 0\"\nshows  \"card {n::int. 0 \\<le> n \\<and> n \\<le> 9 \\<and> (60 + n) mod n = 0} = 6\"",
+        "formal solution": "(* ### Problem\n For how many different digits $n$ is the two-digit number $\\underline{6}\\underline{n}$ divisible by $n$? (The expression $\\underline{6}\\underline{n}$ should be interpreted as a two-digit integer with tens digit 6 and units digit $n$, not as 6 times $n$.) The final Answer is 6\n ### Proof\n Casework is unavoidable.\n However, we can tell that 1, 2, 3, 5, and 6 will work because of their respective divisibility rules. (We know that 1 works because every integer is divisible by 1.\n We know that 2 works because any number with an even units digit is divisible by 2.\n We know that 3 works because the sum of the digits of $63$ is $6 + 3 = 9$, and 9 is divisible by 3.\n We know that 5 works because any number with a units digit of 5 is divisible by 5.\n We know that 6 works because $66$ is divisible by 2, since the units digit is even, and by 3, since $6 + 6 = 12$, and 12 is divisible by 3.) The remaining digits are 0, 4, 7, 8, and 9. No dividing by 0!\n So, we can't have $n=0$. Testing $n = 4$, we see that 64 is indeed divisible by 4. Testing $n = 7$, we see by dividing that 67 is not divisible by 7. Testing $n = 8$, we see by dividing that 68 is not divisible by 8.\n Testing $n = 9$, we see using the divisibility rule for 9 that 69 is not divisible by 9 (since the sum of its digits is $6+9=15$ is not divisible by 9).\n Thus, the answer is 1,2,3,4,5,6, which is $\\boxed{6}$ digits.\n *)\n\ntheorem\nfixes n :: \"int\"\nassumes h0 : \"\\<exists>n::int. 0 \\<le> n \\<and> n \\<le> 9 \\<and> (60 + n) mod n = 0\"\nshows  \"card {n::int. 0 \\<le> n \\<and> n \\<le> 9 \\<and> (60 + n) mod n = 0} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of integers $n$ between 0 and 9 inclusive such that $n$ is a divisor of $60 + n$. The final answer is 6.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9307460784912109,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"6 * 10 + n = n * k\"\nand h1 : \"n \\<ge> 1\"\nand h2 : \"n \\<le> 9\"\nshows  \"k = 6\"",
+        "formal solution": "(* ### Problem\n For how many different digits $n$ is the two-digit number $\\underline{6}\\underline{n}$ divisible by $n$? (The expression $\\underline{6}\\underline{n}$ should be interpreted as a two-digit integer with tens digit 6 and units digit $n$, not as 6 times $n$.) The final Answer is 6\n ### Proof\n Casework is unavoidable.\n However, we can tell that 1, 2, 3, 5, and 6 will work because of their respective divisibility rules. (We know that 1 works because every integer is divisible by 1.\n We know that 2 works because any number with an even units digit is divisible by 2.\n We know that 3 works because the sum of the digits of $63$ is $6 + 3 = 9$, and 9 is divisible by 3.\n We know that 5 works because any number with a units digit of 5 is divisible by 5.\n We know that 6 works because $66$ is divisible by 2, since the units digit is even, and by 3, since $6 + 6 = 12$, and 12 is divisible by 3.) The remaining digits are 0, 4, 7, 8, and 9. No dividing by 0!\n So, we can't have $n=0$. Testing $n = 4$, we see that 64 is indeed divisible by 4. Testing $n = 7$, we see by dividing that 67 is not divisible by 7. Testing $n = 8$, we see by dividing that 68 is not divisible by 8.\n Testing $n = 9$, we see using the divisibility rule for 9 that 69 is not divisible by 9 (since the sum of its digits is $6+9=15$ is not divisible by 9).\n Thus, the answer is 1,2,3,4,5,6, which is $\\boxed{6}$ digits.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"6 * 10 + n = n * k\"\nand h1 : \"n \\<ge> 1\"\nand h2 : \"n \\<le> 9\"\nshows  \"k = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a digit $n$ between 1 and 9 inclusive such that when it is multiplied by a number $k$, the result equals $60 + n$. The final answer is $k = 6$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9291649460792542,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 0\"\nand h1 : \"n < 10\"\nshows  \"card {n. n divides (60 + n)} = 6\"",
+        "formal solution": "(* ### Problem\n For how many different digits $n$ is the two-digit number $\\underline{6}\\underline{n}$ divisible by $n$? (The expression $\\underline{6}\\underline{n}$ should be interpreted as a two-digit integer with tens digit 6 and units digit $n$, not as 6 times $n$.) The final Answer is 6\n ### Proof\n Casework is unavoidable.\n However, we can tell that 1, 2, 3, 5, and 6 will work because of their respective divisibility rules. (We know that 1 works because every integer is divisible by 1.\n We know that 2 works because any number with an even units digit is divisible by 2.\n We know that 3 works because the sum of the digits of $63$ is $6 + 3 = 9$, and 9 is divisible by 3.\n We know that 5 works because any number with a units digit of 5 is divisible by 5.\n We know that 6 works because $66$ is divisible by 2, since the units digit is even, and by 3, since $6 + 6 = 12$, and 12 is divisible by 3.) The remaining digits are 0, 4, 7, 8, and 9. No dividing by 0!\n So, we can't have $n=0$. Testing $n = 4$, we see that 64 is indeed divisible by 4. Testing $n = 7$, we see by dividing that 67 is not divisible by 7. Testing $n = 8$, we see by dividing that 68 is not divisible by 8.\n Testing $n = 9$, we see using the divisibility rule for 9 that 69 is not divisible by 9 (since the sum of its digits is $6+9=15$ is not divisible by 9).\n Thus, the answer is 1,2,3,4,5,6, which is $\\boxed{6}$ digits.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 0\"\nand h1 : \"n < 10\"\nshows  \"card {n. n divides (60 + n)} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For an integer $n$ such that $0 \\leq n < 10$, find the number of divisors of the expression $60 + n$. The final answer is 6.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9337334632873535,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n < 10\"\nand h1 : \"\\<forall>n. n > 0 \\<longrightarrow> 60 + n mod n = 0\"\nshows  \"card {n. n \\<ge> 1 \\<and> n \\<le> 9 \\<and> 60 + n mod n = 0} = 6\"",
+        "formal solution": "(* ### Problem\n For how many different digits $n$ is the two-digit number $\\underline{6}\\underline{n}$ divisible by $n$? (The expression $\\underline{6}\\underline{n}$ should be interpreted as a two-digit integer with tens digit 6 and units digit $n$, not as 6 times $n$.) The final Answer is 6\n ### Proof\n Casework is unavoidable.\n However, we can tell that 1, 2, 3, 5, and 6 will work because of their respective divisibility rules. (We know that 1 works because every integer is divisible by 1.\n We know that 2 works because any number with an even units digit is divisible by 2.\n We know that 3 works because the sum of the digits of $63$ is $6 + 3 = 9$, and 9 is divisible by 3.\n We know that 5 works because any number with a units digit of 5 is divisible by 5.\n We know that 6 works because $66$ is divisible by 2, since the units digit is even, and by 3, since $6 + 6 = 12$, and 12 is divisible by 3.) The remaining digits are 0, 4, 7, 8, and 9. No dividing by 0!\n So, we can't have $n=0$. Testing $n = 4$, we see that 64 is indeed divisible by 4. Testing $n = 7$, we see by dividing that 67 is not divisible by 7. Testing $n = 8$, we see by dividing that 68 is not divisible by 8.\n Testing $n = 9$, we see using the divisibility rule for 9 that 69 is not divisible by 9 (since the sum of its digits is $6+9=15$ is not divisible by 9).\n Thus, the answer is 1,2,3,4,5,6, which is $\\boxed{6}$ digits.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n < 10\"\nand h1 : \"\\<forall>n. n > 0 \\<longrightarrow> 60 + n mod n = 0\"\nshows  \"card {n. n \\<ge> 1 \\<and> n \\<le> 9 \\<and> 60 + n mod n = 0} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of positive integers less than 10 for which 60 added to their remainder when divided into 60 is equal to 0. The final answer is 6.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9870917201042175,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "datatype Digit = D0 | D1 | D2 | D3 | D4 | D5 | D6 | D7 | D8 | D9\n\nfun toInt :: \"Digit \\<Rightarrow> int\" where\n\"toInt D0 = 0\" |\n\"toInt D1 = 1\" |\n\"toInt D2 = 2\" |\n\"toInt D3 = 3\" |\n\"toInt D4 = 4\" |\n\"toInt D5 = 5\" |\n\"toInt D6 = 6\" |\n\"toInt D7 = 7\" |\n\"toInt D8 = 8\" |\n\"toInt D9 = 9\"\n\ndefinition isDivisible :: \"int \\<Rightarrow> Digit \\<Rightarrow> bool\" where\n\"isDivisible i d = (i mod (toInt d) = 0)\"\n\ntheorem\nshows  \"card {d. isDivisible 60 d} = 6\"",
+        "formal solution": "(* ### Problem\n For how many different digits $n$ is the two-digit number $\\underline{6}\\underline{n}$ divisible by $n$? (The expression $\\underline{6}\\underline{n}$ should be interpreted as a two-digit integer with tens digit 6 and units digit $n$, not as 6 times $n$.) The final Answer is 6\n ### Proof\n Casework is unavoidable.\n However, we can tell that 1, 2, 3, 5, and 6 will work because of their respective divisibility rules. (We know that 1 works because every integer is divisible by 1.\n We know that 2 works because any number with an even units digit is divisible by 2.\n We know that 3 works because the sum of the digits of $63$ is $6 + 3 = 9$, and 9 is divisible by 3.\n We know that 5 works because any number with a units digit of 5 is divisible by 5.\n We know that 6 works because $66$ is divisible by 2, since the units digit is even, and by 3, since $6 + 6 = 12$, and 12 is divisible by 3.) The remaining digits are 0, 4, 7, 8, and 9. No dividing by 0!\n So, we can't have $n=0$. Testing $n = 4$, we see that 64 is indeed divisible by 4. Testing $n = 7$, we see by dividing that 67 is not divisible by 7. Testing $n = 8$, we see by dividing that 68 is not divisible by 8.\n Testing $n = 9$, we see using the divisibility rule for 9 that 69 is not divisible by 9 (since the sum of its digits is $6+9=15$ is not divisible by 9).\n Thus, the answer is 1,2,3,4,5,6, which is $\\boxed{6}$ digits.\n *)\n\ndatatype Digit = D0 | D1 | D2 | D3 | D4 | D5 | D6 | D7 | D8 | D9\n\nfun toInt :: \"Digit \\<Rightarrow> int\" where\n\"toInt D0 = 0\" |\n\"toInt D1 = 1\" |\n\"toInt D2 = 2\" |\n\"toInt D3 = 3\" |\n\"toInt D4 = 4\" |\n\"toInt D5 = 5\" |\n\"toInt D6 = 6\" |\n\"toInt D7 = 7\" |\n\"toInt D8 = 8\" |\n\"toInt D9 = 9\"\n\ndefinition isDivisible :: \"int \\<Rightarrow> Digit \\<Rightarrow> bool\" where\n\"isDivisible i d = (i mod (toInt d) = 0)\"\n\ntheorem\nshows  \"card {d. isDivisible 60 d} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Given a function that converts a digit into an integer, and a definition that checks if an integer is divisible by a digit, find the number of digits that can divide 60 evenly. The final answer is 6.\"",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.26252517104148865,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "6",
+    "natural problem": "For how many different digits $n$ is the two-digit number $\\underline{6}\\underline{n}$ divisible by $n$? (The expression $\\underline{6}\\underline{n}$ should be interpreted as a two-digit integer with tens digit 6 and units digit $n$, not as 6 times $n$.)",
+    "natural solution": [
+        "Casework is unavoidable.",
+        "However, we can tell that 1, 2, 3, 5, and 6 will work because of their respective divisibility rules. (We know that 1 works because every integer is divisible by 1.",
+        "We know that 2 works because any number with an even units digit is divisible by 2.",
+        "We know that 3 works because the sum of the digits of $63$ is $6 + 3 = 9$, and 9 is divisible by 3.",
+        "We know that 5 works because any number with a units digit of 5 is divisible by 5.",
+        "We know that 6 works because $66$ is divisible by 2, since the units digit is even, and by 3, since $6 + 6 = 12$, and 12 is divisible by 3.) The remaining digits are 0, 4, 7, 8, and 9. No dividing by 0!",
+        "So, we can't have $n=0$. Testing $n = 4$, we see that 64 is indeed divisible by 4. Testing $n = 7$, we see by dividing that 67 is not divisible by 7. Testing $n = 8$, we see by dividing that 68 is not divisible by 8.",
+        "Testing $n = 9$, we see using the divisibility rule for 9 that 69 is not divisible by 9 (since the sum of its digits is $6+9=15$ is not divisible by 9).",
+        "Thus, the answer is 1,2,3,4,5,6, which is $\\boxed{6}$ digits."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "level": "Level 3",
+    "type": "Prealgebra"
+}

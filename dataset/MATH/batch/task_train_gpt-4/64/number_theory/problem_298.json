@@ -1,0 +1,59 @@
+{
+    "natural problem": "Find the units digit of the sum, $$ 1! + 2! + 3! + \\cdots + 2006!. $$",
+    "natural solution": [
+        "Since the units digits of $n!$ is always 0 when $n$ is an integer greater than 4, we just sum the first few factorials to get our answer: $1 + 2 + 6 + 24 = 33$, so $\\boxed{3}$ is the units digit."
+    ],
+    "natural answer": "3",
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 0 \\<longrightarrow> f n = fact n\"\nand h1 : \"f 2006 = 3 mod 10\"\nshows  \"sum f {1..2006} mod 10 = 3\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum, $$ 1! + 2! + 3! + \\cdots + 2006!. $$ The final Answer is 3\n ### Proof\n Since the units digits of $n!$ is always 0 when $n$ is an integer greater than 4, we just sum the first few factorials to get our answer: $1 + 2 + 6 + 24 = 33$, so $\\boxed{3}$ is the units digit.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 0 \\<longrightarrow> f n = fact n\"\nand h1 : \"f 2006 = 3 mod 10\"\nshows  \"sum f {1..2006} mod 10 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ such that $f(n) = n!$ for all non-negative integers $n$, and $f(2006)$ gives a remainder of 3 when divided by 10, find the remainder when the sum of $f(n)$ for $n$ from 1 to 2006 is divided by 10. The final answer is 3."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 2006\"\nshows  \"sum (\\<lambda>k. fact k) {1..n} mod 10 = 3\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum, $$ 1! + 2! + 3! + \\cdots + 2006!. $$ The final Answer is 3\n ### Proof\n Since the units digits of $n!$ is always 0 when $n$ is an integer greater than 4, we just sum the first few factorials to get our answer: $1 + 2 + 6 + 24 = 33$, so $\\boxed{3}$ is the units digit.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 2006\"\nshows  \"sum (\\<lambda>k. fact k) {1..n} mod 10 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the last digit (ones place) of the sum of factorials from 1 to 2006? The final answer is 3."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\" and sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> f n = n * f (n - 1)\"\nand h1 : \"f 0 = 1\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> sum n = sum (n - 1) + f n\"\nand h3 : \"sum 0 = 0\"\nshows  \"sum 2006 mod 10 = 3\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum, $$ 1! + 2! + 3! + \\cdots + 2006!. $$ The final Answer is 3\n ### Proof\n Since the units digits of $n!$ is always 0 when $n$ is an integer greater than 4, we just sum the first few factorials to get our answer: $1 + 2 + 6 + 24 = 33$, so $\\boxed{3}$ is the units digit.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\" and sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> f n = n * f (n - 1)\"\nand h1 : \"f 0 = 1\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> sum n = sum (n - 1) + f n\"\nand h3 : \"sum 0 = 0\"\nshows  \"sum 2006 mod 10 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ defined recursively by $f(0)=1$ and $f(n) = n * f(n - 1)$ for all integers $n \\geq 1$, and another function $sum$ defined by $sum(0)=0$ and $sum(n) = sum(n-1) + f(n)$ for all integers $n \\geq 1$, find the last digit of $sum(2006)$. The final answer is 3."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes sum_fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_fact n = (\\<Sum>i\\<le>n. fact i)\"\nshows  \"sum_fact 2006 mod 10 = 3\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum, $$ 1! + 2! + 3! + \\cdots + 2006!. $$ The final Answer is 3\n ### Proof\n Since the units digits of $n!$ is always 0 when $n$ is an integer greater than 4, we just sum the first few factorials to get our answer: $1 + 2 + 6 + 24 = 33$, so $\\boxed{3}$ is the units digit.\n *)\n\ntheorem\nfixes sum_fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_fact n = (\\<Sum>i\\<le>n. fact i)\"\nshows  \"sum_fact 2006 mod 10 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit (i.e., the remainder when divided by 10) of the sum of the factorials of all integers from 0 to 2006. The final answer is 3."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. f n = fact n\"\nand h1 : \"\\<forall>n. n \\<le> 2006 \\<longrightarrow> f n mod 10 = n mod 10\"\nshows  \"sum f {1..2006} mod 10 = 3\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum, $$ 1! + 2! + 3! + \\cdots + 2006!. $$ The final Answer is 3\n ### Proof\n Since the units digits of $n!$ is always 0 when $n$ is an integer greater than 4, we just sum the first few factorials to get our answer: $1 + 2 + 6 + 24 = 33$, so $\\boxed{3}$ is the units digit.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. f n = fact n\"\nand h1 : \"\\<forall>n. n \\<le> 2006 \\<longrightarrow> f n mod 10 = n mod 10\"\nshows  \"sum f {1..2006} mod 10 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The function $f(n)$ is defined as $f(n) = n!$ for all natural numbers $n$. Moreover, for all $n \\leq 2006$, the last digit of $f(n)$ is the same as the last digit of $n$. Find the last digit of the sum of $f(n)$ for $n = 1$ to $2006$. The final answer is $3$."
+    },
+    "a_5": {
+        "formal problem": "theorem \nfixes n :: nat\nassumes h0 : \"1 \\<le> n \\<and> n \\<le> 2006\"\nand h1 : \"n mod 10 = fact n mod 10\"\nshows  \"sum (\\<lambda>n. fact n mod 10) {1..2006} mod 10 = 3\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum, $$ 1! + 2! + 3! + \\cdots + 2006!. $$ The final Answer is 3\n ### Proof\n Since the units digits of $n!$ is always 0 when $n$ is an integer greater than 4, we just sum the first few factorials to get our answer: $1 + 2 + 6 + 24 = 33$, so $\\boxed{3}$ is the units digit.\n *)\n\ntheorem \nfixes n :: nat\nassumes h0 : \"1 \\<le> n \\<and> n \\<le> 2006\"\nand h1 : \"n mod 10 = fact n mod 10\"\nshows  \"sum (\\<lambda>n. fact n mod 10) {1..2006} mod 10 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For each natural number $n$ between $1$ and $2006$ (inclusive), it is known that the last digit of $n$ is equal to the last digit of $n!$ (n factorial). What is the last digit of the sum of the last digits of all factorials from $1$ to $2006$? The final answer is $3$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact 0 = 1\"\nand h1 : \"\\<forall>n > 0. fact n = n * fact (n - 1)\"\nand h2 : \"sum fact {1..2006} mod 10 = 3\"\nshows  \"digit (sum fact {1..2006}) 10 1 = 3\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum, $$ 1! + 2! + 3! + \\cdots + 2006!. $$ The final Answer is 3\n ### Proof\n Since the units digits of $n!$ is always 0 when $n$ is an integer greater than 4, we just sum the first few factorials to get our answer: $1 + 2 + 6 + 24 = 33$, so $\\boxed{3}$ is the units digit.\n *)\n\ntheorem\nfixes fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact 0 = 1\"\nand h1 : \"\\<forall>n > 0. fact n = n * fact (n - 1)\"\nand h2 : \"sum fact {1..2006} mod 10 = 3\"\nshows  \"digit (sum fact {1..2006}) 10 1 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The factorial of a number $n$ is defined as $1$ if $n$ is $0$, and $n$ times the factorial of $n-1$ if $n$ is greater than $0$. Find the last digit (ones place) of the sum of the factorials of all numbers from $1$ to $2006$. The final Answer is $3$."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial 0 = 1\"\nand h1 : \"\\<forall>n > 0. factorial n = n * factorial (n - 1)\"\nshows  \"((\\<Sum> i \\<leftarrow> [1..2006]. factorial i) mod 10) = 3\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum, $$ 1! + 2! + 3! + \\cdots + 2006!. $$ The final Answer is 3\n ### Proof\n Since the units digits of $n!$ is always 0 when $n$ is an integer greater than 4, we just sum the first few factorials to get our answer: $1 + 2 + 6 + 24 = 33$, so $\\boxed{3}$ is the units digit.\n *)\n\ntheorem\nfixes factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial 0 = 1\"\nand h1 : \"\\<forall>n > 0. factorial n = n * factorial (n - 1)\"\nshows  \"((\\<Sum> i \\<leftarrow> [1..2006]. factorial i) mod 10) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit (i.e., the digit in the units place) of the sum of the factorials of all the integers from 1 to 2006. The final answer is 3."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 0 = 1\"\nand h1 : \"\\<forall> n > 0. f n = n * f (n - 1)\"\nand h2 : \"sum f {1..2006} mod 10 = 3\"\nshows  \"digit (sum f {1..2006}) 0 = 3\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum, $$ 1! + 2! + 3! + \\cdots + 2006!. $$ The final Answer is 3\n ### Proof\n Since the units digits of $n!$ is always 0 when $n$ is an integer greater than 4, we just sum the first few factorials to get our answer: $1 + 2 + 6 + 24 = 33$, so $\\boxed{3}$ is the units digit.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 0 = 1\"\nand h1 : \"\\<forall> n > 0. f n = n * f (n - 1)\"\nand h2 : \"sum f {1..2006} mod 10 = 3\"\nshows  \"digit (sum f {1..2006}) 0 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined such that $f(0) = 1$ and $f(n) = n * f(n - 1)$ for all positive integers $n$. If the sum of $f(n)$ for all $n$ from 1 to 2006, when divided by 10, gives a remainder of 3, then find the units digit of the sum of $f(n)$ for all $n$ from 1 to 2006. The final answer is 3."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = fact n\"\nand h1 : \"\\<forall> n. n \\<le> 2006 \\<longrightarrow> f (n + 1) = f n + fact n\"\nshows  \"f 2006 mod 10 = 3\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum, $$ 1! + 2! + 3! + \\cdots + 2006!. $$ The final Answer is 3\n ### Proof\n Since the units digits of $n!$ is always 0 when $n$ is an integer greater than 4, we just sum the first few factorials to get our answer: $1 + 2 + 6 + 24 = 33$, so $\\boxed{3}$ is the units digit.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = fact n\"\nand h1 : \"\\<forall> n. n \\<le> 2006 \\<longrightarrow> f (n + 1) = f n + fact n\"\nshows  \"f 2006 mod 10 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined for all integers where $f(n) = n!$ (n factorial). It is also given that for all $n$ less than or equal to 2006, $f(n + 1) = f(n) + n!$. Determine the remainder when $f(2006)$ is divided by 10. The final answer is 3."
+    },
+    "level": "Level 4",
+    "type": "Number Theory"
+}

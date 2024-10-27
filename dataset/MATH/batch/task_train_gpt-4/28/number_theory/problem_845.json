@@ -1,0 +1,59 @@
+{
+    "natural problem": "How many positive two-digit integers have an odd number of positive factors?",
+    "natural solution": [
+        "Only square numbers have an odd number of factors. The $\\boxed{6}$ two-digit squares are 16, 25, 36, 49, 64 and 81."
+    ],
+    "natural answer": "6",
+    "a_0": {
+        "formal problem": "theorem \nfixes num_positive_factors :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n > 0 \\<longrightarrow> num_positive_factors n = card {d. d > 0 \\<and> n mod d = 0}\"\nand h1 : \"\\<forall>n. n > 0 \\<longrightarrow> (num_positive_factors n) mod 2 = 1 \\<longrightarrow> 10 \\<le> n \\<and> n < 100\"\nshows  \"card {n. n > 0 \\<and> (num_positive_factors n) mod 2 = 1 \\<and> 10 \\<le> n \\<and> n < 100} = 6\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers have an odd number of positive factors? The final Answer is 6\n ### Proof\n Only square numbers have an odd number of factors. The $\\boxed{6}$ two-digit squares are 16, 25, 36, 49, 64 and 81.\n *)\n\ntheorem \nfixes num_positive_factors :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n > 0 \\<longrightarrow> num_positive_factors n = card {d. d > 0 \\<and> n mod d = 0}\"\nand h1 : \"\\<forall>n. n > 0 \\<longrightarrow> (num_positive_factors n) mod 2 = 1 \\<longrightarrow> 10 \\<le> n \\<and> n < 100\"\nshows  \"card {n. n > 0 \\<and> (num_positive_factors n) mod 2 = 1 \\<and> 10 \\<le> n \\<and> n < 100} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many positive integers between 10 and 100 have an odd number of positive factors? The final answer is 6."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall>n::nat. n > 9 \\<and> n < 100\"\nand h1 : \"card {d::nat. d dvd n} mod 2 = 1\"\nshows  \"card {n::nat. n > 9 \\<and> n < 100 \\<and> card {d::nat. d dvd n} mod 2 = 1} = 6\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers have an odd number of positive factors? The final Answer is 6\n ### Proof\n Only square numbers have an odd number of factors. The $\\boxed{6}$ two-digit squares are 16, 25, 36, 49, 64 and 81.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall>n::nat. n > 9 \\<and> n < 100\"\nand h1 : \"card {d::nat. d dvd n} mod 2 = 1\"\nshows  \"card {n::nat. n > 9 \\<and> n < 100 \\<and> card {d::nat. d dvd n} mod 2 = 1} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit natural numbers have an odd number of divisors? The final answer is 6."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes positive_factors :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"\\<forall> n. n > 0 \\<and> n < 100 \\<longrightarrow> positive_factors n = {m. m > 0 \\<and> m dvd n}\"\nshows  \"card {n. n > 0 \\<and> n < 100 \\<and> odd (card (positive_factors n))} = 6\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers have an odd number of positive factors? The final Answer is 6\n ### Proof\n Only square numbers have an odd number of factors. The $\\boxed{6}$ two-digit squares are 16, 25, 36, 49, 64 and 81.\n *)\n\ntheorem\nfixes positive_factors :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"\\<forall> n. n > 0 \\<and> n < 100 \\<longrightarrow> positive_factors n = {m. m > 0 \\<and> m dvd n}\"\nshows  \"card {n. n > 0 \\<and> n < 100 \\<and> odd (card (positive_factors n))} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many positive integers less than 100 have an odd number of positive factors? The answer is 6."
+    },
+    "a_3": {
+        "formal problem": "\n\ndefinition odd_positive_factors :: \"nat \\<Rightarrow> bool\" where\n\"odd_positive_factors x \\<equiv> odd(card {d. d dvd x \\<and> d > 0})\"\n\ntheorem \nshows  \"card {x. x \\<in> {10..99} \\<and> odd_positive_factors x} = 6\"\nend",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers have an odd number of positive factors? The final Answer is 6\n ### Proof\n Only square numbers have an odd number of factors. The $\\boxed{6}$ two-digit squares are 16, 25, 36, 49, 64 and 81.\n *)\n\n\n\ndefinition odd_positive_factors :: \"nat \\<Rightarrow> bool\" where\n\"odd_positive_factors x \\<equiv> odd(card {d. d dvd x \\<and> d > 0})\"\n\ntheorem \nshows  \"card {x. x \\<in> {10..99} \\<and> odd_positive_factors x} = 6\"\nend\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the count of numbers between 10 and 99 (inclusive) that have an odd number of positive divisors. The final answer is 6."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: int and factors :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"n > 9 \\<and> n < 100\"\nand h1 : \"\\<forall> n. factors n = {d. d > 0 \\<and> n mod d = 0}\"\nand h2 : \"odd (card (factors n))\"\nshows  \"card {n. n > 9 \\<and> n < 100 \\<and> odd (card (factors n))} = 6\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers have an odd number of positive factors? The final Answer is 6\n ### Proof\n Only square numbers have an odd number of factors. The $\\boxed{6}$ two-digit squares are 16, 25, 36, 49, 64 and 81.\n *)\n\ntheorem\nfixes n :: int and factors :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"n > 9 \\<and> n < 100\"\nand h1 : \"\\<forall> n. factors n = {d. d > 0 \\<and> n mod d = 0}\"\nand h2 : \"odd (card (factors n))\"\nshows  \"card {n. n > 9 \\<and> n < 100 \\<and> odd (card (factors n))} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit integers have an odd number of positive factors? The final answer is 6."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes num_factors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. num_factors n = card {d. d divides n}\"\nand h1 : \"\\<forall> n. odd (num_factors n) = (\\<exists> k. n = k\\<^sup>2)\"\nshows  \"card {n. 10 \\<le> n \\<and> n < 100 \\<and> odd (num_factors n)} = 6\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers have an odd number of positive factors? The final Answer is 6\n ### Proof\n Only square numbers have an odd number of factors. The $\\boxed{6}$ two-digit squares are 16, 25, 36, 49, 64 and 81.\n *)\n\ntheorem\nfixes num_factors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. num_factors n = card {d. d divides n}\"\nand h1 : \"\\<forall> n. odd (num_factors n) = (\\<exists> k. n = k\\<^sup>2)\"\nshows  \"card {n. 10 \\<le> n \\<and> n < 100 \\<and> odd (num_factors n)} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many integers between 10 and 100 have an odd number of factors? (Hint: An integer has an odd number of factors if and only if it is a perfect square.) The final answer is 6."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"10 \\<le> n\"\nand h1 : \"n < 100\"\nand h2 : \"odd (card {d. d divides n})\"\nshows  \"card {n. 10 \\<le> n \\<and> n < 100 \\<and> odd (card {d. d divides n})} = 6\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers have an odd number of positive factors? The final Answer is 6\n ### Proof\n Only square numbers have an odd number of factors. The $\\boxed{6}$ two-digit squares are 16, 25, 36, 49, 64 and 81.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"10 \\<le> n\"\nand h1 : \"n < 100\"\nand h2 : \"odd (card {d. d divides n})\"\nshows  \"card {n. 10 \\<le> n \\<and> n < 100 \\<and> odd (card {d. d divides n})} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of natural numbers between 10 and 100 (inclusive of 10 but exclusive of 100) that have an odd number of divisors. The final answer is 6."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. f n = {d. d dvd n}\"\nand h1 : \"\\<forall> n. n \\<in> {10..99} \\<longrightarrow> card (f n) mod 2 = 1\"\nshows  \"card {n \\<in> {10..99}. card (f n) mod 2 = 1} = 6\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers have an odd number of positive factors? The final Answer is 6\n ### Proof\n Only square numbers have an odd number of factors. The $\\boxed{6}$ two-digit squares are 16, 25, 36, 49, 64 and 81.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. f n = {d. d dvd n}\"\nand h1 : \"\\<forall> n. n \\<in> {10..99} \\<longrightarrow> card (f n) mod 2 = 1\"\nshows  \"card {n \\<in> {10..99}. card (f n) mod 2 = 1} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Determine how many two-digit positive integers have an odd number of divisors. The final answer is 6."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"factors = (\\<lambda>n. {d. d dvd n})\"\nand h1 : \"\\<forall>n. 10 \\<le> n \\<and> n < 100 \\<longrightarrow> odd(card(factors n))\"\nshows  \"card {n. 10 \\<le> n \\<and> n < 100 \\<and> odd(card(factors n))} = 6\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers have an odd number of positive factors? The final Answer is 6\n ### Proof\n Only square numbers have an odd number of factors. The $\\boxed{6}$ two-digit squares are 16, 25, 36, 49, 64 and 81.\n *)\n\ntheorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"factors = (\\<lambda>n. {d. d dvd n})\"\nand h1 : \"\\<forall>n. 10 \\<le> n \\<and> n < 100 \\<longrightarrow> odd(card(factors n))\"\nshows  \"card {n. 10 \\<le> n \\<and> n < 100 \\<and> odd(card(factors n))} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit numbers have an odd number of factors? The final answer is 6."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes positive_two_digit_integers :: \"nat set\"\nand odd_positive_factors :: \"nat set\"\nassumes h0 : \"positive_two_digit_integers = {10..99}\"\nand h1 : \"odd_positive_factors = {x \\<in> positive_two_digit_integers. odd(card {d. d dvd x})}\"\nshows  \"card odd_positive_factors = 6\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers have an odd number of positive factors? The final Answer is 6\n ### Proof\n Only square numbers have an odd number of factors. The $\\boxed{6}$ two-digit squares are 16, 25, 36, 49, 64 and 81.\n *)\n\ntheorem\nfixes positive_two_digit_integers :: \"nat set\"\nand odd_positive_factors :: \"nat set\"\nassumes h0 : \"positive_two_digit_integers = {10..99}\"\nand h1 : \"odd_positive_factors = {x \\<in> positive_two_digit_integers. odd(card {d. d dvd x})}\"\nshows  \"card odd_positive_factors = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit positive integers have an odd number of positive factors? The answer is 6."
+    },
+    "level": "Level 4",
+    "type": "Number Theory"
+}

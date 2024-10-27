@@ -1,0 +1,144 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes girls freshmen_girls boys freshmen_boys total_students :: nat\nassumes h0 : \"girls = 15\"\nand h1 : \"freshmen_girls = 12\"\nand h2 : \"boys = 15\"\nand h3 : \"freshmen_boys = 11\"\nand h4 : \"total_students = 30\"\nshows  \"real (nCr 12 2 * nCr 11 3) / real (nCr 30 5) \\<approx> 0.076\"",
+        "formal solution": "(* ### Problem\n In a math class of 30 students, 12 out of 15 girls are freshmen and 11 out of 15 boys are freshmen. What is the probability that in a randomly selected group of five students from the class, there will be two freshmen girls and three freshmen boys? Express your answer as a decimal to the nearest thousandth. The final Answer is 0.076\n ### Proof\n We can choose 2 freshmen girls and 3 freshman boys in $\\binom{12}{2}\\binom{11}{3} = 10890$ ways. There are a total of $\\binom{30}{5} = 142506$ possible groups of 5 students we can choose.\n Thus the probability of selecting a group of 5 students with 2 freshman girls and 3 freshmen boys is $\\frac{10890}{142506} \\approx \\boxed{0.076}$.\n *)\n\ntheorem\nfixes girls freshmen_girls boys freshmen_boys total_students :: nat\nassumes h0 : \"girls = 15\"\nand h1 : \"freshmen_girls = 12\"\nand h2 : \"boys = 15\"\nand h3 : \"freshmen_boys = 11\"\nand h4 : \"total_students = 30\"\nshows  \"real (nCr 12 2 * nCr 11 3) / real (nCr 30 5) \\<approx> 0.076\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a school, there are 15 girls and 15 boys, making a total of 30 students. Among the girls, 12 are freshmen, and among the boys, 11 are freshmen. What is the probability of selecting exactly 2 freshmen girls and 3 freshmen boys when choosing a group of 5 students? The approximate probability is 0.076.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.862175464630127,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes num_students :: nat\nand num_fresh_girls :: nat\nand num_fresh_boys :: nat\nand num_girls :: nat\nand num_boys :: nat\nand prob :: real\nassumes h0 : \"num_students = 30\"\nand h1 : \"num_fresh_girls = 12\"\nand h2 : \"num_fresh_boys = 11\"\nand h3 : \"num_girls = 15\"\nand h4 : \"num_boys = 15\"\nand h5 : \"prob = (real (num_fresh_girls choose 2) * real (num_fresh_boys choose 3)) / real (num_students choose 5)\"\nshows  \"prob \\<approx> 0.076\"",
+        "formal solution": "(* ### Problem\n In a math class of 30 students, 12 out of 15 girls are freshmen and 11 out of 15 boys are freshmen. What is the probability that in a randomly selected group of five students from the class, there will be two freshmen girls and three freshmen boys? Express your answer as a decimal to the nearest thousandth. The final Answer is 0.076\n ### Proof\n We can choose 2 freshmen girls and 3 freshman boys in $\\binom{12}{2}\\binom{11}{3} = 10890$ ways. There are a total of $\\binom{30}{5} = 142506$ possible groups of 5 students we can choose.\n Thus the probability of selecting a group of 5 students with 2 freshman girls and 3 freshmen boys is $\\frac{10890}{142506} \\approx \\boxed{0.076}$.\n *)\n\ntheorem\nfixes num_students :: nat\nand num_fresh_girls :: nat\nand num_fresh_boys :: nat\nand num_girls :: nat\nand num_boys :: nat\nand prob :: real\nassumes h0 : \"num_students = 30\"\nand h1 : \"num_fresh_girls = 12\"\nand h2 : \"num_fresh_boys = 11\"\nand h3 : \"num_girls = 15\"\nand h4 : \"num_boys = 15\"\nand h5 : \"prob = (real (num_fresh_girls choose 2) * real (num_fresh_boys choose 3)) / real (num_students choose 5)\"\nshows  \"prob \\<approx> 0.076\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a group of 30 students, there are 15 boys and 15 girls. Among them, 12 girls are freshmen and 11 boys are freshmen. Calculate the approximate probability that if 5 students are chosen randomly, exactly 2 of them are freshman girls and 3 are freshman boys. The final answer is approximately 0.076.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8009487390518188,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n_students n_girls n_boys n_fresh_girls n_fresh_boys group_size :: nat\nand prob :: real\nassumes h0 : \"n_students = 30\"\nand h1 : \"n_girls = 15\"\nand h2 : \"n_boys = 15\"\nand h3 : \"n_fresh_girls = 12\"\nand h4 : \"n_fresh_boys = 11\"\nand h5 : \"group_size = 5\"\nand h6 : \"prob = (\\<Prod>i\\<in>{n_fresh_girls - 2..n_fresh_girls}. real i / real(n_girls - i + 1)) *\n               (\\<Prod>i\\<in>{n_fresh_boys - 3..n_fresh_boys}. real i / real(n_boys - i + 1)) *\n               (\\<Prod>i\\<in>{group_size - 5..group_size}. real i / real(n_students - i + 1))\"\nshows  \"prob \\<approx> 0.076\"",
+        "formal solution": "(* ### Problem\n In a math class of 30 students, 12 out of 15 girls are freshmen and 11 out of 15 boys are freshmen. What is the probability that in a randomly selected group of five students from the class, there will be two freshmen girls and three freshmen boys? Express your answer as a decimal to the nearest thousandth. The final Answer is 0.076\n ### Proof\n We can choose 2 freshmen girls and 3 freshman boys in $\\binom{12}{2}\\binom{11}{3} = 10890$ ways. There are a total of $\\binom{30}{5} = 142506$ possible groups of 5 students we can choose.\n Thus the probability of selecting a group of 5 students with 2 freshman girls and 3 freshmen boys is $\\frac{10890}{142506} \\approx \\boxed{0.076}$.\n *)\n\ntheorem\nfixes n_students n_girls n_boys n_fresh_girls n_fresh_boys group_size :: nat\nand prob :: real\nassumes h0 : \"n_students = 30\"\nand h1 : \"n_girls = 15\"\nand h2 : \"n_boys = 15\"\nand h3 : \"n_fresh_girls = 12\"\nand h4 : \"n_fresh_boys = 11\"\nand h5 : \"group_size = 5\"\nand h6 : \"prob = (\\<Prod>i\\<in>{n_fresh_girls - 2..n_fresh_girls}. real i / real(n_girls - i + 1)) *\n               (\\<Prod>i\\<in>{n_fresh_boys - 3..n_fresh_boys}. real i / real(n_boys - i + 1)) *\n               (\\<Prod>i\\<in>{group_size - 5..group_size}. real i / real(n_students - i + 1))\"\nshows  \"prob \\<approx> 0.076\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a class of 30 students, there are 15 girls and 15 boys. Among the girls, 12 are freshmen, and among the boys, 11 are freshmen. A group of 5 students is to be randomly selected. What is the probability that the group contains exactly 2 freshmen girls and 3 freshmen boys? The approximate probability is 0.076.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7817813754081726,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes girls_freshmen boys_freshmen total_students :: nat\nand total_girls total_boys group_size :: nat\nand prob :: real\nassumes h0 : \"total_students = 30\"\nand h1 : \"total_girls = 15\"\nand h2 : \"total_boys = 15\"\nand h3 : \"girls_freshmen = 12\"\nand h4 : \"boys_freshmen = 11\"\nand h5 : \"group_size = 5\"\nand h6 : \"prob = (real (nCr girls_freshmen 2 * nCr (total_girls - girls_freshmen) 0 * nCr boys_freshmen 3 * nCr (total_boys - boys_freshmen) 0)) / (real (nCr total_students group_size))\"\nshows  \"round (1000 * prob) = 76\"",
+        "formal solution": "(* ### Problem\n In a math class of 30 students, 12 out of 15 girls are freshmen and 11 out of 15 boys are freshmen. What is the probability that in a randomly selected group of five students from the class, there will be two freshmen girls and three freshmen boys? Express your answer as a decimal to the nearest thousandth. The final Answer is 0.076\n ### Proof\n We can choose 2 freshmen girls and 3 freshman boys in $\\binom{12}{2}\\binom{11}{3} = 10890$ ways. There are a total of $\\binom{30}{5} = 142506$ possible groups of 5 students we can choose.\n Thus the probability of selecting a group of 5 students with 2 freshman girls and 3 freshmen boys is $\\frac{10890}{142506} \\approx \\boxed{0.076}$.\n *)\n\ntheorem\nfixes girls_freshmen boys_freshmen total_students :: nat\nand total_girls total_boys group_size :: nat\nand prob :: real\nassumes h0 : \"total_students = 30\"\nand h1 : \"total_girls = 15\"\nand h2 : \"total_boys = 15\"\nand h3 : \"girls_freshmen = 12\"\nand h4 : \"boys_freshmen = 11\"\nand h5 : \"group_size = 5\"\nand h6 : \"prob = (real (nCr girls_freshmen 2 * nCr (total_girls - girls_freshmen) 0 * nCr boys_freshmen 3 * nCr (total_boys - boys_freshmen) 0)) / (real (nCr total_students group_size))\"\nshows  \"round (1000 * prob) = 76\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a class of 30 students, there are 15 girls and 15 boys. Out of the girls, 12 are freshmen, and out of the boys, 11 are freshmen. If a group of 5 students is chosen randomly, what is the probability that the group consists of 2 freshman girls and 3 freshman boys? Express the probability as a rounded percentage. The final answer is 7.6%.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8485814929008484,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes class_size girls boys freshmen_girls freshmen_boys :: nat\nassumes h0 : \"class_size = 30\"\nand h1 : \"girls = 15\"\nand h2 : \"boys = 15\"\nand h3 : \"freshmen_girls = 12\"\nand h4 : \"freshmen_boys = 11\"\nshows  \"probability_of_two_freshmen_girls_and_three_freshmen_boys = 0.076\"",
+        "formal solution": "(* ### Problem\n In a math class of 30 students, 12 out of 15 girls are freshmen and 11 out of 15 boys are freshmen. What is the probability that in a randomly selected group of five students from the class, there will be two freshmen girls and three freshmen boys? Express your answer as a decimal to the nearest thousandth. The final Answer is 0.076\n ### Proof\n We can choose 2 freshmen girls and 3 freshman boys in $\\binom{12}{2}\\binom{11}{3} = 10890$ ways. There are a total of $\\binom{30}{5} = 142506$ possible groups of 5 students we can choose.\n Thus the probability of selecting a group of 5 students with 2 freshman girls and 3 freshmen boys is $\\frac{10890}{142506} \\approx \\boxed{0.076}$.\n *)\n\ntheorem\nfixes class_size girls boys freshmen_girls freshmen_boys :: nat\nassumes h0 : \"class_size = 30\"\nand h1 : \"girls = 15\"\nand h2 : \"boys = 15\"\nand h3 : \"freshmen_girls = 12\"\nand h4 : \"freshmen_boys = 11\"\nshows  \"probability_of_two_freshmen_girls_and_three_freshmen_boys = 0.076\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a class of 30 students, there are 15 girls and 15 boys. Among the girls, 12 are freshmen, and among the boys, 11 are freshmen. Find the probability of randomly selecting 2 freshmen girls and 3 freshmen boys from the class. The final answer is 0.076.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9039959907531738,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes math_class girls freshmen_girls boys freshmen_boys total_students selected_students :: nat\nassumes h0 : \"math_class = 30\"\nand h1 : \"girls = 15\"\nand h2 : \"freshmen_girls = 12\"\nand h3 : \"boys = 15\"\nand h4 : \"freshmen_boys = 11\"\nand h5 : \"total_students = math_class\"\nand h6 : \"selected_students = 5\"\nand h7 : \"probability (two_freshmen_girls \\<and> three_freshmen_boys) = (\\<lambda>n. \\<lbrakk>0.076\\<rbrakk>)\"\nshows  \"probability (two_freshmen_girls \\<and> three_freshmen_boys) = 0.076\"",
+        "formal solution": "(* ### Problem\n In a math class of 30 students, 12 out of 15 girls are freshmen and 11 out of 15 boys are freshmen. What is the probability that in a randomly selected group of five students from the class, there will be two freshmen girls and three freshmen boys? Express your answer as a decimal to the nearest thousandth. The final Answer is 0.076\n ### Proof\n We can choose 2 freshmen girls and 3 freshman boys in $\\binom{12}{2}\\binom{11}{3} = 10890$ ways. There are a total of $\\binom{30}{5} = 142506$ possible groups of 5 students we can choose.\n Thus the probability of selecting a group of 5 students with 2 freshman girls and 3 freshmen boys is $\\frac{10890}{142506} \\approx \\boxed{0.076}$.\n *)\n\ntheorem\nfixes math_class girls freshmen_girls boys freshmen_boys total_students selected_students :: nat\nassumes h0 : \"math_class = 30\"\nand h1 : \"girls = 15\"\nand h2 : \"freshmen_girls = 12\"\nand h3 : \"boys = 15\"\nand h4 : \"freshmen_boys = 11\"\nand h5 : \"total_students = math_class\"\nand h6 : \"selected_students = 5\"\nand h7 : \"probability (two_freshmen_girls \\<and> three_freshmen_boys) = (\\<lambda>n. \\<lbrakk>0.076\\<rbrakk>)\"\nshows  \"probability (two_freshmen_girls \\<and> three_freshmen_boys) = 0.076\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a math class, there are 30 students: 15 girls and 15 boys. Among the girls, 12 are freshmen, and among the boys, 11 are freshmen. If 5 students are selected at random, what is the probability that the selected group consists of 2 freshmen girls and 3 freshmen boys? The final answer is 0.076.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9390560984611511,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes girls freshmen_girls boys freshmen_boys total_students group_students :: nat\nassumes h0 : \"girls = 15\"\nand h1 : \"freshmen_girls = 12\"\nand h2 : \"boys = 15\"\nand h3 : \"freshmen_boys = 11\"\nand h4 : \"total_students = 30\"\nand h5 : \"group_students = 5\"\nshows  \"prob (2 freshmen_girls, 3 freshmen_boys) = (0.076 :: real)\"",
+        "formal solution": "(* ### Problem\n In a math class of 30 students, 12 out of 15 girls are freshmen and 11 out of 15 boys are freshmen. What is the probability that in a randomly selected group of five students from the class, there will be two freshmen girls and three freshmen boys? Express your answer as a decimal to the nearest thousandth. The final Answer is 0.076\n ### Proof\n We can choose 2 freshmen girls and 3 freshman boys in $\\binom{12}{2}\\binom{11}{3} = 10890$ ways. There are a total of $\\binom{30}{5} = 142506$ possible groups of 5 students we can choose.\n Thus the probability of selecting a group of 5 students with 2 freshman girls and 3 freshmen boys is $\\frac{10890}{142506} \\approx \\boxed{0.076}$.\n *)\n\ntheorem\nfixes girls freshmen_girls boys freshmen_boys total_students group_students :: nat\nassumes h0 : \"girls = 15\"\nand h1 : \"freshmen_girls = 12\"\nand h2 : \"boys = 15\"\nand h3 : \"freshmen_boys = 11\"\nand h4 : \"total_students = 30\"\nand h5 : \"group_students = 5\"\nshows  \"prob (2 freshmen_girls, 3 freshmen_boys) = (0.076 :: real)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a school, there are 15 girls and 15 boys, making a total of 30 students. Among the girls, 12 are freshmen, and among the boys, 11 are freshmen. If a group of 5 students is chosen randomly, what is the probability that the group contains 2 freshmen girls and 3 freshmen boys? The final answer is 0.076.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9223482012748718,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes total_students girls freshmen_girls boys freshmen_boys selected_students freshmen_girls_selected freshmen_boys_selected :: nat\nand probability :: real\nassumes h0 : \"total_students = 30\"\nand h1 : \"girls = 15\"\nand h2 : \"freshmen_girls = 12\"\nand h3 : \"boys = total_students - girls\"\nand h4 : \"freshmen_boys = 11\"\nand h5 : \"selected_students = 5\"\nand h6 : \"freshmen_girls_selected = 2\"\nand h7 : \"freshmen_boys_selected = 3\"\nand h8 : \"probability = (nCr freshmen_girls freshmen_girls_selected * nCr (girls - freshmen_girls) (selected_students - freshmen_girls_selected - freshmen_boys_selected) * nCr freshmen_boys freshmen_boys_selected) / nCr total_students selected_students\"\nshows  \"probability = 0.076\"",
+        "formal solution": "(* ### Problem\n In a math class of 30 students, 12 out of 15 girls are freshmen and 11 out of 15 boys are freshmen. What is the probability that in a randomly selected group of five students from the class, there will be two freshmen girls and three freshmen boys? Express your answer as a decimal to the nearest thousandth. The final Answer is 0.076\n ### Proof\n We can choose 2 freshmen girls and 3 freshman boys in $\\binom{12}{2}\\binom{11}{3} = 10890$ ways. There are a total of $\\binom{30}{5} = 142506$ possible groups of 5 students we can choose.\n Thus the probability of selecting a group of 5 students with 2 freshman girls and 3 freshmen boys is $\\frac{10890}{142506} \\approx \\boxed{0.076}$.\n *)\n\ntheorem\nfixes total_students girls freshmen_girls boys freshmen_boys selected_students freshmen_girls_selected freshmen_boys_selected :: nat\nand probability :: real\nassumes h0 : \"total_students = 30\"\nand h1 : \"girls = 15\"\nand h2 : \"freshmen_girls = 12\"\nand h3 : \"boys = total_students - girls\"\nand h4 : \"freshmen_boys = 11\"\nand h5 : \"selected_students = 5\"\nand h6 : \"freshmen_girls_selected = 2\"\nand h7 : \"freshmen_boys_selected = 3\"\nand h8 : \"probability = (nCr freshmen_girls freshmen_girls_selected * nCr (girls - freshmen_girls) (selected_students - freshmen_girls_selected - freshmen_boys_selected) * nCr freshmen_boys freshmen_boys_selected) / nCr total_students selected_students\"\nshows  \"probability = 0.076\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a school of 30 students, there are 15 girls and 15 boys. Among the girls, 12 are freshmen, and among the boys, 11 are freshmen. A committee of 5 students is to be chosen randomly. What is the probability that the committee will have 2 freshmen girls and 3 freshmen boys? The final answer is 0.076.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8994250893592834,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes total_students girls boys freshmen_girls freshmen_boys :: real\nassumes h0 : \"total_students = 30\"\nand h1 : \"girls = 15\"\nand h2 : \"boys = 15\"\nand h3 : \"freshmen_girls = 12\"\nand h4 : \"freshmen_boys = 11\"\nshows  \"probability (2 freshmen_girls, 3 freshmen_boys) = 0.076\"",
+        "formal solution": "(* ### Problem\n In a math class of 30 students, 12 out of 15 girls are freshmen and 11 out of 15 boys are freshmen. What is the probability that in a randomly selected group of five students from the class, there will be two freshmen girls and three freshmen boys? Express your answer as a decimal to the nearest thousandth. The final Answer is 0.076\n ### Proof\n We can choose 2 freshmen girls and 3 freshman boys in $\\binom{12}{2}\\binom{11}{3} = 10890$ ways. There are a total of $\\binom{30}{5} = 142506$ possible groups of 5 students we can choose.\n Thus the probability of selecting a group of 5 students with 2 freshman girls and 3 freshmen boys is $\\frac{10890}{142506} \\approx \\boxed{0.076}$.\n *)\n\ntheorem\nfixes total_students girls boys freshmen_girls freshmen_boys :: real\nassumes h0 : \"total_students = 30\"\nand h1 : \"girls = 15\"\nand h2 : \"boys = 15\"\nand h3 : \"freshmen_girls = 12\"\nand h4 : \"freshmen_boys = 11\"\nshows  \"probability (2 freshmen_girls, 3 freshmen_boys) = 0.076\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a school, there are 30 students in total, 15 girls, and 15 boys. Among the girls, 12 are freshmen, and among the boys, 11 are freshmen. What is the probability of randomly selecting 2 freshmen girls and 3 freshmen boys from the entire student population? The final answer is 0.076.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8852838277816772,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes math_class :: \"nat \\<Rightarrow> nat\"\nand freshmen_girls :: \"nat \\<Rightarrow> nat\"\nand freshmen_boys :: \"nat \\<Rightarrow> nat\"\nand total_students :: nat\nand total_girls :: nat\nand total_boys :: nat\nand group_students :: nat\nand freshmen_girls_in_group :: nat\nand freshmen_boys_in_group :: nat\nand probability :: real\nassumes h0 : \"total_students = 30\"\nand h1 : \"total_girls = 15\"\nand h2 : \"total_boys = 15\"\nand h3 : \"freshmen_girls total_girls = 12\"\nand h4 : \"freshmen_boys total_boys = 11\"\nand h5 : \"group_students = 5\"\nand h6 : \"freshmen_girls_in_group = 2\"\nand h7 : \"freshmen_boys_in_group = 3\"\nand h8 : \"probability = (\\<Prod> {factors})\"\nshows  \"probability = 0.076\"",
+        "formal solution": "(* ### Problem\n In a math class of 30 students, 12 out of 15 girls are freshmen and 11 out of 15 boys are freshmen. What is the probability that in a randomly selected group of five students from the class, there will be two freshmen girls and three freshmen boys? Express your answer as a decimal to the nearest thousandth. The final Answer is 0.076\n ### Proof\n We can choose 2 freshmen girls and 3 freshman boys in $\\binom{12}{2}\\binom{11}{3} = 10890$ ways. There are a total of $\\binom{30}{5} = 142506$ possible groups of 5 students we can choose.\n Thus the probability of selecting a group of 5 students with 2 freshman girls and 3 freshmen boys is $\\frac{10890}{142506} \\approx \\boxed{0.076}$.\n *)\n\ntheorem\nfixes math_class :: \"nat \\<Rightarrow> nat\"\nand freshmen_girls :: \"nat \\<Rightarrow> nat\"\nand freshmen_boys :: \"nat \\<Rightarrow> nat\"\nand total_students :: nat\nand total_girls :: nat\nand total_boys :: nat\nand group_students :: nat\nand freshmen_girls_in_group :: nat\nand freshmen_boys_in_group :: nat\nand probability :: real\nassumes h0 : \"total_students = 30\"\nand h1 : \"total_girls = 15\"\nand h2 : \"total_boys = 15\"\nand h3 : \"freshmen_girls total_girls = 12\"\nand h4 : \"freshmen_boys total_boys = 11\"\nand h5 : \"group_students = 5\"\nand h6 : \"freshmen_girls_in_group = 2\"\nand h7 : \"freshmen_boys_in_group = 3\"\nand h8 : \"probability = (\\<Prod> {factors})\"\nshows  \"probability = 0.076\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a math class, there are 30 students, with 15 girls and 15 boys. Among the girls, 12 are freshmen and among the boys, 11 are freshmen. A group of 5 students is formed, consisting of 2 freshmen girls and 3 freshmen boys. Find the probability of this group composition. The final answer is 0.076.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9900733828544617,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "0.076",
+    "natural problem": "In a math class of 30 students, 12 out of 15 girls are freshmen and 11 out of 15 boys are freshmen. What is the probability that in a randomly selected group of five students from the class, there will be two freshmen girls and three freshmen boys? Express your answer as a decimal to the nearest thousandth.",
+    "natural solution": [
+        "We can choose 2 freshmen girls and 3 freshman boys in $\\binom{12}{2}\\binom{11}{3} = 10890$ ways. There are a total of $\\binom{30}{5} = 142506$ possible groups of 5 students we can choose.",
+        "Thus the probability of selecting a group of 5 students with 2 freshman girls and 3 freshmen boys is $\\frac{10890}{142506} \\approx \\boxed{0.076}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 5",
+    "type": "Counting & Probability"
+}

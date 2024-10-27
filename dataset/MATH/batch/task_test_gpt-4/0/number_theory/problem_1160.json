@@ -1,0 +1,612 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes factors :: \"int \\<Rightarrow> int set\"\nand S :: \"int set\"\nassumes h0 : \"\\<forall> n. factors n = {d. d > 0 \\<and> n mod d = 0}\"\nand h1 : \"\\<forall> n \\<in> S. card (factors n) = 4\"\nand h2 : \"card S = 5\"\nand h3 : \"min S = 1\"\nshows  \"sum id S = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes factors :: \"int \\<Rightarrow> int set\"\nand S :: \"int set\"\nassumes h0 : \"\\<forall> n. factors n = {d. d > 0 \\<and> n mod d = 0}\"\nand h1 : \"\\<forall> n \\<in> S. card (factors n) = 4\"\nand h2 : \"card S = 5\"\nand h3 : \"min S = 1\"\nshows  \"sum id S = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let's consider a set of five positive integers, S, with the smallest element being 1. Every number in S has exactly four positive divisors. What is the sum of all the numbers in S? The final answer is 53.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7607415318489075,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. f n = {d. d dvd n}\"\nand h1 : \"\\<forall> n \\<in> {1,2,3,4,5}. card (f n) = 4\"\nshows  \"sum id {1,2,3,4,5} = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. f n = {d. d dvd n}\"\nand h1 : \"\\<forall> n \\<in> {1,2,3,4,5}. card (f n) = 4\"\nshows  \"sum id {1,2,3,4,5} = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the function $f(n)$ is defined as the set of all divisors of a natural number $n$, find the sum of all natural numbers between 1 and 5, inclusive, which have exactly 4 divisors. The final Answer is 53.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8378438949584961,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"\\<forall> x. f x = {y. y > 0 \\<and> x mod y = 0}\"\nand h1 : \"\\<forall> x. card (f x) = 4\"\nand h2 : \"\\<exists> a b c d e. a > 0 \\<and> b > 0 \\<and> c > 0 \\<and> d > 0 \\<and> e > 0 \\<and> a \\<noteq> b \\<and> a \\<noteq> c \\<and> a \\<noteq> d \\<and> a \\<noteq> e \\<and> b \\<noteq> c \\<and> b \\<noteq> d \\<and> b \\<noteq> e \\<and> c \\<noteq> d \\<and> c \\<noteq> e \\<and> d \\<noteq> e \\<and> card (f a) = 4 \\<and> card (f b) = 4 \\<and> card (f c) = 4 \\<and> card (f d) = 4 \\<and> card (f e) = 4\"\nshows  \"a + b + c + d + e = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"\\<forall> x. f x = {y. y > 0 \\<and> x mod y = 0}\"\nand h1 : \"\\<forall> x. card (f x) = 4\"\nand h2 : \"\\<exists> a b c d e. a > 0 \\<and> b > 0 \\<and> c > 0 \\<and> d > 0 \\<and> e > 0 \\<and> a \\<noteq> b \\<and> a \\<noteq> c \\<and> a \\<noteq> d \\<and> a \\<noteq> e \\<and> b \\<noteq> c \\<and> b \\<noteq> d \\<and> b \\<noteq> e \\<and> c \\<noteq> d \\<and> c \\<noteq> e \\<and> d \\<noteq> e \\<and> card (f a) = 4 \\<and> card (f b) = 4 \\<and> card (f c) = 4 \\<and> card (f d) = 4 \\<and> card (f e) = 4\"\nshows  \"a + b + c + d + e = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find five positive integers, all different from each other, such that each has exactly four positive divisors. What is the sum of these five numbers? The final answer is 53.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8921555280685425,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. size (factors n) = 4 \\<longrightarrow> (\\<forall> a b. a * b = n \\<longrightarrow> a \\<in> factors n \\<and> b \\<in> factors n)\"\nand h1 : \"\\<forall> n. size (factors n) = 4 \\<longrightarrow> 1 \\<in> factors n \\<and> n \\<in> factors n\"\nand h2 : \"\\<forall> n. size (factors n) = 4 \\<longrightarrow> (\\<exists> a b. a * b = n \\<and> a \\<in> factors n \\<and> b \\<in> factors n \\<and> a \\<noteq> 1 \\<and> b \\<noteq> n \\<and> a \\<noteq> b)\"\nand h3 : \"sorted_list_of_set {n. size (factors n) = 4} = [n1, n2, n3, n4, n5]\"\nshows  \"n1 + n2 + n3 + n4 + n5 = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. size (factors n) = 4 \\<longrightarrow> (\\<forall> a b. a * b = n \\<longrightarrow> a \\<in> factors n \\<and> b \\<in> factors n)\"\nand h1 : \"\\<forall> n. size (factors n) = 4 \\<longrightarrow> 1 \\<in> factors n \\<and> n \\<in> factors n\"\nand h2 : \"\\<forall> n. size (factors n) = 4 \\<longrightarrow> (\\<exists> a b. a * b = n \\<and> a \\<in> factors n \\<and> b \\<in> factors n \\<and> a \\<noteq> 1 \\<and> b \\<noteq> n \\<and> a \\<noteq> b)\"\nand h3 : \"sorted_list_of_set {n. size (factors n) = 4} = [n1, n2, n3, n4, n5]\"\nshows  \"n1 + n2 + n3 + n4 + n5 = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find five natural numbers (n1, n2, n3, n4, n5) with exactly four factors, including 1 and the number itself, and two other distinct factors. What is the sum of these five numbers? The final answer is 53.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9517993927001953,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"finite (f n)\"\nand h1 : \"card (f n) = 4\"\nand h2 : \"f n = {d. d dvd n \\<and> d > 0}\"\nshows  \"sum id {n. card (f n) = 4 \\<and> n > 0} = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"finite (f n)\"\nand h1 : \"card (f n) = 4\"\nand h2 : \"f n = {d. d dvd n \\<and> d > 0}\"\nshows  \"sum id {n. card (f n) = 4 \\<and> n > 0} = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all positive natural numbers $n$ such that the set of its positive divisors contains exactly four elements. The final answer is $53$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9573573470115662,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. factors n = {d. d dvd n}\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> card (factors n) = 4\"\nshows  \"sum id {n. n \\<le> 5 \\<and> n > 0 \\<and> card (factors n) = 4} = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. factors n = {d. d dvd n}\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> card (factors n) = 4\"\nshows  \"sum id {n. n \\<le> 5 \\<and> n > 0 \\<and> card (factors n) = 4} = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all natural numbers less than or equal to 5 that have exactly 4 divisors. The final answer is 53.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9852664470672607,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem \nfixes n :: int\nassumes h0 : \"\\<forall>n. n > 0 \\<longrightarrow> card {d. d > 0 \\<and> n mod d = 0} = 4\"\nand h1 : \"finite {n. n > 0 \\<and> card {d. d > 0 \\<and> n mod d = 0} = 4}\"\nshows  \"sum id (take 5 (sorted_list_of_set {n. n > 0 \\<and> card {d. d > 0 \\<and> n mod d = 0} = 4})) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem \nfixes n :: int\nassumes h0 : \"\\<forall>n. n > 0 \\<longrightarrow> card {d. d > 0 \\<and> n mod d = 0} = 4\"\nand h1 : \"finite {n. n > 0 \\<and> card {d. d > 0 \\<and> n mod d = 0} = 4}\"\nshows  \"sum id (take 5 (sorted_list_of_set {n. n > 0 \\<and> card {d. d > 0 \\<and> n mod d = 0} = 4})) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the first five positive integers that have exactly four positive divisors. The final answer is 53.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9683898091316223,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem \nfixes f :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"\\<forall>n. f n = {d. d > 0 \\<and> n mod d = 0}\"\nand h1 : \"\\<forall>n. card (f n) = 4\"\nand h2 : \"\\<forall>n. n > 0 \\<longrightarrow> (\\<exists> m1 m2 m3 m4. m1 > 0 \\<and> m2 > 0 \\<and> m3 > 0 \\<and> m4 > 0 \\<and> m1 < m2 \\<and> m2 < m3 \\<and> m3 < m4 \\<and> f n = {m1, m2, m3, m4})\"\nand h3 : \"\\<forall>n. n \\<ge> 6 \\<longrightarrow> (\\<forall> m. m < n \\<longrightarrow> card (f m) \\<noteq> 4)\"\nshows  \"sum (\\<lambda>n. n) {n. card (f n) = 4} = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem \nfixes f :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"\\<forall>n. f n = {d. d > 0 \\<and> n mod d = 0}\"\nand h1 : \"\\<forall>n. card (f n) = 4\"\nand h2 : \"\\<forall>n. n > 0 \\<longrightarrow> (\\<exists> m1 m2 m3 m4. m1 > 0 \\<and> m2 > 0 \\<and> m3 > 0 \\<and> m4 > 0 \\<and> m1 < m2 \\<and> m2 < m3 \\<and> m3 < m4 \\<and> f n = {m1, m2, m3, m4})\"\nand h3 : \"\\<forall>n. n \\<ge> 6 \\<longrightarrow> (\\<forall> m. m < n \\<longrightarrow> card (f m) \\<noteq> 4)\"\nshows  \"sum (\\<lambda>n. n) {n. card (f n) = 4} = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f$ which, for any given integer $n$, gives a set of positive integers $d$ such that $n$ is divisible by $d$. Each of these sets contains exactly 4 elements, and for each integer $n > 0$, there exist 4 distinct positive integers $m1, m2, m3, m4$ (with $m1 < m2 < m3 < m4$) that make up the set $f(n)$. However, for any integer $n \\geq 6$, there does not exist any integer $m < n$ such that the set $f(m)$ contains 4 elements. Given these conditions, find the sum of all integers $n$ for which the set $f(n)$ contains 4 elements. The final answer is 53.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7672979235649109,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. card (factors n) = 4\"\nand h1 : \"\\<forall> n. \\<forall> f \\<in> factors n. n mod f = 0\"\nand h2 : \"\\<forall> n. \\<forall> f \\<in> factors n. f > 0\"\nand h3 : \"sorted_list_of_set (factors n) = [1, 5, 7, 35]\"\nshows  \"sum_list (take 5 (sorted_list_of_set {n. card (factors n) = 4})) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. card (factors n) = 4\"\nand h1 : \"\\<forall> n. \\<forall> f \\<in> factors n. n mod f = 0\"\nand h2 : \"\\<forall> n. \\<forall> f \\<in> factors n. f > 0\"\nand h3 : \"sorted_list_of_set (factors n) = [1, 5, 7, 35]\"\nshows  \"sum_list (take 5 (sorted_list_of_set {n. card (factors n) = 4})) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A positive integer $n$ has exactly four factors. Each of these factors is a divisor of $n$, and none of these factors is zero. If the sorted list of these factors is [1, 5, 7, 35], find the sum of the first five numbers in the sorted list of all positive integers that have exactly four factors. The final answer is 53.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9558678269386292,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "\n\nfun factors :: \"nat \\<Rightarrow> nat set\" where\n\"factors n = {m. m > 0 \\<and> n mod m = 0}\"\n\nfun exactly_four_factors :: \"nat \\<Rightarrow> bool\" where\n\"exactly_four_factors n = (card (factors n) = 4)\"\n\nfun sum_of_smallest_five :: \"nat\" where\n\"sum_of_smallest_five = sum id {n. n > 0 \\<and> exactly_four_factors n \\<and> n \\<le> (LEAST n. exactly_four_factors n) + 4}\"\n\ntheorem \"sum_of_smallest_five = 53\"\n  sorry\n\nend",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\n\n\nfun factors :: \"nat \\<Rightarrow> nat set\" where\n\"factors n = {m. m > 0 \\<and> n mod m = 0}\"\n\nfun exactly_four_factors :: \"nat \\<Rightarrow> bool\" where\n\"exactly_four_factors n = (card (factors n) = 4)\"\n\nfun sum_of_smallest_five :: \"nat\" where\n\"sum_of_smallest_five = sum id {n. n > 0 \\<and> exactly_four_factors n \\<and> n \\<le> (LEAST n. exactly_four_factors n) + 4}\"\n\ntheorem \"sum_of_smallest_five = 53\"\n  sorry\n\nend\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the smallest five natural numbers that have exactly four factors. The final answer is 53.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9812732338905334,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "53",
+    "natural problem": "Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors?",
+    "natural solution": [
+        "The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.",
+        "Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$."
+    ],
+    "oracle": "TODO",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 5",
+    "type": "Number Theory",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1\"\nand h1 : \"\\<forall> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1 \\<longrightarrow> card {x. x dvd n \\<and> x > 0} = 4\"\nshows \"(\\<Sum>i=1..5. SOME n. \\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1 \\<and> card {x. x dvd n \\<and> x > 0} = 4) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1\"\nand h1 : \"\\<forall> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1 \\<longrightarrow> card {x. x dvd n \\<and> x > 0} = 4\"\nshows \"(\\<Sum>i=1..5. SOME n. \\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1 \\<and> card {x. x dvd n \\<and> x > 0} = 4) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n that can be expressed as the product of two distinct integers a and b, where both a and b are greater than 1. If the number of positive divisors of n is exactly 4, find the sum of the first 5 such numbers n. The sum of these 5 numbers is 53.",
+        "syntax": 1,
+        "semantic_score": 0.9650144420884778,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> card {x. x > 0 \\<and> x dvd n} = 4\"\nshows \"(\\<Sum>i=1..5. i) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> card {x. x > 0 \\<and> x dvd n} = 4\"\nshows \"(\\<Sum>i=1..5. i) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that for any natural number n greater than 0, the number of positive divisors of n is always 4. Based on this condition, it is claimed that the sum of the first 5 natural numbers (1 + 2 + 3 + 4 + 5) equals 53.\n\nIn natural language, the problem can be stated as follows:\n\n\"If for any positive natural number n, the number of its positive divisors is exactly 4, then prove that the sum of the first 5 natural numbers (1 through 5) is equal to 53.\"",
+        "syntax": 1,
+        "semantic_score": 0.48941300394469733,
+        "symbolic_score": 0.2
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<exists> n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"\\<forall> n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<longrightarrow> n \\<le> 53\"\nand h2 : \"\\<forall> n. n > 53 \\<longrightarrow> card {x. x > 0 \\<and> x dvd n} \\<noteq> 4\"\nshows \"(\\<Sum>n\\<in>{n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<and> n \\<le> 53}. n) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<exists> n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"\\<forall> n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<longrightarrow> n \\<le> 53\"\nand h2 : \"\\<forall> n. n > 53 \\<longrightarrow> card {x. x > 0 \\<and> x dvd n} \\<noteq> 4\"\nshows \"(\\<Sum>n\\<in>{n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<and> n \\<le> 53}. n) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a natural number n greater than 0 such that there are exactly 4 positive numbers that divide n. Furthermore, for any natural number n greater than 0 with exactly 4 positive divisors, n must be less than or equal to 53. Additionally, for any natural number n greater than 53, there cannot be exactly 4 positive divisors. The sum of all natural numbers n that are greater than 0, have exactly 4 positive divisors, and are less than or equal to 53 is equal to 53.",
+        "syntax": 1,
+        "semantic_score": 0.9304922004714401,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<exists>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"\\<forall>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<longrightarrow> n \\<le> 53\"\nand h2 : \"\\<forall>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<longrightarrow> n \\<ge> 5\"\nshows \"(\\<Sum>n\\<in>{n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4}. n) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<exists>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"\\<forall>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<longrightarrow> n \\<le> 53\"\nand h2 : \"\\<forall>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<longrightarrow> n \\<ge> 5\"\nshows \"(\\<Sum>n\\<in>{n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4}. n) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a positive natural number n such that there are exactly four positive divisors of n. Additionally, for any positive natural number n with exactly four positive divisors, n must be greater than or equal to 5 and less than or equal to 53. The sum of all such n values is equal to 53.",
+        "syntax": 1,
+        "semantic_score": 0.9738749101260168,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"n \\<le> 5\"\nshows \"(\\<Sum>n\\<in>{1..5}. n) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"n \\<le> 5\"\nshows \"(\\<Sum>n\\<in>{1..5}. n) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that for all natural numbers n greater than 0, the number of positive divisors of n is equal to 4, and n is less than or equal to 5. It then concludes that the sum of the numbers from 1 to 5 is equal to 53.\n\nIn natural language, the problem can be stated as:\n\nConsider a natural number n, where n is greater than 0 and has exactly four positive divisors. If n is less than or equal to 5, find the sum of the numbers from 1 to 5.\n\nThe answer to this problem is that the sum of the numbers from 1 to 5 is 53.",
+        "syntax": 1,
+        "semantic_score": 0.9183625911466373,
+        "symbolic_score": 0.2
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> card {x. x dvd n \\<and> x > 0} = 4\"\nshows \"(\\<Sum>i=1..5. n) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> card {x. x dvd n \\<and> x > 0} = 4\"\nshows \"(\\<Sum>i=1..5. n) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that for a natural number n, if n is greater than 0, then the number of positive divisors of n is exactly 4. The problem then asserts that the sum of the first 5 multiples of n (i.e., n, 2n, 3n, 4n, and 5n) is equal to 53.\n\nIn natural language, the problem can be stated as follows:\n\nConsider a natural number n that is greater than 0. It is known that n has exactly four positive divisors. Determine the value of n such that the sum of the first five multiples of n (n, 2n, 3n, 4n, and 5n) is equal to 53.",
+        "syntax": 1,
+        "semantic_score": 0.7533060848324208,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"card {x. x dvd n \\<and> x > 0} = 4\"\nand h2 : \"n \\<le> 5\"\nshows \"sum {n | n. n > 0 \\<and> card {x. x dvd n \\<and> x > 0} = 4 \\<and> n \\<le> 5} = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"card {x. x dvd n \\<and> x > 0} = 4\"\nand h2 : \"n \\<le> 5\"\nshows \"sum {n | n. n > 0 \\<and> card {x. x dvd n \\<and> x > 0} = 4 \\<and> n \\<le> 5} = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states the following:\n\nConsider a natural number `n` that is greater than 0. The number `n` has exactly four positive divisors (excluding 1). Additionally, `n` is less than or equal to 5. We are asked to find the sum of all such `n` values that meet these conditions. The theorem asserts that the sum of these `n` values is equal to 53.\n\nIn simpler terms, the natural language version of the problem is:\n\nFind all natural numbers between 1 and 5 (inclusive) that have exactly four positive divisors (excluding 1), and then add up these numbers. The result should be 53.",
+        "syntax": 0,
+        "semantic_score": 0.9132799968793816,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1\"\nand h1 : \"card {x. x dvd n \\<and> x > 0} = 4\"\nand h2 : \"n \\<le> 5\"\nshows \"(\\<Sum>i=1..5. n) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1\"\nand h1 : \"card {x. x dvd n \\<and> x > 0} = 4\"\nand h2 : \"n \\<le> 5\"\nshows \"(\\<Sum>i=1..5. n) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there exists two distinct positive integers 'a' and 'b' such that 'n' is equal to the product of 'a' and 'b', where both 'a' and 'b' are greater than 1. The number of positive divisors of 'n' is exactly 4. Additionally, 'n' is less than or equal to 5. The sum of 'n' from 1 to 5 is equal to 53. \n\nIn simpler terms, we are looking for a number 'n' that can be expressed as the product of two different numbers, both of which are greater than 1. This number 'n' has exactly four positive divisors. The value of 'n' is less than or equal to 5. If we add up 'n' from 1 to 5, the total sum should be 53.",
+        "syntax": 1,
+        "semantic_score": 0.9484982921960707,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<exists>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"n = (LEAST n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4)\"\nshows \"n = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<exists>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"n = (LEAST n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4)\"\nshows \"n = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a positive natural number n such that the number of positive divisors of n is exactly 4. The smallest such number n that satisfies this condition is 53.",
+        "syntax": 1,
+        "semantic_score": 0.9574743677823107,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1\"\nand h1 : \"card {x. x dvd n \\<and> x > 0} = 4\"\nshows \"(\\<Sum>i=1..5. n i) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1\"\nand h1 : \"card {x. x dvd n \\<and> x > 0} = 4\"\nshows \"(\\<Sum>i=1..5. n i) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is as follows:\n\nConsider a natural number n. There exist two distinct positive integers a and b, both greater than 1, such that n is the product of a and b. Additionally, there are exactly four positive integers that divide n. We need to find the sum of the first 5 multiples of n, which is equal to 53.",
+        "syntax": 0,
+        "semantic_score": 0.9383622020134073,
+        "symbolic_score": 0.1
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\ndefines fourFactorsSum :: nat\nassumes h0 : \"nats \\<noteq> {}\"\nshows \"finite nats\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\ndefines fourFactorsSum :: nat\nassumes h0 : \"nats \\<noteq> {}\"\nshows \"finite nats\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Assuming that there are natural numbers, prove that the set of natural numbers is finite.\"",
+        "syntax": 0,
+        "semantic_score": 0.6086966213573943,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes n d :: nat\nassumes h0 : \"d > 0\"\nand h1 : \"n > 0\"\nshows \"card {k. k \\<le> n \\<and> card {d. d dvd k} = 4} = 5 \\<Longrightarrow> sum {k. k \\<le> n \\<and> card {d. d dvd k} = 4} id = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n d :: nat\nassumes h0 : \"d > 0\"\nand h1 : \"n > 0\"\nshows \"card {k. k \\<le> n \\<and> card {d. d dvd k} = 4} = 5 \\<Longrightarrow> sum {k. k \\<le> n \\<and> card {d. d dvd k} = 4} id = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If there are exactly 5 integers $k$ less than or equal to $n$ such that exactly 4 positive integers divide $k$, then what is the sum of these 5 values of $k$? The sum is 53.\"",
+        "syntax": 0,
+        "semantic_score": 0.37525746002341365,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. f n = card {d. d dvd n}\"\nshows \"sum_list (take 5 (filter (\\<lambda>n. f n = 4) [1..<])) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. f n = card {d. d dvd n}\"\nshows \"sum_list (take 5 (filter (\\<lambda>n. f n = 4) [1..<])) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the first five positive integers $n$ for which the number of divisors of $n$ is $4$. The sum should be $53$.",
+        "syntax": 0,
+        "semantic_score": 0.9475493753226574,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. f n = card {d. d dvd n}\"\nand h1 : \"card {n. n > 0 \\<and> f n = 4} \\<ge> 5\"\nand h2 : \"finite {n. n > 0 \\<and> f n = 4}\"\nand h3 : \"sum {n. n > 0 \\<and> f n = 4} f = 53\"\nshows \"card {n. n > 0 \\<and> f n = 4} = 5\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. f n = card {d. d dvd n}\"\nand h1 : \"card {n. n > 0 \\<and> f n = 4} \\<ge> 5\"\nand h2 : \"finite {n. n > 0 \\<and> f n = 4}\"\nand h3 : \"sum {n. n > 0 \\<and> f n = 4} f = 53\"\nshows \"card {n. n > 0 \\<and> f n = 4} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $f(n)$ is the number of positive divisors of $n$. Given that there are at least five positive integers $n$ such that $f(n) = 4$, and the sum of all such $n$ is $53$, how many positive integers $n$ exist such that $f(n) = 4$? The final answer is $5$.",
+        "syntax": 0,
+        "semantic_score": 0.9668167970149446,
+        "symbolic_score": 0.1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes F :: \"nat set\"\nassumes h0 : \"\\<And>n::nat. n \\<in> F \\<Longrightarrow> card {d::nat. d dvd n} = 4\"\nand h1 : \"card F \\<ge> 5\"\nshows \"sum F {n::nat. card {d::nat. d dvd n} = 4 \\<and> n > 0} = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes F :: \"nat set\"\nassumes h0 : \"\\<And>n::nat. n \\<in> F \\<Longrightarrow> card {d::nat. d dvd n} = 4\"\nand h1 : \"card F \\<ge> 5\"\nshows \"sum F {n::nat. card {d::nat. d dvd n} = 4 \\<and> n > 0} = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all natural numbers greater than 0 that have exactly four divisors, where a divisor is any natural number that divides a given number evenly. The sum should only include numbers that are elements of a set $F$ that contains at least five natural numbers, and for every number in $F$, exactly four divisors divide it evenly. The final answer is 53.",
+        "syntax": 0,
+        "semantic_score": 0.9334143104369087,
+        "symbolic_score": 0.1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. f n = card {d. d dvd n}\"\nand h1 : \"{n. f n = 4} = {p*q | p q. prime p \\<and> prime q \\<and> p \\<noteq> q}\"\nand h2 : \"{n. f n = 4 \\<and> n \\<le> 10} = {6, 8, 9, 10}\"\nshows \"sum f {n. f n = 4 \\<and> n \\<le> 10} = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. f n = card {d. d dvd n}\"\nand h1 : \"{n. f n = 4} = {p*q | p q. prime p \\<and> prime q \\<and> p \\<noteq> q}\"\nand h2 : \"{n. f n = 4 \\<and> n \\<le> 10} = {6, 8, 9, 10}\"\nshows \"sum f {n. f n = 4 \\<and> n \\<le> 10} = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all natural numbers less than or equal to 10 for which the number of divisors is exactly 4. The answer is 53.",
+        "syntax": 1,
+        "semantic_score": 0.9050849636737024,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<And>n. n \\<in> Nat \\<Longrightarrow> finite (factors n)\"\nshows \"sum_list (take 5 (sort_nat {n \\<in> Nat. card (factors n) = 4})) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<And>n. n \\<in> Nat \\<Longrightarrow> finite (factors n)\"\nshows \"sum_list (take 5 (sort_nat {n \\<in> Nat. card (factors n) = 4})) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the first five natural numbers whose prime factors are each repeated four times. The final answer is 53.",
+        "syntax": 0,
+        "semantic_score": 0.9819371940275943,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<And>p q. prime p \\<Longrightarrow> prime q \\<Longrightarrow> p \\<noteq> q \\<Longrightarrow> card {n. prime n \\<and> n dvd (p * q)} = 1\"\nshows \"(\\<Sum>i\\<in>{n. prime n \\<and> card {d. d dvd n} = 4}. i) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<And>p q. prime p \\<Longrightarrow> prime q \\<Longrightarrow> p \\<noteq> q \\<Longrightarrow> card {n. prime n \\<and> n dvd (p * q)} = 1\"\nshows \"(\\<Sum>i\\<in>{n. prime n \\<and> card {d. d dvd n} = 4}. i) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of all prime numbers that have exactly four divisors is equal to 53.",
+        "syntax": 1,
+        "semantic_score": 0.9036813943082703,
+        "symbolic_score": 0.1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes n1 n2 n3 n4 n5 :: nat\nassumes h0 : \"n1 > 0 \\<and> n2 > 0 \\<and> n3 > 0 \\<and> n4 > 0 \\<and> n5 > 0\"\nand h1 : \"card {n :: nat. n > 0 \\<and> card {d. d dvd n} = 4 \\<and> n \\<le> n1} \\<ge> 1\"\nand h2 : \"card {n :: nat. n > 0 \\<and> card {d. d dvd n} = 4 \\<and> n \\<le> n2} \\<ge> 2\"\nand h3 : \"card {n :: nat. n > 0 \\<and> card {d. d dvd n} = 4 \\<and> n \\<le> n3} \\<ge> 3\"\nand h4 : \"card {n :: nat. n > 0 \\<and> card {d. d dvd n} = 4 \\<and> n \\<le> n4} \\<ge> 4\"\nand h5 : \"card {n :: nat. n > 0 \\<and> card {d. d dvd n} = 4 \\<and> n \\<le> n5} \\<ge> 5\"\nand h6 : \"distinct [n1, n2, n3, n4, n5]\"\nshows \"sum_list [n1, n2, n3, n4, n5] = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n1 n2 n3 n4 n5 :: nat\nassumes h0 : \"n1 > 0 \\<and> n2 > 0 \\<and> n3 > 0 \\<and> n4 > 0 \\<and> n5 > 0\"\nand h1 : \"card {n :: nat. n > 0 \\<and> card {d. d dvd n} = 4 \\<and> n \\<le> n1} \\<ge> 1\"\nand h2 : \"card {n :: nat. n > 0 \\<and> card {d. d dvd n} = 4 \\<and> n \\<le> n2} \\<ge> 2\"\nand h3 : \"card {n :: nat. n > 0 \\<and> card {d. d dvd n} = 4 \\<and> n \\<le> n3} \\<ge> 3\"\nand h4 : \"card {n :: nat. n > 0 \\<and> card {d. d dvd n} = 4 \\<and> n \\<le> n4} \\<ge> 4\"\nand h5 : \"card {n :: nat. n > 0 \\<and> card {d. d dvd n} = 4 \\<and> n \\<le> n5} \\<ge> 5\"\nand h6 : \"distinct [n1, n2, n3, n4, n5]\"\nshows \"sum_list [n1, n2, n3, n4, n5] = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose you have five positive integers $n_1, n_2, n_3, n_4, n_5$. Assume that there exists at least one positive integer $n$ such that $n \\leq n_1$, and the number of positive divisors of $n$ is exactly $4$. Assume there exist at least two positive integers $n$ such that $n \\leq n_2$, and the number of positive divisors of $n$ is exactly $4$. Similarly, assume there exist at least three, four, and five positive integers $n$ such that $n \\leq n_3, n_4$, and $n_5$, respectively, and the number of positive divisors of $n$ is exactly $4$. Also, assume that $n_1, n_2, n_3, n_4$, and $n_5$ are distinct. What is the sum of $n_1, n_2, n_3, n_4$, and $n_5$? The final answer is $53$.",
+        "syntax": 1,
+        "semantic_score": 0.9335991912182255,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<And>n. f n = card {d. d dvd n}\"\nshows \"sum_list (take 5 (filter (\\<lambda>n. f n = 4) [1..<])) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<And>n. f n = card {d. d dvd n}\"\nshows \"sum_list (take 5 (filter (\\<lambda>n. f n = 4) [1..<])) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the first five positive integers $n$ for which exactly four positive integers divide $n$. The sum should equal to $53$.",
+        "syntax": 0,
+        "semantic_score": 0.9788074478576918,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek": {
+        "0": [
+            1,
+            4
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes factors :: \"int \\<Rightarrow> int set\"\nand S :: \"int set\"\nassumes h0 : \"\\<forall> n. factors n = {d. d > 0 \\<and> n mod d = 0}\"\nand h1 : \"\\<forall> n \\<in> S. card (factors n) = 4\"\nand h2 : \"card S = 5\"\nand h3 : \"min S = 1\"\nshows  \"sum id S = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes factors :: \"int \\<Rightarrow> int set\"\nand S :: \"int set\"\nassumes h0 : \"\\<forall> n. factors n = {d. d > 0 \\<and> n mod d = 0}\"\nand h1 : \"\\<forall> n \\<in> S. card (factors n) = 4\"\nand h2 : \"card S = 5\"\nand h3 : \"min S = 1\"\nshows  \"sum id S = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let's consider a set of five positive integers, S, with the smallest element being 1. Every number in S has exactly four positive divisors. What is the sum of all the numbers in S? The final answer is 53.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9123901599480532,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. f n = {d. d dvd n}\"\nand h1 : \"\\<forall> n \\<in> {1,2,3,4,5}. card (f n) = 4\"\nshows  \"sum id {1,2,3,4,5} = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. f n = {d. d dvd n}\"\nand h1 : \"\\<forall> n \\<in> {1,2,3,4,5}. card (f n) = 4\"\nshows  \"sum id {1,2,3,4,5} = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the function $f(n)$ is defined as the set of all divisors of a natural number $n$, find the sum of all natural numbers between 1 and 5, inclusive, which have exactly 4 divisors. The final Answer is 53.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8570342026367398,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"\\<forall> x. f x = {y. y > 0 \\<and> x mod y = 0}\"\nand h1 : \"\\<forall> x. card (f x) = 4\"\nand h2 : \"\\<exists> a b c d e. a > 0 \\<and> b > 0 \\<and> c > 0 \\<and> d > 0 \\<and> e > 0 \\<and> a \\<noteq> b \\<and> a \\<noteq> c \\<and> a \\<noteq> d \\<and> a \\<noteq> e \\<and> b \\<noteq> c \\<and> b \\<noteq> d \\<and> b \\<noteq> e \\<and> c \\<noteq> d \\<and> c \\<noteq> e \\<and> d \\<noteq> e \\<and> card (f a) = 4 \\<and> card (f b) = 4 \\<and> card (f c) = 4 \\<and> card (f d) = 4 \\<and> card (f e) = 4\"\nshows  \"a + b + c + d + e = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"\\<forall> x. f x = {y. y > 0 \\<and> x mod y = 0}\"\nand h1 : \"\\<forall> x. card (f x) = 4\"\nand h2 : \"\\<exists> a b c d e. a > 0 \\<and> b > 0 \\<and> c > 0 \\<and> d > 0 \\<and> e > 0 \\<and> a \\<noteq> b \\<and> a \\<noteq> c \\<and> a \\<noteq> d \\<and> a \\<noteq> e \\<and> b \\<noteq> c \\<and> b \\<noteq> d \\<and> b \\<noteq> e \\<and> c \\<noteq> d \\<and> c \\<noteq> e \\<and> d \\<noteq> e \\<and> card (f a) = 4 \\<and> card (f b) = 4 \\<and> card (f c) = 4 \\<and> card (f d) = 4 \\<and> card (f e) = 4\"\nshows  \"a + b + c + d + e = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find five positive integers, all different from each other, such that each has exactly four positive divisors. What is the sum of these five numbers? The final answer is 53.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9170052861105114,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. size (factors n) = 4 \\<longrightarrow> (\\<forall> a b. a * b = n \\<longrightarrow> a \\<in> factors n \\<and> b \\<in> factors n)\"\nand h1 : \"\\<forall> n. size (factors n) = 4 \\<longrightarrow> 1 \\<in> factors n \\<and> n \\<in> factors n\"\nand h2 : \"\\<forall> n. size (factors n) = 4 \\<longrightarrow> (\\<exists> a b. a * b = n \\<and> a \\<in> factors n \\<and> b \\<in> factors n \\<and> a \\<noteq> 1 \\<and> b \\<noteq> n \\<and> a \\<noteq> b)\"\nand h3 : \"sorted_list_of_set {n. size (factors n) = 4} = [n1, n2, n3, n4, n5]\"\nshows  \"n1 + n2 + n3 + n4 + n5 = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. size (factors n) = 4 \\<longrightarrow> (\\<forall> a b. a * b = n \\<longrightarrow> a \\<in> factors n \\<and> b \\<in> factors n)\"\nand h1 : \"\\<forall> n. size (factors n) = 4 \\<longrightarrow> 1 \\<in> factors n \\<and> n \\<in> factors n\"\nand h2 : \"\\<forall> n. size (factors n) = 4 \\<longrightarrow> (\\<exists> a b. a * b = n \\<and> a \\<in> factors n \\<and> b \\<in> factors n \\<and> a \\<noteq> 1 \\<and> b \\<noteq> n \\<and> a \\<noteq> b)\"\nand h3 : \"sorted_list_of_set {n. size (factors n) = 4} = [n1, n2, n3, n4, n5]\"\nshows  \"n1 + n2 + n3 + n4 + n5 = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find five natural numbers (n1, n2, n3, n4, n5) with exactly four factors, including 1 and the number itself, and two other distinct factors. What is the sum of these five numbers? The final answer is 53.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9135667552643176,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"finite (f n)\"\nand h1 : \"card (f n) = 4\"\nand h2 : \"f n = {d. d dvd n \\<and> d > 0}\"\nshows  \"sum id {n. card (f n) = 4 \\<and> n > 0} = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"finite (f n)\"\nand h1 : \"card (f n) = 4\"\nand h2 : \"f n = {d. d dvd n \\<and> d > 0}\"\nshows  \"sum id {n. card (f n) = 4 \\<and> n > 0} = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all positive natural numbers $n$ such that the set of its positive divisors contains exactly four elements. The final answer is $53$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8862347147425637,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. factors n = {d. d dvd n}\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> card (factors n) = 4\"\nshows  \"sum id {n. n \\<le> 5 \\<and> n > 0 \\<and> card (factors n) = 4} = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. factors n = {d. d dvd n}\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> card (factors n) = 4\"\nshows  \"sum id {n. n \\<le> 5 \\<and> n > 0 \\<and> card (factors n) = 4} = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all natural numbers less than or equal to 5 that have exactly 4 divisors. The final answer is 53.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8820120735864089,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem \nfixes n :: int\nassumes h0 : \"\\<forall>n. n > 0 \\<longrightarrow> card {d. d > 0 \\<and> n mod d = 0} = 4\"\nand h1 : \"finite {n. n > 0 \\<and> card {d. d > 0 \\<and> n mod d = 0} = 4}\"\nshows  \"sum id (take 5 (sorted_list_of_set {n. n > 0 \\<and> card {d. d > 0 \\<and> n mod d = 0} = 4})) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem \nfixes n :: int\nassumes h0 : \"\\<forall>n. n > 0 \\<longrightarrow> card {d. d > 0 \\<and> n mod d = 0} = 4\"\nand h1 : \"finite {n. n > 0 \\<and> card {d. d > 0 \\<and> n mod d = 0} = 4}\"\nshows  \"sum id (take 5 (sorted_list_of_set {n. n > 0 \\<and> card {d. d > 0 \\<and> n mod d = 0} = 4})) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the first five positive integers that have exactly four positive divisors. The final answer is 53.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9169937310752039,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem \nfixes f :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"\\<forall>n. f n = {d. d > 0 \\<and> n mod d = 0}\"\nand h1 : \"\\<forall>n. card (f n) = 4\"\nand h2 : \"\\<forall>n. n > 0 \\<longrightarrow> (\\<exists> m1 m2 m3 m4. m1 > 0 \\<and> m2 > 0 \\<and> m3 > 0 \\<and> m4 > 0 \\<and> m1 < m2 \\<and> m2 < m3 \\<and> m3 < m4 \\<and> f n = {m1, m2, m3, m4})\"\nand h3 : \"\\<forall>n. n \\<ge> 6 \\<longrightarrow> (\\<forall> m. m < n \\<longrightarrow> card (f m) \\<noteq> 4)\"\nshows  \"sum (\\<lambda>n. n) {n. card (f n) = 4} = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem \nfixes f :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"\\<forall>n. f n = {d. d > 0 \\<and> n mod d = 0}\"\nand h1 : \"\\<forall>n. card (f n) = 4\"\nand h2 : \"\\<forall>n. n > 0 \\<longrightarrow> (\\<exists> m1 m2 m3 m4. m1 > 0 \\<and> m2 > 0 \\<and> m3 > 0 \\<and> m4 > 0 \\<and> m1 < m2 \\<and> m2 < m3 \\<and> m3 < m4 \\<and> f n = {m1, m2, m3, m4})\"\nand h3 : \"\\<forall>n. n \\<ge> 6 \\<longrightarrow> (\\<forall> m. m < n \\<longrightarrow> card (f m) \\<noteq> 4)\"\nshows  \"sum (\\<lambda>n. n) {n. card (f n) = 4} = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f$ which, for any given integer $n$, gives a set of positive integers $d$ such that $n$ is divisible by $d$. Each of these sets contains exactly 4 elements, and for each integer $n > 0$, there exist 4 distinct positive integers $m1, m2, m3, m4$ (with $m1 < m2 < m3 < m4$) that make up the set $f(n)$. However, for any integer $n \\geq 6$, there does not exist any integer $m < n$ such that the set $f(m)$ contains 4 elements. Given these conditions, find the sum of all integers $n$ for which the set $f(n)$ contains 4 elements. The final answer is 53.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8216194116459082,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. card (factors n) = 4\"\nand h1 : \"\\<forall> n. \\<forall> f \\<in> factors n. n mod f = 0\"\nand h2 : \"\\<forall> n. \\<forall> f \\<in> factors n. f > 0\"\nand h3 : \"sorted_list_of_set (factors n) = [1, 5, 7, 35]\"\nshows  \"sum_list (take 5 (sorted_list_of_set {n. card (factors n) = 4})) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat and factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"\\<forall> n. card (factors n) = 4\"\nand h1 : \"\\<forall> n. \\<forall> f \\<in> factors n. n mod f = 0\"\nand h2 : \"\\<forall> n. \\<forall> f \\<in> factors n. f > 0\"\nand h3 : \"sorted_list_of_set (factors n) = [1, 5, 7, 35]\"\nshows  \"sum_list (take 5 (sorted_list_of_set {n. card (factors n) = 4})) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A positive integer $n$ has exactly four factors. Each of these factors is a divisor of $n$, and none of these factors is zero. If the sorted list of these factors is [1, 5, 7, 35], find the sum of the first five numbers in the sorted list of all positive integers that have exactly four factors. The final answer is 53.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9438315844484014,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "\n\nfun factors :: \"nat \\<Rightarrow> nat set\" where\n\"factors n = {m. m > 0 \\<and> n mod m = 0}\"\n\nfun exactly_four_factors :: \"nat \\<Rightarrow> bool\" where\n\"exactly_four_factors n = (card (factors n) = 4)\"\n\nfun sum_of_smallest_five :: \"nat\" where\n\"sum_of_smallest_five = sum id {n. n > 0 \\<and> exactly_four_factors n \\<and> n \\<le> (LEAST n. exactly_four_factors n) + 4}\"\n\ntheorem \"sum_of_smallest_five = 53\"\n  sorry\n\nend",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is 53\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\n Using this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\n\n\nfun factors :: \"nat \\<Rightarrow> nat set\" where\n\"factors n = {m. m > 0 \\<and> n mod m = 0}\"\n\nfun exactly_four_factors :: \"nat \\<Rightarrow> bool\" where\n\"exactly_four_factors n = (card (factors n) = 4)\"\n\nfun sum_of_smallest_five :: \"nat\" where\n\"sum_of_smallest_five = sum id {n. n > 0 \\<and> exactly_four_factors n \\<and> n \\<le> (LEAST n. exactly_four_factors n) + 4}\"\n\ntheorem \"sum_of_smallest_five = 53\"\n  sorry\n\nend\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the smallest five natural numbers that have exactly four factors. The final answer is 53.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9285799083844666,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1\"\nand h1 : \"\\<forall> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1 \\<longrightarrow> card {x. x dvd n \\<and> x > 0} = 4\"\nshows \"(\\<Sum>i=1..5. SOME n. \\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1 \\<and> card {x. x dvd n \\<and> x > 0} = 4) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1\"\nand h1 : \"\\<forall> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1 \\<longrightarrow> card {x. x dvd n \\<and> x > 0} = 4\"\nshows \"(\\<Sum>i=1..5. SOME n. \\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1 \\<and> card {x. x dvd n \\<and> x > 0} = 4) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n that can be expressed as the product of two distinct integers a and b, where both a and b are greater than 1. If the number of positive divisors of n is exactly 4, find the sum of the first 5 such numbers n. The sum of these 5 numbers is 53.",
+        "syntax": 1,
+        "semantic_score": 0.8721079861748344,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> card {x. x > 0 \\<and> x dvd n} = 4\"\nshows \"(\\<Sum>i=1..5. i) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> card {x. x > 0 \\<and> x dvd n} = 4\"\nshows \"(\\<Sum>i=1..5. i) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that for any natural number n greater than 0, the number of positive divisors of n is always 4. Based on this condition, it is claimed that the sum of the first 5 natural numbers (1 + 2 + 3 + 4 + 5) equals 53.\n\nIn natural language, the problem can be stated as follows:\n\n\"If for any positive natural number n, the number of its positive divisors is exactly 4, then prove that the sum of the first 5 natural numbers (1 through 5) is equal to 53.\"",
+        "syntax": 1,
+        "semantic_score": 0.8009596606420827,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<exists> n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"\\<forall> n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<longrightarrow> n \\<le> 53\"\nand h2 : \"\\<forall> n. n > 53 \\<longrightarrow> card {x. x > 0 \\<and> x dvd n} \\<noteq> 4\"\nshows \"(\\<Sum>n\\<in>{n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<and> n \\<le> 53}. n) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<exists> n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"\\<forall> n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<longrightarrow> n \\<le> 53\"\nand h2 : \"\\<forall> n. n > 53 \\<longrightarrow> card {x. x > 0 \\<and> x dvd n} \\<noteq> 4\"\nshows \"(\\<Sum>n\\<in>{n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<and> n \\<le> 53}. n) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a natural number n greater than 0 such that there are exactly 4 positive numbers that divide n. Furthermore, for any natural number n greater than 0 with exactly 4 positive divisors, n must be less than or equal to 53. Additionally, for any natural number n greater than 53, there cannot be exactly 4 positive divisors. The sum of all natural numbers n that are greater than 0, have exactly 4 positive divisors, and are less than or equal to 53 is equal to 53.",
+        "syntax": 1,
+        "semantic_score": 0.833998652512205,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<exists>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"\\<forall>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<longrightarrow> n \\<le> 53\"\nand h2 : \"\\<forall>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<longrightarrow> n \\<ge> 5\"\nshows \"(\\<Sum>n\\<in>{n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4}. n) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<exists>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"\\<forall>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<longrightarrow> n \\<le> 53\"\nand h2 : \"\\<forall>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4 \\<longrightarrow> n \\<ge> 5\"\nshows \"(\\<Sum>n\\<in>{n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4}. n) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a positive natural number n such that there are exactly four positive divisors of n. Additionally, for any positive natural number n with exactly four positive divisors, n must be greater than or equal to 5 and less than or equal to 53. The sum of all such n values is equal to 53.",
+        "syntax": 1,
+        "semantic_score": 0.8645303043109982,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"n \\<le> 5\"\nshows \"(\\<Sum>n\\<in>{1..5}. n) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"n \\<le> 5\"\nshows \"(\\<Sum>n\\<in>{1..5}. n) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that for all natural numbers n greater than 0, the number of positive divisors of n is equal to 4, and n is less than or equal to 5. It then concludes that the sum of the numbers from 1 to 5 is equal to 53.\n\nIn natural language, the problem can be stated as:\n\nConsider a natural number n, where n is greater than 0 and has exactly four positive divisors. If n is less than or equal to 5, find the sum of the numbers from 1 to 5.\n\nThe answer to this problem is that the sum of the numbers from 1 to 5 is 53.",
+        "syntax": 1,
+        "semantic_score": 0.8074206639884214,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> card {x. x dvd n \\<and> x > 0} = 4\"\nshows \"(\\<Sum>i=1..5. n) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> card {x. x dvd n \\<and> x > 0} = 4\"\nshows \"(\\<Sum>i=1..5. n) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that for a natural number n, if n is greater than 0, then the number of positive divisors of n is exactly 4. The problem then asserts that the sum of the first 5 multiples of n (i.e., n, 2n, 3n, 4n, and 5n) is equal to 53.\n\nIn natural language, the problem can be stated as follows:\n\nConsider a natural number n that is greater than 0. It is known that n has exactly four positive divisors. Determine the value of n such that the sum of the first five multiples of n (n, 2n, 3n, 4n, and 5n) is equal to 53.",
+        "syntax": 1,
+        "semantic_score": 0.7759532339169892,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"card {x. x dvd n \\<and> x > 0} = 4\"\nand h2 : \"n \\<le> 5\"\nshows \"sum {n | n. n > 0 \\<and> card {x. x dvd n \\<and> x > 0} = 4 \\<and> n \\<le> 5} = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"card {x. x dvd n \\<and> x > 0} = 4\"\nand h2 : \"n \\<le> 5\"\nshows \"sum {n | n. n > 0 \\<and> card {x. x dvd n \\<and> x > 0} = 4 \\<and> n \\<le> 5} = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states the following:\n\nConsider a natural number `n` that is greater than 0. The number `n` has exactly four positive divisors (excluding 1). Additionally, `n` is less than or equal to 5. We are asked to find the sum of all such `n` values that meet these conditions. The theorem asserts that the sum of these `n` values is equal to 53.\n\nIn simpler terms, the natural language version of the problem is:\n\nFind all natural numbers between 1 and 5 (inclusive) that have exactly four positive divisors (excluding 1), and then add up these numbers. The result should be 53.",
+        "syntax": 0,
+        "semantic_score": 0.7402078383656673,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1\"\nand h1 : \"card {x. x dvd n \\<and> x > 0} = 4\"\nand h2 : \"n \\<le> 5\"\nshows \"(\\<Sum>i=1..5. n) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1\"\nand h1 : \"card {x. x dvd n \\<and> x > 0} = 4\"\nand h2 : \"n \\<le> 5\"\nshows \"(\\<Sum>i=1..5. n) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there exists two distinct positive integers 'a' and 'b' such that 'n' is equal to the product of 'a' and 'b', where both 'a' and 'b' are greater than 1. The number of positive divisors of 'n' is exactly 4. Additionally, 'n' is less than or equal to 5. The sum of 'n' from 1 to 5 is equal to 53. \n\nIn simpler terms, we are looking for a number 'n' that can be expressed as the product of two different numbers, both of which are greater than 1. This number 'n' has exactly four positive divisors. The value of 'n' is less than or equal to 5. If we add up 'n' from 1 to 5, the total sum should be 53.",
+        "syntax": 1,
+        "semantic_score": 0.8306677107796552,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<exists>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"n = (LEAST n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4)\"\nshows \"n = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<exists>n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4\"\nand h1 : \"n = (LEAST n. n > 0 \\<and> card {x. x > 0 \\<and> x dvd n} = 4)\"\nshows \"n = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a positive natural number n such that the number of positive divisors of n is exactly 4. The smallest such number n that satisfies this condition is 53.",
+        "syntax": 1,
+        "semantic_score": 0.8608419639835893,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1\"\nand h1 : \"card {x. x dvd n \\<and> x > 0} = 4\"\nshows \"(\\<Sum>i=1..5. n i) = 53\"",
+        "formal solution": "(* ### Problem\n Some positive integers have exactly four positive factors. For example, 35 has only 1, 5, 7 and 35 as its factors. What is the sum of the smallest five positive integers that each have exactly four positive factors? The final Answer is $53$\n ### Proof\n The positive integers with exactly four positive factors can be written in the form $pq$, where $p$ and $q$ are distinct prime numbers, or $p^3$, where $p$ is a prime number.\nUsing this, we can see that the smallest five positive integers with exactly four positive factors are $2\\cdot 3 = 6$, $2^3 = 8$, $2\\cdot 5 = 10$, $2\\cdot 7 = 14$, and $3\\cdot 5 = 15$. Summing these numbers, we get $6 + 8 + 10 + 14 + 15 = \\boxed{53}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<exists> a b. n = a * b \\<and> a \\<noteq> b \\<and> a > 1 \\<and> b > 1\"\nand h1 : \"card {x. x dvd n \\<and> x > 0} = 4\"\nshows \"(\\<Sum>i=1..5. n i) = 53\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is as follows:\n\nConsider a natural number n. There exist two distinct positive integers a and b, both greater than 1, such that n is the product of a and b. Additionally, there are exactly four positive integers that divide n. We need to find the sum of the first 5 multiples of n, which is equal to 53.",
+        "syntax": 0,
+        "semantic_score": 0.8207146512304596,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

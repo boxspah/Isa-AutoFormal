@@ -1,0 +1,126 @@
+{
+    "problem_name": "mathd_numbertheory_668",
+    "informal_statement": "Given $m\\geq 2$, denote by $b^{-1}$ the inverse of $b\\pmod{m}$. That is, $b^{-1}$ is the residue for which $bb^{-1}\\equiv 1\\pmod{m}$. Sadie wonders if $(a+b)^{-1}$ is always congruent to $a^{-1}+b^{-1}$ (modulo $m$). She tries the example $a=2$, $b=3$, and $m=7$. Let $L$ be the residue of $(2+3)^{-1}\\pmod{7}$, and let $R$ be the residue of $2^{-1}+3^{-1}\\pmod{7}$, where $L$ and $R$ are integers from $0$ to $6$ (inclusive). Find $L-R$. Show that it is 1.",
+    "informal_proof": "The inverse of $5\\pmod{7}$ is 3, since $5\\cdot3 \\equiv 1\\pmod{7}$. Also, inverse of $2\\pmod{7}$ is 4, since $2\\cdot 4\\equiv 1\\pmod{7}$. Finally, the inverse of $3\\pmod{7}$ is 5 (again because $5\\cdot3 \\equiv 1\\pmod{7}$). So the residue of $2^{-1}+3^{-1}$ is the residue of $4+5\\pmod{7}$, which is $2$. Thus $L-R=3-2=1$. Since the left-hand side $L$ and the right-hand side $R$ of the equation $$\n(a+b)^{-1} \\stackrel{?}{=} a^{-1} + b^{-1} \\pmod{m}\n$$are not equal, we may conclude that the equation is not true in general.",
+    "a_0": {
+        "formal problem": "theorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = (a + b) mod_inv m\"\nand h5 : \"R = (a mod_inv m + b mod_inv m) mod m\"\nshows  \"L - R = 1\"",
+        "formal solution": "(* ### Problem\n Given $m\\geq 2$, denote by $b^{-1}$ the inverse of $b\\pmod{m}$. That is, $b^{-1}$ is the residue for which $bb^{-1}\\equiv 1\\pmod{m}$. Sadie wonders if $(a+b)^{-1}$ is always congruent to $a^{-1}+b^{-1}$ (modulo $m$). She tries the example $a=2$, $b=3$, and $m=7$. Let $L$ be the residue of $(2+3)^{-1}\\pmod{7}$, and let $R$ be the residue of $2^{-1}+3^{-1}\\pmod{7}$, where $L$ and $R$ are integers from $0$ to $6$ (inclusive). Find $L-R$. The final Answer is $1$\n ### Proof\n The inverse of $5\\pmod{7}$ is 3, since $5\\cdot3 \\equiv 1\\pmod{7}$. Also, inverse of $2\\pmod{7}$ is 4, since $2\\cdot 4\\equiv 1\\pmod{7}$. Finally, the inverse of $3\\pmod{7}$ is 5 (again because $5\\cdot3 \\equiv 1\\pmod{7}$). So the residue of $2^{-1}+3^{-1}$ is the residue of $4+5\\pmod{7}$, which is $2$. Thus $L-R=3-2=1$. Since the left-hand side $L$ and the right-hand side $R$ of the equation $$\n(a+b)^{-1} \\stackrel{?}{=} a^{-1} + b^{-1} \\pmod{m}\n$$are not equal, we may conclude that the equation is not true in general.\n *)\n\ntheorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = (a + b) mod_inv m\"\nand h5 : \"R = (a mod_inv m + b mod_inv m) mod m\"\nshows  \"L - R = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given integers $a=2$, $b=3$, and $m=7$ with $m \\ge 2$, let $L = (a + b) \\mod m^{-1}$ and $R = (a \\mod m^{-1} + b \\mod m^{-1}) \\mod m$. Find the difference between $L$ and $R$. The final answer is $1$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9636977910995483,
+        "symbolic_score": 0.2
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"(\\<exists> a_inv. a_inv * a mod m = 1) \\<and> (\\<exists> b_inv. b_inv * b mod m = 1)\"\nand h5 : \"L = (THE a_inv. a_inv * (a + b) mod m = 1)\"\nand h6 : \"R = ((THE a_inv. a_inv * a mod m = 1) + (THE b_inv. b_inv * b mod m = 1)) mod m\"\nshows  \"L - R = 1\"",
+        "formal solution": "(* ### Problem\n Given $m\\geq 2$, denote by $b^{-1}$ the inverse of $b\\pmod{m}$. That is, $b^{-1}$ is the residue for which $bb^{-1}\\equiv 1\\pmod{m}$. Sadie wonders if $(a+b)^{-1}$ is always congruent to $a^{-1}+b^{-1}$ (modulo $m$). She tries the example $a=2$, $b=3$, and $m=7$. Let $L$ be the residue of $(2+3)^{-1}\\pmod{7}$, and let $R$ be the residue of $2^{-1}+3^{-1}\\pmod{7}$, where $L$ and $R$ are integers from $0$ to $6$ (inclusive). Find $L-R$. The final Answer is $1$\n ### Proof\n The inverse of $5\\pmod{7}$ is 3, since $5\\cdot3 \\equiv 1\\pmod{7}$. Also, inverse of $2\\pmod{7}$ is 4, since $2\\cdot 4\\equiv 1\\pmod{7}$. Finally, the inverse of $3\\pmod{7}$ is 5 (again because $5\\cdot3 \\equiv 1\\pmod{7}$). So the residue of $2^{-1}+3^{-1}$ is the residue of $4+5\\pmod{7}$, which is $2$. Thus $L-R=3-2=1$. Since the left-hand side $L$ and the right-hand side $R$ of the equation $$\n(a+b)^{-1} \\stackrel{?}{=} a^{-1} + b^{-1} \\pmod{m}\n$$are not equal, we may conclude that the equation is not true in general.\n *)\n\ntheorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"(\\<exists> a_inv. a_inv * a mod m = 1) \\<and> (\\<exists> b_inv. b_inv * b mod m = 1)\"\nand h5 : \"L = (THE a_inv. a_inv * (a + b) mod m = 1)\"\nand h6 : \"R = ((THE a_inv. a_inv * a mod m = 1) + (THE b_inv. b_inv * b mod m = 1)) mod m\"\nshows  \"L - R = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $m = 7$, $a = 2$, and $b = 3$, find the values of $L$ and $R$ such that $L = (a_{inv}(a + b)) \\mod{m}$ and $R = (a_{inv}a + b_{inv}b) \\mod{m}$, where $a_{inv}$ and $b_{inv}$ are the modular inverses of $a$ and $b$ modulo $m$, respectively. What is the difference between $L$ and $R$? The final answer is $1$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9891301989555359,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"\\<exists> inv_b. inv_b * b mod m = 1\"\nand h2 : \"a = 2\"\nand h3 : \"b = 3\"\nand h4 : \"m = 7\"\nand h5 : \"L = (a + b) * (inv a) * (inv b) mod m\"\nand h6 : \"R = (a * (inv a) mod m) + (b * (inv b) mod m)\"\nshows  \"L - R = 1\"",
+        "formal solution": "(* ### Problem\n Given $m\\geq 2$, denote by $b^{-1}$ the inverse of $b\\pmod{m}$. That is, $b^{-1}$ is the residue for which $bb^{-1}\\equiv 1\\pmod{m}$. Sadie wonders if $(a+b)^{-1}$ is always congruent to $a^{-1}+b^{-1}$ (modulo $m$). She tries the example $a=2$, $b=3$, and $m=7$. Let $L$ be the residue of $(2+3)^{-1}\\pmod{7}$, and let $R$ be the residue of $2^{-1}+3^{-1}\\pmod{7}$, where $L$ and $R$ are integers from $0$ to $6$ (inclusive). Find $L-R$. The final Answer is $1$\n ### Proof\n The inverse of $5\\pmod{7}$ is 3, since $5\\cdot3 \\equiv 1\\pmod{7}$. Also, inverse of $2\\pmod{7}$ is 4, since $2\\cdot 4\\equiv 1\\pmod{7}$. Finally, the inverse of $3\\pmod{7}$ is 5 (again because $5\\cdot3 \\equiv 1\\pmod{7}$). So the residue of $2^{-1}+3^{-1}$ is the residue of $4+5\\pmod{7}$, which is $2$. Thus $L-R=3-2=1$. Since the left-hand side $L$ and the right-hand side $R$ of the equation $$\n(a+b)^{-1} \\stackrel{?}{=} a^{-1} + b^{-1} \\pmod{m}\n$$are not equal, we may conclude that the equation is not true in general.\n *)\n\ntheorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"\\<exists> inv_b. inv_b * b mod m = 1\"\nand h2 : \"a = 2\"\nand h3 : \"b = 3\"\nand h4 : \"m = 7\"\nand h5 : \"L = (a + b) * (inv a) * (inv b) mod m\"\nand h6 : \"R = (a * (inv a) mod m) + (b * (inv b) mod m)\"\nshows  \"L - R = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given integers $a = 2$, $b = 3$, and $m = 7$ such that $m \\ge 2$ and there exists an integer $inv\\_b$ such that $inv\\_b \\cdot b \\mod m = 1$. Calculate $L$ as $(a + b) \\cdot (inv\\_a) \\cdot (inv\\_b) \\mod m$ and $R$ as $(a \\cdot (inv\\_a) \\mod m) + (b \\cdot (inv\\_b) \\mod m)$. Find the difference between $L$ and $R$. The final answer is $1$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9668321013450623,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"(\\<forall>b. (\\<exists>b_inv. (b * b_inv) mod m = 1))\"\nand h5 : \"L = (a + b) * (THE b_inv. (a + b) * b_inv mod m = 1) mod m\"\nand h6 : \"R = (a * (THE a_inv. a * a_inv mod m = 1) mod m + b * (THE b_inv. b * b_inv mod m = 1) mod m) mod m\"\nshows  \"L - R = 1\"",
+        "formal solution": "(* ### Problem\n Given $m\\geq 2$, denote by $b^{-1}$ the inverse of $b\\pmod{m}$. That is, $b^{-1}$ is the residue for which $bb^{-1}\\equiv 1\\pmod{m}$. Sadie wonders if $(a+b)^{-1}$ is always congruent to $a^{-1}+b^{-1}$ (modulo $m$). She tries the example $a=2$, $b=3$, and $m=7$. Let $L$ be the residue of $(2+3)^{-1}\\pmod{7}$, and let $R$ be the residue of $2^{-1}+3^{-1}\\pmod{7}$, where $L$ and $R$ are integers from $0$ to $6$ (inclusive). Find $L-R$. The final Answer is $1$\n ### Proof\n The inverse of $5\\pmod{7}$ is 3, since $5\\cdot3 \\equiv 1\\pmod{7}$. Also, inverse of $2\\pmod{7}$ is 4, since $2\\cdot 4\\equiv 1\\pmod{7}$. Finally, the inverse of $3\\pmod{7}$ is 5 (again because $5\\cdot3 \\equiv 1\\pmod{7}$). So the residue of $2^{-1}+3^{-1}$ is the residue of $4+5\\pmod{7}$, which is $2$. Thus $L-R=3-2=1$. Since the left-hand side $L$ and the right-hand side $R$ of the equation $$\n(a+b)^{-1} \\stackrel{?}{=} a^{-1} + b^{-1} \\pmod{m}\n$$are not equal, we may conclude that the equation is not true in general.\n *)\n\ntheorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"(\\<forall>b. (\\<exists>b_inv. (b * b_inv) mod m = 1))\"\nand h5 : \"L = (a + b) * (THE b_inv. (a + b) * b_inv mod m = 1) mod m\"\nand h6 : \"R = (a * (THE a_inv. a * a_inv mod m = 1) mod m + b * (THE b_inv. b * b_inv mod m = 1) mod m) mod m\"\nshows  \"L - R = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider an integer $m \\geq 2$. Let $a = 2$, $b = 3$, and $m = 7$. Assume that for every integer $b$, there exists an integer $b_{inv}$ such that $(b * b_{inv}) \\mod m = 1$. Let $L = (a + b) * (b_{inv}) \\mod m$ for the unique $b_{inv}$ such that $(a + b) * b_{inv} \\mod m = 1$, and let $R = (a * a_{inv} \\mod m + b * b_{inv} \\mod m) \\mod m$ for the unique $a_{inv}$ and $b_{inv}$ such that $a * a_{inv} \\mod m = 1$ and $b * b_{inv} \\mod m = 1$, respectively. Show that $L - R = 1$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5043325424194336,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b m L R :: int\nassumes h0 : \"m >= 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = (a + b) mod_inv m\"\nand h5 : \"R = (a mod_inv m + b mod_inv m) mod m\"\nshows  \"L - R = 1\"",
+        "formal solution": "(* ### Problem\n Given $m\\geq 2$, denote by $b^{-1}$ the inverse of $b\\pmod{m}$. That is, $b^{-1}$ is the residue for which $bb^{-1}\\equiv 1\\pmod{m}$. Sadie wonders if $(a+b)^{-1}$ is always congruent to $a^{-1}+b^{-1}$ (modulo $m$). She tries the example $a=2$, $b=3$, and $m=7$. Let $L$ be the residue of $(2+3)^{-1}\\pmod{7}$, and let $R$ be the residue of $2^{-1}+3^{-1}\\pmod{7}$, where $L$ and $R$ are integers from $0$ to $6$ (inclusive). Find $L-R$. The final Answer is $1$\n ### Proof\n The inverse of $5\\pmod{7}$ is 3, since $5\\cdot3 \\equiv 1\\pmod{7}$. Also, inverse of $2\\pmod{7}$ is 4, since $2\\cdot 4\\equiv 1\\pmod{7}$. Finally, the inverse of $3\\pmod{7}$ is 5 (again because $5\\cdot3 \\equiv 1\\pmod{7}$). So the residue of $2^{-1}+3^{-1}$ is the residue of $4+5\\pmod{7}$, which is $2$. Thus $L-R=3-2=1$. Since the left-hand side $L$ and the right-hand side $R$ of the equation $$\n(a+b)^{-1} \\stackrel{?}{=} a^{-1} + b^{-1} \\pmod{m}\n$$are not equal, we may conclude that the equation is not true in general.\n *)\n\ntheorem\nfixes a b m L R :: int\nassumes h0 : \"m >= 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = (a + b) mod_inv m\"\nand h5 : \"R = (a mod_inv m + b mod_inv m) mod m\"\nshows  \"L - R = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $m = 7$, $a = 2$, and $b = 3$, find the difference between the modular inverse of $(a + b)$ modulo $m$ and the sum of the modular inverses of $a$ modulo $m$ and $b$ modulo $m$. The final answer is 1.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9876852035522461,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = (a + b) * (inverse (a + b) m) mod m\"\nand h5 : \"R = (a * (inverse a m) + b * (inverse b m)) mod m\"\nshows  \"L - R = 1\"",
+        "formal solution": "(* ### Problem\n Given $m\\geq 2$, denote by $b^{-1}$ the inverse of $b\\pmod{m}$. That is, $b^{-1}$ is the residue for which $bb^{-1}\\equiv 1\\pmod{m}$. Sadie wonders if $(a+b)^{-1}$ is always congruent to $a^{-1}+b^{-1}$ (modulo $m$). She tries the example $a=2$, $b=3$, and $m=7$. Let $L$ be the residue of $(2+3)^{-1}\\pmod{7}$, and let $R$ be the residue of $2^{-1}+3^{-1}\\pmod{7}$, where $L$ and $R$ are integers from $0$ to $6$ (inclusive). Find $L-R$. The final Answer is $1$\n ### Proof\n The inverse of $5\\pmod{7}$ is 3, since $5\\cdot3 \\equiv 1\\pmod{7}$. Also, inverse of $2\\pmod{7}$ is 4, since $2\\cdot 4\\equiv 1\\pmod{7}$. Finally, the inverse of $3\\pmod{7}$ is 5 (again because $5\\cdot3 \\equiv 1\\pmod{7}$). So the residue of $2^{-1}+3^{-1}$ is the residue of $4+5\\pmod{7}$, which is $2$. Thus $L-R=3-2=1$. Since the left-hand side $L$ and the right-hand side $R$ of the equation $$\n(a+b)^{-1} \\stackrel{?}{=} a^{-1} + b^{-1} \\pmod{m}\n$$are not equal, we may conclude that the equation is not true in general.\n *)\n\ntheorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = (a + b) * (inverse (a + b) m) mod m\"\nand h5 : \"R = (a * (inverse a m) + b * (inverse b m)) mod m\"\nshows  \"L - R = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $m \\geq 2$, $a = 2$, $b = 3$, and $m = 7$, find the difference between $L$ and $R$, where $L = \\frac{(a+b)}{(a+b) \\mod m}$ and $R = \\frac{(a\\cdot a^{-1}\\mod m) + (b\\cdot b^{-1} \\mod m)}{m}$. The final answer is $1$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9838300347328186,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = (a + b)^(-1) mod m\"\nand h5 : \"R = (a^(-1) + b^(-1)) mod m\"\nand h6 : \"0 \\<le> L \\<and> L \\<le> 6\"\nand h7 : \"0 \\<le> R \\<and> R \\<le> 6\"\nshows  \"L - R = 1\"",
+        "formal solution": "(* ### Problem\n Given $m\\geq 2$, denote by $b^{-1}$ the inverse of $b\\pmod{m}$. That is, $b^{-1}$ is the residue for which $bb^{-1}\\equiv 1\\pmod{m}$. Sadie wonders if $(a+b)^{-1}$ is always congruent to $a^{-1}+b^{-1}$ (modulo $m$). She tries the example $a=2$, $b=3$, and $m=7$. Let $L$ be the residue of $(2+3)^{-1}\\pmod{7}$, and let $R$ be the residue of $2^{-1}+3^{-1}\\pmod{7}$, where $L$ and $R$ are integers from $0$ to $6$ (inclusive). Find $L-R$. The final Answer is $1$\n ### Proof\n The inverse of $5\\pmod{7}$ is 3, since $5\\cdot3 \\equiv 1\\pmod{7}$. Also, inverse of $2\\pmod{7}$ is 4, since $2\\cdot 4\\equiv 1\\pmod{7}$. Finally, the inverse of $3\\pmod{7}$ is 5 (again because $5\\cdot3 \\equiv 1\\pmod{7}$). So the residue of $2^{-1}+3^{-1}$ is the residue of $4+5\\pmod{7}$, which is $2$. Thus $L-R=3-2=1$. Since the left-hand side $L$ and the right-hand side $R$ of the equation $$\n(a+b)^{-1} \\stackrel{?}{=} a^{-1} + b^{-1} \\pmod{m}\n$$are not equal, we may conclude that the equation is not true in general.\n *)\n\ntheorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = (a + b)^(-1) mod m\"\nand h5 : \"R = (a^(-1) + b^(-1)) mod m\"\nand h6 : \"0 \\<le> L \\<and> L \\<le> 6\"\nand h7 : \"0 \\<le> R \\<and> R \\<le> 6\"\nshows  \"L - R = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a = 2$, $b = 3$, and $m = 7$, find the difference between $L = (a + b)^{-1} \\pmod{m}$ and $R = (a^{-1} + b^{-1}) \\pmod{m}$. The final answer is 1. Note that $m \\geq 2$ and both $L$ and $R$ are between 0 and 6 inclusive.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7129092812538147,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = (a + b) mod_inv m\"\nand h5 : \"R = (a mod_inv m + b mod_inv m) mod m\"\nshows  \"L - R = 1\"",
+        "formal solution": "(* ### Problem\n Given $m\\geq 2$, denote by $b^{-1}$ the inverse of $b\\pmod{m}$. That is, $b^{-1}$ is the residue for which $bb^{-1}\\equiv 1\\pmod{m}$. Sadie wonders if $(a+b)^{-1}$ is always congruent to $a^{-1}+b^{-1}$ (modulo $m$). She tries the example $a=2$, $b=3$, and $m=7$. Let $L$ be the residue of $(2+3)^{-1}\\pmod{7}$, and let $R$ be the residue of $2^{-1}+3^{-1}\\pmod{7}$, where $L$ and $R$ are integers from $0$ to $6$ (inclusive). Find $L-R$. The final Answer is $1$\n ### Proof\n The inverse of $5\\pmod{7}$ is 3, since $5\\cdot3 \\equiv 1\\pmod{7}$. Also, inverse of $2\\pmod{7}$ is 4, since $2\\cdot 4\\equiv 1\\pmod{7}$. Finally, the inverse of $3\\pmod{7}$ is 5 (again because $5\\cdot3 \\equiv 1\\pmod{7}$). So the residue of $2^{-1}+3^{-1}$ is the residue of $4+5\\pmod{7}$, which is $2$. Thus $L-R=3-2=1$. Since the left-hand side $L$ and the right-hand side $R$ of the equation $$\n(a+b)^{-1} \\stackrel{?}{=} a^{-1} + b^{-1} \\pmod{m}\n$$are not equal, we may conclude that the equation is not true in general.\n *)\n\ntheorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = (a + b) mod_inv m\"\nand h5 : \"R = (a mod_inv m + b mod_inv m) mod m\"\nshows  \"L - R = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two integers $a = 2$ and $b = 3$ and a modulus $m = 7$ with $m \\geq 2$, find the difference between the modular inverse of $(a + b)$ and the sum of the modular inverses of $a$ and $b$ when both are reduced modulo $m$. The final answer is 1.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9843251705169678,
+        "symbolic_score": 0.2
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a b m L R :: int\nassumes h0 : \"m >= 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = (a + b) mod_inv m\"\nand h5 : \"R = ((a mod_inv m) + (b mod_inv m)) mod m\"\nshows  \"L - R = 1\"",
+        "formal solution": "(* ### Problem\n Given $m\\geq 2$, denote by $b^{-1}$ the inverse of $b\\pmod{m}$. That is, $b^{-1}$ is the residue for which $bb^{-1}\\equiv 1\\pmod{m}$. Sadie wonders if $(a+b)^{-1}$ is always congruent to $a^{-1}+b^{-1}$ (modulo $m$). She tries the example $a=2$, $b=3$, and $m=7$. Let $L$ be the residue of $(2+3)^{-1}\\pmod{7}$, and let $R$ be the residue of $2^{-1}+3^{-1}\\pmod{7}$, where $L$ and $R$ are integers from $0$ to $6$ (inclusive). Find $L-R$. The final Answer is $1$\n ### Proof\n The inverse of $5\\pmod{7}$ is 3, since $5\\cdot3 \\equiv 1\\pmod{7}$. Also, inverse of $2\\pmod{7}$ is 4, since $2\\cdot 4\\equiv 1\\pmod{7}$. Finally, the inverse of $3\\pmod{7}$ is 5 (again because $5\\cdot3 \\equiv 1\\pmod{7}$). So the residue of $2^{-1}+3^{-1}$ is the residue of $4+5\\pmod{7}$, which is $2$. Thus $L-R=3-2=1$. Since the left-hand side $L$ and the right-hand side $R$ of the equation $$\n(a+b)^{-1} \\stackrel{?}{=} a^{-1} + b^{-1} \\pmod{m}\n$$are not equal, we may conclude that the equation is not true in general.\n *)\n\ntheorem\nfixes a b m L R :: int\nassumes h0 : \"m >= 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = (a + b) mod_inv m\"\nand h5 : \"R = ((a mod_inv m) + (b mod_inv m)) mod m\"\nshows  \"L - R = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given integers $a = 2$, $b = 3$, and $m = 7$, find the difference between the modular inverse of $a + b$ modulo $m$ and the sum of the modular inverses of $a$ and $b$ modulo $m$. The final answer is $1$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9752228856086731,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = the_inv (a + b) m\"\nand h5 : \"R = (the_inv a m + the_inv b m) mod m\"\nshows  \"L - R = 1\"",
+        "formal solution": "(* ### Problem\n Given $m\\geq 2$, denote by $b^{-1}$ the inverse of $b\\pmod{m}$. That is, $b^{-1}$ is the residue for which $bb^{-1}\\equiv 1\\pmod{m}$. Sadie wonders if $(a+b)^{-1}$ is always congruent to $a^{-1}+b^{-1}$ (modulo $m$). She tries the example $a=2$, $b=3$, and $m=7$. Let $L$ be the residue of $(2+3)^{-1}\\pmod{7}$, and let $R$ be the residue of $2^{-1}+3^{-1}\\pmod{7}$, where $L$ and $R$ are integers from $0$ to $6$ (inclusive). Find $L-R$. The final Answer is $1$\n ### Proof\n The inverse of $5\\pmod{7}$ is 3, since $5\\cdot3 \\equiv 1\\pmod{7}$. Also, inverse of $2\\pmod{7}$ is 4, since $2\\cdot 4\\equiv 1\\pmod{7}$. Finally, the inverse of $3\\pmod{7}$ is 5 (again because $5\\cdot3 \\equiv 1\\pmod{7}$). So the residue of $2^{-1}+3^{-1}$ is the residue of $4+5\\pmod{7}$, which is $2$. Thus $L-R=3-2=1$. Since the left-hand side $L$ and the right-hand side $R$ of the equation $$\n(a+b)^{-1} \\stackrel{?}{=} a^{-1} + b^{-1} \\pmod{m}\n$$are not equal, we may conclude that the equation is not true in general.\n *)\n\ntheorem\nfixes a b m L R :: int\nassumes h0 : \"m \\<ge> 2\"\nand h1 : \"a = 2\"\nand h2 : \"b = 3\"\nand h3 : \"m = 7\"\nand h4 : \"L = the_inv (a + b) m\"\nand h5 : \"R = (the_inv a m + the_inv b m) mod m\"\nshows  \"L - R = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $m \\ge 2$, $a = 2$, $b = 3$, and $m = 7$, find the values of $L$ and $R$ such that $L$ is the inverse of $(a + b) \\pmod m$, and $R$ is the sum of the inverses of $a$ and $b$ modulo $m$. Then find the difference between $L$ and $R$. The final answer is 1.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9607878923416138,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes l r::int and a b::int\nassumes \"0\\<le>l\" \"l<7\" \"0\\<le>r\" \"r<7\"\nand \"[l * (2 + 3) = 1] (mod 7)\"\nand \"0\\<le>a \\<and> a<7 \\<and> [a*2=1] (mod 7)\"\nand \"0\\<le>b \\<and> b<7 \\<and> [b*3=1] (mod 7)\"\nand \"r = (a+b) mod 7\"\nshows \"l - r = 1\"",
+    "prediction": {
+        "0": [
+            0,
+            7
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    }
+}

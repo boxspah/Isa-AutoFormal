@@ -1,0 +1,607 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes A B C :: \"real * real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"is_right_triangle A B C\"\nand h3 : \"is_isosceles_triangle A B C\"\nshows  \"triangle_area A B C = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real * real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"is_right_triangle A B C\"\nand h3 : \"is_isosceles_triangle A B C\"\nshows  \"triangle_area A B C = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that A = (5, -5) and B = (-1, -1), find the area of the right isosceles triangle ABC. The final answer is 13 square units.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9816008806228638,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes A B :: \"real*real\" and ABC :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"\\<forall>a b. ABC a b = sqrt ((a powr 2 + b powr 2) / 2)\"\nshows  \"ABC (fst B - fst A) (snd B - snd A) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real*real\" and ABC :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"\\<forall>a b. ABC a b = sqrt ((a powr 2 + b powr 2) / 2)\"\nshows  \"ABC (fst B - fst A) (snd B - snd A) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given points A(5, -5) and B(-1, -1), calculate the value of the function ABC. ABC for any two real numbers a and b is defined as the square root of the average of the squares of a and b. We want to find the value of ABC for the differences in the x-coordinates and the y-coordinates of points A and B. The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8099033236503601,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes A B :: \"real*real\" and area :: real\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"let C = ((fst A + fst B) / 2, (snd A + snd B) / 2) in \n            let d = sqrt ((fst B - fst A) powr 2 + (snd B - snd A) powr 2) in \n            area = d powr 2 / 2\"\nshows  \"area = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real*real\" and area :: real\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"let C = ((fst A + fst B) / 2, (snd A + snd B) / 2) in \n            let d = sqrt ((fst B - fst A) powr 2 + (snd B - snd A) powr 2) in \n            area = d powr 2 / 2\"\nshows  \"area = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the area of a square where two of its diagonally opposite points are A(5, -5) and B(-1, -1). The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9847280979156494,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes A B :: \"real * real\"\nand area :: \"real * real \\<Rightarrow> real * real \\<Rightarrow> real\"\nassumes h0 : \"A = (5,-5)\"\nand h1 : \"B = (-1,-1)\"\nand h2 : \"\\<forall> p1 p2. area p1 p2 = abs(fst p1 - fst p2) * abs(snd p1 - snd p2) / 2\"\nshows  \"area A B = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real * real\"\nand area :: \"real * real \\<Rightarrow> real * real \\<Rightarrow> real\"\nassumes h0 : \"A = (5,-5)\"\nand h1 : \"B = (-1,-1)\"\nand h2 : \"\\<forall> p1 p2. area p1 p2 = abs(fst p1 - fst p2) * abs(snd p1 - snd p2) / 2\"\nshows  \"area A B = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $A=(5,-5)$ and $B=(-1,-1)$. If the area of the rectangle formed by these two points is given by $\\frac{1}{2} \\times |x_1 - x_2| \\times |y_1 - y_2|$, what is the area between $A$ and $B$? The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9639441967010498,
+        "symbolic_score": 0.2
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes A B :: \"real*real\"\nand area :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"\\<forall> A B. area A B = 1/2 * abs (fst A - fst B) * abs (snd A - snd B)\"\nshows  \"area A B = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real*real\"\nand area :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"\\<forall> A B. area A B = 1/2 * abs (fst A - fst B) * abs (snd A - snd B)\"\nshows  \"area A B = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two points A(5, -5) and B(-1, -1), find the area of the rectangle formed by these two points. The area of a rectangle is given by the formula 1/2 * the absolute difference of the x-coordinates * the absolute difference of the y-coordinates. The final answer is 13.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9854862689971924,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes A B :: \"real * real\"\nand area :: \"real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"area = 1/2 * sqrt ((snd B - snd A)^2 + (fst B - fst A)^2)^2\"\nshows  \"area = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real * real\"\nand area :: \"real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"area = 1/2 * sqrt ((snd B - snd A)^2 + (fst B - fst A)^2)^2\"\nshows  \"area = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the coordinates of two points, A(5, -5) and B(-1, -1), compute the area of the square with the line segment AB as its diagonal. The area is given by the formula $\\frac{1}{2} \\sqrt{(B_y - A_y)^2 + (B_x - A_x)^2}^2$. What is the area? The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9369077682495117,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes A B :: \"real*real\" and triangle_ABC :: \"(real*real) set\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"dist A B = sqrt 2 * dist A C\"\nand h3 : \"dist A C = dist B C\"\nshows  \"area triangle_ABC = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real*real\" and triangle_ABC :: \"(real*real) set\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"dist A B = sqrt 2 * dist A C\"\nand h3 : \"dist A C = dist B C\"\nshows  \"area triangle_ABC = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the points A(5, -5) and B(-1, -1) of a triangle ABC, if the distance between A and B is $\\sqrt{2}$ times the distance between A and C, and the distance between A and C is equal to the distance between B and C, what is the area of triangle ABC? The final answer is 13.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8978331685066223,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes A B :: \"real * real\" and area_ABC :: real\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"distance A B = sqrt 2 * distance A (fst A, snd B)\"\nshows  \"area_ABC = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real * real\" and area_ABC :: real\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"distance A B = sqrt 2 * distance A (fst A, snd B)\"\nshows  \"area_ABC = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given points A(5, -5) and B(-1, -1), the distance between A and B is equal to the square root of 2 times the distance between A and the point with coordinates (A's x-coordinate, B's y-coordinate). What is the area of triangle ABC? The answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.927098274230957,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes A B :: \"real*real\" and area :: real\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"area = 1/2 * abs (fst B - fst A) * abs (snd B - snd A)\"\nshows  \"area = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real*real\" and area :: real\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"area = 1/2 * abs (fst B - fst A) * abs (snd B - snd A)\"\nshows  \"area = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that points A and B are located at (5, -5) and (-1, -1) respectively, calculate the area of the rectangle that they form. The area is calculated as one half times the absolute difference in the x-coordinates times the absolute difference in the y-coordinates. What is the area? The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9736033082008362,
+        "symbolic_score": 0.2
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes A B C :: \"real * real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"\\<forall> C. (fst C)\\<^sup>2 + (snd C)\\<^sup>2 = ((fst A - fst B)\\<^sup>2 + (snd A - snd B)\\<^sup>2)/2\"\nshows  \"\\<forall> C. abs((fst B - fst A)*(snd C - snd A) - (snd B - snd A)*(fst C - fst A))/2 = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real * real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"\\<forall> C. (fst C)\\<^sup>2 + (snd C)\\<^sup>2 = ((fst A - fst B)\\<^sup>2 + (snd A - snd B)\\<^sup>2)/2\"\nshows  \"\\<forall> C. abs((fst B - fst A)*(snd C - snd A) - (snd B - snd A)*(fst C - fst A))/2 = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given points A and B in the plane with coordinates A=(5,-5) and B=(-1,-1), find all points C such that the square of the x-coordinate plus the square of the y-coordinate equals half the sum of the squares of the differences in the x and y coordinates of A and B. For each such point C, compute the absolute value of half the difference between the product of the difference in x-coordinates of B and A and the difference in y-coordinates of C and A, and the product of the difference in y-coordinates of B and A and the difference in x-coordinates of C and A. The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8571809530258179,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "13",
+    "natural problem": "The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$?",
+    "natural solution": [
+        "The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$"
+    ],
+    "oracle": "TODO",
+    "prediction": {
+        "0": [
+            8,
+            3
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            9
+        ]
+    },
+    "str_pred": "[[8, 3], [0], [1], [2], [4], [5], [6], [7], [9]]",
+    "level": "Level 5",
+    "type": "Geometry",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda> x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda> x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda> x. Complex (3) (-3))\"\nand h3 : \"\\<forall> x. dist (A x) (B x) = dist (A x) (C x)\"\nand h4 : \"\\<forall> x. dist (A x) (B x) = dist (B x) (C x)\"\nand h5 : \"\\<forall> x. dist (A x) (B x) = sqrt (2 * (dist (A x) (C x)) powr 2)\"\nshows \"area (A x) (B x) (C x) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda> x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda> x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda> x. Complex (3) (-3))\"\nand h3 : \"\\<forall> x. dist (A x) (B x) = dist (A x) (C x)\"\nand h4 : \"\\<forall> x. dist (A x) (B x) = dist (B x) (C x)\"\nand h5 : \"\\<forall> x. dist (A x) (B x) = sqrt (2 * (dist (A x) (C x)) powr 2)\"\nshows \"area (A x) (B x) (C x) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three complex-valued functions A, B, and C, where A(x) = 5 - 5i, B(x) = -1 - 1i, and C(x) = 3 - 3i, it is known that the distance between A(x) and B(x) is equal to the distance between A(x) and C(x), and also equal to the distance between B(x) and C(x). Furthermore, the distance between A(x) and B(x) is equal to the square root of twice the square of the distance between A(x) and C(x). Find the area of the triangle formed by the points A(x), B(x), and C(x). The area is 13 square units.",
+        "syntax": 1,
+        "semantic_score": 0.579893748597019,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (0) (0))\"\nand h3 : \"\\<triangle> ABC = isosceles_right_triangle\"\nshows \"area \\<triangle> ABC = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (0) (0))\"\nand h3 : \"\\<triangle> ABC = isosceles_right_triangle\"\nshows \"area \\<triangle> ABC = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with vertices A, B, and C represented by complex numbers, where A is at the point (5, -5), B is at the point (-1, -1), and C is at the point (0, 0). It is known that triangle ABC is an isosceles right triangle. What is the area of triangle ABC? The answer is 13 square units.",
+        "syntax": 0,
+        "semantic_score": 0.9884019821251162,
+        "symbolic_score": 0.2
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. 5, \\<lambda>x. -5)\"\nand h1 : \"B = (\\<lambda>x. -1, \\<lambda>x. -1)\"\nand h2 : \"C = (\\<lambda>x. ?, \\<lambda>x. ?)\"\nand h3 : \"\\<triangle> ABC = isosceles_right_triangle\"\nshows \"area \\<triangle> ABC = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. 5, \\<lambda>x. -5)\"\nand h1 : \"B = (\\<lambda>x. -1, \\<lambda>x. -1)\"\nand h2 : \"C = (\\<lambda>x. ?, \\<lambda>x. ?)\"\nand h3 : \"\\<triangle> ABC = isosceles_right_triangle\"\nshows \"area \\<triangle> ABC = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " In a right-angled isosceles triangle ABC, the functions A, B, and C represent the lengths of the sides opposite to the vertices A, B, and C respectively. The functions A and B are given as A(x) = 5 and B(x) = -1, while the functions for C are unknown. The triangle ABC is an isosceles right triangle. What is the area of triangle ABC? The final answer is 13.",
+        "syntax": 0,
+        "semantic_score": 0.860585287390241,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (x) (x))\"\nand h3 : \"\\<exists> k. k * cmod (A x - B x) = cmod (A x - C x)\"\nand h4 : \"\\<exists> k. k * cmod (A x - B x) = cmod (B x - C x)\"\nand h5 : \"cmod (A x - B x) = cmod (A x - C x) * sqrt 2\"\nshows \"13 = (SOME a. \\<forall> x. a = 0.5 * cmod (A x - B x) * cmod (A x - C x))\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (x) (x))\"\nand h3 : \"\\<exists> k. k * cmod (A x - B x) = cmod (A x - C x)\"\nand h4 : \"\\<exists> k. k * cmod (A x - B x) = cmod (B x - C x)\"\nand h5 : \"cmod (A x - B x) = cmod (A x - C x) * sqrt 2\"\nshows \"13 = (SOME a. \\<forall> x. a = 0.5 * cmod (A x - B x) * cmod (A x - C x))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three complex-valued functions A, B, and C, where A(x) = 5 - 5i, B(x) = -1 - 1i, and C(x) = x + xi, there exist constants k1 and k2 such that k1 * |A(x) - B(x)| = |A(x) - C(x)| and k2 * |A(x) - B(x)| = |B(x) - C(x)|. Additionally, it is given that |A(x) - B(x)| = |A(x) - C(x)| * sqrt(2). Prove that there exists a constant a such that for all x, a = 0.5 * |A(x) - B(x)| * |A(x) - C(x)|, and find the value of a.",
+        "syntax": 1,
+        "semantic_score": 0.7506950571705966,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (5) (-1))\"\nand h3 : \"\\<forall>x. Re (A x - B x) powr 2 + Im (A x - B x) powr 2 = Re (A x - C x) powr 2 + Im (A x - C x) powr 2\"\nand h4 : \"\\<forall>x. Re (A x - B x) powr 2 = 2 * (Re (A x - C x) powr 2)\"\nshows \"area (A, B, C) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (5) (-1))\"\nand h3 : \"\\<forall>x. Re (A x - B x) powr 2 + Im (A x - B x) powr 2 = Re (A x - C x) powr 2 + Im (A x - C x) powr 2\"\nand h4 : \"\\<forall>x. Re (A x - B x) powr 2 = 2 * (Re (A x - C x) powr 2)\"\nshows \"area (A, B, C) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three complex-valued functions A, B, and C defined as follows:\n\nA(x) = 5 - 5i\nB(x) = -1 - 1i\nC(x) = 5 - 1i\n\nIt is known that the square of the real part plus the square of the imaginary part of the difference between A(x) and B(x) is equal to the square of the real part plus the square of the imaginary part of the difference between A(x) and C(x). Additionally, the square of the real part of the difference between A(x) and B(x) is twice the square of the real part of the difference between A(x) and C(x).\n\nFind the area of the triangle formed by the points A, B, and C. The final answer is 13.",
+        "syntax": 1,
+        "semantic_score": 0.8011713795169493,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (5) (-1))\"\nand h3 : \"\\<forall>x. dist (A x) (B x) = dist (A x) (C x)\"\nand h4 : \"\\<forall>x. dist (B x) (C x) = dist (A x) (B x) / sqrt 2\"\nshows \"area (A, B, C) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (5) (-1))\"\nand h3 : \"\\<forall>x. dist (A x) (B x) = dist (A x) (C x)\"\nand h4 : \"\\<forall>x. dist (B x) (C x) = dist (A x) (B x) / sqrt 2\"\nshows \"area (A, B, C) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three complex-valued functions A, B, and C, where:\n\nA(x) = 5 - 5i\nB(x) = -1 - 1i\nC(x) = 5 - 1i\n\nIt is known that the distance between A(x) and B(x) is equal to the distance between A(x) and C(x), and the distance between B(x) and C(x) is equal to the distance between A(x) and B(x) divided by the square root of 2.\n\nFind the area of the triangle formed by the points A(x), B(x), and C(x). The final answer is 13.",
+        "syntax": 1,
+        "semantic_score": 0.8762781235066283,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (x) (0))\"\nand h3 : \"\\<exists> k. k * (A x - B x) = C x - B x\"\nand h4 : \"\\<exists> k. k * (A x - B x) = A x - C x\"\nshows \"13 = (SOME area. \\<exists> A B C. area = area_of_triangle A B C)\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (x) (0))\"\nand h3 : \"\\<exists> k. k * (A x - B x) = C x - B x\"\nand h4 : \"\\<exists> k. k * (A x - B x) = A x - C x\"\nshows \"13 = (SOME area. \\<exists> A B C. area = area_of_triangle A B C)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three functions A, B, and C that map real numbers to complex numbers, where A(x) = 5 - 5i, B(x) = -1 - 1i, and C(x) = x + 0i, there exist constants k1 and k2 such that k1 * (A(x) - B(x)) = C(x) - B(x) and k2 * (A(x) - B(x)) = A(x) - C(x). Prove that the area of the triangle formed by the points A(x), B(x), and C(x) is 13 square units.",
+        "syntax": 1,
+        "semantic_score": 0.4304481202227999,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex c1 c2)\"\nand h3 : \"right_triangle A B C\"\nand h4 : \"isosceles_triangle A B C\"\nand h5 : \"hypotenuse A B\"\nshows \"area A B C = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex c1 c2)\"\nand h3 : \"right_triangle A B C\"\nand h4 : \"isosceles_triangle A B C\"\nand h5 : \"hypotenuse A B\"\nshows \"area A B C = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " In a right triangle ABC, where A is represented by the complex number (5, -5), B is represented by the complex number (-1, -1), and C is represented by the complex number (c1, c2), the triangle is also isosceles with AB as the hypotenuse. Determine the area of the triangle ABC. The final answer is 13 square units.",
+        "syntax": 1,
+        "semantic_score": 0.7507804217757144,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (x) (x))\"\nand h3 : \"\\<forall>x. dist (A x) (B x) = dist (A x) (C x) + dist (C x) (B x)\"\nand h4 : \"\\<forall>x. dist (A x) (C x) = dist (C x) (B x)\"\nshows \"13 = (SOME a. \\<exists>x. a = area (A x) (B x) (C x))\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (x) (x))\"\nand h3 : \"\\<forall>x. dist (A x) (B x) = dist (A x) (C x) + dist (C x) (B x)\"\nand h4 : \"\\<forall>x. dist (A x) (C x) = dist (C x) (B x)\"\nshows \"13 = (SOME a. \\<exists>x. a = area (A x) (B x) (C x))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three functions A, B, and C that map real numbers to complex numbers, where:\n\n- A(x) = 5 - 5i\n- B(x) = -1 - 1i\n- C(x) = x + xi\n\nAnd for all real numbers x, the distance between A(x) and B(x) is equal to the sum of the distances between A(x) and C(x) and between C(x) and B(x), and the distance between A(x) and C(x) is equal to the distance between C(x) and B(x).\n\nProve that the area of the triangle formed by A(x), B(x), and C(x) is 13 square units for some value of x.",
+        "syntax": 1,
+        "semantic_score": 0.5918152546541715,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (0) (0))\"\nand h3 : \"\\<triangle> ABC = isosceles_right_triangle\"\nshows \"area \\<triangle> ABC = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (0) (0))\"\nand h3 : \"\\<triangle> ABC = isosceles_right_triangle\"\nshows \"area \\<triangle> ABC = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with vertices A, B, and C represented by complex numbers, where A is at the point (5, -5), B is at the point (-1, -1), and C is at the point (0, 0). It is known that triangle ABC is an isosceles right triangle. What is the area of triangle ABC? The answer is 13 square units.",
+        "syntax": 0,
+        "semantic_score": 0.9884019821251162,
+        "symbolic_score": 0.2
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: \"real*real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"fst C = snd C\"\nand h3 : \"(fst C - fst A)\\<^sup>2 + (snd C - snd A)\\<^sup>2 = (fst C - fst B)\\<^sup>2 + (snd C - snd B)\\<^sup>2\"\nshows \"abs ((fst B - fst A) * (snd C - snd A) - (fst C - fst A) * (snd B - snd A)) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real*real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"fst C = snd C\"\nand h3 : \"(fst C - fst A)\\<^sup>2 + (snd C - snd A)\\<^sup>2 = (fst C - fst B)\\<^sup>2 + (snd C - snd B)\\<^sup>2\"\nshows \"abs ((fst B - fst A) * (snd C - snd A) - (fst C - fst A) * (snd B - snd A)) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three points $A=(5,-5)$, $B=(-1,-1)$, and $C=(x,y)$, where $x=y$, find the absolute value of $(\\operatorname{distance}(A,B)\\cdot\\operatorname{distance}(A,C)-\\operatorname{distance}(A,B)\\cdot\\operatorname{distance}(B,C))$. The final answer is $13$.",
+        "syntax": 1,
+        "semantic_score": 0.9622136199512799,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<times> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"C \\<in> {P. dist A P = dist B P \\<and> dist A P = sqrt 50}\"\nshows \"content (convex hull {A, B, C}) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<times> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"C \\<in> {P. dist A P = dist B P \\<and> dist A P = sqrt 50}\"\nshows \"content (convex hull {A, B, C}) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given points $A=(5,-5)$ and $B=(-1,-1)$, find a point $C$ that is equidistant from $A$ and $B$ and such that the distance from $C$ to $A$ is $\\sqrt{50}$. Then find the area of the triangle formed by $A$, $B$, and $C$. The final answer is $13$.",
+        "syntax": 0,
+        "semantic_score": 0.9643578162057568,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: \"real*real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"fst C = fst B\"\nand h3 : \"snd C = fst A\"\nshows \"2 * (dist A C)\\<^sup>2 = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real*real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"fst C = fst B\"\nand h3 : \"snd C = fst A\"\nshows \"2 * (dist A C)\\<^sup>2 = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three points $A=(5,-5)$, $B=(-1,-1)$ and $C=(x,y)$, where the $x$-coordinate of $C$ is equal to the $x$-coordinate of $B$ and the $y$-coordinate of $C$ is equal to the $x$-coordinate of $A$. Show that $2\\cdot \\operatorname{dist}(A,C)^2=13$.",
+        "syntax": 0,
+        "semantic_score": 0.5109546909422689,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: \"real^2\"\nassumes h0 : \"A = vector[5,-5]\"\nand h1 : \"B = vector[-1,-1]\"\nand h2 : \"norm (B - A) = sqrt 50\"\nand h3 : \"\\<forall> C. norm (C - A) = norm (C - B) \\<longrightarrow> orthogonal (C - A) (C - B)\"\nshows \"content (convex hull {A, B, vector[4,-4]}) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real^2\"\nassumes h0 : \"A = vector[5,-5]\"\nand h1 : \"B = vector[-1,-1]\"\nand h2 : \"norm (B - A) = sqrt 50\"\nand h3 : \"\\<forall> C. norm (C - A) = norm (C - B) \\<longrightarrow> orthogonal (C - A) (C - B)\"\nshows \"content (convex hull {A, B, vector[4,-4]}) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three points $A=(5,-5)$, $B=(-1,-1)$, and $C=(4,-4)$, where $AB=\\sqrt{50}$, find the volume of the solid formed by the convex hull of $A$, $B$, and $C$. The final answer is $13$.",
+        "syntax": 0,
+        "semantic_score": 0.9541218559568836,
+        "symbolic_score": 0.1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<times> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"C \\<in> {(x, y). (x - 5)\\<^sup>2 + (y + 5)\\<^sup>2 = (-1 - x)\\<^sup>2 + (-1 - y)\\<^sup>2}\"\nand h3 : \"\\<triangle> ABC\"\nshows \"content (convex hull {A, B, C}) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<times> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"C \\<in> {(x, y). (x - 5)\\<^sup>2 + (y + 5)\\<^sup>2 = (-1 - x)\\<^sup>2 + (-1 - y)\\<^sup>2}\"\nand h3 : \"\\<triangle> ABC\"\nshows \"content (convex hull {A, B, C}) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the points $A(5, -5)$ and $B(-1, -1)$, find a point $C$ that lies on the circle with center $(-1, -1)$ and radius $6$. Let $\\triangle ABC$ be the triangle formed by connecting the three points $A$, $B$, and $C$. Find the area of the region enclosed by the convex hull of $A$, $B$, and $C$. The final answer is $13$.",
+        "syntax": 0,
+        "semantic_score": 0.743515321748208,
+        "symbolic_score": 0.1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes A :: \"real^2\" and B :: \"real^2\" and C :: \"real^2\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"norm (B - C) = norm (C - A)\"\nand h3 : \"orthogonal (B - A) (C - B)\"\nshows \"content (convex hull {A, B, C}) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A :: \"real^2\" and B :: \"real^2\" and C :: \"real^2\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"norm (B - C) = norm (C - A)\"\nand h3 : \"orthogonal (B - A) (C - B)\"\nshows \"content (convex hull {A, B, C}) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given points $A=(5,-5)$ and $B=(-1,-1)$, find the coordinates of a point $C$ such that the triangle formed by $A$, $B$, and $C$ has an area of $13$ square units. Additionally, $C$ must be equidistant from $A$ and $B$, and the line segment connecting $B$ and $C$ must be perpendicular to the line segment connecting $A$ and $B$.",
+        "syntax": 0,
+        "semantic_score": 0.6448917528967651,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: \"real*real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"dist A C = dist B C\"\nand h3 : \"dist A C = sqrt 26\"\nshows \"content {(0::real, 0::real), A, B} = 13/2\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real*real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"dist A C = dist B C\"\nand h3 : \"dist A C = sqrt 26\"\nshows \"content {(0::real, 0::real), A, B} = 13/2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given points $A$ and $B$ with coordinates $(5, -5)$ and $(-1, -1)$ respectively, and a point $C$ such that the distance from $A$ to $C$ is equal to the distance from $B$ to $C$ and is equal to $\\sqrt{26}$, find the area of the triangle formed by the three points $(0,0)$, $A$, and $B$. The final answer is $\\frac{13}{2}$.",
+        "syntax": 0,
+        "semantic_score": 0.9652915829776072,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<times> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"fst C = snd C\"\nand h3 : \"dist A C = dist B C\"\nshows \"content (convex hull {A, B, C}) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<times> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"fst C = snd C\"\nand h3 : \"dist A C = dist B C\"\nshows \"content (convex hull {A, B, C}) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two points $A$ and $B$ with coordinates $(5,-5)$ and $(-1,-1)$, respectively, find a point $C$ with the property that the distance between $A$ and $C$ is the same as the distance between $B$ and $C$. Furthermore, $C$ must have the property that its $x$-coordinate is equal to its $y$-coordinate. Finally, find the area of the triangle formed by connecting the three points $A$, $B$, and $C$. The final answer is $13$.",
+        "syntax": 0,
+        "semantic_score": 0.9370931394846509,
+        "symbolic_score": 0.1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<times> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"C = (-5, 5)\"\nand h3 : \"dist A B = dist B C\"\nand h4 : \"dist A C = sqrt 50\"\nshows \"content {(x, y). x \\<le> 5 \\<and> y \\<le> -1} = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<times> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"C = (-5, 5)\"\nand h3 : \"dist A B = dist B C\"\nand h4 : \"dist A C = sqrt 50\"\nshows \"content {(x, y). x \\<le> 5 \\<and> y \\<le> -1} = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three points $A(5,-5)$, $B(-1,-1)$ and $C(-5,5)$, where the distance between $A$ and $B$ is equal to the distance between $B$ and $C$, and the distance between $A$ and $C$ is $\\sqrt{50}$, what is the area of the region defined by the set of points $(x,y)$ that satisfy $x \\leq 5$ and $y \\leq -1$? The final answer is $13$.",
+        "syntax": 0,
+        "semantic_score": 0.979938075573133,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<times> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"dist A B = sqrt 26\"\nand h3 : \"\\<forall> C. dist A C = dist B C \\<longrightarrow> area_triangle A B C = 13\"\nshows \"area_triangle A B C = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<times> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"dist A B = sqrt 26\"\nand h3 : \"\\<forall> C. dist A C = dist B C \\<longrightarrow> area_triangle A B C = 13\"\nshows \"area_triangle A B C = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $A$ is the point $(5,-5)$ and $B$ is the point $(-1,-1)$, find the area of triangle $ABC$ if the distance between $A$ and $B$ is $\\sqrt{26}$ and for any point $C$, if the distance between $A$ and $C$ is equal to the distance between $B$ and $C$, then the area of triangle $ABC$ is $13$.\"",
+        "syntax": 0,
+        "semantic_score": 0.5534507167799948,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek": {
+        "0": [
+            1,
+            9
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real * real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"is_right_triangle A B C\"\nand h3 : \"is_isosceles_triangle A B C\"\nshows  \"triangle_area A B C = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real * real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"is_right_triangle A B C\"\nand h3 : \"is_isosceles_triangle A B C\"\nshows  \"triangle_area A B C = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that A = (5, -5) and B = (-1, -1), find the area of the right isosceles triangle ABC. The final answer is 13 square units.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9377888194095743,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes A B :: \"real*real\" and ABC :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"\\<forall>a b. ABC a b = sqrt ((a powr 2 + b powr 2) / 2)\"\nshows  \"ABC (fst B - fst A) (snd B - snd A) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real*real\" and ABC :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"\\<forall>a b. ABC a b = sqrt ((a powr 2 + b powr 2) / 2)\"\nshows  \"ABC (fst B - fst A) (snd B - snd A) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given points A(5, -5) and B(-1, -1), calculate the value of the function ABC. ABC for any two real numbers a and b is defined as the square root of the average of the squares of a and b. We want to find the value of ABC for the differences in the x-coordinates and the y-coordinates of points A and B. The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8261558452940818,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes A B :: \"real*real\" and area :: real\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"let C = ((fst A + fst B) / 2, (snd A + snd B) / 2) in \n            let d = sqrt ((fst B - fst A) powr 2 + (snd B - snd A) powr 2) in \n            area = d powr 2 / 2\"\nshows  \"area = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real*real\" and area :: real\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"let C = ((fst A + fst B) / 2, (snd A + snd B) / 2) in \n            let d = sqrt ((fst B - fst A) powr 2 + (snd B - snd A) powr 2) in \n            area = d powr 2 / 2\"\nshows  \"area = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the area of a square where two of its diagonally opposite points are A(5, -5) and B(-1, -1). The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8905866704497868,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes A B :: \"real * real\"\nand area :: \"real * real \\<Rightarrow> real * real \\<Rightarrow> real\"\nassumes h0 : \"A = (5,-5)\"\nand h1 : \"B = (-1,-1)\"\nand h2 : \"\\<forall> p1 p2. area p1 p2 = abs(fst p1 - fst p2) * abs(snd p1 - snd p2) / 2\"\nshows  \"area A B = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real * real\"\nand area :: \"real * real \\<Rightarrow> real * real \\<Rightarrow> real\"\nassumes h0 : \"A = (5,-5)\"\nand h1 : \"B = (-1,-1)\"\nand h2 : \"\\<forall> p1 p2. area p1 p2 = abs(fst p1 - fst p2) * abs(snd p1 - snd p2) / 2\"\nshows  \"area A B = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $A=(5,-5)$ and $B=(-1,-1)$. If the area of the rectangle formed by these two points is given by $\\frac{1}{2} \\times |x_1 - x_2| \\times |y_1 - y_2|$, what is the area between $A$ and $B$? The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8979838496558213,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes A B :: \"real*real\"\nand area :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"\\<forall> A B. area A B = 1/2 * abs (fst A - fst B) * abs (snd A - snd B)\"\nshows  \"area A B = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real*real\"\nand area :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"\\<forall> A B. area A B = 1/2 * abs (fst A - fst B) * abs (snd A - snd B)\"\nshows  \"area A B = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two points A(5, -5) and B(-1, -1), find the area of the rectangle formed by these two points. The area of a rectangle is given by the formula 1/2 * the absolute difference of the x-coordinates * the absolute difference of the y-coordinates. The final answer is 13.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8471525718946575,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes A B :: \"real * real\"\nand area :: \"real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"area = 1/2 * sqrt ((snd B - snd A)^2 + (fst B - fst A)^2)^2\"\nshows  \"area = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real * real\"\nand area :: \"real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"area = 1/2 * sqrt ((snd B - snd A)^2 + (fst B - fst A)^2)^2\"\nshows  \"area = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the coordinates of two points, A(5, -5) and B(-1, -1), compute the area of the square with the line segment AB as its diagonal. The area is given by the formula $\\frac{1}{2} \\sqrt{(B_y - A_y)^2 + (B_x - A_x)^2}^2$. What is the area? The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8718819781540669,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes A B :: \"real*real\" and triangle_ABC :: \"(real*real) set\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"dist A B = sqrt 2 * dist A C\"\nand h3 : \"dist A C = dist B C\"\nshows  \"area triangle_ABC = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real*real\" and triangle_ABC :: \"(real*real) set\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"dist A B = sqrt 2 * dist A C\"\nand h3 : \"dist A C = dist B C\"\nshows  \"area triangle_ABC = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the points A(5, -5) and B(-1, -1) of a triangle ABC, if the distance between A and B is $\\sqrt{2}$ times the distance between A and C, and the distance between A and C is equal to the distance between B and C, what is the area of triangle ABC? The final answer is 13.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9207455210888934,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes A B :: \"real * real\" and area_ABC :: real\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"distance A B = sqrt 2 * distance A (fst A, snd B)\"\nshows  \"area_ABC = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real * real\" and area_ABC :: real\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"distance A B = sqrt 2 * distance A (fst A, snd B)\"\nshows  \"area_ABC = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given points A(5, -5) and B(-1, -1), the distance between A and B is equal to the square root of 2 times the distance between A and the point with coordinates (A's x-coordinate, B's y-coordinate). What is the area of triangle ABC? The answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8921465611875921,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes A B :: \"real*real\" and area :: real\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"area = 1/2 * abs (fst B - fst A) * abs (snd B - snd A)\"\nshows  \"area = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B :: \"real*real\" and area :: real\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"area = 1/2 * abs (fst B - fst A) * abs (snd B - snd A)\"\nshows  \"area = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that points A and B are located at (5, -5) and (-1, -1) respectively, calculate the area of the rectangle that they form. The area is calculated as one half times the absolute difference in the x-coordinates times the absolute difference in the y-coordinates. What is the area? The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8655439571743917,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real * real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"\\<forall> C. (fst C)\\<^sup>2 + (snd C)\\<^sup>2 = ((fst A - fst B)\\<^sup>2 + (snd A - snd B)\\<^sup>2)/2\"\nshows  \"\\<forall> C. abs((fst B - fst A)*(snd C - snd A) - (snd B - snd A)*(fst C - fst A))/2 = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is 13\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real * real\"\nassumes h0 : \"A = (5, -5)\"\nand h1 : \"B = (-1, -1)\"\nand h2 : \"\\<forall> C. (fst C)\\<^sup>2 + (snd C)\\<^sup>2 = ((fst A - fst B)\\<^sup>2 + (snd A - snd B)\\<^sup>2)/2\"\nshows  \"\\<forall> C. abs((fst B - fst A)*(snd C - snd A) - (snd B - snd A)*(fst C - fst A))/2 = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given points A and B in the plane with coordinates A=(5,-5) and B=(-1,-1), find all points C such that the square of the x-coordinate plus the square of the y-coordinate equals half the sum of the squares of the differences in the x and y coordinates of A and B. For each such point C, compute the absolute value of half the difference between the product of the difference in x-coordinates of B and A and the difference in y-coordinates of C and A, and the product of the difference in y-coordinates of B and A and the difference in x-coordinates of C and A. The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8160820374679867,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda> x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda> x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda> x. Complex (3) (-3))\"\nand h3 : \"\\<forall> x. dist (A x) (B x) = dist (A x) (C x)\"\nand h4 : \"\\<forall> x. dist (A x) (B x) = dist (B x) (C x)\"\nand h5 : \"\\<forall> x. dist (A x) (B x) = sqrt (2 * (dist (A x) (C x)) powr 2)\"\nshows \"area (A x) (B x) (C x) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda> x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda> x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda> x. Complex (3) (-3))\"\nand h3 : \"\\<forall> x. dist (A x) (B x) = dist (A x) (C x)\"\nand h4 : \"\\<forall> x. dist (A x) (B x) = dist (B x) (C x)\"\nand h5 : \"\\<forall> x. dist (A x) (B x) = sqrt (2 * (dist (A x) (C x)) powr 2)\"\nshows \"area (A x) (B x) (C x) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three complex-valued functions A, B, and C, where A(x) = 5 - 5i, B(x) = -1 - 1i, and C(x) = 3 - 3i, it is known that the distance between A(x) and B(x) is equal to the distance between A(x) and C(x), and also equal to the distance between B(x) and C(x). Furthermore, the distance between A(x) and B(x) is equal to the square root of twice the square of the distance between A(x) and C(x). Find the area of the triangle formed by the points A(x), B(x), and C(x). The area is 13 square units.",
+        "syntax": 1,
+        "semantic_score": 0.773583312096929,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (0) (0))\"\nand h3 : \"\\<triangle> ABC = isosceles_right_triangle\"\nshows \"area \\<triangle> ABC = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (0) (0))\"\nand h3 : \"\\<triangle> ABC = isosceles_right_triangle\"\nshows \"area \\<triangle> ABC = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with vertices A, B, and C represented by complex numbers, where A is at the point (5, -5), B is at the point (-1, -1), and C is at the point (0, 0). It is known that triangle ABC is an isosceles right triangle. What is the area of triangle ABC? The answer is 13 square units.",
+        "syntax": 0,
+        "semantic_score": 0.8804731774533793,
+        "symbolic_score": 0.2
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. 5, \\<lambda>x. -5)\"\nand h1 : \"B = (\\<lambda>x. -1, \\<lambda>x. -1)\"\nand h2 : \"C = (\\<lambda>x. ?, \\<lambda>x. ?)\"\nand h3 : \"\\<triangle> ABC = isosceles_right_triangle\"\nshows \"area \\<triangle> ABC = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. 5, \\<lambda>x. -5)\"\nand h1 : \"B = (\\<lambda>x. -1, \\<lambda>x. -1)\"\nand h2 : \"C = (\\<lambda>x. ?, \\<lambda>x. ?)\"\nand h3 : \"\\<triangle> ABC = isosceles_right_triangle\"\nshows \"area \\<triangle> ABC = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " In a right-angled isosceles triangle ABC, the functions A, B, and C represent the lengths of the sides opposite to the vertices A, B, and C respectively. The functions A and B are given as A(x) = 5 and B(x) = -1, while the functions for C are unknown. The triangle ABC is an isosceles right triangle. What is the area of triangle ABC? The final answer is 13.",
+        "syntax": 0,
+        "semantic_score": 0.8925147599625515,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (x) (x))\"\nand h3 : \"\\<exists> k. k * cmod (A x - B x) = cmod (A x - C x)\"\nand h4 : \"\\<exists> k. k * cmod (A x - B x) = cmod (B x - C x)\"\nand h5 : \"cmod (A x - B x) = cmod (A x - C x) * sqrt 2\"\nshows \"13 = (SOME a. \\<forall> x. a = 0.5 * cmod (A x - B x) * cmod (A x - C x))\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (x) (x))\"\nand h3 : \"\\<exists> k. k * cmod (A x - B x) = cmod (A x - C x)\"\nand h4 : \"\\<exists> k. k * cmod (A x - B x) = cmod (B x - C x)\"\nand h5 : \"cmod (A x - B x) = cmod (A x - C x) * sqrt 2\"\nshows \"13 = (SOME a. \\<forall> x. a = 0.5 * cmod (A x - B x) * cmod (A x - C x))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three complex-valued functions A, B, and C, where A(x) = 5 - 5i, B(x) = -1 - 1i, and C(x) = x + xi, there exist constants k1 and k2 such that k1 * |A(x) - B(x)| = |A(x) - C(x)| and k2 * |A(x) - B(x)| = |B(x) - C(x)|. Additionally, it is given that |A(x) - B(x)| = |A(x) - C(x)| * sqrt(2). Prove that there exists a constant a such that for all x, a = 0.5 * |A(x) - B(x)| * |A(x) - C(x)|, and find the value of a.",
+        "syntax": 1,
+        "semantic_score": 0.6703325920505345,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (5) (-1))\"\nand h3 : \"\\<forall>x. Re (A x - B x) powr 2 + Im (A x - B x) powr 2 = Re (A x - C x) powr 2 + Im (A x - C x) powr 2\"\nand h4 : \"\\<forall>x. Re (A x - B x) powr 2 = 2 * (Re (A x - C x) powr 2)\"\nshows \"area (A, B, C) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (5) (-1))\"\nand h3 : \"\\<forall>x. Re (A x - B x) powr 2 + Im (A x - B x) powr 2 = Re (A x - C x) powr 2 + Im (A x - C x) powr 2\"\nand h4 : \"\\<forall>x. Re (A x - B x) powr 2 = 2 * (Re (A x - C x) powr 2)\"\nshows \"area (A, B, C) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three complex-valued functions A, B, and C defined as follows:\n\nA(x) = 5 - 5i\nB(x) = -1 - 1i\nC(x) = 5 - 1i\n\nIt is known that the square of the real part plus the square of the imaginary part of the difference between A(x) and B(x) is equal to the square of the real part plus the square of the imaginary part of the difference between A(x) and C(x). Additionally, the square of the real part of the difference between A(x) and B(x) is twice the square of the real part of the difference between A(x) and C(x).\n\nFind the area of the triangle formed by the points A, B, and C. The final answer is 13.",
+        "syntax": 1,
+        "semantic_score": 0.7913443857639512,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (5) (-1))\"\nand h3 : \"\\<forall>x. dist (A x) (B x) = dist (A x) (C x)\"\nand h4 : \"\\<forall>x. dist (B x) (C x) = dist (A x) (B x) / sqrt 2\"\nshows \"area (A, B, C) = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (5) (-1))\"\nand h3 : \"\\<forall>x. dist (A x) (B x) = dist (A x) (C x)\"\nand h4 : \"\\<forall>x. dist (B x) (C x) = dist (A x) (B x) / sqrt 2\"\nshows \"area (A, B, C) = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three complex-valued functions A, B, and C, where:\n\nA(x) = 5 - 5i\nB(x) = -1 - 1i\nC(x) = 5 - 1i\n\nIt is known that the distance between A(x) and B(x) is equal to the distance between A(x) and C(x), and the distance between B(x) and C(x) is equal to the distance between A(x) and B(x) divided by the square root of 2.\n\nFind the area of the triangle formed by the points A(x), B(x), and C(x). The final answer is 13.",
+        "syntax": 1,
+        "semantic_score": 0.7985622923310032,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (x) (0))\"\nand h3 : \"\\<exists> k. k * (A x - B x) = C x - B x\"\nand h4 : \"\\<exists> k. k * (A x - B x) = A x - C x\"\nshows \"13 = (SOME area. \\<exists> A B C. area = area_of_triangle A B C)\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (x) (0))\"\nand h3 : \"\\<exists> k. k * (A x - B x) = C x - B x\"\nand h4 : \"\\<exists> k. k * (A x - B x) = A x - C x\"\nshows \"13 = (SOME area. \\<exists> A B C. area = area_of_triangle A B C)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three functions A, B, and C that map real numbers to complex numbers, where A(x) = 5 - 5i, B(x) = -1 - 1i, and C(x) = x + 0i, there exist constants k1 and k2 such that k1 * (A(x) - B(x)) = C(x) - B(x) and k2 * (A(x) - B(x)) = A(x) - C(x). Prove that the area of the triangle formed by the points A(x), B(x), and C(x) is 13 square units.",
+        "syntax": 1,
+        "semantic_score": 0.751991599742014,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex c1 c2)\"\nand h3 : \"right_triangle A B C\"\nand h4 : \"isosceles_triangle A B C\"\nand h5 : \"hypotenuse A B\"\nshows \"area A B C = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex c1 c2)\"\nand h3 : \"right_triangle A B C\"\nand h4 : \"isosceles_triangle A B C\"\nand h5 : \"hypotenuse A B\"\nshows \"area A B C = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " In a right triangle ABC, where A is represented by the complex number (5, -5), B is represented by the complex number (-1, -1), and C is represented by the complex number (c1, c2), the triangle is also isosceles with AB as the hypotenuse. Determine the area of the triangle ABC. The final answer is 13 square units.",
+        "syntax": 1,
+        "semantic_score": 0.9036798851998507,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (x) (x))\"\nand h3 : \"\\<forall>x. dist (A x) (B x) = dist (A x) (C x) + dist (C x) (B x)\"\nand h4 : \"\\<forall>x. dist (A x) (C x) = dist (C x) (B x)\"\nshows \"13 = (SOME a. \\<exists>x. a = area (A x) (B x) (C x))\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (x) (x))\"\nand h3 : \"\\<forall>x. dist (A x) (B x) = dist (A x) (C x) + dist (C x) (B x)\"\nand h4 : \"\\<forall>x. dist (A x) (C x) = dist (C x) (B x)\"\nshows \"13 = (SOME a. \\<exists>x. a = area (A x) (B x) (C x))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three functions A, B, and C that map real numbers to complex numbers, where:\n\n- A(x) = 5 - 5i\n- B(x) = -1 - 1i\n- C(x) = x + xi\n\nAnd for all real numbers x, the distance between A(x) and B(x) is equal to the sum of the distances between A(x) and C(x) and between C(x) and B(x), and the distance between A(x) and C(x) is equal to the distance between C(x) and B(x).\n\nProve that the area of the triangle formed by A(x), B(x), and C(x) is 13 square units for some value of x.",
+        "syntax": 1,
+        "semantic_score": 0.7564999988373913,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (0) (0))\"\nand h3 : \"\\<triangle> ABC = isosceles_right_triangle\"\nshows \"area \\<triangle> ABC = 13\"",
+        "formal solution": "(* ### Problem\n The points $A\\, (5,-5)$ and $B\\, (-1,-1)$ are the endpoints of the hypotenuse of an isosceles right triangle $\\triangle ABC$. What is the area of $ABC$? The final Answer is $13$\n ### Proof\n The length of the hypotenuse is given by the distance formula to be $\\sqrt{(5-(-1))^2 + (-5-(-1))^2} = \\sqrt{6^2+4^2} = \\sqrt{52}$. The length of the leg is then given by $\\sqrt{52}/\\sqrt{2} = \\sqrt{26}$ (alternatively, the Pythagorean Theorem can be applied), and the area of the isosceles right triangle is then equal to $\\frac 12 \\cdot \\sqrt{26} \\cdot \\sqrt{26} = \\boxed{13}.$\n *)\n\ntheorem\nfixes A B C :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A = (\\<lambda>x. Complex (5) (-5))\"\nand h1 : \"B = (\\<lambda>x. Complex (-1) (-1))\"\nand h2 : \"C = (\\<lambda>x. Complex (0) (0))\"\nand h3 : \"\\<triangle> ABC = isosceles_right_triangle\"\nshows \"area \\<triangle> ABC = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with vertices A, B, and C represented by complex numbers, where A is at the point (5, -5), B is at the point (-1, -1), and C is at the point (0, 0). It is known that triangle ABC is an isosceles right triangle. What is the area of triangle ABC? The answer is 13 square units.",
+        "syntax": 0,
+        "semantic_score": 0.8804731774533793,
+        "symbolic_score": 0.2
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            1,
+            9
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

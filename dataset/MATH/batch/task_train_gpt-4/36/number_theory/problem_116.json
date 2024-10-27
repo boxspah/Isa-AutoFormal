@@ -1,0 +1,61 @@
+{
+    "natural problem": "What is the product of all the positive integer divisors of 12?",
+    "natural solution": [
+        "For every divisor $d$ of $12$, then $12/d$ is also a divisor of $12$. Their product is $d \\cdot (12/d) = 12$. It follows that every divisor can be paired with another divisor of $12$ such that their product is $12 = 2^2 \\cdot 3$.",
+        "There are $(2+1)(1+1) = 6$ divisors of $12$: $1,2,3,4,6,12$.",
+        "Thus, the product of the divisors is given by $12^{6/2} = 12^3 = \\boxed{1728}$."
+    ],
+    "natural answer": "1728",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat and prod :: \"nat set \\<Rightarrow> nat\"\nassumes h0 : \"n = 12\"\nand h1 : \"prod = (\\<lambda> S. setprod id {x. x dvd n})\"\nshows  \"prod {1..n} = 1728\"",
+        "formal solution": "(* ### Problem\n What is the product of all the positive integer divisors of 12? The final Answer is 1728\n ### Proof\n For every divisor $d$ of $12$, then $12/d$ is also a divisor of $12$. Their product is $d \\cdot (12/d) = 12$. It follows that every divisor can be paired with another divisor of $12$ such that their product is $12 = 2^2 \\cdot 3$.\n There are $(2+1)(1+1) = 6$ divisors of $12$: $1,2,3,4,6,12$.\n Thus, the product of the divisors is given by $12^{6/2} = 12^3 = \\boxed{1728}$.\n *)\n\ntheorem\nfixes n :: nat and prod :: \"nat set \\<Rightarrow> nat\"\nassumes h0 : \"n = 12\"\nand h1 : \"prod = (\\<lambda> S. setprod id {x. x dvd n})\"\nshows  \"prod {1..n} = 1728\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all divisors of 12. The final answer is 1728."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes divisors :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"divisors = {d. d > 0 \\<and> 12 mod d = 0}\"\nand h1 : \"finite divisors\"\nshows  \"prod id divisors = 1728\"",
+        "formal solution": "(* ### Problem\n What is the product of all the positive integer divisors of 12? The final Answer is 1728\n ### Proof\n For every divisor $d$ of $12$, then $12/d$ is also a divisor of $12$. Their product is $d \\cdot (12/d) = 12$. It follows that every divisor can be paired with another divisor of $12$ such that their product is $12 = 2^2 \\cdot 3$.\n There are $(2+1)(1+1) = 6$ divisors of $12$: $1,2,3,4,6,12$.\n Thus, the product of the divisors is given by $12^{6/2} = 12^3 = \\boxed{1728}$.\n *)\n\ntheorem\nfixes divisors :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"divisors = {d. d > 0 \\<and> 12 mod d = 0}\"\nand h1 : \"finite divisors\"\nshows  \"prod id divisors = 1728\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all positive divisors of 12. The final answer is 1728."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes d :: int\nassumes h0 : \"d dvd 12\"\nand h1 : \"d > 0\"\nshows  \"prod (\\<lambda>d. d) {d. d dvd 12 \\<and> d > 0} = 1728\"",
+        "formal solution": "(* ### Problem\n What is the product of all the positive integer divisors of 12? The final Answer is 1728\n ### Proof\n For every divisor $d$ of $12$, then $12/d$ is also a divisor of $12$. Their product is $d \\cdot (12/d) = 12$. It follows that every divisor can be paired with another divisor of $12$ such that their product is $12 = 2^2 \\cdot 3$.\n There are $(2+1)(1+1) = 6$ divisors of $12$: $1,2,3,4,6,12$.\n Thus, the product of the divisors is given by $12^{6/2} = 12^3 = \\boxed{1728}$.\n *)\n\ntheorem\nfixes d :: int\nassumes h0 : \"d dvd 12\"\nand h1 : \"d > 0\"\nshows  \"prod (\\<lambda>d. d) {d. d dvd 12 \\<and> d > 0} = 1728\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all positive divisors of 12. The final answer is 1728."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes d :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> (n dvd 12 \\<longrightarrow> d n = n)\"\nand h1 : \"PROD n = 1..<13. d n = 1728\"\nshows  \"PROD n = 1..<13. d n = 1728\"",
+        "formal solution": "(* ### Problem\n What is the product of all the positive integer divisors of 12? The final Answer is 1728\n ### Proof\n For every divisor $d$ of $12$, then $12/d$ is also a divisor of $12$. Their product is $d \\cdot (12/d) = 12$. It follows that every divisor can be paired with another divisor of $12$ such that their product is $12 = 2^2 \\cdot 3$.\n There are $(2+1)(1+1) = 6$ divisors of $12$: $1,2,3,4,6,12$.\n Thus, the product of the divisors is given by $12^{6/2} = 12^3 = \\boxed{1728}$.\n *)\n\ntheorem\nfixes d :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> (n dvd 12 \\<longrightarrow> d n = n)\"\nand h1 : \"PROD n = 1..<13. d n = 1728\"\nshows  \"PROD n = 1..<13. d n = 1728\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $d$ such that for each positive integer $n$, $d(n) = n$ if $n$ divides 12, and the value of $d(n)$ is unspecified otherwise. If the product of $d(n)$ for all $n$ from 1 to 12 inclusive is 1728, then prove that the product of $d(n)$ for all $n$ from 1 to 12 inclusive remains 1728."
+    },
+    "a_4": {
+        "formal problem": "theorem\nassumes h0 : \"finite {d. d > 0 \\<and> 12 mod d = 0}\"\nshows  \"prod id {d. d > 0 \\<and> 12 mod d = 0} = 1728\"",
+        "formal solution": "(* ### Problem\n What is the product of all the positive integer divisors of 12? The final Answer is 1728\n ### Proof\n For every divisor $d$ of $12$, then $12/d$ is also a divisor of $12$. Their product is $d \\cdot (12/d) = 12$. It follows that every divisor can be paired with another divisor of $12$ such that their product is $12 = 2^2 \\cdot 3$.\n There are $(2+1)(1+1) = 6$ divisors of $12$: $1,2,3,4,6,12$.\n Thus, the product of the divisors is given by $12^{6/2} = 12^3 = \\boxed{1728}$.\n *)\n\ntheorem\nassumes h0 : \"finite {d. d > 0 \\<and> 12 mod d = 0}\"\nshows  \"prod id {d. d > 0 \\<and> 12 mod d = 0} = 1728\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all positive divisors of 12. The final answer is 1728."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes d :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"d = {x. x > 0 \\<and> 12 mod x = 0}\"\nshows  \"(\\<Prod> x \\<in> d. x) = 1728\"",
+        "formal solution": "(* ### Problem\n What is the product of all the positive integer divisors of 12? The final Answer is 1728\n ### Proof\n For every divisor $d$ of $12$, then $12/d$ is also a divisor of $12$. Their product is $d \\cdot (12/d) = 12$. It follows that every divisor can be paired with another divisor of $12$ such that their product is $12 = 2^2 \\cdot 3$.\n There are $(2+1)(1+1) = 6$ divisors of $12$: $1,2,3,4,6,12$.\n Thus, the product of the divisors is given by $12^{6/2} = 12^3 = \\boxed{1728}$.\n *)\n\ntheorem\nfixes d :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"d = {x. x > 0 \\<and> 12 mod x = 0}\"\nshows  \"(\\<Prod> x \\<in> d. x) = 1728\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all positive divisors of 12. The final answer is 1728."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 12\"\nshows  \"prod_list (divisors_nat n) = 1728\"",
+        "formal solution": "(* ### Problem\n What is the product of all the positive integer divisors of 12? The final Answer is 1728\n ### Proof\n For every divisor $d$ of $12$, then $12/d$ is also a divisor of $12$. Their product is $d \\cdot (12/d) = 12$. It follows that every divisor can be paired with another divisor of $12$ such that their product is $12 = 2^2 \\cdot 3$.\n There are $(2+1)(1+1) = 6$ divisors of $12$: $1,2,3,4,6,12$.\n Thus, the product of the divisors is given by $12^{6/2} = 12^3 = \\boxed{1728}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 12\"\nshows  \"prod_list (divisors_nat n) = 1728\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all divisors of the number 12. The final answer is 1728."
+    },
+    "a_7": {
+        "formal problem": "theorem \nfixes divisors_product :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. divisors_product n = prod_list [d. d \\<le> n \\<and> n mod d = 0]\"\nshows  \"divisors_product 12 = 1728\"",
+        "formal solution": "(* ### Problem\n What is the product of all the positive integer divisors of 12? The final Answer is 1728\n ### Proof\n For every divisor $d$ of $12$, then $12/d$ is also a divisor of $12$. Their product is $d \\cdot (12/d) = 12$. It follows that every divisor can be paired with another divisor of $12$ such that their product is $12 = 2^2 \\cdot 3$.\n There are $(2+1)(1+1) = 6$ divisors of $12$: $1,2,3,4,6,12$.\n Thus, the product of the divisors is given by $12^{6/2} = 12^3 = \\boxed{1728}$.\n *)\n\ntheorem \nfixes divisors_product :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. divisors_product n = prod_list [d. d \\<le> n \\<and> n mod d = 0]\"\nshows  \"divisors_product 12 = 1728\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all divisors of 12. The final answer is 1728."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes d :: \"int set\"\nassumes h0 : \"d = {x. x > 0 \\<and> 12 mod x = 0}\"\nand h1 : \"finite d\"\nshows  \"prod id d = 1728\"",
+        "formal solution": "(* ### Problem\n What is the product of all the positive integer divisors of 12? The final Answer is 1728\n ### Proof\n For every divisor $d$ of $12$, then $12/d$ is also a divisor of $12$. Their product is $d \\cdot (12/d) = 12$. It follows that every divisor can be paired with another divisor of $12$ such that their product is $12 = 2^2 \\cdot 3$.\n There are $(2+1)(1+1) = 6$ divisors of $12$: $1,2,3,4,6,12$.\n Thus, the product of the divisors is given by $12^{6/2} = 12^3 = \\boxed{1728}$.\n *)\n\ntheorem\nfixes d :: \"int set\"\nassumes h0 : \"d = {x. x > 0 \\<and> 12 mod x = 0}\"\nand h1 : \"finite d\"\nshows  \"prod id d = 1728\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all positive divisors of 12. The final answer is 1728."
+    },
+    "a_9": {
+        "formal problem": "theorem \nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. f n = product (\\<lambda>i. i) {i. i > 0 \\<and> n mod i = 0}\"\nshows  \"f 12 = 1728\"",
+        "formal solution": "(* ### Problem\n What is the product of all the positive integer divisors of 12? The final Answer is 1728\n ### Proof\n For every divisor $d$ of $12$, then $12/d$ is also a divisor of $12$. Their product is $d \\cdot (12/d) = 12$. It follows that every divisor can be paired with another divisor of $12$ such that their product is $12 = 2^2 \\cdot 3$.\n There are $(2+1)(1+1) = 6$ divisors of $12$: $1,2,3,4,6,12$.\n Thus, the product of the divisors is given by $12^{6/2} = 12^3 = \\boxed{1728}$.\n *)\n\ntheorem \nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. f n = product (\\<lambda>i. i) {i. i > 0 \\<and> n mod i = 0}\"\nshows  \"f 12 = 1728\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the value of a function $f$ which takes a natural number $n$ and returns the product of all natural numbers $i > 0$ for which $n$ is divisible by $i$. What is $f(12)$? The final answer is $1728$."
+    },
+    "level": "Level 2",
+    "type": "Number Theory"
+}

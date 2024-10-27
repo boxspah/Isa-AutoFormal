@@ -1,0 +1,583 @@
+{
+    "problem_name": "mathd_numbertheory_150",
+    "informal_statement": "What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? Show that it is 6.",
+    "informal_proof": "Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.",
+    "a_0": {
+        "formal problem": "theorem smallest_non_prime_N:\nfixes N :: nat\ndefines \"f \\<equiv> \\<lambda>N. 7 + 30 * N\"\nassumes h0 : \"\\<forall>N < 6. prime (f N)\"\nshows  \"\\<not>prime (f 6)\"\nand \"\\<forall>N' < 6. prime (f N')\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem smallest_non_prime_N:\nfixes N :: nat\ndefines \"f \\<equiv> \\<lambda>N. 7 + 30 * N\"\nassumes h0 : \"\\<forall>N < 6. prime (f N)\"\nshows  \"\\<not>prime (f 6)\"\nand \"\\<forall>N' < 6. prime (f N')\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence of natural numbers defined by the function $f(N) = 7 + 30N$. If every term of this sequence for $N < 6$ is a prime number, find the smallest $N$ for which $f(N)$ is not a prime. The final answer is $N=6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9772758483886719,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"\\<forall> N. N > 5 \\<longrightarrow> \\<not> is_prime(7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"\\<forall> N. N > 5 \\<longrightarrow> \\<not> is_prime(7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest integer $N$ greater than 5 such that $7 + 30N$ is not a prime number. The final answer is $N=6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7890046238899231,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the positive integer value of $N$ such that $7 + 30N$ is not a prime number. The final answer is $N=6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7692223787307739,
+        "symbolic_score": 0.2
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"\\<forall> x. x > 1 \\<longrightarrow> is_prime (7 + 30 * x) = False\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"\\<forall> x. x > 1 \\<longrightarrow> is_prime (7 + 30 * x) = False\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $N$ such that 7 plus 30 times $N$ is not a prime number for all $N$ greater than 1. The final answer is 6.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.966993510723114,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a positive integer $N$ such that $7 + 30N$ is not a prime number. The final answer is $6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8046115636825562,
+        "symbolic_score": 0.3
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a positive integer $N$ such that $7 + 30N$ is not a prime number. The final answer is $6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8046115636825562,
+        "symbolic_score": 0.3
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes N :: int and prime :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. prime n = (n > 1 \\<and> (\\<forall> m \\<in> {2..<n}. n mod m \\<noteq> 0))\"\nand h1 : \"\\<forall> N. N \\<ge> 1 \\<longrightarrow> \\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int and prime :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. prime n = (n > 1 \\<and> (\\<forall> m \\<in> {2..<n}. n mod m \\<noteq> 0))\"\nand h1 : \"\\<forall> N. N \\<ge> 1 \\<longrightarrow> \\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the positive integer $N$ such that $7 + 30N$ is not a prime number. The final answer is $N=6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7621415257453918,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the positive natural number $N$ such that $7 + 30N$ is not a prime number. The final answer is $N = 6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7287672758102417,
+        "symbolic_score": 0.2
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the positive integer value of $N$ such that $7 + 30N$ is not a prime number. The final Answer is $N = 6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8627257347106934,
+        "symbolic_score": 0.3
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"\\<forall>N. N > 0 \\<longrightarrow> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"\\<forall>N. N > 0 \\<longrightarrow> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the natural number $N$ such that $7 + 30N$ is a prime number. The final answer is $6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8614461421966553,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes n :: nat\nassumes \" \\<not> prime (7 + 30 * n)\"\nshows \"6 \\<le> n\"",
+    "prediction": {
+        "0": [
+            8,
+            4,
+            5
+        ],
+        "1": [
+            2,
+            7
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            1
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            9
+        ]
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"\\<forall>n < N. prime (7 + (30 * n))\"\nand h1 : \"prime (7 + (30 * N)) = False\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"\\<forall>n < N. prime (7 + (30 * n))\"\nand h1 : \"prime (7 + (30 * N)) = False\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the largest integer $N$ such that $7 + 30n$ is prime for all $n < N$, but $7 + 30N$ is not prime? The final answer is $N=6$.",
+        "semantic_score": 0.9099638225938618,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\n  fixes N :: nat\n  assumes h0 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N \\<ge> 6 \\<and> (\\<forall>n. n < 6 \\<longrightarrow> prime (7 + 30 * n))\" \n  and \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\n  fixes N :: nat\n  assumes h0 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N \\<ge> 6 \\<and> (\\<forall>n. n < 6 \\<longrightarrow> prime (7 + 30 * n))\" \n  and \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest value of $N$ such that $7 + 30N$ is not prime, but $7 + 30n$ is prime for all $n < 6$? The answer is $N = 6$.",
+        "semantic_score": 0.9868794025228667,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $7+30N$ is not a prime number, and $N$ is a positive integer, what is the smallest possible value of $N$? The answer is $6$.\"",
+        "semantic_score": 0.6229000682735348,
+        "symbolic_score": 0.4,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N \\<ge> 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N \\<ge> 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest possible value of the natural number $N$ such that $7 + 30N$ is not a prime number? It is known that $N$ must be greater than or equal to $6$.",
+        "semantic_score": 0.974888400091784,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> prime (7 + 30 * n)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> prime (7 + 30 * n)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest natural number $N$ such that $7 + 30N$ is not prime? The final answer is $6$.",
+        "semantic_score": 0.9505176033103443,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $7+30N$ is not a prime number, and $N$ is a positive integer, what is the value of $N$ such that $N=6$?\"",
+        "semantic_score": 0.6613344541586592,
+        "symbolic_score": 0.4,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\n  fixes N :: nat\n  assumes h0 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N \\<ge> 6 \\<and> prime (7 + 30 * (N - 1))\"\n  using assms by (metis (mono_tags, lifting) add.commute add.left_commute add_diff_cancel_left' diff_is_0_eq' le_add_diff_inverse le_add_same_cancel1 less_add_same_cancel1 not_less prime_nat_iff)",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\n  fixes N :: nat\n  assumes h0 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N \\<ge> 6 \\<and> prime (7 + 30 * (N - 1))\"\n  using assms by (metis (mono_tags, lifting) add.commute add.left_commute add_diff_cancel_left' diff_is_0_eq' le_add_diff_inverse le_add_same_cancel1 less_add_same_cancel1 not_less prime_nat_iff)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $7+30N$ is not a prime number, where $N$ is a natural number, then $N$ is greater than or equal to 6 and $7+30(N-1)$ is a prime number.\"",
+        "semantic_score": 0.5349178261883585,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $7 + 30N$ is not a prime number, and $N$ is a positive integer, what is the smallest possible value of $N$? The answer is $6$.\"",
+        "semantic_score": 0.6229000682735348,
+        "symbolic_score": 0.4,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $7 + 30N$ is not prime and $N$ is a positive integer, what is the value of $N$ such that $N=6$?\"",
+        "semantic_score": 0.6868088475010241,
+        "symbolic_score": 0.4,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N \\<ge> 6 \\<and> (\\<forall> m < N. prime (7 + (30 * m)))\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N \\<ge> 6 \\<and> (\\<forall> m < N. prime (7 + (30 * m)))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest natural number $N$ such that all natural numbers less than $N$ satisfy the condition that $7 + 30m$ is prime, where $m$ is a natural number, and $N$ is greater than or equal to 6?",
+        "semantic_score": 0.9335196718546586,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            8,
+            2,
+            5,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            9
+        ]
+    },
+    "equivalence_oracle_gpt3.5": [
+        3
+    ],
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"\\<forall>n. (7 + (30 * n) = 2 \\<or> 7 + (30 * n) = 3 \\<or> 7 + (30 * n) = 5 \\<or> 7 + (30 * n) = 11) \\<Longrightarrow> N = 0\"\nand h1 : \"7 + (30 * 6) \\<not> (\\<or> prime 2 \\<or> prime 3 \\<or> prime 5 \\<or> prime 11)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"\\<forall>n. (7 + (30 * n) = 2 \\<or> 7 + (30 * n) = 3 \\<or> 7 + (30 * n) = 5 \\<or> 7 + (30 * n) = 11) \\<Longrightarrow> N = 0\"\nand h1 : \"7 + (30 * 6) \\<not> (\\<or> prime 2 \\<or> prime 3 \\<or> prime 5 \\<or> prime 11)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $7 +30n$ is either $2$, $3$, $5$, or $11$, then $N$ is equal to $0$. Also, $7+30\\cdot 6$ is not equal to $2$, $3$, $5$, or $11$. Find the value of $N$. The final answer is $6$.\n\nNote: In Isabelle, $prime$ is a predicate that checks if a number is prime."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall>p. is\\_prime p = (0 < p) \\<and> (\\<forall>q. p mod q = 0 \\<impl> q = p or q = 1)\"\nand h1 : \"is\\_prime (7 + 30 * n) = false\"\nshows  \"n = 5\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall>p. is\\_prime p = (0 < p) \\<and> (\\<forall>q. p mod q = 0 \\<impl> q = p or q = 1)\"\nand h1 : \"is\\_prime (7 + 30 * n) = false\"\nshows  \"n = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Given that a prime number is a natural number greater than 1 that has no positive divisors other than 1 and  itself, show that $n$ is not equal to 5 when 7 + 30 * $n$ is not a prime number.\""
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"7 is prime\"\nand h1 : \"\\<forall>n. prime (7 + 30 * n)\"\nshows  \"N = 5\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"7 is prime\"\nand h1 : \"\\<forall>n. prime (7 + 30 * n)\"\nshows  \"N = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If 7 is a prime number and for all natural numbers n, 7 + 30n is also a prime number, then what is the value of N? The answer is 5."
+    },
+    "a_3_mistral": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"\\<forall>m. (7 + 30 * m) is\\_prime m\"\nand h1 : \"6 is\\_not\\_prime (7 + 30 * N)\"\nshows  \"N = 5\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"\\<forall>m. (7 + 30 * m) is\\_prime m\"\nand h1 : \"6 is\\_not\\_prime (7 + 30 * N)\"\nshows  \"N = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For all natural numbers $m$, the number $(7 + 30m)$ is a prime number. However, the number $(7+30N)$ is not a prime number for the specific natural number $N$. Find the value of $N$. The final answer is $5$."
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"\\<forall>n. prime n = (n = 2 \\<or> n = 3 \\<or> (\\<exists> i. i * i = n \\<and> i < n))\"\nand h1 : \"prime (7 + 30 * N)\"\nshows  \"N < 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"\\<forall>n. prime n = (n = 2 \\<or> n = 3 \\<or> (\\<exists> i. i * i = n \\<and> i < n))\"\nand h1 : \"prime (7 + 30 * N)\"\nshows  \"N < 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a prime number is either 2 or 3 or the square of an integer less than itself, and 7 + 30N is a prime number, then N is less than 6. In other words, if N is a natural number that satisfies the property of being prime, then 7 + 30N is also prime and N must be less than 6."
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"\\<forall>n. prime n \\<Longrightarrow> 7 + 30 * n = prime (7 + 30 * n)\"\nshows  \"\\<exists>n. 7 + 30 * n \\<not> = prime (7 + 30 * n) \\<and> n > 0\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"\\<forall>n. prime n \\<Longrightarrow> 7 + 30 * n = prime (7 + 30 * n)\"\nshows  \"\\<exists>n. 7 + 30 * n \\<not> = prime (7 + 30 * n) \\<and> n > 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Is it true that for all natural numbers $n$, if $n$ is prime, then $7 + 30n$ is also prime? No, there exists a natural number $n$ such that $7 + 30n$ is not prime and $n > 0$.\""
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"\\<forall>m. prime m = ((\\<forall>i. 2 <= i * i <= m) \\<Longrightarrow> (\\<exists>p q. m = p * q))\"\nand h1 : \"\\<forall>n. 7 + (30 * n) = prime (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc 0))))))))))))))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"\\<forall>m. prime m = ((\\<forall>i. 2 <= i * i <= m) \\<Longrightarrow> (\\<exists>p q. m = p * q))\"\nand h1 : \"\\<forall>n. 7 + (30 * n) = prime (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc 0))))))))))))))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a natural number $N$ that satisfies the following conditions:\n1. For all numbers $m$, $m$ is prime if and only if $m$ can be written as a product of two prime numbers.\n2. $N$ is the smallest number greater than zero that can be expressed as $7 + 30n$, where $n$ is a natural number.\n\nThe final answer is $N = 441$.\n\n(Note: The Isabelle version only shows that $N = 6$ but the assumption $h1$ indicates that $N$ is actually $441$.)"
+    },
+    "a_7_mistral": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"7 is prime\"\nand h1 : \"\\<forall>p. prime p \\<longrightarrow> 7 + 30 * n \\<not> is_prime p\"\nshows  \"n = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"7 is prime\"\nand h1 : \"\\<forall>p. prime p \\<longrightarrow> 7 + 30 * n \\<not> is_prime p\"\nshows  \"n = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If 7 is prime, then 7 + 30 times a number n is not also prime. Find the value of this number n. The final answer is 6."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"\\<forall>m. primm m \\<Longleftrightarrow> \\<exists> p q. p < m \\<and> q < m \\<and> p ^ 2 <= m \\<and> q ^ 2 <= m \\<and> m mod p = 0 \\<and> m mod q = 0 = false\"\nand h1 : \"\\<forall>n. primm (7 + 30 * n) = n = 6\"\nshows  \"N = 1\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"\\<forall>m. primm m \\<Longleftrightarrow> \\<exists> p q. p < m \\<and> q < m \\<and> p ^ 2 <= m \\<and> q ^ 2 <= m \\<and> m mod p = 0 \\<and> m mod q = 0 = false\"\nand h1 : \"\\<forall>n. primm (7 + 30 * n) = n = 6\"\nshows  \"N = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Determine whether $N$ is prime or not. A prime number is a positive integer greater than 1 that can only be divided evenly by 1 and itself. Contrary to assumption, $N$ is not prime since it has factors other than 1 and itself. Therefore, the statement is false. (Note: The given Isabelle theorem assumes the opposite, so the translation is presented in a negative form.)"
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"\\<forall>p. prime p \\<Longrightarrow> 7 + 30 * p \\<not> 0 \\<and> 0 < p\"\nshows  \"\\<exists>N. 7 + 30 * N \\<not> prime \\<and> 0 < N\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"\\<forall>p. prime p \\<Longrightarrow> 7 + 30 * p \\<not> 0 \\<and> 0 < p\"\nshows  \"\\<exists>N. 7 + 30 * N \\<not> prime \\<and> 0 < N\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Find a natural number $N$ such that $7 + 30N$ is not a prime number and $0 < N$. (Note: A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.)\""
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number N greater than 0, if the number 7 + (30 * N) is not a prime number, then N must be equal to 6."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number N greater than 0, if the number 7 + (30 * N) is not a prime number, then N must be equal to 6."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number N greater than 0. If the number 7 + (30 * N) is not a prime number, then N must be equal to 6."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number N greater than 0, if 7 + 30 * N is not a prime number, then N must be equal to 6."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer N such that the number 7 + (30 * N) is not a prime number. The answer is N = 6."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer N such that the number 7 + 30N is not a prime number. The answer is N = 6."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer N such that the number 7 + 30N is not a prime number. The answer is N = 6."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer N such that the number 7 + 30N is not a prime number. The answer is N = 6."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number N greater than 0, if the number 7 + (30 * N) is not a prime number, then N must be equal to 6."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number N greater than 0, if the number 7 + (30 * N) is not a prime number, then N must be equal to 6."
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            8,
+            4,
+            5
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem smallest_non_prime_N:\nfixes N :: nat\ndefines \"f \\<equiv> \\<lambda>N. 7 + 30 * N\"\nassumes h0 : \"\\<forall>N < 6. prime (f N)\"\nshows  \"\\<not>prime (f 6)\"\nand \"\\<forall>N' < 6. prime (f N')\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem smallest_non_prime_N:\nfixes N :: nat\ndefines \"f \\<equiv> \\<lambda>N. 7 + 30 * N\"\nassumes h0 : \"\\<forall>N < 6. prime (f N)\"\nshows  \"\\<not>prime (f 6)\"\nand \"\\<forall>N' < 6. prime (f N')\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence of natural numbers defined by the function $f(N) = 7 + 30N$. If every term of this sequence for $N < 6$ is a prime number, find the smallest $N$ for which $f(N)$ is not a prime. The final answer is $N=6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.861780679066676,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"\\<forall> N. N > 5 \\<longrightarrow> \\<not> is_prime(7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"\\<forall> N. N > 5 \\<longrightarrow> \\<not> is_prime(7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest integer $N$ greater than 5 such that $7 + 30N$ is not a prime number. The final answer is $N=6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9548897341503049,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the positive integer value of $N$ such that $7 + 30N$ is not a prime number. The final answer is $N=6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9491103979027063,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"\\<forall> x. x > 1 \\<longrightarrow> is_prime (7 + 30 * x) = False\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"\\<forall> x. x > 1 \\<longrightarrow> is_prime (7 + 30 * x) = False\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $N$ such that 7 plus 30 times $N$ is not a prime number for all $N$ greater than 1. The final answer is 6.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9365112203275441,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a positive integer $N$ such that $7 + 30N$ is not a prime number. The final answer is $6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9402440639711324,
+        "symbolic_score": 0.3
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a positive integer $N$ such that $7 + 30N$ is not a prime number. The final answer is $6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9402440639711324,
+        "symbolic_score": 0.3
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes N :: int and prime :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. prime n = (n > 1 \\<and> (\\<forall> m \\<in> {2..<n}. n mod m \\<noteq> 0))\"\nand h1 : \"\\<forall> N. N \\<ge> 1 \\<longrightarrow> \\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int and prime :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. prime n = (n > 1 \\<and> (\\<forall> m \\<in> {2..<n}. n mod m \\<noteq> 0))\"\nand h1 : \"\\<forall> N. N \\<ge> 1 \\<longrightarrow> \\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the positive integer $N$ such that $7 + 30N$ is not a prime number. The final answer is $N=6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9444819253578445,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the positive natural number $N$ such that $7 + 30N$ is not a prime number. The final answer is $N = 6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9337957960990511,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the positive integer value of $N$ such that $7 + 30N$ is not a prime number. The final Answer is $N = 6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9557133979193475,
+        "symbolic_score": 0.3
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"\\<forall>N. N > 0 \\<longrightarrow> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"\\<forall>N. N > 0 \\<longrightarrow> is_prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the natural number $N$ such that $7 + 30N$ is a prime number. The final answer is $6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9131027839938617,
+        "symbolic_score": 0.1
+    },
+    "equivalence_oracle_solve_direct": [],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number N greater than 0, if the number 7 + (30 * N) is not a prime number, then N must be equal to 6.",
+        "semantic_score": 0.8432502739372716,
+        "symbolic_score": 0.6
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number N greater than 0, if the number 7 + (30 * N) is not a prime number, then N must be equal to 6.",
+        "semantic_score": 0.8432502739372716,
+        "symbolic_score": 0.6
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number N greater than 0. If the number 7 + (30 * N) is not a prime number, then N must be equal to 6.",
+        "semantic_score": 0.8460373427794543,
+        "symbolic_score": 0.6
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number N greater than 0, if 7 + 30 * N is not a prime number, then N must be equal to 6.",
+        "semantic_score": 0.8437171864091634,
+        "symbolic_score": 0.4
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer N such that the number 7 + (30 * N) is not a prime number. The answer is N = 6.",
+        "semantic_score": 0.9594230712952306,
+        "symbolic_score": 0.6
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer N such that the number 7 + 30N is not a prime number. The answer is N = 6.",
+        "semantic_score": 0.9553532815282622,
+        "symbolic_score": 0.4
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer N such that the number 7 + 30N is not a prime number. The answer is N = 6.",
+        "semantic_score": 0.9553532815282622,
+        "symbolic_score": 0.4
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + 30 * N)\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer N such that the number 7 + 30N is not a prime number. The answer is N = 6.",
+        "semantic_score": 0.9553532815282622,
+        "symbolic_score": 0.4
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number N greater than 0, if the number 7 + (30 * N) is not a prime number, then N must be equal to 6.",
+        "semantic_score": 0.8432502739372716,
+        "symbolic_score": 0.6
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"",
+        "formal solution": "(* ### Problem\n What is the smallest positive integer $N$ such that the value $7 + (30 \\times N)$ is not a prime number? The final Answer is $6$\n ### Proof\n Since 2, 3, and 5 divide $30N$ but not $7$, they do not divide $30N + 7$.  Similarly, 7 only divides $30N + 7$ if 7 divides $30N$, which means $N$ must be a multiple of 7 for 7 to divide it.  Since no number less than 11 divides $30N + 7$ while $N < 7$, we only need to check when $30N + 7 \\ge 11^2$.  When $N = 4$, $30N + 7 = 127$ is prime.  When $N = 5$, $30N + 7 = 157$ is prime.  However, when $N = 6$, $30N + 7 = 187 = 11 \\cdot 17$ is composite.\n *)\n\n theorem\nfixes N :: nat\nassumes h0 : \"N > 0\"\nand h1 : \"\\<not> prime (7 + (30 * N))\"\nshows  \"N = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number N greater than 0, if the number 7 + (30 * N) is not a prime number, then N must be equal to 6.",
+        "semantic_score": 0.8432502739372716,
+        "symbolic_score": 0.6
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0,
+            1,
+            2,
+            4,
+            8,
+            9
+        ],
+        "1": [
+            3,
+            5,
+            6,
+            7
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": []
+}

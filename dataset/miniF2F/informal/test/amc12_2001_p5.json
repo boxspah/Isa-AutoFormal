@@ -1,0 +1,610 @@
+{
+    "problem_name": "amc12_2001_p5",
+    "informal_statement": "What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.",
+    "informal_proof": "$1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes a b c d e :: real\nassumes h0 : \"fact (10000) / (fact (5000))^2 = a\"\nand h1 : \"fact (10000) / (2^5000) = b\"\nand h2 : \"fact (9999) / (2^5000) = c\"\nand h3 : \"fact (10000) / (2^5000 * fact (5000)) = d\"\nand h4 : \"fact (5000) / (2^5000) = e\"\nshows  \"d = fact (10000) / (2^5000 * fact (5000))\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes a b c d e :: real\nassumes h0 : \"fact (10000) / (fact (5000))^2 = a\"\nand h1 : \"fact (10000) / (2^5000) = b\"\nand h2 : \"fact (9999) / (2^5000) = c\"\nand h3 : \"fact (10000) / (2^5000 * fact (5000)) = d\"\nand h4 : \"fact (5000) / (2^5000) = e\"\nshows  \"d = fact (10000) / (2^5000 * fact (5000))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $a = \\frac{10000!}{(5000!)^2}$, $b = \\frac{10000!}{2^{5000}}$, $c = \\frac{9999!}{2^{5000}}$, $d = \\frac{10000!}{2^{5000} \\cdot 5000!}$, and $e = \\frac{5000!}{2^{5000}}$. Find the value of $d$. The final answer is $\\frac{10000!}{2^{5000} \\cdot 5000!}$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8361468315124512,
+        "symbolic_score": 0.3
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes prod :: real\nassumes h0 : \"prod = fact 10000 / (2 powr 5000 * fact 5000)\"\nshows  \"prod = (\\<Prod>{n. n \\<in> {1..9999} \\<and> odd n})\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes prod :: real\nassumes h0 : \"prod = fact 10000 / (2 powr 5000 * fact 5000)\"\nshows  \"prod = (\\<Prod>{n. n \\<in> {1..9999} \\<and> odd n})\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all odd integers from 1 to 9999 when it is given by $\\frac{10000!}{2^{5000} \\cdot 5000!}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8276728391647339,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes prod :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"prod = (\\<lambda>n. (fact (2 * n)) div (2 ^ n * fact n))\"\nshows  \"prod 5000 = (fact 10000) div (2 ^ 5000 * fact 5000)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes prod :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"prod = (\\<lambda>n. (fact (2 * n)) div (2 ^ n * fact n))\"\nshows  \"prod 5000 = (fact 10000) div (2 ^ 5000 * fact 5000)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the expression $\\frac{(2n)!}{2^n \\cdot n!}$ when $n = 5000$. The final answer is $\\frac{10000!}{2^{5000} \\cdot 5000!}$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9799531102180481,
+        "symbolic_score": 0.3
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact = (\\<lambda> n. if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"n = 10000\"\nshows  \"prod_odd_integers_less_n = fact n / (2 ^ (n div 2) * fact (n div 2))\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact = (\\<lambda> n. if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"n = 10000\"\nshows  \"prod_odd_integers_less_n = fact n / (2 ^ (n div 2) * fact (n div 2))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the factorial function $fact(n) = n!$ and an integer $n = 10000$, find the product of all odd integers less than $n$. The final answer is $\\frac{fact(n)}{(2^{(\\frac{n}{2})} * fact(\\frac{n}{2}))}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9596824049949646,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 0 = 1\"\nand h1 : \"\\<forall>n \\<in> {1..<10000}. (odd n \\<longrightarrow> f n = f (n - 1) * n) \\<and> (\\<not> odd n \\<longrightarrow> f n = f (n - 1))\"\nand h2 : \"f 10000 = (fact 10000) / (2 ^ 5000 * fact 5000)\"\nshows  \"\\<forall>n \\<in> {1..<10000}. (odd n \\<longrightarrow> f n = f (n - 1) * n) \\<and> (\\<not> odd n \\<longrightarrow> f n = f (n - 1))\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 0 = 1\"\nand h1 : \"\\<forall>n \\<in> {1..<10000}. (odd n \\<longrightarrow> f n = f (n - 1) * n) \\<and> (\\<not> odd n \\<longrightarrow> f n = f (n - 1))\"\nand h2 : \"f 10000 = (fact 10000) / (2 ^ 5000 * fact 5000)\"\nshows  \"\\<forall>n \\<in> {1..<10000}. (odd n \\<longrightarrow> f n = f (n - 1) * n) \\<and> (\\<not> odd n \\<longrightarrow> f n = f (n - 1))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined for natural numbers as follows:\n\n1. $f(0) = 1$\n2. For all $n$ in the range $1 \\leq n < 10000$:\n   a. If $n$ is odd, then $f(n) = f(n - 1) * n$\n   b. If $n$ is not odd (i.e., even), then $f(n) = f(n - 1)$\n\nIt is given that $f(10000) = \\frac{10000!}{2^{5000} \\cdot 5000!}$. Prove that the recursive rules defined for $f$ hold true for all $n$ in the range $1 \\leq n < 10000$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.7458690404891968,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes product :: real\nassumes h0 : \"product = (\\<Prod>n\\<in>{1,3,..,9999}. n)\"\nshows  \"product = (fact 10000) / (2 powr 5000 * fact 5000)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes product :: real\nassumes h0 : \"product = (\\<Prod>n\\<in>{1,3,..,9999}. n)\"\nshows  \"product = (fact 10000) / (2 powr 5000 * fact 5000)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all odd integers from 1 to 9999. Express the product in terms of factorials and powers of 2. The final answer is $\\frac{10000!}{2^{5000} \\cdot 5000!}$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9839668869972229,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes prod :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"prod = (\\<lambda>n. \\<Prod>k = 1..<n. if odd k then k else 1)\"\nand h1 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> prod n = fact (2 * n) div (2 ^ n * fact n)\"\nshows  \"prod 5000 = fact 10000 div (2 ^ 5000 * fact 5000)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes prod :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"prod = (\\<lambda>n. \\<Prod>k = 1..<n. if odd k then k else 1)\"\nand h1 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> prod n = fact (2 * n) div (2 ^ n * fact n)\"\nshows  \"prod 5000 = fact 10000 div (2 ^ 5000 * fact 5000)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a product function $prod(n)$ as the product of all odd numbers less than $n$: $prod(n) = \\prod_{k=1}^{n-1} k$ if $k$ is odd, and $1$ otherwise. Prove that for all integers $n \\geq 1$, $prod(n) = \\frac{(2n)!}{2^n n!}$. Find the value of $prod(5000)$. The final answer is $\\frac{10000!}{2^{5000} \\cdot 5000!}$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8873565793037415,
+        "symbolic_score": 0.3
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. fact n = (if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall>n. fact (2 * n) = 2 ^ n * fact n * fact n\"\nshows  \"fact 10000 / (2 ^ 5000 * fact 5000) = (\\<Prod>n\\<in>{1,3,5,..,9999}. real n)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. fact n = (if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall>n. fact (2 * n) = 2 ^ n * fact n * fact n\"\nshows  \"fact 10000 / (2 ^ 5000 * fact 5000) = (\\<Prod>n\\<in>{1,3,5,..,9999}. real n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{10000!}{2^{5000} \\times 5000!}$, where the factorial $n!$ is defined as the product of all positive integers up to $n$. Express your answer as the product of all odd integers from 1 to 9999, i.e., $\\prod_{n = 1, 3, 5, \\dots, 9999} n$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7847097516059875,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem odd_product_is_formula_D:\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"prod (\\<lambda>k. 2*k - 1) {1..5000} = fact n / (2 ^ 5000 * fact (n div 2))\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem odd_product_is_formula_D:\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"prod (\\<lambda>k. 2*k - 1) {1..5000} = fact n / (2 ^ 5000 * fact (n div 2))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the product of the first 5,000 odd integers? Express your answer in terms of the factorial function and exponentiation. The final answer is $\\frac{10000!}{2^{5000} \\times (5000!)}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9624232649803162,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes fact_10000 fact_5000 product :: \"real\"\nassumes h0 : \"fact_10000 = fact 10000\"\nand h1 : \"fact_5000 = fact 5000\"\nand h2 : \"product = fact_10000 / (2 powr 5000 * fact_5000)\"\nshows  \"product = (\\<Prod>i \\<in> {1,3..9999}. i)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes fact_10000 fact_5000 product :: \"real\"\nassumes h0 : \"fact_10000 = fact 10000\"\nand h1 : \"fact_5000 = fact 5000\"\nand h2 : \"product = fact_10000 / (2 powr 5000 * fact_5000)\"\nshows  \"product = (\\<Prod>i \\<in> {1,3..9999}. i)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that there is a product which is defined as the ratio of the factorial of 10,000 divided by the product of 2 raised to the power of 5,000 and the factorial of 5,000, find the value of the product in terms of the product of all odd integers from 1 to 9,999. The final answer is the product of all odd integers from 1 to 9,999.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9728109240531921,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nshows \"(\\<Prod>x\\<in>{x::nat. x<10000 \\<and> odd x}. x)\n= fact 10000 / ((2^5000) * fact 5000)\"",
+    "prediction": {
+        "0": [
+            0,
+            2,
+            6
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            7
+        ],
+        "6": [
+            8
+        ],
+        "7": [
+            9
+        ]
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes product :: nat\nassumes h0 : \"product = (\\<Prod>i \\<in> {1..9999} . if odd i then i else 1)\"\nshows  \"product = fact 10000 div (2^5000 * fact 5000)\" \n  (is \"?lhs = ?rhs\") \n",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes product :: nat\nassumes h0 : \"product = (\\<Prod>i \\<in> {1..9999} . if odd i then i else 1)\"\nshows  \"product = fact 10000 div (2^5000 * fact 5000)\" \n  (is \"?lhs = ?rhs\") \n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the product of all odd integers from $1$ to $9999$? Express your answer as $n!/2^k$, where $n$ is an integer and $k$ is the greatest possible power of $2$ that divides $n$. The final answer is equivalent to $10000!/2^{5000}\\cdot 5000!$.",
+        "semantic_score": 0.9746913682040498,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes product :: nat\nassumes h0 : \"product = (\\<Prod>i \\<in> {1..9999} . if odd i then i else 1)\"\nshows  \"product = fact 10000 div (2^5000 * fact 5000)\" \nsorry  (* the proof is omitted since it is beyond the scope of this task *)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes product :: nat\nassumes h0 : \"product = (\\<Prod>i \\<in> {1..9999} . if odd i then i else 1)\"\nshows  \"product = fact 10000 div (2^5000 * fact 5000)\" \nsorry  (* the proof is omitted since it is beyond the scope of this task *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all odd integers from 1 to 9999. Express your answer in terms of the factorial of 10000, the factorial of 5000, and powers of 2. The final answer is $\\frac{10000!}{2^{5000} \\cdot 5000!}$.",
+        "semantic_score": 0.9583664695247386,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes product :: nat\nassumes h0 : \"product = prod nat \\<in> {1..9999} . if even nat then 1 else nat\"\nshows  \"product = fact 10000 div (2 ^ 5000 * fact 5000)\" \nand \"product = 309654618822841409333683961715020800000000000000000000000000000000000000000000000000000000000000000000000000000000000\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes product :: nat\nassumes h0 : \"product = prod nat \\<in> {1..9999} . if even nat then 1 else nat\"\nshows  \"product = fact 10000 div (2 ^ 5000 * fact 5000)\" \nand \"product = 309654618822841409333683961715020800000000000000000000000000000000000000000000000000000000000000000000000000000000000\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Compute the product of all odd integers between $1$ and $9999$, inclusive. Express your answer in the form $\\frac{10000!}{2^{5000} \\cdot 5000!}$ and also as a long integer.",
+        "semantic_score": 0.8378665057111577,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes prod :: nat\nassumes h0 : \"prod {n::nat. n < 10000 \\<and> odd n} = prod {1..9999} / prod {n::nat. n < 10000 \\<and> even n}\"\nand h1 : \"prod {1..9999} = fact 10000\"\nand h2 : \"prod {n::nat. n < 10000 \\<and> even n} = 2 ^ 5000\"\nshows  \"prod {n::nat. n < 10000 \\<and> odd n} = fact 10000 / (2 ^ 5000 * fact 5000)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes prod :: nat\nassumes h0 : \"prod {n::nat. n < 10000 \\<and> odd n} = prod {1..9999} / prod {n::nat. n < 10000 \\<and> even n}\"\nand h1 : \"prod {1..9999} = fact 10000\"\nand h2 : \"prod {n::nat. n < 10000 \\<and> even n} = 2 ^ 5000\"\nshows  \"prod {n::nat. n < 10000 \\<and> odd n} = fact 10000 / (2 ^ 5000 * fact 5000)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all odd numbers less than $10000$. Express the answer as $\\frac{10000!}{2^{5000} \\cdot 5000!}$.",
+        "semantic_score": 0.7657799647993604,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes prod :: nat\nassumes h0 : \"prod {n. odd n \\<and> n < 10000} = prod {1..9999} div prod {n. even n \\<and> n \\<le> 10000 div 2}\"\nshows  \"prod {n. odd n \\<and> n < 10000} = 10000! div (2^5000 * prod {1..5000})\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes prod :: nat\nassumes h0 : \"prod {n. odd n \\<and> n < 10000} = prod {1..9999} div prod {n. even n \\<and> n \\<le> 10000 div 2}\"\nshows  \"prod {n. odd n \\<and> n < 10000} = 10000! div (2^5000 * prod {1..5000})\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the value of the product of all odd integers less than 10,000 divided by the product of all even integers less than or equal to 5,000? Express your answer as $10000!/(2^{5000} \\cdot 1\\cdot 2\\cdot 3\\cdots 5000)$.",
+        "semantic_score": 0.9724051439719936,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 5000\"\nshows  \"(\\<Prod>i\\<in>{1..n}. 2*i - 1) = (fact (2*n)) div (2^n * fact n)\" \nand \"(\\<Prod>i\\<in>{1..n}. 2*i - 1) = 10000\" (is \"_ = 10000\")\n",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 5000\"\nshows  \"(\\<Prod>i\\<in>{1..n}. 2*i - 1) = (fact (2*n)) div (2^n * fact n)\" \nand \"(\\<Prod>i\\<in>{1..n}. 2*i - 1) = 10000\" (is \"_ = 10000\")\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the product of the odd numbers from 1 to 9999? Express your answer as $10000$ times some fraction. Also, what is the exact value of the product of the odd numbers from 1 to 9999?",
+        "semantic_score": 0.9839004553361995,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes prod :: nat\nassumes h0 : \"prod = prod_list [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59,61,63,65,67,69,71,73,75,77,79,81,83,85,87,89,91,93,95,97,99,101,103,105,107,109,111,113,115,117,119,121,123,125,127,129,131,133,135,137,139,141,143,145,147,149,151,153,155,157,159,161,163,165,167,169,171,173,175,177,179,181,183,185,187,189,191,193,195,197,199]\"\nshows  \"prod = 10000 choose 5000\" \nand \"prod = 10000 factorial div (2 pow 5000 * (5000 factorial))\" \nand \"prod = 10000 factorial div (2 pow 5000 * (2 choose 1 * 4999 choose 5000))\" \nand \"prod = 10000 factorial div (2 pow 5000 * 5000 factorial)\" \nand \"prod = 10000 factorial div (2 pow 5000 * (2 pow 4999))\" \nand \"prod = 10000 factorial div (2 pow 5000 * (2 pow 4999)) div (1 * 2 * 3 * ... * 4999 * 5000)\" \nand \"prod = 10000 factorial div (2 pow 5000)\" \nand \"prod = 10000 choose 5000 * prod_list [1,3,5,7,...,9999]\" \nand \"prod = 10000 choose 5000 * (1 * 3 * 5 * 7 * ... * 9999)\" \nand \"prod = 10000 factorial div (2 pow 5000 * 5000 factorial)\" \nand \"prod = 10000 factorial div (prod_list [2^i. i \\<leftarrow> [1..<5001]] * prod_list [i. i \\<leftarrow> [1..<5001], even i])\" \nand \"prod = 10000 factorial div (2 pow 5000 * prod_list [i. i \\<leftarrow> [1..<5001], even i])\" \nand \"prod = 10000 factorial div (2 pow 5000 * prod_list [1..<5001])\" \nand \"prod = 10000 factorial div (2 pow 5000 * prod_list [1,2..5000])\" \nand \"prod = 10000 factorial div (2 pow 5000 * prod_list [1..5000])\" \nand \"prod = 10000 factorial div (2 pow 5000 * 5000 factorial)\" \nand \"prod = 10000 choose 5000 * prod_list [1,3,5,7,...,9999]\" \nand \"prod = 10000 choose 5000 * (1 * 3 * 5 * 7 * ... * 9999)\" \nand \"prod = 10000 factorial div (2 pow 5000 * 5000 factorial)\" \nand \"prod = 10000 factorial div (prod_list [2^i. i \\<leftarrow> [1..<5001]] * prod_list [i. i \\<leftarrow> [1..<5001], even i])\" \nand \"prod = 10000",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes prod :: nat\nassumes h0 : \"prod = prod_list [1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49,51,53,55,57,59,61,63,65,67,69,71,73,75,77,79,81,83,85,87,89,91,93,95,97,99,101,103,105,107,109,111,113,115,117,119,121,123,125,127,129,131,133,135,137,139,141,143,145,147,149,151,153,155,157,159,161,163,165,167,169,171,173,175,177,179,181,183,185,187,189,191,193,195,197,199]\"\nshows  \"prod = 10000 choose 5000\" \nand \"prod = 10000 factorial div (2 pow 5000 * (5000 factorial))\" \nand \"prod = 10000 factorial div (2 pow 5000 * (2 choose 1 * 4999 choose 5000))\" \nand \"prod = 10000 factorial div (2 pow 5000 * 5000 factorial)\" \nand \"prod = 10000 factorial div (2 pow 5000 * (2 pow 4999))\" \nand \"prod = 10000 factorial div (2 pow 5000 * (2 pow 4999)) div (1 * 2 * 3 * ... * 4999 * 5000)\" \nand \"prod = 10000 factorial div (2 pow 5000)\" \nand \"prod = 10000 choose 5000 * prod_list [1,3,5,7,...,9999]\" \nand \"prod = 10000 choose 5000 * (1 * 3 * 5 * 7 * ... * 9999)\" \nand \"prod = 10000 factorial div (2 pow 5000 * 5000 factorial)\" \nand \"prod = 10000 factorial div (prod_list [2^i. i \\<leftarrow> [1..<5001]] * prod_list [i. i \\<leftarrow> [1..<5001], even i])\" \nand \"prod = 10000 factorial div (2 pow 5000 * prod_list [i. i \\<leftarrow> [1..<5001], even i])\" \nand \"prod = 10000 factorial div (2 pow 5000 * prod_list [1..<5001])\" \nand \"prod = 10000 factorial div (2 pow 5000 * prod_list [1,2..5000])\" \nand \"prod = 10000 factorial div (2 pow 5000 * prod_list [1..5000])\" \nand \"prod = 10000 factorial div (2 pow 5000 * 5000 factorial)\" \nand \"prod = 10000 choose 5000 * prod_list [1,3,5,7,...,9999]\" \nand \"prod = 10000 choose 5000 * (1 * 3 * 5 * 7 * ... * 9999)\" \nand \"prod = 10000 factorial div (2 pow 5000 * 5000 factorial)\" \nand \"prod = 10000 factorial div (prod_list [2^i. i \\<leftarrow> [1..<5001]] * prod_list [i. i \\<leftarrow> [1..<5001], even i])\" \nand \"prod = 10000\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of the first $100$ odd positive integers, define their product to be `prod`. The theorem provides multiple expressions for `prod`, including `prod = 10000 choose 5000`. The problem is to find the value of `prod`, and the final answer is $10000$.",
+        "semantic_score": 0.9040921868736872,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes product :: real\nassumes h0 : \"product = prod of n \\<in> {1..9999} . if even n then 1 else n\"\nshows  \"product = fact 10000 / (2 powr 5000 * fact 5000)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes product :: real\nassumes h0 : \"product = prod of n \\<in> {1..9999} . if even n then 1 else n\"\nshows  \"product = fact 10000 / (2 powr 5000 * fact 5000)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the product of all odd integers between $1$ and $9999$? Express your answer as a fraction in terms of factorials and powers of $2$. The final answer is $\\frac{10000!}{(2^{5000} \\cdot 5000!)}$.",
+        "semantic_score": 0.9096372651592955,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes prod :: nat\nassumes h0 : \"prod {n\\<in>{1..9999}. odd n} = prod {n\\<in>{1..9999}. n mod 2 = 1}\"\nshows  \"prod {n\\<in>{1..9999}. odd n} = 10000 choose 5000\"\nand \"prod {n\\<in>{1..9999}. odd n} = fact 10000 / (2^5000 * fact 5000)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes prod :: nat\nassumes h0 : \"prod {n\\<in>{1..9999}. odd n} = prod {n\\<in>{1..9999}. n mod 2 = 1}\"\nshows  \"prod {n\\<in>{1..9999}. odd n} = 10000 choose 5000\"\nand \"prod {n\\<in>{1..9999}. odd n} = fact 10000 / (2^5000 * fact 5000)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The product of all odd integers between 1 and 9999 is equal to the product of all integers between 1 and 9999 that leave a remainder of 1 when divided by 2. Additionally, the product of all odd integers between 1 and 9999 is equal to the number of ways to choose 5000 items out of a set of 10000 items, which can also be expressed as the ratio of the factorial of 10000 to 2 raised to the 5000th power times the factorial of 5000.",
+        "semantic_score": 0.9539816094676484,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 5000\"\nshows  \"prod {1..(2*n-1)} = fact (2*n) div (2^n * fact n)\" and \"fact (2*n) div (2^n * fact n) = 10000 div 2^n * (10000 div 2^n + 1) div 2\" and \"prod {1..(2*n-1)} = 10000! div (2^n * fact n)\" and \"prod {1..(2*n-1)} = 10000! div (2^(2*n) * prod {1..n})\" and \"prod {1..(2*n-1)} = 10000! div (2^(2*n) * (fact n)^2)\" and \"prod {1..(2*n-1)} = 10000! div (2^(2*n) * (prod {1..n}^2))\" and \"prod {1..(2*n-1)} = 10000! div (2^(2*n) * (prod {1..n} * prod {1..n}))\" and \"prod {1..(2*n-1)} = 10000! div (2^(2*n) * 5000!)\" and \"prod {1..(2*n-1)} = 10000! div (2^(n) * 5000!)\".",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 5000\"\nshows  \"prod {1..(2*n-1)} = fact (2*n) div (2^n * fact n)\" and \"fact (2*n) div (2^n * fact n) = 10000 div 2^n * (10000 div 2^n + 1) div 2\" and \"prod {1..(2*n-1)} = 10000! div (2^n * fact n)\" and \"prod {1..(2*n-1)} = 10000! div (2^(2*n) * prod {1..n})\" and \"prod {1..(2*n-1)} = 10000! div (2^(2*n) * (fact n)^2)\" and \"prod {1..(2*n-1)} = 10000! div (2^(2*n) * (prod {1..n}^2))\" and \"prod {1..(2*n-1)} = 10000! div (2^(2*n) * (prod {1..n} * prod {1..n}))\" and \"prod {1..(2*n-1)} = 10000! div (2^(2*n) * 5000!)\" and \"prod {1..(2*n-1)} = 10000! div (2^(n) * 5000!)\".\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $n$ is equal to $5000$, what is the product of all odd integers between $1$ and $2n-1$ inclusive? The answer can be expressed in terms of factorials and powers of $2$ in different forms.",
+        "semantic_score": 0.882043394950648,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_mistral": {
+        "formal problem": " theorem \"product\\_of\\_odd\\_numbers : 1 < 10000 => (power (factorial 10000) 2) * (power (product\\_of\\_odd\\_numbers\\_less\\_than\\_10000) 2) = (factorial 10000) / (2 ^ (5000) * factorial 5000)\"\n\nlemma \"product\\_of\\_odd\\_numbers\\_less\\_than\\_10000 : 1 < 10000 => (product i. i < 10000. i mod 2 <> 0)\"\n\n",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem \"product\\_of\\_odd\\_numbers : 1 < 10000 => (power (factorial 10000) 2) * (power (product\\_of\\_odd\\_numbers\\_less\\_than\\_10000) 2) = (factorial 10000) / (2 ^ (5000) * factorial 5000)\"\n\nlemma \"product\\_of\\_odd\\_numbers\\_less\\_than\\_10000 : 1 < 10000 => (product i. i < 10000. i mod 2 <> 0)\"\n\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Find the value of the expression $\\left(\\frac{\\sqrt{10001}}{2}\\right)^{5000} \\cdot \\prod\\_{i=1}^{9999} \\left(2i+1\\right)$ equal to $\\frac{\\sqrt{10001}\\cdot\\text{the product of all odd numbers less than }10000}{\\left(2^{5000}\\right)}$.\""
+    },
+    "a_1_mistral": {
+        "formal problem": " theorem \"product_of_odd_numbers : 1 < 10000 -> (1 * (sum (all_less_than 10000 (fun n => if (0 < n) then (if (mod n 2 = 1) then n else 0) else 0)) = 10000! / (2 ^ 5000 * 5000!)\"\n\n",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem \"product_of_odd_numbers : 1 < 10000 -> (1 * (sum (all_less_than 10000 (fun n => if (0 < n) then (if (mod n 2 = 1) then n else 0) else 0)) = 10000! / (2 ^ 5000 * 5000!)\"\n\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all the odd numbers less than 10,000. The final answer is $\\frac{10,000!}{2^{5000} \\cdot 5000!}$."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\" and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"n < 10000 \\<longrightarrow> 0 < n \\<and> n mod 2 = 1\"\nand h1 : \"fact n = \\< Product i=0..n-1 > i <* 1\"\nand h2 : \"fact 0 = 1\"\nand h3 : \"2 ^ 5000 * 5000! = (fact 10000) / (fact 5000) \\<*> fact 5000\"\nshows  \"fact 10000 = (2 ^ 5000) * (fact 5000)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes n :: \"nat\" and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"n < 10000 \\<longrightarrow> 0 < n \\<and> n mod 2 = 1\"\nand h1 : \"fact n = \\< Product i=0..n-1 > i <* 1\"\nand h2 : \"fact 0 = 1\"\nand h3 : \"2 ^ 5000 * 5000! = (fact 10000) / (fact 5000) \\<*> fact 5000\"\nshows  \"fact 10000 = (2 ^ 5000) * (fact 5000)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $10000!$, which is the product of the first $10000$ positive integers. Use the fact that $5000!$ and $(2^ {5000}) \\cdot 5000!$ are equal to give an expression for $10000!$.\n\nAssuming $n < 10000$ implies $0 < n$ and $n$ is odd, and $0! = 1$, it can be shown that:\n\n$$10000! = (2^{5000}) \\cdot 5000!$$"
+    },
+    "a_3_mistral": {
+        "formal problem": " theorem \"product\\_of\\_odd\\_numbers : 1 < 10000 -> (1 :: \"real list\") ^. length (filter odd (enum\\_from\\_to 1 10000)) = 10000! / (2 ^ 5000 * 5000!)\"\n ",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem \"product\\_of\\_odd\\_numbers : 1 < 10000 -> (1 :: \"real list\") ^. length (filter odd (enum\\_from\\_to 1 10000)) = 10000! / (2 ^ 5000 * 5000!)\"\n \n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of the first 10,000 odd numbers and compare it to the expression $\\frac{10000!}{2^{5000}\\cdot5000!}$."
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n < 10000\"\nand h1 : \"n > 0\"\nand h2 : \"n odd\"\nvalues (prod : \"nat \\<Rightarrow> nat\")\nlet \"fact n = if n = 0 then 1 else n * prod (pred n)\"\nlet \"odd_sum = sum (filter odd (enumFromTo 1 9999)\"\nabbreviate \"odd\\_prod = prod (filter odd (enumFromTo 1 9999))\"\nshow \"odd\\_prod = 2 ^ 5000 * (10000! / 5000!)\"\n",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n < 10000\"\nand h1 : \"n > 0\"\nand h2 : \"n odd\"\nvalues (prod : \"nat \\<Rightarrow> nat\")\nlet \"fact n = if n = 0 then 1 else n * prod (pred n)\"\nlet \"odd_sum = sum (filter odd (enumFromTo 1 9999)\"\nabbreviate \"odd\\_prod = prod (filter odd (enumFromTo 1 9999))\"\nshow \"odd\\_prod = 2 ^ 5000 * (10000! / 5000!)\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the product of the first 5,000 odd numbers. The final answer is 2^5000 times the ratio of the factorial of 10,000 to the factorial of 5,000."
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n < 10000\"\nand h1 : \"0 < n\"\nshows  \"n * (2 * n + 1) * ... * (9999) < 10000!\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n < 10000\"\nand h1 : \"0 < n\"\nshows  \"n * (2 * n + 1) * ... * (9999) < 10000!\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $n$ such that $n$ is less than 10,000 and greater than zero, and $n$ multiplied by $(2n+1)$ up to $(9999)$ is less than $10,000!$.\n\nIn natural language, find a number $n$ between 0 and 10,000, such that the product of $n$ with $2n+1$ through $9999$ is less than $10,000!$."
+    },
+    "a_6_mistral": {
+        "formal problem": " theorem \"product_of_odd_numbers : 1 < 10000 -> 2 * (sum (all_ints (2 * i. 3 <= i. i < 10000) (pow i 2)) = (1 / (pow 2 (5000) * pow 5000!)) * 10000!\"\n",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem \"product_of_odd_numbers : 1 < 10000 -> 2 * (sum (all_ints (2 * i. 3 <= i. i < 10000) (pow i 2)) = (1 / (pow 2 (5000) * pow 5000!)) * 10000!\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\left(2^{\\sum\\_{i=1}^{9999} i^2}\\right) \\cdot \\left(\\dfrac{1}{2^{5000} \\cdot 5000!}\\right) \\cdot 10000$.\n\nTo clarify, this is the product of $2$ raised to the sum of the squares of all integers between $1$ and $9999$, multiplied by $\\dfrac{1}{2^{5000} \\cdot 5000!}$ and then multiplied by $10000$."
+    },
+    "a_7_mistral": {
+        "formal problem": " theorem \"product\\_of\\_odd\\_numbers: 1 < 10000 => (1 * (2 * 1) * (4 * 1) * ... * (9999 * 1) * 10001) / (5000! * 2 ^ 5000) = 1 / (2 ^ 5000) * (1 ^ 2 * 3 ^ 1 * 5 ^ 1 * ... * 9999 ^ 1)\"\n\nproof (induct 10000)\n assume 1 <= n and H : product\\_of\\_odd\\_numbers n\n have odd\\_n : odd n by simp\n have n\\_is\\_odd\\_root : n = sqrt (n * sqrt 1) by (rule sqrt\\_pos\\_def)\n have n\\_is\\_odd\\_root\\_2 : n = sqrt (n * sqrt 1) * sqrt (sqrt 1 / sqrt 1) by simp\n have n\\_is\\_odd\\_root\\_3 : n = sqrt (n * sqrt 1) * sqrt (sqrt 1 / sqrt 1) * sqrt (sqrt 1 / sqrt 1) by simp\n have n\\_is\\_odd\\_root\\_4 : n = sqrt (n * sqrt 1) * sqrt (sqrt 1 / sqrt 1) * sqrt (sqrt 1 / sqrt 1) * sqrt (sqrt 1 / sqrt 1) by simp\n have n\\_is\\_odd\\_root\\_5 : n = sqrt (n * sqrt 1) * sqrt (sqrt 1 / sqrt 1) * sqrt (sqrt 1 / sqrt 1) * sqrt (sqrt 1 / sqrt 1) * sqrt (sqrt 1 / sqrt 1) by simp\n have n\\_is\\_odd\\_root\\_n : n = sqrt (n * sqrt 1) * (sqrt (sqrt 1 / sqrt 1)) ^ (n-1) by (induct n-1) (auto)\n have n\\_is\\_odd : odd (n + 1) by simp\n have n\\_plus\\_one\\_is\\_odd\\_root : n + 1 = sqrt ((n + 1) * sqrt 1) * (sqrt (sqrt 1 / sqrt 1)) ^ (n-1) by (rule sqrt\\_pos\\_def) (auto)\n have n\\_plus\\_one\\_is\\_odd\\_root\\_2 : n + 1 = sqrt ((n + 1) * sqrt 1) * (sqrt (sqrt 1 / sqrt 1)) ^ (n) by (rule sqrt\\_mul) (auto)\n have n\\_plus\\_one\\_is\\_odd\\_root\\_3 : n + 1 = sqrt ((n + 1) * sqrt 1) * (sqrt (sqrt 1 / sqrt 1)) ^ (n+1) by (rule sqrt\\_mul) (auto)\n have n\\_plus\\_one\\_is\\_odd\\_root\\_4 : n + 1 = sqrt ((n + 1) * sqrt 1) * (sqrt (sqrt 1 / sqrt 1)) ^ (n+1) * sqrt (sqrt 1 / sqrt 1) by (rule sqrt\\_mul) (auto)\n have n\\_plus\\_one\\_is\\_odd\\_root\\_5 : n + 1 = sqrt ((n + 1",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem \"product\\_of\\_odd\\_numbers: 1 < 10000 => (1 * (2 * 1) * (4 * 1) * ... * (9999 * 1) * 10001) / (5000! * 2 ^ 5000) = 1 / (2 ^ 5000) * (1 ^ 2 * 3 ^ 1 * 5 ^ 1 * ... * 9999 ^ 1)\"\n\nproof (induct 10000)\n assume 1 <= n and H : product\\_of\\_odd\\_numbers n\n have odd\\_n : odd n by simp\n have n\\_is\\_odd\\_root : n = sqrt (n * sqrt 1) by (rule sqrt\\_pos\\_def)\n have n\\_is\\_odd\\_root\\_2 : n = sqrt (n * sqrt 1) * sqrt (sqrt 1 / sqrt 1) by simp\n have n\\_is\\_odd\\_root\\_3 : n = sqrt (n * sqrt 1) * sqrt (sqrt 1 / sqrt 1) * sqrt (sqrt 1 / sqrt 1) by simp\n have n\\_is\\_odd\\_root\\_4 : n = sqrt (n * sqrt 1) * sqrt (sqrt 1 / sqrt 1) * sqrt (sqrt 1 / sqrt 1) * sqrt (sqrt 1 / sqrt 1) by simp\n have n\\_is\\_odd\\_root\\_5 : n = sqrt (n * sqrt 1) * sqrt (sqrt 1 / sqrt 1) * sqrt (sqrt 1 / sqrt 1) * sqrt (sqrt 1 / sqrt 1) * sqrt (sqrt 1 / sqrt 1) by simp\n have n\\_is\\_odd\\_root\\_n : n = sqrt (n * sqrt 1) * (sqrt (sqrt 1 / sqrt 1)) ^ (n-1) by (induct n-1) (auto)\n have n\\_is\\_odd : odd (n + 1) by simp\n have n\\_plus\\_one\\_is\\_odd\\_root : n + 1 = sqrt ((n + 1) * sqrt 1) * (sqrt (sqrt 1 / sqrt 1)) ^ (n-1) by (rule sqrt\\_pos\\_def) (auto)\n have n\\_plus\\_one\\_is\\_odd\\_root\\_2 : n + 1 = sqrt ((n + 1) * sqrt 1) * (sqrt (sqrt 1 / sqrt 1)) ^ (n) by (rule sqrt\\_mul) (auto)\n have n\\_plus\\_one\\_is\\_odd\\_root\\_3 : n + 1 = sqrt ((n + 1) * sqrt 1) * (sqrt (sqrt 1 / sqrt 1)) ^ (n+1) by (rule sqrt\\_mul) (auto)\n have n\\_plus\\_one\\_is\\_odd\\_root\\_4 : n + 1 = sqrt ((n + 1) * sqrt 1) * (sqrt (sqrt 1 / sqrt 1)) ^ (n+1) * sqrt (sqrt 1 / sqrt 1) by (rule sqrt\\_mul) (auto)\n have n\\_plus\\_one\\_is\\_odd\\_root\\_5 : n + 1 = sqrt ((n + 1\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{1 \\cdot 3 \\cdot 5 \\cdot \\ldots \\cdot 9999 \\cdot 10001}{5000! \\cdot 2^{5000}}$ when $n=10000$. The final answer is 1.\n\nProof by induction:\n\nBase Case: When $n=1$, the numerator is $1\\cdot 1 = 1$ and the denominator is $1! \\cdot 2^1 = 2$. Since $1/2 \\neq 1$, this case does not hold.\n\nInductive Step: Assume the theorem is true for $n=k$. We will prove it for $n=k+1$.\n\nFirst, we show that $k+1$ is an odd number. By the inductive hypothesis, $k$ is an odd number. Thus, $k+1$ is even, and by the definition of an even number, $k+1 = 2p$ for some integer $p$. Then, $k+1$ is an odd number because $k+1 = 2p-1 = 2(p-0.5)$.\n\nNext, we show that $\\sqrt{(k+1) \\sqrt{1}}$ can be written as $\\sqrt{k+1} \\cdot \\sqrt{\\frac{1}{\\sqrt{1}}}$. By the definition of square root, $\\sqrt{(k+1) \\sqrt{1}} = \\sqrt{k+1 \\cdot 1} = \\sqrt{k+1}$. Similarly, $\\sqrt{\\frac{1}{\\sqrt{1}}} = \\sqrt{\\frac{1}{1}} = 1$. Thus, $\\sqrt{(k+1) \\sqrt{1}} = \\sqrt{k+1} \\cdot \\sqrt{\\frac{1}{\\sqrt{1}}}$.\n\nNow, we have $\\sqrt{(k+1) \\sqrt{1}} = \\sqrt{k+1} \\cdot \\sqrt{\\frac{1}{\\sqrt{1}}} = \\sqrt{k+1} \\cdot 1 = \\sqrt{k+1}$.\n\nUsing the inductive hypothesis, the product of odd numbers from $1$ to $k$ is $\\frac{1 \\cdot 3 \\cdot 5 \\cdot \\ldots \\cdot (k-1) \\cdot k}{5000! \\cdot 2^{5000}}$.\n\nMultiplying $\\sqrt{k+1}$ to both the numerator and denominator, we get\n\n$$\\frac{1 \\cdot 3 \\cdot 5 \\cdot \\ldots \\cdot (k-1) \\cdot k \\cdot \\sqrt{k+1}}{5000! \\cdot 2^{5000} \\cdot \\sqrt{k+1}}$$\n\nSimplifying the denominator, we have\n\n$$\\frac{1 \\cdot 3 \\cdot 5 \\cdot \\ldots \\cdot (k-1) \\cdot k \\cdot \\sqrt{k+1}}{5000! \\cdot 2^{\\frac{5000}{2}} \\cdot \\sqrt{k+1}}$$\n\nSince $k+1$ is odd, $\\sqrt{k+1}$ is positive. Thus, we can cancel out $\\sqrt{k+1}$ from both the numerator and denominator.\n\n$$\\frac{1 \\cdot 3 \\cdot 5 \\cdot \\ldots \\cdot (k-1) \\cdot k}{5000! \\cdot 2^{\\frac{5000}{2}}}$$\n\nNow, we need to find the product"
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"1 < n\"\nand h1 : \"n < 10000\"\nand h2 : \"n is_odd\"\nand h3 : \"P = prod (Suc (Suc (Suc 0)))..(Suc (pred 10000))\"\nand h4 : \"is_power_of_two (logbase 2 5000)\"\nand h5 : \"is_prime 2\"\nshows  \"P = (10000! / (2 ^ (5000 * 5000) * 5000!))\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"1 < n\"\nand h1 : \"n < 10000\"\nand h2 : \"n is_odd\"\nand h3 : \"P = prod (Suc (Suc (Suc 0)))..(Suc (pred 10000))\"\nand h4 : \"is_power_of_two (logbase 2 5000)\"\nand h5 : \"is_prime 2\"\nshows  \"P = (10000! / (2 ^ (5000 * 5000) * 5000!))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the product $P$, where $P$ is defined as the product of all integers from $Suc(Suc(Suc 0))$ to $Suc(pred 10000)$. This product is given by $10000!$, and we divide it by $(2^{5000 \\cdot 5000} \\cdot 5000!)$ if $2^{5000 \\cdot 5000}$ is a power of 2 and $2$ is prime. The final answer is the quotient of $10000!$ by $(2^{5000 \\cdot 5000} \\cdot 5000!)$.\n\nNote: In natural language, the exclamation mark is replaced with \"factorial\"."
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\"\nassumes h0 : \"n < 10000\"\nand h1 : \"0 < n\"\nand h2 : \"is\\_odd n\"\nand h3 : \"Pow 2 (5000) * Pow 5000! = 10000!\"\nshows  \"Pow 10000! / (Pow 2 (5000) * Pow 5000!) = Pow 10000! / (2 ^ 5000 * Pow 5000!)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes n :: \"nat\"\nassumes h0 : \"n < 10000\"\nand h1 : \"0 < n\"\nand h2 : \"is\\_odd n\"\nand h3 : \"Pow 2 (5000) * Pow 5000! = 10000!\"\nshows  \"Pow 10000! / (Pow 2 (5000) * Pow 5000!) = Pow 10000! / (2 ^ 5000 * Pow 5000!)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\dfrac{10,000!}{2^{5,000} \\cdot 5,000!}$.\n\n(Note: $!$ denotes factorial.)"
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000) (factorial 5000)\"\n",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000) (factorial 5000)\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that we have a natural number n equal to 10,000. We need to find the product of all odd numbers from 1 to n-1 (i.e., from 1 to 9,999). Then, we need to show that this product is equal to the result of dividing the 5000th power of 2 by the factorial of 5000. In other words, we want to find the product of all odd numbers from 1 to 9,999 and prove that it is equal to the value obtained by dividing 2 raised to the power of 5000 by the factorial of 5000."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_less_n)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_less_n)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem is asking to find the product of all odd numbers from 1 to 9999 (since the upper limit in the list comprehension is exclusive), and then to show that this product is equal to the factorial of 10000 divided by the product of 2 raised to the power of 5000 and the factorial of 5000 (which is half of 10000). In other words, it's asking to prove that the product of all odd numbers less than 10000 is equal to the factorial of 10000 divided by a large power of 2 times the factorial of half of 10000."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000) (factorial 5000)\"\nby (simp add: factorial_def)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000) (factorial 5000)\"\nby (simp add: factorial_def)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that given a natural number n equal to 10,000, we need to find the product of all odd numbers from 1 to n-1 (i.e., from 1 to 9,999). This product is then equated to the result of dividing the 5000th Fibonacci number by the 5000th factorial number. The problem asks to prove this statement using the definition of factorial.\n\nIn natural language, the problem can be stated as follows:\n\nConsider the number n equal to 10,000. Calculate the product of all odd numbers from 1 to 9,999. Show that this product is equal to the result of dividing the 5000th Fibonacci number by the 5000th factorial number, using the definition of factorial."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_less_n)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_less_n)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that given a natural number n equal to 10,000, we need to find the product of all odd numbers from 1 to n-1 (i.e., from 1 to 9,999). This product is equal to the factorial of n (10,000 factorial) divided by the product of 2 raised to the power of 5,000 and the factorial of n divided by 2 (5,000 factorial). In other words, we need to calculate the product of all odd numbers from 1 to 9,999 and verify that it is equal to the given expression."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_nat)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_nat)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that for a natural number `n` equal to 10,000, the product of all odd numbers from 1 to `n-1` (which is 9,999) is equal to the factorial of `n` (10,000 factorial) divided by the product of 2 raised to the power of 5,000 and the factorial of `n/2` (5,000 factorial).\n\nIn natural language, the problem can be stated as:\n\nCalculate the product of all odd numbers from 1 to 9,999. Show that this product is equal to the result of dividing 10,000 factorial by the product of 2 raised to the power of 5,000 and 5,000 factorial."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000 * (n div 2)!)\"\nby (simp add: h0)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000 * (n div 2)!)\"\nby (simp add: h0)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that given a natural number `n` equal to 10,000, we need to find the product of all odd numbers from 1 to `n-1` (which is 9,999 in this case). This product is then equated to a specific expression involving `n`, the factorial of `n/2`, and a power of 2.\n\nIn natural language, the problem can be stated as follows:\n\n\"Calculate the product of all odd numbers from 1 to 9,999. Then, divide this product by the factorial of 5,000 (which is half of 10,000) and raise the result to the power of 2 to the 5,000. Show that these two values are equal.\""
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000 * (n div 2)!)\"\nusing assms\nby (simp add: prod_list_filter_odd)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000 * (n div 2)!)\"\nusing assms\nby (simp add: prod_list_filter_odd)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that given a natural number `n` equal to 10,000, we need to find the product of all odd numbers in the range from 1 to `n-1` (i.e., from 1 to 9,999). This product is equal to the result of the following expression: `n!` divided by the product of `2^5000` and `(n/2)!`.\n\nIn natural language, the problem can be stated as follows:\n\nCalculate the product of all odd numbers from 1 to 9,999, and show that this product is equal to the factorial of 10,000 divided by the product of 2 raised to the power of 5,000 and the factorial of 5,000."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter (\\<lambda>x. x mod 2 = 1) [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nby (simp add: prod_filter_div_distrib)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter (\\<lambda>x. x mod 2 = 1) [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nby (simp add: prod_filter_div_distrib)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that given a natural number `n` equal to 10,000, we need to calculate the product of all odd numbers from 1 to `n-1` (exclusive). This product is then equal to the factorial of `n` divided by the product of 2 raised to the power of 5,000 and the factorial of `n/2`. In simpler terms, we need to find the product of all odd numbers from 1 to 9,999 and show that it is equal to the factorial of 10,000 divided by the product of 2 raised to the power of 5,000 and the factorial of 5,000."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_less_n)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_less_n)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem is asking to find the product of all odd numbers from 1 to 9999 (since the upper limit in the list comprehension is less than 10000). This product is then equated to the factorial of 10000 divided by the product of 2 raised to the power of 5000 and the factorial of 5000 (which is half of 10000). The theorem asserts that these two quantities are equal."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_filter_div_fact)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_filter_div_fact)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that for a natural number n, given that n is equal to 10,000, the product of all odd numbers from 1 to n-1 (excluding n) is equal to the factorial of n divided by the product of 2 raised to the power of 5,000 and the factorial of half of n. In simpler terms, we are asked to find the product of all odd numbers from 1 to 9,999 and show that it is equal to the factorial of 10,000 divided by the product of 2 raised to the power of 5,000 and the factorial of 5,000."
+    },
+    "prediction_deepseek": {
+        "0": [
+            1,
+            3,
+            4,
+            8,
+            9
+        ],
+        "1": [
+            0,
+            2
+        ],
+        "2": [
+            5,
+            6
+        ],
+        "3": [
+            7
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes a b c d e :: real\nassumes h0 : \"fact (10000) / (fact (5000))^2 = a\"\nand h1 : \"fact (10000) / (2^5000) = b\"\nand h2 : \"fact (9999) / (2^5000) = c\"\nand h3 : \"fact (10000) / (2^5000 * fact (5000)) = d\"\nand h4 : \"fact (5000) / (2^5000) = e\"\nshows  \"d = fact (10000) / (2^5000 * fact (5000))\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes a b c d e :: real\nassumes h0 : \"fact (10000) / (fact (5000))^2 = a\"\nand h1 : \"fact (10000) / (2^5000) = b\"\nand h2 : \"fact (9999) / (2^5000) = c\"\nand h3 : \"fact (10000) / (2^5000 * fact (5000)) = d\"\nand h4 : \"fact (5000) / (2^5000) = e\"\nshows  \"d = fact (10000) / (2^5000 * fact (5000))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $a = \\frac{10000!}{(5000!)^2}$, $b = \\frac{10000!}{2^{5000}}$, $c = \\frac{9999!}{2^{5000}}$, $d = \\frac{10000!}{2^{5000} \\cdot 5000!}$, and $e = \\frac{5000!}{2^{5000}}$. Find the value of $d$. The final answer is $\\frac{10000!}{2^{5000} \\cdot 5000!}$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8358220758887586,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes prod :: real\nassumes h0 : \"prod = fact 10000 / (2 powr 5000 * fact 5000)\"\nshows  \"prod = (\\<Prod>{n. n \\<in> {1..9999} \\<and> odd n})\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes prod :: real\nassumes h0 : \"prod = fact 10000 / (2 powr 5000 * fact 5000)\"\nshows  \"prod = (\\<Prod>{n. n \\<in> {1..9999} \\<and> odd n})\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all odd integers from 1 to 9999 when it is given by $\\frac{10000!}{2^{5000} \\cdot 5000!}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9039437030656575,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes prod :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"prod = (\\<lambda>n. (fact (2 * n)) div (2 ^ n * fact n))\"\nshows  \"prod 5000 = (fact 10000) div (2 ^ 5000 * fact 5000)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes prod :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"prod = (\\<lambda>n. (fact (2 * n)) div (2 ^ n * fact n))\"\nshows  \"prod 5000 = (fact 10000) div (2 ^ 5000 * fact 5000)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the expression $\\frac{(2n)!}{2^n \\cdot n!}$ when $n = 5000$. The final answer is $\\frac{10000!}{2^{5000} \\cdot 5000!}$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8206298382133411,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact = (\\<lambda> n. if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"n = 10000\"\nshows  \"prod_odd_integers_less_n = fact n / (2 ^ (n div 2) * fact (n div 2))\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact = (\\<lambda> n. if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"n = 10000\"\nshows  \"prod_odd_integers_less_n = fact n / (2 ^ (n div 2) * fact (n div 2))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the factorial function $fact(n) = n!$ and an integer $n = 10000$, find the product of all odd integers less than $n$. The final answer is $\\frac{fact(n)}{(2^{(\\frac{n}{2})} * fact(\\frac{n}{2}))}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8923314992713056,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 0 = 1\"\nand h1 : \"\\<forall>n \\<in> {1..<10000}. (odd n \\<longrightarrow> f n = f (n - 1) * n) \\<and> (\\<not> odd n \\<longrightarrow> f n = f (n - 1))\"\nand h2 : \"f 10000 = (fact 10000) / (2 ^ 5000 * fact 5000)\"\nshows  \"\\<forall>n \\<in> {1..<10000}. (odd n \\<longrightarrow> f n = f (n - 1) * n) \\<and> (\\<not> odd n \\<longrightarrow> f n = f (n - 1))\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 0 = 1\"\nand h1 : \"\\<forall>n \\<in> {1..<10000}. (odd n \\<longrightarrow> f n = f (n - 1) * n) \\<and> (\\<not> odd n \\<longrightarrow> f n = f (n - 1))\"\nand h2 : \"f 10000 = (fact 10000) / (2 ^ 5000 * fact 5000)\"\nshows  \"\\<forall>n \\<in> {1..<10000}. (odd n \\<longrightarrow> f n = f (n - 1) * n) \\<and> (\\<not> odd n \\<longrightarrow> f n = f (n - 1))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined for natural numbers as follows:\n\n1. $f(0) = 1$\n2. For all $n$ in the range $1 \\leq n < 10000$:\n   a. If $n$ is odd, then $f(n) = f(n - 1) * n$\n   b. If $n$ is not odd (i.e., even), then $f(n) = f(n - 1)$\n\nIt is given that $f(10000) = \\frac{10000!}{2^{5000} \\cdot 5000!}$. Prove that the recursive rules defined for $f$ hold true for all $n$ in the range $1 \\leq n < 10000$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.7919144129896034,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes product :: real\nassumes h0 : \"product = (\\<Prod>n\\<in>{1,3,..,9999}. n)\"\nshows  \"product = (fact 10000) / (2 powr 5000 * fact 5000)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes product :: real\nassumes h0 : \"product = (\\<Prod>n\\<in>{1,3,..,9999}. n)\"\nshows  \"product = (fact 10000) / (2 powr 5000 * fact 5000)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all odd integers from 1 to 9999. Express the product in terms of factorials and powers of 2. The final answer is $\\frac{10000!}{2^{5000} \\cdot 5000!}$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8997736013345501,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes prod :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"prod = (\\<lambda>n. \\<Prod>k = 1..<n. if odd k then k else 1)\"\nand h1 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> prod n = fact (2 * n) div (2 ^ n * fact n)\"\nshows  \"prod 5000 = fact 10000 div (2 ^ 5000 * fact 5000)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes prod :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"prod = (\\<lambda>n. \\<Prod>k = 1..<n. if odd k then k else 1)\"\nand h1 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> prod n = fact (2 * n) div (2 ^ n * fact n)\"\nshows  \"prod 5000 = fact 10000 div (2 ^ 5000 * fact 5000)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a product function $prod(n)$ as the product of all odd numbers less than $n$: $prod(n) = \\prod_{k=1}^{n-1} k$ if $k$ is odd, and $1$ otherwise. Prove that for all integers $n \\geq 1$, $prod(n) = \\frac{(2n)!}{2^n n!}$. Find the value of $prod(5000)$. The final answer is $\\frac{10000!}{2^{5000} \\cdot 5000!}$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8744626371312431,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. fact n = (if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall>n. fact (2 * n) = 2 ^ n * fact n * fact n\"\nshows  \"fact 10000 / (2 ^ 5000 * fact 5000) = (\\<Prod>n\\<in>{1,3,5,..,9999}. real n)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. fact n = (if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall>n. fact (2 * n) = 2 ^ n * fact n * fact n\"\nshows  \"fact 10000 / (2 ^ 5000 * fact 5000) = (\\<Prod>n\\<in>{1,3,5,..,9999}. real n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{10000!}{2^{5000} \\times 5000!}$, where the factorial $n!$ is defined as the product of all positive integers up to $n$. Express your answer as the product of all odd integers from 1 to 9999, i.e., $\\prod_{n = 1, 3, 5, \\dots, 9999} n$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8497586479237872,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem odd_product_is_formula_D:\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"prod (\\<lambda>k. 2*k - 1) {1..5000} = fact n / (2 ^ 5000 * fact (n div 2))\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem odd_product_is_formula_D:\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"prod (\\<lambda>k. 2*k - 1) {1..5000} = fact n / (2 ^ 5000 * fact (n div 2))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the product of the first 5,000 odd integers? Express your answer in terms of the factorial function and exponentiation. The final answer is $\\frac{10000!}{2^{5000} \\times (5000!)}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8803248106464543,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes fact_10000 fact_5000 product :: \"real\"\nassumes h0 : \"fact_10000 = fact 10000\"\nand h1 : \"fact_5000 = fact 5000\"\nand h2 : \"product = fact_10000 / (2 powr 5000 * fact_5000)\"\nshows  \"product = (\\<Prod>i \\<in> {1,3..9999}. i)\"",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\ntheorem\nfixes fact_10000 fact_5000 product :: \"real\"\nassumes h0 : \"fact_10000 = fact 10000\"\nand h1 : \"fact_5000 = fact 5000\"\nand h2 : \"product = fact_10000 / (2 powr 5000 * fact_5000)\"\nshows  \"product = (\\<Prod>i \\<in> {1,3..9999}. i)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that there is a product which is defined as the ratio of the factorial of 10,000 divided by the product of 2 raised to the power of 5,000 and the factorial of 5,000, find the value of the product in terms of the product of all odd integers from 1 to 9,999. The final answer is the product of all odd integers from 1 to 9,999.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8708424941543369,
+        "symbolic_score": 0.1
+    },
+    "equivalence_oracle_solve_direct": [],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000) (factorial 5000)\"\n",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000) (factorial 5000)\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that we have a natural number n equal to 10,000. We need to find the product of all odd numbers from 1 to n-1 (i.e., from 1 to 9,999). Then, we need to show that this product is equal to the result of dividing the 5000th power of 2 by the factorial of 5000. In other words, we want to find the product of all odd numbers from 1 to 9,999 and prove that it is equal to the value obtained by dividing 2 raised to the power of 5000 by the factorial of 5000.",
+        "semantic_score": 0.8393500541150818,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_less_n)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_less_n)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem is asking to find the product of all odd numbers from 1 to 9999 (since the upper limit in the list comprehension is exclusive), and then to show that this product is equal to the factorial of 10000 divided by the product of 2 raised to the power of 5000 and the factorial of 5000 (which is half of 10000). In other words, it's asking to prove that the product of all odd numbers less than 10000 is equal to the factorial of 10000 divided by a large power of 2 times the factorial of half of 10000.",
+        "semantic_score": 0.8521738892136547,
+        "symbolic_score": 0.3
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000) (factorial 5000)\"\nby (simp add: factorial_def)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000) (factorial 5000)\"\nby (simp add: factorial_def)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that given a natural number n equal to 10,000, we need to find the product of all odd numbers from 1 to n-1 (i.e., from 1 to 9,999). This product is then equated to the result of dividing the 5000th Fibonacci number by the 5000th factorial number. The problem asks to prove this statement using the definition of factorial.\n\nIn natural language, the problem can be stated as follows:\n\nConsider the number n equal to 10,000. Calculate the product of all odd numbers from 1 to 9,999. Show that this product is equal to the result of dividing the 5000th Fibonacci number by the 5000th factorial number, using the definition of factorial.",
+        "semantic_score": 0.7658087390508069,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_less_n)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_less_n)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that given a natural number n equal to 10,000, we need to find the product of all odd numbers from 1 to n-1 (i.e., from 1 to 9,999). This product is equal to the factorial of n (10,000 factorial) divided by the product of 2 raised to the power of 5,000 and the factorial of n divided by 2 (5,000 factorial). In other words, we need to calculate the product of all odd numbers from 1 to 9,999 and verify that it is equal to the given expression.",
+        "semantic_score": 0.8220173228749017,
+        "symbolic_score": 0.3
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_nat)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_nat)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that for a natural number `n` equal to 10,000, the product of all odd numbers from 1 to `n-1` (which is 9,999) is equal to the factorial of `n` (10,000 factorial) divided by the product of 2 raised to the power of 5,000 and the factorial of `n/2` (5,000 factorial).\n\nIn natural language, the problem can be stated as:\n\nCalculate the product of all odd numbers from 1 to 9,999. Show that this product is equal to the result of dividing 10,000 factorial by the product of 2 raised to the power of 5,000 and 5,000 factorial.",
+        "semantic_score": 0.841867734153138,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000 * (n div 2)!)\"\nby (simp add: h0)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000 * (n div 2)!)\"\nby (simp add: h0)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that given a natural number `n` equal to 10,000, we need to find the product of all odd numbers from 1 to `n-1` (which is 9,999 in this case). This product is then equated to a specific expression involving `n`, the factorial of `n/2`, and a power of 2.\n\nIn natural language, the problem can be stated as follows:\n\n\"Calculate the product of all odd numbers from 1 to 9,999. Then, divide this product by the factorial of 5,000 (which is half of 10,000) and raise the result to the power of 2 to the 5,000. Show that these two values are equal.\"",
+        "semantic_score": 0.7744896395620886,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000 * (n div 2)!)\"\nusing assms\nby (simp add: prod_list_filter_odd)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = n! div (2 powr 5000 * (n div 2)!)\"\nusing assms\nby (simp add: prod_list_filter_odd)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that given a natural number `n` equal to 10,000, we need to find the product of all odd numbers in the range from 1 to `n-1` (i.e., from 1 to 9,999). This product is equal to the result of the following expression: `n!` divided by the product of `2^5000` and `(n/2)!`.\n\nIn natural language, the problem can be stated as follows:\n\nCalculate the product of all odd numbers from 1 to 9,999, and show that this product is equal to the factorial of 10,000 divided by the product of 2 raised to the power of 5,000 and the factorial of 5,000.",
+        "semantic_score": 0.8092797168547897,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter (\\<lambda>x. x mod 2 = 1) [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nby (simp add: prod_filter_div_distrib)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter (\\<lambda>x. x mod 2 = 1) [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nby (simp add: prod_filter_div_distrib)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that given a natural number `n` equal to 10,000, we need to calculate the product of all odd numbers from 1 to `n-1` (exclusive). This product is then equal to the factorial of `n` divided by the product of 2 raised to the power of 5,000 and the factorial of `n/2`. In simpler terms, we need to find the product of all odd numbers from 1 to 9,999 and show that it is equal to the factorial of 10,000 divided by the product of 2 raised to the power of 5,000 and the factorial of 5,000.",
+        "semantic_score": 0.8428507818048298,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_less_n)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_list_filter_odd_less_n)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem is asking to find the product of all odd numbers from 1 to 9999 (since the upper limit in the list comprehension is less than 10000). This product is then equated to the factorial of 10000 divided by the product of 2 raised to the power of 5000 and the factorial of 5000 (which is half of 10000). The theorem asserts that these two quantities are equal.",
+        "semantic_score": 0.8294162043274385,
+        "symbolic_score": 0.3
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_filter_div_fact)",
+        "formal solution": "(* ### Problem\n What is the product of all positive odd integers less than $10000$?\n\n$\\text{(A)}\\ \\dfrac{10000!}{(5000!)^2}\\qquad \\text{(B)}\\ \\dfrac{10000!}{2^{5000}}\\qquad\n\\text{(C)}\\ \\dfrac{9999!}{2^{5000}}\\qquad \\text{(D)}\\ \\dfrac{10000!}{2^{5000} \\cdot 5000!}\\qquad\n\\text{(E)}\\ \\dfrac{5000!}{2^{5000}}$ Show that it is \\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}.\n ### Proof\n $1 \\cdot 3 \\cdot 5 \\cdots 9999 = \\dfrac{1 \\cdot 2 \\cdot 3 \\cdot 4 \\cdots 10000}{2 \\cdot 4 \\cdot 6 \\cdots 10000}= \\dfrac{10000!}{2^{5000} \\cdot 1 \\cdot 2 \\cdot 3 \\cdots 5000}= \\dfrac{10000!}{2^{5000}\\cdot5000!}$\n\nTherefore the answer is $\\text{(D)} \\dfrac{10000!}{2^{5000} \\cdot 5000!}$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"PROD i <- filter odd [1..<n]. i = fact n div (2 powr 5000 * fact (n div 2))\"\nusing assms\nby (simp add: prod_filter_div_fact)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that for a natural number n, given that n is equal to 10,000, the product of all odd numbers from 1 to n-1 (excluding n) is equal to the factorial of n divided by the product of 2 raised to the power of 5,000 and the factorial of half of n. In simpler terms, we are asked to find the product of all odd numbers from 1 to 9,999 and show that it is equal to the factorial of 10,000 divided by the product of 2 raised to the power of 5,000 and the factorial of 5,000.",
+        "semantic_score": 0.8237838922649277,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            8,
+            1,
+            3
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": []
+}

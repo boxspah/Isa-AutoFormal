@@ -1,0 +1,128 @@
+{
+    "problem_name": "aime_1983_p9",
+    "informal_statement": "Find the minimum value of $\\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$. Show that it is 012.",
+    "informal_proof": "Let $y=x\\sin{x}$. We can rewrite the expression as $\\frac{9y^2+4}{y}=9y+\\frac{4}{y}$.\n\nSince $x>0$, and $\\sin{x}>0$ because $0< x<\\pi$, we have $y>0$. So we can apply [[AM-GM]]:\n\n$9y+\\frac{4}{y}\\ge 2\\sqrt{9y\\cdot\\frac{4}{y}}=12$\n\nThe equality holds when $9y=\\frac{4}{y}\\Longleftrightarrow y^2=\\frac49\\Longleftrightarrow y=\\frac23$.\n\nTherefore, the minimum value is $012$. This is reached when we have $x \\sin{x} = \\frac{2}{3}$ in the original equation (since $x\\sin x$ is continuous and increasing on the interval $0 \\le x \\le \\frac{\\pi}{2}$, and its range on that interval is from $0 \\le x\\sin x \\le \\frac{\\pi}{2}$, this value of $\\frac{2}{3}$ is attainable by the [[Intermediate Value Theorem]]).",
+    "a_0": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"0 < x\"\nand h1 : \"x < pi\"\nand h2 : \"\\<forall> x. x * sin x \\<noteq> 0\"\nshows  \"Min {9 * x powr 2 * (sin x) powr 2 + 4 / (x * sin x)} = 12\"",
+        "formal solution": "(* ### Problem\n Find the minimum value of $\\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$. The final Answer is $012$\n ### Proof\n Let $y=x\\sin{x}$. We can rewrite the expression as $\\frac{9y^2+4}{y}=9y+\\frac{4}{y}$.\n\nSince $x>0$, and $\\sin{x}>0$ because $0< x<\\pi$, we have $y>0$. So we can apply [[AM-GM]]:\n\n$9y+\\frac{4}{y}\\ge 2\\sqrt{9y\\cdot\\frac{4}{y}}=12$\n\nThe equality holds when $9y=\\frac{4}{y}\\Longleftrightarrow y^2=\\frac49\\Longleftrightarrow y=\\frac23$.\n\nTherefore, the minimum value is $012$. This is reached when we have $x \\sin{x} = \\frac{2}{3}$ in the original equation (since $x\\sin x$ is continuous and increasing on the interval $0 \\le x \\le \\frac{\\pi}{2}$, and its range on that interval is from $0 \\le x\\sin x \\le \\frac{\\pi}{2}$, this value of $\\frac{2}{3}$ is attainable by the [[Intermediate Value Theorem]]).\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"0 < x\"\nand h1 : \"x < pi\"\nand h2 : \"\\<forall> x. x * sin x \\<noteq> 0\"\nshows  \"Min {9 * x powr 2 * (sin x) powr 2 + 4 / (x * sin x)} = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $0 < x < \\pi$ and $x \\cdot \\sin(x) \\neq 0$, find the minimum value of the expression $9x^2\\sin^2(x) + \\frac{4}{x\\sin(x)}$. The final answer is 12.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8480554223060608,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < x\"\nand h1 : \"x < pi\"\nand h2 : \"\\<forall> x. f x = (9 * (x powr 2) * (sin x) powr 2 + 4) / (x * sin x)\"\nshows  \"f x \\<ge> 12\"",
+        "formal solution": "(* ### Problem\n Find the minimum value of $\\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$. The final Answer is $012$\n ### Proof\n Let $y=x\\sin{x}$. We can rewrite the expression as $\\frac{9y^2+4}{y}=9y+\\frac{4}{y}$.\n\nSince $x>0$, and $\\sin{x}>0$ because $0< x<\\pi$, we have $y>0$. So we can apply [[AM-GM]]:\n\n$9y+\\frac{4}{y}\\ge 2\\sqrt{9y\\cdot\\frac{4}{y}}=12$\n\nThe equality holds when $9y=\\frac{4}{y}\\Longleftrightarrow y^2=\\frac49\\Longleftrightarrow y=\\frac23$.\n\nTherefore, the minimum value is $012$. This is reached when we have $x \\sin{x} = \\frac{2}{3}$ in the original equation (since $x\\sin x$ is continuous and increasing on the interval $0 \\le x \\le \\frac{\\pi}{2}$, and its range on that interval is from $0 \\le x\\sin x \\le \\frac{\\pi}{2}$, this value of $\\frac{2}{3}$ is attainable by the [[Intermediate Value Theorem]]).\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < x\"\nand h1 : \"x < pi\"\nand h2 : \"\\<forall> x. f x = (9 * (x powr 2) * (sin x) powr 2 + 4) / (x * sin x)\"\nshows  \"f x \\<ge> 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = \\frac{9x^2\\sin^2(x) + 4}{x\\sin(x)}$, where $0 < x < \\pi$, show that $f(x) \\geq 12$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7440136075019836,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"0 < x \\<and> x < pi\"\nand h1 : \"\\<forall>x. 0 < x \\<and> x < pi \\<longrightarrow> (9 * x powr 2 * sin x powr 2 + 4) / (x * sin x) \\<ge> 12\"\nshows  \"12 = (LEAST a. \\<exists> x. 0 < x \\<and> x < pi \\<and> (9 * x powr 2 * sin x powr 2 + 4) / (x * sin x) = a)\"",
+        "formal solution": "(* ### Problem\n Find the minimum value of $\\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$. The final Answer is $012$\n ### Proof\n Let $y=x\\sin{x}$. We can rewrite the expression as $\\frac{9y^2+4}{y}=9y+\\frac{4}{y}$.\n\nSince $x>0$, and $\\sin{x}>0$ because $0< x<\\pi$, we have $y>0$. So we can apply [[AM-GM]]:\n\n$9y+\\frac{4}{y}\\ge 2\\sqrt{9y\\cdot\\frac{4}{y}}=12$\n\nThe equality holds when $9y=\\frac{4}{y}\\Longleftrightarrow y^2=\\frac49\\Longleftrightarrow y=\\frac23$.\n\nTherefore, the minimum value is $012$. This is reached when we have $x \\sin{x} = \\frac{2}{3}$ in the original equation (since $x\\sin x$ is continuous and increasing on the interval $0 \\le x \\le \\frac{\\pi}{2}$, and its range on that interval is from $0 \\le x\\sin x \\le \\frac{\\pi}{2}$, this value of $\\frac{2}{3}$ is attainable by the [[Intermediate Value Theorem]]).\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"0 < x \\<and> x < pi\"\nand h1 : \"\\<forall>x. 0 < x \\<and> x < pi \\<longrightarrow> (9 * x powr 2 * sin x powr 2 + 4) / (x * sin x) \\<ge> 12\"\nshows  \"12 = (LEAST a. \\<exists> x. 0 < x \\<and> x < pi \\<and> (9 * x powr 2 * sin x powr 2 + 4) / (x * sin x) = a)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest possible value of $\\frac{9x^2 \\sin^2(x) + 4}{x \\sin(x)}$ for $0 < x < \\pi$. The final answer is 12.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9942874908447266,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < x \\<and> x < pi\"\nand h1 : \"\\<forall> x. f x = (9 * x powr 2 * (sin x) powr 2 + 4) / (x * sin x)\"\nshows  \"Inf (f ` {x. 0 < x \\<and> x < pi}) = 12\"",
+        "formal solution": "(* ### Problem\n Find the minimum value of $\\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$. The final Answer is $012$\n ### Proof\n Let $y=x\\sin{x}$. We can rewrite the expression as $\\frac{9y^2+4}{y}=9y+\\frac{4}{y}$.\n\nSince $x>0$, and $\\sin{x}>0$ because $0< x<\\pi$, we have $y>0$. So we can apply [[AM-GM]]:\n\n$9y+\\frac{4}{y}\\ge 2\\sqrt{9y\\cdot\\frac{4}{y}}=12$\n\nThe equality holds when $9y=\\frac{4}{y}\\Longleftrightarrow y^2=\\frac49\\Longleftrightarrow y=\\frac23$.\n\nTherefore, the minimum value is $012$. This is reached when we have $x \\sin{x} = \\frac{2}{3}$ in the original equation (since $x\\sin x$ is continuous and increasing on the interval $0 \\le x \\le \\frac{\\pi}{2}$, and its range on that interval is from $0 \\le x\\sin x \\le \\frac{\\pi}{2}$, this value of $\\frac{2}{3}$ is attainable by the [[Intermediate Value Theorem]]).\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < x \\<and> x < pi\"\nand h1 : \"\\<forall> x. f x = (9 * x powr 2 * (sin x) powr 2 + 4) / (x * sin x)\"\nshows  \"Inf (f ` {x. 0 < x \\<and> x < pi}) = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the minimum value of the function $f(x) = \\frac{9x^2\\sin^2(x) + 4}{x\\sin(x)}$ for $0 < x < \\pi$. The final answer is 12.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9880074262619019,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < x \\<and> x < pi\"\nand h1 : \"\\<forall> x. f x = (9 * x powr 2 * (sin x) powr 2 + 4) / (x * sin x)\"\nshows  \"Min {f x | x. 0 < x \\<and> x < pi} = 12\"",
+        "formal solution": "(* ### Problem\n Find the minimum value of $\\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$. The final Answer is $012$\n ### Proof\n Let $y=x\\sin{x}$. We can rewrite the expression as $\\frac{9y^2+4}{y}=9y+\\frac{4}{y}$.\n\nSince $x>0$, and $\\sin{x}>0$ because $0< x<\\pi$, we have $y>0$. So we can apply [[AM-GM]]:\n\n$9y+\\frac{4}{y}\\ge 2\\sqrt{9y\\cdot\\frac{4}{y}}=12$\n\nThe equality holds when $9y=\\frac{4}{y}\\Longleftrightarrow y^2=\\frac49\\Longleftrightarrow y=\\frac23$.\n\nTherefore, the minimum value is $012$. This is reached when we have $x \\sin{x} = \\frac{2}{3}$ in the original equation (since $x\\sin x$ is continuous and increasing on the interval $0 \\le x \\le \\frac{\\pi}{2}$, and its range on that interval is from $0 \\le x\\sin x \\le \\frac{\\pi}{2}$, this value of $\\frac{2}{3}$ is attainable by the [[Intermediate Value Theorem]]).\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < x \\<and> x < pi\"\nand h1 : \"\\<forall> x. f x = (9 * x powr 2 * (sin x) powr 2 + 4) / (x * sin x)\"\nshows  \"Min {f x | x. 0 < x \\<and> x < pi} = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the minimum value of the function $f(x) = \\frac{9x^2(\\sin{x})^2 + 4}{x\\sin{x}}$ for $0 < x < \\pi$. The final answer is 12.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9885677099227905,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < x\"\nand h1 : \"x < pi\"\nand h2 : \"\\<forall> x. f x = (9 * x powr 2 * (sin x) powr 2 + 4) / (x * sin x)\"\nshows  \"LEAST y. \\<exists> x. 0 < x \\<and> x < pi \\<and> y = f x\"",
+        "formal solution": "(* ### Problem\n Find the minimum value of $\\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$. The final Answer is $012$\n ### Proof\n Let $y=x\\sin{x}$. We can rewrite the expression as $\\frac{9y^2+4}{y}=9y+\\frac{4}{y}$.\n\nSince $x>0$, and $\\sin{x}>0$ because $0< x<\\pi$, we have $y>0$. So we can apply [[AM-GM]]:\n\n$9y+\\frac{4}{y}\\ge 2\\sqrt{9y\\cdot\\frac{4}{y}}=12$\n\nThe equality holds when $9y=\\frac{4}{y}\\Longleftrightarrow y^2=\\frac49\\Longleftrightarrow y=\\frac23$.\n\nTherefore, the minimum value is $012$. This is reached when we have $x \\sin{x} = \\frac{2}{3}$ in the original equation (since $x\\sin x$ is continuous and increasing on the interval $0 \\le x \\le \\frac{\\pi}{2}$, and its range on that interval is from $0 \\le x\\sin x \\le \\frac{\\pi}{2}$, this value of $\\frac{2}{3}$ is attainable by the [[Intermediate Value Theorem]]).\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < x\"\nand h1 : \"x < pi\"\nand h2 : \"\\<forall> x. f x = (9 * x powr 2 * (sin x) powr 2 + 4) / (x * sin x)\"\nshows  \"LEAST y. \\<exists> x. 0 < x \\<and> x < pi \\<and> y = f x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest value of the function $f(x) = \\frac{9x^2\\sin^2(x) + 4}{x\\sin(x)}$ for $0 < x < \\pi$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7810905575752258,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < x\"\nand h1 : \"x < pi\"\nand h2 : \"\\<forall> x. f x = (9 * x^2 * (sin x)^2 + 4) / (x * sin x)\"\nshows  \"f x = (LEAST a. \\<exists> x. a = f x)\"",
+        "formal solution": "(* ### Problem\n Find the minimum value of $\\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$. The final Answer is $012$\n ### Proof\n Let $y=x\\sin{x}$. We can rewrite the expression as $\\frac{9y^2+4}{y}=9y+\\frac{4}{y}$.\n\nSince $x>0$, and $\\sin{x}>0$ because $0< x<\\pi$, we have $y>0$. So we can apply [[AM-GM]]:\n\n$9y+\\frac{4}{y}\\ge 2\\sqrt{9y\\cdot\\frac{4}{y}}=12$\n\nThe equality holds when $9y=\\frac{4}{y}\\Longleftrightarrow y^2=\\frac49\\Longleftrightarrow y=\\frac23$.\n\nTherefore, the minimum value is $012$. This is reached when we have $x \\sin{x} = \\frac{2}{3}$ in the original equation (since $x\\sin x$ is continuous and increasing on the interval $0 \\le x \\le \\frac{\\pi}{2}$, and its range on that interval is from $0 \\le x\\sin x \\le \\frac{\\pi}{2}$, this value of $\\frac{2}{3}$ is attainable by the [[Intermediate Value Theorem]]).\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < x\"\nand h1 : \"x < pi\"\nand h2 : \"\\<forall> x. f x = (9 * x^2 * (sin x)^2 + 4) / (x * sin x)\"\nshows  \"f x = (LEAST a. \\<exists> x. a = f x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest value of the function $f(x) = \\frac{9x^2 \\cdot (\\sin{x})^2 + 4}{x \\cdot \\sin{x}}$ for $0 < x < \\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7847248911857605,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"0 < x \\<and> x < pi\"\nand h1 : \"let f = (\\<lambda>x. (9 * x powr 2 * (sin x) powr 2 + 4) / (x * sin x)) in continuous_on {0<..<pi} f\"\nshows  \"Inf (f ` {0<..<pi}) = 12\"",
+        "formal solution": "(* ### Problem\n Find the minimum value of $\\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$. The final Answer is $012$\n ### Proof\n Let $y=x\\sin{x}$. We can rewrite the expression as $\\frac{9y^2+4}{y}=9y+\\frac{4}{y}$.\n\nSince $x>0$, and $\\sin{x}>0$ because $0< x<\\pi$, we have $y>0$. So we can apply [[AM-GM]]:\n\n$9y+\\frac{4}{y}\\ge 2\\sqrt{9y\\cdot\\frac{4}{y}}=12$\n\nThe equality holds when $9y=\\frac{4}{y}\\Longleftrightarrow y^2=\\frac49\\Longleftrightarrow y=\\frac23$.\n\nTherefore, the minimum value is $012$. This is reached when we have $x \\sin{x} = \\frac{2}{3}$ in the original equation (since $x\\sin x$ is continuous and increasing on the interval $0 \\le x \\le \\frac{\\pi}{2}$, and its range on that interval is from $0 \\le x\\sin x \\le \\frac{\\pi}{2}$, this value of $\\frac{2}{3}$ is attainable by the [[Intermediate Value Theorem]]).\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"0 < x \\<and> x < pi\"\nand h1 : \"let f = (\\<lambda>x. (9 * x powr 2 * (sin x) powr 2 + 4) / (x * sin x)) in continuous_on {0<..<pi} f\"\nshows  \"Inf (f ` {0<..<pi}) = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a continuous function $f(x) = \\frac{9x^2 \\sin^2(x) + 4}{x \\sin(x)}$ on the open interval $(0, \\pi)$, find the minimum value of the function. The final answer is $12$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9831932187080383,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < x\"\nand h1 : \"x < pi\"\nand h2 : \"\\<forall> x. f x = (9 * x powr 2 * (sin x) powr 2 + 4) / (x * sin x)\"\nshows  \"LEAST y. (\\<exists>x. 0 < x \\<and> x < pi \\<and> f x = y) = 12\"",
+        "formal solution": "(* ### Problem\n Find the minimum value of $\\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$. The final Answer is $012$\n ### Proof\n Let $y=x\\sin{x}$. We can rewrite the expression as $\\frac{9y^2+4}{y}=9y+\\frac{4}{y}$.\n\nSince $x>0$, and $\\sin{x}>0$ because $0< x<\\pi$, we have $y>0$. So we can apply [[AM-GM]]:\n\n$9y+\\frac{4}{y}\\ge 2\\sqrt{9y\\cdot\\frac{4}{y}}=12$\n\nThe equality holds when $9y=\\frac{4}{y}\\Longleftrightarrow y^2=\\frac49\\Longleftrightarrow y=\\frac23$.\n\nTherefore, the minimum value is $012$. This is reached when we have $x \\sin{x} = \\frac{2}{3}$ in the original equation (since $x\\sin x$ is continuous and increasing on the interval $0 \\le x \\le \\frac{\\pi}{2}$, and its range on that interval is from $0 \\le x\\sin x \\le \\frac{\\pi}{2}$, this value of $\\frac{2}{3}$ is attainable by the [[Intermediate Value Theorem]]).\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < x\"\nand h1 : \"x < pi\"\nand h2 : \"\\<forall> x. f x = (9 * x powr 2 * (sin x) powr 2 + 4) / (x * sin x)\"\nshows  \"LEAST y. (\\<exists>x. 0 < x \\<and> x < pi \\<and> f x = y) = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the function $f(x) = \\frac{9x^2\\sin^2(x) + 4}{x\\sin(x)}$ for $0 < x < \\pi$, find the smallest value of $f(x)$. The final answer is 12.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9807326197624207,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"0 < x\"\nand h1 : \"x < pi\"\nand h2 : \"sin x \\<noteq> 0\"\nshows  \"min_value x = (9 * x powr 2 * (sin x) powr 2 + 4) / (x * sin x)\"",
+        "formal solution": "(* ### Problem\n Find the minimum value of $\\frac{9x^2\\sin^2 x + 4}{x\\sin x}$ for $0 < x < \\pi$. The final Answer is $012$\n ### Proof\n Let $y=x\\sin{x}$. We can rewrite the expression as $\\frac{9y^2+4}{y}=9y+\\frac{4}{y}$.\n\nSince $x>0$, and $\\sin{x}>0$ because $0< x<\\pi$, we have $y>0$. So we can apply [[AM-GM]]:\n\n$9y+\\frac{4}{y}\\ge 2\\sqrt{9y\\cdot\\frac{4}{y}}=12$\n\nThe equality holds when $9y=\\frac{4}{y}\\Longleftrightarrow y^2=\\frac49\\Longleftrightarrow y=\\frac23$.\n\nTherefore, the minimum value is $012$. This is reached when we have $x \\sin{x} = \\frac{2}{3}$ in the original equation (since $x\\sin x$ is continuous and increasing on the interval $0 \\le x \\le \\frac{\\pi}{2}$, and its range on that interval is from $0 \\le x\\sin x \\le \\frac{\\pi}{2}$, this value of $\\frac{2}{3}$ is attainable by the [[Intermediate Value Theorem]]).\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"0 < x\"\nand h1 : \"x < pi\"\nand h2 : \"sin x \\<noteq> 0\"\nshows  \"min_value x = (9 * x powr 2 * (sin x) powr 2 + 4) / (x * sin x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the minimum value of the function $\\frac{9x^2(\\sin{x})^2 + 4}{x\\sin{x}}$ for $0 < x < \\pi$ and $\\sin{x} \\neq 0$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8450090885162354,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes x::real\nassumes \"0<x\" \"x<pi\"\nshows \"12 \\<le> ((9 * (x^2 * (sin x)^2)) + 4) / (x * sin x)\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    }
+}

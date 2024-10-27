@@ -1,0 +1,130 @@
+{
+    "problem_name": "amc12a_2002_p12",
+    "informal_statement": "Both roots of the quadratic equation $x^2 - 63x + k = 0$ are prime numbers. The number of possible values of $k$ is \n\n$\\text{(A)}\\ 0 \\qquad \\text{(B)}\\ 1 \\qquad \\text{(C)}\\ 2 \\qquad \\text{(D)}\\ 4 \\qquad \\text{(E) more than 4}$ Show that it is \\text{(B)}\\ 1.",
+    "informal_proof": "Consider a general quadratic with the coefficient of $x^2$ being $1$ and the roots being $r$ and $s$. It can be factored as $(x-r)(x-s)$ which is just $x^2-(r+s)x+rs$. Thus, the sum of the roots is the negative of the coefficient of $x$ and the product is the constant term. (In general, this leads to [[Vieta's Formulas]]).\n\nWe now have that the sum of the two roots is $63$ while the product is $k$. Since both roots are primes, one must be $2$, otherwise the sum would be even. That means the other root is $61$ and the product must be $122$. Hence, our answer is $\\text{(B)}\\ 1$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes x k :: real and roots :: \"real \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>x. x^2 - 63 * x + k = 0 \\<longrightarrow> roots x\"\nand h1 : \"\\<forall>x. roots x \\<longrightarrow> prime x\"\nshows  \"\\<exists>!k. (\\<exists>x1 x2. roots x1 \\<and> roots x2 \\<and> x1 \\<noteq> x2)\"",
+        "formal solution": "(* ### Problem\n Both roots of the quadratic equation $x^2 - 63x + k = 0$ are prime numbers. The number of possible values of $k$ is \n\n$\\text{(A)}\\ 0 \\qquad \\text{(B)}\\ 1 \\qquad \\text{(C)}\\ 2 \\qquad \\text{(D)}\\ 4 \\qquad \\text{(E) more than 4}$ Show that it is \\text{(B)}\\ 1.\n ### Proof\n Consider a general quadratic with the coefficient of $x^2$ being $1$ and the roots being $r$ and $s$. It can be factored as $(x-r)(x-s)$ which is just $x^2-(r+s)x+rs$. Thus, the sum of the roots is the negative of the coefficient of $x$ and the product is the constant term. (In general, this leads to [[Vieta's Formulas]]).\n\nWe now have that the sum of the two roots is $63$ while the product is $k$. Since both roots are primes, one must be $2$, otherwise the sum would be even. That means the other root is $61$ and the product must be $122$. Hence, our answer is $\\text{(B)}\\ 1$.\n *)\n\ntheorem\nfixes x k :: real and roots :: \"real \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>x. x^2 - 63 * x + k = 0 \\<longrightarrow> roots x\"\nand h1 : \"\\<forall>x. roots x \\<longrightarrow> prime x\"\nshows  \"\\<exists>!k. (\\<exists>x1 x2. roots x1 \\<and> roots x2 \\<and> x1 \\<noteq> x2)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the unique value of $k$ such that the quadratic equation $x^2 - 63x + k = 0$ has two distinct prime roots.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.4296761155128479,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x k :: real\nassumes h0 : \"\\<forall> x. x powr 2 - 63 * x + k = 0\"\nand h1 : \"\\<forall> x. x powr 2 - 63 * x + k = 0 \\<longrightarrow> is_prime x\"\nshows  \"card {k. \\<exists> x. x powr 2 - 63 * x + k = 0 \\<and> is_prime x} = 1\"",
+        "formal solution": "(* ### Problem\n Both roots of the quadratic equation $x^2 - 63x + k = 0$ are prime numbers. The number of possible values of $k$ is \n\n$\\text{(A)}\\ 0 \\qquad \\text{(B)}\\ 1 \\qquad \\text{(C)}\\ 2 \\qquad \\text{(D)}\\ 4 \\qquad \\text{(E) more than 4}$ Show that it is \\text{(B)}\\ 1.\n ### Proof\n Consider a general quadratic with the coefficient of $x^2$ being $1$ and the roots being $r$ and $s$. It can be factored as $(x-r)(x-s)$ which is just $x^2-(r+s)x+rs$. Thus, the sum of the roots is the negative of the coefficient of $x$ and the product is the constant term. (In general, this leads to [[Vieta's Formulas]]).\n\nWe now have that the sum of the two roots is $63$ while the product is $k$. Since both roots are primes, one must be $2$, otherwise the sum would be even. That means the other root is $61$ and the product must be $122$. Hence, our answer is $\\text{(B)}\\ 1$.\n *)\n\ntheorem\nfixes x k :: real\nassumes h0 : \"\\<forall> x. x powr 2 - 63 * x + k = 0\"\nand h1 : \"\\<forall> x. x powr 2 - 63 * x + k = 0 \\<longrightarrow> is_prime x\"\nshows  \"card {k. \\<exists> x. x powr 2 - 63 * x + k = 0 \\<and> is_prime x} = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of values of $k$ such that the quadratic equation $x^2 - 63x + k = 0$ has prime solutions for $x$. The final answer is 1.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7828152775764465,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x k :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 2 - 63 * x + k\"\nand h1 : \"P x = 0\"\nand h2 : \"\\<forall> x. is_prime x \\<longrightarrow> P x = 0\"\nand h3 : \"\\<forall> x. P x = 0 \\<longrightarrow> is_prime x\"\nshows  \"card {k. \\<exists> x. P x = 0 \\<and> is_prime x} = 1\"",
+        "formal solution": "(* ### Problem\n Both roots of the quadratic equation $x^2 - 63x + k = 0$ are prime numbers. The number of possible values of $k$ is \n\n$\\text{(A)}\\ 0 \\qquad \\text{(B)}\\ 1 \\qquad \\text{(C)}\\ 2 \\qquad \\text{(D)}\\ 4 \\qquad \\text{(E) more than 4}$ Show that it is \\text{(B)}\\ 1.\n ### Proof\n Consider a general quadratic with the coefficient of $x^2$ being $1$ and the roots being $r$ and $s$. It can be factored as $(x-r)(x-s)$ which is just $x^2-(r+s)x+rs$. Thus, the sum of the roots is the negative of the coefficient of $x$ and the product is the constant term. (In general, this leads to [[Vieta's Formulas]]).\n\nWe now have that the sum of the two roots is $63$ while the product is $k$. Since both roots are primes, one must be $2$, otherwise the sum would be even. That means the other root is $61$ and the product must be $122$. Hence, our answer is $\\text{(B)}\\ 1$.\n *)\n\ntheorem\nfixes x k :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 2 - 63 * x + k\"\nand h1 : \"P x = 0\"\nand h2 : \"\\<forall> x. is_prime x \\<longrightarrow> P x = 0\"\nand h3 : \"\\<forall> x. P x = 0 \\<longrightarrow> is_prime x\"\nshows  \"card {k. \\<exists> x. P x = 0 \\<and> is_prime x} = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $k$ such that the quadratic equation $x^2 - 63x + k = 0$ has roots that are prime numbers and only prime numbers are roots of the equation. The final answer is that there is only one such value for $k$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7921785116195679,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x k :: real\nassumes h0 : \"poly ([:k, -63, 1:] :: real poly) x = 0\"\nand h1 : \"\\<forall> x. poly ([:k, -63, 1:]) x = 0 \\<longrightarrow> prime x\"\nshows  \"card {k. (\\<exists> x. poly ([:k, -63, 1:]) x = 0 \\<and> prime x)} = 1\"",
+        "formal solution": "(* ### Problem\n Both roots of the quadratic equation $x^2 - 63x + k = 0$ are prime numbers. The number of possible values of $k$ is \n\n$\\text{(A)}\\ 0 \\qquad \\text{(B)}\\ 1 \\qquad \\text{(C)}\\ 2 \\qquad \\text{(D)}\\ 4 \\qquad \\text{(E) more than 4}$ Show that it is \\text{(B)}\\ 1.\n ### Proof\n Consider a general quadratic with the coefficient of $x^2$ being $1$ and the roots being $r$ and $s$. It can be factored as $(x-r)(x-s)$ which is just $x^2-(r+s)x+rs$. Thus, the sum of the roots is the negative of the coefficient of $x$ and the product is the constant term. (In general, this leads to [[Vieta's Formulas]]).\n\nWe now have that the sum of the two roots is $63$ while the product is $k$. Since both roots are primes, one must be $2$, otherwise the sum would be even. That means the other root is $61$ and the product must be $122$. Hence, our answer is $\\text{(B)}\\ 1$.\n *)\n\ntheorem\nfixes x k :: real\nassumes h0 : \"poly ([:k, -63, 1:] :: real poly) x = 0\"\nand h1 : \"\\<forall> x. poly ([:k, -63, 1:]) x = 0 \\<longrightarrow> prime x\"\nshows  \"card {k. (\\<exists> x. poly ([:k, -63, 1:]) x = 0 \\<and> prime x)} = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider the quadratic equation $k - 63x + x^2 = 0$. Find the number of values for $k$ such that, for every value of $x$ that satisfies the equation, $x$ is a prime number. The final answer is 1.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9901549220085144,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x k :: real and prime_root_count :: nat\nassumes h0 : \"\\<forall> x. x powr 2 - 63 * x + k = 0\"\nand h1 : \"\\<forall> x. (x powr 2 - 63 * x + k = 0) \\<longrightarrow> is_prime x\"\nshows  \"prime_root_count = 1\"",
+        "formal solution": "(* ### Problem\n Both roots of the quadratic equation $x^2 - 63x + k = 0$ are prime numbers. The number of possible values of $k$ is \n\n$\\text{(A)}\\ 0 \\qquad \\text{(B)}\\ 1 \\qquad \\text{(C)}\\ 2 \\qquad \\text{(D)}\\ 4 \\qquad \\text{(E) more than 4}$ Show that it is \\text{(B)}\\ 1.\n ### Proof\n Consider a general quadratic with the coefficient of $x^2$ being $1$ and the roots being $r$ and $s$. It can be factored as $(x-r)(x-s)$ which is just $x^2-(r+s)x+rs$. Thus, the sum of the roots is the negative of the coefficient of $x$ and the product is the constant term. (In general, this leads to [[Vieta's Formulas]]).\n\nWe now have that the sum of the two roots is $63$ while the product is $k$. Since both roots are primes, one must be $2$, otherwise the sum would be even. That means the other root is $61$ and the product must be $122$. Hence, our answer is $\\text{(B)}\\ 1$.\n *)\n\ntheorem\nfixes x k :: real and prime_root_count :: nat\nassumes h0 : \"\\<forall> x. x powr 2 - 63 * x + k = 0\"\nand h1 : \"\\<forall> x. (x powr 2 - 63 * x + k = 0) \\<longrightarrow> is_prime x\"\nshows  \"prime_root_count = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $k$ for which the quadratic equation $x^2 - 63x + k = 0$ has exactly one prime root.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.46294543147087097,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x k :: real\nassumes h0 : \"poly ([:k, -63, 1:] :: real poly) x = 0\"\nand h1 : \"is_prime (x :: nat)\"\nand h2 : \"is_prime (63 - x :: nat)\"\nshows  \"card {k. (\\<exists> x. poly ([:k, -63, 1:] :: real poly) x = 0 \\<and> is_prime (x :: nat) \\<and> is_prime (63 - x :: nat))} = 1\"",
+        "formal solution": "(* ### Problem\n Both roots of the quadratic equation $x^2 - 63x + k = 0$ are prime numbers. The number of possible values of $k$ is \n\n$\\text{(A)}\\ 0 \\qquad \\text{(B)}\\ 1 \\qquad \\text{(C)}\\ 2 \\qquad \\text{(D)}\\ 4 \\qquad \\text{(E) more than 4}$ Show that it is \\text{(B)}\\ 1.\n ### Proof\n Consider a general quadratic with the coefficient of $x^2$ being $1$ and the roots being $r$ and $s$. It can be factored as $(x-r)(x-s)$ which is just $x^2-(r+s)x+rs$. Thus, the sum of the roots is the negative of the coefficient of $x$ and the product is the constant term. (In general, this leads to [[Vieta's Formulas]]).\n\nWe now have that the sum of the two roots is $63$ while the product is $k$. Since both roots are primes, one must be $2$, otherwise the sum would be even. That means the other root is $61$ and the product must be $122$. Hence, our answer is $\\text{(B)}\\ 1$.\n *)\n\ntheorem\nfixes x k :: real\nassumes h0 : \"poly ([:k, -63, 1:] :: real poly) x = 0\"\nand h1 : \"is_prime (x :: nat)\"\nand h2 : \"is_prime (63 - x :: nat)\"\nshows  \"card {k. (\\<exists> x. poly ([:k, -63, 1:] :: real poly) x = 0 \\<and> is_prime (x :: nat) \\<and> is_prime (63 - x :: nat))} = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the unique value of $k$ such that the polynomial $x^2 - 63x + k$ has two roots that are both prime numbers, and their sum is equal to 63.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.6988925933837891,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x k :: int and prime_roots :: \"int list\"\nassumes h0 : \"\\<forall>x. x powr 2 - 63 * x + k = 0\"\nand h1 : \"\\<forall>r. r \\<in> set prime_roots \\<longrightarrow> is_prime r \\<and> (\\<exists>x. x powr 2 - 63 * x + k = 0)\"\nand h2 : \"length prime_roots = 2\"\nshows  \"card {k. \\<exists>prime_roots. (\\<forall>x. x powr 2 - 63 * x + k = 0) \\<and> (\\<forall>r. r \\<in> set prime_roots \\<longrightarrow> is_prime r \\<and> (\\<exists>x. x powr 2 - 63 * x + k = 0)) \\<and> (length prime_roots = 2)} = 1\"",
+        "formal solution": "(* ### Problem\n Both roots of the quadratic equation $x^2 - 63x + k = 0$ are prime numbers. The number of possible values of $k$ is \n\n$\\text{(A)}\\ 0 \\qquad \\text{(B)}\\ 1 \\qquad \\text{(C)}\\ 2 \\qquad \\text{(D)}\\ 4 \\qquad \\text{(E) more than 4}$ Show that it is \\text{(B)}\\ 1.\n ### Proof\n Consider a general quadratic with the coefficient of $x^2$ being $1$ and the roots being $r$ and $s$. It can be factored as $(x-r)(x-s)$ which is just $x^2-(r+s)x+rs$. Thus, the sum of the roots is the negative of the coefficient of $x$ and the product is the constant term. (In general, this leads to [[Vieta's Formulas]]).\n\nWe now have that the sum of the two roots is $63$ while the product is $k$. Since both roots are primes, one must be $2$, otherwise the sum would be even. That means the other root is $61$ and the product must be $122$. Hence, our answer is $\\text{(B)}\\ 1$.\n *)\n\ntheorem\nfixes x k :: int and prime_roots :: \"int list\"\nassumes h0 : \"\\<forall>x. x powr 2 - 63 * x + k = 0\"\nand h1 : \"\\<forall>r. r \\<in> set prime_roots \\<longrightarrow> is_prime r \\<and> (\\<exists>x. x powr 2 - 63 * x + k = 0)\"\nand h2 : \"length prime_roots = 2\"\nshows  \"card {k. \\<exists>prime_roots. (\\<forall>x. x powr 2 - 63 * x + k = 0) \\<and> (\\<forall>r. r \\<in> set prime_roots \\<longrightarrow> is_prime r \\<and> (\\<exists>x. x powr 2 - 63 * x + k = 0)) \\<and> (length prime_roots = 2)} = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the unique value of $k$ such that the quadratic equation $x^2 - 63x + k = 0$ has exactly two distinct prime roots.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.423308402299881,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x k :: real\nassumes h0 : \"x powr 2 - 63 * x + k = 0\"\nand h1 : \"\\<forall>x. (\\<exists>p. prime p \\<and> x = p) \\<longrightarrow> (\\<exists>q. prime q \\<and> (x powr 2 - 63 * x + k = x * (q - x)))\"\nshows  \"card {k. (\\<exists>x. (\\<exists>p. prime p \\<and> x = p) \\<and> (\\<exists>q. prime q \\<and> (x powr 2 - 63 * x + k = x * (q - x))))} = 1\"",
+        "formal solution": "(* ### Problem\n Both roots of the quadratic equation $x^2 - 63x + k = 0$ are prime numbers. The number of possible values of $k$ is \n\n$\\text{(A)}\\ 0 \\qquad \\text{(B)}\\ 1 \\qquad \\text{(C)}\\ 2 \\qquad \\text{(D)}\\ 4 \\qquad \\text{(E) more than 4}$ Show that it is \\text{(B)}\\ 1.\n ### Proof\n Consider a general quadratic with the coefficient of $x^2$ being $1$ and the roots being $r$ and $s$. It can be factored as $(x-r)(x-s)$ which is just $x^2-(r+s)x+rs$. Thus, the sum of the roots is the negative of the coefficient of $x$ and the product is the constant term. (In general, this leads to [[Vieta's Formulas]]).\n\nWe now have that the sum of the two roots is $63$ while the product is $k$. Since both roots are primes, one must be $2$, otherwise the sum would be even. That means the other root is $61$ and the product must be $122$. Hence, our answer is $\\text{(B)}\\ 1$.\n *)\n\ntheorem\nfixes x k :: real\nassumes h0 : \"x powr 2 - 63 * x + k = 0\"\nand h1 : \"\\<forall>x. (\\<exists>p. prime p \\<and> x = p) \\<longrightarrow> (\\<exists>q. prime q \\<and> (x powr 2 - 63 * x + k = x * (q - x)))\"\nshows  \"card {k. (\\<exists>x. (\\<exists>p. prime p \\<and> x = p) \\<and> (\\<exists>q. prime q \\<and> (x powr 2 - 63 * x + k = x * (q - x))))} = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of possible values for $k$ such that for any prime number $x$, there exists another prime number $q$ satisfying the equation $x^2 - 63x + k = x(q - x)$. The final answer is 1.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8340620398521423,
+        "symbolic_score": 0.2
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x k :: real and roots :: \"real set\"\nassumes h0 : \"\\<forall> x. x^2 - 63 * x + k = 0\"\nand h1 : \"roots = {x. is_prime x \\<and> x^2 - 63 * x + k = 0}\"\nand h2 : \"finite roots\"\nshows  \"card roots = 1\"",
+        "formal solution": "(* ### Problem\n Both roots of the quadratic equation $x^2 - 63x + k = 0$ are prime numbers. The number of possible values of $k$ is \n\n$\\text{(A)}\\ 0 \\qquad \\text{(B)}\\ 1 \\qquad \\text{(C)}\\ 2 \\qquad \\text{(D)}\\ 4 \\qquad \\text{(E) more than 4}$ Show that it is \\text{(B)}\\ 1.\n ### Proof\n Consider a general quadratic with the coefficient of $x^2$ being $1$ and the roots being $r$ and $s$. It can be factored as $(x-r)(x-s)$ which is just $x^2-(r+s)x+rs$. Thus, the sum of the roots is the negative of the coefficient of $x$ and the product is the constant term. (In general, this leads to [[Vieta's Formulas]]).\n\nWe now have that the sum of the two roots is $63$ while the product is $k$. Since both roots are primes, one must be $2$, otherwise the sum would be even. That means the other root is $61$ and the product must be $122$. Hence, our answer is $\\text{(B)}\\ 1$.\n *)\n\ntheorem\nfixes x k :: real and roots :: \"real set\"\nassumes h0 : \"\\<forall> x. x^2 - 63 * x + k = 0\"\nand h1 : \"roots = {x. is_prime x \\<and> x^2 - 63 * x + k = 0}\"\nand h2 : \"finite roots\"\nshows  \"card roots = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $k$ such that the quadratic equation $x^2 - 63x + k = 0$ has exactly one prime root.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.44872328639030457,
+        "symbolic_score": 0.2
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x k :: real and roots :: \"real list\" and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 2 - 63 * x + k\"\nand h1 : \"roots = [r. r \\<in> Reals, is_prime r \\<and> P r = 0]\"\nshows  \"card (set roots) = 1\"",
+        "formal solution": "(* ### Problem\n Both roots of the quadratic equation $x^2 - 63x + k = 0$ are prime numbers. The number of possible values of $k$ is \n\n$\\text{(A)}\\ 0 \\qquad \\text{(B)}\\ 1 \\qquad \\text{(C)}\\ 2 \\qquad \\text{(D)}\\ 4 \\qquad \\text{(E) more than 4}$ Show that it is \\text{(B)}\\ 1.\n ### Proof\n Consider a general quadratic with the coefficient of $x^2$ being $1$ and the roots being $r$ and $s$. It can be factored as $(x-r)(x-s)$ which is just $x^2-(r+s)x+rs$. Thus, the sum of the roots is the negative of the coefficient of $x$ and the product is the constant term. (In general, this leads to [[Vieta's Formulas]]).\n\nWe now have that the sum of the two roots is $63$ while the product is $k$. Since both roots are primes, one must be $2$, otherwise the sum would be even. That means the other root is $61$ and the product must be $122$. Hence, our answer is $\\text{(B)}\\ 1$.\n *)\n\ntheorem\nfixes x k :: real and roots :: \"real list\" and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 2 - 63 * x + k\"\nand h1 : \"roots = [r. r \\<in> Reals, is_prime r \\<and> P r = 0]\"\nshows  \"card (set roots) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a value for $k$ such that the quadratic equation $P(x) = x^2 - 63x + k$ has exactly one real prime number as a root.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.41437047719955444,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes f :: \"real => real\"\nand k :: real and a b::nat\nassumes \"\\<forall> x. f x = x^2 - 63 * x + k\"\nand \"f -` {0} = {of_nat a, of_nat b}\"\nand \"prime a\" and \"prime b\"\nshows \"k=122\"",
+    "prediction": {
+        "0": [
+            8,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            4
+        ],
+        "6": [
+            5
+        ],
+        "7": [
+            6
+        ],
+        "8": [
+            9
+        ]
+    },
+    "equivalence_oracle": [
+        7,
+        8
+    ]
+}

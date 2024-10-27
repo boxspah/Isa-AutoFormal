@@ -1,0 +1,59 @@
+{
+    "natural problem": "There are finitely many primes $p$ for which the congruence $$8x\\equiv 1\\pmod{p}$$has no solutions $x$. Determine the sum of all such $p$.",
+    "natural solution": [
+        "A solution exists if and only if $8$ is invertible modulo $p$. In other words, $\\gcd(8,p)=1$. Since $8=2^3$ is a power of $2$, $8$ is invertible modulo $q$ if and only if $q$ is an odd integer. All primes except for $2$ are odd, so the number we are looking for is $\\boxed{2}$."
+    ],
+    "natural answer": "2",
+    "a_0": {
+        "formal problem": "theorem\nfixes p x :: int\nassumes h0 : \"prime p\"\nand h1 : \"\\<not> (\\<exists> x. [8 * x = 1] (mod p))\"\nshows  \"p = 2\"",
+        "formal solution": "(* ### Problem\n There are finitely many primes $p$ for which the congruence $$8x\\equiv 1\\pmod{p}$$has no solutions $x$. Determine the sum of all such $p$. The final Answer is 2\n ### Proof\n A solution exists if and only if $8$ is invertible modulo $p$. In other words, $\\gcd(8,p)=1$. Since $8=2^3$ is a power of $2$, $8$ is invertible modulo $q$ if and only if $q$ is an odd integer. All primes except for $2$ are odd, so the number we are looking for is $\\boxed{2}$.\n *)\n\ntheorem\nfixes p x :: int\nassumes h0 : \"prime p\"\nand h1 : \"\\<not> (\\<exists> x. [8 * x = 1] (mod p))\"\nshows  \"p = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a prime number $p$ such that there is no integer $x$ satisfying the congruence $8x \\equiv 1 \\mod p$. The final answer is $2$."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes p x :: int and S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"\\<forall> p. p \\<in> S \\<longrightarrow> is_prime p \\<and> (\\<forall> x. x mod p \\<noteq> 1 / 8)\"\nshows  \"setsum id S = 2\"",
+        "formal solution": "(* ### Problem\n There are finitely many primes $p$ for which the congruence $$8x\\equiv 1\\pmod{p}$$has no solutions $x$. Determine the sum of all such $p$. The final Answer is 2\n ### Proof\n A solution exists if and only if $8$ is invertible modulo $p$. In other words, $\\gcd(8,p)=1$. Since $8=2^3$ is a power of $2$, $8$ is invertible modulo $q$ if and only if $q$ is an odd integer. All primes except for $2$ are odd, so the number we are looking for is $\\boxed{2}$.\n *)\n\ntheorem\nfixes p x :: int and S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"\\<forall> p. p \\<in> S \\<longrightarrow> is_prime p \\<and> (\\<forall> x. x mod p \\<noteq> 1 / 8)\"\nshows  \"setsum id S = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a finite set of integers, S. Each integer in S is a prime number and for every integer x, x modulo any integer in S is not equal to 1/8. What is the sum of all integers in S? The final answer is 2."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes p :: nat and x :: nat\nassumes h0 : \"prime p\"\nand h1 : \"\\<not>(\\<exists>x. [8 * x = 1] (mod p))\"\nshows  \"p = 2\"",
+        "formal solution": "(* ### Problem\n There are finitely many primes $p$ for which the congruence $$8x\\equiv 1\\pmod{p}$$has no solutions $x$. Determine the sum of all such $p$. The final Answer is 2\n ### Proof\n A solution exists if and only if $8$ is invertible modulo $p$. In other words, $\\gcd(8,p)=1$. Since $8=2^3$ is a power of $2$, $8$ is invertible modulo $q$ if and only if $q$ is an odd integer. All primes except for $2$ are odd, so the number we are looking for is $\\boxed{2}$.\n *)\n\ntheorem\nfixes p :: nat and x :: nat\nassumes h0 : \"prime p\"\nand h1 : \"\\<not>(\\<exists>x. [8 * x = 1] (mod p))\"\nshows  \"p = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a prime number $p$ such that there is no natural number $x$ for which $8x$ is congruent to $1$ modulo $p$. The final answer is $p = 2$."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x p :: int\nassumes h0 : \"prime p\"\nand h1 : \"\\<forall>x. [8 * x \\<noteq> 1] (mod p)\"\nshows  \"sum_list (filter (\\<lambda>p. prime p \\<and> \\<forall>x. [8 * x \\<noteq> 1] (mod p)) [2..]) = 2\"",
+        "formal solution": "(* ### Problem\n There are finitely many primes $p$ for which the congruence $$8x\\equiv 1\\pmod{p}$$has no solutions $x$. Determine the sum of all such $p$. The final Answer is 2\n ### Proof\n A solution exists if and only if $8$ is invertible modulo $p$. In other words, $\\gcd(8,p)=1$. Since $8=2^3$ is a power of $2$, $8$ is invertible modulo $q$ if and only if $q$ is an odd integer. All primes except for $2$ are odd, so the number we are looking for is $\\boxed{2}$.\n *)\n\ntheorem\nfixes x p :: int\nassumes h0 : \"prime p\"\nand h1 : \"\\<forall>x. [8 * x \\<noteq> 1] (mod p)\"\nshows  \"sum_list (filter (\\<lambda>p. prime p \\<and> \\<forall>x. [8 * x \\<noteq> 1] (mod p)) [2..]) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all prime numbers $p$ that satisfy the condition that for all integers $x$, $8x$ is not congruent to $1$ modulo $p$. The final answer is $2$."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes p x :: int\nassumes h0 : \"prime p\"\nand h1 : \"\\<not> (\\<exists> x. [8 * x = 1] (mod p))\"\nshows  \"sum (\\<lambda> p. if prime p \\<and> \\<not> (\\<exists> x. [8 * x = 1] (mod p)) then p else 0) {2..} = 2\"",
+        "formal solution": "(* ### Problem\n There are finitely many primes $p$ for which the congruence $$8x\\equiv 1\\pmod{p}$$has no solutions $x$. Determine the sum of all such $p$. The final Answer is 2\n ### Proof\n A solution exists if and only if $8$ is invertible modulo $p$. In other words, $\\gcd(8,p)=1$. Since $8=2^3$ is a power of $2$, $8$ is invertible modulo $q$ if and only if $q$ is an odd integer. All primes except for $2$ are odd, so the number we are looking for is $\\boxed{2}$.\n *)\n\ntheorem\nfixes p x :: int\nassumes h0 : \"prime p\"\nand h1 : \"\\<not> (\\<exists> x. [8 * x = 1] (mod p))\"\nshows  \"sum (\\<lambda> p. if prime p \\<and> \\<not> (\\<exists> x. [8 * x = 1] (mod p)) then p else 0) {2..} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all prime numbers $p$ where there does not exist an integer $x$ such that $8x \\equiv 1 \\mod p$. The final answer is $2$."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes p x :: int and S :: \"int set\"\nassumes h0 : \"S = {p. prime p \\<and> (\\<nexists>x. [8 * x = 1] (mod p))}\"\nshows  \"sum id S = 2\"",
+        "formal solution": "(* ### Problem\n There are finitely many primes $p$ for which the congruence $$8x\\equiv 1\\pmod{p}$$has no solutions $x$. Determine the sum of all such $p$. The final Answer is 2\n ### Proof\n A solution exists if and only if $8$ is invertible modulo $p$. In other words, $\\gcd(8,p)=1$. Since $8=2^3$ is a power of $2$, $8$ is invertible modulo $q$ if and only if $q$ is an odd integer. All primes except for $2$ are odd, so the number we are looking for is $\\boxed{2}$.\n *)\n\ntheorem\nfixes p x :: int and S :: \"int set\"\nassumes h0 : \"S = {p. prime p \\<and> (\\<nexists>x. [8 * x = 1] (mod p))}\"\nshows  \"sum id S = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all prime numbers $p$ for which there is no integer $x$ such that $8x \\equiv 1 \\mod p$. The sum of these primes is $2$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x p :: nat and f :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"prime p\"\nand h1 : \"f p = {x. [8 * x = 1] (mod p)}\"\nand h2 : \"f p = {}\"\nshows  \"\\<Sum>p\\<in>{p. prime p \\<and> f p = {}}. p = 2\"",
+        "formal solution": "(* ### Problem\n There are finitely many primes $p$ for which the congruence $$8x\\equiv 1\\pmod{p}$$has no solutions $x$. Determine the sum of all such $p$. The final Answer is 2\n ### Proof\n A solution exists if and only if $8$ is invertible modulo $p$. In other words, $\\gcd(8,p)=1$. Since $8=2^3$ is a power of $2$, $8$ is invertible modulo $q$ if and only if $q$ is an odd integer. All primes except for $2$ are odd, so the number we are looking for is $\\boxed{2}$.\n *)\n\ntheorem\nfixes x p :: nat and f :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"prime p\"\nand h1 : \"f p = {x. [8 * x = 1] (mod p)}\"\nand h2 : \"f p = {}\"\nshows  \"\\<Sum>p\\<in>{p. prime p \\<and> f p = {}}. p = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let p be a prime number, and let f(p) be the set of natural numbers x such that 8x is congruent to 1 modulo p. If the set f(p) is empty, find the sum of such prime numbers p. The final answer is 2."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes p :: int and x :: int\nassumes h0 : \"prime p\"\nand h1 : \"\\<not> (\\<exists> x. [8 * x = 1] (mod p))\"\nshows  \"p = 2\"",
+        "formal solution": "(* ### Problem\n There are finitely many primes $p$ for which the congruence $$8x\\equiv 1\\pmod{p}$$has no solutions $x$. Determine the sum of all such $p$. The final Answer is 2\n ### Proof\n A solution exists if and only if $8$ is invertible modulo $p$. In other words, $\\gcd(8,p)=1$. Since $8=2^3$ is a power of $2$, $8$ is invertible modulo $q$ if and only if $q$ is an odd integer. All primes except for $2$ are odd, so the number we are looking for is $\\boxed{2}$.\n *)\n\ntheorem\nfixes p :: int and x :: int\nassumes h0 : \"prime p\"\nand h1 : \"\\<not> (\\<exists> x. [8 * x = 1] (mod p))\"\nshows  \"p = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a prime number $p$ such that there is no integer $x$ satisfying $8x \\equiv 1 \\mod p$. The final answer is $2$."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes p x :: int\nassumes h0 : \"prime p\"\nand h1 : \"\\<not> (\\<exists> x. [8 * x = 1] (mod p))\"\nshows  \"p = 2\"",
+        "formal solution": "(* ### Problem\n There are finitely many primes $p$ for which the congruence $$8x\\equiv 1\\pmod{p}$$has no solutions $x$. Determine the sum of all such $p$. The final Answer is 2\n ### Proof\n A solution exists if and only if $8$ is invertible modulo $p$. In other words, $\\gcd(8,p)=1$. Since $8=2^3$ is a power of $2$, $8$ is invertible modulo $q$ if and only if $q$ is an odd integer. All primes except for $2$ are odd, so the number we are looking for is $\\boxed{2}$.\n *)\n\ntheorem\nfixes p x :: int\nassumes h0 : \"prime p\"\nand h1 : \"\\<not> (\\<exists> x. [8 * x = 1] (mod p))\"\nshows  \"p = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Find the prime number $p$ for which there is no integer $x$ satisfying the equation $8x \\equiv 1 \\mod p$. The answer is $p = 2$.\""
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes p x :: int\nassumes h0 : \"prime p\"\nand h1 : \"\\<not> (\\<exists> x. [8 * x = 1] (mod p))\"\nshows  \"p = 2\"",
+        "formal solution": "(* ### Problem\n There are finitely many primes $p$ for which the congruence $$8x\\equiv 1\\pmod{p}$$has no solutions $x$. Determine the sum of all such $p$. The final Answer is 2\n ### Proof\n A solution exists if and only if $8$ is invertible modulo $p$. In other words, $\\gcd(8,p)=1$. Since $8=2^3$ is a power of $2$, $8$ is invertible modulo $q$ if and only if $q$ is an odd integer. All primes except for $2$ are odd, so the number we are looking for is $\\boxed{2}$.\n *)\n\ntheorem\nfixes p x :: int\nassumes h0 : \"prime p\"\nand h1 : \"\\<not> (\\<exists> x. [8 * x = 1] (mod p))\"\nshows  \"p = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the prime number $p$ such that there is no integer $x$ satisfying the congruence $8x \\equiv 1$ (mod $p$). The answer is $p = 2$."
+    },
+    "level": "Level 5",
+    "type": "Number Theory"
+}

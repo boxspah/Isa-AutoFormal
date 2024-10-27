@@ -1,0 +1,71 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"(\\<Sum>i=1..n. i) powr 2 < (\\<Sum>i=1..7. i powr 3)\"\nshows  \"n = 6\"",
+        "formal solution": "(* ### Problem\n What is the largest integer $n$ such that  $$(1 + 2 + 3 + \\cdots+ n)^2 < 1^3 + 2^3 + \\cdots+ 7^3?$$ The final Answer is 6\n ### Proof\n Recall that $$(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3.$$  Thus we have that for $n\\geq 7$, $(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3 \\geq 1^3 + 2^3 +\\ldots + 7^3$, while $(1 + 2 + 3 + \\ldots + 6)^2 = 1^3 + 2^3 + 3^3 +\\ldots + 6^3$, which is less than the desired sum.\n So our answer is $\\boxed{6}.$\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"(\\<Sum>i=1..n. i) powr 2 < (\\<Sum>i=1..7. i powr 3)\"\nshows  \"n = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest integer $n$ such that the sum of the first $n$ integers squared is less than the sum of the first 7 integers cubed. The final answer is $n = 6$.",
+        "label": 0
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and sum_nat_squared :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_nat_squared n = (\\<Sum>i=1..n. i) powr 2\"\nand h1 : \"\\<forall> n. (\\<Sum>i=1..n. i powr 3) < (\\<Sum>i=1..7. i powr 3)\"\nshows  \"Max {n. sum_nat_squared n < (\\<Sum>i=1..7. i powr 3)} = 6\"",
+        "formal solution": "(* ### Problem\n What is the largest integer $n$ such that  $$(1 + 2 + 3 + \\cdots+ n)^2 < 1^3 + 2^3 + \\cdots+ 7^3?$$ The final Answer is 6\n ### Proof\n Recall that $$(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3.$$  Thus we have that for $n\\geq 7$, $(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3 \\geq 1^3 + 2^3 +\\ldots + 7^3$, while $(1 + 2 + 3 + \\ldots + 6)^2 = 1^3 + 2^3 + 3^3 +\\ldots + 6^3$, which is less than the desired sum.\n So our answer is $\\boxed{6}.$\n *)\n\ntheorem\nfixes n :: nat and sum_nat_squared :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_nat_squared n = (\\<Sum>i=1..n. i) powr 2\"\nand h1 : \"\\<forall> n. (\\<Sum>i=1..n. i powr 3) < (\\<Sum>i=1..7. i powr 3)\"\nshows  \"Max {n. sum_nat_squared n < (\\<Sum>i=1..7. i powr 3)} = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest natural number $n$ for which the sum of the first $n$ natural numbers squared is less than the sum of the first 7 cubes. The final answer is 6.",
+        "label": 0
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat and sum_squares sum_cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_squares n = (n * (n + 1) div 2) ^ 2\"\nand h1 : \"\\<forall> n. sum_cubes n = (\\<Sum>k = 1..n. k ^ 3)\"\nshows  \"GREATEST n. sum_squares n < sum_cubes 7 = 6\"",
+        "formal solution": "(* ### Problem\n What is the largest integer $n$ such that  $$(1 + 2 + 3 + \\cdots+ n)^2 < 1^3 + 2^3 + \\cdots+ 7^3?$$ The final Answer is 6\n ### Proof\n Recall that $$(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3.$$  Thus we have that for $n\\geq 7$, $(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3 \\geq 1^3 + 2^3 +\\ldots + 7^3$, while $(1 + 2 + 3 + \\ldots + 6)^2 = 1^3 + 2^3 + 3^3 +\\ldots + 6^3$, which is less than the desired sum.\n So our answer is $\\boxed{6}.$\n *)\n\ntheorem\nfixes n :: nat and sum_squares sum_cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_squares n = (n * (n + 1) div 2) ^ 2\"\nand h1 : \"\\<forall> n. sum_cubes n = (\\<Sum>k = 1..n. k ^ 3)\"\nshows  \"GREATEST n. sum_squares n < sum_cubes 7 = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest natural number $n$ such that the sum of the squares of the first $n$ natural numbers is less than the sum of the cubes of the first $7$ natural numbers. The final answer is $6$.",
+        "label": 1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"sum (\\<lambda>i. i) {1..n} = n * (n + 1) div 2\"\nand h1 : \"(sum (\\<lambda>i. i) {1..n}) powr 2 < sum (\\<lambda>i. i powr 3) {1..7}\"\nshows  \"n = 6\"",
+        "formal solution": "(* ### Problem\n What is the largest integer $n$ such that  $$(1 + 2 + 3 + \\cdots+ n)^2 < 1^3 + 2^3 + \\cdots+ 7^3?$$ The final Answer is 6\n ### Proof\n Recall that $$(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3.$$  Thus we have that for $n\\geq 7$, $(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3 \\geq 1^3 + 2^3 +\\ldots + 7^3$, while $(1 + 2 + 3 + \\ldots + 6)^2 = 1^3 + 2^3 + 3^3 +\\ldots + 6^3$, which is less than the desired sum.\n So our answer is $\\boxed{6}.$\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"sum (\\<lambda>i. i) {1..n} = n * (n + 1) div 2\"\nand h1 : \"(sum (\\<lambda>i. i) {1..n}) powr 2 < sum (\\<lambda>i. i powr 3) {1..7}\"\nshows  \"n = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest natural number $n$ for which the sum of the first $n$ natural numbers squared is less than the sum of the cubes of the first 7 natural numbers. The final answer is $n = 6$.",
+        "label": 0
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"(\\<Sum>i=1..n. i) powr 2 < (\\<Sum>i=1..7. i powr 3)\"\nshows  \"n = 6\"",
+        "formal solution": "(* ### Problem\n What is the largest integer $n$ such that  $$(1 + 2 + 3 + \\cdots+ n)^2 < 1^3 + 2^3 + \\cdots+ 7^3?$$ The final Answer is 6\n ### Proof\n Recall that $$(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3.$$  Thus we have that for $n\\geq 7$, $(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3 \\geq 1^3 + 2^3 +\\ldots + 7^3$, while $(1 + 2 + 3 + \\ldots + 6)^2 = 1^3 + 2^3 + 3^3 +\\ldots + 6^3$, which is less than the desired sum.\n So our answer is $\\boxed{6}.$\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"(\\<Sum>i=1..n. i) powr 2 < (\\<Sum>i=1..7. i powr 3)\"\nshows  \"n = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the maximum natural number $n$ such that the sum of the first $n$ natural numbers squared is less than the sum of the cubes of the first 7 natural numbers. The final answer is 6.",
+        "label": 0
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes sum_square :: \"nat \\<Rightarrow> nat\" and sum_cube :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_square n = (\\<Sum>i\\<in>{1..n}. i)\\<^sup>2\"\nand h1 : \"\\<forall> n. sum_cube n = (\\<Sum>i\\<in>{1..n}. i\\<^sup>3)\"\nand h2 : \"sum_square n < sum_cube 7\"\nshows  \"n = 6\"",
+        "formal solution": "(* ### Problem\n What is the largest integer $n$ such that  $$(1 + 2 + 3 + \\cdots+ n)^2 < 1^3 + 2^3 + \\cdots+ 7^3?$$ The final Answer is 6\n ### Proof\n Recall that $$(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3.$$  Thus we have that for $n\\geq 7$, $(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3 \\geq 1^3 + 2^3 +\\ldots + 7^3$, while $(1 + 2 + 3 + \\ldots + 6)^2 = 1^3 + 2^3 + 3^3 +\\ldots + 6^3$, which is less than the desired sum.\n So our answer is $\\boxed{6}.$\n *)\n\ntheorem\nfixes sum_square :: \"nat \\<Rightarrow> nat\" and sum_cube :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_square n = (\\<Sum>i\\<in>{1..n}. i)\\<^sup>2\"\nand h1 : \"\\<forall> n. sum_cube n = (\\<Sum>i\\<in>{1..n}. i\\<^sup>3)\"\nand h2 : \"sum_square n < sum_cube 7\"\nshows  \"n = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the sum of the squares of the first $n$ natural numbers is represented as $(\\sum_{i=1}^{n} i)^2$ and the sum of the cubes of the first $n$ natural numbers is represented as $\\sum_{i=1}^{n} i^3$, find the value of $n$ such that the sum of the squares is less than the sum of the cubes of the first 7 natural numbers. The final answer is $n = 6$.",
+        "label": 0
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"(\\<Sum>i=1..n. i) powr 2 < (\\<Sum>i=1..7. i powr 3)\"\nshows  \"n = 6\"",
+        "formal solution": "(* ### Problem\n What is the largest integer $n$ such that  $$(1 + 2 + 3 + \\cdots+ n)^2 < 1^3 + 2^3 + \\cdots+ 7^3?$$ The final Answer is 6\n ### Proof\n Recall that $$(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3.$$  Thus we have that for $n\\geq 7$, $(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3 \\geq 1^3 + 2^3 +\\ldots + 7^3$, while $(1 + 2 + 3 + \\ldots + 6)^2 = 1^3 + 2^3 + 3^3 +\\ldots + 6^3$, which is less than the desired sum.\n So our answer is $\\boxed{6}.$\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"(\\<Sum>i=1..n. i) powr 2 < (\\<Sum>i=1..7. i powr 3)\"\nshows  \"n = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest natural number $n$ such that the square of the sum of the first $n$ positive integers is less than the sum of the cubes of the first 7 positive integers. The final answer is $n = 6$.",
+        "label": 0
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and sum_sq :: \"nat \\<Rightarrow> nat\" and sum_cub :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_sq n = (\\<Sum>i\\<in>{1..n}. i) ^ 2\"\nand h1 : \"\\<forall> n. sum_cub n = (\\<Sum>i\\<in>{1..n}. i ^ 3)\"\nand h2 : \"\\<forall> n. n \\<le> 6 \\<longrightarrow> sum_sq n < sum_cub 7\"\nand h3 : \"sum_sq 7 \\<ge> sum_cub 7\"\nshows  \"n = 6\"",
+        "formal solution": "(* ### Problem\n What is the largest integer $n$ such that  $$(1 + 2 + 3 + \\cdots+ n)^2 < 1^3 + 2^3 + \\cdots+ 7^3?$$ The final Answer is 6\n ### Proof\n Recall that $$(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3.$$  Thus we have that for $n\\geq 7$, $(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3 \\geq 1^3 + 2^3 +\\ldots + 7^3$, while $(1 + 2 + 3 + \\ldots + 6)^2 = 1^3 + 2^3 + 3^3 +\\ldots + 6^3$, which is less than the desired sum.\n So our answer is $\\boxed{6}.$\n *)\n\ntheorem\nfixes n :: nat and sum_sq :: \"nat \\<Rightarrow> nat\" and sum_cub :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_sq n = (\\<Sum>i\\<in>{1..n}. i) ^ 2\"\nand h1 : \"\\<forall> n. sum_cub n = (\\<Sum>i\\<in>{1..n}. i ^ 3)\"\nand h2 : \"\\<forall> n. n \\<le> 6 \\<longrightarrow> sum_sq n < sum_cub 7\"\nand h3 : \"sum_sq 7 \\<ge> sum_cub 7\"\nshows  \"n = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest natural number $n$ such that the square of the sum of the first $n$ natural numbers is less than the sum of the cubes of the first 7 natural numbers. The final answer is 6.",
+        "label": 0
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"sum (\\<lambda>i. i) {1..n} < sum (\\<lambda>i. i^3) {1..7}\"\nand h1 : \"\\<forall> m > n. sum (\\<lambda>i. i) {1..m} \\<ge> sum (\\<lambda>i. i^3) {1..7}\"\nshows  \"n = 6\"",
+        "formal solution": "(* ### Problem\n What is the largest integer $n$ such that  $$(1 + 2 + 3 + \\cdots+ n)^2 < 1^3 + 2^3 + \\cdots+ 7^3?$$ The final Answer is 6\n ### Proof\n Recall that $$(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3.$$  Thus we have that for $n\\geq 7$, $(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3 \\geq 1^3 + 2^3 +\\ldots + 7^3$, while $(1 + 2 + 3 + \\ldots + 6)^2 = 1^3 + 2^3 + 3^3 +\\ldots + 6^3$, which is less than the desired sum.\n So our answer is $\\boxed{6}.$\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"sum (\\<lambda>i. i) {1..n} < sum (\\<lambda>i. i^3) {1..7}\"\nand h1 : \"\\<forall> m > n. sum (\\<lambda>i. i) {1..m} \\<ge> sum (\\<lambda>i. i^3) {1..7}\"\nshows  \"n = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest natural number $n$ such that the sum of the first $n$ natural numbers is less than the sum of the cubes of the first 7 natural numbers. The final answer is $n=6$.",
+        "label": 0
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat and sum_squares :: \"nat \\<Rightarrow> nat\" and sum_cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_squares n = (\\<Sum> i \\<in> {1..n}. i) pow 2\"\nand h1 : \"\\<forall> n. sum_cubes n = (\\<Sum> i \\<in> {1..n}. i pow 3)\"\nshows  \"GREATEST n. sum_squares n < sum_cubes 7 = 6\"",
+        "formal solution": "(* ### Problem\n What is the largest integer $n$ such that  $$(1 + 2 + 3 + \\cdots+ n)^2 < 1^3 + 2^3 + \\cdots+ 7^3?$$ The final Answer is 6\n ### Proof\n Recall that $$(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3.$$  Thus we have that for $n\\geq 7$, $(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3 \\geq 1^3 + 2^3 +\\ldots + 7^3$, while $(1 + 2 + 3 + \\ldots + 6)^2 = 1^3 + 2^3 + 3^3 +\\ldots + 6^3$, which is less than the desired sum.\n So our answer is $\\boxed{6}.$\n *)\n\ntheorem\nfixes n :: nat and sum_squares :: \"nat \\<Rightarrow> nat\" and sum_cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_squares n = (\\<Sum> i \\<in> {1..n}. i) pow 2\"\nand h1 : \"\\<forall> n. sum_cubes n = (\\<Sum> i \\<in> {1..n}. i pow 3)\"\nshows  \"GREATEST n. sum_squares n < sum_cubes 7 = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest natural number $n$ such that the sum of squares of the first $n$ natural numbers is less than the sum of cubes of the first 7 natural numbers. The final answer is 6.",
+        "label": 1
+    },
+    "natural answer": "6",
+    "natural problem": "What is the largest integer $n$ such that  $$(1 + 2 + 3 + \\cdots+ n)^2 < 1^3 + 2^3 + \\cdots+ 7^3?$$",
+    "natural solution": [
+        "Recall that $$(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3.$$  Thus we have that for $n\\geq 7$, $(1 + 2 + 3 + \\ldots + n)^2 = 1^3 + 2^3 + 3^3 +\\ldots + n^3 \\geq 1^3 + 2^3 +\\ldots + 7^3$, while $(1 + 2 + 3 + \\ldots + 6)^2 = 1^3 + 2^3 + 3^3 +\\ldots + 6^3$, which is less than the desired sum.",
+        "So our answer is $\\boxed{6}.$"
+    ],
+    "oracle": "Insert oracle here...",
+    "level": "Level 4",
+    "type": "Algebra"
+}

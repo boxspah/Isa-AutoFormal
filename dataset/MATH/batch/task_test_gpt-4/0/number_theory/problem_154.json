@@ -1,0 +1,143 @@
+{
+    "a_0": {
+        "formal problem": "Unfortunately, the Isabelle language doesn't have built-in support for working with decimal expansions directly. However, it's possible to express the problem in terms of real number division and equality. Here's a hypothetical Isabelle statement that outlines the problem:\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = 123 / 999\"\nshows  \"digitAt x 123999 = 3\"\n\nHowever, please note that the function `digitAt` is not defined in Isabelle and would need to be defined separately, which might be nontrivial due to the limitations of the language in working with decimal expansions.",
+        "formal solution": "(* ### Problem\n What is the 123,999th digit after the decimal in the decimal expansion of $\\frac{123}{999}$? The final Answer is 3\n ### Proof\n We can write $\\frac{123}{999}$ as $0.\\overline{123}$.\n To see why, let $x=0.\\overline{123}$, and subtract $x$ from $1000x$: $$\\begin{array}{r r c r@{}l} &1000x &=& 123&.123123123\\ldots \\\\ - &x &=& 0&.123123123\\ldots \\\\ \\hline &999x &=& 123 & \\end{array}$$ This shows that $0.\\overline{123} = \\frac{123}{999}$.\n This decimal repeats every 3 digits. Since $123{,}999$ is divisible by $3$ (as the sum of the digits of $123{,}999$ is equal to $33$), it follows that $123{,}999^{\\rm th}$ digit after the decimal point is the same as the third digit after the decimal point, namely $\\boxed{3}$.\n *)\n\nUnfortunately, the Isabelle language doesn't have built-in support for working with decimal expansions directly. However, it's possible to express the problem in terms of real number division and equality. Here's a hypothetical Isabelle statement that outlines the problem:\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = 123 / 999\"\nshows  \"digitAt x 123999 = 3\"\n\nHowever, please note that the function `digitAt` is not defined in Isabelle and would need to be defined separately, which might be nontrivial due to the limitations of the language in working with decimal expansions.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The problem is to find the 123999th digit after the decimal point of the number represented by the fraction 123/999. The final answer is 3. Please note that this problem is expressed hypothetically as Isabelle doesn't support operations on decimal expansions directly.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9428356885910034,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f n = (123 / 999) * 10 powr n mod 10\"\nshows  \"f 123999 = 3\"",
+        "formal solution": "(* ### Problem\n What is the 123,999th digit after the decimal in the decimal expansion of $\\frac{123}{999}$? The final Answer is 3\n ### Proof\n We can write $\\frac{123}{999}$ as $0.\\overline{123}$.\n To see why, let $x=0.\\overline{123}$, and subtract $x$ from $1000x$: $$\\begin{array}{r r c r@{}l} &1000x &=& 123&.123123123\\ldots \\\\ - &x &=& 0&.123123123\\ldots \\\\ \\hline &999x &=& 123 & \\end{array}$$ This shows that $0.\\overline{123} = \\frac{123}{999}$.\n This decimal repeats every 3 digits. Since $123{,}999$ is divisible by $3$ (as the sum of the digits of $123{,}999$ is equal to $33$), it follows that $123{,}999^{\\rm th}$ digit after the decimal point is the same as the third digit after the decimal point, namely $\\boxed{3}$.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f n = (123 / 999) * 10 powr n mod 10\"\nshows  \"f 123999 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(n) = 123/999 * 10^n \\mod 10$, find the value of $f(123999)$. The final answer is 3.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8227868676185608,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat and d :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"d n = (123 div 999) mod 10 ^ n div 10 ^ (n - 1)\"\nand h1 : \"n = 123999\"\nshows  \"d n = 3\"",
+        "formal solution": "(* ### Problem\n What is the 123,999th digit after the decimal in the decimal expansion of $\\frac{123}{999}$? The final Answer is 3\n ### Proof\n We can write $\\frac{123}{999}$ as $0.\\overline{123}$.\n To see why, let $x=0.\\overline{123}$, and subtract $x$ from $1000x$: $$\\begin{array}{r r c r@{}l} &1000x &=& 123&.123123123\\ldots \\\\ - &x &=& 0&.123123123\\ldots \\\\ \\hline &999x &=& 123 & \\end{array}$$ This shows that $0.\\overline{123} = \\frac{123}{999}$.\n This decimal repeats every 3 digits. Since $123{,}999$ is divisible by $3$ (as the sum of the digits of $123{,}999$ is equal to $33$), it follows that $123{,}999^{\\rm th}$ digit after the decimal point is the same as the third digit after the decimal point, namely $\\boxed{3}$.\n *)\n\ntheorem\nfixes n :: nat and d :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"d n = (123 div 999) mod 10 ^ n div 10 ^ (n - 1)\"\nand h1 : \"n = 123999\"\nshows  \"d n = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the 123999th digit to the right of the decimal point in the decimal representation of $\\frac{123}{999}$. The final answer is 3.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9645429253578186,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem \nfixes n :: nat\nassumes h0 : \"n = 123999\"\nand h1 : \"real_of_fraction 123 999 = (of_int (123 div 999) + of_int (123 mod 999) * inverse 999 :: real)\"\nshows  \"(of_int (123 mod 999) * inverse 999 :: real) powr n mod 10 = 3\"",
+        "formal solution": "(* ### Problem\n What is the 123,999th digit after the decimal in the decimal expansion of $\\frac{123}{999}$? The final Answer is 3\n ### Proof\n We can write $\\frac{123}{999}$ as $0.\\overline{123}$.\n To see why, let $x=0.\\overline{123}$, and subtract $x$ from $1000x$: $$\\begin{array}{r r c r@{}l} &1000x &=& 123&.123123123\\ldots \\\\ - &x &=& 0&.123123123\\ldots \\\\ \\hline &999x &=& 123 & \\end{array}$$ This shows that $0.\\overline{123} = \\frac{123}{999}$.\n This decimal repeats every 3 digits. Since $123{,}999$ is divisible by $3$ (as the sum of the digits of $123{,}999$ is equal to $33$), it follows that $123{,}999^{\\rm th}$ digit after the decimal point is the same as the third digit after the decimal point, namely $\\boxed{3}$.\n *)\n\ntheorem \nfixes n :: nat\nassumes h0 : \"n = 123999\"\nand h1 : \"real_of_fraction 123 999 = (of_int (123 div 999) + of_int (123 mod 999) * inverse 999 :: real)\"\nshows  \"(of_int (123 mod 999) * inverse 999 :: real) powr n mod 10 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit of the number $(\\frac{123\\%999}{999})^{123999}$. The final answer is 3.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9575659036636353,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat and d :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"d = (\\<lambda> n. (123 * 10 ^ n) mod 999)\"\nand h1 : \"d 123999 = 3\"\nshows  \"d 123999 = 3\"",
+        "formal solution": "(* ### Problem\n What is the 123,999th digit after the decimal in the decimal expansion of $\\frac{123}{999}$? The final Answer is 3\n ### Proof\n We can write $\\frac{123}{999}$ as $0.\\overline{123}$.\n To see why, let $x=0.\\overline{123}$, and subtract $x$ from $1000x$: $$\\begin{array}{r r c r@{}l} &1000x &=& 123&.123123123\\ldots \\\\ - &x &=& 0&.123123123\\ldots \\\\ \\hline &999x &=& 123 & \\end{array}$$ This shows that $0.\\overline{123} = \\frac{123}{999}$.\n This decimal repeats every 3 digits. Since $123{,}999$ is divisible by $3$ (as the sum of the digits of $123{,}999$ is equal to $33$), it follows that $123{,}999^{\\rm th}$ digit after the decimal point is the same as the third digit after the decimal point, namely $\\boxed{3}$.\n *)\n\ntheorem\nfixes n :: nat and d :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"d = (\\<lambda> n. (123 * 10 ^ n) mod 999)\"\nand h1 : \"d 123999 = 3\"\nshows  \"d 123999 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $d$ such that $d(n) = (123 * 10^n) \\mod 999$. If $d(123999) = 3$, prove that $d(123999)$ still equals $3$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.6696873307228088,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = (123 / 999) * 10 powr n\"\nshows  \"f 123999 = 3\"",
+        "formal solution": "(* ### Problem\n What is the 123,999th digit after the decimal in the decimal expansion of $\\frac{123}{999}$? The final Answer is 3\n ### Proof\n We can write $\\frac{123}{999}$ as $0.\\overline{123}$.\n To see why, let $x=0.\\overline{123}$, and subtract $x$ from $1000x$: $$\\begin{array}{r r c r@{}l} &1000x &=& 123&.123123123\\ldots \\\\ - &x &=& 0&.123123123\\ldots \\\\ \\hline &999x &=& 123 & \\end{array}$$ This shows that $0.\\overline{123} = \\frac{123}{999}$.\n This decimal repeats every 3 digits. Since $123{,}999$ is divisible by $3$ (as the sum of the digits of $123{,}999$ is equal to $33$), it follows that $123{,}999^{\\rm th}$ digit after the decimal point is the same as the third digit after the decimal point, namely $\\boxed{3}$.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = (123 / 999) * 10 powr n\"\nshows  \"f 123999 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the function $f(n) = \\frac{123}{999} \\times 10^n$ at $n = 123999$. The final answer is $3$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.865186870098114,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat and d :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. d n = nth_digit (123 / 999) n\"\nshows  \"d 123999 = 3\"",
+        "formal solution": "(* ### Problem\n What is the 123,999th digit after the decimal in the decimal expansion of $\\frac{123}{999}$? The final Answer is 3\n ### Proof\n We can write $\\frac{123}{999}$ as $0.\\overline{123}$.\n To see why, let $x=0.\\overline{123}$, and subtract $x$ from $1000x$: $$\\begin{array}{r r c r@{}l} &1000x &=& 123&.123123123\\ldots \\\\ - &x &=& 0&.123123123\\ldots \\\\ \\hline &999x &=& 123 & \\end{array}$$ This shows that $0.\\overline{123} = \\frac{123}{999}$.\n This decimal repeats every 3 digits. Since $123{,}999$ is divisible by $3$ (as the sum of the digits of $123{,}999$ is equal to $33$), it follows that $123{,}999^{\\rm th}$ digit after the decimal point is the same as the third digit after the decimal point, namely $\\boxed{3}$.\n *)\n\ntheorem\nfixes n :: nat and d :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. d n = nth_digit (123 / 999) n\"\nshows  \"d 123999 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the 123,999th digit after the decimal point in the decimal representation of the fraction $\\frac{123}{999}$. The final answer is 3.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9523305296897888,
+        "symbolic_score": 0.2
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and d :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 123999\"\nand h1 : \"\\<forall> n. d n = nth_digit (123 / 999) n\"\nshows  \"d n = 3\"",
+        "formal solution": "(* ### Problem\n What is the 123,999th digit after the decimal in the decimal expansion of $\\frac{123}{999}$? The final Answer is 3\n ### Proof\n We can write $\\frac{123}{999}$ as $0.\\overline{123}$.\n To see why, let $x=0.\\overline{123}$, and subtract $x$ from $1000x$: $$\\begin{array}{r r c r@{}l} &1000x &=& 123&.123123123\\ldots \\\\ - &x &=& 0&.123123123\\ldots \\\\ \\hline &999x &=& 123 & \\end{array}$$ This shows that $0.\\overline{123} = \\frac{123}{999}$.\n This decimal repeats every 3 digits. Since $123{,}999$ is divisible by $3$ (as the sum of the digits of $123{,}999$ is equal to $33$), it follows that $123{,}999^{\\rm th}$ digit after the decimal point is the same as the third digit after the decimal point, namely $\\boxed{3}$.\n *)\n\ntheorem\nfixes n :: nat and d :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 123999\"\nand h1 : \"\\<forall> n. d n = nth_digit (123 / 999) n\"\nshows  \"d n = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the 123999th digit of the decimal representation of the fraction 123/999. The final answer is 3.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9275415539741516,
+        "symbolic_score": 0.2
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 123999\"\nshows  \"digit (123/999) n = 3\"",
+        "formal solution": "(* ### Problem\n What is the 123,999th digit after the decimal in the decimal expansion of $\\frac{123}{999}$? The final Answer is 3\n ### Proof\n We can write $\\frac{123}{999}$ as $0.\\overline{123}$.\n To see why, let $x=0.\\overline{123}$, and subtract $x$ from $1000x$: $$\\begin{array}{r r c r@{}l} &1000x &=& 123&.123123123\\ldots \\\\ - &x &=& 0&.123123123\\ldots \\\\ \\hline &999x &=& 123 & \\end{array}$$ This shows that $0.\\overline{123} = \\frac{123}{999}$.\n This decimal repeats every 3 digits. Since $123{,}999$ is divisible by $3$ (as the sum of the digits of $123{,}999$ is equal to $33$), it follows that $123{,}999^{\\rm th}$ digit after the decimal point is the same as the third digit after the decimal point, namely $\\boxed{3}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 123999\"\nshows  \"digit (123/999) n = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the 123999th digit after the decimal point in the decimal representation of the fraction 123/999. The final answer is 3.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9312705397605896,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = 123 / 999\"\nand h1 : \"decimal_expansion x 123999 = 3\"\nshows  \"decimal_expansion x 123999 = 3\"",
+        "formal solution": "(* ### Problem\n What is the 123,999th digit after the decimal in the decimal expansion of $\\frac{123}{999}$? The final Answer is 3\n ### Proof\n We can write $\\frac{123}{999}$ as $0.\\overline{123}$.\n To see why, let $x=0.\\overline{123}$, and subtract $x$ from $1000x$: $$\\begin{array}{r r c r@{}l} &1000x &=& 123&.123123123\\ldots \\\\ - &x &=& 0&.123123123\\ldots \\\\ \\hline &999x &=& 123 & \\end{array}$$ This shows that $0.\\overline{123} = \\frac{123}{999}$.\n This decimal repeats every 3 digits. Since $123{,}999$ is divisible by $3$ (as the sum of the digits of $123{,}999$ is equal to $33$), it follows that $123{,}999^{\\rm th}$ digit after the decimal point is the same as the third digit after the decimal point, namely $\\boxed{3}$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = 123 / 999\"\nand h1 : \"decimal_expansion x 123999 = 3\"\nshows  \"decimal_expansion x 123999 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x = \\frac{123}{999}$, verify that the decimal expansion of $x$ up to the 123999th decimal place is 3. The final answer is 3.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9854766130447388,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "3",
+    "natural problem": "What is the 123,999th digit after the decimal in the decimal expansion of $\\frac{123}{999}$?",
+    "natural solution": [
+        "We can write $\\frac{123}{999}$ as $0.\\overline{123}$.",
+        "To see why, let $x=0.\\overline{123}$, and subtract $x$ from $1000x$: $$\\begin{array}{r r c r@{}l} &1000x &=& 123&.123123123\\ldots \\\\ - &x &=& 0&.123123123\\ldots \\\\ \\hline &999x &=& 123 & \\end{array}$$ This shows that $0.\\overline{123} = \\frac{123}{999}$.",
+        "This decimal repeats every 3 digits. Since $123{,}999$ is divisible by $3$ (as the sum of the digits of $123{,}999$ is equal to $33$), it follows that $123{,}999^{\\rm th}$ digit after the decimal point is the same as the third digit after the decimal point, namely $\\boxed{3}$."
+    ],
+    "oracle": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f n = round ((123 / 999) * (10 powr n)) mod 10\"\nshows \"f 123999 = 3\"",
+    "prediction": {
+        "0": [
+            6,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            4
+        ],
+        "6": [
+            5
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "str_pred": "[[6, 7], [0], [1], [2], [3], [4], [5], [8], [9]]",
+    "level": "Level 2",
+    "type": "Number Theory"
+}

@@ -1,0 +1,606 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"\\<forall> x. P x = 0 \\<longrightarrow> x = 1 - 2 powr (1/3) + 4 powr (1/3)\"\nshows  \"P x = 0\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"\\<forall> x. P x = 0 \\<longrightarrow> x = 1 - 2 powr (1/3) + 4 powr (1/3)\"\nshows  \"P x = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The problem is defined by the polynomial equation $P(x) = x^3 - 3x^2 + 9x - 9$. Find the value of $x$ that makes $P(x) = 0$. The solution is $x = 1 - 2^{1/3} + 4^{1/3}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.4071783721446991,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"is_monic P\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"is_monic P\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The polynomial $P(x) = x^3 - 3x^2 + 9x - 9$ has a root at $1 - 2^{1/3} + 4^{1/3}$. Is $P(x)$ a monic polynomial?",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7017865180969238,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"monic P\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"monic P\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a cubic function $P(x) = x^3 - 3x^2 + 9x - 9$, find the value of x for which $P(1 - \\sqrt[3]{2} + \\sqrt[3]{4}) = 0$. Show that this function is monic.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.21928229928016663,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nand h2 : \"monic P\"\nshows  \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nand h2 : \"monic P\"\nshows  \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a cubic polynomial $P(x) = x^3 - 3x^2 + 9x - 9$, find the value of $P$ at $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}$. The final answer is $0$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.4184030592441559,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $P(x) = x^3 - 3x^2 + 9x - 9$, find the value of x that makes $P(1 - 2^{1/3} + 4^{1/3}) = 0$. Prove that $P(x) = x^3 - 3x^2 + 9x - 9$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.32666656374931335,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"\\<forall> x. P x \\<noteq> 0\"\nand h2 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"monic P\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"\\<forall> x. P x \\<noteq> 0\"\nand h2 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"monic P\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The real-valued function $P$ is defined as $P(x) = x^3 - 3x^2 + 9x - 9$. Find the coefficients for a monic polynomial $P$ if it's given that $P(x) \\neq 0$ for all $x$ and $P(1 - 2^{1/3} + 4^{1/3}) = 0$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.1660064160823822,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $P(x) = x^3 - 3x^2 + 9x - 9$, find the value of $x$ such that $P(1 - 2^{1/3} + 4^{1/3}) = 0$. The result should be the equation $P(x) = x^3 - 3x^2 + 9x - 9$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.5550651550292969,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"\\<forall> x. P x \\<noteq> 0\"\nand h2 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"\\<forall> x. P x \\<noteq> 0\"\nand h2 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $x$ such that $x^3 - 3x^2 + 9x - 9 = 0$. It is given that the equation has a root at $1 - \\sqrt[3]{2} + \\sqrt[3]{4}$ and that the equation is not identically zero. The theorem shows that the given equation holds for all $x$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.35358062386512756,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - 2 powr (1/3) + 4 powr (1/3)) = 0\"\nshows  \"\\<exists> x. P x = 0\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes x P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - 2 powr (1/3) + 4 powr (1/3)) = 0\"\nshows  \"\\<exists> x. P x = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a real number $x$ such that the cubic equation $x^3 - 3x^2 + 9x - 9 = 0$ holds true. Here is a hint: $x = 1 - 2^{1/3} + 4^{1/3}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.30972805619239807,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x P :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nand h2 : \"P x \\<noteq> 0\"\nshows  \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes x P :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nand h2 : \"P x \\<noteq> 0\"\nshows  \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $P(x) = x^3 - 3x^2 + 9x - 9$, find a value of $x$ that makes $P(x) = 0$. The function is not equal to zero for any other values of $x$ other than $x = 1 - 2^{1/3} + 4^{1/3}$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.3005830943584442,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "x^3 - 3x^2 + 9x - 9",
+    "natural problem": "Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.)",
+    "natural solution": [
+        "Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get",
+        "\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]"
+    ],
+    "oracle": "TODO",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 5",
+    "type": "Intermediate Algebra",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0 \\<longleftrightarrow> x = 1 - (2 powr (1 / 3)) + (4 powr (1 / 3))\"\nand h1 : \"degree P = 3\"\nand h2 : \"lead_coeff P = 1\"\nand h3 : \"\\<forall> a \\<in> set (coeffs P). a \\<in> \\<int>\"\nand h4 : \"P \\<noteq> 0\"\nshows \"P = (\\<lambda>x. x^3 - 3*x^2 + 9*x - 9)\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0 \\<longleftrightarrow> x = 1 - (2 powr (1 / 3)) + (4 powr (1 / 3))\"\nand h1 : \"degree P = 3\"\nand h2 : \"lead_coeff P = 1\"\nand h3 : \"\\<forall> a \\<in> set (coeffs P). a \\<in> \\<int>\"\nand h4 : \"P \\<noteq> 0\"\nshows \"P = (\\<lambda>x. x^3 - 3*x^2 + 9*x - 9)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a polynomial function P(x) of degree 3 with a leading coefficient of 1. All coefficients of P(x) are integers, and P(x) is not the zero polynomial. It is given that P(x) equals 0 if and only if x equals 1 minus 2 raised to the power of 1/3 plus 4 raised to the power of 1/3. Determine the polynomial P(x).\n\nThe final answer is P(x) = x^3 - 3x^2 + 9x - 9.",
+        "syntax": 0,
+        "semantic_score": 0.8068690781092517,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0 \\<Longrightarrow> x = 1 - (2 powr (1 / 3)) + (4 powr (1 / 3))\"\nand h1 : \"\\<forall> x. degree P x = 3\"\nand h2 : \"\\<forall> x. lead_coeff P x = 1\"\nand h3 : \"\\<forall> x. coeff P x 0 \\<in> int\"\nand h4 : \"\\<forall> x. coeff P x 1 \\<in> int\"\nand h5 : \"\\<forall> x. coeff P x 2 \\<in> int\"\nand h6 : \"\\<forall> x. coeff P x 3 \\<in> int\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0 \\<Longrightarrow> x = 1 - (2 powr (1 / 3)) + (4 powr (1 / 3))\"\nand h1 : \"\\<forall> x. degree P x = 3\"\nand h2 : \"\\<forall> x. lead_coeff P x = 1\"\nand h3 : \"\\<forall> x. coeff P x 0 \\<in> int\"\nand h4 : \"\\<forall> x. coeff P x 1 \\<in> int\"\nand h5 : \"\\<forall> x. coeff P x 2 \\<in> int\"\nand h6 : \"\\<forall> x. coeff P x 3 \\<in> int\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a polynomial function P(x) with real coefficients, where the degree of the polynomial is 3, the leading coefficient is 1, and all other coefficients are integers. If P(x) equals 0, then x is equal to 1 minus 2 raised to the power of 1/3, plus 4 raised to the power of 1/3. What is the expression for P(x)?\n\nThe expression for P(x) is: x^3 - 3x^2 + 9x - 9.",
+        "syntax": 0,
+        "semantic_score": 0.8676074531134279,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * x powr 2) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"\\<forall> c \\<in> set (coeffs P). c \\<in> \\<int>\"\nand h5 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * x powr 2) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"\\<forall> c \\<in> set (coeffs P). c \\<in> \\<int>\"\nand h5 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a polynomial function P(x) with the following properties:\n\n1. P(x) = 0 for a specific value of x.\n2. P(x) can be expressed as the cubic equation x^3 - 3x^2 + 9x - 9.\n3. The degree of P(x) is 3.\n4. The leading coefficient of P(x) is 1.\n5. All coefficients of P(x) are integers.\n6. P(x) = 0 for the value x = 1 - 2^(1/3) + 4^(1/3).\n\nProve that P(x) is equal to the cubic equation x^3 - 3x^2 + 9x - 9.",
+        "syntax": 1,
+        "semantic_score": 0.7522827841450039,
+        "symbolic_score": 0.4
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3 - 3 * x powr 2 + 9 * x - 9)\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"coeffs P \\<subseteq> int\"\nand h5 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P = (\\<lambda>x. x^3 - 3*x^2 + 9*x - 9)\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3 - 3 * x powr 2 + 9 * x - 9)\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"coeffs P \\<subseteq> int\"\nand h5 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P = (\\<lambda>x. x^3 - 3*x^2 + 9*x - 9)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a polynomial function P(x) with the properties:\n\n1. P(x) = 0 for a specific value of x.\n2. For all x, P(x) = x^3 - 3x^2 + 9x - 9.\n3. The degree of P(x) is 3.\n4. The leading coefficient of P(x) is 1.\n5. All coefficients of P(x) are integers.\n6. P(1 - 2^(1/3) + 4^(1/3)) = 0.\n\nProve that P(x) is equal to the function \u03bbx.x^3 - 3*x^2 + 9*x - 9.",
+        "syntax": 0,
+        "semantic_score": 0.6854763850188649,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"monic P\"\nand h1 : \"coeffs P \\<subseteq> int\"\nand h2 : \"degree P = (LEAST n. \\<exists> P. monic P \\<and> coeffs P \\<subseteq> int \\<and> P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0)\"\nand h3 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P = (\\<lambda>x. x^3 - 3*x^2 + 9*x - 9)\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"monic P\"\nand h1 : \"coeffs P \\<subseteq> int\"\nand h2 : \"degree P = (LEAST n. \\<exists> P. monic P \\<and> coeffs P \\<subseteq> int \\<and> P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0)\"\nand h3 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P = (\\<lambda>x. x^3 - 3*x^2 + 9*x - 9)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a monic polynomial P(x) with integer coefficients such that P(1 - 2^(1/3) + 4^(1/3)) = 0, and the degree of P(x) is the smallest possible among all monic polynomials with integer coefficients that satisfy this condition. The polynomial P(x) is given by P(x) = x^3 - 3x^2 + 9x - 9.",
+        "syntax": 0,
+        "semantic_score": 0.3169341100664552,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * x powr 2) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * x powr 2) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a polynomial function P(x) with the properties:\n\n1. P(x) = 0 for some specific value of x.\n2. For all x, P(x) = x^3 - 3x^2 + 9x - 9.\n3. The degree of P(x) is 3.\n4. The leading coefficient of P(x) is 1.\n5. P(1 - 2^(1/3) + 4^(1/3)) = 0.\n\nProve that P(x) = x^3 - 3x^2 + 9x - 9 for all x.",
+        "syntax": 1,
+        "semantic_score": 0.17318941544737831,
+        "symbolic_score": 0.4
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * (x powr 2)) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"leading_coeff P = 1\"\nand h4 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * (x powr 2)) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"leading_coeff P = 1\"\nand h4 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a polynomial function P(x) with the properties:\n\n1. P(x) = 0 for a certain value of x.\n2. P(x) can be expressed as x^3 - 3x^2 + 9x - 9 for all x.\n3. The degree of P(x) is 3.\n4. The leading coefficient of P(x) is 1.\n5. P(1 - 2^(1/3) + 4^(1/3)) = 0.\n\nProve that P(x) = x^3 - 3x^2 + 9x - 9 for all x.",
+        "syntax": 1,
+        "semantic_score": 0.1325811017061842,
+        "symbolic_score": 0.4
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<exists>n. n > 0 \\<and> P x = x ^ n + (\\<Sum>i<n. a i * x ^ i)\"\nand h2 : \"\\<forall>i<n. a i \\<in> \\<int>\"\nand h3 : \"a n = 1\"\nand h4 : \"P (1 - 2 powr (1 / 3) + 2 powr (2 / 3)) = 0\"\nshows \"P x = x ^ 3 - 3 * x ^ 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<exists>n. n > 0 \\<and> P x = x ^ n + (\\<Sum>i<n. a i * x ^ i)\"\nand h2 : \"\\<forall>i<n. a i \\<in> \\<int>\"\nand h3 : \"a n = 1\"\nand h4 : \"P (1 - 2 powr (1 / 3) + 2 powr (2 / 3)) = 0\"\nshows \"P x = x ^ 3 - 3 * x ^ 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a polynomial function P(x) defined as follows: P(x) = x^n + the sum of terms a_i * x^i for i from 0 to n-1, where n is a positive integer, a_i are integers for all i < n, and a_n = 1. It is given that P(x) = 0 for some x, and P(1 - 2^(1/3) + 2^(2/3)) = 0. Prove that P(x) = x^3 - 3x^2 + 9x - 9.",
+        "syntax": 1,
+        "semantic_score": 0.3001394129619337,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * x powr 2) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * x powr 2) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a polynomial function P(x) with the properties:\n\n1. P(x) = 0 for some real number x.\n2. For all real numbers x, P(x) = x^3 - 3x^2 + 9x - 9.\n3. The degree of P(x) is 3.\n4. The leading coefficient of P(x) is 1.\n5. P(1 - 2^(1/3) + 4^(1/3)) = 0.\n\nProve that P(x) = x^3 - 3x^2 + 9x - 9 for all real numbers x.",
+        "syntax": 1,
+        "semantic_score": 0.19959240149087942,
+        "symbolic_score": 0.4
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> n. n > 0 \\<and> (\\<forall> i. i < n \\<longrightarrow> coeff P i \\<in> \\<int> \\<and> (i = n - 1 \\<longrightarrow> coeff P i = 1))\"\nand h1 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"\\<exists> n. n = 3 \\<and> (\\<forall> i. i < n \\<longrightarrow> coeff P i = (if i = 0 then -9 else if i = 1 then 9 else if i = 2 then -3 else 1))\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> n. n > 0 \\<and> (\\<forall> i. i < n \\<longrightarrow> coeff P i \\<in> \\<int> \\<and> (i = n - 1 \\<longrightarrow> coeff P i = 1))\"\nand h1 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"\\<exists> n. n = 3 \\<and> (\\<forall> i. i < n \\<longrightarrow> coeff P i = (if i = 0 then -9 else if i = 1 then 9 else if i = 2 then -3 else 1))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a polynomial P(x) with real coefficients such that for some positive integer n, all coefficients of P(x) up to the (n-1)-th term are integers, and the (n-1)-th coefficient is 1. Additionally, P(1 - (2^(1/3)) + (4^(1/3))) = 0. Prove that there exists a value of n equal to 3, and for all terms i less than n, the coefficients of P(x) are as follows: if i = 0, the coefficient is -9; if i = 1, the coefficient is 9; if i = 2, the coefficient is -3; and if i = 3, the coefficient is 1.",
+        "syntax": 1,
+        "semantic_score": 0.23815867447255612,
+        "symbolic_score": 0.1
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\n \\<comment> \\<open>Existence of a polynomial with specific roots\\<close>\n obtains P :: \"int poly\" and x where\n \\<comment> \\<open>Polynomial P is nonzero, monic and has integer coefficients\\<close>\n \"P \\<noteq> 0\" \"monic P\" \"set (coeffs P) \\<subseteq> \\<int>\"\n \\<comment> \\<open>The polynomial P has root 1 - cube_root(2) + cube_root(4)\\<close>\n \"poly P (1 - (root 3 2) + (root 3 4)) = 0\"\n \\<comment> \\<open>Furthermore, P has minimal degree\\<close>\n \"\\<And>Q. \\<lbrakk>Q \\<noteq> 0; monic Q; set (coeffs Q) \\<subseteq> \\<int>; \n poly Q (1 - (root 3 2) + (root 3 4)) = 0\\<rbrakk> \\<Longrightarrow> degree P \\<le> degree Q\"\n \\<comment> \\<open>The polynomial found by the theorem is x^3 - 3x^2 + 9x - 9\\<close>\n by (rule exI[where x = \"[:1, -3, 9, -9:]\"]) \n (auto simp: eval_nat_numeral field_simps powr_realpow)",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\n \\<comment> \\<open>Existence of a polynomial with specific roots\\<close>\n obtains P :: \"int poly\" and x where\n \\<comment> \\<open>Polynomial P is nonzero, monic and has integer coefficients\\<close>\n \"P \\<noteq> 0\" \"monic P\" \"set (coeffs P) \\<subseteq> \\<int>\"\n \\<comment> \\<open>The polynomial P has root 1 - cube_root(2) + cube_root(4)\\<close>\n \"poly P (1 - (root 3 2) + (root 3 4)) = 0\"\n \\<comment> \\<open>Furthermore, P has minimal degree\\<close>\n \"\\<And>Q. \\<lbrakk>Q \\<noteq> 0; monic Q; set (coeffs Q) \\<subseteq> \\<int>; \n poly Q (1 - (root 3 2) + (root 3 4)) = 0\\<rbrakk> \\<Longrightarrow> degree P \\<le> degree Q\"\n \\<comment> \\<open>The polynomial found by the theorem is x^3 - 3x^2 + 9x - 9\\<close>\n by (rule exI[where x = \"[:1, -3, 9, -9:]\"]) \n (auto simp: eval_nat_numeral field_simps powr_realpow)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There exists a monic polynomial $P$ with integer coefficients such that its degree is minimal and it has a root at $1 - \\sqrt[3]{2} + \\sqrt[3]{4}$. Additionally, any other monic polynomial $Q$ with integer coefficients and the same root must have degree greater than or equal to $P$. The polynomial found by the theorem is $x^3 - 3x^2 + 9x - 9$.",
+        "syntax": 0,
+        "semantic_score": 0.7770236214024479,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\n\\<comment> \\<open>Fixing the polynomial and the constant\\<close>\nfixes P :: \"int \\<Rightarrow> int\"\nfixes x :: real\nassumes h0 : \"P x = x^3 - 3 * x^2 + 9 * x - 9\"\nshows \"degree P > 0\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\n\\<comment> \\<open>Fixing the polynomial and the constant\\<close>\nfixes P :: \"int \\<Rightarrow> int\"\nfixes x :: real\nassumes h0 : \"P x = x^3 - 3 * x^2 + 9 * x - 9\"\nshows \"degree P > 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the degree of the polynomial $P(x) = x^3 - 3x^2 + 9x - 9$?",
+        "syntax": 0,
+        "semantic_score": 0.8287828780519083,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\n obtain P :: \"int poly\" where\n \"P \\<noteq> 0\" \"monic P\" \"set (coeffs P) \\<subseteq> \\<int>\"\n \"P (1 - root 3 2 + root 3 4) = 0\"\n \"\\<And>Q. Q \\<noteq> 0 \\<Longrightarrow> Q (1 - root 3 2 + root 3 4) = 0 \\<Longrightarrow> degree P \\<le> degree Q\"\n ",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\n obtain P :: \"int poly\" where\n \"P \\<noteq> 0\" \"monic P\" \"set (coeffs P) \\<subseteq> \\<int>\"\n \"P (1 - root 3 2 + root 3 4) = 0\"\n \"\\<And>Q. Q \\<noteq> 0 \\<Longrightarrow> Q (1 - root 3 2 + root 3 4) = 0 \\<Longrightarrow> degree P \\<le> degree Q\"\n \n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a non-zero polynomial with integer coefficients such that its leading coefficient is $1$, and its roots include $1 - \\sqrt[3]{2} + \\sqrt[3]{4}$. Among all such polynomials, choose the one with the highest degree.",
+        "syntax": 0,
+        "semantic_score": 0.5123751173720937,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\n\\<comment> \\<open>A nonzero monic polynomial with integer coefficients and minimal degree such that P(1 - cube_root 2 + cube_root 4) = 0 is x^3 - 3x^2 + 9x - 9\\<close>\nfixes x :: real\ndefines cube_root : \"cube_root \\<equiv> root 3 2\"\ndefines y : \"y \\<equiv> 1 - cube_root + cube_root^2\"\ndefines P : \"P \\<equiv> [1, -3, 9, -9]\"\nassumes h0 : \"x = y\"\nshows \"poly P x = 0\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\n\\<comment> \\<open>A nonzero monic polynomial with integer coefficients and minimal degree such that P(1 - cube_root 2 + cube_root 4) = 0 is x^3 - 3x^2 + 9x - 9\\<close>\nfixes x :: real\ndefines cube_root : \"cube_root \\<equiv> root 3 2\"\ndefines y : \"y \\<equiv> 1 - cube_root + cube_root^2\"\ndefines P : \"P \\<equiv> [1, -3, 9, -9]\"\nassumes h0 : \"x = y\"\nshows \"poly P x = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest degree monic polynomial with integer coefficients whose value is zero at $1 - \\sqrt[3]{2} + \\sqrt[3]{4}$? The polynomial is $x^3 - 3x^2 + 9x - 9$.",
+        "syntax": 1,
+        "semantic_score": 0.8178826829889075,
+        "symbolic_score": 0.1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\n obtains P :: \"int poly\"\n where \"monic P\" \"degree P > 0\" \"P (1 - root 3 2 + root 3 4) = 0\" \"\\<forall> Q. (degree Q > 0 \\<and> Q (1 - root 3 2 + root 3 4) = 0) \\<longrightarrow> degree P \\<le> degree Q\"\n and \"P = [:1,-3,9,-9:]\"\n",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\n obtains P :: \"int poly\"\n where \"monic P\" \"degree P > 0\" \"P (1 - root 3 2 + root 3 4) = 0\" \"\\<forall> Q. (degree Q > 0 \\<and> Q (1 - root 3 2 + root 3 4) = 0) \\<longrightarrow> degree P \\<le> degree Q\"\n and \"P = [:1,-3,9,-9:]\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a non-constant monic polynomial $P$ with integer coefficients such that $P(1 - \\sqrt[3]{2} + \\sqrt[3]{4}) = 0$, and if $Q$ is any other non-constant polynomial with integer coefficients that also evaluates to $0$ at $1 - \\sqrt[3]{2} + \\sqrt[3]{4}$, then the degree of $P$ is less than or equal to the degree of $Q$. Furthermore, $P$ should be equal to $x^3 - 3x^2 + 9x - 9$.",
+        "syntax": 0,
+        "semantic_score": 0.46486033134277993,
+        "symbolic_score": 0.1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\n\\<comment>\\<open>Existence\\<close>\n\\<comment>\\<open>Find a nonzero monic polynomial P(x)\\<close>\n\\<comment>\\<open>with integer coefficients and minimal degree\\<close>\n\\<comment>\\<open>such that P(1 - (2 powr (1/3)) + (4 powr (1/3))) = 0.\\<close>\nfixes P :: \"int poly\"\nassumes h0 : \"P \\<noteq> 0\"\nand h1 : \"monic P\"\nand h2 : \"coeffs P \\<in> \\<int>\\<^sup>\\<star>\"\nand h3 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nand h4 : \"\\<And>Q. Q \\<noteq> 0 \\<Longrightarrow> monic Q \\<Longrightarrow> coeffs Q \\<in> \\<int>\\<^sup>\\<star> \\<Longrightarrow>\ndegree Q \\<ge> degree P \\<Longrightarrow>\nQ (1 - (2 powr (1/3)) + (4 powr (1/3))) \\<noteq> 0\"\nshows \"P = [1, -3, 9, -9]\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\n\\<comment>\\<open>Existence\\<close>\n\\<comment>\\<open>Find a nonzero monic polynomial P(x)\\<close>\n\\<comment>\\<open>with integer coefficients and minimal degree\\<close>\n\\<comment>\\<open>such that P(1 - (2 powr (1/3)) + (4 powr (1/3))) = 0.\\<close>\nfixes P :: \"int poly\"\nassumes h0 : \"P \\<noteq> 0\"\nand h1 : \"monic P\"\nand h2 : \"coeffs P \\<in> \\<int>\\<^sup>\\<star>\"\nand h3 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nand h4 : \"\\<And>Q. Q \\<noteq> 0 \\<Longrightarrow> monic Q \\<Longrightarrow> coeffs Q \\<in> \\<int>\\<^sup>\\<star> \\<Longrightarrow>\ndegree Q \\<ge> degree P \\<Longrightarrow>\nQ (1 - (2 powr (1/3)) + (4 powr (1/3))) \\<noteq> 0\"\nshows \"P = [1, -3, 9, -9]\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1 - \\sqrt[3]{2} + \\sqrt[3]{4}) = 0$. The polynomial $P(x)$ must satisfy the additional conditions that all its coefficients are integers and that no other polynomial of higher degree with integer coefficients evaluates to $0$ at $1 - \\sqrt[3]{2} + \\sqrt[3]{4}$. The final answer is $P(x) = x^3 - 3x^2 + 9x - 9$.",
+        "syntax": 0,
+        "semantic_score": 0.5724036828876085,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nobtain P :: \"int \\<Rightarrow> int\" where\n\"monic P\"\n\"coeff P 0 \\<noteq> 0\"\n\"P (1 - root 3 2 + root 3 4) = 0\"\n\"\\<And>Q. Q (1 - root 3 2 + root 3 4) = 0 \\<Longrightarrow> degree Q \\<ge> degree P\"\nusing exists_minimal_degree_polynomial[of \"\\<lambda>Q. Q (1 - root 3 2 + root 3 4) = 0\" \"\\<lambda>Q. monic Q \\<and> coeff Q 0 \\<noteq> 0\"]\nby auto\nshows \"P x = x^3 - 3*x^2 + 9*x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nobtain P :: \"int \\<Rightarrow> int\" where\n\"monic P\"\n\"coeff P 0 \\<noteq> 0\"\n\"P (1 - root 3 2 + root 3 4) = 0\"\n\"\\<And>Q. Q (1 - root 3 2 + root 3 4) = 0 \\<Longrightarrow> degree Q \\<ge> degree P\"\nusing exists_minimal_degree_polynomial[of \"\\<lambda>Q. Q (1 - root 3 2 + root 3 4) = 0\" \"\\<lambda>Q. monic Q \\<and> coeff Q 0 \\<noteq> 0\"]\nby auto\nshows \"P x = x^3 - 3*x^2 + 9*x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the cubic polynomial with integer coefficients that has a root of $1 - \\sqrt[3]{2} + \\sqrt[3]{4}$. The polynomial should be monic (leading coefficient of 1) and have a non-zero constant term. Furthermore, this cubic polynomial should have the smallest degree among all such polynomials that have this root. The cubic polynomial is $P(x) = x^3 - 3x^2 + 9x - 9$.",
+        "syntax": 0,
+        "semantic_score": 0.45022975618028727,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nobtains P :: \"int poly\"\nwhere \"monic P\" \"degree P > 0\" \"P (1 - (root 3 2) + (root 3 4)) = 0\" \n\"\\<forall> Q. Q (1 - (root 3 2) + (root 3 4)) = 0 \\<longrightarrow> degree P \\<le> degree Q\"\n\"set (coeffs P) \\<subseteq> \\<int>\"\n\"coeff P (degree P) = 1\"\n\"coeff P 0 = -9\"\n\"coeff P 1 = 9\"\n\"coeff P 2 = -3\"\n\"coeff P 3 = 1\"\n",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nobtains P :: \"int poly\"\nwhere \"monic P\" \"degree P > 0\" \"P (1 - (root 3 2) + (root 3 4)) = 0\" \n\"\\<forall> Q. Q (1 - (root 3 2) + (root 3 4)) = 0 \\<longrightarrow> degree P \\<le> degree Q\"\n\"set (coeffs P) \\<subseteq> \\<int>\"\n\"coeff P (degree P) = 1\"\n\"coeff P 0 = -9\"\n\"coeff P 1 = 9\"\n\"coeff P 2 = -3\"\n\"coeff P 3 = 1\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There exists a monic polynomial $P(x)$ with integer coefficients such that the degree of $P(x)$ is greater than $0$. The polynomial $P(x)$ has roots at $1 - \\sqrt[3]{2} + \\sqrt[3]{4}$ and its leading coefficient is $1$. Additionally, the coefficient of $x^3$ is $1$, the coefficient of $x^2$ is $-3$, the coefficient of $x$ is $9$, and the constant term is $-9$. Moreover, for any polynomial $Q(x)$ with integer coefficients such that $Q(1 - \\sqrt[3]{2} + \\sqrt[3]{4})=0$, the degree of $Q(x)$ is greater than or equal to the degree of $P(x)$.",
+        "syntax": 0,
+        "semantic_score": 0.3350909502006296,
+        "symbolic_score": 0.1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\n\\<comment> \\<open>define the coefficients of the polynomial\\<close>\nfixes a b c d :: int\n\\<comment> \\<open>define the polynomial\\<close>\ndefines \"P(x) \\<equiv> x^3 - 3*x^2 + 9*x - 9\"\n\\<comment> \\<open>check that P is monic and has integer coefficients\\<close>\nassumes h0 : \"a = 1\"\nand h1 : \"b = -3\"\nand h2 : \"c = 9\"\nand h3 : \"d = -9\"\nshows \"P x = a * x^3 + b * x^2 + c * x + d\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\n\\<comment> \\<open>define the coefficients of the polynomial\\<close>\nfixes a b c d :: int\n\\<comment> \\<open>define the polynomial\\<close>\ndefines \"P(x) \\<equiv> x^3 - 3*x^2 + 9*x - 9\"\n\\<comment> \\<open>check that P is monic and has integer coefficients\\<close>\nassumes h0 : \"a = 1\"\nand h1 : \"b = -3\"\nand h2 : \"c = 9\"\nand h3 : \"d = -9\"\nshows \"P x = a * x^3 + b * x^2 + c * x + d\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a polynomial $P(x) = x^3 - 3x^2 + 9x - 9$. Verify that $P(x)$ is a monic polynomial with integer coefficients. The final answer is to show that $P(x) = x^3 - 3x^2 + 9x - 9$ can be expressed as $a x^3 + b x^2 + c x + d$ where $a=1$, $b=-3$, $c=9$, and $d=-9$.",
+        "syntax": 1,
+        "semantic_score": 0.10022680219262037,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\n obtains P :: \"int poly\"\n where \"monic P\" \"degree P > 0\" \"P (1 - root 3 2 + root 3 4) = 0\" \n \"(\\<forall>Q. degree Q > 0 \\<and> Q (1 - root 3 2 + root 3 4) = 0 \\<longrightarrow> degree P \\<le> degree Q)\"\n \"(\\<forall>n. coefficients P ! n \\<in> \\<int>)\"\n \"(\\<forall>Q. Q \\<noteq> P \\<longrightarrow> \\<not>(degree Q > 0 \\<and> Q (1 - root 3 2 + root 3 4) = 0 \\<and> degree P > degree Q))\" \n \"P = [:1, -3, 9, -9:]\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\n obtains P :: \"int poly\"\n where \"monic P\" \"degree P > 0\" \"P (1 - root 3 2 + root 3 4) = 0\" \n \"(\\<forall>Q. degree Q > 0 \\<and> Q (1 - root 3 2 + root 3 4) = 0 \\<longrightarrow> degree P \\<le> degree Q)\"\n \"(\\<forall>n. coefficients P ! n \\<in> \\<int>)\"\n \"(\\<forall>Q. Q \\<noteq> P \\<longrightarrow> \\<not>(degree Q > 0 \\<and> Q (1 - root 3 2 + root 3 4) = 0 \\<and> degree P > degree Q))\" \n \"P = [:1, -3, 9, -9:]\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a monic polynomial $P$ with integer coefficients and degree greater than $0$ such that $1 - \\sqrt[3]{2} + \\sqrt[3]{4}$ is a root of $P$, and such that $P$ has the maximum degree among all such polynomials. The coefficients of $P$ must also be integers. Finally, $P$ must be equal to $1 - 3x + 9x^2 - 9x^3$.",
+        "syntax": 0,
+        "semantic_score": 0.6996009110569494,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek": {
+        "0": [
+            8,
+            2,
+            5,
+            6
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            7
+        ],
+        "6": [
+            9
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"\\<forall> x. P x = 0 \\<longrightarrow> x = 1 - 2 powr (1/3) + 4 powr (1/3)\"\nshows  \"P x = 0\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"\\<forall> x. P x = 0 \\<longrightarrow> x = 1 - 2 powr (1/3) + 4 powr (1/3)\"\nshows  \"P x = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The problem is defined by the polynomial equation $P(x) = x^3 - 3x^2 + 9x - 9$. Find the value of $x$ that makes $P(x) = 0$. The solution is $x = 1 - 2^{1/3} + 4^{1/3}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8587470525563162,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"is_monic P\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"is_monic P\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The polynomial $P(x) = x^3 - 3x^2 + 9x - 9$ has a root at $1 - 2^{1/3} + 4^{1/3}$. Is $P(x)$ a monic polynomial?",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9144470749537367,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"monic P\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"monic P\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a cubic function $P(x) = x^3 - 3x^2 + 9x - 9$, find the value of x for which $P(1 - \\sqrt[3]{2} + \\sqrt[3]{4}) = 0$. Show that this function is monic.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8809554908359575,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nand h2 : \"monic P\"\nshows  \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nand h2 : \"monic P\"\nshows  \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a cubic polynomial $P(x) = x^3 - 3x^2 + 9x - 9$, find the value of $P$ at $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}$. The final answer is $0$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8723653495421899,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $P(x) = x^3 - 3x^2 + 9x - 9$, find the value of x that makes $P(1 - 2^{1/3} + 4^{1/3}) = 0$. Prove that $P(x) = x^3 - 3x^2 + 9x - 9$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.869999344353751,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"\\<forall> x. P x \\<noteq> 0\"\nand h2 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"monic P\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"\\<forall> x. P x \\<noteq> 0\"\nand h2 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"monic P\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The real-valued function $P$ is defined as $P(x) = x^3 - 3x^2 + 9x - 9$. Find the coefficients for a monic polynomial $P$ if it's given that $P(x) \\neq 0$ for all $x$ and $P(1 - 2^{1/3} + 4^{1/3}) = 0$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8975819944600363,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $P(x) = x^3 - 3x^2 + 9x - 9$, find the value of $x$ such that $P(1 - 2^{1/3} + 4^{1/3}) = 0$. The result should be the equation $P(x) = x^3 - 3x^2 + 9x - 9$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8710636250432898,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"\\<forall> x. P x \\<noteq> 0\"\nand h2 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"\\<forall> x. P x \\<noteq> 0\"\nand h2 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nshows  \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $x$ such that $x^3 - 3x^2 + 9x - 9 = 0$. It is given that the equation has a root at $1 - \\sqrt[3]{2} + \\sqrt[3]{4}$ and that the equation is not identically zero. The theorem shows that the given equation holds for all $x$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8397133642323863,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes x P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - 2 powr (1/3) + 4 powr (1/3)) = 0\"\nshows  \"\\<exists> x. P x = 0\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes x P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - 2 powr (1/3) + 4 powr (1/3)) = 0\"\nshows  \"\\<exists> x. P x = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a real number $x$ such that the cubic equation $x^3 - 3x^2 + 9x - 9 = 0$ holds true. Here is a hint: $x = 1 - 2^{1/3} + 4^{1/3}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8494524417177467,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes x P :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nand h2 : \"P x \\<noteq> 0\"\nshows  \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is x^3 - 3x^2 + 9x - 9\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n \\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes x P :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\nand h1 : \"P (1 - (2 powr (1/3)) + (4 powr (1/3))) = 0\"\nand h2 : \"P x \\<noteq> 0\"\nshows  \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $P(x) = x^3 - 3x^2 + 9x - 9$, find a value of $x$ that makes $P(x) = 0$. The function is not equal to zero for any other values of $x$ other than $x = 1 - 2^{1/3} + 4^{1/3}$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8519976182102664,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0 \\<longleftrightarrow> x = 1 - (2 powr (1 / 3)) + (4 powr (1 / 3))\"\nand h1 : \"degree P = 3\"\nand h2 : \"lead_coeff P = 1\"\nand h3 : \"\\<forall> a \\<in> set (coeffs P). a \\<in> \\<int>\"\nand h4 : \"P \\<noteq> 0\"\nshows \"P = (\\<lambda>x. x^3 - 3*x^2 + 9*x - 9)\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0 \\<longleftrightarrow> x = 1 - (2 powr (1 / 3)) + (4 powr (1 / 3))\"\nand h1 : \"degree P = 3\"\nand h2 : \"lead_coeff P = 1\"\nand h3 : \"\\<forall> a \\<in> set (coeffs P). a \\<in> \\<int>\"\nand h4 : \"P \\<noteq> 0\"\nshows \"P = (\\<lambda>x. x^3 - 3*x^2 + 9*x - 9)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a polynomial function P(x) of degree 3 with a leading coefficient of 1. All coefficients of P(x) are integers, and P(x) is not the zero polynomial. It is given that P(x) equals 0 if and only if x equals 1 minus 2 raised to the power of 1/3 plus 4 raised to the power of 1/3. Determine the polynomial P(x).\n\nThe final answer is P(x) = x^3 - 3x^2 + 9x - 9.",
+        "syntax": 0,
+        "semantic_score": 0.8929008433292419,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0 \\<Longrightarrow> x = 1 - (2 powr (1 / 3)) + (4 powr (1 / 3))\"\nand h1 : \"\\<forall> x. degree P x = 3\"\nand h2 : \"\\<forall> x. lead_coeff P x = 1\"\nand h3 : \"\\<forall> x. coeff P x 0 \\<in> int\"\nand h4 : \"\\<forall> x. coeff P x 1 \\<in> int\"\nand h5 : \"\\<forall> x. coeff P x 2 \\<in> int\"\nand h6 : \"\\<forall> x. coeff P x 3 \\<in> int\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0 \\<Longrightarrow> x = 1 - (2 powr (1 / 3)) + (4 powr (1 / 3))\"\nand h1 : \"\\<forall> x. degree P x = 3\"\nand h2 : \"\\<forall> x. lead_coeff P x = 1\"\nand h3 : \"\\<forall> x. coeff P x 0 \\<in> int\"\nand h4 : \"\\<forall> x. coeff P x 1 \\<in> int\"\nand h5 : \"\\<forall> x. coeff P x 2 \\<in> int\"\nand h6 : \"\\<forall> x. coeff P x 3 \\<in> int\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a polynomial function P(x) with real coefficients, where the degree of the polynomial is 3, the leading coefficient is 1, and all other coefficients are integers. If P(x) equals 0, then x is equal to 1 minus 2 raised to the power of 1/3, plus 4 raised to the power of 1/3. What is the expression for P(x)?\n\nThe expression for P(x) is: x^3 - 3x^2 + 9x - 9.",
+        "syntax": 0,
+        "semantic_score": 0.874064392639889,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * x powr 2) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"\\<forall> c \\<in> set (coeffs P). c \\<in> \\<int>\"\nand h5 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * x powr 2) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"\\<forall> c \\<in> set (coeffs P). c \\<in> \\<int>\"\nand h5 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a polynomial function P(x) with the following properties:\n\n1. P(x) = 0 for a specific value of x.\n2. P(x) can be expressed as the cubic equation x^3 - 3x^2 + 9x - 9.\n3. The degree of P(x) is 3.\n4. The leading coefficient of P(x) is 1.\n5. All coefficients of P(x) are integers.\n6. P(x) = 0 for the value x = 1 - 2^(1/3) + 4^(1/3).\n\nProve that P(x) is equal to the cubic equation x^3 - 3x^2 + 9x - 9.",
+        "syntax": 1,
+        "semantic_score": 0.8459863501806284,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3 - 3 * x powr 2 + 9 * x - 9)\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"coeffs P \\<subseteq> int\"\nand h5 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P = (\\<lambda>x. x^3 - 3*x^2 + 9*x - 9)\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3 - 3 * x powr 2 + 9 * x - 9)\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"coeffs P \\<subseteq> int\"\nand h5 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P = (\\<lambda>x. x^3 - 3*x^2 + 9*x - 9)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a polynomial function P(x) with the properties:\n\n1. P(x) = 0 for a specific value of x.\n2. For all x, P(x) = x^3 - 3x^2 + 9x - 9.\n3. The degree of P(x) is 3.\n4. The leading coefficient of P(x) is 1.\n5. All coefficients of P(x) are integers.\n6. P(1 - 2^(1/3) + 4^(1/3)) = 0.\n\nProve that P(x) is equal to the function \u03bbx.x^3 - 3*x^2 + 9*x - 9.",
+        "syntax": 0,
+        "semantic_score": 0.8468800303504025,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"monic P\"\nand h1 : \"coeffs P \\<subseteq> int\"\nand h2 : \"degree P = (LEAST n. \\<exists> P. monic P \\<and> coeffs P \\<subseteq> int \\<and> P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0)\"\nand h3 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P = (\\<lambda>x. x^3 - 3*x^2 + 9*x - 9)\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"monic P\"\nand h1 : \"coeffs P \\<subseteq> int\"\nand h2 : \"degree P = (LEAST n. \\<exists> P. monic P \\<and> coeffs P \\<subseteq> int \\<and> P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0)\"\nand h3 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P = (\\<lambda>x. x^3 - 3*x^2 + 9*x - 9)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a monic polynomial P(x) with integer coefficients such that P(1 - 2^(1/3) + 4^(1/3)) = 0, and the degree of P(x) is the smallest possible among all monic polynomials with integer coefficients that satisfy this condition. The polynomial P(x) is given by P(x) = x^3 - 3x^2 + 9x - 9.",
+        "syntax": 0,
+        "semantic_score": 0.9344613488302118,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * x powr 2) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * x powr 2) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a polynomial function P(x) with the properties:\n\n1. P(x) = 0 for some specific value of x.\n2. For all x, P(x) = x^3 - 3x^2 + 9x - 9.\n3. The degree of P(x) is 3.\n4. The leading coefficient of P(x) is 1.\n5. P(1 - 2^(1/3) + 4^(1/3)) = 0.\n\nProve that P(x) = x^3 - 3x^2 + 9x - 9 for all x.",
+        "syntax": 1,
+        "semantic_score": 0.8412495359863733,
+        "symbolic_score": 0.2
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * (x powr 2)) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"leading_coeff P = 1\"\nand h4 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * (x powr 2)) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"leading_coeff P = 1\"\nand h4 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a polynomial function P(x) with the properties:\n\n1. P(x) = 0 for a certain value of x.\n2. P(x) can be expressed as x^3 - 3x^2 + 9x - 9 for all x.\n3. The degree of P(x) is 3.\n4. The leading coefficient of P(x) is 1.\n5. P(1 - 2^(1/3) + 4^(1/3)) = 0.\n\nProve that P(x) = x^3 - 3x^2 + 9x - 9 for all x.",
+        "syntax": 1,
+        "semantic_score": 0.8486394007003921,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<exists>n. n > 0 \\<and> P x = x ^ n + (\\<Sum>i<n. a i * x ^ i)\"\nand h2 : \"\\<forall>i<n. a i \\<in> \\<int>\"\nand h3 : \"a n = 1\"\nand h4 : \"P (1 - 2 powr (1 / 3) + 2 powr (2 / 3)) = 0\"\nshows \"P x = x ^ 3 - 3 * x ^ 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<exists>n. n > 0 \\<and> P x = x ^ n + (\\<Sum>i<n. a i * x ^ i)\"\nand h2 : \"\\<forall>i<n. a i \\<in> \\<int>\"\nand h3 : \"a n = 1\"\nand h4 : \"P (1 - 2 powr (1 / 3) + 2 powr (2 / 3)) = 0\"\nshows \"P x = x ^ 3 - 3 * x ^ 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a polynomial function P(x) defined as follows: P(x) = x^n + the sum of terms a_i * x^i for i from 0 to n-1, where n is a positive integer, a_i are integers for all i < n, and a_n = 1. It is given that P(x) = 0 for some x, and P(1 - 2^(1/3) + 2^(2/3)) = 0. Prove that P(x) = x^3 - 3x^2 + 9x - 9.",
+        "syntax": 1,
+        "semantic_score": 0.8478885845087287,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * x powr 2) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"P x = 0\"\nand h1 : \"\\<forall> x. P x = (x powr 3) - (3 * x powr 2) + (9 * x) - 9\"\nand h2 : \"degree P = 3\"\nand h3 : \"lead_coeff P = 1\"\nand h4 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"P x = x powr 3 - 3 * x powr 2 + 9 * x - 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a polynomial function P(x) with the properties:\n\n1. P(x) = 0 for some real number x.\n2. For all real numbers x, P(x) = x^3 - 3x^2 + 9x - 9.\n3. The degree of P(x) is 3.\n4. The leading coefficient of P(x) is 1.\n5. P(1 - 2^(1/3) + 4^(1/3)) = 0.\n\nProve that P(x) = x^3 - 3x^2 + 9x - 9 for all real numbers x.",
+        "syntax": 1,
+        "semantic_score": 0.8408370043402779,
+        "symbolic_score": 0.2
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> n. n > 0 \\<and> (\\<forall> i. i < n \\<longrightarrow> coeff P i \\<in> \\<int> \\<and> (i = n - 1 \\<longrightarrow> coeff P i = 1))\"\nand h1 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"\\<exists> n. n = 3 \\<and> (\\<forall> i. i < n \\<longrightarrow> coeff P i = (if i = 0 then -9 else if i = 1 then 9 else if i = 2 then -3 else 1))\"",
+        "formal solution": "(* ### Problem\n Find a nonzero monic polynomial $P(x)$ with integer coefficients and minimal degree such that $P(1-\\sqrt[3]2+\\sqrt[3]4)=0$.  (A polynomial is called $\\textit{monic}$ if its leading coefficient is $1$.) The final Answer is $x^3 - 3x^2 + 9x - 9$\n ### Proof\n Let $x = 1 - \\sqrt[3]{2} + \\sqrt[3]{4}.$  Note that $(1 - \\sqrt[3]{2} + \\sqrt[3]{4})(1 + \\sqrt[3]{2}) = 3,$ so \\[x = \\frac{3}{1 + \\sqrt[3]{2}}.\\]Then \\[\\frac{3}{x} = 1 + \\sqrt[3]{2},\\]so \\[\\frac{3}{x} - 1 = \\frac{3 - x}{x} = \\sqrt[3]{2}.\\]Cubing both sides, we get\n\\[\\frac{-x^3 + 9x^2 - 27x + 27}{x^3} = 2,\\]so $-x^3 + 9x^2 - 27x + 27 = 2x^3.$  This simplifies to $3x^3 - 9x^2 + 27x - 27 = 3(x^3 - 3x^2 + 9x - 9) = 0,$ so we can take \\[f(x) = \\boxed{x^3 - 3x^2 + 9x - 9}.\\]\n *)\n\ntheorem\nfixes P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> n. n > 0 \\<and> (\\<forall> i. i < n \\<longrightarrow> coeff P i \\<in> \\<int> \\<and> (i = n - 1 \\<longrightarrow> coeff P i = 1))\"\nand h1 : \"P (1 - (2 powr (1 / 3)) + (4 powr (1 / 3))) = 0\"\nshows \"\\<exists> n. n = 3 \\<and> (\\<forall> i. i < n \\<longrightarrow> coeff P i = (if i = 0 then -9 else if i = 1 then 9 else if i = 2 then -3 else 1))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a polynomial P(x) with real coefficients such that for some positive integer n, all coefficients of P(x) up to the (n-1)-th term are integers, and the (n-1)-th coefficient is 1. Additionally, P(1 - (2^(1/3)) + (4^(1/3))) = 0. Prove that there exists a value of n equal to 3, and for all terms i less than n, the coefficients of P(x) are as follows: if i = 0, the coefficient is -9; if i = 1, the coefficient is 9; if i = 2, the coefficient is -3; and if i = 3, the coefficient is 1.",
+        "syntax": 1,
+        "semantic_score": 0.8728944274022037,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            8,
+            5
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            4
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

@@ -1,0 +1,110 @@
+{
+    "problem_name": "aimeII_2001_p3",
+    "informal_statement": "Given that\n\n$$\n\\begin{align*}x_{1}&=211,\\\\\nx_{2}&=375,\\\\\nx_{3}&=420,\\\\\nx_{4}&=523,\\ \\text{and}\\\\\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4}\\ \\text{when}\\ n\\geq5, \\end{align*}\n$$\n\nfind the value of $x_{531}+x_{753}+x_{975}$. Show that it is 898.",
+    "informal_proof": "We find that $x_5 = 267$ by the recursive formula. Summing the [[recursion]]s\n\n$$\\begin{align*}\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4} \\\\\nx_{n-1}&=x_{n-2}-x_{n-3}+x_{n-4}-x_{n-5}\n\\end{align*}$$\n\nyields $x_{n} = -x_{n-5}$. Thus $x_n = (-1)^k x_{n-5k}$. Since $531 = 106 \\cdot 5 + 1,\\ 753 = 150 \\cdot 5 + 3,\\ 975 = 194 \\cdot 5 + 5$, it follows that\n\n$$x_{531} + x_{753} + x_{975} = (-1)^{106} x_1 + (-1)^{150} x_3 + (-1)^{194} x_5 = 211 + 420 + 267 = 898.$$",
+    "a_0": {
+        "formal problem": "theorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"",
+        "formal solution": "(* ### Problem\n Given that\n\n$$\n\\begin{align*}x_{1}&=211,\\\\\nx_{2}&=375,\\\\\nx_{3}&=420,\\\\\nx_{4}&=523,\\ \\text{and}\\\\\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4}\\ \\text{when}\\ n\\geq5, \\end{align*}\n$$\n\nfind the value of $x_{531}+x_{753}+x_{975}$. Show that it is 898.\n ### Proof\n We find that $x_5 = 267$ by the recursive formula. Summing the [[recursion]]s\n\n$$\\begin{align*}\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4} \\\\\nx_{n-1}&=x_{n-2}-x_{n-3}+x_{n-4}-x_{n-5}\n\\end{align*}$$\n\nyields $x_{n} = -x_{n-5}$. Thus $x_n = (-1)^k x_{n-5k}$. Since $531 = 106 \\cdot 5 + 1,\\ 753 = 150 \\cdot 5 + 3,\\ 975 = 194 \\cdot 5 + 5$, it follows that\n\n$$x_{531} + x_{753} + x_{975} = (-1)^{106} x_1 + (-1)^{150} x_3 + (-1)^{194} x_5 = 211 + 420 + 267 = 898.$$\n *)\n\ntheorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of integers $x_n$ is defined by $x_1 = 211$, $x_2 = 375$, $x_3 = 420$, $x_4 = 523$, and $x_n = x_{n-1} - x_{n-2} + x_{n-3} - x_{n-4}$ for all $n \\geq 5$. What is the value of $x_{531} + x_{753} + x_{975}$? The final answer is 898.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.13029898703098297,
+        "symbolic_score": 1.0
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"",
+        "formal solution": "(* ### Problem\n Given that\n\n$$\n\\begin{align*}x_{1}&=211,\\\\\nx_{2}&=375,\\\\\nx_{3}&=420,\\\\\nx_{4}&=523,\\ \\text{and}\\\\\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4}\\ \\text{when}\\ n\\geq5, \\end{align*}\n$$\n\nfind the value of $x_{531}+x_{753}+x_{975}$. Show that it is 898.\n ### Proof\n We find that $x_5 = 267$ by the recursive formula. Summing the [[recursion]]s\n\n$$\\begin{align*}\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4} \\\\\nx_{n-1}&=x_{n-2}-x_{n-3}+x_{n-4}-x_{n-5}\n\\end{align*}$$\n\nyields $x_{n} = -x_{n-5}$. Thus $x_n = (-1)^k x_{n-5k}$. Since $531 = 106 \\cdot 5 + 1,\\ 753 = 150 \\cdot 5 + 3,\\ 975 = 194 \\cdot 5 + 5$, it follows that\n\n$$x_{531} + x_{753} + x_{975} = (-1)^{106} x_1 + (-1)^{150} x_3 + (-1)^{194} x_5 = 211 + 420 + 267 = 898.$$\n *)\n\ntheorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of integers $x_1, x_2, x_3, x_4, \\dots$ is defined as follows: $x_1 = 211, x_2 = 375, x_3 = 420, x_4 = 523$, and for $n \\geq 5$, $x_n = x_{n-1} - x_{n-2} + x_{n-3} - x_{n-4}$. Find the value of $x_{531} + x_{753} + x_{975}$. The final answer is 898.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.19540467858314514,
+        "symbolic_score": 1.0
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n - 1) - x (n - 2) + x (n - 3) - x (n - 4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"",
+        "formal solution": "(* ### Problem\n Given that\n\n$$\n\\begin{align*}x_{1}&=211,\\\\\nx_{2}&=375,\\\\\nx_{3}&=420,\\\\\nx_{4}&=523,\\ \\text{and}\\\\\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4}\\ \\text{when}\\ n\\geq5, \\end{align*}\n$$\n\nfind the value of $x_{531}+x_{753}+x_{975}$. Show that it is 898.\n ### Proof\n We find that $x_5 = 267$ by the recursive formula. Summing the [[recursion]]s\n\n$$\\begin{align*}\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4} \\\\\nx_{n-1}&=x_{n-2}-x_{n-3}+x_{n-4}-x_{n-5}\n\\end{align*}$$\n\nyields $x_{n} = -x_{n-5}$. Thus $x_n = (-1)^k x_{n-5k}$. Since $531 = 106 \\cdot 5 + 1,\\ 753 = 150 \\cdot 5 + 3,\\ 975 = 194 \\cdot 5 + 5$, it follows that\n\n$$x_{531} + x_{753} + x_{975} = (-1)^{106} x_1 + (-1)^{150} x_3 + (-1)^{194} x_5 = 211 + 420 + 267 = 898.$$\n *)\n\ntheorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n - 1) - x (n - 2) + x (n - 3) - x (n - 4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of integers $x_1, x_2, x_3, ...$ is defined as follows: $x_1 = 211$, $x_2 = 375$, $x_3 = 420$, $x_4 = 523$, and for $n \\geq 5$, $x_n = x_{n-1} - x_{n-2} + x_{n-3} - x_{n-4}$. What is the value of $x_{531} + x_{753} + x_{975}$? The final answer is 898.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.13166306912899017,
+        "symbolic_score": 1.0
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"",
+        "formal solution": "(* ### Problem\n Given that\n\n$$\n\\begin{align*}x_{1}&=211,\\\\\nx_{2}&=375,\\\\\nx_{3}&=420,\\\\\nx_{4}&=523,\\ \\text{and}\\\\\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4}\\ \\text{when}\\ n\\geq5, \\end{align*}\n$$\n\nfind the value of $x_{531}+x_{753}+x_{975}$. Show that it is 898.\n ### Proof\n We find that $x_5 = 267$ by the recursive formula. Summing the [[recursion]]s\n\n$$\\begin{align*}\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4} \\\\\nx_{n-1}&=x_{n-2}-x_{n-3}+x_{n-4}-x_{n-5}\n\\end{align*}$$\n\nyields $x_{n} = -x_{n-5}$. Thus $x_n = (-1)^k x_{n-5k}$. Since $531 = 106 \\cdot 5 + 1,\\ 753 = 150 \\cdot 5 + 3,\\ 975 = 194 \\cdot 5 + 5$, it follows that\n\n$$x_{531} + x_{753} + x_{975} = (-1)^{106} x_1 + (-1)^{150} x_3 + (-1)^{194} x_5 = 211 + 420 + 267 = 898.$$\n *)\n\ntheorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of integers is defined as follows: $x_1 = 211$, $x_2 = 375$, $x_3 = 420$, $x_4 = 523$, and for $n \\geq 5$, $x_n = x_{n-1} - x_{n-2} + x_{n-3} - x_{n-4}$. Find the sum $x_{531} + x_{753} + x_{975}$. The final answer is 898.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.2253786027431488,
+        "symbolic_score": 1.0
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"",
+        "formal solution": "(* ### Problem\n Given that\n\n$$\n\\begin{align*}x_{1}&=211,\\\\\nx_{2}&=375,\\\\\nx_{3}&=420,\\\\\nx_{4}&=523,\\ \\text{and}\\\\\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4}\\ \\text{when}\\ n\\geq5, \\end{align*}\n$$\n\nfind the value of $x_{531}+x_{753}+x_{975}$. Show that it is 898.\n ### Proof\n We find that $x_5 = 267$ by the recursive formula. Summing the [[recursion]]s\n\n$$\\begin{align*}\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4} \\\\\nx_{n-1}&=x_{n-2}-x_{n-3}+x_{n-4}-x_{n-5}\n\\end{align*}$$\n\nyields $x_{n} = -x_{n-5}$. Thus $x_n = (-1)^k x_{n-5k}$. Since $531 = 106 \\cdot 5 + 1,\\ 753 = 150 \\cdot 5 + 3,\\ 975 = 194 \\cdot 5 + 5$, it follows that\n\n$$x_{531} + x_{753} + x_{975} = (-1)^{106} x_1 + (-1)^{150} x_3 + (-1)^{194} x_5 = 211 + 420 + 267 = 898.$$\n *)\n\ntheorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of integers is defined as follows: $x_1 = 211$, $x_2 = 375$, $x_3 = 420$, $x_4 = 523$, and for all $n \\geq 5$, $x_n = x_{n-1} - x_{n-2} + x_{n-3} - x_{n-4}$. Find the value of $x_{531} + x_{753} + x_{975}$. The final answer is 898.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.25239744782447815,
+        "symbolic_score": 1.0
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"",
+        "formal solution": "(* ### Problem\n Given that\n\n$$\n\\begin{align*}x_{1}&=211,\\\\\nx_{2}&=375,\\\\\nx_{3}&=420,\\\\\nx_{4}&=523,\\ \\text{and}\\\\\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4}\\ \\text{when}\\ n\\geq5, \\end{align*}\n$$\n\nfind the value of $x_{531}+x_{753}+x_{975}$. Show that it is 898.\n ### Proof\n We find that $x_5 = 267$ by the recursive formula. Summing the [[recursion]]s\n\n$$\\begin{align*}\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4} \\\\\nx_{n-1}&=x_{n-2}-x_{n-3}+x_{n-4}-x_{n-5}\n\\end{align*}$$\n\nyields $x_{n} = -x_{n-5}$. Thus $x_n = (-1)^k x_{n-5k}$. Since $531 = 106 \\cdot 5 + 1,\\ 753 = 150 \\cdot 5 + 3,\\ 975 = 194 \\cdot 5 + 5$, it follows that\n\n$$x_{531} + x_{753} + x_{975} = (-1)^{106} x_1 + (-1)^{150} x_3 + (-1)^{194} x_5 = 211 + 420 + 267 = 898.$$\n *)\n\ntheorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of integers $x_n$ is defined as follows: $x_1 = 211$, $x_2 = 375$, $x_3 = 420$, $x_4 = 523$, and for $n \\geq 5$, $x_n = x_{n-1} - x_{n-2} + x_{n-3} - x_{n-4}$. What is the value of $x_{531} + x_{753} + x_{975}$? The final answer is 898.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.1597687005996704,
+        "symbolic_score": 1.0
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"",
+        "formal solution": "(* ### Problem\n Given that\n\n$$\n\\begin{align*}x_{1}&=211,\\\\\nx_{2}&=375,\\\\\nx_{3}&=420,\\\\\nx_{4}&=523,\\ \\text{and}\\\\\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4}\\ \\text{when}\\ n\\geq5, \\end{align*}\n$$\n\nfind the value of $x_{531}+x_{753}+x_{975}$. Show that it is 898.\n ### Proof\n We find that $x_5 = 267$ by the recursive formula. Summing the [[recursion]]s\n\n$$\\begin{align*}\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4} \\\\\nx_{n-1}&=x_{n-2}-x_{n-3}+x_{n-4}-x_{n-5}\n\\end{align*}$$\n\nyields $x_{n} = -x_{n-5}$. Thus $x_n = (-1)^k x_{n-5k}$. Since $531 = 106 \\cdot 5 + 1,\\ 753 = 150 \\cdot 5 + 3,\\ 975 = 194 \\cdot 5 + 5$, it follows that\n\n$$x_{531} + x_{753} + x_{975} = (-1)^{106} x_1 + (-1)^{150} x_3 + (-1)^{194} x_5 = 211 + 420 + 267 = 898.$$\n *)\n\ntheorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The first four terms of a sequence are given by $x_1 = 211, x_2 = 375, x_3 = 420$, and $x_4 = 523$. For all $n \\geq 5$, the sequence is defined by the recursive formula $x_n = x_{n-1} - x_{n-2} + x_{n-3} - x_{n-4}$. Find the value of $x_{531} + x_{753} + x_{975}$. The final answer is 898.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.2168358862400055,
+        "symbolic_score": 1.0
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"",
+        "formal solution": "(* ### Problem\n Given that\n\n$$\n\\begin{align*}x_{1}&=211,\\\\\nx_{2}&=375,\\\\\nx_{3}&=420,\\\\\nx_{4}&=523,\\ \\text{and}\\\\\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4}\\ \\text{when}\\ n\\geq5, \\end{align*}\n$$\n\nfind the value of $x_{531}+x_{753}+x_{975}$. Show that it is 898.\n ### Proof\n We find that $x_5 = 267$ by the recursive formula. Summing the [[recursion]]s\n\n$$\\begin{align*}\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4} \\\\\nx_{n-1}&=x_{n-2}-x_{n-3}+x_{n-4}-x_{n-5}\n\\end{align*}$$\n\nyields $x_{n} = -x_{n-5}$. Thus $x_n = (-1)^k x_{n-5k}$. Since $531 = 106 \\cdot 5 + 1,\\ 753 = 150 \\cdot 5 + 3,\\ 975 = 194 \\cdot 5 + 5$, it follows that\n\n$$x_{531} + x_{753} + x_{975} = (-1)^{106} x_1 + (-1)^{150} x_3 + (-1)^{194} x_5 = 211 + 420 + 267 = 898.$$\n *)\n\ntheorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of integers $(x_n)$ is defined as follows:\n\n$x_1 = 211, x_2 = 375, x_3 = 420, x_4 = 523$\n\nFor $n \\geq 5$, $x_n = x_{n-1} - x_{n-2} + x_{n-3} - x_{n-4}$.\n\nFind the value of $x_{531} + x_{753} + x_{975}$. The final answer is 898.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.1583792269229889,
+        "symbolic_score": 1.0
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n - 1) - x (n - 2) + x (n - 3) - x (n - 4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"",
+        "formal solution": "(* ### Problem\n Given that\n\n$$\n\\begin{align*}x_{1}&=211,\\\\\nx_{2}&=375,\\\\\nx_{3}&=420,\\\\\nx_{4}&=523,\\ \\text{and}\\\\\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4}\\ \\text{when}\\ n\\geq5, \\end{align*}\n$$\n\nfind the value of $x_{531}+x_{753}+x_{975}$. Show that it is 898.\n ### Proof\n We find that $x_5 = 267$ by the recursive formula. Summing the [[recursion]]s\n\n$$\\begin{align*}\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4} \\\\\nx_{n-1}&=x_{n-2}-x_{n-3}+x_{n-4}-x_{n-5}\n\\end{align*}$$\n\nyields $x_{n} = -x_{n-5}$. Thus $x_n = (-1)^k x_{n-5k}$. Since $531 = 106 \\cdot 5 + 1,\\ 753 = 150 \\cdot 5 + 3,\\ 975 = 194 \\cdot 5 + 5$, it follows that\n\n$$x_{531} + x_{753} + x_{975} = (-1)^{106} x_1 + (-1)^{150} x_3 + (-1)^{194} x_5 = 211 + 420 + 267 = 898.$$\n *)\n\ntheorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n - 1) - x (n - 2) + x (n - 3) - x (n - 4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of integers is defined as follows: $x_1 = 211$, $x_2 = 375$, $x_3 = 420$, $x_4 = 523$, and for $n \\geq 5$, $x_n = x_{n-1} - x_{n-2} + x_{n-3} - x_{n-4}$. Find the value of $x_{531} + x_{753} + x_{975}$. The final answer is 898.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.24218903481960297,
+        "symbolic_score": 1.0
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n - 1) - x (n - 2) + x (n - 3) - x (n - 4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"",
+        "formal solution": "(* ### Problem\n Given that\n\n$$\n\\begin{align*}x_{1}&=211,\\\\\nx_{2}&=375,\\\\\nx_{3}&=420,\\\\\nx_{4}&=523,\\ \\text{and}\\\\\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4}\\ \\text{when}\\ n\\geq5, \\end{align*}\n$$\n\nfind the value of $x_{531}+x_{753}+x_{975}$. Show that it is 898.\n ### Proof\n We find that $x_5 = 267$ by the recursive formula. Summing the [[recursion]]s\n\n$$\\begin{align*}\nx_{n}&=x_{n-1}-x_{n-2}+x_{n-3}-x_{n-4} \\\\\nx_{n-1}&=x_{n-2}-x_{n-3}+x_{n-4}-x_{n-5}\n\\end{align*}$$\n\nyields $x_{n} = -x_{n-5}$. Thus $x_n = (-1)^k x_{n-5k}$. Since $531 = 106 \\cdot 5 + 1,\\ 753 = 150 \\cdot 5 + 3,\\ 975 = 194 \\cdot 5 + 5$, it follows that\n\n$$x_{531} + x_{753} + x_{975} = (-1)^{106} x_1 + (-1)^{150} x_3 + (-1)^{194} x_5 = 211 + 420 + 267 = 898.$$\n *)\n\ntheorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<forall>n. n \\<ge> 5 \\<longrightarrow> x n = x (n - 1) - x (n - 2) + x (n - 3) - x (n - 4)\"\nshows  \"x 531 + x 753 + x 975 = 898\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of integers $x_n$ is defined as follows: $x_1 = 211$, $x_2 = 375$, $x_3 = 420$, $x_4 = 523$, and for $n \\geq 5$, $x_n = x_{n-1} - x_{n-2} + x_{n-3} - x_{n-4}$. What is the sum of $x_{531}$, $x_{753}$, and $x_{975}$? The final answer is $898$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.18287315964698792,
+        "symbolic_score": 1.0
+    },
+    "oracle": "theorem\nfixes x :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"x 1 = 211\"\nand h1 : \"x 2 = 375\"\nand h2 : \"x 3 = 420\"\nand h3 : \"x 4 = 523\"\nand h4 : \"\\<And>(n::nat). ((n\\<ge>5) \\<Longrightarrow> (x n = x (n-1) - x (n-2) + x (n-3) - x (n-4)))\"\nshows \"x 531 + x 753 + x 975 = 898\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ]
+    }
+}

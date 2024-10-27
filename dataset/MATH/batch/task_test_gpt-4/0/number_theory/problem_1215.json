@@ -1,0 +1,148 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes n m k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists>k. k \\<ge> 2 \\<and> (\\<exists>i. i^k = m * n) \\<and> n = (LEAST n. \\<exists>k \\<ge> 2. \\<exists>i. i^k = m * n)\"\nshows  \"n + k = 13\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest positive integer such that $mn$ is a perfect $k$th power of an integer for some $k \\ge 2$, where $m=2^{1980} \\cdot 3^{384} \\cdot 5^{1694} \\cdot 7^{343}$. What is $n+k$? The final Answer is 13\n ### Proof\n Note $1980 = 2^23^25^111^1$, $384=2^7 3^1$, $1694 = 2^1 7^1 11^2$, and $343=7^3$. Their GCD is $1$, so the integer $m$ is not a perfect power (i.e., we can't take $n=1$).\n We need $n=2^a3^b5^c7^d$ (any other prime factors of $n$ would be superfluous) such that $(1980+a,384+b,1694+c,343+d)$ has GCD greater than $1$ (i.e., we must use $n$ to \"modify\" the exponents of the primes in the prime factorization to get an integer $mn$ which actually is a perfect power).\n First we search for a prime which divides at least three of the exponents $1980$, $384$, $1694$, and $343$, which would mean we only have to modify one of them (hence have $n$ be a prime power). This, however, is only true of the prime $2$, and the exponent not divisible by $2$ is $343$, which is the exponent of 7 in $m$.\n Therefore, to modify only one of the exponents, we would need $(a,b,c,d)=(0,0,0,1)$, giving $n=7$. But there is one number less than $7$ which has more than one prime divisor, and that is $6$. Furthermore, $7 \\mid 1694, 343$, and $1980 \\equiv 384 \\equiv -1 \\mod{7}$, so if we set $a=b=1$ and $c=d=0$, we find that $(1980+a,384+b,1694+c,343+d)$ has $7$ as a divisor.\n This gives $n=6$, which is therefore the smallest value such that $mn$ is a perfect power. In this case, $mn$ is a perfect $7$th power, so $k=7$.\n Thus $n+k=6+7=\\boxed{13}$.\n *)\n\ntheorem\nfixes n m k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists>k. k \\<ge> 2 \\<and> (\\<exists>i. i^k = m * n) \\<and> n = (LEAST n. \\<exists>k \\<ge> 2. \\<exists>i. i^k = m * n)\"\nshows  \"n + k = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a natural number $m = 2^{1980} \\times 3^{384} \\times 5^{1694} \\times 7^{343}$, find a number $n$ such that there exists an integer $k \\geq 2$ and another integer $i$ for which $i^k = m \\times n$. $n$ must be the smallest number that satisfies these conditions. What is the sum of $n$ and $k$? The final answer is $13$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9936788082122803,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes m n k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists>k. k \\<ge> 2 \\<and> is_nth_power k (m*n)\"\nand h2 : \"\\<forall>n' k'. n' < n \\<and> k' \\<ge> 2 \\<longrightarrow> \\<not> is_nth_power k' (m*n')\"\nshows  \"n + k = 13\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest positive integer such that $mn$ is a perfect $k$th power of an integer for some $k \\ge 2$, where $m=2^{1980} \\cdot 3^{384} \\cdot 5^{1694} \\cdot 7^{343}$. What is $n+k$? The final Answer is 13\n ### Proof\n Note $1980 = 2^23^25^111^1$, $384=2^7 3^1$, $1694 = 2^1 7^1 11^2$, and $343=7^3$. Their GCD is $1$, so the integer $m$ is not a perfect power (i.e., we can't take $n=1$).\n We need $n=2^a3^b5^c7^d$ (any other prime factors of $n$ would be superfluous) such that $(1980+a,384+b,1694+c,343+d)$ has GCD greater than $1$ (i.e., we must use $n$ to \"modify\" the exponents of the primes in the prime factorization to get an integer $mn$ which actually is a perfect power).\n First we search for a prime which divides at least three of the exponents $1980$, $384$, $1694$, and $343$, which would mean we only have to modify one of them (hence have $n$ be a prime power). This, however, is only true of the prime $2$, and the exponent not divisible by $2$ is $343$, which is the exponent of 7 in $m$.\n Therefore, to modify only one of the exponents, we would need $(a,b,c,d)=(0,0,0,1)$, giving $n=7$. But there is one number less than $7$ which has more than one prime divisor, and that is $6$. Furthermore, $7 \\mid 1694, 343$, and $1980 \\equiv 384 \\equiv -1 \\mod{7}$, so if we set $a=b=1$ and $c=d=0$, we find that $(1980+a,384+b,1694+c,343+d)$ has $7$ as a divisor.\n This gives $n=6$, which is therefore the smallest value such that $mn$ is a perfect power. In this case, $mn$ is a perfect $7$th power, so $k=7$.\n Thus $n+k=6+7=\\boxed{13}$.\n *)\n\ntheorem\nfixes m n k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists>k. k \\<ge> 2 \\<and> is_nth_power k (m*n)\"\nand h2 : \"\\<forall>n' k'. n' < n \\<and> k' \\<ge> 2 \\<longrightarrow> \\<not> is_nth_power k' (m*n')\"\nshows  \"n + k = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $m$ be the product of $2^{1980}$, $3^{384}$, $5^{1694}$, and $7^{343}$. There exists an integer $k$ such that $k\\geq2$ and $m*n$ is a $k$th power. Moreover, for all $n' < n$ and $k'\\geq2$, $m*n'$ is not a $k'$th power. Find the value of $n + k$. The final answer is $13$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9644922614097595,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n m k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k >= 2\"\nand h2 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h3 : \"\\<exists> i. m * n = i^k\"\nshows  \"n + k = 13\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest positive integer such that $mn$ is a perfect $k$th power of an integer for some $k \\ge 2$, where $m=2^{1980} \\cdot 3^{384} \\cdot 5^{1694} \\cdot 7^{343}$. What is $n+k$? The final Answer is 13\n ### Proof\n Note $1980 = 2^23^25^111^1$, $384=2^7 3^1$, $1694 = 2^1 7^1 11^2$, and $343=7^3$. Their GCD is $1$, so the integer $m$ is not a perfect power (i.e., we can't take $n=1$).\n We need $n=2^a3^b5^c7^d$ (any other prime factors of $n$ would be superfluous) such that $(1980+a,384+b,1694+c,343+d)$ has GCD greater than $1$ (i.e., we must use $n$ to \"modify\" the exponents of the primes in the prime factorization to get an integer $mn$ which actually is a perfect power).\n First we search for a prime which divides at least three of the exponents $1980$, $384$, $1694$, and $343$, which would mean we only have to modify one of them (hence have $n$ be a prime power). This, however, is only true of the prime $2$, and the exponent not divisible by $2$ is $343$, which is the exponent of 7 in $m$.\n Therefore, to modify only one of the exponents, we would need $(a,b,c,d)=(0,0,0,1)$, giving $n=7$. But there is one number less than $7$ which has more than one prime divisor, and that is $6$. Furthermore, $7 \\mid 1694, 343$, and $1980 \\equiv 384 \\equiv -1 \\mod{7}$, so if we set $a=b=1$ and $c=d=0$, we find that $(1980+a,384+b,1694+c,343+d)$ has $7$ as a divisor.\n This gives $n=6$, which is therefore the smallest value such that $mn$ is a perfect power. In this case, $mn$ is a perfect $7$th power, so $k=7$.\n Thus $n+k=6+7=\\boxed{13}$.\n *)\n\ntheorem\nfixes n m k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k >= 2\"\nand h2 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h3 : \"\\<exists> i. m * n = i^k\"\nshows  \"n + k = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $n > 0$, $k \\geq 2$, and $m$ is the product of $2^{1980}$, $3^{384}$, $5^{1694}$, and $7^{343}$, find the values of $n$ and $k$ such that $m \\cdot n$ is a perfect $k$th power. The sum of $n$ and $k$ is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5381423830986023,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n m k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists> k. k \\<ge> 2 \\<and> (m * n) powr (1 / real k) = natroot (m * n) k\"\nand h2 : \"\\<forall> k' n'. k' \\<ge> 2 \\<and> (m * n') powr (1 / real k') = natroot (m * n') k' \\<longrightarrow> n \\<le> n'\"\nshows  \"n + k = 13\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest positive integer such that $mn$ is a perfect $k$th power of an integer for some $k \\ge 2$, where $m=2^{1980} \\cdot 3^{384} \\cdot 5^{1694} \\cdot 7^{343}$. What is $n+k$? The final Answer is 13\n ### Proof\n Note $1980 = 2^23^25^111^1$, $384=2^7 3^1$, $1694 = 2^1 7^1 11^2$, and $343=7^3$. Their GCD is $1$, so the integer $m$ is not a perfect power (i.e., we can't take $n=1$).\n We need $n=2^a3^b5^c7^d$ (any other prime factors of $n$ would be superfluous) such that $(1980+a,384+b,1694+c,343+d)$ has GCD greater than $1$ (i.e., we must use $n$ to \"modify\" the exponents of the primes in the prime factorization to get an integer $mn$ which actually is a perfect power).\n First we search for a prime which divides at least three of the exponents $1980$, $384$, $1694$, and $343$, which would mean we only have to modify one of them (hence have $n$ be a prime power). This, however, is only true of the prime $2$, and the exponent not divisible by $2$ is $343$, which is the exponent of 7 in $m$.\n Therefore, to modify only one of the exponents, we would need $(a,b,c,d)=(0,0,0,1)$, giving $n=7$. But there is one number less than $7$ which has more than one prime divisor, and that is $6$. Furthermore, $7 \\mid 1694, 343$, and $1980 \\equiv 384 \\equiv -1 \\mod{7}$, so if we set $a=b=1$ and $c=d=0$, we find that $(1980+a,384+b,1694+c,343+d)$ has $7$ as a divisor.\n This gives $n=6$, which is therefore the smallest value such that $mn$ is a perfect power. In this case, $mn$ is a perfect $7$th power, so $k=7$.\n Thus $n+k=6+7=\\boxed{13}$.\n *)\n\ntheorem\nfixes n m k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists> k. k \\<ge> 2 \\<and> (m * n) powr (1 / real k) = natroot (m * n) k\"\nand h2 : \"\\<forall> k' n'. k' \\<ge> 2 \\<and> (m * n') powr (1 / real k') = natroot (m * n') k' \\<longrightarrow> n \\<le> n'\"\nshows  \"n + k = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $m = 2^{1980} \\times 3^{384} \\times 5^{1694} \\times 7^{343}$. Find the smallest integer $n$ and the smallest integer $k \\geq 2$ such that $(m \\times n)^{1/k}$ equals to the $k$th root of $m \\times n$ and satisfies the condition that for all $n'$ and $k'$ where $k' \\geq 2$ and $(m \\times n')^{1/k'}$ equals to the $k'$th root of $m \\times n'$, $n$ is less than or equal to $n'$. Calculate the sum of $n$ and $k$. The final answer is $13$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9943991899490356,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes m n k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists>k. k \\<ge> 2 \\<and> is_kth_power k (m * n)\"\nand h2 : \"n = Min {n. \\<exists>k. k \\<ge> 2 \\<and> is_kth_power k (m * n)}\"\nshows  \"n + k = 13\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest positive integer such that $mn$ is a perfect $k$th power of an integer for some $k \\ge 2$, where $m=2^{1980} \\cdot 3^{384} \\cdot 5^{1694} \\cdot 7^{343}$. What is $n+k$? The final Answer is 13\n ### Proof\n Note $1980 = 2^23^25^111^1$, $384=2^7 3^1$, $1694 = 2^1 7^1 11^2$, and $343=7^3$. Their GCD is $1$, so the integer $m$ is not a perfect power (i.e., we can't take $n=1$).\n We need $n=2^a3^b5^c7^d$ (any other prime factors of $n$ would be superfluous) such that $(1980+a,384+b,1694+c,343+d)$ has GCD greater than $1$ (i.e., we must use $n$ to \"modify\" the exponents of the primes in the prime factorization to get an integer $mn$ which actually is a perfect power).\n First we search for a prime which divides at least three of the exponents $1980$, $384$, $1694$, and $343$, which would mean we only have to modify one of them (hence have $n$ be a prime power). This, however, is only true of the prime $2$, and the exponent not divisible by $2$ is $343$, which is the exponent of 7 in $m$.\n Therefore, to modify only one of the exponents, we would need $(a,b,c,d)=(0,0,0,1)$, giving $n=7$. But there is one number less than $7$ which has more than one prime divisor, and that is $6$. Furthermore, $7 \\mid 1694, 343$, and $1980 \\equiv 384 \\equiv -1 \\mod{7}$, so if we set $a=b=1$ and $c=d=0$, we find that $(1980+a,384+b,1694+c,343+d)$ has $7$ as a divisor.\n This gives $n=6$, which is therefore the smallest value such that $mn$ is a perfect power. In this case, $mn$ is a perfect $7$th power, so $k=7$.\n Thus $n+k=6+7=\\boxed{13}$.\n *)\n\ntheorem\nfixes m n k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists>k. k \\<ge> 2 \\<and> is_kth_power k (m * n)\"\nand h2 : \"n = Min {n. \\<exists>k. k \\<ge> 2 \\<and> is_kth_power k (m * n)}\"\nshows  \"n + k = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $m$ is equal to $2^{1980} * 3^{384} * 5^{1694} * 7^{343}$, find the smallest natural number $n$ such that $m*n$ is a perfect power of some integer $k \\geq 2$. What is the sum of $n$ and $k$? The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9857256412506104,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes m n k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists>k. k \\<ge> 2 \\<and> (\\<exists>y. y^k = m * n)\"\nand h2 : \"\\<forall>j<n. \\<not>(\\<exists>k \\<ge> 2. \\<exists>y. y^k = m * j)\"\nshows  \"n + k = 13\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest positive integer such that $mn$ is a perfect $k$th power of an integer for some $k \\ge 2$, where $m=2^{1980} \\cdot 3^{384} \\cdot 5^{1694} \\cdot 7^{343}$. What is $n+k$? The final Answer is 13\n ### Proof\n Note $1980 = 2^23^25^111^1$, $384=2^7 3^1$, $1694 = 2^1 7^1 11^2$, and $343=7^3$. Their GCD is $1$, so the integer $m$ is not a perfect power (i.e., we can't take $n=1$).\n We need $n=2^a3^b5^c7^d$ (any other prime factors of $n$ would be superfluous) such that $(1980+a,384+b,1694+c,343+d)$ has GCD greater than $1$ (i.e., we must use $n$ to \"modify\" the exponents of the primes in the prime factorization to get an integer $mn$ which actually is a perfect power).\n First we search for a prime which divides at least three of the exponents $1980$, $384$, $1694$, and $343$, which would mean we only have to modify one of them (hence have $n$ be a prime power). This, however, is only true of the prime $2$, and the exponent not divisible by $2$ is $343$, which is the exponent of 7 in $m$.\n Therefore, to modify only one of the exponents, we would need $(a,b,c,d)=(0,0,0,1)$, giving $n=7$. But there is one number less than $7$ which has more than one prime divisor, and that is $6$. Furthermore, $7 \\mid 1694, 343$, and $1980 \\equiv 384 \\equiv -1 \\mod{7}$, so if we set $a=b=1$ and $c=d=0$, we find that $(1980+a,384+b,1694+c,343+d)$ has $7$ as a divisor.\n This gives $n=6$, which is therefore the smallest value such that $mn$ is a perfect power. In this case, $mn$ is a perfect $7$th power, so $k=7$.\n Thus $n+k=6+7=\\boxed{13}$.\n *)\n\ntheorem\nfixes m n k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists>k. k \\<ge> 2 \\<and> (\\<exists>y. y^k = m * n)\"\nand h2 : \"\\<forall>j<n. \\<not>(\\<exists>k \\<ge> 2. \\<exists>y. y^k = m * j)\"\nshows  \"n + k = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $m$ be a natural number such that $m = 2^{1980} * 3^{384} * 5^{1694} * 7^{343}$. Find the smallest natural number $n$ and a natural number $k \\geq 2$ such that $m*n$ equals to $y^k$ for some natural number $y$, and there is no smaller natural number $j<n$ with the same property. What is the sum of $n$ and $k$? The final Answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.990879476070404,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes m n k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"k \\<ge> 2\"\nand h2 : \"\\<exists> i. m * n = i^k\"\nand h3 : \"n = Min {n. \\<exists> k i. m * n = i^k \\<and> k \\<ge> 2}\"\nshows  \"n + k = 13\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest positive integer such that $mn$ is a perfect $k$th power of an integer for some $k \\ge 2$, where $m=2^{1980} \\cdot 3^{384} \\cdot 5^{1694} \\cdot 7^{343}$. What is $n+k$? The final Answer is 13\n ### Proof\n Note $1980 = 2^23^25^111^1$, $384=2^7 3^1$, $1694 = 2^1 7^1 11^2$, and $343=7^3$. Their GCD is $1$, so the integer $m$ is not a perfect power (i.e., we can't take $n=1$).\n We need $n=2^a3^b5^c7^d$ (any other prime factors of $n$ would be superfluous) such that $(1980+a,384+b,1694+c,343+d)$ has GCD greater than $1$ (i.e., we must use $n$ to \"modify\" the exponents of the primes in the prime factorization to get an integer $mn$ which actually is a perfect power).\n First we search for a prime which divides at least three of the exponents $1980$, $384$, $1694$, and $343$, which would mean we only have to modify one of them (hence have $n$ be a prime power). This, however, is only true of the prime $2$, and the exponent not divisible by $2$ is $343$, which is the exponent of 7 in $m$.\n Therefore, to modify only one of the exponents, we would need $(a,b,c,d)=(0,0,0,1)$, giving $n=7$. But there is one number less than $7$ which has more than one prime divisor, and that is $6$. Furthermore, $7 \\mid 1694, 343$, and $1980 \\equiv 384 \\equiv -1 \\mod{7}$, so if we set $a=b=1$ and $c=d=0$, we find that $(1980+a,384+b,1694+c,343+d)$ has $7$ as a divisor.\n This gives $n=6$, which is therefore the smallest value such that $mn$ is a perfect power. In this case, $mn$ is a perfect $7$th power, so $k=7$.\n Thus $n+k=6+7=\\boxed{13}$.\n *)\n\ntheorem\nfixes m n k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"k \\<ge> 2\"\nand h2 : \"\\<exists> i. m * n = i^k\"\nand h3 : \"n = Min {n. \\<exists> k i. m * n = i^k \\<and> k \\<ge> 2}\"\nshows  \"n + k = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $m$ be the number $2^{1980} * 3^{384} * 5^{1694} * 7^{343}$. Find the smallest natural number $n$ and an integer $k \\geq 2$ such that $m * n$ can be expressed as an integer $i$ raised to the power $k$. What is the value of $n + k$? The final answer is $13$.",
+        "label": 1,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9861398935317993,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes m n k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists>k. k \\<ge> 2 \\<and> (\\<exists> p. p^k = m * n)\"\nand h2 : \"n is the smallest positive integer satisfying h1\"\nshows  \"n + k = 13\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest positive integer such that $mn$ is a perfect $k$th power of an integer for some $k \\ge 2$, where $m=2^{1980} \\cdot 3^{384} \\cdot 5^{1694} \\cdot 7^{343}$. What is $n+k$? The final Answer is 13\n ### Proof\n Note $1980 = 2^23^25^111^1$, $384=2^7 3^1$, $1694 = 2^1 7^1 11^2$, and $343=7^3$. Their GCD is $1$, so the integer $m$ is not a perfect power (i.e., we can't take $n=1$).\n We need $n=2^a3^b5^c7^d$ (any other prime factors of $n$ would be superfluous) such that $(1980+a,384+b,1694+c,343+d)$ has GCD greater than $1$ (i.e., we must use $n$ to \"modify\" the exponents of the primes in the prime factorization to get an integer $mn$ which actually is a perfect power).\n First we search for a prime which divides at least three of the exponents $1980$, $384$, $1694$, and $343$, which would mean we only have to modify one of them (hence have $n$ be a prime power). This, however, is only true of the prime $2$, and the exponent not divisible by $2$ is $343$, which is the exponent of 7 in $m$.\n Therefore, to modify only one of the exponents, we would need $(a,b,c,d)=(0,0,0,1)$, giving $n=7$. But there is one number less than $7$ which has more than one prime divisor, and that is $6$. Furthermore, $7 \\mid 1694, 343$, and $1980 \\equiv 384 \\equiv -1 \\mod{7}$, so if we set $a=b=1$ and $c=d=0$, we find that $(1980+a,384+b,1694+c,343+d)$ has $7$ as a divisor.\n This gives $n=6$, which is therefore the smallest value such that $mn$ is a perfect power. In this case, $mn$ is a perfect $7$th power, so $k=7$.\n Thus $n+k=6+7=\\boxed{13}$.\n *)\n\ntheorem\nfixes m n k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists>k. k \\<ge> 2 \\<and> (\\<exists> p. p^k = m * n)\"\nand h2 : \"n is the smallest positive integer satisfying h1\"\nshows  \"n + k = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $m = 2^{1980} \\cdot 3^{384} \\cdot 5^{1694} \\cdot 7^{343}$ and $n$ is the smallest positive integer such that for some integer $k \\geq 2$, $p^k = m \\cdot n$ for some integer $p$, find the value of $n + k$. The final answer is $13$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7857323288917542,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes m n k :: int\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"n is the smallest positive integer such that mn is a perfect kth power of an integer for some k >= 2\"\nshows  \"n + k = 13\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest positive integer such that $mn$ is a perfect $k$th power of an integer for some $k \\ge 2$, where $m=2^{1980} \\cdot 3^{384} \\cdot 5^{1694} \\cdot 7^{343}$. What is $n+k$? The final Answer is 13\n ### Proof\n Note $1980 = 2^23^25^111^1$, $384=2^7 3^1$, $1694 = 2^1 7^1 11^2$, and $343=7^3$. Their GCD is $1$, so the integer $m$ is not a perfect power (i.e., we can't take $n=1$).\n We need $n=2^a3^b5^c7^d$ (any other prime factors of $n$ would be superfluous) such that $(1980+a,384+b,1694+c,343+d)$ has GCD greater than $1$ (i.e., we must use $n$ to \"modify\" the exponents of the primes in the prime factorization to get an integer $mn$ which actually is a perfect power).\n First we search for a prime which divides at least three of the exponents $1980$, $384$, $1694$, and $343$, which would mean we only have to modify one of them (hence have $n$ be a prime power). This, however, is only true of the prime $2$, and the exponent not divisible by $2$ is $343$, which is the exponent of 7 in $m$.\n Therefore, to modify only one of the exponents, we would need $(a,b,c,d)=(0,0,0,1)$, giving $n=7$. But there is one number less than $7$ which has more than one prime divisor, and that is $6$. Furthermore, $7 \\mid 1694, 343$, and $1980 \\equiv 384 \\equiv -1 \\mod{7}$, so if we set $a=b=1$ and $c=d=0$, we find that $(1980+a,384+b,1694+c,343+d)$ has $7$ as a divisor.\n This gives $n=6$, which is therefore the smallest value such that $mn$ is a perfect power. In this case, $mn$ is a perfect $7$th power, so $k=7$.\n Thus $n+k=6+7=\\boxed{13}$.\n *)\n\ntheorem\nfixes m n k :: int\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"n is the smallest positive integer such that mn is a perfect kth power of an integer for some k >= 2\"\nshows  \"n + k = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The number $m$ is given by $m = 2^{1980} \\times 3^{384} \\times 5^{1694} \\times 7^{343}$. The number $n$ is the smallest positive integer such that the product $m \\times n$ is a perfect power of an integer, for some $k \\geq 2$. What is the sum of $n$ and $k$? The final answer is $13$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9752474427223206,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes m n k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists> k n. k \\<ge> 2 \\<and> n > 0 \\<and> (m * n) = (n ^ k)\"\nand h2 : \"n = (LEAST x. \\<exists> k. k \\<ge> 2 \\<and> (m * x) = (x ^ k))\"\nshows  \"n + k = 13\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest positive integer such that $mn$ is a perfect $k$th power of an integer for some $k \\ge 2$, where $m=2^{1980} \\cdot 3^{384} \\cdot 5^{1694} \\cdot 7^{343}$. What is $n+k$? The final Answer is 13\n ### Proof\n Note $1980 = 2^23^25^111^1$, $384=2^7 3^1$, $1694 = 2^1 7^1 11^2$, and $343=7^3$. Their GCD is $1$, so the integer $m$ is not a perfect power (i.e., we can't take $n=1$).\n We need $n=2^a3^b5^c7^d$ (any other prime factors of $n$ would be superfluous) such that $(1980+a,384+b,1694+c,343+d)$ has GCD greater than $1$ (i.e., we must use $n$ to \"modify\" the exponents of the primes in the prime factorization to get an integer $mn$ which actually is a perfect power).\n First we search for a prime which divides at least three of the exponents $1980$, $384$, $1694$, and $343$, which would mean we only have to modify one of them (hence have $n$ be a prime power). This, however, is only true of the prime $2$, and the exponent not divisible by $2$ is $343$, which is the exponent of 7 in $m$.\n Therefore, to modify only one of the exponents, we would need $(a,b,c,d)=(0,0,0,1)$, giving $n=7$. But there is one number less than $7$ which has more than one prime divisor, and that is $6$. Furthermore, $7 \\mid 1694, 343$, and $1980 \\equiv 384 \\equiv -1 \\mod{7}$, so if we set $a=b=1$ and $c=d=0$, we find that $(1980+a,384+b,1694+c,343+d)$ has $7$ as a divisor.\n This gives $n=6$, which is therefore the smallest value such that $mn$ is a perfect power. In this case, $mn$ is a perfect $7$th power, so $k=7$.\n Thus $n+k=6+7=\\boxed{13}$.\n *)\n\ntheorem\nfixes m n k :: nat\nassumes h0 : \"m = 2^1980 * 3^384 * 5^1694 * 7^343\"\nand h1 : \"\\<exists> k n. k \\<ge> 2 \\<and> n > 0 \\<and> (m * n) = (n ^ k)\"\nand h2 : \"n = (LEAST x. \\<exists> k. k \\<ge> 2 \\<and> (m * x) = (x ^ k))\"\nshows  \"n + k = 13\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $m = 2^{1980} * 3^{384} * 5^{1694} * 7^{343}$, find the smallest positive integer $n$ and an integer $k \\geq 2$ such that $m*n = n^k$. What is $n+k$? The final answer is 13.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9376577138900757,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "13",
+    "natural problem": "Let $n$ be the smallest positive integer such that $mn$ is a perfect $k$th power of an integer for some $k \\ge 2$, where $m=2^{1980} \\cdot 3^{384} \\cdot 5^{1694} \\cdot 7^{343}$. What is $n+k$?",
+    "natural solution": [
+        "Note $1980 = 2^23^25^111^1$, $384=2^7 3^1$, $1694 = 2^1 7^1 11^2$, and $343=7^3$. Their GCD is $1$, so the integer $m$ is not a perfect power (i.e., we can't take $n=1$).",
+        "We need $n=2^a3^b5^c7^d$ (any other prime factors of $n$ would be superfluous) such that $(1980+a,384+b,1694+c,343+d)$ has GCD greater than $1$ (i.e., we must use $n$ to \"modify\" the exponents of the primes in the prime factorization to get an integer $mn$ which actually is a perfect power).",
+        "First we search for a prime which divides at least three of the exponents $1980$, $384$, $1694$, and $343$, which would mean we only have to modify one of them (hence have $n$ be a prime power). This, however, is only true of the prime $2$, and the exponent not divisible by $2$ is $343$, which is the exponent of 7 in $m$.",
+        "Therefore, to modify only one of the exponents, we would need $(a,b,c,d)=(0,0,0,1)$, giving $n=7$. But there is one number less than $7$ which has more than one prime divisor, and that is $6$. Furthermore, $7 \\mid 1694, 343$, and $1980 \\equiv 384 \\equiv -1 \\mod{7}$, so if we set $a=b=1$ and $c=d=0$, we find that $(1980+a,384+b,1694+c,343+d)$ has $7$ as a divisor.",
+        "This gives $n=6$, which is therefore the smallest value such that $mn$ is a perfect power. In this case, $mn$ is a perfect $7$th power, so $k=7$.",
+        "Thus $n+k=6+7=\\boxed{13}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 5",
+    "type": "Number Theory"
+}

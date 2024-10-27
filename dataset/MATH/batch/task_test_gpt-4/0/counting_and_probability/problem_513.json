@@ -1,0 +1,613 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes team_size :: nat and players :: \"nat set\"\nassumes h0 : \"card players = 10\"\nand h1 : \"team_size = 5\"\nand h2 : \"Steve \\<in> players\"\nand h3 : \"Danny \\<in> players\"\nshows  \"card {A. A \\<subseteq> players - {Steve, Danny} \\<and> card A = team_size - 1} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes team_size :: nat and players :: \"nat set\"\nassumes h0 : \"card players = 10\"\nand h1 : \"team_size = 5\"\nand h2 : \"Steve \\<in> players\"\nand h3 : \"Danny \\<in> players\"\nshows  \"card {A. A \\<subseteq> players - {Steve, Danny} \\<and> card A = team_size - 1} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are 10 players in a group, including Steve and Danny. A team of 5 players needs to be formed. How many different teams can be formed if both Steve and Danny must be on the team? The final answer is 70.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8904613852500916,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n k :: nat and basketball_team :: \"nat set\"\nassumes h0 : \"card basketball_team = 10\"\nand h1 : \"k = 5\"\nand h2 : \"Steve \\<in> basketball_team\"\nand h3 : \"Danny \\<in> basketball_team\"\nshows  \"card {A. A \\<subseteq> basketball_team - {Steve, Danny} \\<and> card A = k - 1} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes n k :: nat and basketball_team :: \"nat set\"\nassumes h0 : \"card basketball_team = 10\"\nand h1 : \"k = 5\"\nand h2 : \"Steve \\<in> basketball_team\"\nand h3 : \"Danny \\<in> basketball_team\"\nshows  \"card {A. A \\<subseteq> basketball_team - {Steve, Danny} \\<and> card A = k - 1} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There is a basketball team consisting of 10 players including Steve and Danny. If you have to create a 5-person group (including Steve and Danny), how many different groups can be formed with the remaining players? The final answer is 70.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9462125897407532,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n_teams :: nat and comb :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n_teams = 10\"\nand h1 : \"comb = (\\<lambda>n k. fact n div (fact k * fact (n - k)))\"\nand h2 : \"\\<forall> n k. comb n k = comb n (n - k)\"\nshows  \"comb (n_teams - 2) 4 = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes n_teams :: nat and comb :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n_teams = 10\"\nand h1 : \"comb = (\\<lambda>n k. fact n div (fact k * fact (n - k)))\"\nand h2 : \"\\<forall> n k. comb n k = comb n (n - k)\"\nshows  \"comb (n_teams - 2) 4 = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a sports league with 10 teams, how many ways can you choose 4 teams from the remaining 8 teams after removing 2 teams? The final answer is 70.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8931360244750977,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes total_teams :: nat and teams :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"total_teams = 10\"\nand h1 : \"teams 1 = 5\"\nand h2 : \"teams 2 = 5\"\nand h3 : \"\\<forall>k. k = 1 \\<or> k = 2 \\<longrightarrow> (Steve \\<in> teams k) \\<and> (Danny \\<notin> teams k)\"\nshows  \"card {T. \\<exists>k. k = 1 \\<or> k = 2 \\<and> (Steve, Danny) \\<in> T \\<and> (\\<forall>x. x \\<in> T \\<longrightarrow> x \\<in> teams k)} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes total_teams :: nat and teams :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"total_teams = 10\"\nand h1 : \"teams 1 = 5\"\nand h2 : \"teams 2 = 5\"\nand h3 : \"\\<forall>k. k = 1 \\<or> k = 2 \\<longrightarrow> (Steve \\<in> teams k) \\<and> (Danny \\<notin> teams k)\"\nshows  \"card {T. \\<exists>k. k = 1 \\<or> k = 2 \\<and> (Steve, Danny) \\<in> T \\<and> (\\<forall>x. x \\<in> T \\<longrightarrow> x \\<in> teams k)} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a sports event, there are a total of 10 teams. The teams are divided into two groups: Group 1 has 5 teams and Group 2 also has 5 teams. Steve is a member of all teams in Group 1, while Danny is not a member of any team in Group 1. Similarly, Steve is a member of all teams in Group 2, while Danny is not a member of any team in Group 2. How many possible pairs of teams (T) can be formed with the condition that Steve and Danny are both in the same team and all members of the team T are either in Group 1 or Group 2? The final answer is 70.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9933297038078308,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat and C :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 10\"\nand h1 : \"C n k = fact n div (fact k * fact (n - k))\"\nand h2 : \"C (n-2) (5-1) = 70\"\nshows  \"C (n-2) (5-1) = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes n :: nat and C :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 10\"\nand h1 : \"C n k = fact n div (fact k * fact (n - k))\"\nand h2 : \"C (n-2) (5-1) = 70\"\nshows  \"C (n-2) (5-1) = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the binomial coefficient is defined as $C(n, k) = \\frac{n!}{k!(n-k)!}$, find the value of $C(10-2, 5-1)$, which is also known as the number of combinations of choosing 4 items from 8. The final answer is 70.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9494594931602478,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes total_players steve_danny_team others_team :: nat\nassumes h0 : \"total_players = 10\"\nand h1 : \"steve_danny_team = 2\"\nand h2 : \"others_team = 5\"\nand h3 : \"total_players = steve_danny_team * others_team\"\nshows  \"n_choose_k (total_players - steve_danny_team) (others_team - 1) = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes total_players steve_danny_team others_team :: nat\nassumes h0 : \"total_players = 10\"\nand h1 : \"steve_danny_team = 2\"\nand h2 : \"others_team = 5\"\nand h3 : \"total_players = steve_danny_team * others_team\"\nshows  \"n_choose_k (total_players - steve_danny_team) (others_team - 1) = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a group of 10 people, Steve and Danny form a team of 2. The other members are divided into 5 teams. How many ways can the remaining 8 people be divided into teams of 4? The final answer is 70.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8626419901847839,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 10\"\nand h1 : \"f n = fact n\"\nand h2 : \"Steve \\<noteq> Danny\"\nand h3 : \"card {team. team \\<subseteq> {players. players \\<noteq> Steve \\<and> players \\<noteq> Danny} \\<and> card team = 4} = 70\"\nshows  \"\\<exists>f. (\\<forall>team1 team2. (team1 \\<subseteq> {players. players \\<noteq> Steve \\<and> players \\<noteq> Danny} \\<and> card team1 = 4) \\<and>\n                      (team2 \\<subseteq> {players. players \\<noteq> Steve \\<and> players \\<noteq> Danny} \\<and> card team2 = 4) \\<and>\n                      (team1 \\<union> {Steve} \\<noteq> team2 \\<union> {Danny})) \\<longrightarrow> f (team1 \\<union> {Steve}, team2 \\<union> {Danny}) = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 10\"\nand h1 : \"f n = fact n\"\nand h2 : \"Steve \\<noteq> Danny\"\nand h3 : \"card {team. team \\<subseteq> {players. players \\<noteq> Steve \\<and> players \\<noteq> Danny} \\<and> card team = 4} = 70\"\nshows  \"\\<exists>f. (\\<forall>team1 team2. (team1 \\<subseteq> {players. players \\<noteq> Steve \\<and> players \\<noteq> Danny} \\<and> card team1 = 4) \\<and>\n                      (team2 \\<subseteq> {players. players \\<noteq> Steve \\<and> players \\<noteq> Danny} \\<and> card team2 = 4) \\<and>\n                      (team1 \\<union> {Steve} \\<noteq> team2 \\<union> {Danny})) \\<longrightarrow> f (team1 \\<union> {Steve}, team2 \\<union> {Danny}) = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a group of 10 players, Steve and Danny are two distinct players. There are 70 ways to form a team of 4 players without including Steve and Danny. Find a function $f$ such that for any two teams of 4 players, team1 and team2, not including Steve and Danny, the union of team1 with Steve is not equal to the union of team2 with Danny, and $f(\\text{team1} \\cup \\{\\text{Steve}\\}, \\text{team2} \\cup \\{\\text{Danny}\\}) = 70$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.5304509401321411,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes basketball_team :: \"'a set\"\nand Steve Danny :: \"'a\"\nand teams :: \"('a set \\<times> 'a set) set\"\nassumes h0 : \"finite basketball_team\"\nand h1 : \"card basketball_team = 10\"\nand h2 : \"Steve \\<in> basketball_team\"\nand h3 : \"Danny \\<in> basketball_team\"\nand h4 : \"\\<forall>(T1, T2) \\<in> teams. card T1 = 5 \\<and> card T2 = 5 \\<and> T1 \\<inter> T2 = {} \\<and> T1 \\<union> T2 = basketball_team\"\nand h5 : \"\\<forall>(T1, T2) \\<in> teams. Steve \\<in> T1 \\<and> Danny \\<in> T2\"\nshows  \"card teams = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes basketball_team :: \"'a set\"\nand Steve Danny :: \"'a\"\nand teams :: \"('a set \\<times> 'a set) set\"\nassumes h0 : \"finite basketball_team\"\nand h1 : \"card basketball_team = 10\"\nand h2 : \"Steve \\<in> basketball_team\"\nand h3 : \"Danny \\<in> basketball_team\"\nand h4 : \"\\<forall>(T1, T2) \\<in> teams. card T1 = 5 \\<and> card T2 = 5 \\<and> T1 \\<inter> T2 = {} \\<and> T1 \\<union> T2 = basketball_team\"\nand h5 : \"\\<forall>(T1, T2) \\<in> teams. Steve \\<in> T1 \\<and> Danny \\<in> T2\"\nshows  \"card teams = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A basketball team has 10 players including Steve and Danny. The coach wants to divide the team into two teams of 5 players each, such that Steve and Danny are on different teams. How many different ways can the coach divide the team into two teams of 5 players each? The final answer is 70 ways.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9350608587265015,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat and choose :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 10\"\nand h1 : \"\\<forall> n k. choose n k = fact n div (fact k * fact (n - k))\"\nand h2 : \"Steve \\<noteq> Danny\"\nshows  \"choose (n - 2) 4 = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes n :: nat and choose :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 10\"\nand h1 : \"\\<forall> n k. choose n k = fact n div (fact k * fact (n - k))\"\nand h2 : \"Steve \\<noteq> Danny\"\nshows  \"choose (n - 2) 4 = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a group of 10 people, including Steve and Danny, how many ways are there to choose a committee of 4 people without Steve and Danny being together on the committee? The final answer is 70.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8793224692344666,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes num_ways :: \"nat\"\nassumes h0 : \"num_ways = nCr (10 - 2) (5 - 1)\"\nshows  \"num_ways = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes num_ways :: \"nat\"\nassumes h0 : \"num_ways = nCr (10 - 2) (5 - 1)\"\nshows  \"num_ways = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many ways can you choose 4 items out of 8? The final answer is 70.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8961507081985474,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "70",
+    "natural problem": "Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams?",
+    "natural solution": [
+        "If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices."
+    ],
+    "oracle": "TODO",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 5",
+    "type": "Counting & Probability",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes players steve danny :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<in> {1..players}\"\nand h2 : \"danny \\<in> {1..players}\"\nand h3 : \"steve \\<noteq> danny\"\nand h4 : \"card {x. x \\<in> {1..players} \\<and> x \\<noteq> steve \\<and> x \\<noteq> danny} = 8\"\nand h5 : \"card {x. x \\<in> {1..players} \\<and> x \\<noteq> steve \\<and> x \\<noteq> danny \\<and> x \\<noteq> 5} = 7\"\nshows \"card {S. card S = 5 \\<and> steve \\<notin> S \\<and> danny \\<in> S \\<and> card {x. x \\<in> {1..players} \\<and> x \\<notin> S} = 5} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players steve danny :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<in> {1..players}\"\nand h2 : \"danny \\<in> {1..players}\"\nand h3 : \"steve \\<noteq> danny\"\nand h4 : \"card {x. x \\<in> {1..players} \\<and> x \\<noteq> steve \\<and> x \\<noteq> danny} = 8\"\nand h5 : \"card {x. x \\<in> {1..players} \\<and> x \\<noteq> steve \\<and> x \\<noteq> danny \\<and> x \\<noteq> 5} = 7\"\nshows \"card {S. card S = 5 \\<and> steve \\<notin> S \\<and> danny \\<in> S \\<and> card {x. x \\<in> {1..players} \\<and> x \\<notin> S} = 5} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players in total. Steve and Danny are two distinct players among them. The remaining 8 players are neither Steve nor Danny. Among these 8 players, there is one player who is not number 5. We are looking for the number of subsets of 5 players that can be formed, such that Danny is in the subset, Steve is not, and there are exactly 5 players outside of the subset. The answer is 70 such subsets can be formed.",
+        "syntax": 1,
+        "semantic_score": 0.884864734394439,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes players :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"players mod 2 = 0\"\nand h2 : \"players div 2 = 5\"\nand h3 : \"\\<exists> Steve Danny. Steve \\<noteq> Danny\"\nand h4 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<longrightarrow> (Steve \\<in> team1 \\<longleftrightarrow> Danny \\<in> team2)\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> (Steve \\<in> team1 \\<longleftrightarrow> Danny \\<in> team2)} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"players mod 2 = 0\"\nand h2 : \"players div 2 = 5\"\nand h3 : \"\\<exists> Steve Danny. Steve \\<noteq> Danny\"\nand h4 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<longrightarrow> (Steve \\<in> team1 \\<longleftrightarrow> Danny \\<in> team2)\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> (Steve \\<in> team1 \\<longleftrightarrow> Danny \\<in> team2)} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players, and they are evenly divided into two teams of 5 players each. Among these players, there are two distinct players named Steve and Danny. The rule is that if Steve is on team1, then Danny must be on team2, and vice versa. How many different ways can the teams be formed such that the conditions are met? The answer is 70 ways.",
+        "syntax": 1,
+        "semantic_score": 0.9828908341123511,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes players :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"players > 0\"\nand h2 : \"players mod 2 = 0\"\nand h3 : \"Steve \\<in> players\"\nand h4 : \"Danny \\<in> players\"\nand h5 : \"Steve \\<noteq> Danny\"\nand h6 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> Steve \\<in> team1 \\<and> Danny \\<in> team2 \\<or> Steve \\<in> team2 \\<and> Danny \\<in> team1\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> Steve \\<in> team1 \\<and> Danny \\<in> team2 \\<or> Steve \\<in> team2 \\<and> Danny \\<in> team1} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"players > 0\"\nand h2 : \"players mod 2 = 0\"\nand h3 : \"Steve \\<in> players\"\nand h4 : \"Danny \\<in> players\"\nand h5 : \"Steve \\<noteq> Danny\"\nand h6 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> Steve \\<in> team1 \\<and> Danny \\<in> team2 \\<or> Steve \\<in> team2 \\<and> Danny \\<in> team1\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> Steve \\<in> team1 \\<and> Danny \\<in> team2 \\<or> Steve \\<in> team2 \\<and> Danny \\<in> team1} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players, including Steve and Danny, who are not the same person. The players are divided into two teams, each with 5 players, such that Steve and Danny are on different teams. How many different ways can the teams be formed with these conditions? The answer is 70 ways.",
+        "syntax": 0,
+        "semantic_score": 0.9726349212153543,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<and> danny\"\nand h2 : \"\\<forall> team. card team = 5\"\nand h3 : \"team1 \\<inter> team2 = {}\"\nand h4 : \"team1 \\<union> team2 = {1..players}\"\nand h5 : \"steve \\<in> team1 \\<longleftrightarrow> danny \\<in> team2\"\nshows \"card {team1, team2} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<and> danny\"\nand h2 : \"\\<forall> team. card team = 5\"\nand h3 : \"team1 \\<inter> team2 = {}\"\nand h4 : \"team1 \\<union> team2 = {1..players}\"\nand h5 : \"steve \\<in> team1 \\<longleftrightarrow> danny \\<in> team2\"\nshows \"card {team1, team2} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players in total. Steve and Danny are both part of the teams. The teams are divided into two groups, team1 and team2, each with 5 players. The players in team1 and team2 do not overlap, and together they include all 10 players. If Steve is in team1, then Danny is in team2, and vice versa. The problem asks to find the number of possible combinations of team1 and team2, which is 70.",
+        "syntax": 0,
+        "semantic_score": 0.8660004021117778,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes players steve danny :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<in> {1..players}\"\nand h2 : \"danny \\<in> {1..players}\"\nand h3 : \"steve \\<noteq> danny\"\nand h4 : \"card {x \\<in> {1..players}. x \\<noteq> steve \\<and> x \\<noteq> danny} = 8\"\nand h5 : \"card {x \\<in> {1..players}. x \\<noteq> steve \\<and> x \\<noteq> danny \\<and> x \\<noteq> 5} = 7\"\nshows \"card {S \\<subseteq> {1..players}. card S = 5 \\<and> steve \\<in> S \\<and> danny \\<notin> S \\<and> (\\<forall>x \\<in> S. x \\<noteq> danny)} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players steve danny :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<in> {1..players}\"\nand h2 : \"danny \\<in> {1..players}\"\nand h3 : \"steve \\<noteq> danny\"\nand h4 : \"card {x \\<in> {1..players}. x \\<noteq> steve \\<and> x \\<noteq> danny} = 8\"\nand h5 : \"card {x \\<in> {1..players}. x \\<noteq> steve \\<and> x \\<noteq> danny \\<and> x \\<noteq> 5} = 7\"\nshows \"card {S \\<subseteq> {1..players}. card S = 5 \\<and> steve \\<in> S \\<and> danny \\<notin> S \\<and> (\\<forall>x \\<in> S. x \\<noteq> danny)} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players in total. Steve and Danny are two distinct players among these 10 players. There are 8 players who are neither Steve nor Danny, and 7 players who are neither Steve nor Danny nor the player numbered 5. How many different subsets of 5 players can be formed such that Steve is in the subset, Danny is not in the subset, and no player in the subset is Danny? The answer is 70.",
+        "syntax": 0,
+        "semantic_score": 0.7096878273094336,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve 1\"\nand h2 : \"danny 1\"\nand h3 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1 \\<longrightarrow> P team1 team2\"\nshows \"P = (\\<lambda> team1 team2. 70)\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve 1\"\nand h2 : \"danny 1\"\nand h3 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1 \\<longrightarrow> P team1 team2\"\nshows \"P = (\\<lambda> team1 team2. 70)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players in total. Steve and Danny are both part of the game. The theorem states that if we have two teams, each with 5 players, and these teams have no players in common, and neither Steve nor Danny is in the opposing team, then the value of P for these two teams is 70. In other words, given these conditions, the function P, which takes two teams as input, will always output 70.",
+        "syntax": 0,
+        "semantic_score": 0.32686267709289385,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve players\"\nand h2 : \"danny players\"\nand h3 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve players\"\nand h2 : \"danny players\"\nand h3 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players in total, and both Steve and Danny are part of the group. We want to form two teams, each with 5 players, such that the teams have no players in common, Steve is not in the second team, and Danny is not in the first team. How many different ways can we form the first team under these conditions? The answer is 70 ways.",
+        "syntax": 1,
+        "semantic_score": 0.951241915877229,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes players steve danny :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<in> {1..players}\"\nand h2 : \"danny \\<in> {1..players}\"\nand h3 : \"steve \\<noteq> danny\"\nand h4 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<union> team2 = {1..players} \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<in> team1 \\<and> danny \\<in> team2 \\<or> steve \\<in> team2 \\<and> danny \\<in> team1\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<union> team2 = {1..players} \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<in> team1 \\<and> danny \\<in> team2 \\<or> steve \\<in> team2 \\<and> danny \\<in> team1} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players steve danny :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<in> {1..players}\"\nand h2 : \"danny \\<in> {1..players}\"\nand h3 : \"steve \\<noteq> danny\"\nand h4 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<union> team2 = {1..players} \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<in> team1 \\<and> danny \\<in> team2 \\<or> steve \\<in> team2 \\<and> danny \\<in> team1\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<union> team2 = {1..players} \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<in> team1 \\<and> danny \\<in> team2 \\<or> steve \\<in> team2 \\<and> danny \\<in> team1} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players, including Steve and Danny, who are distinct individuals. We want to form two teams, each with 5 players, such that the two teams together include all 10 players, and there are no overlapping players between the two teams. Additionally, Steve and Danny must be on different teams. How many different ways can we form these two teams, with the given conditions, such that Steve is on one team and Danny is on the other? The answer is 70 ways.",
+        "syntax": 1,
+        "semantic_score": 0.8708142581933613,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve players\"\nand h2 : \"danny players\"\nand h3 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1 \\<longrightarrow> P team1 team2\"\nshows \"P = (\\<lambda> team1 team2. 70)\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve players\"\nand h2 : \"danny players\"\nand h3 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1 \\<longrightarrow> P team1 team2\"\nshows \"P = (\\<lambda> team1 team2. 70)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players in total. Steve and Danny are both considered as part of the players. We want to divide the players into two teams, team1 and team2, each with 5 players. The two teams must not have any players in common, and neither Steve nor Danny can be in the same team. If these conditions are met, we define a function P that takes two teams as input and outputs a value. The theorem states that the function P is defined as P(team1, team2) = 70.",
+        "syntax": 0,
+        "semantic_score": 0.7042425680594123,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<and> danny\"\nand h2 : \"\\<forall> team. card team = 5\"\nand h3 : \"team1 \\<noteq> team2 \\<longrightarrow> (steve \\<in> team1 \\<longleftrightarrow> danny \\<in> team2)\"\nshows \"card {team1. \\<exists> team2. team1 \\<union> team2 = {1..players} \\<and> team1 \\<inter> team2 = {} \\<and> card team1 = 5 \\<and> card team2 = 5 \\<and> (steve \\<in> team1 \\<longleftrightarrow> danny \\<in> team2)} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<and> danny\"\nand h2 : \"\\<forall> team. card team = 5\"\nand h3 : \"team1 \\<noteq> team2 \\<longrightarrow> (steve \\<in> team1 \\<longleftrightarrow> danny \\<in> team2)\"\nshows \"card {team1. \\<exists> team2. team1 \\<union> team2 = {1..players} \\<and> team1 \\<inter> team2 = {} \\<and> card team1 = 5 \\<and> card team2 = 5 \\<and> (steve \\<in> team1 \\<longleftrightarrow> danny \\<in> team2)} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players, including Steve and Danny. We need to form teams of 5 players each. We have two teams, team1 and team2, such that team1 and team2 do not have any players in common and together they include all 10 players. Additionally, Steve is in team1 if and only if Danny is in team2. We want to find the number of ways to form such team pairs. The answer is 70 ways.",
+        "syntax": 0,
+        "semantic_score": 0.36221419911152963,
+        "symbolic_score": 0.1
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nassumes h0 : \"insert Steve (insert Danny (insert a (insert b (insert c (insert d (insert e (insert f (insert g (insert h empty))))))))) = {Steve,Danny,a,b,c,d,e,f,g,h}\"\nshows \"card ({S. S \\<subseteq> {a,b,c,d,e,f,g,h} \\<and> card S = 4} \\<times> {Steve} \\<times> {Danny} \\<times> {x. x \\<subseteq> {a,b,c,d,e,f,g,h} - {Steve,Danny} \\<and> card x = 3}) = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nassumes h0 : \"insert Steve (insert Danny (insert a (insert b (insert c (insert d (insert e (insert f (insert g (insert h empty))))))))) = {Steve,Danny,a,b,c,d,e,f,g,h}\"\nshows \"card ({S. S \\<subseteq> {a,b,c,d,e,f,g,h} \\<and> card S = 4} \\<times> {Steve} \\<times> {Danny} \\<times> {x. x \\<subseteq> {a,b,c,d,e,f,g,h} - {Steve,Danny} \\<and> card x = 3}) = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose there are ten people named Steve, Danny, a, b, c, d, e, f, g, and h. What is the number of ways to select four of these people, along with Steve and Danny, and then select a group of three people from the remaining individuals (excluding Steve and Danny)? The final answer is 70.",
+        "syntax": 1,
+        "semantic_score": 0.895016636940045,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes players :: \"string set\"\nassumes h0 : \"card players = 10\"\nand h1 : \"Steve \\<in> players\"\nand h2 : \"Danny \\<in> players\"\nand h3 : \"card {Steve, Danny} = 2\"\nand h4 : \"inj_on f {1..5}\"\nand h5 : \"inj_on g {1..5}\"\nand h6 : \"f ` {1..5} \\<union> g ` {1..5} = players - {Steve, Danny}\"\nand h7 : \"\\<forall>i \\<in> {1..5}. f i \\<noteq> g i\"\nshows \"card {(f ` {1..5}), (g ` {1..5})} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: \"string set\"\nassumes h0 : \"card players = 10\"\nand h1 : \"Steve \\<in> players\"\nand h2 : \"Danny \\<in> players\"\nand h3 : \"card {Steve, Danny} = 2\"\nand h4 : \"inj_on f {1..5}\"\nand h5 : \"inj_on g {1..5}\"\nand h6 : \"f ` {1..5} \\<union> g ` {1..5} = players - {Steve, Danny}\"\nand h7 : \"\\<forall>i \\<in> {1..5}. f i \\<noteq> g i\"\nshows \"card {(f ` {1..5}), (g ` {1..5})} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose there are ten players, including Steve and Danny, and no two players have the same name. Five of the players are chosen to form two teams, with each team having the same number of players. Find the number of ways to form two teams such that neither Steve nor Danny are on the same team. The final answer is 70.",
+        "syntax": 1,
+        "semantic_score": 0.9946381568467108,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes S :: \"'a set\"\nassumes h0 : \"card S = 10\"\nand h1 : \"S = {Steve, Danny} \\<union> S'\"\nand h2 : \"card S' = 8\"\nand h3 : \"card A = 5\"\nand h4 : \"card B = 5\"\nand h5 : \"Steve \\<in> A\"\nand h6 : \"Danny \\<in> B\"\nand h7 : \"A \\<inter> B = {}\"\nshows \"card {A. A \\<subseteq> S'} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes S :: \"'a set\"\nassumes h0 : \"card S = 10\"\nand h1 : \"S = {Steve, Danny} \\<union> S'\"\nand h2 : \"card S' = 8\"\nand h3 : \"card A = 5\"\nand h4 : \"card B = 5\"\nand h5 : \"Steve \\<in> A\"\nand h6 : \"Danny \\<in> B\"\nand h7 : \"A \\<inter> B = {}\"\nshows \"card {A. A \\<subseteq> S'} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Steve and Danny are two people in a group of 10 people, denoted by set S. There are 8 other people in the group, denoted by set S'. There are two more sets, A and B, each containing 5 people. Steve is one of the people in set A, and Danny is one of the people in set B. Sets A and B have no people in common. What is the number of possible subsets of set S' that can be formed with exactly 5 people? The final answer is 70.\"",
+        "syntax": 1,
+        "semantic_score": 0.871739090451011,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nassumes h0 : \"10 choose 5 = 252\"\nshows \"((8 choose 4) * 2) = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nassumes h0 : \"10 choose 5 = 252\"\nshows \"((8 choose 4) * 2) = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If 5 items are chosen from a set of 10 items, there are 252 ways to do so. How many ways are there to choose 4 items from a set of 8 items and then multiply the result by 2? The answer is 70.",
+        "syntax": 1,
+        "semantic_score": 0.9365727637748957,
+        "symbolic_score": 0.1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes players :: \"string set\"\nassumes h0 : \"card players = 10\"\nand h1 : \"Steve \\<in> players\"\nand h2 : \"Danny \\<in> players\"\nand h3 : \"Steve \\<noteq> Danny\"\nshows \"card {team1. team1 \\<subseteq> players \\<and> card team1 = 5 \\<and> Steve \\<in> team1} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: \"string set\"\nassumes h0 : \"card players = 10\"\nand h1 : \"Steve \\<in> players\"\nand h2 : \"Danny \\<in> players\"\nand h3 : \"Steve \\<noteq> Danny\"\nshows \"card {team1. team1 \\<subseteq> players \\<and> card team1 = 5 \\<and> Steve \\<in> team1} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If a group of 10 players includes Steve and Danny, in how many ways can we form a team of 5 players that includes Steve? The answer is 70.\"",
+        "syntax": 1,
+        "semantic_score": 0.8120856084051298,
+        "symbolic_score": 0.1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nassumes h0 : \"card {Steve, Danny} = 2\"\nand h1 : \"card {player1, player2, player3, player4, player5} = 5\"\nand h2 : \"card {player6, player7, player8, player9, player10} = 5\"\nand h3 : \"{Steve, Danny} \\<subseteq> {player1, player2, player3, player4, player5} \\<and> {Steve, Danny} \\<subseteq> {player6, player7, player8, player9, player10}\"\nand h4 : \"card ({player1, player2, player3, player4, player5} - {Steve, Danny}) = 3\"\nand h5 : \"card ({player6, player7, player8, player9, player10} - {Steve, Danny}) = 3\"\nshows \"card ({S. S \\<subseteq> {player1, player2, player3, player4, player5} - {Steve, Danny}}) * card ({S. S \\<subseteq> {player6, player7, player8, player9, player10} - {Steve, Danny}}) = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nassumes h0 : \"card {Steve, Danny} = 2\"\nand h1 : \"card {player1, player2, player3, player4, player5} = 5\"\nand h2 : \"card {player6, player7, player8, player9, player10} = 5\"\nand h3 : \"{Steve, Danny} \\<subseteq> {player1, player2, player3, player4, player5} \\<and> {Steve, Danny} \\<subseteq> {player6, player7, player8, player9, player10}\"\nand h4 : \"card ({player1, player2, player3, player4, player5} - {Steve, Danny}) = 3\"\nand h5 : \"card ({player6, player7, player8, player9, player10} - {Steve, Danny}) = 3\"\nshows \"card ({S. S \\<subseteq> {player1, player2, player3, player4, player5} - {Steve, Danny}}) * card ({S. S \\<subseteq> {player6, player7, player8, player9, player10} - {Steve, Danny}}) = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Steve and Danny are two players out of a group of 10 players. There are 5 players in each of two teams, with Steve and Danny each on one team. There are three players on each team who are not on the same team as Steve or Danny. How many possible ways are there to choose the members of the two teams? The answer is 70.",
+        "syntax": 1,
+        "semantic_score": 0.8717459401303729,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes S :: \"string set\"\nassumes h0 : \"S = {''Steve'', ''Danny'', ''player1'', ''player2'', ''player3'', ''player4'', ''player5'', ''player6'', ''player7'', ''player8''}\"\nand h1 : \"card S = 10\"\nshows \"card {T. T \\<subseteq> S \\<and> card T = 5 \\<and> (''Steve'' \\<in> T) \\<and> (''Danny'' \\<notin> T) \\<or> (''Danny'' \\<in> T) \\<and> (''Steve'' \\<notin> T)} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes S :: \"string set\"\nassumes h0 : \"S = {''Steve'', ''Danny'', ''player1'', ''player2'', ''player3'', ''player4'', ''player5'', ''player6'', ''player7'', ''player8''}\"\nand h1 : \"card S = 10\"\nshows \"card {T. T \\<subseteq> S \\<and> card T = 5 \\<and> (''Steve'' \\<in> T) \\<and> (''Danny'' \\<notin> T) \\<or> (''Danny'' \\<in> T) \\<and> (''Steve'' \\<notin> T)} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There is a set $S$ containing 10 strings: \"Steve,\" \"Danny,\" and eight \"players.\" How many subsets of $S$ of size 5 contain Steve but not Danny, or Danny but not Steve? The final answer is 70.",
+        "syntax": 1,
+        "semantic_score": 0.988150790658756,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 8\"\nshows \"card {S. S \\<subseteq> {1,2,3,4,5,6,7,8} \\<and> card S = 5 \\<and> 1 \\<in> S \\<and> 2 \\<in> S \\<and> (3 \\<notin> S \\<longrightarrow> 4 \\<notin> S) \\<and> (3 \\<in> S \\<longrightarrow> 4 \\<in> S)} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 8\"\nshows \"card {S. S \\<subseteq> {1,2,3,4,5,6,7,8} \\<and> card S = 5 \\<and> 1 \\<in> S \\<and> 2 \\<in> S \\<and> (3 \\<notin> S \\<longrightarrow> 4 \\<notin> S) \\<and> (3 \\<in> S \\<longrightarrow> 4 \\<in> S)} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many sets with five elements can be formed from the set $\\{1,2,3,4,5,6,7,8\\}$ such that $1$ and $2$ are elements and either both $3$ and $4$ are elements or neither $3$ nor $4$ are elements? The final answer is $70$.",
+        "syntax": 1,
+        "semantic_score": 0.8563771467585364,
+        "symbolic_score": 0.1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 10\"\nshows \"card {S. S \\<subseteq> {1..n} \\<and> card S = n div 2 \\<and> Steve \\<in> S \\<and> Danny \\<notin> S} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 10\"\nshows \"card {S. S \\<subseteq> {1..n} \\<and> card S = n div 2 \\<and> Steve \\<in> S \\<and> Danny \\<notin> S} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a group of $10$ friends, $Steve$ is a member and $Danny$ is not. How many ways are there to choose $5$ of the friends such that $Steve$ is included and $Danny$ is not? The final answer is $70$.",
+        "syntax": 1,
+        "semantic_score": 0.8695358702880885,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 10\"\nshows \"card {S. S \\<subseteq> {1..n} \\<and> card S = 5 \\<and> (2::nat) \\<notin> S \\<and> (3::nat) \\<notin> S} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 10\"\nshows \"card {S. S \\<subseteq> {1..n} \\<and> card S = 5 \\<and> (2::nat) \\<notin> S \\<and> (3::nat) \\<notin> S} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many subsets of $\\{1, 2, 3, \\ldots, 10\\}$ are there with exactly five elements and do not contain $2$ or $3$? The final answer is $70$.",
+        "syntax": 1,
+        "semantic_score": 0.8839377798313176,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes team_size :: nat and players :: \"nat set\"\nassumes h0 : \"card players = 10\"\nand h1 : \"team_size = 5\"\nand h2 : \"Steve \\<in> players\"\nand h3 : \"Danny \\<in> players\"\nshows  \"card {A. A \\<subseteq> players - {Steve, Danny} \\<and> card A = team_size - 1} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes team_size :: nat and players :: \"nat set\"\nassumes h0 : \"card players = 10\"\nand h1 : \"team_size = 5\"\nand h2 : \"Steve \\<in> players\"\nand h3 : \"Danny \\<in> players\"\nshows  \"card {A. A \\<subseteq> players - {Steve, Danny} \\<and> card A = team_size - 1} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are 10 players in a group, including Steve and Danny. A team of 5 players needs to be formed. How many different teams can be formed if both Steve and Danny must be on the team? The final answer is 70.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9068541555275605,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes n k :: nat and basketball_team :: \"nat set\"\nassumes h0 : \"card basketball_team = 10\"\nand h1 : \"k = 5\"\nand h2 : \"Steve \\<in> basketball_team\"\nand h3 : \"Danny \\<in> basketball_team\"\nshows  \"card {A. A \\<subseteq> basketball_team - {Steve, Danny} \\<and> card A = k - 1} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes n k :: nat and basketball_team :: \"nat set\"\nassumes h0 : \"card basketball_team = 10\"\nand h1 : \"k = 5\"\nand h2 : \"Steve \\<in> basketball_team\"\nand h3 : \"Danny \\<in> basketball_team\"\nshows  \"card {A. A \\<subseteq> basketball_team - {Steve, Danny} \\<and> card A = k - 1} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There is a basketball team consisting of 10 players including Steve and Danny. If you have to create a 5-person group (including Steve and Danny), how many different groups can be formed with the remaining players? The final answer is 70.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.910152068951395,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes n_teams :: nat and comb :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n_teams = 10\"\nand h1 : \"comb = (\\<lambda>n k. fact n div (fact k * fact (n - k)))\"\nand h2 : \"\\<forall> n k. comb n k = comb n (n - k)\"\nshows  \"comb (n_teams - 2) 4 = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes n_teams :: nat and comb :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n_teams = 10\"\nand h1 : \"comb = (\\<lambda>n k. fact n div (fact k * fact (n - k)))\"\nand h2 : \"\\<forall> n k. comb n k = comb n (n - k)\"\nshows  \"comb (n_teams - 2) 4 = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a sports league with 10 teams, how many ways can you choose 4 teams from the remaining 8 teams after removing 2 teams? The final answer is 70.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8138101116169147,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes total_teams :: nat and teams :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"total_teams = 10\"\nand h1 : \"teams 1 = 5\"\nand h2 : \"teams 2 = 5\"\nand h3 : \"\\<forall>k. k = 1 \\<or> k = 2 \\<longrightarrow> (Steve \\<in> teams k) \\<and> (Danny \\<notin> teams k)\"\nshows  \"card {T. \\<exists>k. k = 1 \\<or> k = 2 \\<and> (Steve, Danny) \\<in> T \\<and> (\\<forall>x. x \\<in> T \\<longrightarrow> x \\<in> teams k)} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes total_teams :: nat and teams :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"total_teams = 10\"\nand h1 : \"teams 1 = 5\"\nand h2 : \"teams 2 = 5\"\nand h3 : \"\\<forall>k. k = 1 \\<or> k = 2 \\<longrightarrow> (Steve \\<in> teams k) \\<and> (Danny \\<notin> teams k)\"\nshows  \"card {T. \\<exists>k. k = 1 \\<or> k = 2 \\<and> (Steve, Danny) \\<in> T \\<and> (\\<forall>x. x \\<in> T \\<longrightarrow> x \\<in> teams k)} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a sports event, there are a total of 10 teams. The teams are divided into two groups: Group 1 has 5 teams and Group 2 also has 5 teams. Steve is a member of all teams in Group 1, while Danny is not a member of any team in Group 1. Similarly, Steve is a member of all teams in Group 2, while Danny is not a member of any team in Group 2. How many possible pairs of teams (T) can be formed with the condition that Steve and Danny are both in the same team and all members of the team T are either in Group 1 or Group 2? The final answer is 70.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8354101721299612,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and C :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 10\"\nand h1 : \"C n k = fact n div (fact k * fact (n - k))\"\nand h2 : \"C (n-2) (5-1) = 70\"\nshows  \"C (n-2) (5-1) = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes n :: nat and C :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 10\"\nand h1 : \"C n k = fact n div (fact k * fact (n - k))\"\nand h2 : \"C (n-2) (5-1) = 70\"\nshows  \"C (n-2) (5-1) = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the binomial coefficient is defined as $C(n, k) = \\frac{n!}{k!(n-k)!}$, find the value of $C(10-2, 5-1)$, which is also known as the number of combinations of choosing 4 items from 8. The final answer is 70.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.7864136206181543,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes total_players steve_danny_team others_team :: nat\nassumes h0 : \"total_players = 10\"\nand h1 : \"steve_danny_team = 2\"\nand h2 : \"others_team = 5\"\nand h3 : \"total_players = steve_danny_team * others_team\"\nshows  \"n_choose_k (total_players - steve_danny_team) (others_team - 1) = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes total_players steve_danny_team others_team :: nat\nassumes h0 : \"total_players = 10\"\nand h1 : \"steve_danny_team = 2\"\nand h2 : \"others_team = 5\"\nand h3 : \"total_players = steve_danny_team * others_team\"\nshows  \"n_choose_k (total_players - steve_danny_team) (others_team - 1) = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a group of 10 people, Steve and Danny form a team of 2. The other members are divided into 5 teams. How many ways can the remaining 8 people be divided into teams of 4? The final answer is 70.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8900956325051802,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 10\"\nand h1 : \"f n = fact n\"\nand h2 : \"Steve \\<noteq> Danny\"\nand h3 : \"card {team. team \\<subseteq> {players. players \\<noteq> Steve \\<and> players \\<noteq> Danny} \\<and> card team = 4} = 70\"\nshows  \"\\<exists>f. (\\<forall>team1 team2. (team1 \\<subseteq> {players. players \\<noteq> Steve \\<and> players \\<noteq> Danny} \\<and> card team1 = 4) \\<and>\n                      (team2 \\<subseteq> {players. players \\<noteq> Steve \\<and> players \\<noteq> Danny} \\<and> card team2 = 4) \\<and>\n                      (team1 \\<union> {Steve} \\<noteq> team2 \\<union> {Danny})) \\<longrightarrow> f (team1 \\<union> {Steve}, team2 \\<union> {Danny}) = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 10\"\nand h1 : \"f n = fact n\"\nand h2 : \"Steve \\<noteq> Danny\"\nand h3 : \"card {team. team \\<subseteq> {players. players \\<noteq> Steve \\<and> players \\<noteq> Danny} \\<and> card team = 4} = 70\"\nshows  \"\\<exists>f. (\\<forall>team1 team2. (team1 \\<subseteq> {players. players \\<noteq> Steve \\<and> players \\<noteq> Danny} \\<and> card team1 = 4) \\<and>\n                      (team2 \\<subseteq> {players. players \\<noteq> Steve \\<and> players \\<noteq> Danny} \\<and> card team2 = 4) \\<and>\n                      (team1 \\<union> {Steve} \\<noteq> team2 \\<union> {Danny})) \\<longrightarrow> f (team1 \\<union> {Steve}, team2 \\<union> {Danny}) = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a group of 10 players, Steve and Danny are two distinct players. There are 70 ways to form a team of 4 players without including Steve and Danny. Find a function $f$ such that for any two teams of 4 players, team1 and team2, not including Steve and Danny, the union of team1 with Steve is not equal to the union of team2 with Danny, and $f(\\text{team1} \\cup \\{\\text{Steve}\\}, \\text{team2} \\cup \\{\\text{Danny}\\}) = 70$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.866915801331551,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes basketball_team :: \"'a set\"\nand Steve Danny :: \"'a\"\nand teams :: \"('a set \\<times> 'a set) set\"\nassumes h0 : \"finite basketball_team\"\nand h1 : \"card basketball_team = 10\"\nand h2 : \"Steve \\<in> basketball_team\"\nand h3 : \"Danny \\<in> basketball_team\"\nand h4 : \"\\<forall>(T1, T2) \\<in> teams. card T1 = 5 \\<and> card T2 = 5 \\<and> T1 \\<inter> T2 = {} \\<and> T1 \\<union> T2 = basketball_team\"\nand h5 : \"\\<forall>(T1, T2) \\<in> teams. Steve \\<in> T1 \\<and> Danny \\<in> T2\"\nshows  \"card teams = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes basketball_team :: \"'a set\"\nand Steve Danny :: \"'a\"\nand teams :: \"('a set \\<times> 'a set) set\"\nassumes h0 : \"finite basketball_team\"\nand h1 : \"card basketball_team = 10\"\nand h2 : \"Steve \\<in> basketball_team\"\nand h3 : \"Danny \\<in> basketball_team\"\nand h4 : \"\\<forall>(T1, T2) \\<in> teams. card T1 = 5 \\<and> card T2 = 5 \\<and> T1 \\<inter> T2 = {} \\<and> T1 \\<union> T2 = basketball_team\"\nand h5 : \"\\<forall>(T1, T2) \\<in> teams. Steve \\<in> T1 \\<and> Danny \\<in> T2\"\nshows  \"card teams = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A basketball team has 10 players including Steve and Danny. The coach wants to divide the team into two teams of 5 players each, such that Steve and Danny are on different teams. How many different ways can the coach divide the team into two teams of 5 players each? The final answer is 70 ways.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9307148049164321,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and choose :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 10\"\nand h1 : \"\\<forall> n k. choose n k = fact n div (fact k * fact (n - k))\"\nand h2 : \"Steve \\<noteq> Danny\"\nshows  \"choose (n - 2) 4 = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes n :: nat and choose :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 10\"\nand h1 : \"\\<forall> n k. choose n k = fact n div (fact k * fact (n - k))\"\nand h2 : \"Steve \\<noteq> Danny\"\nshows  \"choose (n - 2) 4 = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a group of 10 people, including Steve and Danny, how many ways are there to choose a committee of 4 people without Steve and Danny being together on the committee? The final answer is 70.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8692843941553932,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes num_ways :: \"nat\"\nassumes h0 : \"num_ways = nCr (10 - 2) (5 - 1)\"\nshows  \"num_ways = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is 70\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes num_ways :: \"nat\"\nassumes h0 : \"num_ways = nCr (10 - 2) (5 - 1)\"\nshows  \"num_ways = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many ways can you choose 4 items out of 8? The final answer is 70.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7687645141978396,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes players steve danny :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<in> {1..players}\"\nand h2 : \"danny \\<in> {1..players}\"\nand h3 : \"steve \\<noteq> danny\"\nand h4 : \"card {x. x \\<in> {1..players} \\<and> x \\<noteq> steve \\<and> x \\<noteq> danny} = 8\"\nand h5 : \"card {x. x \\<in> {1..players} \\<and> x \\<noteq> steve \\<and> x \\<noteq> danny \\<and> x \\<noteq> 5} = 7\"\nshows \"card {S. card S = 5 \\<and> steve \\<notin> S \\<and> danny \\<in> S \\<and> card {x. x \\<in> {1..players} \\<and> x \\<notin> S} = 5} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players steve danny :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<in> {1..players}\"\nand h2 : \"danny \\<in> {1..players}\"\nand h3 : \"steve \\<noteq> danny\"\nand h4 : \"card {x. x \\<in> {1..players} \\<and> x \\<noteq> steve \\<and> x \\<noteq> danny} = 8\"\nand h5 : \"card {x. x \\<in> {1..players} \\<and> x \\<noteq> steve \\<and> x \\<noteq> danny \\<and> x \\<noteq> 5} = 7\"\nshows \"card {S. card S = 5 \\<and> steve \\<notin> S \\<and> danny \\<in> S \\<and> card {x. x \\<in> {1..players} \\<and> x \\<notin> S} = 5} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players in total. Steve and Danny are two distinct players among them. The remaining 8 players are neither Steve nor Danny. Among these 8 players, there is one player who is not number 5. We are looking for the number of subsets of 5 players that can be formed, such that Danny is in the subset, Steve is not, and there are exactly 5 players outside of the subset. The answer is 70 such subsets can be formed.",
+        "syntax": 1,
+        "semantic_score": 0.8694567949870005,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes players :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"players mod 2 = 0\"\nand h2 : \"players div 2 = 5\"\nand h3 : \"\\<exists> Steve Danny. Steve \\<noteq> Danny\"\nand h4 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<longrightarrow> (Steve \\<in> team1 \\<longleftrightarrow> Danny \\<in> team2)\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> (Steve \\<in> team1 \\<longleftrightarrow> Danny \\<in> team2)} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"players mod 2 = 0\"\nand h2 : \"players div 2 = 5\"\nand h3 : \"\\<exists> Steve Danny. Steve \\<noteq> Danny\"\nand h4 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<longrightarrow> (Steve \\<in> team1 \\<longleftrightarrow> Danny \\<in> team2)\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> (Steve \\<in> team1 \\<longleftrightarrow> Danny \\<in> team2)} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players, and they are evenly divided into two teams of 5 players each. Among these players, there are two distinct players named Steve and Danny. The rule is that if Steve is on team1, then Danny must be on team2, and vice versa. How many different ways can the teams be formed such that the conditions are met? The answer is 70 ways.",
+        "syntax": 1,
+        "semantic_score": 0.8974881425563448,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes players :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"players > 0\"\nand h2 : \"players mod 2 = 0\"\nand h3 : \"Steve \\<in> players\"\nand h4 : \"Danny \\<in> players\"\nand h5 : \"Steve \\<noteq> Danny\"\nand h6 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> Steve \\<in> team1 \\<and> Danny \\<in> team2 \\<or> Steve \\<in> team2 \\<and> Danny \\<in> team1\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> Steve \\<in> team1 \\<and> Danny \\<in> team2 \\<or> Steve \\<in> team2 \\<and> Danny \\<in> team1} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"players > 0\"\nand h2 : \"players mod 2 = 0\"\nand h3 : \"Steve \\<in> players\"\nand h4 : \"Danny \\<in> players\"\nand h5 : \"Steve \\<noteq> Danny\"\nand h6 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> Steve \\<in> team1 \\<and> Danny \\<in> team2 \\<or> Steve \\<in> team2 \\<and> Danny \\<in> team1\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> Steve \\<in> team1 \\<and> Danny \\<in> team2 \\<or> Steve \\<in> team2 \\<and> Danny \\<in> team1} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players, including Steve and Danny, who are not the same person. The players are divided into two teams, each with 5 players, such that Steve and Danny are on different teams. How many different ways can the teams be formed with these conditions? The answer is 70 ways.",
+        "syntax": 0,
+        "semantic_score": 0.9123462426301736,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<and> danny\"\nand h2 : \"\\<forall> team. card team = 5\"\nand h3 : \"team1 \\<inter> team2 = {}\"\nand h4 : \"team1 \\<union> team2 = {1..players}\"\nand h5 : \"steve \\<in> team1 \\<longleftrightarrow> danny \\<in> team2\"\nshows \"card {team1, team2} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<and> danny\"\nand h2 : \"\\<forall> team. card team = 5\"\nand h3 : \"team1 \\<inter> team2 = {}\"\nand h4 : \"team1 \\<union> team2 = {1..players}\"\nand h5 : \"steve \\<in> team1 \\<longleftrightarrow> danny \\<in> team2\"\nshows \"card {team1, team2} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players in total. Steve and Danny are both part of the teams. The teams are divided into two groups, team1 and team2, each with 5 players. The players in team1 and team2 do not overlap, and together they include all 10 players. If Steve is in team1, then Danny is in team2, and vice versa. The problem asks to find the number of possible combinations of team1 and team2, which is 70.",
+        "syntax": 0,
+        "semantic_score": 0.8743456341347073,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes players steve danny :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<in> {1..players}\"\nand h2 : \"danny \\<in> {1..players}\"\nand h3 : \"steve \\<noteq> danny\"\nand h4 : \"card {x \\<in> {1..players}. x \\<noteq> steve \\<and> x \\<noteq> danny} = 8\"\nand h5 : \"card {x \\<in> {1..players}. x \\<noteq> steve \\<and> x \\<noteq> danny \\<and> x \\<noteq> 5} = 7\"\nshows \"card {S \\<subseteq> {1..players}. card S = 5 \\<and> steve \\<in> S \\<and> danny \\<notin> S \\<and> (\\<forall>x \\<in> S. x \\<noteq> danny)} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players steve danny :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<in> {1..players}\"\nand h2 : \"danny \\<in> {1..players}\"\nand h3 : \"steve \\<noteq> danny\"\nand h4 : \"card {x \\<in> {1..players}. x \\<noteq> steve \\<and> x \\<noteq> danny} = 8\"\nand h5 : \"card {x \\<in> {1..players}. x \\<noteq> steve \\<and> x \\<noteq> danny \\<and> x \\<noteq> 5} = 7\"\nshows \"card {S \\<subseteq> {1..players}. card S = 5 \\<and> steve \\<in> S \\<and> danny \\<notin> S \\<and> (\\<forall>x \\<in> S. x \\<noteq> danny)} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players in total. Steve and Danny are two distinct players among these 10 players. There are 8 players who are neither Steve nor Danny, and 7 players who are neither Steve nor Danny nor the player numbered 5. How many different subsets of 5 players can be formed such that Steve is in the subset, Danny is not in the subset, and no player in the subset is Danny? The answer is 70.",
+        "syntax": 0,
+        "semantic_score": 0.8780414532147107,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve 1\"\nand h2 : \"danny 1\"\nand h3 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1 \\<longrightarrow> P team1 team2\"\nshows \"P = (\\<lambda> team1 team2. 70)\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve 1\"\nand h2 : \"danny 1\"\nand h3 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1 \\<longrightarrow> P team1 team2\"\nshows \"P = (\\<lambda> team1 team2. 70)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players in total. Steve and Danny are both part of the game. The theorem states that if we have two teams, each with 5 players, and these teams have no players in common, and neither Steve nor Danny is in the opposing team, then the value of P for these two teams is 70. In other words, given these conditions, the function P, which takes two teams as input, will always output 70.",
+        "syntax": 0,
+        "semantic_score": 0.8425308610153526,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve players\"\nand h2 : \"danny players\"\nand h3 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve players\"\nand h2 : \"danny players\"\nand h3 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players in total, and both Steve and Danny are part of the group. We want to form two teams, each with 5 players, such that the teams have no players in common, Steve is not in the second team, and Danny is not in the first team. How many different ways can we form the first team under these conditions? The answer is 70 ways.",
+        "syntax": 1,
+        "semantic_score": 0.9179714587919442,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes players steve danny :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<in> {1..players}\"\nand h2 : \"danny \\<in> {1..players}\"\nand h3 : \"steve \\<noteq> danny\"\nand h4 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<union> team2 = {1..players} \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<in> team1 \\<and> danny \\<in> team2 \\<or> steve \\<in> team2 \\<and> danny \\<in> team1\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<union> team2 = {1..players} \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<in> team1 \\<and> danny \\<in> team2 \\<or> steve \\<in> team2 \\<and> danny \\<in> team1} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players steve danny :: nat\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<in> {1..players}\"\nand h2 : \"danny \\<in> {1..players}\"\nand h3 : \"steve \\<noteq> danny\"\nand h4 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<union> team2 = {1..players} \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<in> team1 \\<and> danny \\<in> team2 \\<or> steve \\<in> team2 \\<and> danny \\<in> team1\"\nshows \"card {team1. \\<exists> team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<union> team2 = {1..players} \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<in> team1 \\<and> danny \\<in> team2 \\<or> steve \\<in> team2 \\<and> danny \\<in> team1} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players, including Steve and Danny, who are distinct individuals. We want to form two teams, each with 5 players, such that the two teams together include all 10 players, and there are no overlapping players between the two teams. Additionally, Steve and Danny must be on different teams. How many different ways can we form these two teams, with the given conditions, such that Steve is on one team and Danny is on the other? The answer is 70 ways.",
+        "syntax": 1,
+        "semantic_score": 0.9123197751059631,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve players\"\nand h2 : \"danny players\"\nand h3 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1 \\<longrightarrow> P team1 team2\"\nshows \"P = (\\<lambda> team1 team2. 70)\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve players\"\nand h2 : \"danny players\"\nand h3 : \"\\<forall> team1 team2. card team1 = 5 \\<and> card team2 = 5 \\<and> team1 \\<inter> team2 = {} \\<and> steve \\<notin> team2 \\<and> danny \\<notin> team1 \\<longrightarrow> P team1 team2\"\nshows \"P = (\\<lambda> team1 team2. 70)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players in total. Steve and Danny are both considered as part of the players. We want to divide the players into two teams, team1 and team2, each with 5 players. The two teams must not have any players in common, and neither Steve nor Danny can be in the same team. If these conditions are met, we define a function P that takes two teams as input and outputs a value. The theorem states that the function P is defined as P(team1, team2) = 70.",
+        "syntax": 0,
+        "semantic_score": 0.8419999729765605,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<and> danny\"\nand h2 : \"\\<forall> team. card team = 5\"\nand h3 : \"team1 \\<noteq> team2 \\<longrightarrow> (steve \\<in> team1 \\<longleftrightarrow> danny \\<in> team2)\"\nshows \"card {team1. \\<exists> team2. team1 \\<union> team2 = {1..players} \\<and> team1 \\<inter> team2 = {} \\<and> card team1 = 5 \\<and> card team2 = 5 \\<and> (steve \\<in> team1 \\<longleftrightarrow> danny \\<in> team2)} = 70\"",
+        "formal solution": "(* ### Problem\n Our basketball team has 10 players, including Steve and Danny.  We need to divide into two teams of 5 for an intra-squad scrimmage.  In how many ways can we do this if Steve and Danny insist on playing on opposing teams? The final Answer is $70$\n ### Proof\n If Steve and Danny are on opposite teams, there are 8 other players to choose from for the other 4 spots on Steve's team, so there are $\\binom{8}{4} = \\boxed{70}$ choices.\n *)\n\ntheorem\nfixes players :: nat and steve danny :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"players = 10\"\nand h1 : \"steve \\<and> danny\"\nand h2 : \"\\<forall> team. card team = 5\"\nand h3 : \"team1 \\<noteq> team2 \\<longrightarrow> (steve \\<in> team1 \\<longleftrightarrow> danny \\<in> team2)\"\nshows \"card {team1. \\<exists> team2. team1 \\<union> team2 = {1..players} \\<and> team1 \\<inter> team2 = {} \\<and> card team1 = 5 \\<and> card team2 = 5 \\<and> (steve \\<in> team1 \\<longleftrightarrow> danny \\<in> team2)} = 70\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 10 players, including Steve and Danny. We need to form teams of 5 players each. We have two teams, team1 and team2, such that team1 and team2 do not have any players in common and together they include all 10 players. Additionally, Steve is in team1 if and only if Danny is in team2. We want to find the number of ways to form such team pairs. The answer is 70 ways.",
+        "syntax": 0,
+        "semantic_score": 0.9037415999655719,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

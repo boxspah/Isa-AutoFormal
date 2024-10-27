@@ -1,0 +1,560 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes probability :: real\nassumes h0 : \"probability = (\\<lambda>n k. (fact n) / (fact k * fact (n - k)))\"\nand h1 : \"probability = (\\<lambda>cards pair. cards * pair)\"\nshows  \"probability 52 3 * probability 13 1 * probability 4 2 * probability 12 1 * probability 4 1 = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes probability :: real\nassumes h0 : \"probability = (\\<lambda>n k. (fact n) / (fact k * fact (n - k)))\"\nand h1 : \"probability = (\\<lambda>cards pair. cards * pair)\"\nshows  \"probability 52 3 * probability 13 1 * probability 4 2 * probability 12 1 * probability 4 1 = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a standard deck of 52 playing cards, find the probability of drawing 3 cards such that there is exactly 1 pair and 1 card of a different rank. Express the probability as a fraction. The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.6352955102920532,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes probability :: real\nassumes h0 : \"probability = (\\<lambda> (pairs, total_combinations). pairs / total_combinations) (72, 425)\"\nshows  \"probability (72, 425) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes probability :: real\nassumes h0 : \"probability = (\\<lambda> (pairs, total_combinations). pairs / total_combinations) (72, 425)\"\nshows  \"probability (72, 425) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the probability of a particular event, given that there are 72 successful outcomes and a total of 425 possible combinations. The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.5543199777603149,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes p :: real\nassumes h0 : \"p = 72 / 425\"\nshows  \"p = (3 * (comb 13 1) * (comb 4 2) * (comb 12 1) * (comb 4 1)) / (comb 52 3)\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes p :: real\nassumes h0 : \"p = 72 / 425\"\nshows  \"p = (3 * (comb 13 1) * (comb 4 2) * (comb 12 1) * (comb 4 1)) / (comb 52 3)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a standard deck of 52 playing cards, what is the probability of drawing 3 cards such that one card is a King, and the other two cards have the same rank but different suits? The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9396299123764038,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes probability :: \"real\"\nassumes h0 : \"probability = (72 / 425)\"\nshows  \"probability = (card {pair :: (nat, nat, nat). pair \\<in> {1..52} \\<times> {1..52} \\<times> {1..52} \\<and> two_of_three_match_in_rank pair}) / (card {hand :: (nat, nat, nat). hand \\<in> {1..52} \\<times> {1..52} \\<times> {1..52}})\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes probability :: \"real\"\nassumes h0 : \"probability = (72 / 425)\"\nshows  \"probability = (card {pair :: (nat, nat, nat). pair \\<in> {1..52} \\<times> {1..52} \\<times> {1..52} \\<and> two_of_three_match_in_rank pair}) / (card {hand :: (nat, nat, nat). hand \\<in> {1..52} \\<times> {1..52} \\<times> {1..52}})\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a deck of 52 playing cards, find the probability that, when drawing three cards, exactly two of them have the same rank. The probability is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.4343520998954773,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes prob :: \"real\"\nassumes h0 : \"prob = (6 * choose 4 2) * (choose 48 1) / (choose 52 3)\"\nshows  \"prob = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes prob :: \"real\"\nassumes h0 : \"prob = (6 * choose 4 2) * (choose 48 1) / (choose 52 3)\"\nshows  \"prob = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the probability of drawing exactly two cards of the same rank and one card of a different rank when drawing three cards from a standard 52-card deck. The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.6483069658279419,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes prob :: \"real\"\nassumes h0 : \"prob = (72 / real (card {pair :: (nat \\<times> nat) set. card pair = 3 \\<and> (\\<exists> r1 r2 r3 s1 s2 s3.\n          pair = {(r1, s1), (r1, s2), (r3, s3)} \\<union> {(r2, s1), (r2, s2), (r3, s3)} \\<and> r1 \\<noteq> r2 \\<and> r1 \\<noteq> r3 \\<and> r2 \\<noteq> r3 \\<and> s1 \\<noteq> s2 \\<and> s1 \\<noteq> s3 \\<and> s2 \\<noteq> s3})})\"\nshows  \"prob = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes prob :: \"real\"\nassumes h0 : \"prob = (72 / real (card {pair :: (nat \\<times> nat) set. card pair = 3 \\<and> (\\<exists> r1 r2 r3 s1 s2 s3.\n          pair = {(r1, s1), (r1, s2), (r3, s3)} \\<union> {(r2, s1), (r2, s2), (r3, s3)} \\<and> r1 \\<noteq> r2 \\<and> r1 \\<noteq> r3 \\<and> r2 \\<noteq> r3 \\<and> s1 \\<noteq> s2 \\<and> s1 \\<noteq> s3 \\<and> s2 \\<noteq> s3})})\"\nshows  \"prob = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a certain club, there are three different pairs of people, each pair consisting of a president and a secretary. The club decides to form a committee by selecting three pairs of presidents and secretaries, with the restriction that no two pairs have both the president and the secretary in common. What is the probability of forming such a committee? The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9702389240264893,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes prob_pair :: real\nassumes h0 : \"prob_pair = (6 * 13 * 12 * 4) / (52 * 51 * 50)\"\nshows  \"prob_pair = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes prob_pair :: real\nassumes h0 : \"prob_pair = (6 * 13 * 12 * 4) / (52 * 51 * 50)\"\nshows  \"prob_pair = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the probability of drawing two pairs from a standard deck of 52 playing cards. The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.5884550213813782,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes cards :: \"nat set\"\nassumes h0 : \"card cards = 52\"\nand h1 : \"three_cards_subset \\<subseteq> cards\"\nand h2 : \"card three_cards_subset = 3\"\nand h3 : \"pair_exists three_cards_subset\"\nshows  \"prob (three_cards_subset) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes cards :: \"nat set\"\nassumes h0 : \"card cards = 52\"\nand h1 : \"three_cards_subset \\<subseteq> cards\"\nand h2 : \"card three_cards_subset = 3\"\nand h3 : \"pair_exists three_cards_subset\"\nshows  \"prob (three_cards_subset) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a standard deck of 52 playing cards, what is the probability of drawing a subset of 3 cards such that there exists a pair (two cards of the same rank) in the subset? The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9429054856300354,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes probability :: real\nassumes h0 : \"52 > 3\"\nand h1 : \"probability = (72 / 425)\"\nshows  \"pair_probability = (\\<Sum>C \\<in> {C. card C = 3 \\<and> (\\<exists>x y. x \\<noteq> y \\<and> pair x y C)}. 1) / (\\<Sum>C \\<in> {C. card C = 3}. 1)\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes probability :: real\nassumes h0 : \"52 > 3\"\nand h1 : \"probability = (72 / 425)\"\nshows  \"pair_probability = (\\<Sum>C \\<in> {C. card C = 3 \\<and> (\\<exists>x y. x \\<noteq> y \\<and> pair x y C)}. 1) / (\\<Sum>C \\<in> {C. card C = 3}. 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a deck of 52 cards, find the probability of drawing a 3-card hand with at least one pair (two cards with the same rank). The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7027800679206848,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes pair_probability :: real\nassumes h0 : \"pair_probability = (6 * choose (13, 2) * choose (12, 1) * choose (4, 1)) / choose (52, 3)\"\nshows  \"pair_probability = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes pair_probability :: real\nassumes h0 : \"pair_probability = (6 * choose (13, 2) * choose (12, 1) * choose (4, 1)) / choose (52, 3)\"\nshows  \"pair_probability = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the probability of drawing exactly one pair from a standard 52-card deck when drawing 3 cards? The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8764387369155884,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "\\dfrac{72}{425}",
+    "natural problem": "3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.)",
+    "natural solution": [
+        "There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.",
+        "To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.",
+        "This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.",
+        "So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 5",
+    "type": "Counting & Probability",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. fst a = x} = 2 \\<and> card {a \\<in> A. fst a \\<noteq> x} = 1) \\<and> (\\<forall>x. x \\<in> A \\<longrightarrow> fst x \\<in> {2..14} \\<and> snd x \\<in> {Spades, Hearts, Diamonds, Clubs})}) / real (card {A. card A = k \\<and> (\\<forall>x. x \\<in> A \\<longrightarrow> fst x \\<in> {2..14} \\<and> snd x \\<in> {Spades, Hearts, Diamonds, Clubs})}) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. fst a = x} = 2 \\<and> card {a \\<in> A. fst a \\<noteq> x} = 1) \\<and> (\\<forall>x. x \\<in> A \\<longrightarrow> fst x \\<in> {2..14} \\<and> snd x \\<in> {Spades, Hearts, Diamonds, Clubs})}) / real (card {A. card A = k \\<and> (\\<forall>x. x \\<in> A \\<longrightarrow> fst x \\<in> {2..14} \\<and> snd x \\<in> {Spades, Hearts, Diamonds, Clubs})}) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of playing cards where each card has a number from 2 to 14 and a suit from {Spades, Hearts, Diamonds, Clubs}. We are interested in subsets of 3 cards (k = 3) from a total of 52 cards (n = 52). We want to find the probability of selecting a subset of 3 cards such that there exists at least one number that appears exactly twice in the subset, and the remaining card has a different number. This probability is compared to the probability of selecting any random subset of 3 cards with the same number and suit constraints. The ratio of these probabilities is equal to 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.8720008247601068,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {s \\<in> combinations_with_replacement {1..n} k. (\\<exists> i j. i \\<noteq> j \\<and> card {l \\<in> s. l = i} = 2 \\<and> card {l \\<in> s. l = j} = 1)}) / real (card (combinations_with_replacement {1..n} k)) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {s \\<in> combinations_with_replacement {1..n} k. (\\<exists> i j. i \\<noteq> j \\<and> card {l \\<in> s. l = i} = 2 \\<and> card {l \\<in> s. l = j} = 1)}) / real (card (combinations_with_replacement {1..n} k)) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of numbers from 1 to 52 (inclusive) and a selection of 3 numbers chosen with replacement (meaning the same number can be chosen multiple times). We want to find the probability that there exists at least one pair of distinct numbers, where one number appears twice and the other number appears once in the selection. The probability is given by the ratio of the number of such selections to the total number of possible selections. According to the theorem, this probability is equal to 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.972207673088276,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. x \\<in> A \\<and> card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1)}) / real (card {A. card A = k}) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. x \\<in> A \\<and> card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1)}) / real (card {A. card A = k}) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of 52 distinct elements. We want to find the probability that when selecting a subset of 3 elements from this set, there exists an element in the subset such that it appears exactly twice in the subset, and the remaining element in the subset is distinct from the chosen element. This probability is equal to 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.8709509527293797,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {s \\<in> {1..n} choose k. \\<exists> i. card {x \\<in> s. x = i} = 2 \\<and> card {x \\<in> s. x \\<noteq> i} = 1}) / real (card {1..n} choose k) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {s \\<in> {1..n} choose k. \\<exists> i. card {x \\<in> s. x = i} = 2 \\<and> card {x \\<in> s. x \\<noteq> i} = 1}) / real (card {1..n} choose k) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of 52 distinct elements, labeled from 1 to 52. We want to find the probability that, when choosing a subset of 3 elements from this set, there exists at least one element that appears exactly twice in the subset, and the remaining element appears only once. This probability is given by the ratio of the number of such subsets to the total number of possible subsets of size 3. According to the theorem, this probability is equal to 72/425.",
+        "syntax": 0,
+        "semantic_score": 0.9613173893448311,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1) \\<and> A \\<subseteq> {1..n}}) / real (binomial n k) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1) \\<and> A \\<subseteq> {1..n}}) / real (binomial n k) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set A with 3 elements (k = 3) chosen from the set {1, 2, ..., 52} (n = 52). We want to find the probability that there exists an element x in A such that exactly two elements in A are equal to x and exactly one element in A is not equal to x. This probability is equal to 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.9040646719500152,
+        "symbolic_score": 0.2
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1) \\<and> A \\<subseteq> {1..n}}) / real (binomial n k) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1) \\<and> A \\<subseteq> {1..n}}) / real (binomial n k) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set A containing k elements, where k is equal to 3, and the elements are chosen from the set {1, 2, ..., 52}. In set A, there exists an element x such that there are exactly 2 elements in A that are equal to x, and there is exactly 1 element in A that is not equal to x. We want to find the ratio of the number of such sets A to the total number of possible subsets of size k from the set {1, 2, ..., 52}. This ratio is equal to 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.9737498384261769,
+        "symbolic_score": 0.2
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {s \\<in> {s. set s \\<subseteq> {1..n} \\<and> card (set s) = k}. (\\<exists> x. card {i \\<in> set s. i = x} = 2 \\<and> card {i \\<in> set s. i \\<noteq> x} = 1}))/real (card {s \\<in> {s. set s \\<subseteq> {1..n} \\<and> card (set s) = k}. True}) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {s \\<in> {s. set s \\<subseteq> {1..n} \\<and> card (set s) = k}. (\\<exists> x. card {i \\<in> set s. i = x} = 2 \\<and> card {i \\<in> set s. i \\<noteq> x} = 1}))/real (card {s \\<in> {s. set s \\<subseteq> {1..n} \\<and> card (set s) = k}. True}) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of all subsets of the numbers from 1 to 52 (inclusive) with exactly 3 elements. Among these subsets, we want to find the ratio of the number of subsets that contain exactly one pair of equal numbers and one distinct number, to the total number of such subsets. The final answer is that this ratio is equal to 72/425.",
+        "syntax": 0,
+        "semantic_score": 0.9931040322412433,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1)} :: nat) / real (card {A. card A = k} :: nat) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1)} :: nat) / real (card {A. card A = k} :: nat) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of 52 distinct elements. We want to find the probability that when selecting a subset of 3 elements from this set, there exists at least one element in the subset such that exactly two elements in the subset are equal to it and one element in the subset is not equal to it. The probability is given by the ratio of the number of such subsets to the total number of possible subsets of size 3. The final answer is 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.9732935065116315,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"((72 * (fact n) div (fact k * fact (n - k)))) div (n choose k) = 72 div 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"((72 * (fact n) div (fact k * fact (n - k)))) div (n choose k) = 72 div 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that n equals 52 and k equals 3, calculate the value of the expression (72 * (factorial of n) divided by (factorial of k times factorial of (n - k))) divided by (n choose k), and show that it is equal to 72 divided by 425.",
+        "syntax": 1,
+        "semantic_score": 0.6285227601863587,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"card {s \\<in> combinations_with_replacement {1..n} k. (\\<exists> x y z. x \\<noteq> y \\<and> y = z \\<and> x \\<noteq> z \\<and> s = [x, y, z])} / card (combinations_with_replacement {1..n} k) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"card {s \\<in> combinations_with_replacement {1..n} k. (\\<exists> x y z. x \\<noteq> y \\<and> y = z \\<and> x \\<noteq> z \\<and> s = [x, y, z])} / card (combinations_with_replacement {1..n} k) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of all possible combinations with replacement of 3 elements chosen from the numbers 1 to 52. We want to find the ratio of the number of such combinations that contain exactly one pair of equal elements and one distinct element, to the total number of all possible combinations with replacement. The final answer is 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.9927629407865376,
+        "symbolic_score": 0.1
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes p :: real\nassumes h0 : \"p = (48 * 39) / (132600)\"\nshows \"p = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes p :: real\nassumes h0 : \"p = (48 * 39) / (132600)\"\nshows \"p = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the value of $p$ if it is defined as the fraction $\\frac{48 \\cdot 39}{132600}$? Express your answer as a fraction in lowest terms. The final answer is $\\frac{72}{425}$.",
+        "syntax": 1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes prob :: real\nassumes h0 : \"prob = (1 / (52 choose 3)) * (13 * (48 choose 1) * 3)\"\nshows \"prob = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes prob :: real\nassumes h0 : \"prob = (1 / (52 choose 3)) * (13 * (48 choose 1) * 3)\"\nshows \"prob = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If you choose three cards at random from a standard deck of 52 playing cards, what is the probability that exactly one of them is a 4? Express your answer as a fraction. The final answer is $72/425$.",
+        "syntax": 1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes prob :: real\nassumes h0 : \"prob = (48 * (13 choose 2) * 4) / (52 choose 3)\"\nshows \"prob = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes prob :: real\nassumes h0 : \"prob = (48 * (13 choose 2) * 4) / (52 choose 3)\"\nshows \"prob = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"What is the probability of drawing two kings and a queen from a deck of 52 cards, if four cards are drawn at random without replacement? Express your answer as a fraction in lowest terms. The final answer is 72/425.\"",
+        "syntax": 1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes pair_cards :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> a b c. pair_cards a b c \\<longleftrightarrow> ((a = b \\<and> a \\<noteq> c) \\<or> (a = c \\<and> a \\<noteq> b) \\<or> (b = c \\<and> b \\<noteq> a))\"\nand h1 : \"card_deck = {1..52}\"\nand h2 : \"card1 \\<in> card_deck\"\nand h3 : \"card2 \\<in> card_deck - {card1}\"\nand h4 : \"card3 \\<in> card_deck - {card1, card2}\"\nand h5 : \"pair_cards card1 card2 card3\"\nshows \"real (72 / 425) = (card (Collect pair_cards)) / (card (card_deck choose 3))\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes pair_cards :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> a b c. pair_cards a b c \\<longleftrightarrow> ((a = b \\<and> a \\<noteq> c) \\<or> (a = c \\<and> a \\<noteq> b) \\<or> (b = c \\<and> b \\<noteq> a))\"\nand h1 : \"card_deck = {1..52}\"\nand h2 : \"card1 \\<in> card_deck\"\nand h3 : \"card2 \\<in> card_deck - {card1}\"\nand h4 : \"card3 \\<in> card_deck - {card1, card2}\"\nand h5 : \"pair_cards card1 card2 card3\"\nshows \"real (72 / 425) = (card (Collect pair_cards)) / (card (card_deck choose 3))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose you have a deck of 52 cards, numbered from 1 to 52. Three cards are drawn at random without replacement from this deck. What is the probability that the three cards drawn contain a pair, meaning that two of the three cards have the same number? The final answer is $\\frac{72}{425}$.",
+        "syntax": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes num_denom :: real\nassumes h0 : \"num_denom = (comb 13 1) * (comb 4 2) * (comb 12 1) * (comb 4 1) * (comb 4 1)\"\nand h1 : \"num_denom \\<noteq> 0\"\nand h2 : \"72 / 425 = (comb 13 1) * (comb 4 2) * (comb 12 1) * (comb 4 1) * (comb 4 1) / num_denom\"\nshows \"(comb 13 1) * (comb 4 2) * (comb 12 1) * (comb 4 1) * (comb 4 1) / num_denom = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes num_denom :: real\nassumes h0 : \"num_denom = (comb 13 1) * (comb 4 2) * (comb 12 1) * (comb 4 1) * (comb 4 1)\"\nand h1 : \"num_denom \\<noteq> 0\"\nand h2 : \"72 / 425 = (comb 13 1) * (comb 4 2) * (comb 12 1) * (comb 4 1) * (comb 4 1) / num_denom\"\nshows \"(comb 13 1) * (comb 4 2) * (comb 12 1) * (comb 4 1) * (comb 4 1) / num_denom = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the value of $\\binom{13}{1}\\binom{4}{2}\\binom{12}{1}\\binom{4}{1}\\binom{4}{1}$ divided by $num\\_denom$, if $num\\_denom$ is not equal to zero, and the result is $\\frac{72}{425}$?",
+        "syntax": 1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"card S = 3\"\nand h2 : \"S \\<subseteq> {1..n}\"\nand h3 : \"card {x \\<in> S. \\<exists>y \\<in> S. x \\<noteq> y \\<and> (x - 1) mod 13 = (y - 1) mod 13} = 3 * (12 choose 2)\"\nand h4 : \"card {x \\<in> S. \\<exists>y \\<in> S. \\<exists>z \\<in> S. x \\<noteq> y \\<and> x \\<noteq> z \\<and> y \\<noteq> z \\<and> (x - 1) mod 13 = (y - 1) mod 13 \\<and> (y - 1) mod 13 = (z - 1) mod 13} = 12 choose 2\"\nshows \"72 / 425 = card {x \\<in> S. \\<exists>y \\<in> S. x \\<noteq> y \\<and> (x - 1) mod 13 = (y - 1) mod 13 \\<and> card {z \\<in> S. z \\<noteq> x \\<and> z \\<noteq> y} = 1} / (n choose 3)\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"card S = 3\"\nand h2 : \"S \\<subseteq> {1..n}\"\nand h3 : \"card {x \\<in> S. \\<exists>y \\<in> S. x \\<noteq> y \\<and> (x - 1) mod 13 = (y - 1) mod 13} = 3 * (12 choose 2)\"\nand h4 : \"card {x \\<in> S. \\<exists>y \\<in> S. \\<exists>z \\<in> S. x \\<noteq> y \\<and> x \\<noteq> z \\<and> y \\<noteq> z \\<and> (x - 1) mod 13 = (y - 1) mod 13 \\<and> (y - 1) mod 13 = (z - 1) mod 13} = 12 choose 2\"\nshows \"72 / 425 = card {x \\<in> S. \\<exists>y \\<in> S. x \\<noteq> y \\<and> (x - 1) mod 13 = (y - 1) mod 13 \\<and> card {z \\<in> S. z \\<noteq> x \\<and> z \\<noteq> y} = 1} / (n choose 3)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a set $S$ of integers from $1$ to $52$, and $S$ has exactly $3$ elements. Additionally, we know that there are $3\\binom{12}{2}$ pairs of distinct elements in $S$ that differ by a multiple of $13$, and $\\binom{12}{2}$ triples of distinct elements in $S$ that all differ by a multiple of $13$. We are asked to find the fraction of all possible triples of distinct elements from $1$ to $52$ that satisfy the following conditions: two of the elements differ by a multiple of $13$, and the third element is the only element in $S$ that is not one of the first two elements. The final answer is $72/425$.",
+        "syntax": 1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes pair_cards :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> a b c. (a \\<noteq> b \\<and> a \\<noteq> c \\<and> b \\<noteq> c) \\<longrightarrow> \\<not> (pair_cards a b c)\"\nand h1 : \"\\<forall> a b c. (a = b \\<and> a \\<noteq> c) \\<or> (a = c \\<and> a \\<noteq> b) \\<or> (b = c \\<and> a \\<noteq> b) \\<longrightarrow> pair_cards a b c\"\nand h2 : \"card ({1..13} :: nat set) = 13\"\nand h3 : \"card ({1..4} :: nat set) = 4\"\nshows \"6 * 286 / (52 choose 3) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes pair_cards :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> a b c. (a \\<noteq> b \\<and> a \\<noteq> c \\<and> b \\<noteq> c) \\<longrightarrow> \\<not> (pair_cards a b c)\"\nand h1 : \"\\<forall> a b c. (a = b \\<and> a \\<noteq> c) \\<or> (a = c \\<and> a \\<noteq> b) \\<or> (b = c \\<and> a \\<noteq> b) \\<longrightarrow> pair_cards a b c\"\nand h2 : \"card ({1..13} :: nat set) = 13\"\nand h3 : \"card ({1..4} :: nat set) = 4\"\nshows \"6 * 286 / (52 choose 3) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a set of cards numbered from $1$ to $13$, with each card belonging to one of the four suits. Three cards are chosen at random. Let $pair\\_cards$ be the proposition that at least two of the cards have the same number. If $a$, $b$, and $c$ are the numbers of the three cards chosen, then $pair\\_cards\\ a\\ b\\ c$ is true if and only if at least two of $a$, $b$, and $c$ are equal. Given this, what is the probability that $pair\\_cards$ is true? The final answer is $72/425$.",
+        "syntax": 1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes event outcome :: \"nat set\"\nassumes h0 : \"event = {S. card S = 3}\"\nand h1 : \"outcome = {1..52}\"\nand h2 : \"card outcome = 52\"\nand h3 : \"\\<forall> S. S \\<subseteq> outcome \\<and> card S = 3 \\<longrightarrow> ( \\<exists> (a::nat) (b::nat) (c::nat). a \\<in> S \\<and> b \\<in> S \\<and> c \\<in> S \\<and> a \\<noteq> b \\<and> b \\<noteq> c \\<and> a \\<noteq> c \\<and> (\\<exists> k. k \\<noteq> a \\<and> k \\<noteq> b \\<and> k \\<noteq> c \\<and> card {a,b,c,k} = 4) )\"\nand h4 : \"\\<forall> S. S \\<subseteq> outcome \\<and> card S = 3 \\<longrightarrow> ( \\<exists> (a::nat) (b::nat) (c::nat). a \\<in> S \\<and> b \\<in> S \\<and> c \\<in> S \\<and> a \\<noteq> b \\<and> b \\<noteq> c \\<and> a \\<noteq> c \\<and> card {a,b,c} = 2 )\"\nshows \"real(card {S \\<in> event. (\\<exists> (a::nat) (b::nat) (c::nat). a \\<in> S \\<and> b \\<in> S \\<and> c \\<in> S \\<and> a \\<noteq> b \\<and> b \\<noteq> c \\<and> a \\<noteq> c \\<and> card {a,b,c} = 2)}) / real(card event) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes event outcome :: \"nat set\"\nassumes h0 : \"event = {S. card S = 3}\"\nand h1 : \"outcome = {1..52}\"\nand h2 : \"card outcome = 52\"\nand h3 : \"\\<forall> S. S \\<subseteq> outcome \\<and> card S = 3 \\<longrightarrow> ( \\<exists> (a::nat) (b::nat) (c::nat). a \\<in> S \\<and> b \\<in> S \\<and> c \\<in> S \\<and> a \\<noteq> b \\<and> b \\<noteq> c \\<and> a \\<noteq> c \\<and> (\\<exists> k. k \\<noteq> a \\<and> k \\<noteq> b \\<and> k \\<noteq> c \\<and> card {a,b,c,k} = 4) )\"\nand h4 : \"\\<forall> S. S \\<subseteq> outcome \\<and> card S = 3 \\<longrightarrow> ( \\<exists> (a::nat) (b::nat) (c::nat). a \\<in> S \\<and> b \\<in> S \\<and> c \\<in> S \\<and> a \\<noteq> b \\<and> b \\<noteq> c \\<and> a \\<noteq> c \\<and> card {a,b,c} = 2 )\"\nshows \"real(card {S \\<in> event. (\\<exists> (a::nat) (b::nat) (c::nat). a \\<in> S \\<and> b \\<in> S \\<and> c \\<in> S \\<and> a \\<noteq> b \\<and> b \\<noteq> c \\<and> a \\<noteq> c \\<and> card {a,b,c} = 2)}) / real(card event) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose you have a set of 52 outcomes, numbered 1 to 52. A subset $S$ of these outcomes is called an \"event\" if it contains exactly 3 elements. An event is considered \"interesting\" if it contains exactly 3 distinct outcomes, and there exists a fourth outcome that is not in $S$ and that, when added to $S$, forms a set of 4 distinct outcomes. An event is considered \"ordinary\" if it contains exactly 3 distinct outcomes, and there does not exist a fourth outcome that can be added to $S$ to form a set of 4 distinct outcomes. What is the probability that a randomly chosen event is interesting? Express your answer as a fraction in reduced form. The final answer is $\\frac{72}{425}$.",
+        "syntax": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes probability :: real\nassumes h0 : \"probability = card {S. \\<exists> x y z. x \\<in> S \\<and> y \\<in> S \\<and> z \\<in> S \\<and> x \\<noteq> y \\<and> x \\<noteq> z \\<and> y \\<noteq> z \\<and> rank x = rank y \\<and> rank x \\<noteq> rank z} / card {S. \\<exists> x y z. x \\<in> S \\<and> y \\<in> S \\<and> z \\<in> S \\<and> x \\<noteq> y \\<and> x \\<noteq> z \\<and> y \\<noteq> z}\"\nand h1 : \"card {x. x \\<in> {1..13}} = 13\"\nand h2 : \"card {x. x \\<in> {\\<diamondsuit>, \\<heartsuit>, \\<spadesuit>, \\<clubsuit>}} = 4\"\nand h3 : \"card {S. \\<exists> x y z. x \\<in> S \\<and> y \\<in> S \\<and> z \\<in> S \\<and> x \\<noteq> y \\<and> x \\<noteq> z \\<and> y \\<noteq> z \\<and> rank x = rank y \\<and> rank x \\<noteq> rank z} = 6 * 13 * 4\"\nand h4 : \"card {S. \\<exists> x y z. x \\<in> S \\<and> y \\<in> S \\<and> z \\<in> S \\<and> x \\<noteq> y \\<and> x \\<noteq> z \\<and> y \\<noteq> z} = 52 choose 3\"\nshows \"probability = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes probability :: real\nassumes h0 : \"probability = card {S. \\<exists> x y z. x \\<in> S \\<and> y \\<in> S \\<and> z \\<in> S \\<and> x \\<noteq> y \\<and> x \\<noteq> z \\<and> y \\<noteq> z \\<and> rank x = rank y \\<and> rank x \\<noteq> rank z} / card {S. \\<exists> x y z. x \\<in> S \\<and> y \\<in> S \\<and> z \\<in> S \\<and> x \\<noteq> y \\<and> x \\<noteq> z \\<and> y \\<noteq> z}\"\nand h1 : \"card {x. x \\<in> {1..13}} = 13\"\nand h2 : \"card {x. x \\<in> {\\<diamondsuit>, \\<heartsuit>, \\<spadesuit>, \\<clubsuit>}} = 4\"\nand h3 : \"card {S. \\<exists> x y z. x \\<in> S \\<and> y \\<in> S \\<and> z \\<in> S \\<and> x \\<noteq> y \\<and> x \\<noteq> z \\<and> y \\<noteq> z \\<and> rank x = rank y \\<and> rank x \\<noteq> rank z} = 6 * 13 * 4\"\nand h4 : \"card {S. \\<exists> x y z. x \\<in> S \\<and> y \\<in> S \\<and> z \\<in> S \\<and> x \\<noteq> y \\<and> x \\<noteq> z \\<and> y \\<noteq> z} = 52 choose 3\"\nshows \"probability = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a standard deck of 52 cards, with 13 cards in each of the four suits (diamonds, hearts, spades, and clubs). We choose three cards at random from the deck. What is the probability that the two highest-ranking cards have the same rank, but the third card has a different rank? The final answer is 72/425.",
+        "syntax": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes a b c :: \"nat\"\nassumes h0 : \"a \\<le> 52\"\nand h1 : \"b \\<le> 52\"\nand h2 : \"c \\<le> 52\"\nand h3 : \"a \\<noteq> b\"\nand h4 : \"a \\<noteq> c\"\nand h5 : \"b \\<noteq> c\"\nand h6 : \"a mod 13 = b mod 13\"\nand h7 : \"a mod 13 \\<noteq> 0\"\nshows \"(\\<forall> x y. x \\<le> 52 \\<and> y \\<le> 52 \\<longrightarrow> (x \\<noteq> a \\<and> x \\<noteq> b \\<and> x \\<noteq> c \\<and> y \\<noteq> a \\<and> y \\<noteq> b \\<and> y \\<noteq> c) \\<and> (x mod 13 = y mod 13 \\<longrightarrow> x = y)) \\<longrightarrow> 6 * ((fact 4) div (fact 2)) div (fact 3) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes a b c :: \"nat\"\nassumes h0 : \"a \\<le> 52\"\nand h1 : \"b \\<le> 52\"\nand h2 : \"c \\<le> 52\"\nand h3 : \"a \\<noteq> b\"\nand h4 : \"a \\<noteq> c\"\nand h5 : \"b \\<noteq> c\"\nand h6 : \"a mod 13 = b mod 13\"\nand h7 : \"a mod 13 \\<noteq> 0\"\nshows \"(\\<forall> x y. x \\<le> 52 \\<and> y \\<le> 52 \\<longrightarrow> (x \\<noteq> a \\<and> x \\<noteq> b \\<and> x \\<noteq> c \\<and> y \\<noteq> a \\<and> y \\<noteq> b \\<and> y \\<noteq> c) \\<and> (x mod 13 = y mod 13 \\<longrightarrow> x = y)) \\<longrightarrow> 6 * ((fact 4) div (fact 2)) div (fact 3) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If we have three numbers $a,b,c$ such that $a,b,c$ are less than or equal to $52$ and $a,b,c$ are distinct, and $a$ and $b$ have the same remainder when divided by $13$, but not $0$, then if we take any two additional distinct numbers $x$ and $y$ less than or equal to $52$ such that $x$ and $y$ are not equal to $a$, $b$, or $c$, if $x$ and $y$ have the same remainder when divided by $13$, then $x$ must be equal to $y$. If this is true, then $6 \\cdot \\frac{4!}{2!} \\div 3! = \\frac{72}{425}$.",
+        "syntax": 1
+    },
+    "prediction_deepseek": {
+        "0": [
+            4,
+            5
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes probability :: real\nassumes h0 : \"probability = (\\<lambda>n k. (fact n) / (fact k * fact (n - k)))\"\nand h1 : \"probability = (\\<lambda>cards pair. cards * pair)\"\nshows  \"probability 52 3 * probability 13 1 * probability 4 2 * probability 12 1 * probability 4 1 = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes probability :: real\nassumes h0 : \"probability = (\\<lambda>n k. (fact n) / (fact k * fact (n - k)))\"\nand h1 : \"probability = (\\<lambda>cards pair. cards * pair)\"\nshows  \"probability 52 3 * probability 13 1 * probability 4 2 * probability 12 1 * probability 4 1 = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a standard deck of 52 playing cards, find the probability of drawing 3 cards such that there is exactly 1 pair and 1 card of a different rank. Express the probability as a fraction. The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.899102208329698,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes probability :: real\nassumes h0 : \"probability = (\\<lambda> (pairs, total_combinations). pairs / total_combinations) (72, 425)\"\nshows  \"probability (72, 425) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes probability :: real\nassumes h0 : \"probability = (\\<lambda> (pairs, total_combinations). pairs / total_combinations) (72, 425)\"\nshows  \"probability (72, 425) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the probability of a particular event, given that there are 72 successful outcomes and a total of 425 possible combinations. The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7981837042003331,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes p :: real\nassumes h0 : \"p = 72 / 425\"\nshows  \"p = (3 * (comb 13 1) * (comb 4 2) * (comb 12 1) * (comb 4 1)) / (comb 52 3)\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes p :: real\nassumes h0 : \"p = 72 / 425\"\nshows  \"p = (3 * (comb 13 1) * (comb 4 2) * (comb 12 1) * (comb 4 1)) / (comb 52 3)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a standard deck of 52 playing cards, what is the probability of drawing 3 cards such that one card is a King, and the other two cards have the same rank but different suits? The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8685080930761849,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes probability :: \"real\"\nassumes h0 : \"probability = (72 / 425)\"\nshows  \"probability = (card {pair :: (nat, nat, nat). pair \\<in> {1..52} \\<times> {1..52} \\<times> {1..52} \\<and> two_of_three_match_in_rank pair}) / (card {hand :: (nat, nat, nat). hand \\<in> {1..52} \\<times> {1..52} \\<times> {1..52}})\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes probability :: \"real\"\nassumes h0 : \"probability = (72 / 425)\"\nshows  \"probability = (card {pair :: (nat, nat, nat). pair \\<in> {1..52} \\<times> {1..52} \\<times> {1..52} \\<and> two_of_three_match_in_rank pair}) / (card {hand :: (nat, nat, nat). hand \\<in> {1..52} \\<times> {1..52} \\<times> {1..52}})\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a deck of 52 playing cards, find the probability that, when drawing three cards, exactly two of them have the same rank. The probability is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8422734664896595,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes prob :: \"real\"\nassumes h0 : \"prob = (6 * choose 4 2) * (choose 48 1) / (choose 52 3)\"\nshows  \"prob = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes prob :: \"real\"\nassumes h0 : \"prob = (6 * choose 4 2) * (choose 48 1) / (choose 52 3)\"\nshows  \"prob = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the probability of drawing exactly two cards of the same rank and one card of a different rank when drawing three cards from a standard 52-card deck. The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8825956353155319,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes prob :: \"real\"\nassumes h0 : \"prob = (72 / real (card {pair :: (nat \\<times> nat) set. card pair = 3 \\<and> (\\<exists> r1 r2 r3 s1 s2 s3.\n          pair = {(r1, s1), (r1, s2), (r3, s3)} \\<union> {(r2, s1), (r2, s2), (r3, s3)} \\<and> r1 \\<noteq> r2 \\<and> r1 \\<noteq> r3 \\<and> r2 \\<noteq> r3 \\<and> s1 \\<noteq> s2 \\<and> s1 \\<noteq> s3 \\<and> s2 \\<noteq> s3})})\"\nshows  \"prob = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes prob :: \"real\"\nassumes h0 : \"prob = (72 / real (card {pair :: (nat \\<times> nat) set. card pair = 3 \\<and> (\\<exists> r1 r2 r3 s1 s2 s3.\n          pair = {(r1, s1), (r1, s2), (r3, s3)} \\<union> {(r2, s1), (r2, s2), (r3, s3)} \\<and> r1 \\<noteq> r2 \\<and> r1 \\<noteq> r3 \\<and> r2 \\<noteq> r3 \\<and> s1 \\<noteq> s2 \\<and> s1 \\<noteq> s3 \\<and> s2 \\<noteq> s3})})\"\nshows  \"prob = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a certain club, there are three different pairs of people, each pair consisting of a president and a secretary. The club decides to form a committee by selecting three pairs of presidents and secretaries, with the restriction that no two pairs have both the president and the secretary in common. What is the probability of forming such a committee? The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7538135576426448,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes prob_pair :: real\nassumes h0 : \"prob_pair = (6 * 13 * 12 * 4) / (52 * 51 * 50)\"\nshows  \"prob_pair = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes prob_pair :: real\nassumes h0 : \"prob_pair = (6 * 13 * 12 * 4) / (52 * 51 * 50)\"\nshows  \"prob_pair = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the probability of drawing two pairs from a standard deck of 52 playing cards. The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8595054177283075,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes cards :: \"nat set\"\nassumes h0 : \"card cards = 52\"\nand h1 : \"three_cards_subset \\<subseteq> cards\"\nand h2 : \"card three_cards_subset = 3\"\nand h3 : \"pair_exists three_cards_subset\"\nshows  \"prob (three_cards_subset) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes cards :: \"nat set\"\nassumes h0 : \"card cards = 52\"\nand h1 : \"three_cards_subset \\<subseteq> cards\"\nand h2 : \"card three_cards_subset = 3\"\nand h3 : \"pair_exists three_cards_subset\"\nshows  \"prob (three_cards_subset) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a standard deck of 52 playing cards, what is the probability of drawing a subset of 3 cards such that there exists a pair (two cards of the same rank) in the subset? The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.900618613739999,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes probability :: real\nassumes h0 : \"52 > 3\"\nand h1 : \"probability = (72 / 425)\"\nshows  \"pair_probability = (\\<Sum>C \\<in> {C. card C = 3 \\<and> (\\<exists>x y. x \\<noteq> y \\<and> pair x y C)}. 1) / (\\<Sum>C \\<in> {C. card C = 3}. 1)\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes probability :: real\nassumes h0 : \"52 > 3\"\nand h1 : \"probability = (72 / 425)\"\nshows  \"pair_probability = (\\<Sum>C \\<in> {C. card C = 3 \\<and> (\\<exists>x y. x \\<noteq> y \\<and> pair x y C)}. 1) / (\\<Sum>C \\<in> {C. card C = 3}. 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a deck of 52 cards, find the probability of drawing a 3-card hand with at least one pair (two cards with the same rank). The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9020502863889546,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes pair_probability :: real\nassumes h0 : \"pair_probability = (6 * choose (13, 2) * choose (12, 1) * choose (4, 1)) / choose (52, 3)\"\nshows  \"pair_probability = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is \\dfrac{72}{425}\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\n To choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\n This means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\n So the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes pair_probability :: real\nassumes h0 : \"pair_probability = (6 * choose (13, 2) * choose (12, 1) * choose (4, 1)) / choose (52, 3)\"\nshows  \"pair_probability = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the probability of drawing exactly one pair from a standard 52-card deck when drawing 3 cards? The final answer is $\\frac{72}{425}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8961112531222906,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. fst a = x} = 2 \\<and> card {a \\<in> A. fst a \\<noteq> x} = 1) \\<and> (\\<forall>x. x \\<in> A \\<longrightarrow> fst x \\<in> {2..14} \\<and> snd x \\<in> {Spades, Hearts, Diamonds, Clubs})}) / real (card {A. card A = k \\<and> (\\<forall>x. x \\<in> A \\<longrightarrow> fst x \\<in> {2..14} \\<and> snd x \\<in> {Spades, Hearts, Diamonds, Clubs})}) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. fst a = x} = 2 \\<and> card {a \\<in> A. fst a \\<noteq> x} = 1) \\<and> (\\<forall>x. x \\<in> A \\<longrightarrow> fst x \\<in> {2..14} \\<and> snd x \\<in> {Spades, Hearts, Diamonds, Clubs})}) / real (card {A. card A = k \\<and> (\\<forall>x. x \\<in> A \\<longrightarrow> fst x \\<in> {2..14} \\<and> snd x \\<in> {Spades, Hearts, Diamonds, Clubs})}) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of playing cards where each card has a number from 2 to 14 and a suit from {Spades, Hearts, Diamonds, Clubs}. We are interested in subsets of 3 cards (k = 3) from a total of 52 cards (n = 52). We want to find the probability of selecting a subset of 3 cards such that there exists at least one number that appears exactly twice in the subset, and the remaining card has a different number. This probability is compared to the probability of selecting any random subset of 3 cards with the same number and suit constraints. The ratio of these probabilities is equal to 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.7809423307476985,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {s \\<in> combinations_with_replacement {1..n} k. (\\<exists> i j. i \\<noteq> j \\<and> card {l \\<in> s. l = i} = 2 \\<and> card {l \\<in> s. l = j} = 1)}) / real (card (combinations_with_replacement {1..n} k)) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {s \\<in> combinations_with_replacement {1..n} k. (\\<exists> i j. i \\<noteq> j \\<and> card {l \\<in> s. l = i} = 2 \\<and> card {l \\<in> s. l = j} = 1)}) / real (card (combinations_with_replacement {1..n} k)) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of numbers from 1 to 52 (inclusive) and a selection of 3 numbers chosen with replacement (meaning the same number can be chosen multiple times). We want to find the probability that there exists at least one pair of distinct numbers, where one number appears twice and the other number appears once in the selection. The probability is given by the ratio of the number of such selections to the total number of possible selections. According to the theorem, this probability is equal to 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.7712858202037031,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. x \\<in> A \\<and> card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1)}) / real (card {A. card A = k}) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. x \\<in> A \\<and> card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1)}) / real (card {A. card A = k}) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of 52 distinct elements. We want to find the probability that when selecting a subset of 3 elements from this set, there exists an element in the subset such that it appears exactly twice in the subset, and the remaining element in the subset is distinct from the chosen element. This probability is equal to 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.7882419707520701,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {s \\<in> {1..n} choose k. \\<exists> i. card {x \\<in> s. x = i} = 2 \\<and> card {x \\<in> s. x \\<noteq> i} = 1}) / real (card {1..n} choose k) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {s \\<in> {1..n} choose k. \\<exists> i. card {x \\<in> s. x = i} = 2 \\<and> card {x \\<in> s. x \\<noteq> i} = 1}) / real (card {1..n} choose k) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of 52 distinct elements, labeled from 1 to 52. We want to find the probability that, when choosing a subset of 3 elements from this set, there exists at least one element that appears exactly twice in the subset, and the remaining element appears only once. This probability is given by the ratio of the number of such subsets to the total number of possible subsets of size 3. According to the theorem, this probability is equal to 72/425.",
+        "syntax": 0,
+        "semantic_score": 0.7490182449982669,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1) \\<and> A \\<subseteq> {1..n}}) / real (binomial n k) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1) \\<and> A \\<subseteq> {1..n}}) / real (binomial n k) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set A with 3 elements (k = 3) chosen from the set {1, 2, ..., 52} (n = 52). We want to find the probability that there exists an element x in A such that exactly two elements in A are equal to x and exactly one element in A is not equal to x. This probability is equal to 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.8144894627441658,
+        "symbolic_score": 0.2
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1) \\<and> A \\<subseteq> {1..n}}) / real (binomial n k) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1) \\<and> A \\<subseteq> {1..n}}) / real (binomial n k) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set A containing k elements, where k is equal to 3, and the elements are chosen from the set {1, 2, ..., 52}. In set A, there exists an element x such that there are exactly 2 elements in A that are equal to x, and there is exactly 1 element in A that is not equal to x. We want to find the ratio of the number of such sets A to the total number of possible subsets of size k from the set {1, 2, ..., 52}. This ratio is equal to 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.773914484172703,
+        "symbolic_score": 0.2
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {s \\<in> {s. set s \\<subseteq> {1..n} \\<and> card (set s) = k}. (\\<exists> x. card {i \\<in> set s. i = x} = 2 \\<and> card {i \\<in> set s. i \\<noteq> x} = 1}))/real (card {s \\<in> {s. set s \\<subseteq> {1..n} \\<and> card (set s) = k}. True}) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {s \\<in> {s. set s \\<subseteq> {1..n} \\<and> card (set s) = k}. (\\<exists> x. card {i \\<in> set s. i = x} = 2 \\<and> card {i \\<in> set s. i \\<noteq> x} = 1}))/real (card {s \\<in> {s. set s \\<subseteq> {1..n} \\<and> card (set s) = k}. True}) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of all subsets of the numbers from 1 to 52 (inclusive) with exactly 3 elements. Among these subsets, we want to find the ratio of the number of subsets that contain exactly one pair of equal numbers and one distinct number, to the total number of such subsets. The final answer is that this ratio is equal to 72/425.",
+        "syntax": 0,
+        "semantic_score": 0.8237716217059234,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1)} :: nat) / real (card {A. card A = k} :: nat) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"real (card {A. card A = k \\<and> (\\<exists>x. card {a \\<in> A. a = x} = 2 \\<and> card {a \\<in> A. a \\<noteq> x} = 1)} :: nat) / real (card {A. card A = k} :: nat) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of 52 distinct elements. We want to find the probability that when selecting a subset of 3 elements from this set, there exists at least one element in the subset such that exactly two elements in the subset are equal to it and one element in the subset is not equal to it. The probability is given by the ratio of the number of such subsets to the total number of possible subsets of size 3. The final answer is 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.8016012109819988,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"((72 * (fact n) div (fact k * fact (n - k)))) div (n choose k) = 72 div 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"((72 * (fact n) div (fact k * fact (n - k)))) div (n choose k) = 72 div 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that n equals 52 and k equals 3, calculate the value of the expression (72 * (factorial of n) divided by (factorial of k times factorial of (n - k))) divided by (n choose k), and show that it is equal to 72 divided by 425.",
+        "syntax": 1,
+        "semantic_score": 0.7313108731686422,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"card {s \\<in> combinations_with_replacement {1..n} k. (\\<exists> x y z. x \\<noteq> y \\<and> y = z \\<and> x \\<noteq> z \\<and> s = [x, y, z])} / card (combinations_with_replacement {1..n} k) = 72 / 425\"",
+        "formal solution": "(* ### Problem\n 3 cards are chosen at random from a standard 52-card deck.  What is the probability that they form a pair?  (A 3-card hand is a 'pair' if two of the cards match in rank but the third card is different.  For example, 668 is a pair, but 999 is not.) The final Answer is $\\dfrac{72}{425}$\n ### Proof\n There are $\\binom{52}{3} = 22,\\!100$ ways to choose 3 cards out of 52, without regard to order.\nTo choose two cards of matching rank, there are 13 different ranks and $\\binom{4}{2} = 6$ combinations of suits to choose from, for a total of $13 \\times 6 = 78$ different possibilities. There are 48 remaining cards not in the same rank as the first two.\nThis means there are $78 \\times 48 = 3,\\!744$ ways to choose a hand that is a pair.\nSo the probability that a randomly drawn hand is a pair is $\\dfrac{3744}{22100} = \\boxed{\\dfrac{72}{425}}$.\n *)\n\ntheorem\nfixes n :: nat and k :: nat\nassumes h0 : \"n = 52\"\nand h1 : \"k = 3\"\nshows \"card {s \\<in> combinations_with_replacement {1..n} k. (\\<exists> x y z. x \\<noteq> y \\<and> y = z \\<and> x \\<noteq> z \\<and> s = [x, y, z])} / card (combinations_with_replacement {1..n} k) = 72 / 425\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of all possible combinations with replacement of 3 elements chosen from the numbers 1 to 52. We want to find the ratio of the number of such combinations that contain exactly one pair of equal elements and one distinct element, to the total number of all possible combinations with replacement. The final answer is 72/425.",
+        "syntax": 1,
+        "semantic_score": 0.839630633543767,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            4,
+            5
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

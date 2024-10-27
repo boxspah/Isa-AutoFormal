@@ -1,0 +1,573 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6666666666666666\"\nand h3 : \"a 3 = 0.75\"\nshows  \"a 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6666666666666666\"\nand h3 : \"a 3 = 0.75\"\nshows  \"a 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the function $a$ at point 4, given that the function is defined as $a(0)=0$, $a(1)=0.5$, $a(2)=0.6666666666666666$, and $a(3)=0.75$. The final answer is $a(4)=0.8$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7113991975784302,
+        "symbolic_score": 0.6
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 0.6\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall> n. n \\<ge> 0 \\<longrightarrow> seq (Suc n) = seq n + 0.05 * n\"\nshows  \"seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 0.6\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall> n. n \\<ge> 0 \\<longrightarrow> seq (Suc n) = seq n + 0.05 * n\"\nshows  \"seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence defined as follows: the first term is 0, the second term is 0.5, the third term is 0.6, and the fourth term is 0.75. For all natural numbers $n$, the $n+1$ term of the sequence is defined as the $n$th term plus $0.05n$. What is the fifth term of the sequence? The answer is 0.8.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9459825158119202,
+        "symbolic_score": 0.2
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 2/3\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> seq n = (n+1)/10\"\nshows  \"seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 2/3\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> seq n = (n+1)/10\"\nshows  \"seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence is defined as follows: the first term is 0, the second term is 0.5, the third term is 2/3, the fourth term is 0.75, and for all terms from the fifth one onwards, the nth term is equal to (n+1)/10. What is the fifth term in the sequence? The final answer is 0.8.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9537894129753113,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6\"\nand h3 : \"a 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> a n = a (n-1) + 0.05\"\nshows  \"a 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6\"\nand h3 : \"a 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> a n = a (n-1) + 0.05\"\nshows  \"a 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $a$ is defined as follows: $a(0)=0$, $a(1)=0.5$, $a(2)=0.6$, $a(3)=0.75$, and for all natural numbers $n \\geq 4$, $a(n)=a(n-1) + 0.05$. What is the value of $a(4)$? The final answer is $0.8$.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9579924941062927,
+        "symbolic_score": 0.6
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6666667\"\nand h3 : \"a 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> a n = a (n-1) + 0.05\"\nshows  \"a 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6666667\"\nand h3 : \"a 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> a n = a (n-1) + 0.05\"\nshows  \"a 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $a$ is defined as follows: $a(0) = 0$, $a(1) = 0.5$, $a(2) = 0.6666667$, $a(3) = 0.75$ and for $n \\geq 4$, $a(n) = a(n-1) + 0.05$. What is the value of $a(4)$? The final Answer is $0.8$.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9184499979019165,
+        "symbolic_score": 0.6
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes sequence :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"sequence 1 = 0\"\nand h1 : \"sequence 2 = 0.5\"\nand h2 : \"sequence 3 = 2/3\"\nand h3 : \"sequence 4 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 1 \\<and> n < 4 \\<longrightarrow> sequence (n + 1) = sequence n + 1/4\"\nshows  \"sequence 5 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes sequence :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"sequence 1 = 0\"\nand h1 : \"sequence 2 = 0.5\"\nand h2 : \"sequence 3 = 2/3\"\nand h3 : \"sequence 4 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 1 \\<and> n < 4 \\<longrightarrow> sequence (n + 1) = sequence n + 1/4\"\nshows  \"sequence 5 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence is defined as follows: the first term is 0, the second term is 0.5, the third term is 2/3, and the fourth term is 0.75. For all terms from the first to the fourth, the next term is obtained by adding 1/4 to the current term. What is the fifth term of the sequence? The final answer is 0.8.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.932969868183136,
+        "symbolic_score": 0.6
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: real and next :: \"real \\<Rightarrow> real\"\nassumes h0 : \"next 0 = 0.5\"\nand h1 : \"next 0.5 = 2/3\"\nand h2 : \"next (2/3) = 0.75\"\nand h3 : \"next 0.75 = 0.8\"\nshows  \"next 0.75 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes n :: real and next :: \"real \\<Rightarrow> real\"\nassumes h0 : \"next 0 = 0.5\"\nand h1 : \"next 0.5 = 2/3\"\nand h2 : \"next (2/3) = 0.75\"\nand h3 : \"next 0.75 = 0.8\"\nshows  \"next 0.75 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function \"next\" that maps a number to its subsequent number in a sequence, if \"next 0\" is 0.5, \"next 0.5\" is 2/3, \"next 2/3\" is 0.75, and \"next 0.75\" is 0.8, what is the value of \"next 0.75\"? The final answer is 0.8.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9729666709899902,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 2/3\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall> n. seq (Suc n) = (seq n + 1/4)\"\nshows  \"seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 2/3\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall> n. seq (Suc n) = (seq n + 1/4)\"\nshows  \"seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence is defined as follows:\n\n- The first term is 0.\n- The second term is 0.5.\n- The third term is 2/3.\n- The fourth term is 0.75.\n- For all terms after the fourth, each term is the previous term plus 1/4.\n\nFind the fifth term of the sequence. The final answer is 0.8.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.841526448726654,
+        "symbolic_score": 0.2
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 0.6\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> seq n = seq (n - 1) + 0.05\"\nshows  \"seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 0.6\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> seq n = seq (n - 1) + 0.05\"\nshows  \"seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of real numbers is defined as follows: the first term is 0, the second term is 0.5, the third term is 0.6, the fourth term is 0.75, and for all terms from the fifth onwards, each term is 0.05 more than the preceding term. What is the fifth term of the sequence? The final answer is 0.8.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.8811171054840088,
+        "symbolic_score": 0.6
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 0.6666666666666666\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall> n. n \\<ge> 4 \\<longrightarrow> seq n = seq (n - 1) + 0.05\"\nshows  \"seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 0.6666666666666666\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall> n. n \\<ge> 4 \\<longrightarrow> seq n = seq (n - 1) + 0.05\"\nshows  \"seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence is defined as follows: the first term is 0, the second term is 0.5, the third term is approximately 0.6666666666666666, the fourth term is 0.75, and for all terms greater than or equal to the fifth term, each term is 0.05 more than the previous term. What is the fifth term of the sequence? The final answer is 0.8.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9524631500244141,
+        "symbolic_score": 0.6
+    },
+    "natural answer": "0.8",
+    "natural problem": "Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$",
+    "natural solution": [
+        "To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.",
+        "To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$",
+        "This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.",
+        "Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.",
+        "Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0,
+            3,
+            4,
+            5,
+            8,
+            9
+        ],
+        "1": [
+            1,
+            7
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            6
+        ]
+    },
+    "str_pred": "[[0, 3, 4, 5, 8, 9], [1, 7], [2], [6]]",
+    "level": "Level 3",
+    "type": "Number Theory",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a sequence of real numbers defined as `seq = [0, 0.5, 0.6666666666666666, 0.75]`. The task is to find the first element of the sequence after skipping the first three elements. In other words, we need to find the fourth element of the sequence. The result should be `0.8`.",
+        "syntax": 1,
+        "semantic_score": 0.9424351819411906,
+        "symbolic_score": 0.6
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes a :: real\nassumes h0 : \"a = 0\"\nand h1 : \"a = 0.5\"\nand h2 : \"a = 0.6666666666666666\"\nand h3 : \"a = 0.75\"\nshows \"a = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a :: real\nassumes h0 : \"a = 0\"\nand h1 : \"a = 0.5\"\nand h2 : \"a = 0.6666666666666666\"\nand h3 : \"a = 0.75\"\nshows \"a = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the math problem states that the variable 'a' is a real number and it is equal to four different values: 0, 0.5, 0.6666666666666666, and 0.75. The theorem then concludes that 'a' is also equal to 0.8.\n\nIn natural language, this can be translated to: \"Consider a real number 'a' that is equal to 0, 0.5, 0.6666666666666666, and 0.75. Prove that 'a' is also equal to 0.8.\" However, this statement is logically inconsistent, as a single number cannot be equal to multiple distinct values at the same time. Therefore, the problem as stated is not solvable.",
+        "syntax": 1,
+        "semantic_score": 0.9795585032722209,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers `seq` defined as `[0, 0.5, 0.6666666666666666, 0.75]`, find the value of the fourth element in the list. The final answer is `0.8`.",
+        "syntax": 1,
+        "semantic_score": 0.9047667730673334,
+        "symbolic_score": 0.6
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers `seq` defined as `[0, 0.5, 0.6666666666666666, 0.75]`, find the first element of the list that is three positions away from the beginning of the list. The answer is `0.8`.",
+        "syntax": 1,
+        "semantic_score": 0.7555413593362836,
+        "symbolic_score": 0.6
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a sequence of real numbers defined as seq = [0, 0.5, 0.6666666666666666, 0.75], find the first element of the sequence after skipping the first three elements. The answer is 0.8.",
+        "syntax": 1,
+        "semantic_score": 0.7634668322371942,
+        "symbolic_score": 0.6
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"nth seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"nth seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a sequence of real numbers defined as `seq = [0, 0.5, 0.6666666666666666, 0.75]`, find the value at the 4th index of the sequence. The value at the 4th index is 0.8.",
+        "syntax": 1,
+        "semantic_score": 0.6190249313535221,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes a :: real and n :: nat\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6666666666666666\"\nand h3 : \"a 3 = 0.75\"\nand h4 : \"\\<forall> n. a n = (if n = 0 then 0 else if n = 1 then 0.5 else if n = 2 then 0.6666666666666666 else if n = 3 then 0.75 else a (n - 1) + 0.1)\"\nshows \"a 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a :: real and n :: nat\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6666666666666666\"\nand h3 : \"a 3 = 0.75\"\nand h4 : \"\\<forall> n. a n = (if n = 0 then 0 else if n = 1 then 0.5 else if n = 2 then 0.6666666666666666 else if n = 3 then 0.75 else a (n - 1) + 0.1)\"\nshows \"a 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The theorem defines a sequence of real numbers, denoted by `a n`, where `n` is a natural number. The sequence is defined as follows:\n\n- `a 0 = 0`\n- `a 1 = 0.5`\n- `a 2 = 0.6666666666666666`\n- `a 3 = 0.75`\n\nFor all natural numbers `n` greater than 3, the sequence is defined recursively such that `a n` is equal to `a (n - 1) + 0.1`.\n\nThe theorem claims that the value of `a 4` is `0.8`.",
+        "syntax": 0,
+        "semantic_score": 0.6822085587078948,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers `seq` defined as `[0, 0.5, 0.6666666666666666, 0.75]`, find the first element of the list after skipping the first three elements. The result should be `0.8`.",
+        "syntax": 1,
+        "semantic_score": 0.7542972743239316,
+        "symbolic_score": 0.6
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers `seq` defined as `[0, 0.5, 0.6666666666666666, 0.75]`, find the first element of the list after skipping the first three elements. In other words, what is the value of the fourth element in the list? The answer is `0.8`.",
+        "syntax": 1,
+        "semantic_score": 0.9888131213542252,
+        "symbolic_score": 0.6
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.\\<bar>6\\<bar>, 0.75]\"\nshows \"nth seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.\\<bar>6\\<bar>, 0.75]\"\nshows \"nth seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a sequence of real numbers defined as `seq = [0, 0.5, 0.6, 0.75]`, what is the value of the fourth element in the sequence? The answer is 0.8.",
+        "syntax": 0,
+        "semantic_score": 0.9658090649314813,
+        "symbolic_score": 0.1
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes S :: \"real set\"\nassumes h0 : \"S = {0, 0.5, 2/3, 0.75, 0.8, ...}\"\nshows \"S = {0, 0.5, 2/3, 0.75, 0.8}\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes S :: \"real set\"\nassumes h0 : \"S = {0, 0.5, 2/3, 0.75, 0.8, ...}\"\nshows \"S = {0, 0.5, 2/3, 0.75, 0.8}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "List all the numbers in the set $S$ defined as $S = \\{0, 0.5, \\frac{2}{3}, 0.75, 0.8, ...\\}$, where the ellipsis indicates that the set continues with other numbers that follow the same pattern. Then list all the numbers in the set $S$ without using the ellipsis. The final answer is $S = \\{0, 0.5, \\frac{2}{3}, 0.75, 0.8\\}$.",
+        "syntax": 0,
+        "semantic_score": 0.9820551902952508,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes sequence :: \"real list\"\nassumes h0 : \"sequence = [0, 1/2, 2/3, 3/4]\"\nshows \"sequence ! 3 = 4/5\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes sequence :: \"real list\"\nassumes h0 : \"sequence = [0, 1/2, 2/3, 3/4]\"\nshows \"sequence ! 3 = 4/5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a sequence is defined as $0, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}$, what is the fourth term in the sequence? The final answer is $\\frac{4}{5}$.",
+        "syntax": 1,
+        "semantic_score": 0.992379066824131,
+        "symbolic_score": 0.5
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes s :: \"real list\"\nassumes h0 : \"s = [0, 0.5, 2/3, 0.75]\"\nshows \"s ! 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes s :: \"real list\"\nassumes h0 : \"s = [0, 0.5, 2/3, 0.75]\"\nshows \"s ! 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a list $s$ is defined as $[0, 0.5, \\frac{2}{3}, 0.75]$, what is the fourth element of $s$? The final answer is $0.8$.",
+        "syntax": 1,
+        "semantic_score": 0.9608411672388717,
+        "symbolic_score": 0.3
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes a :: \"real list\"\nassumes h0 : \"a = [0, 1/2, 2/3, 3/4]\"\nshows \"a ! 3 = 4/5\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a :: \"real list\"\nassumes h0 : \"a = [0, 1/2, 2/3, 3/4]\"\nshows \"a ! 3 = 4/5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list $a$ with elements $0$, $\\frac{1}{2}$, $\\frac{2}{3}$, and $\\frac{3}{4}$, find the fourth element of the list. The final answer is $\\frac{4}{5}$.",
+        "syntax": 1,
+        "semantic_score": 0.8452835345299818,
+        "symbolic_score": 0.5
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 2/3, 0.75]\"\nshows \"seq ! 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 2/3, 0.75]\"\nshows \"seq ! 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Given the sequence $0, 0.5, \\frac{2}{3}, 0.75$, what is the fourth term of the sequence? The fourth term of the sequence is $0.8$.\"",
+        "syntax": 1,
+        "semantic_score": 0.5918764781020674,
+        "symbolic_score": 0.3
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes a :: \"real list\"\nassumes h0 : \"a = [0, 0.5, 2/3, 3/4]\"\nshows \"a ! 3 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a :: \"real list\"\nassumes h0 : \"a = [0, 0.5, 2/3, 3/4]\"\nshows \"a ! 3 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list $a$ whose elements are $0$, $\\frac{1}{2}$, $\\frac{2}{3}$, and $\\frac{3}{4}$, find the element at index $3$ of $a$. The final answer is $0.8$.",
+        "syntax": 1,
+        "semantic_score": 0.8241496314112434,
+        "symbolic_score": 0.5
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes s :: \"real list\"\nassumes h0 : \"s = [0, 0.5, 2/3, 3/4]\"\nshows \"s ! 3 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes s :: \"real list\"\nassumes h0 : \"s = [0, 0.5, 2/3, 3/4]\"\nshows \"s ! 3 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a list $s$ is defined as $s = [0, 0.5, 2/3, 3/4]$, what is the fourth element of $s$? The final answer is $0.8$.",
+        "syntax": 1,
+        "semantic_score": 0.9545998461858968,
+        "symbolic_score": 0.5
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes a :: \"real list\"\nassumes h0 : \"a = [0, 0.5, 2/3, 0.75]\"\nshows \"a ! 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a :: \"real list\"\nassumes h0 : \"a = [0, 0.5, 2/3, 0.75]\"\nshows \"a ! 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a$ is a list of real numbers where the first four elements are $0$, $0.5$, $\\frac{2}{3}$, and $0.75$, respectively, what is the fifth element of the list if it is $0.8$?",
+        "syntax": 1,
+        "semantic_score": 0.977183119060302,
+        "symbolic_score": 0.3
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes a b c d e :: real\nassumes h0 : \"a = 0\"\nand h1 : \"b = 0.5\"\nand h2 : \"c = 2/3\"\nand h3 : \"d = 0.75\"\nand h4 : \"e = 4/5\"\nshows \"e = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a b c d e :: real\nassumes h0 : \"a = 0\"\nand h1 : \"b = 0.5\"\nand h2 : \"c = 2/3\"\nand h3 : \"d = 0.75\"\nand h4 : \"e = 4/5\"\nshows \"e = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a=0$, $b=0.5$, $c=2/3$, $d=0.75$, and $e=4/5$, what is the value of $e$? The final answer is $0.8$.",
+        "syntax": 1,
+        "semantic_score": 0.970946480712383,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"xs = [0, 1/2, 2/3, 3/4]\"\nshows \"xs ! 3 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"xs = [0, 1/2, 2/3, 3/4]\"\nshows \"xs ! 3 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $xs$ is a list of real numbers defined as $xs = [0, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}]$, what is the fourth element of the list? The final answer is $0.8$.",
+        "syntax": 1,
+        "semantic_score": 0.9271515190667667,
+        "symbolic_score": 0.5
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            2,
+            3,
+            4,
+            7,
+            8
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            5
+        ],
+        "3": [
+            6
+        ],
+        "4": [
+            9
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            1,
+            3,
+            5,
+            6,
+            9
+        ],
+        "1": [
+            2,
+            4,
+            7
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            8
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6666666666666666\"\nand h3 : \"a 3 = 0.75\"\nshows  \"a 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6666666666666666\"\nand h3 : \"a 3 = 0.75\"\nshows  \"a 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the function $a$ at point 4, given that the function is defined as $a(0)=0$, $a(1)=0.5$, $a(2)=0.6666666666666666$, and $a(3)=0.75$. The final answer is $a(4)=0.8$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7838380976772097,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 0.6\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall> n. n \\<ge> 0 \\<longrightarrow> seq (Suc n) = seq n + 0.05 * n\"\nshows  \"seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 0.6\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall> n. n \\<ge> 0 \\<longrightarrow> seq (Suc n) = seq n + 0.05 * n\"\nshows  \"seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence defined as follows: the first term is 0, the second term is 0.5, the third term is 0.6, and the fourth term is 0.75. For all natural numbers $n$, the $n+1$ term of the sequence is defined as the $n$th term plus $0.05n$. What is the fifth term of the sequence? The answer is 0.8.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8167676835130578,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 2/3\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> seq n = (n+1)/10\"\nshows  \"seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 2/3\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> seq n = (n+1)/10\"\nshows  \"seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence is defined as follows: the first term is 0, the second term is 0.5, the third term is 2/3, the fourth term is 0.75, and for all terms from the fifth one onwards, the nth term is equal to (n+1)/10. What is the fifth term in the sequence? The final answer is 0.8.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8508686325234531,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6\"\nand h3 : \"a 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> a n = a (n-1) + 0.05\"\nshows  \"a 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6\"\nand h3 : \"a 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> a n = a (n-1) + 0.05\"\nshows  \"a 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $a$ is defined as follows: $a(0)=0$, $a(1)=0.5$, $a(2)=0.6$, $a(3)=0.75$, and for all natural numbers $n \\geq 4$, $a(n)=a(n-1) + 0.05$. What is the value of $a(4)$? The final answer is $0.8$.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.8395674206264626,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6666667\"\nand h3 : \"a 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> a n = a (n-1) + 0.05\"\nshows  \"a 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6666667\"\nand h3 : \"a 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> a n = a (n-1) + 0.05\"\nshows  \"a 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $a$ is defined as follows: $a(0) = 0$, $a(1) = 0.5$, $a(2) = 0.6666667$, $a(3) = 0.75$ and for $n \\geq 4$, $a(n) = a(n-1) + 0.05$. What is the value of $a(4)$? The final Answer is $0.8$.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.8586614483301375,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes sequence :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"sequence 1 = 0\"\nand h1 : \"sequence 2 = 0.5\"\nand h2 : \"sequence 3 = 2/3\"\nand h3 : \"sequence 4 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 1 \\<and> n < 4 \\<longrightarrow> sequence (n + 1) = sequence n + 1/4\"\nshows  \"sequence 5 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes sequence :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"sequence 1 = 0\"\nand h1 : \"sequence 2 = 0.5\"\nand h2 : \"sequence 3 = 2/3\"\nand h3 : \"sequence 4 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 1 \\<and> n < 4 \\<longrightarrow> sequence (n + 1) = sequence n + 1/4\"\nshows  \"sequence 5 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence is defined as follows: the first term is 0, the second term is 0.5, the third term is 2/3, and the fourth term is 0.75. For all terms from the first to the fourth, the next term is obtained by adding 1/4 to the current term. What is the fifth term of the sequence? The final answer is 0.8.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8535451944359312,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes n :: real and next :: \"real \\<Rightarrow> real\"\nassumes h0 : \"next 0 = 0.5\"\nand h1 : \"next 0.5 = 2/3\"\nand h2 : \"next (2/3) = 0.75\"\nand h3 : \"next 0.75 = 0.8\"\nshows  \"next 0.75 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes n :: real and next :: \"real \\<Rightarrow> real\"\nassumes h0 : \"next 0 = 0.5\"\nand h1 : \"next 0.5 = 2/3\"\nand h2 : \"next (2/3) = 0.75\"\nand h3 : \"next 0.75 = 0.8\"\nshows  \"next 0.75 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function \"next\" that maps a number to its subsequent number in a sequence, if \"next 0\" is 0.5, \"next 0.5\" is 2/3, \"next 2/3\" is 0.75, and \"next 0.75\" is 0.8, what is the value of \"next 0.75\"? The final answer is 0.8.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8327844639645214,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 2/3\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall> n. seq (Suc n) = (seq n + 1/4)\"\nshows  \"seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 2/3\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall> n. seq (Suc n) = (seq n + 1/4)\"\nshows  \"seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence is defined as follows:\n\n- The first term is 0.\n- The second term is 0.5.\n- The third term is 2/3.\n- The fourth term is 0.75.\n- For all terms after the fourth, each term is the previous term plus 1/4.\n\nFind the fifth term of the sequence. The final answer is 0.8.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8782242500989879,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 0.6\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> seq n = seq (n - 1) + 0.05\"\nshows  \"seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 0.6\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall>n. n \\<ge> 4 \\<longrightarrow> seq n = seq (n - 1) + 0.05\"\nshows  \"seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of real numbers is defined as follows: the first term is 0, the second term is 0.5, the third term is 0.6, the fourth term is 0.75, and for all terms from the fifth onwards, each term is 0.05 more than the preceding term. What is the fifth term of the sequence? The final answer is 0.8.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.8511647482470652,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 0.6666666666666666\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall> n. n \\<ge> 4 \\<longrightarrow> seq n = seq (n - 1) + 0.05\"\nshows  \"seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is 0.8\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\n To express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\n This shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\n Thus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\n Thus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 0 = 0\"\nand h1 : \"seq 1 = 0.5\"\nand h2 : \"seq 2 = 0.6666666666666666\"\nand h3 : \"seq 3 = 0.75\"\nand h4 : \"\\<forall> n. n \\<ge> 4 \\<longrightarrow> seq n = seq (n - 1) + 0.05\"\nshows  \"seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence is defined as follows: the first term is 0, the second term is 0.5, the third term is approximately 0.6666666666666666, the fourth term is 0.75, and for all terms greater than or equal to the fifth term, each term is 0.05 more than the previous term. What is the fifth term of the sequence? The final answer is 0.8.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.8643516385304643,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a sequence of real numbers defined as `seq = [0, 0.5, 0.6666666666666666, 0.75]`. The task is to find the first element of the sequence after skipping the first three elements. In other words, we need to find the fourth element of the sequence. The result should be `0.8`.",
+        "syntax": 1,
+        "semantic_score": 0.759064737822046,
+        "symbolic_score": 0.6
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes a :: real\nassumes h0 : \"a = 0\"\nand h1 : \"a = 0.5\"\nand h2 : \"a = 0.6666666666666666\"\nand h3 : \"a = 0.75\"\nshows \"a = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a :: real\nassumes h0 : \"a = 0\"\nand h1 : \"a = 0.5\"\nand h2 : \"a = 0.6666666666666666\"\nand h3 : \"a = 0.75\"\nshows \"a = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the math problem states that the variable 'a' is a real number and it is equal to four different values: 0, 0.5, 0.6666666666666666, and 0.75. The theorem then concludes that 'a' is also equal to 0.8.\n\nIn natural language, this can be translated to: \"Consider a real number 'a' that is equal to 0, 0.5, 0.6666666666666666, and 0.75. Prove that 'a' is also equal to 0.8.\" However, this statement is logically inconsistent, as a single number cannot be equal to multiple distinct values at the same time. Therefore, the problem as stated is not solvable.",
+        "syntax": 1,
+        "semantic_score": 0.608632964984852,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers `seq` defined as `[0, 0.5, 0.6666666666666666, 0.75]`, find the value of the fourth element in the list. The final answer is `0.8`.",
+        "syntax": 1,
+        "semantic_score": 0.8240352194537248,
+        "symbolic_score": 0.6
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers `seq` defined as `[0, 0.5, 0.6666666666666666, 0.75]`, find the first element of the list that is three positions away from the beginning of the list. The answer is `0.8`.",
+        "syntax": 1,
+        "semantic_score": 0.7790354171151981,
+        "symbolic_score": 0.6
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a sequence of real numbers defined as seq = [0, 0.5, 0.6666666666666666, 0.75], find the first element of the sequence after skipping the first three elements. The answer is 0.8.",
+        "syntax": 1,
+        "semantic_score": 0.7897836206025428,
+        "symbolic_score": 0.6
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"nth seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"nth seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a sequence of real numbers defined as `seq = [0, 0.5, 0.6666666666666666, 0.75]`, find the value at the 4th index of the sequence. The value at the 4th index is 0.8.",
+        "syntax": 1,
+        "semantic_score": 0.7707828972906954,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes a :: real and n :: nat\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6666666666666666\"\nand h3 : \"a 3 = 0.75\"\nand h4 : \"\\<forall> n. a n = (if n = 0 then 0 else if n = 1 then 0.5 else if n = 2 then 0.6666666666666666 else if n = 3 then 0.75 else a (n - 1) + 0.1)\"\nshows \"a 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes a :: real and n :: nat\nassumes h0 : \"a 0 = 0\"\nand h1 : \"a 1 = 0.5\"\nand h2 : \"a 2 = 0.6666666666666666\"\nand h3 : \"a 3 = 0.75\"\nand h4 : \"\\<forall> n. a n = (if n = 0 then 0 else if n = 1 then 0.5 else if n = 2 then 0.6666666666666666 else if n = 3 then 0.75 else a (n - 1) + 0.1)\"\nshows \"a 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The theorem defines a sequence of real numbers, denoted by `a n`, where `n` is a natural number. The sequence is defined as follows:\n\n- `a 0 = 0`\n- `a 1 = 0.5`\n- `a 2 = 0.6666666666666666`\n- `a 3 = 0.75`\n\nFor all natural numbers `n` greater than 3, the sequence is defined recursively such that `a n` is equal to `a (n - 1) + 0.1`.\n\nThe theorem claims that the value of `a 4` is `0.8`.",
+        "syntax": 0,
+        "semantic_score": 0.7333789566348499,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers `seq` defined as `[0, 0.5, 0.6666666666666666, 0.75]`, find the first element of the list after skipping the first three elements. The result should be `0.8`.",
+        "syntax": 1,
+        "semantic_score": 0.7807368892604434,
+        "symbolic_score": 0.6
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.6666666666666666, 0.75]\"\nshows \"hd (tl (tl (tl seq))) = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers `seq` defined as `[0, 0.5, 0.6666666666666666, 0.75]`, find the first element of the list after skipping the first three elements. In other words, what is the value of the fourth element in the list? The answer is `0.8`.",
+        "syntax": 1,
+        "semantic_score": 0.7676139351072944,
+        "symbolic_score": 0.6
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.\\<bar>6\\<bar>, 0.75]\"\nshows \"nth seq 4 = 0.8\"",
+        "formal solution": "(* ### Problem\n Express the next term in the sequence as a decimal: $$0, 0.5, 0.\\overline{6}, 0.75 \\dots $$ The final Answer is $0.8$\n ### Proof\n To find the pattern of the sequence, we begin by converting each of the decimal values into a common fraction. The first term $0$ is equal to $\\frac{0}{1}$. The next term, $0.5$, can be written as $\\frac{5}{10}=\\frac{1}{2}$.\nTo express $0.\\overline{6}$ as a common fraction, we call it $x$ and subtract it from $10x$: $$\\begin{array}{r r c r@{}l} &10x &=& 6&.66666\\ldots \\\\ - &x &=& 0&.66666\\ldots \\\\ \\hline &9x &=& 6 & \\end{array}$$\nThis shows that $0.\\overline{6} = \\frac{6}{9} = \\frac{2}{3}$. The fourth term in the series, $0.75$, becomes $\\frac{75}{100}=\\frac{3}{4}$.\nThus, when we write fractions instead of decimals, our sequence is: $$\\frac{0}{1}, \\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\cdots$$  By observing this sequence, we realize that the first term of the sequence is $\\frac{0}{1}$ and each successive term is found by adding $1$ to both the numerator and denominator of the previous term.\nThus, the next term in the sequence is $\\frac{3+1}{4+1}=\\frac{4}{5}=\\boxed{0.8}$.\n *)\n\ntheorem\nfixes seq :: \"real list\"\nassumes h0 : \"seq = [0, 0.5, 0.\\<bar>6\\<bar>, 0.75]\"\nshows \"nth seq 4 = 0.8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a sequence of real numbers defined as `seq = [0, 0.5, 0.6, 0.75]`, what is the value of the fourth element in the sequence? The answer is 0.8.",
+        "syntax": 0,
+        "semantic_score": 0.8073799133783628,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0,
+            2,
+            3,
+            4,
+            7,
+            8
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            5
+        ],
+        "3": [
+            6
+        ],
+        "4": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

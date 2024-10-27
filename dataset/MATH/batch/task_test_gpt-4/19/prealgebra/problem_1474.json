@@ -1,0 +1,59 @@
+{
+    "natural problem": "For how many two-digit positive integers does the product of the digits come out to 12?",
+    "natural solution": [
+        "$12=2\\cdot6=3\\cdot4$, so the only two-digit positive integers the product of whose digits is 12 are 26, 62, 34, and 43, for a total of $\\boxed{4}$ integers."
+    ],
+    "natural answer": "4",
+    "a_0": {
+        "formal problem": "theorem\nfixes digitsProduct :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 10 \\<and> n \\<le> 99 \\<longrightarrow> digitsProduct n = (n div 10) * (n mod 10)\"\nshows  \"card {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> digitsProduct n = 12} = 4\"",
+        "formal solution": "(* ### Problem\n For how many two-digit positive integers does the product of the digits come out to 12? The final Answer is 4\n ### Proof\n $12=2\\cdot6=3\\cdot4$, so the only two-digit positive integers the product of whose digits is 12 are 26, 62, 34, and 43, for a total of $\\boxed{4}$ integers.\n *)\n\ntheorem\nfixes digitsProduct :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 10 \\<and> n \\<le> 99 \\<longrightarrow> digitsProduct n = (n div 10) * (n mod 10)\"\nshows  \"card {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> digitsProduct n = 12} = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"How many two-digit numbers have the property that the product of their digits is equal to 12? The final answer is 4.\""
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes N :: \"nat set\"\nassumes h0 : \"N = {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> (n div 10) * (n mod 10) = 12}\"\nshows  \"card N = 4\"",
+        "formal solution": "(* ### Problem\n For how many two-digit positive integers does the product of the digits come out to 12? The final Answer is 4\n ### Proof\n $12=2\\cdot6=3\\cdot4$, so the only two-digit positive integers the product of whose digits is 12 are 26, 62, 34, and 43, for a total of $\\boxed{4}$ integers.\n *)\n\ntheorem\nfixes N :: \"nat set\"\nassumes h0 : \"N = {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> (n div 10) * (n mod 10) = 12}\"\nshows  \"card N = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit natural numbers have their tens and units digits multiply to give 12? The final answer is 4."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat and digits :: \"nat \\<Rightarrow> nat list\"\nassumes h0 : \"\\<forall> n. digits n = map (nat_of_digit \\<circ> digit_of_char) (String.explode (show n))\"\nand h1 : \"\\<forall> n. 10 \\<le> n \\<and> n < 100 \\<longrightarrow> List.foldl (*) 1 (digits n) = 12\"\nshows  \"card {n. 10 \\<le> n \\<and> n < 100 \\<and> List.foldl (*) 1 (digits n) = 12} = 4\"",
+        "formal solution": "(* ### Problem\n For how many two-digit positive integers does the product of the digits come out to 12? The final Answer is 4\n ### Proof\n $12=2\\cdot6=3\\cdot4$, so the only two-digit positive integers the product of whose digits is 12 are 26, 62, 34, and 43, for a total of $\\boxed{4}$ integers.\n *)\n\ntheorem\nfixes n :: nat and digits :: \"nat \\<Rightarrow> nat list\"\nassumes h0 : \"\\<forall> n. digits n = map (nat_of_digit \\<circ> digit_of_char) (String.explode (show n))\"\nand h1 : \"\\<forall> n. 10 \\<le> n \\<and> n < 100 \\<longrightarrow> List.foldl (*) 1 (digits n) = 12\"\nshows  \"card {n. 10 \\<le> n \\<and> n < 100 \\<and> List.foldl (*) 1 (digits n) = 12} = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of two-digit natural numbers such that the product of their digits is 12. The final answer is 4."
+    },
+    "a_3": {
+        "formal problem": "theorem\nshows  \"card {n :: nat. 10 \u2264 n \u2227 n < 100 \u2227 (n div 10) * (n mod 10) = 12} = 4\"",
+        "formal solution": "(* ### Problem\n For how many two-digit positive integers does the product of the digits come out to 12? The final Answer is 4\n ### Proof\n $12=2\\cdot6=3\\cdot4$, so the only two-digit positive integers the product of whose digits is 12 are 26, 62, 34, and 43, for a total of $\\boxed{4}$ integers.\n *)\n\ntheorem\nshows  \"card {n :: nat. 10 \u2264 n \u2227 n < 100 \u2227 (n div 10) * (n mod 10) = 12} = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit natural numbers are there such that the product of their digits equals 12? The final answer is 4."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 10 \\<and> n \\<le> 99\"\nshows  \"card {n. prod (digits n) = 12} = 4\"",
+        "formal solution": "(* ### Problem\n For how many two-digit positive integers does the product of the digits come out to 12? The final Answer is 4\n ### Proof\n $12=2\\cdot6=3\\cdot4$, so the only two-digit positive integers the product of whose digits is 12 are 26, 62, 34, and 43, for a total of $\\boxed{4}$ integers.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 10 \\<and> n \\<le> 99\"\nshows  \"card {n. prod (digits n) = 12} = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit natural numbers have their digits multiplied together to give 12? The final answer is 4."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 10 \\<and> n \\<le> 99\"\nand h1 : \"(n div 10) * (n mod 10) = 12\"\nshows  \"card {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> (n div 10) * (n mod 10) = 12} = 4\"",
+        "formal solution": "(* ### Problem\n For how many two-digit positive integers does the product of the digits come out to 12? The final Answer is 4\n ### Proof\n $12=2\\cdot6=3\\cdot4$, so the only two-digit positive integers the product of whose digits is 12 are 26, 62, 34, and 43, for a total of $\\boxed{4}$ integers.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 10 \\<and> n \\<le> 99\"\nand h1 : \"(n div 10) * (n mod 10) = 12\"\nshows  \"card {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> (n div 10) * (n mod 10) = 12} = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit natural numbers have the property that the product of their digits equals 12? The final answer is 4."
+    },
+    "a_6": {
+        "formal problem": "theorem\nshows  \"card {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> (n div 10) * (n mod 10) = 12} = 4\"",
+        "formal solution": "(* ### Problem\n For how many two-digit positive integers does the product of the digits come out to 12? The final Answer is 4\n ### Proof\n $12=2\\cdot6=3\\cdot4$, so the only two-digit positive integers the product of whose digits is 12 are 26, 62, 34, and 43, for a total of $\\boxed{4}$ integers.\n *)\n\ntheorem\nshows  \"card {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> (n div 10) * (n mod 10) = 12} = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit numbers have the property that the product of their digits equals 12? The final Answer is 4."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and a b :: nat\nassumes h0 : \"n = a * 10 + b\"\nand h1 : \"a * b = 12\"\nshows  \"card { n. \\<exists> a b. a \\<ge> 1 \\<and> b \\<ge> 0 \\<and> a < 10 \\<and> b < 10 \\<and> a * b = 12 } = 4\"",
+        "formal solution": "(* ### Problem\n For how many two-digit positive integers does the product of the digits come out to 12? The final Answer is 4\n ### Proof\n $12=2\\cdot6=3\\cdot4$, so the only two-digit positive integers the product of whose digits is 12 are 26, 62, 34, and 43, for a total of $\\boxed{4}$ integers.\n *)\n\ntheorem\nfixes n :: nat and a b :: nat\nassumes h0 : \"n = a * 10 + b\"\nand h1 : \"a * b = 12\"\nshows  \"card { n. \\<exists> a b. a \\<ge> 1 \\<and> b \\<ge> 0 \\<and> a < 10 \\<and> b < 10 \\<and> a * b = 12 } = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit numbers are there such that the product of its digits equals 12? The final answer is 4."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 10\"\nand h1 : \"n \\<le> 99\"\nand h2 : \"\\<forall> n. n = (n div 10) * (n mod 10)\"\nand h3 : \"n = 12\"\nshows  \"card {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> (n div 10) * (n mod 10) = 12} = 4\"",
+        "formal solution": "(* ### Problem\n For how many two-digit positive integers does the product of the digits come out to 12? The final Answer is 4\n ### Proof\n $12=2\\cdot6=3\\cdot4$, so the only two-digit positive integers the product of whose digits is 12 are 26, 62, 34, and 43, for a total of $\\boxed{4}$ integers.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 10\"\nand h1 : \"n \\<le> 99\"\nand h2 : \"\\<forall> n. n = (n div 10) * (n mod 10)\"\nand h3 : \"n = 12\"\nshows  \"card {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> (n div 10) * (n mod 10) = 12} = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit numbers have the property that the product of their digits is 12? The final answer is 4."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 10\"\nand h1 : \"n \\<le> 99\"\nand h2 : \"prod (digits n) = 12\"\nshows  \"card {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> prod (digits n) = 12} = 4\"",
+        "formal solution": "(* ### Problem\n For how many two-digit positive integers does the product of the digits come out to 12? The final Answer is 4\n ### Proof\n $12=2\\cdot6=3\\cdot4$, so the only two-digit positive integers the product of whose digits is 12 are 26, 62, 34, and 43, for a total of $\\boxed{4}$ integers.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 10\"\nand h1 : \"n \\<le> 99\"\nand h2 : \"prod (digits n) = 12\"\nshows  \"card {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> prod (digits n) = 12} = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of two-digit natural numbers such that the product of their digits is 12. The final answer is 4."
+    },
+    "level": "Level 4",
+    "type": "Prealgebra"
+}

@@ -1,0 +1,614 @@
+{
+    "problem_name": "mathd_numbertheory_314",
+    "informal_statement": "Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.",
+    "informal_proof": "Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes r :: nat and div :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"div = (\\<lambda> x y. x mod y)\"\nand h2 : \"\\<exists> k. 1342 * k mod 13 < r\"\nshows  \"k = 5\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat and div :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"div = (\\<lambda> x y. x mod y)\"\nand h2 : \"\\<exists> k. 1342 * k mod 13 < r\"\nshows  \"k = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a natural number $k$ such that $1342*k$ leaves a remainder smaller than $1342 \\mod 13$ when divided by $13$. The final answer is $k = 5$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8730566501617432,
+        "symbolic_score": 0.5
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> n mod 1342 = 0 \\<longrightarrow> n mod 13 < r\"\nshows  \"6710 mod 1342 = 0 \\<and> 6710 mod 13 < r\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> n mod 1342 = 0 \\<longrightarrow> n mod 13 < r\"\nshows  \"6710 mod 1342 = 0 \\<and> 6710 mod 13 < r\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $r$ be the remainder when 1342 is divided by 13. If $n$ is a positive integer such that 1342 divides $n$ and the remainder when $n$ is divided by 13 is less than $r$, then $n$ must be a multiple of 6710.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8227812051773071,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat and r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"n = 1342 * 5\"\nand h2 : \"n mod 13 < r\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes n :: nat and r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"n = 1342 * 5\"\nand h2 : \"n mod 13 < r\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $r$ is the remainder when $1342$ is divided by $13$ and $n$ is $5$ times $1342$, find the value of $n$ such that the remainder when $n$ is divided by $13$ is less than $r$. The final answer is $6710$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9526872634887695,
+        "symbolic_score": 0.5
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes r :: int and n :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall>k. k > 0 \\<longrightarrow> k * 1342 mod 13 < r \\<longrightarrow> n = k * 1342\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: int and n :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall>k. k > 0 \\<longrightarrow> k * 1342 mod 13 < r \\<longrightarrow> n = k * 1342\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive multiple of 1342 whose remainder when divided by 13 is less than the remainder when 1342 is divided by 13. The final answer is 6710.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.991899847984314,
+        "symbolic_score": 0.5
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes r :: nat and mult :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> (mult = n * 1342) \\<and> (mult mod 13 < r)\"\nshows  \"mult = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat and mult :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> (mult = n * 1342) \\<and> (mult mod 13 < r)\"\nshows  \"mult = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest multiple of 1342 that leaves a smaller remainder than 1342 when divided by 13. The answer is 6710.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9916473627090454,
+        "symbolic_score": 0.5
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> k. k > 0 \\<and> 1342 * k mod 13 < r \\<longrightarrow> k \\<ge> 5\"\nshows  \"1342 * 5 mod 13 < r\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> k. k > 0 \\<and> 1342 * k mod 13 < r \\<longrightarrow> k \\<ge> 5\"\nshows  \"1342 * 5 mod 13 < r\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder when 1342 is divided by 13. If the remainder is denoted by $r$, and for any positive integer $k$, if $1342k$ mod $13$ is less than $r$, then $k$ must be greater than or equal to 5. Prove that if $k = 5$, then $1342*5$ mod $13$ is less than $r$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.5757052898406982,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes r :: nat and m :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"m = 6710\"\nand h2 : \"m mod 13 < r\"\nand h3 : \"m mod 1342 = 0\"\nshows  \"m = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat and m :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"m = 6710\"\nand h2 : \"m mod 13 < r\"\nand h3 : \"m mod 1342 = 0\"\nshows  \"m = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a number $m$ such that $m = 6710$, $m$ is a multiple of $1342$, and the remainder of $m$ divided by $13$ is less than the remainder of $1342$ divided by $13$. The final answer is $6710$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9507071375846863,
+        "symbolic_score": 0.5
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes r :: int and x :: int\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"x > 0\"\nand h2 : \"x mod 1342 = 0\"\nand h3 : \"x mod 13 < r\"\nshows  \"x \\<ge> 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: int and x :: int\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"x > 0\"\nand h2 : \"x mod 1342 = 0\"\nand h3 : \"x mod 13 < r\"\nshows  \"x \\<ge> 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $r$ is the remainder when 1342 is divided by 13, find the smallest positive integer $x$ such that $x$ is divisible by 1342 and the remainder when $x$ is divided by 13 is less than $r$. The final answer is $x \\geq 6710$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9319985508918762,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes r :: int and n :: int\nassumes h0 : \"1342 mod 13 = r\"\nand h1 : \"\\<forall> n. n mod 13 < r \\<and> n mod 1342 = 0 \\<longrightarrow> n \\<ge> 6710\"\nshows  \"6710 mod 13 < r \\<and> 6710 mod 1342 = 0\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: int and n :: int\nassumes h0 : \"1342 mod 13 = r\"\nand h1 : \"\\<forall> n. n mod 13 < r \\<and> n mod 1342 = 0 \\<longrightarrow> n \\<ge> 6710\"\nshows  \"6710 mod 13 < r \\<and> 6710 mod 1342 = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder, $r$, when 1342 is divided by 13. Now, consider all integers $n$ that are divisible by 1342 and leave a smaller remainder when divided by 13 than $r$. The smallest such $n$ is at least 6710. Confirm that 6710 leaves a smaller remainder than $r$ when divided by 13 and is divisible by 1342.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8694096207618713,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes r :: int\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall>n. n > 0 \\<and> n mod 1342 = 0 \\<longrightarrow> n mod 13 < r\"\nshows  \"\\<exists>n. n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: int\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall>n. n > 0 \\<and> n mod 1342 = 0 \\<longrightarrow> n mod 13 < r\"\nshows  \"\\<exists>n. n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $n$ is divisible by 1342 and the remainder when $n$ is divided by 13 is less than the remainder when 1342 is divided by 13. The final answer is 6710.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9853888154029846,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes r n :: nat\nassumes \"r = 1342 mod 13\"\nand \"0 < n\"\nand \"1342 dvd n\"\nand \"n mod 13 < r\"\nshows \"6710 \\<le> n\"",
+    "prediction": {
+        "0": [
+            0,
+            2,
+            3,
+            4,
+            6
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            5
+        ],
+        "3": [
+            7
+        ],
+        "4": [
+            8
+        ],
+        "5": [
+            9
+        ]
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes r n :: nat\nassumes h0 : \"r = 5\"\nand h1 : \"n = 6710\"\nand h2 : \"1342 dvd n\"\nand h3 : \"n mod 13 < r\"\nand h4 : \"m > 0 \\<Longrightarrow> 1342 dvd m \\<Longrightarrow> m mod 13 < r \\<Longrightarrow> m \\<ge> n\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r n :: nat\nassumes h0 : \"r = 5\"\nand h1 : \"n = 6710\"\nand h2 : \"1342 dvd n\"\nand h3 : \"n mod 13 < r\"\nand h4 : \"m > 0 \\<Longrightarrow> 1342 dvd m \\<Longrightarrow> m mod 13 < r \\<Longrightarrow> m \\<ge> n\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $r$ is $5$ and $n$ is $6710$, and $1342$ divides $n$ and the remainder of $n$ divided by $13$ is less than $r$, and for any positive integer $m$, if $1342$ divides $m$ and the remainder of $m$ divided by $13$ is less than $r$, then $m$ is greater than or equal to $n$, then $n$ must be equal to $6710$.\"",
+        "semantic_score": 0.39700347182009077,
+        "symbolic_score": 0.1,
+        "naive_label": 1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes r n :: nat\nassumes h0 : \"r = 7\"\nand h1 : \"n = 6710\"\nand h2 : \"1342 dvd n\"\nand h3 : \"n mod 13 < r\"\nand h4 : \"n > 0\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r n :: nat\nassumes h0 : \"r = 7\"\nand h1 : \"n = 6710\"\nand h2 : \"1342 dvd n\"\nand h3 : \"n mod 13 < r\"\nand h4 : \"n > 0\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $n$ is a positive integer such that $n = 6710$ and $1342$ divides $n$, and $n$ leaves a remainder less than $7$ when divided by $13$, then $n = 6710$.",
+        "semantic_score": 0.8406727538447623,
+        "symbolic_score": 0.1,
+        "naive_label": 1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes r :: nat\nassumes h0 : \"r = 12\"\nand h1 : \"\\<forall> n. n mod 13 = r \\<longrightarrow> 1342 dvd n\"\nand h2 : \"\\<forall> n. 1342 dvd n \\<longrightarrow> n mod 13 < r\"\nshows  \"6710 = (LEAST n. 1342 dvd n)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat\nassumes h0 : \"r = 12\"\nand h1 : \"\\<forall> n. n mod 13 = r \\<longrightarrow> 1342 dvd n\"\nand h2 : \"\\<forall> n. 1342 dvd n \\<longrightarrow> n mod 13 < r\"\nshows  \"6710 = (LEAST n. 1342 dvd n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the remainder of $n$ divided by $13$ is $12$, then $1342$ divides $n$. If $1342$ divides $n$, then the remainder of $n$ divided by $13$ is less than $12$. Given that $r = 12$, find the smallest multiple of $1342$ that satisfies this condition. The final answer is $6710$.",
+        "semantic_score": 0.9666953557828791,
+        "symbolic_score": 0.3,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes r n :: nat\nassumes h0 : \"r = 7\"\nand h1 : \"n = 6710\"\nand h2 : \"1342 * k = n\"\nand h3 : \"n mod 13 < r\"\nand h4 : \"k \\<in> \\<nat>\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r n :: nat\nassumes h0 : \"r = 7\"\nand h1 : \"n = 6710\"\nand h2 : \"1342 * k = n\"\nand h3 : \"n mod 13 < r\"\nand h4 : \"k \\<in> \\<nat>\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $r = 7$, $n = 6710$, and $1342k = n$ for some natural number $k$, determine the value of $n$. Additionally, it is known that $n$ is not divisible by $13$ and the remainder of $n$ divided by $13$ is less than $7$. The final answer is $n = 6710$.",
+        "semantic_score": 0.9900502069866616,
+        "symbolic_score": 0.1,
+        "naive_label": 1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes r :: nat\nassumes h0 : \"r = 5\"\nand h1 : \"\\<exists>k. 1342 * k = n\"\nand h2 : \"n mod 13 < r\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat\nassumes h0 : \"r = 5\"\nand h1 : \"\\<exists>k. 1342 * k = n\"\nand h2 : \"n mod 13 < r\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the remainder when a certain number $n$ is divided by $13$ is less than $5$, and there exists an integer $k$ such that $1342k = n$, what is the value of $n$? The final answer is $6710$.",
+        "semantic_score": 0.8785925180410172,
+        "symbolic_score": 0.3,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes r :: nat\nassumes h0 : \"r = 4\"\nand h1 : \"S = {n :: nat. \\<exists> k. n = 1342 * k \\<and> n mod 13 < r}\"\nshows  \"Min S = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat\nassumes h0 : \"r = 4\"\nand h1 : \"S = {n :: nat. \\<exists> k. n = 1342 * k \\<and> n mod 13 < r}\"\nshows  \"Min S = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider the set $S$ of all natural numbers $n$ that satisfy $n = 1342k$ and $n$ leaves a remainder of less than $4$ when divided by $13$. Given that $r=4$, find the smallest element of $S$. The smallest element of $S$ is $6710$.",
+        "semantic_score": 0.9933314463801689,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes r :: nat\nassumes h0 : \"r = 10\"\nand h1 : \"n = 1342 * (LEAST k. \\<exists> m. n = 1342 * m \\<and> k = m mod 13 \\<and> k < r)\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat\nassumes h0 : \"r = 10\"\nand h1 : \"n = 1342 * (LEAST k. \\<exists> m. n = 1342 * m \\<and> k = m mod 13 \\<and> k < r)\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Suppose that $r$ is equal to 10. Let $n$ be the smallest multiple of 1342 that is less than 10 and leaves a remainder when divided by 13. If this is the case, what is the value of $n$? The final answer is 6710.\"",
+        "semantic_score": 0.5046012942202024,
+        "symbolic_score": 0.3,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes r :: nat\nassumes h0 : \"r = 5\"\nand h1 : \"k > 0\"\nand h2 : \"k mod 1342 = 0\"\nand h3 : \"k mod 13 < r\"\nshows  \"k = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat\nassumes h0 : \"r = 5\"\nand h1 : \"k > 0\"\nand h2 : \"k mod 1342 = 0\"\nand h3 : \"k mod 13 < r\"\nshows  \"k = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a positive integer $k$ satisfies $k \\equiv 0 \\pmod{1342}$ and $k \\equiv r \\pmod{13}$, where $r = 5$, what is the smallest possible value of $k$? The final answer is $6710$.",
+        "semantic_score": 0.9046480883749938,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes r n :: nat\nassumes h0 : \"r = 3\"\nand h1 : \"1342 mod 13 = r\"\nand h2 : \"n mod 13 < r\"\nand h3 : \"n mod 1342 = 0\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r n :: nat\nassumes h0 : \"r = 3\"\nand h1 : \"1342 mod 13 = r\"\nand h2 : \"n mod 13 < r\"\nand h3 : \"n mod 1342 = 0\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest non-negative integer $n$ that is a multiple of $1342$ and has a remainder of less than $3$ when divided by $13$. Additionally, it is given that $1342$ has a remainder of $3$ when divided by $13$. The final answer is $6710$.",
+        "semantic_score": 0.9215964249955242,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes r n :: nat\nassumes h0 : \"r = 5\"\nand h1 : \"n = 6710\"\nand h2 : \"1342 dvd n\"\nand h3 : \"n mod 13 < r\"\nand h4 : \"n > 0\"\nshows  \"\\<forall> m. 1342 dvd m \\<and> m mod 13 < r \\<longrightarrow> n \\<le> m\"\nand \"1342 dvd n\"\nand \"n mod 13 < r\" \nand \"\\<exists> m. 1342 dvd m \\<and> m mod 13 < r \\<and> m < n\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r n :: nat\nassumes h0 : \"r = 5\"\nand h1 : \"n = 6710\"\nand h2 : \"1342 dvd n\"\nand h3 : \"n mod 13 < r\"\nand h4 : \"n > 0\"\nshows  \"\\<forall> m. 1342 dvd m \\<and> m mod 13 < r \\<longrightarrow> n \\<le> m\"\nand \"1342 dvd n\"\nand \"n mod 13 < r\" \nand \"\\<exists> m. 1342 dvd m \\<and> m mod 13 < r \\<and> m < n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $r = 5$ and $n = 6710$, where $n$ is divisible by $1342$ and leaves a remainder less than $5$ when divided by $13$, and $n$ is positive, then all numbers $m$ that are divisible by $1342$ and leave a remainder less than $5$ when divided by $13$ satisfy $n \\leq m$. Also, $n$ is divisible by $1342$ and leaves a remainder less than $5$ when divided by $13$, and there exists a number $m$ that is divisible by $1342$ and leaves a remainder less than $5$ when divided by $13$, and is less than $n$.",
+        "semantic_score": 0.951567129653053,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            2,
+            4,
+            6
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            7
+        ],
+        "6": [
+            8
+        ],
+        "7": [
+            9
+        ]
+    },
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes r :: int and n :: int\nassumes h0 : \"13 | 1342\"\nand h1 : \"\\<exists> n. 13 | n \\<and> n > r \\<and> 1342 = n * q + r\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: int and n :: int\nassumes h0 : \"13 | 1342\"\nand h1 : \"\\<exists> n. 13 | n \\<and> n > r \\<and> 1342 = n * q + r\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $n$ such that $13$ is a factor of $n$ and $n$ is greater than $r$, and $1342$ can be expressed as the product of $n$ and some other integer $q$ plus $r$. The final answer is $6710$."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem\nfixes r x :: nat and n :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"r = 1342 mod 13\"\nvalues m where\n  assume a: \"x = n a\" and b: \"x < r\"\n  have i: \"a mod 13 < r\" using a, h0, simpl\n  show \"m = a\" by (rule x, simp add: h0)\n\nlemma find_smaller_remainder_than_r : \"\\<exists> n. 1342 mod n < r\" and \"1342 = n * m\"\nproof (induct m)\n  assume \"m = 0\"\n  show False\n  proof (rule contradiction)\n    assume a: \"1342 mod 0 < r\"\n    have \"False\" using a by simp\n  qed\n\n  assume \"m = Suc n\"\n  have \"1342 mod n < r\" using (ind_hyp n)\n  have \"1342 mod (Suc n) < r\" using (rule subtr_smaller_than) (apply (is_less r)) (apply (is_less (Suc n)))\n  show \"m = Suc n \\<Longrightarrow> \\<exists> x. 1342 = x * m \\<and> x mod 13 < r\"\n  proof (rule exists_intro)\n    obtain x where x: \"1342 = x * m\" and h: \"x mod 13 < r\" using (induct_step m) (is_less r) (is_less (Suc n))\n    show \"x\" by simp\n  qed\nqed\n\nlemma subtr_smaller_than : \"a < b \\<Longrightarrow> a - c < b - c\" and \"c > 0\" using assms by simp\n\nlemma is_less : \"n < m\" using assms by simp\n\ntheorem main : \"m = 6710\"\nproof (rule exists_elim m find_smaller_remainder_than_r)\n  show \"1342 = m * x\" using (exact x)\n  show \"x mod 13 < r\" using (apply subtr_smaller_than) (is_less r) (is_less x)\nqed\n\nlemma is_multiple_of_1342 : \"\\<forall>n. n mod 1342 = 0 \\<Longrightarrow> n = 1342 * k\" for some k :: nat\nproof (induct n)\n  assume \"n = 0\"\n  show False\n  proof (rule contradiction)\n    assume \"0 = 1342 * k\"\n    have \"k = 0\" by simp\n    have \"0 < r\" by simp\n    have \"0 < 1342\" by simp\n    have \"1342 = 0\" using assms, contradiction\n  qed\n\n  assume \"n = Suc n'\"\n  assume \"n' mod 1342 = 0\" using (ind_hyp n')\n  have \"n mod 1342 = 0\" by simp\n  have \"n = 1342 * k\" using is_multiple_of_1342\n  show \"n = 1342 * (Suc",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r x :: nat and n :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"r = 1342 mod 13\"\nvalues m where\n  assume a: \"x = n a\" and b: \"x < r\"\n  have i: \"a mod 13 < r\" using a, h0, simpl\n  show \"m = a\" by (rule x, simp add: h0)\n\nlemma find_smaller_remainder_than_r : \"\\<exists> n. 1342 mod n < r\" and \"1342 = n * m\"\nproof (induct m)\n  assume \"m = 0\"\n  show False\n  proof (rule contradiction)\n    assume a: \"1342 mod 0 < r\"\n    have \"False\" using a by simp\n  qed\n\n  assume \"m = Suc n\"\n  have \"1342 mod n < r\" using (ind_hyp n)\n  have \"1342 mod (Suc n) < r\" using (rule subtr_smaller_than) (apply (is_less r)) (apply (is_less (Suc n)))\n  show \"m = Suc n \\<Longrightarrow> \\<exists> x. 1342 = x * m \\<and> x mod 13 < r\"\n  proof (rule exists_intro)\n    obtain x where x: \"1342 = x * m\" and h: \"x mod 13 < r\" using (induct_step m) (is_less r) (is_less (Suc n))\n    show \"x\" by simp\n  qed\nqed\n\nlemma subtr_smaller_than : \"a < b \\<Longrightarrow> a - c < b - c\" and \"c > 0\" using assms by simp\n\nlemma is_less : \"n < m\" using assms by simp\n\ntheorem main : \"m = 6710\"\nproof (rule exists_elim m find_smaller_remainder_than_r)\n  show \"1342 = m * x\" using (exact x)\n  show \"x mod 13 < r\" using (apply subtr_smaller_than) (is_less r) (is_less x)\nqed\n\nlemma is_multiple_of_1342 : \"\\<forall>n. n mod 1342 = 0 \\<Longrightarrow> n = 1342 * k\" for some k :: nat\nproof (induct n)\n  assume \"n = 0\"\n  show False\n  proof (rule contradiction)\n    assume \"0 = 1342 * k\"\n    have \"k = 0\" by simp\n    have \"0 < r\" by simp\n    have \"0 < 1342\" by simp\n    have \"1342 = 0\" using assms, contradiction\n  qed\n\n  assume \"n = Suc n'\"\n  assume \"n' mod 1342 = 0\" using (ind_hyp n')\n  have \"n mod 1342 = 0\" by simp\n  have \"n = 1342 * k\" using is_multiple_of_1342\n  show \"n = 1342 * (Suc\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $r = 1342$ mod $13$, find the value of $m$ such that $1342$ is a multiple of $m$, and $m$ has a smaller remainder when divided by $13$ compared to $r$. The final answer is $m = 6710$.\n\nAdditionally, it can be proven that any number $n$ that is a multiple of $1342$ can be expressed as $1342$ times some integer $k$."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes r n :: int\nassumes h0 : \"r = rem 1342 13\"\nshows  \"smaller_rem n = true\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r n :: int\nassumes h0 : \"r = rem 1342 13\"\nshows  \"smaller_rem n = true\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find whether the remainder when $1342$ is divided by $13$ is smaller than some given integer $n$. The final answer is a boolean value, \"true\" if the remainder is smaller than $n$, and \"false\" otherwise."
+    },
+    "a_3_mistral": {
+        "formal problem": "theorem\nfixes r x :: int\nassumes h0 : \"13 | 1342\"\nshows  \"13 | small_num\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r x :: int\nassumes h0 : \"13 | 1342\"\nshows  \"13 | small_num\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Is 13 a factor of the number 1342? The final answer is \"yes\" (or \"true\")."
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes r :: int and x :: int\nassumes h0 : \"13 | 1342\"\nand h1 : \"\\<exists> x. 13 | x \\<and> x > 1342 \\<and> (rem 13 x) < r\"\nshows  \"x = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: int and x :: int\nassumes h0 : \"13 | 1342\"\nand h1 : \"\\<exists> x. 13 | x \\<and> x > 1342 \\<and> (rem 13 x) < r\"\nshows  \"x = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find an integer $x$ that is greater than 1342 and is a multiple of 13 with a remainder less than $r$. The final answer is 6710."
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes r :: int and n :: int\nassumes h0 : \"13 | 1342\"\nand h1 : \"\\<exists> n. 13 | n \\<and> n > 1342 \\<and> r < (rem 13 n)\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: int and n :: int\nassumes h0 : \"13 | 1342\"\nand h1 : \"\\<exists> n. 13 | n \\<and> n > 1342 \\<and> r < (rem 13 n)\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find an integer $n$ greater than 1342 such that $13$ divides $n$, and the remainder of $r$ when $n$ is divided by $13$ is less than $13$. The final answer is 6710."
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nfixes r :: int and n :: int\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"13 * x = a * 1342 for some a\"\nand h2 : \"x < r\"\nand h3 : \"x = 6710\"\nand h4 : \"a\"\nand h5 : \"13 \\* x\"\nshows  that the value of \"x\" obtained from this equation is smaller than the remainder \"r\" by using the fact that 13 is prime and less than the given remainder \"r\". The desired result of 6710 is obtained by manually checking the first few values of \"x\" that satisfy the inductive hypothesis and verifying that they are smaller than the remainder \"r\".",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: int and n :: int\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"13 * x = a * 1342 for some a\"\nand h2 : \"x < r\"\nand h3 : \"x = 6710\"\nand h4 : \"a\"\nand h5 : \"13 \\* x\"\nshows  that the value of \"x\" obtained from this equation is smaller than the remainder \"r\" by using the fact that 13 is prime and less than the given remainder \"r\". The desired result of 6710 is obtained by manually checking the first few values of \"x\" that satisfy the inductive hypothesis and verifying that they are smaller than the remainder \"r\".\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $r=1342$ mod $13$, find a number $x$ such that $13x$ is a multiple of $1342$. This number $x$ must be smaller than $r$. By checking a few values of $x$, we find that $x=6710$ satisfies this condition. Since $13$ is prime and less than $r$, this value of $x$ is the correct one."
+    },
+    "a_7_mistral": {
+        "formal problem": " theorem\nfixes r :: int and n :: int\nassumes h0 : \"13 * r = 1342\"\nvalues x where\nassumptions\nand h1 : \"13 * x < 1342\"\nand h2 : \"x = m * 1342\" for some m :: int\nshow \"x = 6710\"\n",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: int and n :: int\nassumes h0 : \"13 * r = 1342\"\nvalues x where\nassumptions\nand h1 : \"13 * x < 1342\"\nand h2 : \"x = m * 1342\" for some m :: int\nshow \"x = 6710\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find an integer $x$ such that $13x$ is less than $1342$ and $x=m\\cdot 1342$ for some integer $m$. The final answer is $6710$."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes r x :: nat\nassumes h0 : \"1342 = 13 * q + r\"\nand h1 : \"13 <= rem x 13\"\nand h2 : \"x = 13 * n + m\"\nshows  \"m < r\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r x :: nat\nassumes h0 : \"1342 = 13 * q + r\"\nand h1 : \"13 <= rem x 13\"\nand h2 : \"x = 13 * n + m\"\nshows  \"m < r\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $1342$ can be expressed as $13q + r$ with $r \\leq 13$ and that $x$ can be expressed as $13n+m$ with $m < x$ being a remainder when $x$ is divided by $13$, prove that $m$ is less than $r$.\n\nIn natural language:\n\nIf $1342$ can be written as $13q + r$ with $r$ being the remainder when $1342$ is divided by $13$, and $x$ can be written as $13n+m$ with $m$ being the remainder when $x$ is divided by $13$, then $m$ is less than $r$."
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes r n :: int\nassumes h0 : \"13 | 1342\"\nand h1 : \"13 \\<ne> n\"\nand h2 : \"13 | n\"\nand h3 : \"n < r\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r n :: int\nassumes h0 : \"13 | 1342\"\nand h1 : \"13 \\<ne> n\"\nand h2 : \"13 | n\"\nand h3 : \"n < r\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find an integer $n$ that is greater than the given integer $n$, is not equal to $13$, and can be divided by $13$. The final answer is $6710$."
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> n mod 1342 = 0\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> n mod 1342 = 0)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> n mod 1342 = 0\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> n mod 1342 = 0)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number `r` that is equal to the remainder when 1342 is divided by 13, and `r` is greater than 0. There exists a property that for any positive number `n`, if `n` divided by 13 has a remainder less than `r`, then `n` divided by 1342 will have a remainder of 0. We are asked to find the smallest positive number `n` that satisfies the conditions: `n` is greater than 0, `n` divided by 13 has a remainder less than `r`, and `n` divided by 1342 has a remainder of 0. The theorem states that this smallest number `n` is 6710."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<longrightarrow> (n mod 13 < r) = (n mod 13 < r \\<and> 1342 dvd n)\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<longrightarrow> (n mod 13 < r) = (n mod 13 < r \\<and> 1342 dvd n)\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer n such that n is divisible by 1342 and the remainder when n is divided by 13 is less than a certain value r. The value of r is the remainder when 1342 is divided by 13, and it is greater than 0. The final answer is 6710."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number r, which is defined as the remainder of 1342 divided by 13. Additionally, there is a condition that for any positive integer n, if the remainder of n divided by 13 is less than r, then 1342 must be a divisor of n. The theorem then claims that the smallest such n that is greater than 0, has a remainder less than r when divided by 13, and is divisible by 1342, is 6710.\n\nIn natural language, the problem can be stated as follows:\n\nFind the smallest positive integer n such that when n is divided by 13, the remainder is less than the remainder of 1342 divided by 13, and 1342 is a divisor of n. The answer is 6710."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nshows  \"\\<exists>n. n \\<ge> 1 \\<and> n mod 13 < r \\<and> 1342 dvd n \\<and> n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nshows  \"\\<exists>n. n \\<ge> 1 \\<and> n mod 13 < r \\<and> 1342 dvd n \\<and> n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number n that satisfies the following conditions:\n1. n is greater than or equal to 1.\n2. The remainder when n is divided by 13 is less than 1342 mod 13 (which is 1342 divided by 13 and taking the remainder).\n3. 1342 is a divisor of n.\n4. n is equal to 6710."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<longrightarrow> (1342 dvd n \\<and> n mod 13 < r) \\<longrightarrow> n = 6710\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<longrightarrow> (1342 dvd n \\<and> n mod 13 < r) \\<longrightarrow> n = 6710\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number `r` such that `r` is equal to the remainder when 1342 is divided by 13, and `r` is greater than 0. There is a property that for any positive integer `n`, if 1342 divides `n` and the remainder when `n` is divided by 13 is less than `r`, then `n` must be equal to 6710. Show that `n` is indeed equal to 6710."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> n mod 1342 = 0\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> n mod 1342 = 0)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> n mod 1342 = 0\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> n mod 1342 = 0)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer n such that n is greater than 0, the remainder when n is divided by 13 is less than 1342 mod 13, and the remainder when n is divided by 1342 is 0. The final answer is 6710."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number r, where r is equal to the remainder when 1342 is divided by 13. Now, let's say there is a property that for any positive integer n, if the remainder when n is divided by 13 is less than r, then 1342 is a divisor of n. We want to find the smallest positive integer n such that the remainder when n is divided by 13 is less than r. The natural language version of this problem is:\n\nFind the smallest positive integer n such that when n is divided by 13, the remainder is less than the remainder of 1342 divided by 13, and 1342 is a divisor of n. The answer is 6710."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nshows  \"\\<exists>n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n \\<and> n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nshows  \"\\<exists>n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n \\<and> n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a positive integer n such that n is divisible by 1342, n is less than 13 times the remainder of 1342 divided by 13, and n is equal to 6710."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer n such that n is greater than 0 and the remainder when n is divided by 13 is less than the value of r, where r is the remainder when 1342 is divided by 13. Additionally, for any positive integer n with a remainder less than r when divided by 13, 1342 must be a divisor of n. The final answer is 6710."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number r, which is equal to the remainder when 1342 is divided by 13. Now, we have a property that for any positive integer n, if the remainder of n divided by 13 is less than r, then 1342 is a divisor of n. We want to find the smallest positive integer n that satisfies the following conditions: n is greater than 0, the remainder of n divided by 13 is less than r, and 1342 is a divisor of n. The smallest such integer n is 6710."
+    },
+    "prediction_deepseek": {
+        "0": [
+            9,
+            2
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes r :: nat and div :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"div = (\\<lambda> x y. x mod y)\"\nand h2 : \"\\<exists> k. 1342 * k mod 13 < r\"\nshows  \"k = 5\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat and div :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"div = (\\<lambda> x y. x mod y)\"\nand h2 : \"\\<exists> k. 1342 * k mod 13 < r\"\nshows  \"k = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a natural number $k$ such that $1342*k$ leaves a remainder smaller than $1342 \\mod 13$ when divided by $13$. The final answer is $k = 5$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8768972067975194,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> n mod 1342 = 0 \\<longrightarrow> n mod 13 < r\"\nshows  \"6710 mod 1342 = 0 \\<and> 6710 mod 13 < r\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> n mod 1342 = 0 \\<longrightarrow> n mod 13 < r\"\nshows  \"6710 mod 1342 = 0 \\<and> 6710 mod 13 < r\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $r$ be the remainder when 1342 is divided by 13. If $n$ is a positive integer such that 1342 divides $n$ and the remainder when $n$ is divided by 13 is less than $r$, then $n$ must be a multiple of 6710.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9152254477406699,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"n = 1342 * 5\"\nand h2 : \"n mod 13 < r\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes n :: nat and r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"n = 1342 * 5\"\nand h2 : \"n mod 13 < r\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $r$ is the remainder when $1342$ is divided by $13$ and $n$ is $5$ times $1342$, find the value of $n$ such that the remainder when $n$ is divided by $13$ is less than $r$. The final answer is $6710$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8863677965670395,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes r :: int and n :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall>k. k > 0 \\<longrightarrow> k * 1342 mod 13 < r \\<longrightarrow> n = k * 1342\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: int and n :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall>k. k > 0 \\<longrightarrow> k * 1342 mod 13 < r \\<longrightarrow> n = k * 1342\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive multiple of 1342 whose remainder when divided by 13 is less than the remainder when 1342 is divided by 13. The final answer is 6710.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9133565574852776,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes r :: nat and mult :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> (mult = n * 1342) \\<and> (mult mod 13 < r)\"\nshows  \"mult = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat and mult :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> (mult = n * 1342) \\<and> (mult mod 13 < r)\"\nshows  \"mult = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest multiple of 1342 that leaves a smaller remainder than 1342 when divided by 13. The answer is 6710.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9118319877132757,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> k. k > 0 \\<and> 1342 * k mod 13 < r \\<longrightarrow> k \\<ge> 5\"\nshows  \"1342 * 5 mod 13 < r\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> k. k > 0 \\<and> 1342 * k mod 13 < r \\<longrightarrow> k \\<ge> 5\"\nshows  \"1342 * 5 mod 13 < r\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder when 1342 is divided by 13. If the remainder is denoted by $r$, and for any positive integer $k$, if $1342k$ mod $13$ is less than $r$, then $k$ must be greater than or equal to 5. Prove that if $k = 5$, then $1342*5$ mod $13$ is less than $r$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8680658315817189,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes r :: nat and m :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"m = 6710\"\nand h2 : \"m mod 13 < r\"\nand h3 : \"m mod 1342 = 0\"\nshows  \"m = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: nat and m :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"m = 6710\"\nand h2 : \"m mod 13 < r\"\nand h3 : \"m mod 1342 = 0\"\nshows  \"m = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a number $m$ such that $m = 6710$, $m$ is a multiple of $1342$, and the remainder of $m$ divided by $13$ is less than the remainder of $1342$ divided by $13$. The final answer is $6710$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.894356598091068,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes r :: int and x :: int\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"x > 0\"\nand h2 : \"x mod 1342 = 0\"\nand h3 : \"x mod 13 < r\"\nshows  \"x \\<ge> 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: int and x :: int\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"x > 0\"\nand h2 : \"x mod 1342 = 0\"\nand h3 : \"x mod 13 < r\"\nshows  \"x \\<ge> 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $r$ is the remainder when 1342 is divided by 13, find the smallest positive integer $x$ such that $x$ is divisible by 1342 and the remainder when $x$ is divided by 13 is less than $r$. The final answer is $x \\geq 6710$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9220252226673784,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes r :: int and n :: int\nassumes h0 : \"1342 mod 13 = r\"\nand h1 : \"\\<forall> n. n mod 13 < r \\<and> n mod 1342 = 0 \\<longrightarrow> n \\<ge> 6710\"\nshows  \"6710 mod 13 < r \\<and> 6710 mod 1342 = 0\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: int and n :: int\nassumes h0 : \"1342 mod 13 = r\"\nand h1 : \"\\<forall> n. n mod 13 < r \\<and> n mod 1342 = 0 \\<longrightarrow> n \\<ge> 6710\"\nshows  \"6710 mod 13 < r \\<and> 6710 mod 1342 = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder, $r$, when 1342 is divided by 13. Now, consider all integers $n$ that are divisible by 1342 and leave a smaller remainder when divided by 13 than $r$. The smallest such $n$ is at least 6710. Confirm that 6710 leaves a smaller remainder than $r$ when divided by 13 and is divisible by 1342.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.916158029483302,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes r :: int\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall>n. n > 0 \\<and> n mod 1342 = 0 \\<longrightarrow> n mod 13 < r\"\nshows  \"\\<exists>n. n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\ntheorem\nfixes r :: int\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall>n. n > 0 \\<and> n mod 1342 = 0 \\<longrightarrow> n mod 13 < r\"\nshows  \"\\<exists>n. n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $n$ is divisible by 1342 and the remainder when $n$ is divided by 13 is less than the remainder when 1342 is divided by 13. The final answer is 6710.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9079892467391953,
+        "symbolic_score": 0.1
+    },
+    "equivalence_oracle_solve_direct": [],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> n mod 1342 = 0\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> n mod 1342 = 0)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> n mod 1342 = 0\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> n mod 1342 = 0)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number `r` that is equal to the remainder when 1342 is divided by 13, and `r` is greater than 0. There exists a property that for any positive number `n`, if `n` divided by 13 has a remainder less than `r`, then `n` divided by 1342 will have a remainder of 0. We are asked to find the smallest positive number `n` that satisfies the conditions: `n` is greater than 0, `n` divided by 13 has a remainder less than `r`, and `n` divided by 1342 has a remainder of 0. The theorem states that this smallest number `n` is 6710.",
+        "semantic_score": 0.8460540006647561,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<longrightarrow> (n mod 13 < r) = (n mod 13 < r \\<and> 1342 dvd n)\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<longrightarrow> (n mod 13 < r) = (n mod 13 < r \\<and> 1342 dvd n)\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer n such that n is divisible by 1342 and the remainder when n is divided by 13 is less than a certain value r. The value of r is the remainder when 1342 is divided by 13, and it is greater than 0. The final answer is 6710.",
+        "semantic_score": 0.9039968503670767,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number r, which is defined as the remainder of 1342 divided by 13. Additionally, there is a condition that for any positive integer n, if the remainder of n divided by 13 is less than r, then 1342 must be a divisor of n. The theorem then claims that the smallest such n that is greater than 0, has a remainder less than r when divided by 13, and is divisible by 1342, is 6710.\n\nIn natural language, the problem can be stated as follows:\n\nFind the smallest positive integer n such that when n is divided by 13, the remainder is less than the remainder of 1342 divided by 13, and 1342 is a divisor of n. The answer is 6710.",
+        "semantic_score": 0.8364350196263363,
+        "symbolic_score": 0.2
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nshows  \"\\<exists>n. n \\<ge> 1 \\<and> n mod 13 < r \\<and> 1342 dvd n \\<and> n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nshows  \"\\<exists>n. n \\<ge> 1 \\<and> n mod 13 < r \\<and> 1342 dvd n \\<and> n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number n that satisfies the following conditions:\n1. n is greater than or equal to 1.\n2. The remainder when n is divided by 13 is less than 1342 mod 13 (which is 1342 divided by 13 and taking the remainder).\n3. 1342 is a divisor of n.\n4. n is equal to 6710.",
+        "semantic_score": 0.8702061442613236,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<longrightarrow> (1342 dvd n \\<and> n mod 13 < r) \\<longrightarrow> n = 6710\"\nshows  \"n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<longrightarrow> (1342 dvd n \\<and> n mod 13 < r) \\<longrightarrow> n = 6710\"\nshows  \"n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number `r` such that `r` is equal to the remainder when 1342 is divided by 13, and `r` is greater than 0. There is a property that for any positive integer `n`, if 1342 divides `n` and the remainder when `n` is divided by 13 is less than `r`, then `n` must be equal to 6710. Show that `n` is indeed equal to 6710.",
+        "semantic_score": 0.902332777463111,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> n mod 1342 = 0\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> n mod 1342 = 0)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> n mod 1342 = 0\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> n mod 1342 = 0)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer n such that n is greater than 0, the remainder when n is divided by 13 is less than 1342 mod 13, and the remainder when n is divided by 1342 is 0. The final answer is 6710.",
+        "semantic_score": 0.8941565585336825,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number r, where r is equal to the remainder when 1342 is divided by 13. Now, let's say there is a property that for any positive integer n, if the remainder when n is divided by 13 is less than r, then 1342 is a divisor of n. We want to find the smallest positive integer n such that the remainder when n is divided by 13 is less than r. The natural language version of this problem is:\n\nFind the smallest positive integer n such that when n is divided by 13, the remainder is less than the remainder of 1342 divided by 13, and 1342 is a divisor of n. The answer is 6710.",
+        "semantic_score": 0.8864764582199922,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nshows  \"\\<exists>n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n \\<and> n = 6710\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nshows  \"\\<exists>n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n \\<and> n = 6710\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a positive integer n such that n is divisible by 1342, n is less than 13 times the remainder of 1342 divided by 13, and n is equal to 6710.",
+        "semantic_score": 0.899868812103958,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"r > 0\"\nand h2 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer n such that n is greater than 0 and the remainder when n is divided by 13 is less than the value of r, where r is the remainder when 1342 is divided by 13. Additionally, for any positive integer n with a remainder less than r when divided by 13, 1342 must be a divisor of n. The final answer is 6710.",
+        "semantic_score": 0.9151827295847916,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n)\"",
+        "formal solution": "(* ### Problem\n Let $r$ be the remainder when $1342$ is divided by $13$.\n\nDetermine the smallest positive integer that has these two properties:\n\n$\\bullet~$ It is a multiple of $1342$.\n\n$\\bullet~$ Its remainder upon being divided by $13$ is smaller than $r$. Show that it is 6710.\n ### Proof\n Note that \\begin{align*}\n1342 &= 1300+39+3 \\\\\n&= 13(100+3)+3,\n\\end{align*}so $r=3$.\n\nWe are seeking the smallest multiple of $1342$ that is congruent to $0$, $1$, or $2$ modulo $13$.\n\nWe have $1342n \\equiv 3n\\pmod{13}$, so the remainders of the first four multiples of $1342$ are $3,6,9,12$. The next number in this sequence is $15$, but $15$ reduces to $2$ modulo $13$. That is: $$5\\cdot 1342 \\equiv 5\\cdot 3 \\equiv 2\\pmod{13}.$$Therefore, the number we are looking for is $5\\cdot 1342 = 6710$.\n *)\n\n theorem\nfixes r :: nat\nassumes h0 : \"r = 1342 mod 13\"\nand h1 : \"\\<forall> n. n > 0 \\<and> n mod 13 < r \\<longrightarrow> 1342 dvd n\"\nshows  \"6710 = (LEAST n. n > 0 \\<and> n mod 13 < r \\<and> 1342 dvd n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number r, which is equal to the remainder when 1342 is divided by 13. Now, we have a property that for any positive integer n, if the remainder of n divided by 13 is less than r, then 1342 is a divisor of n. We want to find the smallest positive integer n that satisfies the following conditions: n is greater than 0, the remainder of n divided by 13 is less than r, and 1342 is a divisor of n. The smallest such integer n is 6710.",
+        "semantic_score": 0.9078109261127132,
+        "symbolic_score": 0.2
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            9,
+            2
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": []
+}

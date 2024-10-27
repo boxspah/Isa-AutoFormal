@@ -1,0 +1,60 @@
+{
+    "natural problem": "How many numbers are in the list $$ 1.5, 5.5, 9.5, 13.5, \\ldots, 41.5, 45.5? $$",
+    "natural solution": [
+        "We can add $0.5$ to each member of the list, to make it easier to deal with: $$ 2, 6, 10, 14, \\ldots, 42, 46. $$ If we add 2 to each of the terms, we get: $$ 4, 8, 12, 16, \\ldots, 44, 48. $$ Now if we divide by 4, we get $$",
+        "1, 2, 3, 4, \\ldots, 11, 12, $$ so there are $\\boxed{12}$ numbers in the list."
+    ],
+    "natural answer": "12",
+    "a_0": {
+        "formal problem": "theorem\nfixes a :: real and n :: nat\nassumes h0 : \"a = 1.5\"\nand h1 : \"arith_series a 4 n = 45.5\"\nshows  \"n = 12\"",
+        "formal solution": "(* ### Problem\n How many numbers are in the list $$ 1.5, 5.5, 9.5, 13.5, \\ldots, 41.5, 45.5? $$ The final Answer is 12\n ### Proof\n We can add $0.5$ to each member of the list, to make it easier to deal with: $$ 2, 6, 10, 14, \\ldots, 42, 46. $$ If we add 2 to each of the terms, we get: $$ 4, 8, 12, 16, \\ldots, 44, 48. $$ Now if we divide by 4, we get $$\n 1, 2, 3, 4, \\ldots, 11, 12, $$ so there are $\\boxed{12}$ numbers in the list.\n *)\n\ntheorem\nfixes a :: real and n :: nat\nassumes h0 : \"a = 1.5\"\nand h1 : \"arith_series a 4 n = 45.5\"\nshows  \"n = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the first term of an arithmetic series is 1.5 and the sum of the first 'n' terms of this series is 45.5, find the value of 'n'. The final answer is 12."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a d :: real\nand n :: nat\nassumes h0 : \"a = 1.5\"\nand h1 : \"d = 4\"\nand h2 : \"n = 12\"\nand h3 : \"\\<forall> i < n. a + i * d \\<le> 45.5\"\nand h4 : \"a + n * d > 45.5\"\nshows  \"card {i. i < n \\<and> a + i * d \\<le> 45.5} = 12\"",
+        "formal solution": "(* ### Problem\n How many numbers are in the list $$ 1.5, 5.5, 9.5, 13.5, \\ldots, 41.5, 45.5? $$ The final Answer is 12\n ### Proof\n We can add $0.5$ to each member of the list, to make it easier to deal with: $$ 2, 6, 10, 14, \\ldots, 42, 46. $$ If we add 2 to each of the terms, we get: $$ 4, 8, 12, 16, \\ldots, 44, 48. $$ Now if we divide by 4, we get $$\n 1, 2, 3, 4, \\ldots, 11, 12, $$ so there are $\\boxed{12}$ numbers in the list.\n *)\n\ntheorem\nfixes a d :: real\nand n :: nat\nassumes h0 : \"a = 1.5\"\nand h1 : \"d = 4\"\nand h2 : \"n = 12\"\nand h3 : \"\\<forall> i < n. a + i * d \\<le> 45.5\"\nand h4 : \"a + n * d > 45.5\"\nshows  \"card {i. i < n \\<and> a + i * d \\<le> 45.5} = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In an arithmetic sequence with first term 1.5 and common difference 4, find how many terms are less than or equal to 45.5. The final answer is 12."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 12\"\nand h1 : \"\\<forall>i<n. 4 * i + 1.5 = 45.5\"\nshows  \"n = card {1.5, 5.5, 9.5, 13.5, ..., 41.5, 45.5}\"",
+        "formal solution": "(* ### Problem\n How many numbers are in the list $$ 1.5, 5.5, 9.5, 13.5, \\ldots, 41.5, 45.5? $$ The final Answer is 12\n ### Proof\n We can add $0.5$ to each member of the list, to make it easier to deal with: $$ 2, 6, 10, 14, \\ldots, 42, 46. $$ If we add 2 to each of the terms, we get: $$ 4, 8, 12, 16, \\ldots, 44, 48. $$ Now if we divide by 4, we get $$\n 1, 2, 3, 4, \\ldots, 11, 12, $$ so there are $\\boxed{12}$ numbers in the list.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 12\"\nand h1 : \"\\<forall>i<n. 4 * i + 1.5 = 45.5\"\nshows  \"n = card {1.5, 5.5, 9.5, 13.5, ..., 41.5, 45.5}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Given a sequence where each term $i$ for $i < n$ is calculated using the formula $4i + 1.5$ and ends with $45.5$, find the number $n$ of terms in the sequence. The final answer is $n = 12$.\""
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 1.5\"\nand h1 : \"\\<forall>n. a (Suc n) = a n + 4\"\nand h2 : \"a n = 45.5\"\nshows  \"n = 11\"",
+        "formal solution": "(* ### Problem\n How many numbers are in the list $$ 1.5, 5.5, 9.5, 13.5, \\ldots, 41.5, 45.5? $$ The final Answer is 12\n ### Proof\n We can add $0.5$ to each member of the list, to make it easier to deal with: $$ 2, 6, 10, 14, \\ldots, 42, 46. $$ If we add 2 to each of the terms, we get: $$ 4, 8, 12, 16, \\ldots, 44, 48. $$ Now if we divide by 4, we get $$\n 1, 2, 3, 4, \\ldots, 11, 12, $$ so there are $\\boxed{12}$ numbers in the list.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 0 = 1.5\"\nand h1 : \"\\<forall>n. a (Suc n) = a n + 4\"\nand h2 : \"a n = 45.5\"\nshows  \"n = 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence where the first term $a(0)$ is 1.5 and each subsequent term is 4 more than the previous term. If the nth term of this sequence is 45.5, find the value of n. The final answer is 11."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. a n = 1.5 + real n * 4\"\nshows  \"card {n. \\<exists> k \\<le> 12. a k = n} = 12\"",
+        "formal solution": "(* ### Problem\n How many numbers are in the list $$ 1.5, 5.5, 9.5, 13.5, \\ldots, 41.5, 45.5? $$ The final Answer is 12\n ### Proof\n We can add $0.5$ to each member of the list, to make it easier to deal with: $$ 2, 6, 10, 14, \\ldots, 42, 46. $$ If we add 2 to each of the terms, we get: $$ 4, 8, 12, 16, \\ldots, 44, 48. $$ Now if we divide by 4, we get $$\n 1, 2, 3, 4, \\ldots, 11, 12, $$ so there are $\\boxed{12}$ numbers in the list.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. a n = 1.5 + real n * 4\"\nshows  \"card {n. \\<exists> k \\<le> 12. a k = n} = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Determine the number of unique values for the function $a(n) = 1.5 + 4n$ for $n$ in the set of natural numbers less than or equal to 12. The final answer is 12."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes a d :: real and n :: nat\nassumes h0 : \"a = 1.5\"\nand h1 : \"d = 4\"\nand h2 : \"\\<forall>n. \\<exists>An. An = a + (n-1) * d \\<and> An \\<le> 45.5\"\nshows  \"n = 12\"",
+        "formal solution": "(* ### Problem\n How many numbers are in the list $$ 1.5, 5.5, 9.5, 13.5, \\ldots, 41.5, 45.5? $$ The final Answer is 12\n ### Proof\n We can add $0.5$ to each member of the list, to make it easier to deal with: $$ 2, 6, 10, 14, \\ldots, 42, 46. $$ If we add 2 to each of the terms, we get: $$ 4, 8, 12, 16, \\ldots, 44, 48. $$ Now if we divide by 4, we get $$\n 1, 2, 3, 4, \\ldots, 11, 12, $$ so there are $\\boxed{12}$ numbers in the list.\n *)\n\ntheorem\nfixes a d :: real and n :: nat\nassumes h0 : \"a = 1.5\"\nand h1 : \"d = 4\"\nand h2 : \"\\<forall>n. \\<exists>An. An = a + (n-1) * d \\<and> An \\<le> 45.5\"\nshows  \"n = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The initial term of an arithmetic progression is 1.5 and the common difference is 4. What is the largest number of terms this sequence can have, such that no term exceeds 45.5? The final answer is 12."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a :: real and n :: nat\nassumes h0 : \"a = 1.5 + 4 * real(n - 1)\"\nand h1 : \"a \\<le> 45.5\"\nshows  \"n = 12\"",
+        "formal solution": "(* ### Problem\n How many numbers are in the list $$ 1.5, 5.5, 9.5, 13.5, \\ldots, 41.5, 45.5? $$ The final Answer is 12\n ### Proof\n We can add $0.5$ to each member of the list, to make it easier to deal with: $$ 2, 6, 10, 14, \\ldots, 42, 46. $$ If we add 2 to each of the terms, we get: $$ 4, 8, 12, 16, \\ldots, 44, 48. $$ Now if we divide by 4, we get $$\n 1, 2, 3, 4, \\ldots, 11, 12, $$ so there are $\\boxed{12}$ numbers in the list.\n *)\n\ntheorem\nfixes a :: real and n :: nat\nassumes h0 : \"a = 1.5 + 4 * real(n - 1)\"\nand h1 : \"a \\<le> 45.5\"\nshows  \"n = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a = 1.5 + 4 * (n - 1)$ and that $a \\leq 45.5$, find the value of $n$. The final answer is $12$."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a n :: real\nassumes h0 : \"a = 1.5\"\nand h1 : \"\\<forall> n. a + 4 * n = 45.5\"\nshows  \"n = 11\"",
+        "formal solution": "(* ### Problem\n How many numbers are in the list $$ 1.5, 5.5, 9.5, 13.5, \\ldots, 41.5, 45.5? $$ The final Answer is 12\n ### Proof\n We can add $0.5$ to each member of the list, to make it easier to deal with: $$ 2, 6, 10, 14, \\ldots, 42, 46. $$ If we add 2 to each of the terms, we get: $$ 4, 8, 12, 16, \\ldots, 44, 48. $$ Now if we divide by 4, we get $$\n 1, 2, 3, 4, \\ldots, 11, 12, $$ so there are $\\boxed{12}$ numbers in the list.\n *)\n\ntheorem\nfixes a n :: real\nassumes h0 : \"a = 1.5\"\nand h1 : \"\\<forall> n. a + 4 * n = 45.5\"\nshows  \"n = 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a = 1.5$, find the value of $n$ such that the equation $a + 4n = 45.5$ holds. The final answer is $n = 11$."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a d :: real\nassumes h0 : \"a = 1.5\"\nand h1 : \"d = 4\"\nand h2 : \"n = (45.5 - a) / d + 1\"\nshows  \"n = 12\"",
+        "formal solution": "(* ### Problem\n How many numbers are in the list $$ 1.5, 5.5, 9.5, 13.5, \\ldots, 41.5, 45.5? $$ The final Answer is 12\n ### Proof\n We can add $0.5$ to each member of the list, to make it easier to deal with: $$ 2, 6, 10, 14, \\ldots, 42, 46. $$ If we add 2 to each of the terms, we get: $$ 4, 8, 12, 16, \\ldots, 44, 48. $$ Now if we divide by 4, we get $$\n 1, 2, 3, 4, \\ldots, 11, 12, $$ so there are $\\boxed{12}$ numbers in the list.\n *)\n\ntheorem\nfixes a d :: real\nassumes h0 : \"a = 1.5\"\nand h1 : \"d = 4\"\nand h2 : \"n = (45.5 - a) / d + 1\"\nshows  \"n = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a = 1.5$ and $d = 4$, find the value of $n$ if $n = \\frac{45.5 - a}{d} + 1$. The final answer is $12$."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a :: real and N :: \"real \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. a n = 1.5 + 4 * (n - 1)\"\nand h1 : \"\\<forall>n. 1 \\<le> n \\<and> n \\<le> 12 \\<longrightarrow> 1.5 \\<le> a n \\<and> a n \\<le> 45.5\"\nshows  \"N a = 12\"",
+        "formal solution": "(* ### Problem\n How many numbers are in the list $$ 1.5, 5.5, 9.5, 13.5, \\ldots, 41.5, 45.5? $$ The final Answer is 12\n ### Proof\n We can add $0.5$ to each member of the list, to make it easier to deal with: $$ 2, 6, 10, 14, \\ldots, 42, 46. $$ If we add 2 to each of the terms, we get: $$ 4, 8, 12, 16, \\ldots, 44, 48. $$ Now if we divide by 4, we get $$\n 1, 2, 3, 4, \\ldots, 11, 12, $$ so there are $\\boxed{12}$ numbers in the list.\n *)\n\ntheorem\nfixes a :: real and N :: \"real \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. a n = 1.5 + 4 * (n - 1)\"\nand h1 : \"\\<forall>n. 1 \\<le> n \\<and> n \\<le> 12 \\<longrightarrow> 1.5 \\<le> a n \\<and> a n \\<le> 45.5\"\nshows  \"N a = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $a$ is defined by $a(n) = 1.5 + 4 * (n - 1)$. If $1.5 \\leq a(n) \\leq 45.5$ for all integers $n$ between 1 and 12, inclusive, what is the length of sequence $a$? The final answer is 12."
+    },
+    "level": "Level 2",
+    "type": "Prealgebra"
+}

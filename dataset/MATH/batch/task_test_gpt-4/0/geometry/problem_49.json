@@ -1,0 +1,612 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a = 6\"\nand h1 : \"b = 8\"\nand h2 : \"c = 6\"\nshows  \"6 + sqrt (8 powr 2 - 6 powr 2) + sqrt (6 powr 2 - 6 powr 2) + 8 + 6 = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a = 6\"\nand h1 : \"b = 8\"\nand h2 : \"c = 6\"\nshows  \"6 + sqrt (8 powr 2 - 6 powr 2) + sqrt (6 powr 2 - 6 powr 2) + 8 + 6 = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a = 6$, $b = 8$, and $c = 6$, prove that the expression $6 + \\sqrt{8^2 - 6^2} + \\sqrt{6^2 - 6^2} + 8 + 6$ equals $24 + 6\\sqrt{2}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.23996396362781525,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"b = 8\"\nand h1 : \"c = 6\"\nand h2 : \"a = sqrt ((b powr 2) + (c powr 2))\"\nshows  \"a + b + c = 24 + 6 * sqrt(2)\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"b = 8\"\nand h1 : \"c = 6\"\nand h2 : \"a = sqrt ((b powr 2) + (c powr 2))\"\nshows  \"a + b + c = 24 + 6 * sqrt(2)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $b = 8$ and $c = 6$, find the value of $a$ where $a = \\sqrt{b^2 + c^2}$. Then find the sum of $a$, $b$ and $c$. The final answer is $24 + 6 \\sqrt{2}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9260696172714233,
+        "symbolic_score": 0.2
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes AK BK CK :: real\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nshows  \"2 * (BK + CK) + AK = 24 + 6 * sqrt(2)\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes AK BK CK :: real\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nshows  \"2 * (BK + CK) + AK = 24 + 6 * sqrt(2)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the lengths of segments AK, BK, and CK are 6, 8, and 6 units, respectively, verify that twice the sum of the lengths of BK and CK, plus the length of AK equals to 24 plus 6 times the square root of 2.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.575257420539856,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nand a :: \"real^1\"\nand b :: \"real^1\"\nand c :: \"real^1\"\nand d :: \"real^1\"\nassumes h0 : \"A - K = 6 *\\<^sub>R (1, 0)\"\nand h1 : \"B - K = 8 *\\<^sub>R (1 / sqrt 2, 1 / sqrt 2)\"\nand h2 : \"C - K = 6 *\\<^sub>R (-1 / sqrt 2, 1 / sqrt 2)\"\nand h3 : \"a = dist A B\"\nand h4 : \"b = dist B C\"\nand h5 : \"c = dist C A\"\nand h6 : \"d = a + b + c\"\nshows  \"d = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nand a :: \"real^1\"\nand b :: \"real^1\"\nand c :: \"real^1\"\nand d :: \"real^1\"\nassumes h0 : \"A - K = 6 *\\<^sub>R (1, 0)\"\nand h1 : \"B - K = 8 *\\<^sub>R (1 / sqrt 2, 1 / sqrt 2)\"\nand h2 : \"C - K = 6 *\\<^sub>R (-1 / sqrt 2, 1 / sqrt 2)\"\nand h3 : \"a = dist A B\"\nand h4 : \"b = dist B C\"\nand h5 : \"c = dist C A\"\nand h6 : \"d = a + b + c\"\nshows  \"d = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three points A, B, and C in a 2D space, where A, B, and C are located relative to a point K as follows: A is 6 units to the right of K, B is 8 units away from K at a 45-degree angle to the right, and C is 6 units away from K at a 45-degree angle to the left. If a is the distance from A to B, b is the distance from B to C, and c is the distance from C to A, and d is the sum of a, b, and c. What is the value of d? The final answer is $24 + 6 * \\sqrt{2}$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9259012341499329,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nand AK :: real and BK :: real and CK :: real\nassumes h0 : \"AK = norm (A - K)\"\nand h1 : \"BK = norm (B - K)\"\nand h2 : \"CK = norm (C - K)\"\nand h3 : \"AK = 6\"\nand h4 : \"BK = 8\"\nand h5 : \"CK = 6\"\nand h6 : \"AK \\<cdot> (B - C) = 0\"\nshows  \"norm (A - B) + norm (B - C) + norm (C - A) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nand AK :: real and BK :: real and CK :: real\nassumes h0 : \"AK = norm (A - K)\"\nand h1 : \"BK = norm (B - K)\"\nand h2 : \"CK = norm (C - K)\"\nand h3 : \"AK = 6\"\nand h4 : \"BK = 8\"\nand h5 : \"CK = 6\"\nand h6 : \"AK \\<cdot> (B - C) = 0\"\nshows  \"norm (A - B) + norm (B - C) + norm (C - A) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a plane, let $A, B, C$ and $K$ be points with $AK = 6$, $BK = 8$, and $CK = 6$. If $AK$ is perpendicular to $BC$, find the perimeter of triangle $ABC$. The final answer is $24 + 6\\sqrt{2}$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9262964129447937,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes A B C K :: real\nassumes h0 : \"A = 6\"\nand h1 : \"B = 8\"\nand h2 : \"C = 6\"\nand h3 : \"K = sqrt (A^2 + B^2)\"\nshows  \"A + B + K = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: real\nassumes h0 : \"A = 6\"\nand h1 : \"B = 8\"\nand h2 : \"C = 6\"\nand h3 : \"K = sqrt (A^2 + B^2)\"\nshows  \"A + B + K = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that A equals 6, B equals 8, and C equals 6, and K is the square root of the sum of the squares of A and B. What is the sum of A, B, and K? The answer is 24 plus 6 times the square root of 2.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6947910189628601,
+        "symbolic_score": 0.2
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes AK BK CK :: real\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nand h3 : \"\\<forall> AB AC BC. AB powr 2 + AC powr 2 = BC powr 2\"\nshows  \"2 * BK + 2 * AK = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes AK BK CK :: real\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nand h3 : \"\\<forall> AB AC BC. AB powr 2 + AC powr 2 = BC powr 2\"\nshows  \"2 * BK + 2 * AK = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that AK is 6, BK is 8, and CK is 6, and knowing that the square of AB plus the square of AC equals the square of BC, show that 2 times BK plus 2 times AK equals 24 plus 6 times the square root of 2.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.34907829761505127,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes A :: \"real^2\" and B :: \"real^2\" and C :: \"real^2\" and K :: \"real^2\" and P :: \"real\"\nassumes h0 : \"K \\<in> closed_segment B C\"\nand h1 : \"norm (A - K) = 6\"\nand h2 : \"norm (B - K) = 8\"\nand h3 : \"norm (C - K) = 6\"\nand h4 : \"P = norm (A - B) + norm (B - C) + norm (C - A)\"\nshows  \"P = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A :: \"real^2\" and B :: \"real^2\" and C :: \"real^2\" and K :: \"real^2\" and P :: \"real\"\nassumes h0 : \"K \\<in> closed_segment B C\"\nand h1 : \"norm (A - K) = 6\"\nand h2 : \"norm (B - K) = 8\"\nand h3 : \"norm (C - K) = 6\"\nand h4 : \"P = norm (A - B) + norm (B - C) + norm (C - A)\"\nshows  \"P = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given points A, B, C, and K in a two-dimensional space, with K located on the line segment between B and C. The distance from A to K is 6 units, from B to K is 8 units, and from C to K is 6 units. Find the sum of the distances between A and B, B and C, and C and A. The final answer is $24 + 6\\sqrt{2}$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.735051691532135,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nand perimeter :: \"real^2 \\<Rightarrow> real^2 \\<Rightarrow> real^2 \\<Rightarrow> real\"\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nand h3 : \"perimeter A B C = dist A B + dist B C + dist C A\"\nand h4 : \"\\<forall> A B C. dist A B = sqrt ((B$1 - A$1)\\<^sup>2 + (B$2 - A$2)\\<^sup>2)\"\nshows  \"perimeter A B C = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nand perimeter :: \"real^2 \\<Rightarrow> real^2 \\<Rightarrow> real^2 \\<Rightarrow> real\"\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nand h3 : \"perimeter A B C = dist A B + dist B C + dist C A\"\nand h4 : \"\\<forall> A B C. dist A B = sqrt ((B$1 - A$1)\\<^sup>2 + (B$2 - A$2)\\<^sup>2)\"\nshows  \"perimeter A B C = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a triangle ABC, the distance from point A to point K is 6 units, the distance from point B to point K is 8 units, and the distance from point C to point K is 6 units. If the perimeter of the triangle ABC is the sum of the distances between points A and B, B and C, and C and A, where the distance between any two points is calculated by the formula $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$. What is the perimeter of triangle ABC? The final answer is $24 + 6 \\sqrt{2}$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9802845120429993,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes AK BK CK :: real\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nshows  \"AK + BK + CK = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes AK BK CK :: real\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nshows  \"AK + BK + CK = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that AK = 6, BK = 8 and CK = 6, what is the sum of AK, BK and CK? The final answer is $24 + 6\\sqrt{2}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8550540208816528,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "24 + 6\\sqrt{2}",
+    "natural problem": "We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle?",
+    "natural solution": [
+        "Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);",
+        "label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$"
+    ],
+    "oracle": "TODO",
+    "prediction": {
+        "0": [
+            1,
+            5
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "str_pred": "[[1, 5], [0], [2], [3], [4], [6], [7], [8], [9]]",
+    "level": "Level 3",
+    "type": "Geometry",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K \\<^sup>2 + B K \\<^sup>2 = B C \\<^sup>2\"\nand h1 : \"A K = 6\"\nand h2 : \"B K = 8\"\nand h3 : \"C K = 6\"\nshows \"B C + A B + A C = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K \\<^sup>2 + B K \\<^sup>2 = B C \\<^sup>2\"\nand h1 : \"A K = 6\"\nand h2 : \"B K = 8\"\nand h3 : \"C K = 6\"\nshows \"B C + A B + A C = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a set of functions A, B, C, and K, where K is a real-valued function, we are given the following information:\n\n1. The sum of the squares of A(K) and B(K) is equal to the square of B(C).\n2. A(K) is equal to 6.\n3. B(K) is equal to 8.\n4. C(K) is equal to 6.\n\nWe are asked to find the value of the expression B(C) + A(B) + A(C). According to the theorem, this value is equal to 24 + 6 * sqrt(2).",
+        "syntax": 0,
+        "semantic_score": 0.9063227830486279,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes A B C K :: point\nassumes h0 : \"bet A B C \\<and> bet B K C\"\nand h1 : \"perpendicular A K B C\"\nand h2 : \"dist A K = 6\"\nand h3 : \"dist B K = 8\"\nand h4 : \"dist C K = 6\"\nshows \"perimeter (triangle A B C) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: point\nassumes h0 : \"bet A B C \\<and> bet B K C\"\nand h1 : \"perpendicular A K B C\"\nand h2 : \"dist A K = 6\"\nand h3 : \"dist B K = 8\"\nand h4 : \"dist C K = 6\"\nshows \"perimeter (triangle A B C) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with points A, B, and C, and another point K such that A, B, and C are collinear and B is between A and C, and K is also between B and C. The line AK is perpendicular to the line BC. The distances AK, BK, and CK are given as 6, 8, and 6 units respectively. Calculate the perimeter of triangle ABC. The answer is 24 + 6 * sqrt(2) units.",
+        "syntax": 0,
+        "semantic_score": 0.7063304088181125,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"dist A K = 6\"\nand h4 : \"dist B K = 8\"\nand h5 : \"dist C K = 6\"\nand h6 : \"A \\<bullet> K = 0\"\nand h7 : \"B \\<bullet> K = 0\"\nand h8 : \"C \\<bullet> K = 0\"\nshows \"dist A B + dist A C + dist B C = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"dist A K = 6\"\nand h4 : \"dist B K = 8\"\nand h5 : \"dist C K = 6\"\nand h6 : \"A \\<bullet> K = 0\"\nand h7 : \"B \\<bullet> K = 0\"\nand h8 : \"C \\<bullet> K = 0\"\nshows \"dist A B + dist A C + dist B C = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three distinct points A, B, and C in a 2-dimensional space, and another point K such that:\n\n1. A is not equal to K, B is not equal to K, and C is not equal to K.\n2. The distance between A and K is 6 units, the distance between B and K is 8 units, and the distance between C and K is 6 units.\n3. The dot product of A and K, B and K, and C and K are all equal to 0.\n\nFind the sum of the distances between A and B, A and C, and B and C. The result is equal to 24 plus 6 times the square root of 2.",
+        "syntax": 0,
+        "semantic_score": 0.518944704412261,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"A \\<noteq> B\"\nand h4 : \"A \\<noteq> C\"\nand h5 : \"B \\<noteq> C\"\nand h6 : \"norm(A - K) = 6\"\nand h7 : \"norm(B - K) = 8\"\nand h8 : \"norm(C - K) = 6\"\nand h9 : \"norm(A - B) powr 2 = norm(A - K) powr 2 + norm(B - K) powr 2\"\nand h10 : \"norm(A - C) powr 2 = norm(A - K) powr 2 + norm(C - K) powr 2\"\nshows \"norm(A - B) + norm(B - C) + norm(C - A) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"A \\<noteq> B\"\nand h4 : \"A \\<noteq> C\"\nand h5 : \"B \\<noteq> C\"\nand h6 : \"norm(A - K) = 6\"\nand h7 : \"norm(B - K) = 8\"\nand h8 : \"norm(C - K) = 6\"\nand h9 : \"norm(A - B) powr 2 = norm(A - K) powr 2 + norm(B - K) powr 2\"\nand h10 : \"norm(A - C) powr 2 = norm(A - K) powr 2 + norm(C - K) powr 2\"\nshows \"norm(A - B) + norm(B - C) + norm(C - A) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three distinct points A, B, and C in a two-dimensional space, and a fourth point K such that:\n\n1. A, B, and C are all different from K.\n2. A, B, and C are all different from each other.\n3. The distance from A to K is 6 units.\n4. The distance from B to K is 8 units.\n5. The distance from C to K is 6 units.\n6. The square of the distance from A to B is equal to the sum of the squares of the distances from A to K and from B to K.\n7. The square of the distance from A to C is equal to the sum of the squares of the distances from A to K and from C to K.\n\nProve that the sum of the distances from A to B, from B to C, and from C to A is equal to 24 plus 6 times the square root of 2.",
+        "syntax": 0,
+        "semantic_score": 0.5877820867822551,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K powr 2 = 36\"\nand h1 : \"B K powr 2 = 64\"\nand h2 : \"C K powr 2 = 36\"\nand h3 : \"A K \\<noteq> 0\"\nand h4 : \"B K \\<noteq> 0\"\nand h5 : \"C K \\<noteq> 0\"\nand h6 : \"A K \\<noteq> B K\"\nand h7 : \"A K \\<noteq> C K\"\nand h8 : \"B K \\<noteq> C K\"\nand h9 : \"A K \\<noteq> 0\"\nand h10 : \"B K \\<noteq> 0\"\nand h11 : \"C K \\<noteq> 0\"\nand h12 : \"A K \\<noteq> B K\"\nand h13 : \"A K \\<noteq> C K\"\nand h14 : \"B K \\<noteq> C K\"\nand h15 : \"A K \\<noteq> 0\"\nand h16 : \"B K \\<noteq> 0\"\nand h17 : \"C K \\<noteq> 0\"\nand h18 : \"A K \\<noteq> B K\"\nand h19 : \"A K \\<noteq> C K\"\nand h20 : \"B K \\<noteq> C K\"\nshows \"A B + B C + C A = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K powr 2 = 36\"\nand h1 : \"B K powr 2 = 64\"\nand h2 : \"C K powr 2 = 36\"\nand h3 : \"A K \\<noteq> 0\"\nand h4 : \"B K \\<noteq> 0\"\nand h5 : \"C K \\<noteq> 0\"\nand h6 : \"A K \\<noteq> B K\"\nand h7 : \"A K \\<noteq> C K\"\nand h8 : \"B K \\<noteq> C K\"\nand h9 : \"A K \\<noteq> 0\"\nand h10 : \"B K \\<noteq> 0\"\nand h11 : \"C K \\<noteq> 0\"\nand h12 : \"A K \\<noteq> B K\"\nand h13 : \"A K \\<noteq> C K\"\nand h14 : \"B K \\<noteq> C K\"\nand h15 : \"A K \\<noteq> 0\"\nand h16 : \"B K \\<noteq> 0\"\nand h17 : \"C K \\<noteq> 0\"\nand h18 : \"A K \\<noteq> B K\"\nand h19 : \"A K \\<noteq> C K\"\nand h20 : \"B K \\<noteq> C K\"\nshows \"A B + B C + C A = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three functions A, B, and C, and a real number K, we have the following conditions:\n\n1. The square of A(K) is 36.\n2. The square of B(K) is 64.\n3. The square of C(K) is 36.\n4. A(K), B(K), and C(K) are all non-zero.\n5. A(K), B(K), and C(K) are all distinct from each other.\n\nWe are asked to find the value of the expression A(B(K)) + B(C(K)) + C(A(K)). According to the theorem, this value is equal to 24 + 6 * sqrt(2).",
+        "syntax": 0,
+        "semantic_score": 0.9136804549656653,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K = 6\"\nand h1 : \"B K = 8\"\nand h2 : \"C K = 6\"\nand h3 : \"A K \\<^sup>\\<^sup>2 = B K * C K\"\nshows \"perimeter (A B C) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K = 6\"\nand h1 : \"B K = 8\"\nand h2 : \"C K = 6\"\nand h3 : \"A K \\<^sup>\\<^sup>2 = B K * C K\"\nshows \"perimeter (A B C) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three functions A, B, and C, where A(K) = 6, B(K) = 8, and C(K) = 6, and it is also given that the square of A(K) equals the product of B(K) and C(K). Find the perimeter of the triangle with sides A, B, and C. The perimeter is equal to 24 + 6 * sqrt(2).",
+        "syntax": 0,
+        "semantic_score": 0.5546691142424309,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"norm(A - K) = 6\"\nand h4 : \"norm(B - K) = 8\"\nand h5 : \"norm(C - K) = 6\"\nand h6 : \"inner (B - A) (K - A) = 0\"\nand h7 : \"inner (C - A) (K - A) = 0\"\nshows \"norm(A - B) + norm(B - C) + norm(C - A) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"norm(A - K) = 6\"\nand h4 : \"norm(B - K) = 8\"\nand h5 : \"norm(C - K) = 6\"\nand h6 : \"inner (B - A) (K - A) = 0\"\nand h7 : \"inner (C - A) (K - A) = 0\"\nshows \"norm(A - B) + norm(B - C) + norm(C - A) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three distinct points A, B, and C in a 2-dimensional space, and a point K such that:\n\n1. The distance between A and K is 6 units.\n2. The distance between B and K is 8 units.\n3. The distance between C and K is 6 units.\n4. The angle between the line segments AK and AB is a right angle.\n5. The angle between the line segments AK and AC is a right angle.\n\nCalculate the sum of the distances between A and B, B and C, and C and A. The result is equal to 24 plus 6 times the square root of 2.",
+        "syntax": 0,
+        "semantic_score": 0.7150927794090646,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"norm(A - K) = 6\"\nand h4 : \"norm(B - K) = 8\"\nand h5 : \"norm(C - K) = 6\"\nand h6 : \"between (B, C) K\"\nand h7 : \"orthogonal (A - K) (B - C)\"\nshows \"norm(A - B) + norm(A - C) + norm(B - C) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"norm(A - K) = 6\"\nand h4 : \"norm(B - K) = 8\"\nand h5 : \"norm(C - K) = 6\"\nand h6 : \"between (B, C) K\"\nand h7 : \"orthogonal (A - K) (B - C)\"\nshows \"norm(A - B) + norm(A - C) + norm(B - C) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a triangle with vertices A, B, and C in a two-dimensional space. There is a point K such that:\n\n1. Point K is not the same as any of the vertices A, B, or C.\n2. The distance between point K and vertex A is 6 units.\n3. The distance between point K and vertex B is 8 units.\n4. The distance between point K and vertex C is also 6 units.\n5. Point K lies on the line segment connecting vertices B and C.\n6. The line segment connecting point K and vertex A is perpendicular to the line segment connecting vertices B and C.\n\nThe problem asks to find the sum of the distances between vertices A and B, A and C, and B and C. The answer is 24 units plus 6 times the square root of 2.",
+        "syntax": 0,
+        "semantic_score": 0.5057476446645813,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K = 6\"\nand h1 : \"B K = 8\"\nand h2 : \"C K = 6\"\nand h3 : \"A K \\<bullet> A K = B K * B K + C K * C K\"\nshows \"perimeter (A B C) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K = 6\"\nand h1 : \"B K = 8\"\nand h2 : \"C K = 6\"\nand h3 : \"A K \\<bullet> A K = B K * B K + C K * C K\"\nshows \"perimeter (A B C) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three functions A, B, and C, where A(K) = 6, B(K) = 8, and C(K) = 6, and the equation A(K) * A(K) = B(K) * B(K) + C(K) * C(K) holds true. Find the perimeter of the triangle formed by the points A(K), B(K), and C(K). The final answer is 24 + 6 * sqrt(2).",
+        "syntax": 0,
+        "semantic_score": 0.9860519665941403,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K \\<noteq> 0\"\nand h1 : \"B K \\<noteq> 0\"\nand h2 : \"C K \\<noteq> 0\"\nand h3 : \"A K = 6\"\nand h4 : \"B K = 8\"\nand h5 : \"C K = 6\"\nand h6 : \"A K * A K = B K * B K + C K * C K\"\nshows \"A B + B C + C A = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K \\<noteq> 0\"\nand h1 : \"B K \\<noteq> 0\"\nand h2 : \"C K \\<noteq> 0\"\nand h3 : \"A K = 6\"\nand h4 : \"B K = 8\"\nand h5 : \"C K = 6\"\nand h6 : \"A K * A K = B K * B K + C K * C K\"\nshows \"A B + B C + C A = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three functions A, B, and C, which take a real number K as input, and the following conditions:\n\n1. A(K) is not equal to 0.\n2. B(K) is not equal to 0.\n3. C(K) is not equal to 0.\n4. A(K) = 6.\n5. B(K) = 8.\n6. C(K) = 6.\n7. The square of A(K) is equal to the sum of the squares of B(K) and C(K).\n\nFind the value of the expression A(B) + B(C) + C(A). The answer is 24 + 6 * sqrt(2).",
+        "syntax": 0,
+        "semantic_score": 0.8690098078478838,
+        "symbolic_score": 0.1
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 0)\"\nand h1 : \"B = (0, 8)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K \\<in> {P. P \\<in> linepath B C \\<and> 0 \\<le> linepath B P / linepath B C \\<and> linepath B P / linepath B C \\<le> 1}\"\nand h4 : \"dist A (affine hull {B, C}) = 6\"\nand h5 : \"dist B (affine hull {A, C}) = 10\"\nand h6 : \"dist C (affine hull {A, B}) = 8\"\nshows \"2 * (dist A B + dist B C + dist C A) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 0)\"\nand h1 : \"B = (0, 8)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K \\<in> {P. P \\<in> linepath B C \\<and> 0 \\<le> linepath B P / linepath B C \\<and> linepath B P / linepath B C \\<le> 1}\"\nand h4 : \"dist A (affine hull {B, C}) = 6\"\nand h5 : \"dist B (affine hull {A, C}) = 10\"\nand h6 : \"dist C (affine hull {A, B}) = 8\"\nshows \"2 * (dist A B + dist B C + dist C A) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A$ is at the origin, $B$ is at the point $(0,8)$, and $C$ is at the point $(10,0)$, find the perimeter of triangle $ABC$ multiplied by $2$. The point $K$ is on the line segment $BC$ such that $BK:KC$ is between $0$ and $1$ (inclusive), and $AK$ is perpendicular to $BC$. Given that the distance from $A$ to the line containing $B$ and $C$ is $6$, the distance from $B$ to the line containing $A$ and $C$ is $10$, and the distance from $C$ to the line containing $A$ and $B$ is $8$, the perimeter of triangle $ABC$ multiplied by $2$ is $24 + 6\\sqrt{2}$.",
+        "syntax": 0,
+        "semantic_score": 0.24616213515065033,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 0)\"\nand h1 : \"K = (0, 6)\"\nand h2 : \"B = (8, 0)\"\nand h3 : \"C = (x, 0)\"\nand h4 : \"x > 0\"\nand h5 : \"dist A K * dist B K = dist C K * dist B K\"\nshows \"2 * (8 + 6 + x) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 0)\"\nand h1 : \"K = (0, 6)\"\nand h2 : \"B = (8, 0)\"\nand h3 : \"C = (x, 0)\"\nand h4 : \"x > 0\"\nand h5 : \"dist A K * dist B K = dist C K * dist B K\"\nshows \"2 * (8 + 6 + x) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a square $ABCD$ with side length $8$, let $K$ be the foot of the perpendicular from $B$ to $AD$, and let $C$ be a point on $AD$ such that $BC$ is perpendicular to $AB$. If $CK \\cdot BK = AK \\cdot DK$, find $AD$. The final answer is $24 + 6\\sqrt{2}$.",
+        "syntax": 0,
+        "semantic_score": 0.902123780801961,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 6)\"\nand h1 : \"B = (0, 0)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K \\<in> {x. x \\<in> linepath B C}\"\nand h4 : \"dist A (linepath B C) = 0\"\nand h5 : \"dist B (linepath A C) = 0\"\nand h6 : \"dist C (linepath A B) = 0\"\nand h7 : \"dist A K = 6\"\nand h8 : \"dist B K = 8\"\nand h9 : \"dist C K = 6\"\nshows \"dist A B + dist B C + dist C A = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 6)\"\nand h1 : \"B = (0, 0)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K \\<in> {x. x \\<in> linepath B C}\"\nand h4 : \"dist A (linepath B C) = 0\"\nand h5 : \"dist B (linepath A C) = 0\"\nand h6 : \"dist C (linepath A B) = 0\"\nand h7 : \"dist A K = 6\"\nand h8 : \"dist B K = 8\"\nand h9 : \"dist C K = 6\"\nshows \"dist A B + dist B C + dist C A = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A triangle ABC has vertices A at (0, 6), B at (0, 0), and C at (10, 0). Point K lies on the line segment connecting B and C. It is given that the distance from A to the line segment BC is 0, the distance from B to the line segment AC is 0, and the distance from C to the line segment AB is 0. Furthermore, the distance from A to K is 6, the distance from B to K is 8, and the distance from C to K is 6. Find the perimeter of triangle ABC. The final answer is $24 + 6\\sqrt{2}$.",
+        "syntax": 0,
+        "semantic_score": 0.938638696480628,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a * a + b * b = 36\"\nand h1 : \"b * b + c * c = 64\"\nand h2 : \"a * a + c * c = 36\"\nand h3 : \"b = 8\"\nand h4 : \"c = 6\"\nshows \"a + b + c = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a * a + b * b = 36\"\nand h1 : \"b * b + c * c = 64\"\nand h2 : \"a * a + c * c = 36\"\nand h3 : \"b = 8\"\nand h4 : \"c = 6\"\nshows \"a + b + c = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a^2+b^2=36$, $b^2+c^2=64$, and $a^2+c^2=36$, where $b=8$ and $c=6$, find $a+b+c$. The final answer is $24 + 6\\sqrt{2}$.",
+        "syntax": 1,
+        "semantic_score": 0.6015534623796107,
+        "symbolic_score": 0.1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 6)\"\nand h1 : \"B = (0, 0)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K = (4, 0)\"\nand h4 : \"dist A K = 6\"\nand h5 : \"dist B K = 8\"\nand h6 : \"dist C K = 6\"\nshows \"2 * sqrt 2 + 24 = dist A B + dist B C + dist C A\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 6)\"\nand h1 : \"B = (0, 0)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K = (4, 0)\"\nand h4 : \"dist A K = 6\"\nand h5 : \"dist B K = 8\"\nand h6 : \"dist C K = 6\"\nshows \"2 * sqrt 2 + 24 = dist A B + dist B C + dist C A\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a two-dimensional coordinate system, let $A$ be the point $(0,6)$, $B$ be the point $(0,0)$, $C$ be the point $(10,0)$, and $K$ be the point $(4,0)$. If the distance between $A$ and $K$ is 6, the distance between $B$ and $K$ is 8, and the distance between $C$ and $K$ is 6, find the sum of the lengths of the line segments $AB$, $BC$, and $CA$. The final answer is $2\\sqrt{2}+24$.",
+        "syntax": 0,
+        "semantic_score": 0.8942331679379891,
+        "symbolic_score": 0.1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 6)\"\nand h1 : \"B = (0, 0)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K \\<in> {x. x \\<in> linepath B C}\"\nand h4 : \"dist A (linepath B C) = 0\"\nand h5 : \"dist B (linepath A C) = 0\"\nand h6 : \"dist C (linepath A B) = 0\"\nand h7 : \"dist A K = 6\"\nand h8 : \"dist B K = 8\"\nand h9 : \"dist C K = 6\"\nshows \"2 * sqrt 2 + 24 = dist A B + dist B C + dist A C\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 6)\"\nand h1 : \"B = (0, 0)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K \\<in> {x. x \\<in> linepath B C}\"\nand h4 : \"dist A (linepath B C) = 0\"\nand h5 : \"dist B (linepath A C) = 0\"\nand h6 : \"dist C (linepath A B) = 0\"\nand h7 : \"dist A K = 6\"\nand h8 : \"dist B K = 8\"\nand h9 : \"dist C K = 6\"\nshows \"2 * sqrt 2 + 24 = dist A B + dist B C + dist A C\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle $ABC$ with $A=(0,6)$, $B=(0,0)$, and $C=(10,0)$, and a point $K$ on the line segment $BC$, such that the distances from $A$, $B$, and $C$ to $K$ are $6$, $8$, and $6$ respectively, find the perimeter of $\\triangle ABC$. The final answer is $2\\sqrt{2} + 24$.",
+        "syntax": 0,
+        "semantic_score": 0.6388161736759131,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes a b c k :: real\nassumes h0 : \"a = 6\"\nand h1 : \"b = 8\"\nand h2 : \"c = 6\"\nand h3 : \"k \\<ge> 0 \\<and> k \\<le> 6\"\nand h4 : \"(a powr 2) + (k powr 2) = (b powr 2) + ((c - k) powr 2)\"\nshows \"a + b + c = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes a b c k :: real\nassumes h0 : \"a = 6\"\nand h1 : \"b = 8\"\nand h2 : \"c = 6\"\nand h3 : \"k \\<ge> 0 \\<and> k \\<le> 6\"\nand h4 : \"(a powr 2) + (k powr 2) = (b powr 2) + ((c - k) powr 2)\"\nshows \"a + b + c = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a=6$, $b=8$, and $c=6$, and that $(a^2)+ (k^2) = (b^2) + ((c-k)^2)$ for some $k$ between $0$ and $6$, find $a+b+c$. The final answer is $24+6\\sqrt{2}$.",
+        "syntax": 1,
+        "semantic_score": 0.7018773347999346,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 6)\"\nand h1 : \"B = (0, 0)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K \\<in> {P. P \\<in> linepath B C \\<and> 0 \\<le> linepath B P / linepath B C \\<and> linepath B P / linepath B C \\<le> 1}\"\nand h4 : \"dist A (line BC) = 0\"\nand h5 : \"dist A K = 6\"\nand h6 : \"dist B K = 8\"\nand h7 : \"dist C K = 6\"\nshows \"dist A B + dist B C + dist C A = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 6)\"\nand h1 : \"B = (0, 0)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K \\<in> {P. P \\<in> linepath B C \\<and> 0 \\<le> linepath B P / linepath B C \\<and> linepath B P / linepath B C \\<le> 1}\"\nand h4 : \"dist A (line BC) = 0\"\nand h5 : \"dist A K = 6\"\nand h6 : \"dist B K = 8\"\nand h7 : \"dist C K = 6\"\nshows \"dist A B + dist B C + dist C A = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $ABC$ be a triangle with $A$ at $(0,6)$, $B$ at $(0,0)$, and $C$ at $(10,0)$. Let $K$ be a point on the line segment $BC$ such that $BK = 8$, $CK = 6$, and $AK = 6$. If the distance from point $A$ to the line $BC$ is $0$, then what is the value of $AB + BC + AC$? The final answer is $24 + 6\\sqrt{2}$.",
+        "syntax": 0,
+        "semantic_score": 0.9750109315889514,
+        "symbolic_score": 0.1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 6)\"\nand h1 : \"B = (0, 0)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K \\<in> {x. 0 \\<le> x$1 \\<and> x$1 \\<le> 10 \\<and> 0 \\<le> x$2 \\<and> x$2 \\<le> 6}\"\nand h4 : \"dist A (line B C) = 0\"\nand h5 : \"dist B (line A K) = 0\"\nand h6 : \"dist C (line A K) = 0\"\nand h7 : \"dist A B = dist A K\"\nand h8 : \"dist A C = dist K C\"\nshows \"dist A B + dist B C + dist A C = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 6)\"\nand h1 : \"B = (0, 0)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K \\<in> {x. 0 \\<le> x$1 \\<and> x$1 \\<le> 10 \\<and> 0 \\<le> x$2 \\<and> x$2 \\<le> 6}\"\nand h4 : \"dist A (line B C) = 0\"\nand h5 : \"dist B (line A K) = 0\"\nand h6 : \"dist C (line A K) = 0\"\nand h7 : \"dist A B = dist A K\"\nand h8 : \"dist A C = dist K C\"\nshows \"dist A B + dist B C + dist A C = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Triangle ABC has vertices A at (0,6), B at (0,0), and C at (10,0). Point K is inside or on the triangle. The distances from A to line BC, B to line AK, and C to line AK are all equal to zero. Additionally, the distance from A to B is equal to the distance from A to K, and the distance from A to C is equal to the distance from K to C. Find the value of AB + BC + AC. The final answer is $24 + 6\\sqrt{2}$.",
+        "syntax": 0,
+        "semantic_score": 0.9077326741194723,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 0)\"\nand h1 : \"B = (0, 8)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K \\<in> {x. 0 \\<le> x$coord'_x$ x \\<and> x$coord'_x$ x \\<le> 10 \\<and> 0 \\<le> x$coord'_y$ x \\<and> x$coord'_y$ x \\<le> 8}\"\nand h4 : \"dist A (lineproj B C K) = 6\"\nand h5 : \"dist B K = 8\"\nand h6 : \"dist C K = 6\"\nshows \"2 * (6 + 8 + sqrt 2 * 6) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A = (0, 0)\"\nand h1 : \"B = (0, 8)\"\nand h2 : \"C = (10, 0)\"\nand h3 : \"K \\<in> {x. 0 \\<le> x$coord'_x$ x \\<and> x$coord'_x$ x \\<le> 10 \\<and> 0 \\<le> x$coord'_y$ x \\<and> x$coord'_y$ x \\<le> 8}\"\nand h4 : \"dist A (lineproj B C K) = 6\"\nand h5 : \"dist B K = 8\"\nand h6 : \"dist C K = 6\"\nshows \"2 * (6 + 8 + sqrt 2 * 6) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a 2D coordinate plane, let $A$ be the origin $(0,0)$, let $B$ be at $(0,8)$, and let $C$ be at $(10,0)$. A point $K$ is located in the rectangular region that is bounded by the $x$-axis, the $y$-axis, and the lines $x=10$ and $y=8$. Given that the distance from $A$ to the projection of $K$ onto line $BC$ is $6$, the distance from $B$ to $K$ is $8$, and the distance from $C$ to $K$ is $6$, what is $24+6\\sqrt{2}$ equal to?",
+        "syntax": 0,
+        "semantic_score": 0.5603503744973193,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a = 6\"\nand h1 : \"b = 8\"\nand h2 : \"c = 6\"\nshows  \"6 + sqrt (8 powr 2 - 6 powr 2) + sqrt (6 powr 2 - 6 powr 2) + 8 + 6 = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a = 6\"\nand h1 : \"b = 8\"\nand h2 : \"c = 6\"\nshows  \"6 + sqrt (8 powr 2 - 6 powr 2) + sqrt (6 powr 2 - 6 powr 2) + 8 + 6 = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a = 6$, $b = 8$, and $c = 6$, prove that the expression $6 + \\sqrt{8^2 - 6^2} + \\sqrt{6^2 - 6^2} + 8 + 6$ equals $24 + 6\\sqrt{2}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8222289850230006,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"b = 8\"\nand h1 : \"c = 6\"\nand h2 : \"a = sqrt ((b powr 2) + (c powr 2))\"\nshows  \"a + b + c = 24 + 6 * sqrt(2)\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"b = 8\"\nand h1 : \"c = 6\"\nand h2 : \"a = sqrt ((b powr 2) + (c powr 2))\"\nshows  \"a + b + c = 24 + 6 * sqrt(2)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $b = 8$ and $c = 6$, find the value of $a$ where $a = \\sqrt{b^2 + c^2}$. Then find the sum of $a$, $b$ and $c$. The final answer is $24 + 6 \\sqrt{2}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8566897051787645,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes AK BK CK :: real\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nshows  \"2 * (BK + CK) + AK = 24 + 6 * sqrt(2)\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes AK BK CK :: real\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nshows  \"2 * (BK + CK) + AK = 24 + 6 * sqrt(2)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the lengths of segments AK, BK, and CK are 6, 8, and 6 units, respectively, verify that twice the sum of the lengths of BK and CK, plus the length of AK equals to 24 plus 6 times the square root of 2.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.86832902398928,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nand a :: \"real^1\"\nand b :: \"real^1\"\nand c :: \"real^1\"\nand d :: \"real^1\"\nassumes h0 : \"A - K = 6 *\\<^sub>R (1, 0)\"\nand h1 : \"B - K = 8 *\\<^sub>R (1 / sqrt 2, 1 / sqrt 2)\"\nand h2 : \"C - K = 6 *\\<^sub>R (-1 / sqrt 2, 1 / sqrt 2)\"\nand h3 : \"a = dist A B\"\nand h4 : \"b = dist B C\"\nand h5 : \"c = dist C A\"\nand h6 : \"d = a + b + c\"\nshows  \"d = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nand a :: \"real^1\"\nand b :: \"real^1\"\nand c :: \"real^1\"\nand d :: \"real^1\"\nassumes h0 : \"A - K = 6 *\\<^sub>R (1, 0)\"\nand h1 : \"B - K = 8 *\\<^sub>R (1 / sqrt 2, 1 / sqrt 2)\"\nand h2 : \"C - K = 6 *\\<^sub>R (-1 / sqrt 2, 1 / sqrt 2)\"\nand h3 : \"a = dist A B\"\nand h4 : \"b = dist B C\"\nand h5 : \"c = dist C A\"\nand h6 : \"d = a + b + c\"\nshows  \"d = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three points A, B, and C in a 2D space, where A, B, and C are located relative to a point K as follows: A is 6 units to the right of K, B is 8 units away from K at a 45-degree angle to the right, and C is 6 units away from K at a 45-degree angle to the left. If a is the distance from A to B, b is the distance from B to C, and c is the distance from C to A, and d is the sum of a, b, and c. What is the value of d? The final answer is $24 + 6 * \\sqrt{2}$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.876715955126984,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nand AK :: real and BK :: real and CK :: real\nassumes h0 : \"AK = norm (A - K)\"\nand h1 : \"BK = norm (B - K)\"\nand h2 : \"CK = norm (C - K)\"\nand h3 : \"AK = 6\"\nand h4 : \"BK = 8\"\nand h5 : \"CK = 6\"\nand h6 : \"AK \\<cdot> (B - C) = 0\"\nshows  \"norm (A - B) + norm (B - C) + norm (C - A) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nand AK :: real and BK :: real and CK :: real\nassumes h0 : \"AK = norm (A - K)\"\nand h1 : \"BK = norm (B - K)\"\nand h2 : \"CK = norm (C - K)\"\nand h3 : \"AK = 6\"\nand h4 : \"BK = 8\"\nand h5 : \"CK = 6\"\nand h6 : \"AK \\<cdot> (B - C) = 0\"\nshows  \"norm (A - B) + norm (B - C) + norm (C - A) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a plane, let $A, B, C$ and $K$ be points with $AK = 6$, $BK = 8$, and $CK = 6$. If $AK$ is perpendicular to $BC$, find the perimeter of triangle $ABC$. The final answer is $24 + 6\\sqrt{2}$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.941403212136152,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: real\nassumes h0 : \"A = 6\"\nand h1 : \"B = 8\"\nand h2 : \"C = 6\"\nand h3 : \"K = sqrt (A^2 + B^2)\"\nshows  \"A + B + K = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: real\nassumes h0 : \"A = 6\"\nand h1 : \"B = 8\"\nand h2 : \"C = 6\"\nand h3 : \"K = sqrt (A^2 + B^2)\"\nshows  \"A + B + K = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that A equals 6, B equals 8, and C equals 6, and K is the square root of the sum of the squares of A and B. What is the sum of A, B, and K? The answer is 24 plus 6 times the square root of 2.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8487882742086156,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes AK BK CK :: real\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nand h3 : \"\\<forall> AB AC BC. AB powr 2 + AC powr 2 = BC powr 2\"\nshows  \"2 * BK + 2 * AK = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes AK BK CK :: real\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nand h3 : \"\\<forall> AB AC BC. AB powr 2 + AC powr 2 = BC powr 2\"\nshows  \"2 * BK + 2 * AK = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that AK is 6, BK is 8, and CK is 6, and knowing that the square of AB plus the square of AC equals the square of BC, show that 2 times BK plus 2 times AK equals 24 plus 6 times the square root of 2.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8579987602882748,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes A :: \"real^2\" and B :: \"real^2\" and C :: \"real^2\" and K :: \"real^2\" and P :: \"real\"\nassumes h0 : \"K \\<in> closed_segment B C\"\nand h1 : \"norm (A - K) = 6\"\nand h2 : \"norm (B - K) = 8\"\nand h3 : \"norm (C - K) = 6\"\nand h4 : \"P = norm (A - B) + norm (B - C) + norm (C - A)\"\nshows  \"P = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A :: \"real^2\" and B :: \"real^2\" and C :: \"real^2\" and K :: \"real^2\" and P :: \"real\"\nassumes h0 : \"K \\<in> closed_segment B C\"\nand h1 : \"norm (A - K) = 6\"\nand h2 : \"norm (B - K) = 8\"\nand h3 : \"norm (C - K) = 6\"\nand h4 : \"P = norm (A - B) + norm (B - C) + norm (C - A)\"\nshows  \"P = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given points A, B, C, and K in a two-dimensional space, with K located on the line segment between B and C. The distance from A to K is 6 units, from B to K is 8 units, and from C to K is 6 units. Find the sum of the distances between A and B, B and C, and C and A. The final answer is $24 + 6\\sqrt{2}$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8848701800594815,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nand perimeter :: \"real^2 \\<Rightarrow> real^2 \\<Rightarrow> real^2 \\<Rightarrow> real\"\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nand h3 : \"perimeter A B C = dist A B + dist B C + dist C A\"\nand h4 : \"\\<forall> A B C. dist A B = sqrt ((B$1 - A$1)\\<^sup>2 + (B$2 - A$2)\\<^sup>2)\"\nshows  \"perimeter A B C = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nand perimeter :: \"real^2 \\<Rightarrow> real^2 \\<Rightarrow> real^2 \\<Rightarrow> real\"\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nand h3 : \"perimeter A B C = dist A B + dist B C + dist C A\"\nand h4 : \"\\<forall> A B C. dist A B = sqrt ((B$1 - A$1)\\<^sup>2 + (B$2 - A$2)\\<^sup>2)\"\nshows  \"perimeter A B C = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a triangle ABC, the distance from point A to point K is 6 units, the distance from point B to point K is 8 units, and the distance from point C to point K is 6 units. If the perimeter of the triangle ABC is the sum of the distances between points A and B, B and C, and C and A, where the distance between any two points is calculated by the formula $\\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$. What is the perimeter of triangle ABC? The final answer is $24 + 6 \\sqrt{2}$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9223660304712239,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes AK BK CK :: real\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nshows  \"AK + BK + CK = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is 24 + 6\\sqrt{2}\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\n label(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes AK BK CK :: real\nassumes h0 : \"AK = 6\"\nand h1 : \"BK = 8\"\nand h2 : \"CK = 6\"\nshows  \"AK + BK + CK = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that AK = 6, BK = 8 and CK = 6, what is the sum of AK, BK and CK? The final answer is $24 + 6\\sqrt{2}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8869332819209221,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K \\<^sup>2 + B K \\<^sup>2 = B C \\<^sup>2\"\nand h1 : \"A K = 6\"\nand h2 : \"B K = 8\"\nand h3 : \"C K = 6\"\nshows \"B C + A B + A C = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K \\<^sup>2 + B K \\<^sup>2 = B C \\<^sup>2\"\nand h1 : \"A K = 6\"\nand h2 : \"B K = 8\"\nand h3 : \"C K = 6\"\nshows \"B C + A B + A C = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a set of functions A, B, C, and K, where K is a real-valued function, we are given the following information:\n\n1. The sum of the squares of A(K) and B(K) is equal to the square of B(C).\n2. A(K) is equal to 6.\n3. B(K) is equal to 8.\n4. C(K) is equal to 6.\n\nWe are asked to find the value of the expression B(C) + A(B) + A(C). According to the theorem, this value is equal to 24 + 6 * sqrt(2).",
+        "syntax": 0,
+        "semantic_score": 0.748209881341091,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: point\nassumes h0 : \"bet A B C \\<and> bet B K C\"\nand h1 : \"perpendicular A K B C\"\nand h2 : \"dist A K = 6\"\nand h3 : \"dist B K = 8\"\nand h4 : \"dist C K = 6\"\nshows \"perimeter (triangle A B C) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: point\nassumes h0 : \"bet A B C \\<and> bet B K C\"\nand h1 : \"perpendicular A K B C\"\nand h2 : \"dist A K = 6\"\nand h3 : \"dist B K = 8\"\nand h4 : \"dist C K = 6\"\nshows \"perimeter (triangle A B C) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with points A, B, and C, and another point K such that A, B, and C are collinear and B is between A and C, and K is also between B and C. The line AK is perpendicular to the line BC. The distances AK, BK, and CK are given as 6, 8, and 6 units respectively. Calculate the perimeter of triangle ABC. The answer is 24 + 6 * sqrt(2) units.",
+        "syntax": 0,
+        "semantic_score": 0.9068687268750046,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"dist A K = 6\"\nand h4 : \"dist B K = 8\"\nand h5 : \"dist C K = 6\"\nand h6 : \"A \\<bullet> K = 0\"\nand h7 : \"B \\<bullet> K = 0\"\nand h8 : \"C \\<bullet> K = 0\"\nshows \"dist A B + dist A C + dist B C = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"dist A K = 6\"\nand h4 : \"dist B K = 8\"\nand h5 : \"dist C K = 6\"\nand h6 : \"A \\<bullet> K = 0\"\nand h7 : \"B \\<bullet> K = 0\"\nand h8 : \"C \\<bullet> K = 0\"\nshows \"dist A B + dist A C + dist B C = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three distinct points A, B, and C in a 2-dimensional space, and another point K such that:\n\n1. A is not equal to K, B is not equal to K, and C is not equal to K.\n2. The distance between A and K is 6 units, the distance between B and K is 8 units, and the distance between C and K is 6 units.\n3. The dot product of A and K, B and K, and C and K are all equal to 0.\n\nFind the sum of the distances between A and B, A and C, and B and C. The result is equal to 24 plus 6 times the square root of 2.",
+        "syntax": 0,
+        "semantic_score": 0.83343839721084,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"A \\<noteq> B\"\nand h4 : \"A \\<noteq> C\"\nand h5 : \"B \\<noteq> C\"\nand h6 : \"norm(A - K) = 6\"\nand h7 : \"norm(B - K) = 8\"\nand h8 : \"norm(C - K) = 6\"\nand h9 : \"norm(A - B) powr 2 = norm(A - K) powr 2 + norm(B - K) powr 2\"\nand h10 : \"norm(A - C) powr 2 = norm(A - K) powr 2 + norm(C - K) powr 2\"\nshows \"norm(A - B) + norm(B - C) + norm(C - A) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"A \\<noteq> B\"\nand h4 : \"A \\<noteq> C\"\nand h5 : \"B \\<noteq> C\"\nand h6 : \"norm(A - K) = 6\"\nand h7 : \"norm(B - K) = 8\"\nand h8 : \"norm(C - K) = 6\"\nand h9 : \"norm(A - B) powr 2 = norm(A - K) powr 2 + norm(B - K) powr 2\"\nand h10 : \"norm(A - C) powr 2 = norm(A - K) powr 2 + norm(C - K) powr 2\"\nshows \"norm(A - B) + norm(B - C) + norm(C - A) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three distinct points A, B, and C in a two-dimensional space, and a fourth point K such that:\n\n1. A, B, and C are all different from K.\n2. A, B, and C are all different from each other.\n3. The distance from A to K is 6 units.\n4. The distance from B to K is 8 units.\n5. The distance from C to K is 6 units.\n6. The square of the distance from A to B is equal to the sum of the squares of the distances from A to K and from B to K.\n7. The square of the distance from A to C is equal to the sum of the squares of the distances from A to K and from C to K.\n\nProve that the sum of the distances from A to B, from B to C, and from C to A is equal to 24 plus 6 times the square root of 2.",
+        "syntax": 0,
+        "semantic_score": 0.8179869381524177,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K powr 2 = 36\"\nand h1 : \"B K powr 2 = 64\"\nand h2 : \"C K powr 2 = 36\"\nand h3 : \"A K \\<noteq> 0\"\nand h4 : \"B K \\<noteq> 0\"\nand h5 : \"C K \\<noteq> 0\"\nand h6 : \"A K \\<noteq> B K\"\nand h7 : \"A K \\<noteq> C K\"\nand h8 : \"B K \\<noteq> C K\"\nand h9 : \"A K \\<noteq> 0\"\nand h10 : \"B K \\<noteq> 0\"\nand h11 : \"C K \\<noteq> 0\"\nand h12 : \"A K \\<noteq> B K\"\nand h13 : \"A K \\<noteq> C K\"\nand h14 : \"B K \\<noteq> C K\"\nand h15 : \"A K \\<noteq> 0\"\nand h16 : \"B K \\<noteq> 0\"\nand h17 : \"C K \\<noteq> 0\"\nand h18 : \"A K \\<noteq> B K\"\nand h19 : \"A K \\<noteq> C K\"\nand h20 : \"B K \\<noteq> C K\"\nshows \"A B + B C + C A = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K powr 2 = 36\"\nand h1 : \"B K powr 2 = 64\"\nand h2 : \"C K powr 2 = 36\"\nand h3 : \"A K \\<noteq> 0\"\nand h4 : \"B K \\<noteq> 0\"\nand h5 : \"C K \\<noteq> 0\"\nand h6 : \"A K \\<noteq> B K\"\nand h7 : \"A K \\<noteq> C K\"\nand h8 : \"B K \\<noteq> C K\"\nand h9 : \"A K \\<noteq> 0\"\nand h10 : \"B K \\<noteq> 0\"\nand h11 : \"C K \\<noteq> 0\"\nand h12 : \"A K \\<noteq> B K\"\nand h13 : \"A K \\<noteq> C K\"\nand h14 : \"B K \\<noteq> C K\"\nand h15 : \"A K \\<noteq> 0\"\nand h16 : \"B K \\<noteq> 0\"\nand h17 : \"C K \\<noteq> 0\"\nand h18 : \"A K \\<noteq> B K\"\nand h19 : \"A K \\<noteq> C K\"\nand h20 : \"B K \\<noteq> C K\"\nshows \"A B + B C + C A = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three functions A, B, and C, and a real number K, we have the following conditions:\n\n1. The square of A(K) is 36.\n2. The square of B(K) is 64.\n3. The square of C(K) is 36.\n4. A(K), B(K), and C(K) are all non-zero.\n5. A(K), B(K), and C(K) are all distinct from each other.\n\nWe are asked to find the value of the expression A(B(K)) + B(C(K)) + C(A(K)). According to the theorem, this value is equal to 24 + 6 * sqrt(2).",
+        "syntax": 0,
+        "semantic_score": 0.7463291478954645,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K = 6\"\nand h1 : \"B K = 8\"\nand h2 : \"C K = 6\"\nand h3 : \"A K \\<^sup>\\<^sup>2 = B K * C K\"\nshows \"perimeter (A B C) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K = 6\"\nand h1 : \"B K = 8\"\nand h2 : \"C K = 6\"\nand h3 : \"A K \\<^sup>\\<^sup>2 = B K * C K\"\nshows \"perimeter (A B C) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three functions A, B, and C, where A(K) = 6, B(K) = 8, and C(K) = 6, and it is also given that the square of A(K) equals the product of B(K) and C(K). Find the perimeter of the triangle with sides A, B, and C. The perimeter is equal to 24 + 6 * sqrt(2).",
+        "syntax": 0,
+        "semantic_score": 0.8763629297027002,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"norm(A - K) = 6\"\nand h4 : \"norm(B - K) = 8\"\nand h5 : \"norm(C - K) = 6\"\nand h6 : \"inner (B - A) (K - A) = 0\"\nand h7 : \"inner (C - A) (K - A) = 0\"\nshows \"norm(A - B) + norm(B - C) + norm(C - A) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"norm(A - K) = 6\"\nand h4 : \"norm(B - K) = 8\"\nand h5 : \"norm(C - K) = 6\"\nand h6 : \"inner (B - A) (K - A) = 0\"\nand h7 : \"inner (C - A) (K - A) = 0\"\nshows \"norm(A - B) + norm(B - C) + norm(C - A) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three distinct points A, B, and C in a 2-dimensional space, and a point K such that:\n\n1. The distance between A and K is 6 units.\n2. The distance between B and K is 8 units.\n3. The distance between C and K is 6 units.\n4. The angle between the line segments AK and AB is a right angle.\n5. The angle between the line segments AK and AC is a right angle.\n\nCalculate the sum of the distances between A and B, B and C, and C and A. The result is equal to 24 plus 6 times the square root of 2.",
+        "syntax": 0,
+        "semantic_score": 0.8467100539358575,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"norm(A - K) = 6\"\nand h4 : \"norm(B - K) = 8\"\nand h5 : \"norm(C - K) = 6\"\nand h6 : \"between (B, C) K\"\nand h7 : \"orthogonal (A - K) (B - C)\"\nshows \"norm(A - B) + norm(A - C) + norm(B - C) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real^2\"\nassumes h0 : \"A \\<noteq> K\"\nand h1 : \"B \\<noteq> K\"\nand h2 : \"C \\<noteq> K\"\nand h3 : \"norm(A - K) = 6\"\nand h4 : \"norm(B - K) = 8\"\nand h5 : \"norm(C - K) = 6\"\nand h6 : \"between (B, C) K\"\nand h7 : \"orthogonal (A - K) (B - C)\"\nshows \"norm(A - B) + norm(A - C) + norm(B - C) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a triangle with vertices A, B, and C in a two-dimensional space. There is a point K such that:\n\n1. Point K is not the same as any of the vertices A, B, or C.\n2. The distance between point K and vertex A is 6 units.\n3. The distance between point K and vertex B is 8 units.\n4. The distance between point K and vertex C is also 6 units.\n5. Point K lies on the line segment connecting vertices B and C.\n6. The line segment connecting point K and vertex A is perpendicular to the line segment connecting vertices B and C.\n\nThe problem asks to find the sum of the distances between vertices A and B, A and C, and B and C. The answer is 24 units plus 6 times the square root of 2.",
+        "syntax": 0,
+        "semantic_score": 0.8473205600175464,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K = 6\"\nand h1 : \"B K = 8\"\nand h2 : \"C K = 6\"\nand h3 : \"A K \\<bullet> A K = B K * B K + C K * C K\"\nshows \"perimeter (A B C) = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K = 6\"\nand h1 : \"B K = 8\"\nand h2 : \"C K = 6\"\nand h3 : \"A K \\<bullet> A K = B K * B K + C K * C K\"\nshows \"perimeter (A B C) = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three functions A, B, and C, where A(K) = 6, B(K) = 8, and C(K) = 6, and the equation A(K) * A(K) = B(K) * B(K) + C(K) * C(K) holds true. Find the perimeter of the triangle formed by the points A(K), B(K), and C(K). The final answer is 24 + 6 * sqrt(2).",
+        "syntax": 0,
+        "semantic_score": 0.8639559192036709,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K \\<noteq> 0\"\nand h1 : \"B K \\<noteq> 0\"\nand h2 : \"C K \\<noteq> 0\"\nand h3 : \"A K = 6\"\nand h4 : \"B K = 8\"\nand h5 : \"C K = 6\"\nand h6 : \"A K * A K = B K * B K + C K * C K\"\nshows \"A B + B C + C A = 24 + 6 * sqrt 2\"",
+        "formal solution": "(* ### Problem\n We have a triangle $\\triangle ABC$ and a point $K$ on segment $\\overline{BC}$ such that $AK$ is an altitude to $\\triangle ABC$. If $AK = 6,$ $BK = 8$, and $CK = 6,$ then what is the perimeter of the triangle? The final Answer is $24 + 6\\sqrt{2}$\n ### Proof\n Time to draw! [asy] pair A, B, C, K; A = (0, 6); B = (-8, 0); C = (6, 0); K = (0, 0); draw(A--B--C--cycle); draw(A--K); label(\"$A$\", A, N); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$K$\", K, S);\nlabel(\"6\", A--K, E); label(\"8\", B--K, S); label(\"6\", C--K, S); draw(rightanglemark(A,K,B,10)); [/asy] To find the perimeter, we need $AB$ and $AC.$ We recognize $\\triangle ABK$ as a $3:4:5$ triangle and and $\\triangle ACK$ as a $45^\\circ-45^\\circ-90^\\circ$ triangle, which means that $AB = 10$ and $AC = 6\\sqrt{2}.$ As for $BC,$ we have $BC = BK + CK = 14.$ Therefore, our answer is $AB + AC + BC = \\boxed{24 + 6\\sqrt{2}}.$\n *)\n\ntheorem\nfixes A B C K :: \"real \\<Rightarrow> real\"\nassumes h0 : \"A K \\<noteq> 0\"\nand h1 : \"B K \\<noteq> 0\"\nand h2 : \"C K \\<noteq> 0\"\nand h3 : \"A K = 6\"\nand h4 : \"B K = 8\"\nand h5 : \"C K = 6\"\nand h6 : \"A K * A K = B K * B K + C K * C K\"\nshows \"A B + B C + C A = 24 + 6 * sqrt 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given three functions A, B, and C, which take a real number K as input, and the following conditions:\n\n1. A(K) is not equal to 0.\n2. B(K) is not equal to 0.\n3. C(K) is not equal to 0.\n4. A(K) = 6.\n5. B(K) = 8.\n6. C(K) = 6.\n7. The square of A(K) is equal to the sum of the squares of B(K) and C(K).\n\nFind the value of the expression A(B) + B(C) + C(A). The answer is 24 + 6 * sqrt(2).",
+        "syntax": 0,
+        "semantic_score": 0.7690693846421719,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

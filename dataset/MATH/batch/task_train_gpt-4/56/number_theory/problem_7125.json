@@ -1,0 +1,60 @@
+{
+    "natural problem": "Compute the largest integer $k$ such that $2004^k$ divides $2004!$.\n",
+    "natural solution": [
+        "Note that $2004 = 2^2 \\cdot 3 \\cdot 167$.",
+        "We focus on the large prime $167$ as the powers of $2$ and $3$ in the prime factorization of $2004!$ are going to be much higher. The largest power of $167$ that divides $2004!$ is $\\tfrac{2004}{167} = \\boxed{12}$, the answer."
+    ],
+    "natural answer": "12",
+    "a_0": {
+        "formal problem": "theorem\nfixes k :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact 2004 = 2004 * fact 2003\"\nand h1 : \"2004 powr k dvd fact 2004\"\nshows  \"k = 12\"",
+        "formal solution": "(* ### Problem\n Compute the largest integer $k$ such that $2004^k$ divides $2004!$.\n The final Answer is 12\n ### Proof\n Note that $2004 = 2^2 \\cdot 3 \\cdot 167$.\n We focus on the large prime $167$ as the powers of $2$ and $3$ in the prime factorization of $2004!$ are going to be much higher. The largest power of $167$ that divides $2004!$ is $\\tfrac{2004}{167} = \\boxed{12}$, the answer.\n *)\n\ntheorem\nfixes k :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact 2004 = 2004 * fact 2003\"\nand h1 : \"2004 powr k dvd fact 2004\"\nshows  \"k = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assuming that the factorial of 2004 is equal to 2004 times the factorial of 2003, find the highest power of 2004 (k) that divides 2004 factorial exactly. The final answer is 12."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes k :: nat\nassumes h0 : \"\\<forall> n. fact n = prod (upt 1 (Suc n))\"\nand h1 : \"\\<forall> n. prod (upt 1 (Suc n)) mod 2004 powr k = 0\"\nshows  \"k = 12\"",
+        "formal solution": "(* ### Problem\n Compute the largest integer $k$ such that $2004^k$ divides $2004!$.\n The final Answer is 12\n ### Proof\n Note that $2004 = 2^2 \\cdot 3 \\cdot 167$.\n We focus on the large prime $167$ as the powers of $2$ and $3$ in the prime factorization of $2004!$ are going to be much higher. The largest power of $167$ that divides $2004!$ is $\\tfrac{2004}{167} = \\boxed{12}$, the answer.\n *)\n\ntheorem\nfixes k :: nat\nassumes h0 : \"\\<forall> n. fact n = prod (upt 1 (Suc n))\"\nand h1 : \"\\<forall> n. prod (upt 1 (Suc n)) mod 2004 powr k = 0\"\nshows  \"k = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a natural number $k$, assume that the factorial of every natural number $n$ can be expressed as the product of all natural numbers from $1$ to $n+1$. Furthermore, assume that this product, when divided by $2004^k$, gives a remainder of $0$ for all $n$. What is the value of $k$? The final answer is $12$."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes k :: nat and factorial :: \"nat \\<Rightarrow> nat\" and divides :: \"nat \\<Rightarrow> nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. factorial n = prod (\\<lambda>i. i) {1..n}\"\nand h1 : \"divides = (\\<lambda> a b. b mod a = 0)\"\nand h2 : \"divides (2004 ^ k) (factorial 2004)\"\nshows  \"k = 12\"",
+        "formal solution": "(* ### Problem\n Compute the largest integer $k$ such that $2004^k$ divides $2004!$.\n The final Answer is 12\n ### Proof\n Note that $2004 = 2^2 \\cdot 3 \\cdot 167$.\n We focus on the large prime $167$ as the powers of $2$ and $3$ in the prime factorization of $2004!$ are going to be much higher. The largest power of $167$ that divides $2004!$ is $\\tfrac{2004}{167} = \\boxed{12}$, the answer.\n *)\n\ntheorem\nfixes k :: nat and factorial :: \"nat \\<Rightarrow> nat\" and divides :: \"nat \\<Rightarrow> nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. factorial n = prod (\\<lambda>i. i) {1..n}\"\nand h1 : \"divides = (\\<lambda> a b. b mod a = 0)\"\nand h2 : \"divides (2004 ^ k) (factorial 2004)\"\nshows  \"k = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest natural number $k$ such that $2004^k$ divides $2004!$. The final answer is $12$."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes k :: int and fact :: \"int \\<Rightarrow> int\"\nassumes h0 : \"fact 2004 = 2004 * fact 2003\"\nand h1 : \"\\<forall>k. k \\<ge> 1 \\<longrightarrow> (2004 ^ k) dvd fact 2004\"\nshows  \"k = 12\"",
+        "formal solution": "(* ### Problem\n Compute the largest integer $k$ such that $2004^k$ divides $2004!$.\n The final Answer is 12\n ### Proof\n Note that $2004 = 2^2 \\cdot 3 \\cdot 167$.\n We focus on the large prime $167$ as the powers of $2$ and $3$ in the prime factorization of $2004!$ are going to be much higher. The largest power of $167$ that divides $2004!$ is $\\tfrac{2004}{167} = \\boxed{12}$, the answer.\n *)\n\ntheorem\nfixes k :: int and fact :: \"int \\<Rightarrow> int\"\nassumes h0 : \"fact 2004 = 2004 * fact 2003\"\nand h1 : \"\\<forall>k. k \\<ge> 1 \\<longrightarrow> (2004 ^ k) dvd fact 2004\"\nshows  \"k = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The factorial of 2004 is defined as 2004 multiplied by the factorial of 2003. For all integers $k \\geq 1$, $2004^k$ divides the factorial of 2004. Find the value of $k$. The final answer is $12$."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes k :: nat and factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial 2004 = 2004 ^ k\"\nshows  \"k = 12\"",
+        "formal solution": "(* ### Problem\n Compute the largest integer $k$ such that $2004^k$ divides $2004!$.\n The final Answer is 12\n ### Proof\n Note that $2004 = 2^2 \\cdot 3 \\cdot 167$.\n We focus on the large prime $167$ as the powers of $2$ and $3$ in the prime factorization of $2004!$ are going to be much higher. The largest power of $167$ that divides $2004!$ is $\\tfrac{2004}{167} = \\boxed{12}$, the answer.\n *)\n\ntheorem\nfixes k :: nat and factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial 2004 = 2004 ^ k\"\nshows  \"k = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $k$ that makes the factorial of $2004$ equal to $2004^k$. The final answer is $k = 12$."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes k :: nat and factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. factorial n = prod (\\<lambda> i. i) {1 .. n}\"\nand h1 : \"k = (GREATEST k. 2004 ^ k dvd factorial 2004)\"\nshows  \"k = 12\"",
+        "formal solution": "(* ### Problem\n Compute the largest integer $k$ such that $2004^k$ divides $2004!$.\n The final Answer is 12\n ### Proof\n Note that $2004 = 2^2 \\cdot 3 \\cdot 167$.\n We focus on the large prime $167$ as the powers of $2$ and $3$ in the prime factorization of $2004!$ are going to be much higher. The largest power of $167$ that divides $2004!$ is $\\tfrac{2004}{167} = \\boxed{12}$, the answer.\n *)\n\ntheorem\nfixes k :: nat and factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. factorial n = prod (\\<lambda> i. i) {1 .. n}\"\nand h1 : \"k = (GREATEST k. 2004 ^ k dvd factorial 2004)\"\nshows  \"k = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest natural number $k$ such that $2004^k$ divides the factorial of $2004$. The final answer is $12$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes k :: int and fact :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n >= 0 \\<longrightarrow> fact n = (if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall>k. k <= 2004 \\<longrightarrow> 2004 powr k dvd fact 2004\"\nshows  \"k = 12\"",
+        "formal solution": "(* ### Problem\n Compute the largest integer $k$ such that $2004^k$ divides $2004!$.\n The final Answer is 12\n ### Proof\n Note that $2004 = 2^2 \\cdot 3 \\cdot 167$.\n We focus on the large prime $167$ as the powers of $2$ and $3$ in the prime factorization of $2004!$ are going to be much higher. The largest power of $167$ that divides $2004!$ is $\\tfrac{2004}{167} = \\boxed{12}$, the answer.\n *)\n\ntheorem\nfixes k :: int and fact :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n >= 0 \\<longrightarrow> fact n = (if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall>k. k <= 2004 \\<longrightarrow> 2004 powr k dvd fact 2004\"\nshows  \"k = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assuming the factorial function is defined as $fact(n) = n!$ for $n \\geq 0$ and $2004^k$ divides $fact(2004)$ for all $k \\leq 2004$, find the value of $k$. The final answer is $12$."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes k :: nat and fact :: \"nat \u21d2 nat\"\nassumes h0 : \"fact n = prod {1..n}\"\nand h1 : \"2004 powr k dvd fact 2004\"\nshows  \"k = 12\"",
+        "formal solution": "(* ### Problem\n Compute the largest integer $k$ such that $2004^k$ divides $2004!$.\n The final Answer is 12\n ### Proof\n Note that $2004 = 2^2 \\cdot 3 \\cdot 167$.\n We focus on the large prime $167$ as the powers of $2$ and $3$ in the prime factorization of $2004!$ are going to be much higher. The largest power of $167$ that divides $2004!$ is $\\tfrac{2004}{167} = \\boxed{12}$, the answer.\n *)\n\ntheorem\nfixes k :: nat and fact :: \"nat \u21d2 nat\"\nassumes h0 : \"fact n = prod {1..n}\"\nand h1 : \"2004 powr k dvd fact 2004\"\nshows  \"k = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the maximum power of 2004 that divides 2004 factorial. The final answer is 12."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes k :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact 2004 = 2004^k * a\"\nand h1 : \"2004^(k+1) \\<nmid> fact 2004\"\nshows  \"k = 12\"",
+        "formal solution": "(* ### Problem\n Compute the largest integer $k$ such that $2004^k$ divides $2004!$.\n The final Answer is 12\n ### Proof\n Note that $2004 = 2^2 \\cdot 3 \\cdot 167$.\n We focus on the large prime $167$ as the powers of $2$ and $3$ in the prime factorization of $2004!$ are going to be much higher. The largest power of $167$ that divides $2004!$ is $\\tfrac{2004}{167} = \\boxed{12}$, the answer.\n *)\n\ntheorem\nfixes k :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact 2004 = 2004^k * a\"\nand h1 : \"2004^(k+1) \\<nmid> fact 2004\"\nshows  \"k = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest power of 2004 that divides the factorial of 2004. The final answer is 12."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes k :: nat and factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. factorial n = prod (\\<lambda>i. i) {1..n}\"\nand h1 : \"\\<forall> k. k \\<le> 12 \\<longrightarrow> (2004 ^ k) dvd factorial 2004\"\nshows  \"k = 12\"",
+        "formal solution": "(* ### Problem\n Compute the largest integer $k$ such that $2004^k$ divides $2004!$.\n The final Answer is 12\n ### Proof\n Note that $2004 = 2^2 \\cdot 3 \\cdot 167$.\n We focus on the large prime $167$ as the powers of $2$ and $3$ in the prime factorization of $2004!$ are going to be much higher. The largest power of $167$ that divides $2004!$ is $\\tfrac{2004}{167} = \\boxed{12}$, the answer.\n *)\n\ntheorem\nfixes k :: nat and factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. factorial n = prod (\\<lambda>i. i) {1..n}\"\nand h1 : \"\\<forall> k. k \\<le> 12 \\<longrightarrow> (2004 ^ k) dvd factorial 2004\"\nshows  \"k = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the largest natural number $k$ such that $2004^k$ divides the factorial of $2004$? The final answer is $12$."
+    },
+    "level": "Level 5",
+    "type": "Number Theory"
+}

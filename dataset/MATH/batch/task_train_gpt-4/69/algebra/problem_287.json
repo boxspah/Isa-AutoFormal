@@ -1,0 +1,59 @@
+{
+    "natural problem": "What is the only integer whose square is less than its double?",
+    "natural solution": [
+        "The integer is $\\boxed{1}$, since $1^2=1<2$."
+    ],
+    "natural answer": "1",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: int\nshows  \"n powr 2 < 2 * n \\<longleftrightarrow> n = 1\"",
+        "formal solution": "(* ### Problem\n What is the only integer whose square is less than its double? The final Answer is 1\n ### Proof\n The integer is $\\boxed{1}$, since $1^2=1<2$.\n *)\n\ntheorem\nfixes n :: int\nshows  \"n powr 2 < 2 * n \\<longleftrightarrow> n = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For which integer value of $n$ is the inequality $n^2 < 2n$ true? The final answer is $n = 1$."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"\\<forall>n :: int. (n*n) < (2*n)\"\nshows  \"n = 1\"",
+        "formal solution": "(* ### Problem\n What is the only integer whose square is less than its double? The final Answer is 1\n ### Proof\n The integer is $\\boxed{1}$, since $1^2=1<2$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"\\<forall>n :: int. (n*n) < (2*n)\"\nshows  \"n = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find an integer $n$ such that $n^2$ is less than $2n$. The final answer is $n=1$."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: int\nshows  \"n^2 < 2 * n \\<Longrightarrow> n = 1\"",
+        "formal solution": "(* ### Problem\n What is the only integer whose square is less than its double? The final Answer is 1\n ### Proof\n The integer is $\\boxed{1}$, since $1^2=1<2$.\n *)\n\ntheorem\nfixes n :: int\nshows  \"n^2 < 2 * n \\<Longrightarrow> n = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the integer $n$ such that $n^2$ is less than $2n$. The only solution is $n = 1$."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"\\<forall> n. n powr 2 < 2 * n\"\nshows  \"n = 1\"",
+        "formal solution": "(* ### Problem\n What is the only integer whose square is less than its double? The final Answer is 1\n ### Proof\n The integer is $\\boxed{1}$, since $1^2=1<2$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"\\<forall> n. n powr 2 < 2 * n\"\nshows  \"n = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find an integer $n$ such that $n^2$ is less than $2n$ for all integers $n$. The only solution is $n = 1$."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"\\<forall> n. n^2 < 2*n\"\nshows  \"n = 1\"",
+        "formal solution": "(* ### Problem\n What is the only integer whose square is less than its double? The final Answer is 1\n ### Proof\n The integer is $\\boxed{1}$, since $1^2=1<2$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"\\<forall> n. n^2 < 2*n\"\nshows  \"n = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the integer $n$ such that $n^2$ is less than $2n$ for all $n$. The final answer is $n=1$."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"\\<forall> m. m \\<noteq> n \\<longrightarrow> m * m \\<ge> 2 * m\"\nshows  \"n = 1\"",
+        "formal solution": "(* ### Problem\n What is the only integer whose square is less than its double? The final Answer is 1\n ### Proof\n The integer is $\\boxed{1}$, since $1^2=1<2$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"\\<forall> m. m \\<noteq> n \\<longrightarrow> m * m \\<ge> 2 * m\"\nshows  \"n = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the integer $n$ such that for all integers $m \\neq n$, $m^2 \\geq 2m$. The final answer is $n = 1$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"\\<forall> m. (m * m < 2 * m) \\<longrightarrow> (m = n)\"\nshows  \"n = 1\"",
+        "formal solution": "(* ### Problem\n What is the only integer whose square is less than its double? The final Answer is 1\n ### Proof\n The integer is $\\boxed{1}$, since $1^2=1<2$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"\\<forall> m. (m * m < 2 * m) \\<longrightarrow> (m = n)\"\nshows  \"n = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the integer value of $n$ such that for all integers $m$, if $m^2 < 2m$, then $m = n$. The final answer is $n = 1$."
+    },
+    "a_7": {
+        "formal problem": "theorem only_integer_square_less_than_double:\nfixes n :: int\nshows  \"(\\<exists> n. n * n < 2 * n) \\<and> (\\<forall> m. m * m < 2 * m \\<longrightarrow> m = n)\"\nproof\n  show \"\\<exists> n. n * n < 2 * n\" by (rule exI[of _ \"1\"], simp)\nnext\n  fix m :: int\n  assume \"m * m < 2 * m\"\n  thus \"m = 1\"\n  proof (cases \"m = 0\")\n    case True\n    then show ?thesis using `m * m < 2 * m` by simp\n  next\n    case False\n    then have \"m > 0\" using `m * m < 2 * m` by (cases \"m > 0\", auto)\n    then obtain k where \"m = int (Suc k)\" by (metis int_cases int_of_nat_def of_nat_0_less_iff)\n    then have \"m * m = int (Suc k) * int (Suc k)\" by simp\n    also have \"... = int (Suc k * Suc k)\" by (metis int_mult)\n    also have \"... \\<le> int (2 * Suc k)\" using `m * m < 2 * m` `m = int (Suc k)` by simp\n    also have \"... < int (Suc (Suc k))\" by (metis int_one_le_iff_zero_less of_nat_1 of_nat_add of_nat_less_iff)\n    finally have \"Suc k * Suc k < Suc (Suc k)\" by (metis int_less_iff zless_imp_add1_zle)\n    then have \"k = 0\" by arith\n    then show ?thesis using `m = int (Suc k)` by simp\n  qed\nqed",
+        "formal solution": "(* ### Problem\n What is the only integer whose square is less than its double? The final Answer is 1\n ### Proof\n The integer is $\\boxed{1}$, since $1^2=1<2$.\n *)\n\ntheorem only_integer_square_less_than_double:\nfixes n :: int\nshows  \"(\\<exists> n. n * n < 2 * n) \\<and> (\\<forall> m. m * m < 2 * m \\<longrightarrow> m = n)\"\nproof\n  show \"\\<exists> n. n * n < 2 * n\" by (rule exI[of _ \"1\"], simp)\nnext\n  fix m :: int\n  assume \"m * m < 2 * m\"\n  thus \"m = 1\"\n  proof (cases \"m = 0\")\n    case True\n    then show ?thesis using `m * m < 2 * m` by simp\n  next\n    case False\n    then have \"m > 0\" using `m * m < 2 * m` by (cases \"m > 0\", auto)\n    then obtain k where \"m = int (Suc k)\" by (metis int_cases int_of_nat_def of_nat_0_less_iff)\n    then have \"m * m = int (Suc k) * int (Suc k)\" by simp\n    also have \"... = int (Suc k * Suc k)\" by (metis int_mult)\n    also have \"... \\<le> int (2 * Suc k)\" using `m * m < 2 * m` `m = int (Suc k)` by simp\n    also have \"... < int (Suc (Suc k))\" by (metis int_one_le_iff_zero_less of_nat_1 of_nat_add of_nat_less_iff)\n    finally have \"Suc k * Suc k < Suc (Suc k)\" by (metis int_less_iff zless_imp_add1_zle)\n    then have \"k = 0\" by arith\n    then show ?thesis using `m = int (Suc k)` by simp\n  qed\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the unique integer $n$ such that $n^2 < 2n$. The final answer is $n = 1$."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n * n < 2 * n\"\nshows  \"n = 1\"",
+        "formal solution": "(* ### Problem\n What is the only integer whose square is less than its double? The final Answer is 1\n ### Proof\n The integer is $\\boxed{1}$, since $1^2=1<2$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n * n < 2 * n\"\nshows  \"n = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the integer value of $n$ such that $n^2 < 2n$. The final answer is $n=1$."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: int\nshows  \"\\<exists>!n. n * n < 2 * n \\<and> (\\<forall>m. m * m < 2 * m \\<longrightarrow> m = n)\"\nproof\n  show \"\\<exists>n. n * n < 2 * n \\<and> (\\<forall>m. m * m < 2 * m \\<longrightarrow> m = n)\"\n  proof\n    have \"1 * 1 < 2 * 1 \\<and> (\\<forall>m. m * m < 2 * m \\<longrightarrow> m = 1)\"\n    proof\n      show \"1 * 1 < 2 * 1\"\n        by simp\n    next\n      show \"\\<forall>m. m * m < 2 * m \\<longrightarrow> m = 1\"\n      proof (rule allI, rule impI)\n        fix m\n        assume \"m * m < 2 * m\"\n        then have \"m * m - 2 * m < 0\"\n          by simp\n        then have \"m * (m - 2) < 0\"\n          by simp\n        then show \"m = 1\"\n          by (metis diff_is_0_eq' leI less_linear mult.commute mult_eq_0_iff not_less zero_less_diff)\n      qed\n    qed\n    then show ?thesis\n      by blast\n  qed\nnext\n  show \"\\<And>n n'. n * n < 2 * n \\<and> (\\<forall>m. m * m < 2 * m \\<longrightarrow> m = n) \\<Longrightarrow> n' * n' < 2 * n' \\<and> (\\<forall>m. m * m < 2 * m \\<longrightarrow> m = n') \\<Longrightarrow> n = n'\"\n  ",
+        "formal solution": "(* ### Problem\n What is the only integer whose square is less than its double? The final Answer is 1\n ### Proof\n The integer is $\\boxed{1}$, since $1^2=1<2$.\n *)\n\ntheorem\nfixes n :: int\nshows  \"\\<exists>!n. n * n < 2 * n \\<and> (\\<forall>m. m * m < 2 * m \\<longrightarrow> m = n)\"\nproof\n  show \"\\<exists>n. n * n < 2 * n \\<and> (\\<forall>m. m * m < 2 * m \\<longrightarrow> m = n)\"\n  proof\n    have \"1 * 1 < 2 * 1 \\<and> (\\<forall>m. m * m < 2 * m \\<longrightarrow> m = 1)\"\n    proof\n      show \"1 * 1 < 2 * 1\"\n        by simp\n    next\n      show \"\\<forall>m. m * m < 2 * m \\<longrightarrow> m = 1\"\n      proof (rule allI, rule impI)\n        fix m\n        assume \"m * m < 2 * m\"\n        then have \"m * m - 2 * m < 0\"\n          by simp\n        then have \"m * (m - 2) < 0\"\n          by simp\n        then show \"m = 1\"\n          by (metis diff_is_0_eq' leI less_linear mult.commute mult_eq_0_iff not_less zero_less_diff)\n      qed\n    qed\n    then show ?thesis\n      by blast\n  qed\nnext\n  show \"\\<And>n n'. n * n < 2 * n \\<and> (\\<forall>m. m * m < 2 * m \\<longrightarrow> m = n) \\<Longrightarrow> n' * n' < 2 * n' \\<and> (\\<forall>m. m * m < 2 * m \\<longrightarrow> m = n') \\<Longrightarrow> n = n'\"\n  \n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the unique integer $n$ such that $n^2 < 2n$ and for any integer $m$, if $m^2 < 2m$, then $m = n$?"
+    },
+    "level": "Level 1",
+    "type": "Algebra"
+}

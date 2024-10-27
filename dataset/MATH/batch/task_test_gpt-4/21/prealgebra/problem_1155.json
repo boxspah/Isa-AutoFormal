@@ -1,0 +1,59 @@
+{
+    "natural problem": "What is the least prime number which is the sum of two distinct positive perfect squares?",
+    "natural solution": [
+        "We check the sum of the two smallest distinct perfect squares and find our answer: $1^2+2^2=1+4=\\boxed{5}$, a prime."
+    ],
+    "natural answer": "5",
+    "a_0": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a \\<noteq> b\"\nand h1 : \"is_prime (a^2 + b^2)\"\nand h2 : \"is_least_prime (a^2 + b^2)\"\nshows  \"a^2 + b^2 = 5\"",
+        "formal solution": "(* ### Problem\n What is the least prime number which is the sum of two distinct positive perfect squares? The final Answer is 5\n ### Proof\n We check the sum of the two smallest distinct perfect squares and find our answer: $1^2+2^2=1+4=\\boxed{5}$, a prime.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a \\<noteq> b\"\nand h1 : \"is_prime (a^2 + b^2)\"\nand h2 : \"is_least_prime (a^2 + b^2)\"\nshows  \"a^2 + b^2 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume that $a$ and $b$ are distinct natural numbers. If $a^2 + b^2$ is a prime number and the smallest possible prime number that can be expressed in the form $a^2 + b^2$, what is $a^2 + b^2$? The final answer is $5$."
+    },
+    "a_1": {
+        "formal problem": "theorem \nfixes p a b :: nat\nassumes h0 : \"prime p\"\nand h1 : \"a * a + b * b = p\"\nand h2 : \"a \\<noteq> b\"\nand h3 : \"a > 0\"\nand h4 : \"b > 0\"\nshows  \"p = 5\"",
+        "formal solution": "(* ### Problem\n What is the least prime number which is the sum of two distinct positive perfect squares? The final Answer is 5\n ### Proof\n We check the sum of the two smallest distinct perfect squares and find our answer: $1^2+2^2=1+4=\\boxed{5}$, a prime.\n *)\n\ntheorem \nfixes p a b :: nat\nassumes h0 : \"prime p\"\nand h1 : \"a * a + b * b = p\"\nand h2 : \"a \\<noteq> b\"\nand h3 : \"a > 0\"\nand h4 : \"b > 0\"\nshows  \"p = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two distinct positive natural numbers a and b such that their squares sum up to a prime number p. If p is found to be equal to 5, what are a and b?"
+    },
+    "a_2": {
+        "formal problem": "theorem \nfixes p :: nat and a b :: nat\nassumes h0 : \"prime p\"\nand h1 : \"a \\<noteq> b\"\nand h2 : \"perfect_square a\"\nand h3 : \"perfect_square b\"\nand h4 : \"a + b = p\"\nshows  \"p = (LEAST p. \\<exists> a b. a \\<noteq> b \\<and> perfect_square a \\<and> perfect_square b \\<and> a + b = p)\"",
+        "formal solution": "(* ### Problem\n What is the least prime number which is the sum of two distinct positive perfect squares? The final Answer is 5\n ### Proof\n We check the sum of the two smallest distinct perfect squares and find our answer: $1^2+2^2=1+4=\\boxed{5}$, a prime.\n *)\n\ntheorem \nfixes p :: nat and a b :: nat\nassumes h0 : \"prime p\"\nand h1 : \"a \\<noteq> b\"\nand h2 : \"perfect_square a\"\nand h3 : \"perfect_square b\"\nand h4 : \"a + b = p\"\nshows  \"p = (LEAST p. \\<exists> a b. a \\<noteq> b \\<and> perfect_square a \\<and> perfect_square b \\<and> a + b = p)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest prime number $p$ that can be written as the sum of two different perfect squares. The final answer is $p$."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a b :: nat and P :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. P n = (prime n \\<and> (\\<exists> a b. a \\<noteq> b \\<and> perfect_square a \\<and> perfect_square b \\<and> n = a + b))\"\nshows  \"(LEAST n. P n) = 5\"",
+        "formal solution": "(* ### Problem\n What is the least prime number which is the sum of two distinct positive perfect squares? The final Answer is 5\n ### Proof\n We check the sum of the two smallest distinct perfect squares and find our answer: $1^2+2^2=1+4=\\boxed{5}$, a prime.\n *)\n\ntheorem\nfixes a b :: nat and P :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. P n = (prime n \\<and> (\\<exists> a b. a \\<noteq> b \\<and> perfect_square a \\<and> perfect_square b \\<and> n = a + b))\"\nshows  \"(LEAST n. P n) = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest prime number that can be expressed as the sum of two different perfect squares. The final answer is 5."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes prime :: nat and perfect_square :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. perfect_square n = n * n\"\nand h1 : \"\\<forall> p q. prime = perfect_square p + perfect_square q \\<and> p \\<noteq> q\"\nand h2 : \"\\<forall> p. prime p \\<Longrightarrow> p \\<ge> 2 \\<and> (\\<forall> m. m \\<ge> 2 \\<and> m < p \\<longrightarrow> p mod m \\<noteq> 0)\"\nshows  \"prime = 5\"",
+        "formal solution": "(* ### Problem\n What is the least prime number which is the sum of two distinct positive perfect squares? The final Answer is 5\n ### Proof\n We check the sum of the two smallest distinct perfect squares and find our answer: $1^2+2^2=1+4=\\boxed{5}$, a prime.\n *)\n\ntheorem\nfixes prime :: nat and perfect_square :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. perfect_square n = n * n\"\nand h1 : \"\\<forall> p q. prime = perfect_square p + perfect_square q \\<and> p \\<noteq> q\"\nand h2 : \"\\<forall> p. prime p \\<Longrightarrow> p \\<ge> 2 \\<and> (\\<forall> m. m \\<ge> 2 \\<and> m < p \\<longrightarrow> p mod m \\<noteq> 0)\"\nshows  \"prime = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The prime number is the sum of two perfect squares, where perfect squares are defined as a number multiplied by itself. The two perfect squares being added together are different. A prime number is greater than or equal to 2 and it has no divisor greater than or equal to 2 and less than itself. What is the prime number? The final answer is 5."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n a b :: nat\nassumes h0 : \"prime n\"\nand h1 : \"a \\<noteq> b\"\nand h2 : \"a^2 + b^2 = n\"\nand h3 : \"\\<forall>c d. prime c \\<and> c < n \\<and> c = d^2 + e^2 \\<longrightarrow> c = n\"\nshows  \"n = 5\"",
+        "formal solution": "(* ### Problem\n What is the least prime number which is the sum of two distinct positive perfect squares? The final Answer is 5\n ### Proof\n We check the sum of the two smallest distinct perfect squares and find our answer: $1^2+2^2=1+4=\\boxed{5}$, a prime.\n *)\n\ntheorem\nfixes n a b :: nat\nassumes h0 : \"prime n\"\nand h1 : \"a \\<noteq> b\"\nand h2 : \"a^2 + b^2 = n\"\nand h3 : \"\\<forall>c d. prime c \\<and> c < n \\<and> c = d^2 + e^2 \\<longrightarrow> c = n\"\nshows  \"n = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $n$ be a prime number. Two distinct natural numbers $a$ and $b$ are such that $a^2 + b^2 = n$. If for any other prime number $c$ less than $n$ which can be represented as a sum of squares of two natural numbers $d$ and $e$, $c$ equals to $n$, then prove that $n=5$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a \\<noteq> 0\"\nand h1 : \"is_perfect_square a\"\nand h2 : \"b \\<noteq> 0\"\nand h3 : \"is_perfect_square b\"\nand h4 : \"a \\<noteq> b\"\nand h5 : \"is_prime (a + b)\"\nshows  \"(a + b) = 5\"",
+        "formal solution": "(* ### Problem\n What is the least prime number which is the sum of two distinct positive perfect squares? The final Answer is 5\n ### Proof\n We check the sum of the two smallest distinct perfect squares and find our answer: $1^2+2^2=1+4=\\boxed{5}$, a prime.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a \\<noteq> 0\"\nand h1 : \"is_perfect_square a\"\nand h2 : \"b \\<noteq> 0\"\nand h3 : \"is_perfect_square b\"\nand h4 : \"a \\<noteq> b\"\nand h5 : \"is_prime (a + b)\"\nshows  \"(a + b) = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two different non-zero perfect square natural numbers, $a$ and $b$, such that their sum is a prime number. The final answer is $5$."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"prime n\"\nand h1 : \"\\<exists> a b. a \\<noteq> b \\<and> a > 0 \\<and> b > 0 \\<and> a^2 + b^2 = n\"\nshows  \"n = 5\"",
+        "formal solution": "(* ### Problem\n What is the least prime number which is the sum of two distinct positive perfect squares? The final Answer is 5\n ### Proof\n We check the sum of the two smallest distinct perfect squares and find our answer: $1^2+2^2=1+4=\\boxed{5}$, a prime.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"prime n\"\nand h1 : \"\\<exists> a b. a \\<noteq> b \\<and> a > 0 \\<and> b > 0 \\<and> a^2 + b^2 = n\"\nshows  \"n = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a prime number $n$ that can be expressed as the sum of squares of two different positive numbers $a$ and $b$. The final answer is $5$."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"is_perfect_square a\"\nand h1 : \"is_perfect_square b\"\nand h2 : \"is_prime (a + b)\"\nand h3 : \"a \\<noteq> b\"\nshows  \"a + b = 5\"",
+        "formal solution": "(* ### Problem\n What is the least prime number which is the sum of two distinct positive perfect squares? The final Answer is 5\n ### Proof\n We check the sum of the two smallest distinct perfect squares and find our answer: $1^2+2^2=1+4=\\boxed{5}$, a prime.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"is_perfect_square a\"\nand h1 : \"is_perfect_square b\"\nand h2 : \"is_prime (a + b)\"\nand h3 : \"a \\<noteq> b\"\nshows  \"a + b = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two different perfect square numbers a and b such that their sum is a prime number, find a + b. The final answer is 5."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a > 0 \\<and> b > 0 \\<and> a \\<noteq> b\"\nand h1 : \"prime (a*a + b*b)\"\nshows  \"a*a + b*b = 5\"",
+        "formal solution": "(* ### Problem\n What is the least prime number which is the sum of two distinct positive perfect squares? The final Answer is 5\n ### Proof\n We check the sum of the two smallest distinct perfect squares and find our answer: $1^2+2^2=1+4=\\boxed{5}$, a prime.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a > 0 \\<and> b > 0 \\<and> a \\<noteq> b\"\nand h1 : \"prime (a*a + b*b)\"\nshows  \"a*a + b*b = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive natural numbers $a$ and $b$, which are not equal, such that $a^2 + b^2$ is a prime number, find the values of $a$ and $b$ such that $a^2 + b^2 = 5$."
+    },
+    "level": "Level 3",
+    "type": "Prealgebra"
+}

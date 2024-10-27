@@ -1,0 +1,59 @@
+{
+    "natural problem": "How many two-digit prime numbers have a units digit of 7?",
+    "natural solution": [
+        "The tens digit cannot be 2, 5, or 8 because otherwise, the sum of the digits, and thus the number itself, is divisible by 3. The remaining possibilities are 17, 37, 47, 67, 77, and 97. Only $77=7\\cdot11$ is composite, so there are $\\boxed{5}$ two-digit prime numbers that have a units digit of 7."
+    ],
+    "natural answer": "5",
+    "a_0": {
+        "formal problem": "theorem\nfixes prime :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. prime n = is_prime n\"\nand h1 : \"is_prime n\"\nand h2 : \"10 \\<le> n \\<and> n < 100\"\nand h3 : \"n mod 10 = 7\"\nshows  \"card {n. prime n \\<and> 10 \\<le> n \\<and> n < 100 \\<and> n mod 10 = 7} = 5\"",
+        "formal solution": "(* ### Problem\n How many two-digit prime numbers have a units digit of 7? The final Answer is 5\n ### Proof\n The tens digit cannot be 2, 5, or 8 because otherwise, the sum of the digits, and thus the number itself, is divisible by 3. The remaining possibilities are 17, 37, 47, 67, 77, and 97. Only $77=7\\cdot11$ is composite, so there are $\\boxed{5}$ two-digit prime numbers that have a units digit of 7.\n *)\n\ntheorem\nfixes prime :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. prime n = is_prime n\"\nand h1 : \"is_prime n\"\nand h2 : \"10 \\<le> n \\<and> n < 100\"\nand h3 : \"n mod 10 = 7\"\nshows  \"card {n. prime n \\<and> 10 \\<le> n \\<and> n < 100 \\<and> n mod 10 = 7} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"How many prime numbers between 10 and 100 end with the digit 7? The final answer is 5.\""
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes primes :: \"int list\"\nassumes h0 : \"primes = [x. x <- [10..99], is_prime x, x mod 10 = 7]\"\nshows  \"length primes = 5\"",
+        "formal solution": "(* ### Problem\n How many two-digit prime numbers have a units digit of 7? The final Answer is 5\n ### Proof\n The tens digit cannot be 2, 5, or 8 because otherwise, the sum of the digits, and thus the number itself, is divisible by 3. The remaining possibilities are 17, 37, 47, 67, 77, and 97. Only $77=7\\cdot11$ is composite, so there are $\\boxed{5}$ two-digit prime numbers that have a units digit of 7.\n *)\n\ntheorem\nfixes primes :: \"int list\"\nassumes h0 : \"primes = [x. x <- [10..99], is_prime x, x mod 10 = 7]\"\nshows  \"length primes = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many prime numbers between 10 and 99 end with the digit 7? The final answer is 5."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes prime_with_seven_unit_digit :: \"nat set\"\nassumes h0 : \"prime_with_seven_unit_digit = {p. prime p \\<and> p \\<ge> 10 \\<and> p \\<le> 99 \\<and> p mod 10 = 7}\"\nshows  \"card prime_with_seven_unit_digit = 5\"",
+        "formal solution": "(* ### Problem\n How many two-digit prime numbers have a units digit of 7? The final Answer is 5\n ### Proof\n The tens digit cannot be 2, 5, or 8 because otherwise, the sum of the digits, and thus the number itself, is divisible by 3. The remaining possibilities are 17, 37, 47, 67, 77, and 97. Only $77=7\\cdot11$ is composite, so there are $\\boxed{5}$ two-digit prime numbers that have a units digit of 7.\n *)\n\ntheorem\nfixes prime_with_seven_unit_digit :: \"nat set\"\nassumes h0 : \"prime_with_seven_unit_digit = {p. prime p \\<and> p \\<ge> 10 \\<and> p \\<le> 99 \\<and> p mod 10 = 7}\"\nshows  \"card prime_with_seven_unit_digit = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"How many prime numbers are there between 10 and 99 that end with the digit 7? The final answer is 5.\""
+    },
+    "a_3": {
+        "formal problem": "theorem \nfixes two_digit_prime :: \"int set\"\nassumes h0 : \"two_digit_prime = {x. 10 <= x \\<and> x < 100 \\<and> is_prime x \\<and> x mod 10 = 7}\"\nshows  \"card two_digit_prime = 5\"",
+        "formal solution": "(* ### Problem\n How many two-digit prime numbers have a units digit of 7? The final Answer is 5\n ### Proof\n The tens digit cannot be 2, 5, or 8 because otherwise, the sum of the digits, and thus the number itself, is divisible by 3. The remaining possibilities are 17, 37, 47, 67, 77, and 97. Only $77=7\\cdot11$ is composite, so there are $\\boxed{5}$ two-digit prime numbers that have a units digit of 7.\n *)\n\ntheorem \nfixes two_digit_prime :: \"int set\"\nassumes h0 : \"two_digit_prime = {x. 10 <= x \\<and> x < 100 \\<and> is_prime x \\<and> x mod 10 = 7}\"\nshows  \"card two_digit_prime = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit prime numbers end with 7? The final answer is 5."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"10 \\<le> n \\<and> n < 100\"\nand h1 : \"n mod 10 = 7\"\nand h2 : \"\\<forall>m. m > 1 \\<longrightarrow> m \\<noteq> n \\<longrightarrow> n mod m \\<noteq> 0\"\nshows  \"card {n. 10 \\<le> n \\<and> n < 100 \\<and> n mod 10 = 7 \\<and> (\\<forall>m. m > 1 \\<longrightarrow> m \\<noteq> n \\<longrightarrow> n mod m \\<noteq> 0)} = 5\"",
+        "formal solution": "(* ### Problem\n How many two-digit prime numbers have a units digit of 7? The final Answer is 5\n ### Proof\n The tens digit cannot be 2, 5, or 8 because otherwise, the sum of the digits, and thus the number itself, is divisible by 3. The remaining possibilities are 17, 37, 47, 67, 77, and 97. Only $77=7\\cdot11$ is composite, so there are $\\boxed{5}$ two-digit prime numbers that have a units digit of 7.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"10 \\<le> n \\<and> n < 100\"\nand h1 : \"n mod 10 = 7\"\nand h2 : \"\\<forall>m. m > 1 \\<longrightarrow> m \\<noteq> n \\<longrightarrow> n mod m \\<noteq> 0\"\nshows  \"card {n. 10 \\<le> n \\<and> n < 100 \\<and> n mod 10 = 7 \\<and> (\\<forall>m. m > 1 \\<longrightarrow> m \\<noteq> n \\<longrightarrow> n mod m \\<noteq> 0)} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many prime numbers between 10 and 100 end with the digit 7? The final answer is 5."
+    },
+    "a_5": {
+        "formal problem": "theorem \nfixes prime_numbers :: \"nat set\"\nassumes h0 : \"prime_numbers = {n. prime n \\<and> n > 9 \\<and> n < 100 \\<and> n mod 10 = 7}\"\nshows  \"card prime_numbers = 5\"",
+        "formal solution": "(* ### Problem\n How many two-digit prime numbers have a units digit of 7? The final Answer is 5\n ### Proof\n The tens digit cannot be 2, 5, or 8 because otherwise, the sum of the digits, and thus the number itself, is divisible by 3. The remaining possibilities are 17, 37, 47, 67, 77, and 97. Only $77=7\\cdot11$ is composite, so there are $\\boxed{5}$ two-digit prime numbers that have a units digit of 7.\n *)\n\ntheorem \nfixes prime_numbers :: \"nat set\"\nassumes h0 : \"prime_numbers = {n. prime n \\<and> n > 9 \\<and> n < 100 \\<and> n mod 10 = 7}\"\nshows  \"card prime_numbers = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many prime numbers are there between 10 and 100 that end with 7? The final answer is 5."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes count :: nat\nassumes h0 : \"count = card {n. prime n \\<and> n \\<ge> 10 \\<and> n < 100 \\<and> n mod 10 = 7}\"\nshows  \"count = 5\"",
+        "formal solution": "(* ### Problem\n How many two-digit prime numbers have a units digit of 7? The final Answer is 5\n ### Proof\n The tens digit cannot be 2, 5, or 8 because otherwise, the sum of the digits, and thus the number itself, is divisible by 3. The remaining possibilities are 17, 37, 47, 67, 77, and 97. Only $77=7\\cdot11$ is composite, so there are $\\boxed{5}$ two-digit prime numbers that have a units digit of 7.\n *)\n\ntheorem\nfixes count :: nat\nassumes h0 : \"count = card {n. prime n \\<and> n \\<ge> 10 \\<and> n < 100 \\<and> n mod 10 = 7}\"\nshows  \"count = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many prime numbers between 10 and 100 end with 7? The final answer is 5."
+    },
+    "a_7": {
+        "formal problem": "theorem prime_numbers_with_units_digit_seven\nfixes prime :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. prime n \\<longleftrightarrow> (n > 1 \\<and> (\\<forall> m \\<in> {2..<n}. n mod m \\<noteq> 0))\"\nand h1 : \"\\<forall> n. n \\<in> {10..99} \\<and> n mod 10 = 7 \\<longrightarrow> prime n\"\nshows  \"card {n. n \\<in> {10..99} \\<and> n mod 10 = 7 \\<and> prime n} = 5\"",
+        "formal solution": "(* ### Problem\n How many two-digit prime numbers have a units digit of 7? The final Answer is 5\n ### Proof\n The tens digit cannot be 2, 5, or 8 because otherwise, the sum of the digits, and thus the number itself, is divisible by 3. The remaining possibilities are 17, 37, 47, 67, 77, and 97. Only $77=7\\cdot11$ is composite, so there are $\\boxed{5}$ two-digit prime numbers that have a units digit of 7.\n *)\n\ntheorem prime_numbers_with_units_digit_seven\nfixes prime :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. prime n \\<longleftrightarrow> (n > 1 \\<and> (\\<forall> m \\<in> {2..<n}. n mod m \\<noteq> 0))\"\nand h1 : \"\\<forall> n. n \\<in> {10..99} \\<and> n mod 10 = 7 \\<longrightarrow> prime n\"\nshows  \"card {n. n \\<in> {10..99} \\<and> n mod 10 = 7 \\<and> prime n} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many prime numbers between 10 and 99 have their units digit as 7? The final answer is 5."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes prime_numbers :: \"int set\"\nassumes h0 : \"prime_numbers = {n. prime n \\<and> n > 10 \\<and> n < 100 \\<and> n mod 10 = 7}\"\nshows  \"card prime_numbers = 5\"",
+        "formal solution": "(* ### Problem\n How many two-digit prime numbers have a units digit of 7? The final Answer is 5\n ### Proof\n The tens digit cannot be 2, 5, or 8 because otherwise, the sum of the digits, and thus the number itself, is divisible by 3. The remaining possibilities are 17, 37, 47, 67, 77, and 97. Only $77=7\\cdot11$ is composite, so there are $\\boxed{5}$ two-digit prime numbers that have a units digit of 7.\n *)\n\ntheorem\nfixes prime_numbers :: \"int set\"\nassumes h0 : \"prime_numbers = {n. prime n \\<and> n > 10 \\<and> n < 100 \\<and> n mod 10 = 7}\"\nshows  \"card prime_numbers = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many prime numbers are there between 10 and 100 that end with 7? The final answer is 5."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. f n = (is_prime n \\<and> n \\<ge> 10 \\<and> n \\<le> 99 \\<and> n mod 10 = 7)\"\nshows  \"card {n. f n} = 5\"",
+        "formal solution": "(* ### Problem\n How many two-digit prime numbers have a units digit of 7? The final Answer is 5\n ### Proof\n The tens digit cannot be 2, 5, or 8 because otherwise, the sum of the digits, and thus the number itself, is divisible by 3. The remaining possibilities are 17, 37, 47, 67, 77, and 97. Only $77=7\\cdot11$ is composite, so there are $\\boxed{5}$ two-digit prime numbers that have a units digit of 7.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. f n = (is_prime n \\<and> n \\<ge> 10 \\<and> n \\<le> 99 \\<and> n mod 10 = 7)\"\nshows  \"card {n. f n} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit prime numbers end with 7? The final answer is 5."
+    },
+    "level": "Level 3",
+    "type": "Prealgebra"
+}

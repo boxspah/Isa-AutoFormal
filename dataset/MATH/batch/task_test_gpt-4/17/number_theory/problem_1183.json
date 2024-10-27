@@ -1,0 +1,139 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat and sum_cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_cubes n = (\\<Sum> i \\<in> {1..n}. i^3)\"\nshows  \"(sum_cubes 21) mod 10 = 1\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum of the first $21$ positive perfect cubes. The final Answer is 1\n ### Proof\n Notice that for each integer $n$ satisfying $1 \\le n \\le 19, n \\neq 10$, then using the sum of cubes factorization, $n^3 + (20 - n)^3 = (n + 20 - n)(n^2 + (20-n)n + (20-n)^2)$ $ = 20(n^2 + (20-n)n + (20-n)^2)$.\n Thus, we can pair each integer with the difference between $20$ and that integer, and the sum of their cubes is divisible by $20$.\n Hence, the units digit of the sum of the first $19$ cubes, excluding $10$, is equal to $0$. Also, the units digits of $10^3$ and $20^3$ are clearly $0$, so we just need to find the units digit of the cube of $21$, which is $\\boxed{1}$.\n *)\n\ntheorem\nfixes n :: nat and sum_cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_cubes n = (\\<Sum> i \\<in> {1..n}. i^3)\"\nshows  \"(sum_cubes 21) mod 10 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder when the sum of the cubes of the first 21 natural numbers is divided by 10. The final answer is 1.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.995511531829834,
+        "symbolic_score": 0.4
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes sum_cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. sum_cubes n = (\\<Sum>i\\<in>{1..n}. i^3)\"\nshows  \"sum_cubes 21 mod 10 = 1\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum of the first $21$ positive perfect cubes. The final Answer is 1\n ### Proof\n Notice that for each integer $n$ satisfying $1 \\le n \\le 19, n \\neq 10$, then using the sum of cubes factorization, $n^3 + (20 - n)^3 = (n + 20 - n)(n^2 + (20-n)n + (20-n)^2)$ $ = 20(n^2 + (20-n)n + (20-n)^2)$.\n Thus, we can pair each integer with the difference between $20$ and that integer, and the sum of their cubes is divisible by $20$.\n Hence, the units digit of the sum of the first $19$ cubes, excluding $10$, is equal to $0$. Also, the units digits of $10^3$ and $20^3$ are clearly $0$, so we just need to find the units digit of the cube of $21$, which is $\\boxed{1}$.\n *)\n\ntheorem\nfixes sum_cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. sum_cubes n = (\\<Sum>i\\<in>{1..n}. i^3)\"\nshows  \"sum_cubes 21 mod 10 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the cubes of all natural numbers from 1 to 21, then find the remainder when this sum is divided by 10. The final answer is 1.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9315131902694702,
+        "symbolic_score": 0.4
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat and sum_cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_cubes n = n * (n + 1) div 2 powr 3\"\nshows  \"(sum_cubes 21) mod 10 = 1\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum of the first $21$ positive perfect cubes. The final Answer is 1\n ### Proof\n Notice that for each integer $n$ satisfying $1 \\le n \\le 19, n \\neq 10$, then using the sum of cubes factorization, $n^3 + (20 - n)^3 = (n + 20 - n)(n^2 + (20-n)n + (20-n)^2)$ $ = 20(n^2 + (20-n)n + (20-n)^2)$.\n Thus, we can pair each integer with the difference between $20$ and that integer, and the sum of their cubes is divisible by $20$.\n Hence, the units digit of the sum of the first $19$ cubes, excluding $10$, is equal to $0$. Also, the units digits of $10^3$ and $20^3$ are clearly $0$, so we just need to find the units digit of the cube of $21$, which is $\\boxed{1}$.\n *)\n\ntheorem\nfixes n :: nat and sum_cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_cubes n = n * (n + 1) div 2 powr 3\"\nshows  \"(sum_cubes 21) mod 10 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit (units place) of the sum of cubes of all natural numbers up to 21. The final answer is 1.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9706845879554749,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = n powr 3\"\nand h1 : \"sum (\\<lambda>n. f n) {1..21} mod 10 = 1\"\nshows  \"digit (sum (\\<lambda>n. f n) {1..21}) 1 = 1\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum of the first $21$ positive perfect cubes. The final Answer is 1\n ### Proof\n Notice that for each integer $n$ satisfying $1 \\le n \\le 19, n \\neq 10$, then using the sum of cubes factorization, $n^3 + (20 - n)^3 = (n + 20 - n)(n^2 + (20-n)n + (20-n)^2)$ $ = 20(n^2 + (20-n)n + (20-n)^2)$.\n Thus, we can pair each integer with the difference between $20$ and that integer, and the sum of their cubes is divisible by $20$.\n Hence, the units digit of the sum of the first $19$ cubes, excluding $10$, is equal to $0$. Also, the units digits of $10^3$ and $20^3$ are clearly $0$, so we just need to find the units digit of the cube of $21$, which is $\\boxed{1}$.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = n powr 3\"\nand h1 : \"sum (\\<lambda>n. f n) {1..21} mod 10 = 1\"\nshows  \"digit (sum (\\<lambda>n. f n) {1..21}) 1 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f$ defined for all natural numbers $n$ such that $f(n) = n^3$. Find the second digit from the right of the sum of $f(n)$ for $n$ from $1$ to $21$. The final answer is $1$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9832212924957275,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. 0 < n \\<and> n \\<le> 21 \\<longrightarrow> f n = n powr 3\"\nand h1 : \"sum f {1..21} mod 10 = 1\"\nshows  \"True\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum of the first $21$ positive perfect cubes. The final Answer is 1\n ### Proof\n Notice that for each integer $n$ satisfying $1 \\le n \\le 19, n \\neq 10$, then using the sum of cubes factorization, $n^3 + (20 - n)^3 = (n + 20 - n)(n^2 + (20-n)n + (20-n)^2)$ $ = 20(n^2 + (20-n)n + (20-n)^2)$.\n Thus, we can pair each integer with the difference between $20$ and that integer, and the sum of their cubes is divisible by $20$.\n Hence, the units digit of the sum of the first $19$ cubes, excluding $10$, is equal to $0$. Also, the units digits of $10^3$ and $20^3$ are clearly $0$, so we just need to find the units digit of the cube of $21$, which is $\\boxed{1}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. 0 < n \\<and> n \\<le> 21 \\<longrightarrow> f n = n powr 3\"\nand h1 : \"sum f {1..21} mod 10 = 1\"\nshows  \"True\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For an integer function $f$, if $f(n) = n^3$ for all $n$ such that $0 < n \\leq 21$, and the sum of $f(n)$ for $n$ from 1 to 21 gives a remainder of 1 when divided by 10, then the statement is true.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9061744809150696,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. cubes n = n ^ 3\"\nand h1 : \"sum cubes {1..21} mod 10 = 1\"\nshows  \"cubes 21 mod 10 = 1\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum of the first $21$ positive perfect cubes. The final Answer is 1\n ### Proof\n Notice that for each integer $n$ satisfying $1 \\le n \\le 19, n \\neq 10$, then using the sum of cubes factorization, $n^3 + (20 - n)^3 = (n + 20 - n)(n^2 + (20-n)n + (20-n)^2)$ $ = 20(n^2 + (20-n)n + (20-n)^2)$.\n Thus, we can pair each integer with the difference between $20$ and that integer, and the sum of their cubes is divisible by $20$.\n Hence, the units digit of the sum of the first $19$ cubes, excluding $10$, is equal to $0$. Also, the units digits of $10^3$ and $20^3$ are clearly $0$, so we just need to find the units digit of the cube of $21$, which is $\\boxed{1}$.\n *)\n\ntheorem\nfixes cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. cubes n = n ^ 3\"\nand h1 : \"sum cubes {1..21} mod 10 = 1\"\nshows  \"cubes 21 mod 10 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The function cubes is defined such that cubes(n) is equal to n cubed for all natural numbers n. If the sum of cubes from 1 to 21, when divided by 10, leaves a remainder of 1, find the remainder when the cube of 21 is divided by 10. The final answer is 1.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.7927937507629395,
+        "symbolic_score": 0.4
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes sum_cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_cubes n = (\\<Sum>i=1..n. i ^ 3)\"\nshows  \"sum_cubes 21 mod 10 = 1\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum of the first $21$ positive perfect cubes. The final Answer is 1\n ### Proof\n Notice that for each integer $n$ satisfying $1 \\le n \\le 19, n \\neq 10$, then using the sum of cubes factorization, $n^3 + (20 - n)^3 = (n + 20 - n)(n^2 + (20-n)n + (20-n)^2)$ $ = 20(n^2 + (20-n)n + (20-n)^2)$.\n Thus, we can pair each integer with the difference between $20$ and that integer, and the sum of their cubes is divisible by $20$.\n Hence, the units digit of the sum of the first $19$ cubes, excluding $10$, is equal to $0$. Also, the units digits of $10^3$ and $20^3$ are clearly $0$, so we just need to find the units digit of the cube of $21$, which is $\\boxed{1}$.\n *)\n\ntheorem\nfixes sum_cubes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_cubes n = (\\<Sum>i=1..n. i ^ 3)\"\nshows  \"sum_cubes 21 mod 10 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the remainder when the sum of the cubes of the first 21 natural numbers is divided by 10? The final answer is 1.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9169638156890869,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n^3\"\nand h1 : \"\\<forall> n. n \\<ge> 21 \\<longrightarrow> f n mod 10 = 1\"\nshows  \"sum f {1..21} mod 10 = 1\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum of the first $21$ positive perfect cubes. The final Answer is 1\n ### Proof\n Notice that for each integer $n$ satisfying $1 \\le n \\le 19, n \\neq 10$, then using the sum of cubes factorization, $n^3 + (20 - n)^3 = (n + 20 - n)(n^2 + (20-n)n + (20-n)^2)$ $ = 20(n^2 + (20-n)n + (20-n)^2)$.\n Thus, we can pair each integer with the difference between $20$ and that integer, and the sum of their cubes is divisible by $20$.\n Hence, the units digit of the sum of the first $19$ cubes, excluding $10$, is equal to $0$. Also, the units digits of $10^3$ and $20^3$ are clearly $0$, so we just need to find the units digit of the cube of $21$, which is $\\boxed{1}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n^3\"\nand h1 : \"\\<forall> n. n \\<ge> 21 \\<longrightarrow> f n mod 10 = 1\"\nshows  \"sum f {1..21} mod 10 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(n) = n^3$ for all integer $n$, and for all $n \\geq 21$, $f(n)$ modulo $10$ equals $1$. What is the sum of $f(n)$ for all $n$ from $1$ to $21$, modulo $10$? The final answer is $1$.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9319124817848206,
+        "symbolic_score": 0.4
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes sum_cubes :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. sum_cubes n = (\\<Sum>i\\<in>{1..n}. i powr 3)\"\nshows  \"sum_cubes 21 mod 10 = 1\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum of the first $21$ positive perfect cubes. The final Answer is 1\n ### Proof\n Notice that for each integer $n$ satisfying $1 \\le n \\le 19, n \\neq 10$, then using the sum of cubes factorization, $n^3 + (20 - n)^3 = (n + 20 - n)(n^2 + (20-n)n + (20-n)^2)$ $ = 20(n^2 + (20-n)n + (20-n)^2)$.\n Thus, we can pair each integer with the difference between $20$ and that integer, and the sum of their cubes is divisible by $20$.\n Hence, the units digit of the sum of the first $19$ cubes, excluding $10$, is equal to $0$. Also, the units digits of $10^3$ and $20^3$ are clearly $0$, so we just need to find the units digit of the cube of $21$, which is $\\boxed{1}$.\n *)\n\ntheorem\nfixes sum_cubes :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. sum_cubes n = (\\<Sum>i\\<in>{1..n}. i powr 3)\"\nshows  \"sum_cubes 21 mod 10 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder when the sum of the cubes of the first 21 natural numbers is divided by 10. The final answer is 1.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.995511531829834,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> f n = n * n * n\"\nand h1 : \"f (n + 1) = f n + (n + 1) * (n + 1) * (n + 1)\"\nand h2 : \"n = 21\"\nshows  \"(sum f {1..n}) mod 10 = 1\"",
+        "formal solution": "(* ### Problem\n Find the units digit of the sum of the first $21$ positive perfect cubes. The final Answer is 1\n ### Proof\n Notice that for each integer $n$ satisfying $1 \\le n \\le 19, n \\neq 10$, then using the sum of cubes factorization, $n^3 + (20 - n)^3 = (n + 20 - n)(n^2 + (20-n)n + (20-n)^2)$ $ = 20(n^2 + (20-n)n + (20-n)^2)$.\n Thus, we can pair each integer with the difference between $20$ and that integer, and the sum of their cubes is divisible by $20$.\n Hence, the units digit of the sum of the first $19$ cubes, excluding $10$, is equal to $0$. Also, the units digits of $10^3$ and $20^3$ are clearly $0$, so we just need to find the units digit of the cube of $21$, which is $\\boxed{1}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> f n = n * n * n\"\nand h1 : \"f (n + 1) = f n + (n + 1) * (n + 1) * (n + 1)\"\nand h2 : \"n = 21\"\nshows  \"(sum f {1..n}) mod 10 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The function $f(n)$ is defined as $f(n) = n^3$ for all natural numbers $n \\geq 1$. If $f(n+1) = f(n) + (n+1)^3$, find the last digit (i.e., the remainder when divided by 10) of the sum of $f(n)$ from $n=1$ to $n=21$. The final answer is $1$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.853602409362793,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "1",
+    "natural problem": "Find the units digit of the sum of the first $21$ positive perfect cubes.",
+    "natural solution": [
+        "Notice that for each integer $n$ satisfying $1 \\le n \\le 19, n \\neq 10$, then using the sum of cubes factorization, $n^3 + (20 - n)^3 = (n + 20 - n)(n^2 + (20-n)n + (20-n)^2)$ $ = 20(n^2 + (20-n)n + (20-n)^2)$.",
+        "Thus, we can pair each integer with the difference between $20$ and that integer, and the sum of their cubes is divisible by $20$.",
+        "Hence, the units digit of the sum of the first $19$ cubes, excluding $10$, is equal to $0$. Also, the units digits of $10^3$ and $20^3$ are clearly $0$, so we just need to find the units digit of the cube of $21$, which is $\\boxed{1}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            5,
+            7
+        ],
+        "1": [
+            2
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            6
+        ],
+        "5": [
+            8
+        ],
+        "6": [
+            9
+        ]
+    },
+    "str_pred": "[[0, 1, 5, 7], [2], [3], [4], [6], [8], [9]]",
+    "level": "Level 4",
+    "type": "Number Theory"
+}

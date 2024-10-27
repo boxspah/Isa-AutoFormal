@@ -1,0 +1,142 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes t u :: real\nand v1 :: \"real \\<Rightarrow> real*real\" and v2 :: \"real \\<Rightarrow> real*real\"\nand theta :: real\nassumes h0 : \"\\<forall> t. v1 t = (5 + 2 * t, -1 + t)\"\nand h1 : \"\\<forall> u. v2 u = (-7 - u, 3 + u)\"\nand h2 : \"cos theta = dot (v1 t) (v2 u) / (norm (v1 t) * norm (v2 u))\"\nshows  \"cos theta = 0\"",
+        "formal solution": "(* ### Problem\n A line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}.\\]A second line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} -7 \\\\ 3 \\end{pmatrix} + u \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.\\]If $\\theta$ is the acute angle formed by the two lines, then find $\\cos \\theta.$ The final Answer is 0\n ### Proof\n The direction vectors of the lines are $\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ and $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.$  The cosine of the angle between these direction vectors is \\[\\frac{\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\cdot \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}}{\\left\\| \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\right\\| \\left\\| \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} \\right\\|} = \\frac{-1}{\\sqrt{5} \\sqrt{2}} = -\\frac{1}{\\sqrt{10}}.\\]Since $\\theta$ is acute, $\\cos \\theta = \\boxed{\\frac{1}{\\sqrt{10}}}.$\n *)\n\ntheorem\nfixes t u :: real\nand v1 :: \"real \\<Rightarrow> real*real\" and v2 :: \"real \\<Rightarrow> real*real\"\nand theta :: real\nassumes h0 : \"\\<forall> t. v1 t = (5 + 2 * t, -1 + t)\"\nand h1 : \"\\<forall> u. v2 u = (-7 - u, 3 + u)\"\nand h2 : \"cos theta = dot (v1 t) (v2 u) / (norm (v1 t) * norm (v2 u))\"\nshows  \"cos theta = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $v1(t) = (5 + 2t, -1 + t)$ and $v2(u) = (-7 - u, 3 + u)$. Find $\\theta$ such that the cosine of the angle $\\theta$ between vectors $v1(t)$ and $v2(u)$ is zero.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.4044440984725952,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes t u :: real\nand vec1 :: \"real \\<Rightarrow> real^2\"\nand vec2 :: \"real \\<Rightarrow> real^2\"\nand theta :: real\nassumes h0 : \"\\<forall> t. vec1 t = vector [5, -1] + t *\\<^sub>R vector [2, 1]\"\nand h1 : \"\\<forall> u. vec2 u = vector [-7, 3] + u *\\<^sub>R vector [-1, 1]\"\nand h2 : \"theta = angle_between (vec1 t) (vec2 u)\"\nshows  \"cos theta = 0\"",
+        "formal solution": "(* ### Problem\n A line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}.\\]A second line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} -7 \\\\ 3 \\end{pmatrix} + u \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.\\]If $\\theta$ is the acute angle formed by the two lines, then find $\\cos \\theta.$ The final Answer is 0\n ### Proof\n The direction vectors of the lines are $\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ and $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.$  The cosine of the angle between these direction vectors is \\[\\frac{\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\cdot \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}}{\\left\\| \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\right\\| \\left\\| \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} \\right\\|} = \\frac{-1}{\\sqrt{5} \\sqrt{2}} = -\\frac{1}{\\sqrt{10}}.\\]Since $\\theta$ is acute, $\\cos \\theta = \\boxed{\\frac{1}{\\sqrt{10}}}.$\n *)\n\ntheorem\nfixes t u :: real\nand vec1 :: \"real \\<Rightarrow> real^2\"\nand vec2 :: \"real \\<Rightarrow> real^2\"\nand theta :: real\nassumes h0 : \"\\<forall> t. vec1 t = vector [5, -1] + t *\\<^sub>R vector [2, 1]\"\nand h1 : \"\\<forall> u. vec2 u = vector [-7, 3] + u *\\<^sub>R vector [-1, 1]\"\nand h2 : \"theta = angle_between (vec1 t) (vec2 u)\"\nshows  \"cos theta = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Two vectors are defined as follows: $\\vec{v_1}(t) = [5, -1] + t[2, 1]$ and $\\vec{v_2}(u) = [-7, 3] + u[-1, 1]$. Find the angle $\\theta$ between $\\vec{v_1}(t)$ and $\\vec{v_2}(u)$ such that the cosine of $\\theta$ is 0.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.24034446477890015,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes t u :: real \nand v1 :: \"real \\<Rightarrow> real^2\" \nand v2 :: \"real \\<Rightarrow> real^2\" \nassumes h0 : \"\\<forall> t. v1 t = vector [5, -1] + t *\\<^sub>R vector [2, 1]\"\nand h1 : \"\\<forall> u. v2 u = vector [-7, 3] + u *\\<^sub>R vector [-1, 1]\"\nand h2 : \"theta = angle_between (v1 t) (v2 u)\"\nshows  \"cos theta = 0\"",
+        "formal solution": "(* ### Problem\n A line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}.\\]A second line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} -7 \\\\ 3 \\end{pmatrix} + u \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.\\]If $\\theta$ is the acute angle formed by the two lines, then find $\\cos \\theta.$ The final Answer is 0\n ### Proof\n The direction vectors of the lines are $\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ and $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.$  The cosine of the angle between these direction vectors is \\[\\frac{\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\cdot \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}}{\\left\\| \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\right\\| \\left\\| \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} \\right\\|} = \\frac{-1}{\\sqrt{5} \\sqrt{2}} = -\\frac{1}{\\sqrt{10}}.\\]Since $\\theta$ is acute, $\\cos \\theta = \\boxed{\\frac{1}{\\sqrt{10}}}.$\n *)\n\ntheorem\nfixes t u :: real \nand v1 :: \"real \\<Rightarrow> real^2\" \nand v2 :: \"real \\<Rightarrow> real^2\" \nassumes h0 : \"\\<forall> t. v1 t = vector [5, -1] + t *\\<^sub>R vector [2, 1]\"\nand h1 : \"\\<forall> u. v2 u = vector [-7, 3] + u *\\<^sub>R vector [-1, 1]\"\nand h2 : \"theta = angle_between (v1 t) (v2 u)\"\nshows  \"cos theta = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two vectors in two-dimensional space, $v1(t) = [5, -1] + t*[2, 1]$ and $v2(u) = [-7, 3] + u*[-1, 1]$, find the values of $t$ and $u$ such that the angle between these two vectors, represented by $\\theta$, has a cosine of 0.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.5034273266792297,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes t u :: real and line1 line2 :: \"real \\<Rightarrow> (real \\<times> real)\"\nand cos_theta :: real\nassumes h0 : \"\\<forall> t. line1 t = (5 + 2*t, -1 + t)\"\nand h1 : \"\\<forall> u. line2 u = (-7 - u, 3 + u)\"\nand h2 : \"cos_theta = cos (line1 t, line2 u)\"\nshows  \"cos_theta = 0\"",
+        "formal solution": "(* ### Problem\n A line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}.\\]A second line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} -7 \\\\ 3 \\end{pmatrix} + u \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.\\]If $\\theta$ is the acute angle formed by the two lines, then find $\\cos \\theta.$ The final Answer is 0\n ### Proof\n The direction vectors of the lines are $\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ and $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.$  The cosine of the angle between these direction vectors is \\[\\frac{\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\cdot \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}}{\\left\\| \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\right\\| \\left\\| \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} \\right\\|} = \\frac{-1}{\\sqrt{5} \\sqrt{2}} = -\\frac{1}{\\sqrt{10}}.\\]Since $\\theta$ is acute, $\\cos \\theta = \\boxed{\\frac{1}{\\sqrt{10}}}.$\n *)\n\ntheorem\nfixes t u :: real and line1 line2 :: \"real \\<Rightarrow> (real \\<times> real)\"\nand cos_theta :: real\nassumes h0 : \"\\<forall> t. line1 t = (5 + 2*t, -1 + t)\"\nand h1 : \"\\<forall> u. line2 u = (-7 - u, 3 + u)\"\nand h2 : \"cos_theta = cos (line1 t, line2 u)\"\nshows  \"cos_theta = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two lines defined by $line1(t) = (5 + 2t, -1 + t)$ and $line2(u) = (-7 - u, 3 + u)$, find the angle between these lines. The cosine of the angle between these two lines is zero.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.3769461214542389,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes t u :: real and l1 l2 :: \"real \\<Rightarrow> real*real\" and theta :: real\nassumes h0 : \"\\<forall> t. l1 t = (5 + 2 * t, -1 + t)\"\nand h1 : \"\\<forall> u. l2 u = (-7 - u, 3 + u)\"\nand h2 : \"cos theta = ((2 * -1) + (1 * 1)) / (sqrt ((2^2 + 1^2) * ((-1)^2 + 1^2)))\"\nshows  \"cos theta = 0\"",
+        "formal solution": "(* ### Problem\n A line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}.\\]A second line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} -7 \\\\ 3 \\end{pmatrix} + u \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.\\]If $\\theta$ is the acute angle formed by the two lines, then find $\\cos \\theta.$ The final Answer is 0\n ### Proof\n The direction vectors of the lines are $\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ and $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.$  The cosine of the angle between these direction vectors is \\[\\frac{\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\cdot \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}}{\\left\\| \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\right\\| \\left\\| \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} \\right\\|} = \\frac{-1}{\\sqrt{5} \\sqrt{2}} = -\\frac{1}{\\sqrt{10}}.\\]Since $\\theta$ is acute, $\\cos \\theta = \\boxed{\\frac{1}{\\sqrt{10}}}.$\n *)\n\ntheorem\nfixes t u :: real and l1 l2 :: \"real \\<Rightarrow> real*real\" and theta :: real\nassumes h0 : \"\\<forall> t. l1 t = (5 + 2 * t, -1 + t)\"\nand h1 : \"\\<forall> u. l2 u = (-7 - u, 3 + u)\"\nand h2 : \"cos theta = ((2 * -1) + (1 * 1)) / (sqrt ((2^2 + 1^2) * ((-1)^2 + 1^2)))\"\nshows  \"cos theta = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two lines defined by $l1(t) = (5 + 2t, -1 + t)$ and $l2(u) = (-7 - u, 3 + u)$, find the cosine of the angle $\\theta$ between these two lines. The cosine of the angle is given by the formula $\\frac{2*-1 + 1*1}{\\sqrt{(2^2 + 1^2)*((-1)^2 + 1^2)}}$. The final Answer is $\\cos \\theta = 0$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9042636156082153,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes t u :: real\nand v1 :: \"real \\<Rightarrow> real*real\"\nand v2 :: \"real \\<Rightarrow> real*real\"\nand theta :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> t. v1 t = (5 + 2*t, -1 + t)\"\nand h1 : \"\\<forall> u. v2 u = (-7 - u, 3 + u)\"\nand h2 : \"\\<forall> t u. theta t = acos ((v1 t \\<bullet> v2 u) / (norm (v1 t) * norm (v2 u)))\"\nand h3 : \"\\<forall> t u. 0 \\<le> theta t \\<and> theta t < pi/2\"\nshows  \"\\<forall> t u. cos (theta t) = 0\"",
+        "formal solution": "(* ### Problem\n A line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}.\\]A second line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} -7 \\\\ 3 \\end{pmatrix} + u \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.\\]If $\\theta$ is the acute angle formed by the two lines, then find $\\cos \\theta.$ The final Answer is 0\n ### Proof\n The direction vectors of the lines are $\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ and $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.$  The cosine of the angle between these direction vectors is \\[\\frac{\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\cdot \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}}{\\left\\| \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\right\\| \\left\\| \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} \\right\\|} = \\frac{-1}{\\sqrt{5} \\sqrt{2}} = -\\frac{1}{\\sqrt{10}}.\\]Since $\\theta$ is acute, $\\cos \\theta = \\boxed{\\frac{1}{\\sqrt{10}}}.$\n *)\n\ntheorem\nfixes t u :: real\nand v1 :: \"real \\<Rightarrow> real*real\"\nand v2 :: \"real \\<Rightarrow> real*real\"\nand theta :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> t. v1 t = (5 + 2*t, -1 + t)\"\nand h1 : \"\\<forall> u. v2 u = (-7 - u, 3 + u)\"\nand h2 : \"\\<forall> t u. theta t = acos ((v1 t \\<bullet> v2 u) / (norm (v1 t) * norm (v2 u)))\"\nand h3 : \"\\<forall> t u. 0 \\<le> theta t \\<and> theta t < pi/2\"\nshows  \"\\<forall> t u. cos (theta t) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two vectors, v1(t) = (5 + 2t, -1 + t) and v2(u) = (-7 - u, 3 + u), we define \u03b8(t) as the angle between these two vectors, computed using the dot product formula. If the angle \u03b8(t) is always a non-negative value less than \u03c0/2, find the value of cos(\u03b8(t)). The final answer is 0.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9758213758468628,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes t u :: real and cos_theta :: real\nassumes h0 : \"\\<forall> t. vector [x, y] = vector [5, -1] + t * vector [2, 1]\"\nand h1 : \"\\<forall> u. vector [x, y] = vector [-7, 3] + u * vector [-1, 1]\"\nand h2 : \"cos_theta = cos (angle_between (vector [2, 1]) (vector [-1, 1]))\"\nshows  \"cos_theta = 0\"",
+        "formal solution": "(* ### Problem\n A line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}.\\]A second line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} -7 \\\\ 3 \\end{pmatrix} + u \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.\\]If $\\theta$ is the acute angle formed by the two lines, then find $\\cos \\theta.$ The final Answer is 0\n ### Proof\n The direction vectors of the lines are $\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ and $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.$  The cosine of the angle between these direction vectors is \\[\\frac{\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\cdot \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}}{\\left\\| \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\right\\| \\left\\| \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} \\right\\|} = \\frac{-1}{\\sqrt{5} \\sqrt{2}} = -\\frac{1}{\\sqrt{10}}.\\]Since $\\theta$ is acute, $\\cos \\theta = \\boxed{\\frac{1}{\\sqrt{10}}}.$\n *)\n\ntheorem\nfixes t u :: real and cos_theta :: real\nassumes h0 : \"\\<forall> t. vector [x, y] = vector [5, -1] + t * vector [2, 1]\"\nand h1 : \"\\<forall> u. vector [x, y] = vector [-7, 3] + u * vector [-1, 1]\"\nand h2 : \"cos_theta = cos (angle_between (vector [2, 1]) (vector [-1, 1]))\"\nshows  \"cos_theta = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider two lines in the plane. The first line passes through the point (5, -1) and in the direction of the vector (2, 1). The second line passes through the point (-7, 3) and in the direction of the vector (-1, 1). Find the cosine of the angle between the direction vectors of these two lines. The final answer is 0.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9625808000564575,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes t u :: real and cos_theta :: real\nassumes h0 : \"\\<forall> t. (\\<lambda> t. (5 + 2*t, -1 + t)) t = (\\<lambda> u. (-7 - u, 3 + u)) u\"\nand h1 : \"cos_theta = cos (arccos (dotprod ((\\<lambda> t. (5 + 2*t, -1 + t)) t) ((\\<lambda> u. (-7 - u, 3 + u)) u) / (norm ((\\<lambda> t. (5 + 2*t, -1 + t)) t) * norm ((\\<lambda> u. (-7 - u, 3 + u)) u))))\"\nshows  \"cos_theta = 0\"",
+        "formal solution": "(* ### Problem\n A line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}.\\]A second line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} -7 \\\\ 3 \\end{pmatrix} + u \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.\\]If $\\theta$ is the acute angle formed by the two lines, then find $\\cos \\theta.$ The final Answer is 0\n ### Proof\n The direction vectors of the lines are $\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ and $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.$  The cosine of the angle between these direction vectors is \\[\\frac{\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\cdot \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}}{\\left\\| \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\right\\| \\left\\| \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} \\right\\|} = \\frac{-1}{\\sqrt{5} \\sqrt{2}} = -\\frac{1}{\\sqrt{10}}.\\]Since $\\theta$ is acute, $\\cos \\theta = \\boxed{\\frac{1}{\\sqrt{10}}}.$\n *)\n\ntheorem\nfixes t u :: real and cos_theta :: real\nassumes h0 : \"\\<forall> t. (\\<lambda> t. (5 + 2*t, -1 + t)) t = (\\<lambda> u. (-7 - u, 3 + u)) u\"\nand h1 : \"cos_theta = cos (arccos (dotprod ((\\<lambda> t. (5 + 2*t, -1 + t)) t) ((\\<lambda> u. (-7 - u, 3 + u)) u) / (norm ((\\<lambda> t. (5 + 2*t, -1 + t)) t) * norm ((\\<lambda> u. (-7 - u, 3 + u)) u))))\"\nshows  \"cos_theta = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the cosine of the angle between the vectors represented by the functions $(5 + 2t, -1 + t)$ and $(-7 - u, 3 + u)$, where $t = u$. What is the value of this cosine? The final answer is 0.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8406977653503418,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes t u theta :: real\nand v1 v2 :: \"real \\<Rightarrow> real*real\" \nand cos_theta :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> t. v1 t = (5 + 2 * t, -1 + t)\"\nand h1 : \"\\<forall> u. v2 u = (-7 - u, 3 + u)\"\nand h2 : \"\\<forall> t u. theta = arccos ((v1 t \\<bullet> v2 u) / (norm (v1 t) * norm (v2 u)))\"\nand h3 : \"\\<forall> theta. cos_theta theta = cos theta\"\nshows  \"cos_theta theta = 0\"",
+        "formal solution": "(* ### Problem\n A line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}.\\]A second line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} -7 \\\\ 3 \\end{pmatrix} + u \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.\\]If $\\theta$ is the acute angle formed by the two lines, then find $\\cos \\theta.$ The final Answer is 0\n ### Proof\n The direction vectors of the lines are $\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ and $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.$  The cosine of the angle between these direction vectors is \\[\\frac{\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\cdot \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}}{\\left\\| \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\right\\| \\left\\| \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} \\right\\|} = \\frac{-1}{\\sqrt{5} \\sqrt{2}} = -\\frac{1}{\\sqrt{10}}.\\]Since $\\theta$ is acute, $\\cos \\theta = \\boxed{\\frac{1}{\\sqrt{10}}}.$\n *)\n\ntheorem\nfixes t u theta :: real\nand v1 v2 :: \"real \\<Rightarrow> real*real\" \nand cos_theta :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> t. v1 t = (5 + 2 * t, -1 + t)\"\nand h1 : \"\\<forall> u. v2 u = (-7 - u, 3 + u)\"\nand h2 : \"\\<forall> t u. theta = arccos ((v1 t \\<bullet> v2 u) / (norm (v1 t) * norm (v2 u)))\"\nand h3 : \"\\<forall> theta. cos_theta theta = cos theta\"\nshows  \"cos_theta theta = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two vectors, $v1(t) = (5 + 2t, -1 + t)$ and $v2(u) = (-7 - u, 3 + u)$, find the angle $\\theta$ between these two vectors by using the formula $\\theta = arccos (\\frac{v1(t) \\cdot v2(u)}{||v1(t)|| \\cdot ||v2(u)||})$ where $\\cdot$ denotes the dot product and $||.||$ denotes the norm. Now, if $cos_\\theta(\\theta) = cos(\\theta)$, find $\\theta$ such that $cos_\\theta(\\theta) = 0$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.522062361240387,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes t u :: real and a b :: \"real \\<Rightarrow> real\"\nand cos_theta :: real\nassumes h0 : \"\\<forall> t. a t = (5, -1) + t * (2, 1)\"\nand h1 : \"\\<forall> u. b u = (-7, 3) + u * (-1, 1)\"\nand h2 : \"cos_theta = cos (angle_between_lines a b)\"\nshows  \"cos_theta = 0\"",
+        "formal solution": "(* ### Problem\n A line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}.\\]A second line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} -7 \\\\ 3 \\end{pmatrix} + u \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.\\]If $\\theta$ is the acute angle formed by the two lines, then find $\\cos \\theta.$ The final Answer is 0\n ### Proof\n The direction vectors of the lines are $\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ and $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.$  The cosine of the angle between these direction vectors is \\[\\frac{\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\cdot \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}}{\\left\\| \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\right\\| \\left\\| \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} \\right\\|} = \\frac{-1}{\\sqrt{5} \\sqrt{2}} = -\\frac{1}{\\sqrt{10}}.\\]Since $\\theta$ is acute, $\\cos \\theta = \\boxed{\\frac{1}{\\sqrt{10}}}.$\n *)\n\ntheorem\nfixes t u :: real and a b :: \"real \\<Rightarrow> real\"\nand cos_theta :: real\nassumes h0 : \"\\<forall> t. a t = (5, -1) + t * (2, 1)\"\nand h1 : \"\\<forall> u. b u = (-7, 3) + u * (-1, 1)\"\nand h2 : \"cos_theta = cos (angle_between_lines a b)\"\nshows  \"cos_theta = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Determine the cosine of the angle between the line $a(t) = (5, -1) + t * (2, 1)$ and the line $b(u) = (-7, 3) + u * (-1, 1)$. The final answer is $0$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.5269340872764587,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "0",
+    "natural problem": "A line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} 5 \\\\ -1 \\end{pmatrix} + t \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}.\\]A second line is parameterized by\n\\[\\begin{pmatrix} x \\\\ y \\end{pmatrix} = \\begin{pmatrix} -7 \\\\ 3 \\end{pmatrix} + u \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.\\]If $\\theta$ is the acute angle formed by the two lines, then find $\\cos \\theta.$",
+    "natural solution": [
+        "The direction vectors of the lines are $\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix}$ and $\\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}.$  The cosine of the angle between these direction vectors is \\[\\frac{\\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\cdot \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix}}{\\left\\| \\begin{pmatrix} 2 \\\\ 1 \\end{pmatrix} \\right\\| \\left\\| \\begin{pmatrix} -1 \\\\ 1 \\end{pmatrix} \\right\\|} = \\frac{-1}{\\sqrt{5} \\sqrt{2}} = -\\frac{1}{\\sqrt{10}}.\\]Since $\\theta$ is acute, $\\cos \\theta = \\boxed{\\frac{1}{\\sqrt{10}}}.$"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "level": "Level 4",
+    "type": "Precalculus"
+}

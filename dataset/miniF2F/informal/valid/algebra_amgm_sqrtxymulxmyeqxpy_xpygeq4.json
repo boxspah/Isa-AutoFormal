@@ -1,0 +1,122 @@
+{
+    "problem_name": "algebra_amgm_sqrtxymulxmyeqxpy_xpygeq4",
+    "informal_statement": "Suppose that $x$ and $y$ are positive real numbers with $y\\leq x$, and that $\\sqrt{xy}(x-y)=(x+y)$.\nProve that $x+y\\geq 4$.",
+    "informal_proof": "Since $x > y > 0$, it exists $\\alpha \\in (0, \\pi/2)$ such that $y = x \\cos \\alpha$. So the equality $\\sqrt{xy}(x-y)=(x+y)$ can be rewritten as\n\\begin{eqnarray*}\n\\frac{1}{\\sqrt{xy}} = \\frac{1-\\frac{y}{x}}{1+\\frac{y}{x}} = \\frac{1 - \\cos \\alpha}{1+\\cos \\alpha} = \\frac{1}{x \\sqrt{\\cos \\alpha}}.\n\\end{eqnarray*}\nSo we have\n\\[x = \\frac{1+\\cos\\alpha}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nThus,\n\\[x + y = x (1+\\cos\\alpha) = \\frac{(1+\\cos\\alpha)^2}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nLet $t = \\sqrt{\\cos\\alpha}$ and consider the function\n\\[f(t) = \\frac{(1+t^2)^2}{t(1-t^2)}\\]\nwith $t \\in (0,1)$. The derivative of $f$ is\n\\[f'(t) = \\frac{(1+t^2)(-t^4 + 6t^2 -1)}{t^2(1-t^2)^2}.\\]\nSolving $f'(t) = 0$, we obtain\n\\[t^2 = 3-2\\sqrt{2} \\quad \\mbox{ or } \\quad t^2 = 3+2\\sqrt{2}.\\]\nSince $t < 1$, we have\n\\[t^2 = 3-2\\sqrt{2} \\quad \\Longrightarrow \\quad t = \\sqrt{2} - 1.\\]\nFor $t^2 < 3 - 2\\sqrt{2}$, i.e., $0 < t < \\sqrt{2} - 1$, we have $f'(t) < 0$, so $f$ is strictly decreasing in $(0, \\sqrt{2} - 1)$; for $1 > t^2 > 3 - 2\\sqrt{2}$, i.e., $\\sqrt{2} - 1 < t < 1$, we have $f'(t) > 0$, so $f$ is strictly increasing in $(\\sqrt{2} - 1, 1)$.\n\nSo, we have\n\\[x + y = f(t) \\geq \\min_{0<t<1} f(t) = f(\\sqrt{2} - 1) = 4.\\]",
+    "a_0": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0 \\<and> y > 0\"\nand h1 : \"y \\<le> x\"\nand h2 : \"sqrt (x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"",
+        "formal solution": "(* ### Problem\n Suppose that $x$ and $y$ are positive real numbers with $y\\leq x$, and that $\\sqrt{xy}(x-y)=(x+y)$.\nProve that $x+y\\geq 4$.\n ### Proof\n Since $x > y > 0$, it exists $\\alpha \\in (0, \\pi/2)$ such that $y = x \\cos \\alpha$. So the equality $\\sqrt{xy}(x-y)=(x+y)$ can be rewritten as\n\\begin{eqnarray*}\n\\frac{1}{\\sqrt{xy}} = \\frac{1-\\frac{y}{x}}{1+\\frac{y}{x}} = \\frac{1 - \\cos \\alpha}{1+\\cos \\alpha} = \\frac{1}{x \\sqrt{\\cos \\alpha}}.\n\\end{eqnarray*}\nSo we have\n\\[x = \\frac{1+\\cos\\alpha}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nThus,\n\\[x + y = x (1+\\cos\\alpha) = \\frac{(1+\\cos\\alpha)^2}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nLet $t = \\sqrt{\\cos\\alpha}$ and consider the function\n\\[f(t) = \\frac{(1+t^2)^2}{t(1-t^2)}\\]\nwith $t \\in (0,1)$. The derivative of $f$ is\n\\[f'(t) = \\frac{(1+t^2)(-t^4 + 6t^2 -1)}{t^2(1-t^2)^2}.\\]\nSolving $f'(t) = 0$, we obtain\n\\[t^2 = 3-2\\sqrt{2} \\quad \\mbox{ or } \\quad t^2 = 3+2\\sqrt{2}.\\]\nSince $t < 1$, we have\n\\[t^2 = 3-2\\sqrt{2} \\quad \\Longrightarrow \\quad t = \\sqrt{2} - 1.\\]\nFor $t^2 < 3 - 2\\sqrt{2}$, i.e., $0 < t < \\sqrt{2} - 1$, we have $f'(t) < 0$, so $f$ is strictly decreasing in $(0, \\sqrt{2} - 1)$; for $1 > t^2 > 3 - 2\\sqrt{2}$, i.e., $\\sqrt{2} - 1 < t < 1$, we have $f'(t) > 0$, so $f$ is strictly increasing in $(\\sqrt{2} - 1, 1)$.\n\nSo, we have\n\\[x + y = f(t) \\geq \\min_{0<t<1} f(t) = f(\\sqrt{2} - 1) = 4.\\]\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0 \\<and> y > 0\"\nand h1 : \"y \\<le> x\"\nand h2 : \"sqrt (x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive numbers $x$ and $y$, where $y \\leq x$, and the equation $\\sqrt{xy}(x - y) = x + y$, show that the sum of $x$ and $y$ is greater than or equal to $4$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9875122308731079,
+        "symbolic_score": 1.0
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt(x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"",
+        "formal solution": "(* ### Problem\n Suppose that $x$ and $y$ are positive real numbers with $y\\leq x$, and that $\\sqrt{xy}(x-y)=(x+y)$.\nProve that $x+y\\geq 4$.\n ### Proof\n Since $x > y > 0$, it exists $\\alpha \\in (0, \\pi/2)$ such that $y = x \\cos \\alpha$. So the equality $\\sqrt{xy}(x-y)=(x+y)$ can be rewritten as\n\\begin{eqnarray*}\n\\frac{1}{\\sqrt{xy}} = \\frac{1-\\frac{y}{x}}{1+\\frac{y}{x}} = \\frac{1 - \\cos \\alpha}{1+\\cos \\alpha} = \\frac{1}{x \\sqrt{\\cos \\alpha}}.\n\\end{eqnarray*}\nSo we have\n\\[x = \\frac{1+\\cos\\alpha}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nThus,\n\\[x + y = x (1+\\cos\\alpha) = \\frac{(1+\\cos\\alpha)^2}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nLet $t = \\sqrt{\\cos\\alpha}$ and consider the function\n\\[f(t) = \\frac{(1+t^2)^2}{t(1-t^2)}\\]\nwith $t \\in (0,1)$. The derivative of $f$ is\n\\[f'(t) = \\frac{(1+t^2)(-t^4 + 6t^2 -1)}{t^2(1-t^2)^2}.\\]\nSolving $f'(t) = 0$, we obtain\n\\[t^2 = 3-2\\sqrt{2} \\quad \\mbox{ or } \\quad t^2 = 3+2\\sqrt{2}.\\]\nSince $t < 1$, we have\n\\[t^2 = 3-2\\sqrt{2} \\quad \\Longrightarrow \\quad t = \\sqrt{2} - 1.\\]\nFor $t^2 < 3 - 2\\sqrt{2}$, i.e., $0 < t < \\sqrt{2} - 1$, we have $f'(t) < 0$, so $f$ is strictly decreasing in $(0, \\sqrt{2} - 1)$; for $1 > t^2 > 3 - 2\\sqrt{2}$, i.e., $\\sqrt{2} - 1 < t < 1$, we have $f'(t) > 0$, so $f$ is strictly increasing in $(\\sqrt{2} - 1, 1)$.\n\nSo, we have\n\\[x + y = f(t) \\geq \\min_{0<t<1} f(t) = f(\\sqrt{2} - 1) = 4.\\]\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt(x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive real numbers $x$ and $y$ such that $y \\leq x$, if $\\sqrt{xy}(x - y) = x + y$, prove that $x + y \\geq 4$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9940933585166931,
+        "symbolic_score": 1.0
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = (x + y)\"\nshows  \"x + y \\<ge> 4\"",
+        "formal solution": "(* ### Problem\n Suppose that $x$ and $y$ are positive real numbers with $y\\leq x$, and that $\\sqrt{xy}(x-y)=(x+y)$.\nProve that $x+y\\geq 4$.\n ### Proof\n Since $x > y > 0$, it exists $\\alpha \\in (0, \\pi/2)$ such that $y = x \\cos \\alpha$. So the equality $\\sqrt{xy}(x-y)=(x+y)$ can be rewritten as\n\\begin{eqnarray*}\n\\frac{1}{\\sqrt{xy}} = \\frac{1-\\frac{y}{x}}{1+\\frac{y}{x}} = \\frac{1 - \\cos \\alpha}{1+\\cos \\alpha} = \\frac{1}{x \\sqrt{\\cos \\alpha}}.\n\\end{eqnarray*}\nSo we have\n\\[x = \\frac{1+\\cos\\alpha}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nThus,\n\\[x + y = x (1+\\cos\\alpha) = \\frac{(1+\\cos\\alpha)^2}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nLet $t = \\sqrt{\\cos\\alpha}$ and consider the function\n\\[f(t) = \\frac{(1+t^2)^2}{t(1-t^2)}\\]\nwith $t \\in (0,1)$. The derivative of $f$ is\n\\[f'(t) = \\frac{(1+t^2)(-t^4 + 6t^2 -1)}{t^2(1-t^2)^2}.\\]\nSolving $f'(t) = 0$, we obtain\n\\[t^2 = 3-2\\sqrt{2} \\quad \\mbox{ or } \\quad t^2 = 3+2\\sqrt{2}.\\]\nSince $t < 1$, we have\n\\[t^2 = 3-2\\sqrt{2} \\quad \\Longrightarrow \\quad t = \\sqrt{2} - 1.\\]\nFor $t^2 < 3 - 2\\sqrt{2}$, i.e., $0 < t < \\sqrt{2} - 1$, we have $f'(t) < 0$, so $f$ is strictly decreasing in $(0, \\sqrt{2} - 1)$; for $1 > t^2 > 3 - 2\\sqrt{2}$, i.e., $\\sqrt{2} - 1 < t < 1$, we have $f'(t) > 0$, so $f$ is strictly increasing in $(\\sqrt{2} - 1, 1)$.\n\nSo, we have\n\\[x + y = f(t) \\geq \\min_{0<t<1} f(t) = f(\\sqrt{2} - 1) = 4.\\]\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = (x + y)\"\nshows  \"x + y \\<ge> 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x > 0$, $y > 0$, $y \\leq x$, and $\\sqrt{xy}(x - y) = x + y$, show that $x + y \\geq 4$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9601101875305176,
+        "symbolic_score": 1.0
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"",
+        "formal solution": "(* ### Problem\n Suppose that $x$ and $y$ are positive real numbers with $y\\leq x$, and that $\\sqrt{xy}(x-y)=(x+y)$.\nProve that $x+y\\geq 4$.\n ### Proof\n Since $x > y > 0$, it exists $\\alpha \\in (0, \\pi/2)$ such that $y = x \\cos \\alpha$. So the equality $\\sqrt{xy}(x-y)=(x+y)$ can be rewritten as\n\\begin{eqnarray*}\n\\frac{1}{\\sqrt{xy}} = \\frac{1-\\frac{y}{x}}{1+\\frac{y}{x}} = \\frac{1 - \\cos \\alpha}{1+\\cos \\alpha} = \\frac{1}{x \\sqrt{\\cos \\alpha}}.\n\\end{eqnarray*}\nSo we have\n\\[x = \\frac{1+\\cos\\alpha}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nThus,\n\\[x + y = x (1+\\cos\\alpha) = \\frac{(1+\\cos\\alpha)^2}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nLet $t = \\sqrt{\\cos\\alpha}$ and consider the function\n\\[f(t) = \\frac{(1+t^2)^2}{t(1-t^2)}\\]\nwith $t \\in (0,1)$. The derivative of $f$ is\n\\[f'(t) = \\frac{(1+t^2)(-t^4 + 6t^2 -1)}{t^2(1-t^2)^2}.\\]\nSolving $f'(t) = 0$, we obtain\n\\[t^2 = 3-2\\sqrt{2} \\quad \\mbox{ or } \\quad t^2 = 3+2\\sqrt{2}.\\]\nSince $t < 1$, we have\n\\[t^2 = 3-2\\sqrt{2} \\quad \\Longrightarrow \\quad t = \\sqrt{2} - 1.\\]\nFor $t^2 < 3 - 2\\sqrt{2}$, i.e., $0 < t < \\sqrt{2} - 1$, we have $f'(t) < 0$, so $f$ is strictly decreasing in $(0, \\sqrt{2} - 1)$; for $1 > t^2 > 3 - 2\\sqrt{2}$, i.e., $\\sqrt{2} - 1 < t < 1$, we have $f'(t) > 0$, so $f$ is strictly increasing in $(\\sqrt{2} - 1, 1)$.\n\nSo, we have\n\\[x + y = f(t) \\geq \\min_{0<t<1} f(t) = f(\\sqrt{2} - 1) = 4.\\]\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x > 0$ and $y > 0$ with $y \\le x$, find the minimum value of $x + y$ when $\\sqrt{xy}(x - y) = x + y$. The final answer is $x + y \\ge 4$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6230010390281677,
+        "symbolic_score": 1.0
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"y \\<le> x\"\nand h1 : \"x > 0\"\nand h2 : \"y > 0\"\nand h3 : \"sqrt (x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"",
+        "formal solution": "(* ### Problem\n Suppose that $x$ and $y$ are positive real numbers with $y\\leq x$, and that $\\sqrt{xy}(x-y)=(x+y)$.\nProve that $x+y\\geq 4$.\n ### Proof\n Since $x > y > 0$, it exists $\\alpha \\in (0, \\pi/2)$ such that $y = x \\cos \\alpha$. So the equality $\\sqrt{xy}(x-y)=(x+y)$ can be rewritten as\n\\begin{eqnarray*}\n\\frac{1}{\\sqrt{xy}} = \\frac{1-\\frac{y}{x}}{1+\\frac{y}{x}} = \\frac{1 - \\cos \\alpha}{1+\\cos \\alpha} = \\frac{1}{x \\sqrt{\\cos \\alpha}}.\n\\end{eqnarray*}\nSo we have\n\\[x = \\frac{1+\\cos\\alpha}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nThus,\n\\[x + y = x (1+\\cos\\alpha) = \\frac{(1+\\cos\\alpha)^2}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nLet $t = \\sqrt{\\cos\\alpha}$ and consider the function\n\\[f(t) = \\frac{(1+t^2)^2}{t(1-t^2)}\\]\nwith $t \\in (0,1)$. The derivative of $f$ is\n\\[f'(t) = \\frac{(1+t^2)(-t^4 + 6t^2 -1)}{t^2(1-t^2)^2}.\\]\nSolving $f'(t) = 0$, we obtain\n\\[t^2 = 3-2\\sqrt{2} \\quad \\mbox{ or } \\quad t^2 = 3+2\\sqrt{2}.\\]\nSince $t < 1$, we have\n\\[t^2 = 3-2\\sqrt{2} \\quad \\Longrightarrow \\quad t = \\sqrt{2} - 1.\\]\nFor $t^2 < 3 - 2\\sqrt{2}$, i.e., $0 < t < \\sqrt{2} - 1$, we have $f'(t) < 0$, so $f$ is strictly decreasing in $(0, \\sqrt{2} - 1)$; for $1 > t^2 > 3 - 2\\sqrt{2}$, i.e., $\\sqrt{2} - 1 < t < 1$, we have $f'(t) > 0$, so $f$ is strictly increasing in $(\\sqrt{2} - 1, 1)$.\n\nSo, we have\n\\[x + y = f(t) \\geq \\min_{0<t<1} f(t) = f(\\sqrt{2} - 1) = 4.\\]\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"y \\<le> x\"\nand h1 : \"x > 0\"\nand h2 : \"y > 0\"\nand h3 : \"sqrt (x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $y \\leq x$, $x > 0$, and $y > 0$, find the smallest possible value of $x + y$ if $\\sqrt{xy}(x - y) = x + y$. The final answer is $x + y \\geq 4$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6575348973274231,
+        "symbolic_score": 1.0
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = (x + y)\"\nshows  \"x + y \\<ge> 4\"",
+        "formal solution": "(* ### Problem\n Suppose that $x$ and $y$ are positive real numbers with $y\\leq x$, and that $\\sqrt{xy}(x-y)=(x+y)$.\nProve that $x+y\\geq 4$.\n ### Proof\n Since $x > y > 0$, it exists $\\alpha \\in (0, \\pi/2)$ such that $y = x \\cos \\alpha$. So the equality $\\sqrt{xy}(x-y)=(x+y)$ can be rewritten as\n\\begin{eqnarray*}\n\\frac{1}{\\sqrt{xy}} = \\frac{1-\\frac{y}{x}}{1+\\frac{y}{x}} = \\frac{1 - \\cos \\alpha}{1+\\cos \\alpha} = \\frac{1}{x \\sqrt{\\cos \\alpha}}.\n\\end{eqnarray*}\nSo we have\n\\[x = \\frac{1+\\cos\\alpha}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nThus,\n\\[x + y = x (1+\\cos\\alpha) = \\frac{(1+\\cos\\alpha)^2}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nLet $t = \\sqrt{\\cos\\alpha}$ and consider the function\n\\[f(t) = \\frac{(1+t^2)^2}{t(1-t^2)}\\]\nwith $t \\in (0,1)$. The derivative of $f$ is\n\\[f'(t) = \\frac{(1+t^2)(-t^4 + 6t^2 -1)}{t^2(1-t^2)^2}.\\]\nSolving $f'(t) = 0$, we obtain\n\\[t^2 = 3-2\\sqrt{2} \\quad \\mbox{ or } \\quad t^2 = 3+2\\sqrt{2}.\\]\nSince $t < 1$, we have\n\\[t^2 = 3-2\\sqrt{2} \\quad \\Longrightarrow \\quad t = \\sqrt{2} - 1.\\]\nFor $t^2 < 3 - 2\\sqrt{2}$, i.e., $0 < t < \\sqrt{2} - 1$, we have $f'(t) < 0$, so $f$ is strictly decreasing in $(0, \\sqrt{2} - 1)$; for $1 > t^2 > 3 - 2\\sqrt{2}$, i.e., $\\sqrt{2} - 1 < t < 1$, we have $f'(t) > 0$, so $f$ is strictly increasing in $(\\sqrt{2} - 1, 1)$.\n\nSo, we have\n\\[x + y = f(t) \\geq \\min_{0<t<1} f(t) = f(\\sqrt{2} - 1) = 4.\\]\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = (x + y)\"\nshows  \"x + y \\<ge> 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x > 0$ and $y > 0$ with $y \\leq x$, find the values of $x$ and $y$ that satisfy the equation $\\sqrt{xy}(x - y) = (x + y)$. Show that the sum of $x$ and $y$ is greater than or equal to 4.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8957962989807129,
+        "symbolic_score": 1.0
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"",
+        "formal solution": "(* ### Problem\n Suppose that $x$ and $y$ are positive real numbers with $y\\leq x$, and that $\\sqrt{xy}(x-y)=(x+y)$.\nProve that $x+y\\geq 4$.\n ### Proof\n Since $x > y > 0$, it exists $\\alpha \\in (0, \\pi/2)$ such that $y = x \\cos \\alpha$. So the equality $\\sqrt{xy}(x-y)=(x+y)$ can be rewritten as\n\\begin{eqnarray*}\n\\frac{1}{\\sqrt{xy}} = \\frac{1-\\frac{y}{x}}{1+\\frac{y}{x}} = \\frac{1 - \\cos \\alpha}{1+\\cos \\alpha} = \\frac{1}{x \\sqrt{\\cos \\alpha}}.\n\\end{eqnarray*}\nSo we have\n\\[x = \\frac{1+\\cos\\alpha}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nThus,\n\\[x + y = x (1+\\cos\\alpha) = \\frac{(1+\\cos\\alpha)^2}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nLet $t = \\sqrt{\\cos\\alpha}$ and consider the function\n\\[f(t) = \\frac{(1+t^2)^2}{t(1-t^2)}\\]\nwith $t \\in (0,1)$. The derivative of $f$ is\n\\[f'(t) = \\frac{(1+t^2)(-t^4 + 6t^2 -1)}{t^2(1-t^2)^2}.\\]\nSolving $f'(t) = 0$, we obtain\n\\[t^2 = 3-2\\sqrt{2} \\quad \\mbox{ or } \\quad t^2 = 3+2\\sqrt{2}.\\]\nSince $t < 1$, we have\n\\[t^2 = 3-2\\sqrt{2} \\quad \\Longrightarrow \\quad t = \\sqrt{2} - 1.\\]\nFor $t^2 < 3 - 2\\sqrt{2}$, i.e., $0 < t < \\sqrt{2} - 1$, we have $f'(t) < 0$, so $f$ is strictly decreasing in $(0, \\sqrt{2} - 1)$; for $1 > t^2 > 3 - 2\\sqrt{2}$, i.e., $\\sqrt{2} - 1 < t < 1$, we have $f'(t) > 0$, so $f$ is strictly increasing in $(\\sqrt{2} - 1, 1)$.\n\nSo, we have\n\\[x + y = f(t) \\geq \\min_{0<t<1} f(t) = f(\\sqrt{2} - 1) = 4.\\]\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive real numbers $x$ and $y$ such that $y \\leq x$, if $\\sqrt{xy}(x - y) = x + y$, show that $x + y \\geq 4$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9927567839622498,
+        "symbolic_score": 1.0
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"",
+        "formal solution": "(* ### Problem\n Suppose that $x$ and $y$ are positive real numbers with $y\\leq x$, and that $\\sqrt{xy}(x-y)=(x+y)$.\nProve that $x+y\\geq 4$.\n ### Proof\n Since $x > y > 0$, it exists $\\alpha \\in (0, \\pi/2)$ such that $y = x \\cos \\alpha$. So the equality $\\sqrt{xy}(x-y)=(x+y)$ can be rewritten as\n\\begin{eqnarray*}\n\\frac{1}{\\sqrt{xy}} = \\frac{1-\\frac{y}{x}}{1+\\frac{y}{x}} = \\frac{1 - \\cos \\alpha}{1+\\cos \\alpha} = \\frac{1}{x \\sqrt{\\cos \\alpha}}.\n\\end{eqnarray*}\nSo we have\n\\[x = \\frac{1+\\cos\\alpha}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nThus,\n\\[x + y = x (1+\\cos\\alpha) = \\frac{(1+\\cos\\alpha)^2}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nLet $t = \\sqrt{\\cos\\alpha}$ and consider the function\n\\[f(t) = \\frac{(1+t^2)^2}{t(1-t^2)}\\]\nwith $t \\in (0,1)$. The derivative of $f$ is\n\\[f'(t) = \\frac{(1+t^2)(-t^4 + 6t^2 -1)}{t^2(1-t^2)^2}.\\]\nSolving $f'(t) = 0$, we obtain\n\\[t^2 = 3-2\\sqrt{2} \\quad \\mbox{ or } \\quad t^2 = 3+2\\sqrt{2}.\\]\nSince $t < 1$, we have\n\\[t^2 = 3-2\\sqrt{2} \\quad \\Longrightarrow \\quad t = \\sqrt{2} - 1.\\]\nFor $t^2 < 3 - 2\\sqrt{2}$, i.e., $0 < t < \\sqrt{2} - 1$, we have $f'(t) < 0$, so $f$ is strictly decreasing in $(0, \\sqrt{2} - 1)$; for $1 > t^2 > 3 - 2\\sqrt{2}$, i.e., $\\sqrt{2} - 1 < t < 1$, we have $f'(t) > 0$, so $f$ is strictly increasing in $(\\sqrt{2} - 1, 1)$.\n\nSo, we have\n\\[x + y = f(t) \\geq \\min_{0<t<1} f(t) = f(\\sqrt{2} - 1) = 4.\\]\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive real numbers $x$ and $y$ such that $y \\leq x$, if $\\sqrt{xy}(x - y) = x + y$, show that $x + y \\geq 4$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9927567839622498,
+        "symbolic_score": 1.0
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = (x + y)\"\nshows  \"x + y \\<ge> 4\"",
+        "formal solution": "(* ### Problem\n Suppose that $x$ and $y$ are positive real numbers with $y\\leq x$, and that $\\sqrt{xy}(x-y)=(x+y)$.\nProve that $x+y\\geq 4$.\n ### Proof\n Since $x > y > 0$, it exists $\\alpha \\in (0, \\pi/2)$ such that $y = x \\cos \\alpha$. So the equality $\\sqrt{xy}(x-y)=(x+y)$ can be rewritten as\n\\begin{eqnarray*}\n\\frac{1}{\\sqrt{xy}} = \\frac{1-\\frac{y}{x}}{1+\\frac{y}{x}} = \\frac{1 - \\cos \\alpha}{1+\\cos \\alpha} = \\frac{1}{x \\sqrt{\\cos \\alpha}}.\n\\end{eqnarray*}\nSo we have\n\\[x = \\frac{1+\\cos\\alpha}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nThus,\n\\[x + y = x (1+\\cos\\alpha) = \\frac{(1+\\cos\\alpha)^2}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nLet $t = \\sqrt{\\cos\\alpha}$ and consider the function\n\\[f(t) = \\frac{(1+t^2)^2}{t(1-t^2)}\\]\nwith $t \\in (0,1)$. The derivative of $f$ is\n\\[f'(t) = \\frac{(1+t^2)(-t^4 + 6t^2 -1)}{t^2(1-t^2)^2}.\\]\nSolving $f'(t) = 0$, we obtain\n\\[t^2 = 3-2\\sqrt{2} \\quad \\mbox{ or } \\quad t^2 = 3+2\\sqrt{2}.\\]\nSince $t < 1$, we have\n\\[t^2 = 3-2\\sqrt{2} \\quad \\Longrightarrow \\quad t = \\sqrt{2} - 1.\\]\nFor $t^2 < 3 - 2\\sqrt{2}$, i.e., $0 < t < \\sqrt{2} - 1$, we have $f'(t) < 0$, so $f$ is strictly decreasing in $(0, \\sqrt{2} - 1)$; for $1 > t^2 > 3 - 2\\sqrt{2}$, i.e., $\\sqrt{2} - 1 < t < 1$, we have $f'(t) > 0$, so $f$ is strictly increasing in $(\\sqrt{2} - 1, 1)$.\n\nSo, we have\n\\[x + y = f(t) \\geq \\min_{0<t<1} f(t) = f(\\sqrt{2} - 1) = 4.\\]\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = (x + y)\"\nshows  \"x + y \\<ge> 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x > 0$, $y > 0$, and $y \\leq x$, find the conditions under which $\\sqrt{xy}(x - y) = (x + y)$. The final answer is $x + y \\geq 4$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7521579265594482,
+        "symbolic_score": 1.0
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"",
+        "formal solution": "(* ### Problem\n Suppose that $x$ and $y$ are positive real numbers with $y\\leq x$, and that $\\sqrt{xy}(x-y)=(x+y)$.\nProve that $x+y\\geq 4$.\n ### Proof\n Since $x > y > 0$, it exists $\\alpha \\in (0, \\pi/2)$ such that $y = x \\cos \\alpha$. So the equality $\\sqrt{xy}(x-y)=(x+y)$ can be rewritten as\n\\begin{eqnarray*}\n\\frac{1}{\\sqrt{xy}} = \\frac{1-\\frac{y}{x}}{1+\\frac{y}{x}} = \\frac{1 - \\cos \\alpha}{1+\\cos \\alpha} = \\frac{1}{x \\sqrt{\\cos \\alpha}}.\n\\end{eqnarray*}\nSo we have\n\\[x = \\frac{1+\\cos\\alpha}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nThus,\n\\[x + y = x (1+\\cos\\alpha) = \\frac{(1+\\cos\\alpha)^2}{\\sqrt{\\cos \\alpha}(1 - \\cos \\alpha)}.\\]\nLet $t = \\sqrt{\\cos\\alpha}$ and consider the function\n\\[f(t) = \\frac{(1+t^2)^2}{t(1-t^2)}\\]\nwith $t \\in (0,1)$. The derivative of $f$ is\n\\[f'(t) = \\frac{(1+t^2)(-t^4 + 6t^2 -1)}{t^2(1-t^2)^2}.\\]\nSolving $f'(t) = 0$, we obtain\n\\[t^2 = 3-2\\sqrt{2} \\quad \\mbox{ or } \\quad t^2 = 3+2\\sqrt{2}.\\]\nSince $t < 1$, we have\n\\[t^2 = 3-2\\sqrt{2} \\quad \\Longrightarrow \\quad t = \\sqrt{2} - 1.\\]\nFor $t^2 < 3 - 2\\sqrt{2}$, i.e., $0 < t < \\sqrt{2} - 1$, we have $f'(t) < 0$, so $f$ is strictly decreasing in $(0, \\sqrt{2} - 1)$; for $1 > t^2 > 3 - 2\\sqrt{2}$, i.e., $\\sqrt{2} - 1 < t < 1$, we have $f'(t) > 0$, so $f$ is strictly increasing in $(\\sqrt{2} - 1, 1)$.\n\nSo, we have\n\\[x + y = f(t) \\geq \\min_{0<t<1} f(t) = f(\\sqrt{2} - 1) = 4.\\]\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"y \\<le> x\"\nand h3 : \"sqrt (x * y) * (x - y) = x + y\"\nshows  \"x + y \\<ge> 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x > 0$, $y > 0$, and $y \\leq x$, find the smallest possible value of $x + y$ such that $\\sqrt{xy}(x - y) = x + y$. The final answer is $x + y \\geq 4$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6449893116950989,
+        "symbolic_score": 1.0
+    },
+    "oracle": "theorem\nfixes x y :: real\nassumes h0 : \"0 < x \\<and> 0 < y\"\nand h1 : \"y \\<le> x\"\nand h2 : \"sqrt (x * y) * (x - y) = (x + y)\"\nshows \"x + y \\<ge> 4\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ]
+    },
+    "equivalence_oracle": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+    ]
+}

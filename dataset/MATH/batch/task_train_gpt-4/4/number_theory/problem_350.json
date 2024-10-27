@@ -1,0 +1,60 @@
+{
+    "natural problem": "Let $N$ be the sum of the divisors of $200$. What is the largest prime factor of $N$?",
+    "natural solution": [
+        "The prime factorization of $200$ is $2^3 \\cdot 5^2$. It follows that $N = (1 + 2 + 2^2 + 2^3)(1 + 5 + 5^2)$, as each factor of $200$ is represented when the product is expanded. It follows that $N = (1 + 2 + 4 + 8)(1 + 5 + 25) = (15)(31)$.",
+        "The largest prime factor is $\\boxed{31}$."
+    ],
+    "natural answer": "31",
+    "a_0": {
+        "formal problem": "theorem\nfixes N :: int and p :: int\nassumes h0 : \"N = sum {d. d dvd 200} {1..200}\"\nand h1 : \"prime p\"\nand h2 : \"p dvd N\"\nand h3 : \"\\<not> (\\<exists> q. prime q \\<and> q > p \\<and> q dvd N)\"\nshows  \"p = 31\"",
+        "formal solution": "(* ### Problem\n Let $N$ be the sum of the divisors of $200$. What is the largest prime factor of $N$? The final Answer is 31\n ### Proof\n The prime factorization of $200$ is $2^3 \\cdot 5^2$. It follows that $N = (1 + 2 + 2^2 + 2^3)(1 + 5 + 5^2)$, as each factor of $200$ is represented when the product is expanded. It follows that $N = (1 + 2 + 4 + 8)(1 + 5 + 25) = (15)(31)$.\n The largest prime factor is $\\boxed{31}$.\n *)\n\ntheorem\nfixes N :: int and p :: int\nassumes h0 : \"N = sum {d. d dvd 200} {1..200}\"\nand h1 : \"prime p\"\nand h2 : \"p dvd N\"\nand h3 : \"\\<not> (\\<exists> q. prime q \\<and> q > p \\<and> q dvd N)\"\nshows  \"p = 31\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $N$ be the sum of the divisors of 200 from 1 to 200. If $p$ is a prime number that divides $N$, and there is no prime number $q$ greater than $p$ that also divides $N$, what is the value of $p$? The final answer is $31$."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes N :: int and p :: int\nassumes h0 : \"N = sum_list (divisors 200)\"\nand h1 : \"prime p\"\nand h2 : \"p dvd N\"\nand h3 : \"\\<forall> q. prime q \\<and> q dvd N \\<longrightarrow> q \\<le> p\"\nshows  \"p = 31\"",
+        "formal solution": "(* ### Problem\n Let $N$ be the sum of the divisors of $200$. What is the largest prime factor of $N$? The final Answer is 31\n ### Proof\n The prime factorization of $200$ is $2^3 \\cdot 5^2$. It follows that $N = (1 + 2 + 2^2 + 2^3)(1 + 5 + 5^2)$, as each factor of $200$ is represented when the product is expanded. It follows that $N = (1 + 2 + 4 + 8)(1 + 5 + 25) = (15)(31)$.\n The largest prime factor is $\\boxed{31}$.\n *)\n\ntheorem\nfixes N :: int and p :: int\nassumes h0 : \"N = sum_list (divisors 200)\"\nand h1 : \"prime p\"\nand h2 : \"p dvd N\"\nand h3 : \"\\<forall> q. prime q \\<and> q dvd N \\<longrightarrow> q \\<le> p\"\nshows  \"p = 31\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest prime factor $p$ of the sum of the divisors of 200. The final answer is $p=31$."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes N :: \"int\"\nassumes h0 : \"N = sum_of_divisors 200\"\nshows  \"max_prime_factor N = 31\"",
+        "formal solution": "(* ### Problem\n Let $N$ be the sum of the divisors of $200$. What is the largest prime factor of $N$? The final Answer is 31\n ### Proof\n The prime factorization of $200$ is $2^3 \\cdot 5^2$. It follows that $N = (1 + 2 + 2^2 + 2^3)(1 + 5 + 5^2)$, as each factor of $200$ is represented when the product is expanded. It follows that $N = (1 + 2 + 4 + 8)(1 + 5 + 25) = (15)(31)$.\n The largest prime factor is $\\boxed{31}$.\n *)\n\ntheorem\nfixes N :: \"int\"\nassumes h0 : \"N = sum_of_divisors 200\"\nshows  \"max_prime_factor N = 31\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the divisors of 200 and find the largest prime factor of this sum. The final answer is 31."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes N :: int and p :: nat\nassumes h0 : \"N = sum_list [d \\<leftarrow> [1..200]. 200 mod d = 0]\"\nand h1 : \"p = Max {m. prime m \\<and> m dvd N}\"\nshows  \"p = 31\"",
+        "formal solution": "(* ### Problem\n Let $N$ be the sum of the divisors of $200$. What is the largest prime factor of $N$? The final Answer is 31\n ### Proof\n The prime factorization of $200$ is $2^3 \\cdot 5^2$. It follows that $N = (1 + 2 + 2^2 + 2^3)(1 + 5 + 5^2)$, as each factor of $200$ is represented when the product is expanded. It follows that $N = (1 + 2 + 4 + 8)(1 + 5 + 25) = (15)(31)$.\n The largest prime factor is $\\boxed{31}$.\n *)\n\ntheorem\nfixes N :: int and p :: nat\nassumes h0 : \"N = sum_list [d \\<leftarrow> [1..200]. 200 mod d = 0]\"\nand h1 : \"p = Max {m. prime m \\<and> m dvd N}\"\nshows  \"p = 31\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The number $N$ is the sum of all divisors of 200. Find the largest prime number $p$ that divides $N$. The final answer is 31."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"N = sum_divisors 200\"\nshows  \"Max_prime_factor N = 31\"",
+        "formal solution": "(* ### Problem\n Let $N$ be the sum of the divisors of $200$. What is the largest prime factor of $N$? The final Answer is 31\n ### Proof\n The prime factorization of $200$ is $2^3 \\cdot 5^2$. It follows that $N = (1 + 2 + 2^2 + 2^3)(1 + 5 + 5^2)$, as each factor of $200$ is represented when the product is expanded. It follows that $N = (1 + 2 + 4 + 8)(1 + 5 + 25) = (15)(31)$.\n The largest prime factor is $\\boxed{31}$.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"N = sum_divisors 200\"\nshows  \"Max_prime_factor N = 31\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the maximum prime factor of the sum of divisors of 200. The final answer is 31."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes N :: int and divs :: \"int set\"\nassumes h0 : \"divs = {d. d dvd 200}\"\nand h1 : \"N = sum id divs\"\nand h2 : \"prime p\"\nand h3 : \"\\<forall> q. prime q \\<longrightarrow> q dvd N \\<longrightarrow> q \\<le> p\"\nshows  \"p = 31\"",
+        "formal solution": "(* ### Problem\n Let $N$ be the sum of the divisors of $200$. What is the largest prime factor of $N$? The final Answer is 31\n ### Proof\n The prime factorization of $200$ is $2^3 \\cdot 5^2$. It follows that $N = (1 + 2 + 2^2 + 2^3)(1 + 5 + 5^2)$, as each factor of $200$ is represented when the product is expanded. It follows that $N = (1 + 2 + 4 + 8)(1 + 5 + 25) = (15)(31)$.\n The largest prime factor is $\\boxed{31}$.\n *)\n\ntheorem\nfixes N :: int and divs :: \"int set\"\nassumes h0 : \"divs = {d. d dvd 200}\"\nand h1 : \"N = sum id divs\"\nand h2 : \"prime p\"\nand h3 : \"\\<forall> q. prime q \\<longrightarrow> q dvd N \\<longrightarrow> q \\<le> p\"\nshows  \"p = 31\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $N$ be the sum of all positive integers that divide 200. If $p$ is the largest prime number that divides $N$, find the value of $p$. The final answer is $31$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes N :: int and p :: int\nassumes h0 : \"N = sum (divisors 200)\"\nand h1 : \"p = Max (prime_factors N)\"\nshows  \"p = 31\"",
+        "formal solution": "(* ### Problem\n Let $N$ be the sum of the divisors of $200$. What is the largest prime factor of $N$? The final Answer is 31\n ### Proof\n The prime factorization of $200$ is $2^3 \\cdot 5^2$. It follows that $N = (1 + 2 + 2^2 + 2^3)(1 + 5 + 5^2)$, as each factor of $200$ is represented when the product is expanded. It follows that $N = (1 + 2 + 4 + 8)(1 + 5 + 25) = (15)(31)$.\n The largest prime factor is $\\boxed{31}$.\n *)\n\ntheorem\nfixes N :: int and p :: int\nassumes h0 : \"N = sum (divisors 200)\"\nand h1 : \"p = Max (prime_factors N)\"\nshows  \"p = 31\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the maximum prime factor of the sum of the divisors of 200. The final answer is 31."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes N :: int and p :: int\nassumes h0 : \"N = sum_of_divisors 200\"\nand h1 : \"p = max_prime_factor N\"\nshows  \"p = 31\"",
+        "formal solution": "(* ### Problem\n Let $N$ be the sum of the divisors of $200$. What is the largest prime factor of $N$? The final Answer is 31\n ### Proof\n The prime factorization of $200$ is $2^3 \\cdot 5^2$. It follows that $N = (1 + 2 + 2^2 + 2^3)(1 + 5 + 5^2)$, as each factor of $200$ is represented when the product is expanded. It follows that $N = (1 + 2 + 4 + 8)(1 + 5 + 25) = (15)(31)$.\n The largest prime factor is $\\boxed{31}$.\n *)\n\ntheorem\nfixes N :: int and p :: int\nassumes h0 : \"N = sum_of_divisors 200\"\nand h1 : \"p = max_prime_factor N\"\nshows  \"p = 31\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the divisors of 200, let's call this sum N. Then, find the maximum prime factor of N. What is this maximum prime factor? The final answer is 31."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N = (\\<Sum>d | d dvd 200. d)\"\nand h1 : \"prime_factors N = sorted_list_of_set {p. prime p}\"\nshows  \"last (prime_factors N) = 31\"",
+        "formal solution": "(* ### Problem\n Let $N$ be the sum of the divisors of $200$. What is the largest prime factor of $N$? The final Answer is 31\n ### Proof\n The prime factorization of $200$ is $2^3 \\cdot 5^2$. It follows that $N = (1 + 2 + 2^2 + 2^3)(1 + 5 + 5^2)$, as each factor of $200$ is represented when the product is expanded. It follows that $N = (1 + 2 + 4 + 8)(1 + 5 + 25) = (15)(31)$.\n The largest prime factor is $\\boxed{31}$.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N = (\\<Sum>d | d dvd 200. d)\"\nand h1 : \"prime_factors N = sorted_list_of_set {p. prime p}\"\nshows  \"last (prime_factors N) = 31\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last prime factor of the sum of the divisors of 200. The final answer is 31."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes N :: int\nassumes h0 : \"N = sum_of_divisors 200\"\nshows  \"max_prime_factor N = 31\"",
+        "formal solution": "(* ### Problem\n Let $N$ be the sum of the divisors of $200$. What is the largest prime factor of $N$? The final Answer is 31\n ### Proof\n The prime factorization of $200$ is $2^3 \\cdot 5^2$. It follows that $N = (1 + 2 + 2^2 + 2^3)(1 + 5 + 5^2)$, as each factor of $200$ is represented when the product is expanded. It follows that $N = (1 + 2 + 4 + 8)(1 + 5 + 25) = (15)(31)$.\n The largest prime factor is $\\boxed{31}$.\n *)\n\ntheorem\nfixes N :: int\nassumes h0 : \"N = sum_of_divisors 200\"\nshows  \"max_prime_factor N = 31\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all divisors of the number 200. Then determine the maximum prime factor of this sum. The final answer is 31."
+    },
+    "level": "Level 4",
+    "type": "Number Theory"
+}

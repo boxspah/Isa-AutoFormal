@@ -1,0 +1,588 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> real\" and n :: nat\nassumes h0 : \"(\\<Sum>i\\<in>{1..n}. f i) = (\\<Sum>i\\<in>{1..n}. (f i)^2)\"\nshows  \"(\\<Sum>i\\<in>{1..n}. f i) / n \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> real\" and n :: nat\nassumes h0 : \"(\\<Sum>i\\<in>{1..n}. f i) = (\\<Sum>i\\<in>{1..n}. (f i)^2)\"\nshows  \"(\\<Sum>i\\<in>{1..n}. f i) / n \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sequence of real numbers $f(i)$ for $i$ in $\\{1, 2, ..., n\\}$ such that the sum of the sequence from $1$ to $n$ equals the sum of the square of each term from $1$ to $n$, show that the average of this sequence from $1$ to $n$ is less than or equal to $1$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.47082433104515076,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem \nfixes n :: real and xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x^2) xs)\"\nand h1 : \"n = length xs\"\nshows  \"sum_list xs / n \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem \nfixes n :: real and xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x^2) xs)\"\nand h1 : \"n = length xs\"\nshows  \"sum_list xs / n \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers where the sum of the elements in the list is equal to the sum of the squares of the elements in the list, and $n$ is the length of the list, prove that the average of the list is less than or equal to 1.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.48605987429618835,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes list :: \"real list\"\nassumes h0 : \"sum list id = sum list (\\<lambda>x. x powr 2)\"\nshows  \"Max (set list) \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes list :: \"real list\"\nassumes h0 : \"sum list id = sum list (\\<lambda>x. x powr 2)\"\nshows  \"Max (set list) \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the sum of all elements in a list is equal to the sum of the squares of all elements in the list, show that the maximum element in the list is less than or equal to one.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.4391572177410126,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda> x. x powr 2) xs)\"\nshows  \"Max(set xs) \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda> x. x powr 2) xs)\"\nshows  \"Max(set xs) \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the sum of a list of real numbers equals the sum of the squares of those numbers, then the maximum number in that list is less than or equal to 1.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7473509311676025,
+        "symbolic_score": 0.2
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: \"real list\"\nassumes h0 : \"sum_list x = sum_list (map (\u03bbx. x powr 2) x)\"\nshows  \"Max (set x) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes x :: \"real list\"\nassumes h0 : \"sum_list x = sum_list (map (\u03bbx. x powr 2) x)\"\nshows  \"Max (set x) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Given a list of real numbers, if the sum of the elements in the list equals the sum of the squares of the elements in the list, what is the maximum value in the list? The maximum value in the list is 1.\"",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8005359172821045,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x :: \"real list\"\nassumes h0 : \"sum_list x = sum_list (map (\\<lambda> y. y powr 2) x)\"\nshows  \"Max (set x) \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes x :: \"real list\"\nassumes h0 : \"sum_list x = sum_list (map (\\<lambda> y. y powr 2) x)\"\nshows  \"Max (set x) \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers $x$, if the sum of all elements in the list is equal to the sum of the squares of all elements in the list, then the maximum element in the list is less than or equal to 1.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.493683397769928,
+        "symbolic_score": 0.2
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x :: \"real list\"\nassumes h0 : \"sum_list x = sum_list (map (\u03bb x. x * x) x)\"\nshows  \"Max (set x) \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes x :: \"real list\"\nassumes h0 : \"sum_list x = sum_list (map (\u03bb x. x * x) x)\"\nshows  \"Max (set x) \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the sum of a list of real numbers equals the sum of the squares of the numbers in that list, then the maximum value in the list should be less than or equal to 1.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8808476328849792,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes list :: \"real list\"\nassumes h0 : \"sum list id = sum list (\\<lambda>x. x powr 2)\"\nshows  \"Max (set (map (\\<lambda>x. x / real (length list)) list)) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes list :: \"real list\"\nassumes h0 : \"sum list id = sum list (\\<lambda>x. x powr 2)\"\nshows  \"Max (set (map (\\<lambda>x. x / real (length list)) list)) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers, it is known that the sum of the numbers in the list is equal to the sum of the squares of the numbers in the list. Find the maximum value of the numbers in the list after each number is divided by the length of the list. The final answer is 1.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9934626817703247,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x * x) xs)\"\nshows  \"ListMax xs <= 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x * x) xs)\"\nshows  \"ListMax xs <= 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers, if the sum of the numbers in the list is equal to the sum of the squares of the numbers in the list, then the maximum number in the list is less than or equal to 1.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.49637457728385925,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x^2) xs)\"\nshows  \"List.length xs > 0 \\<Longrightarrow> sum_list xs / real (length xs) \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x^2) xs)\"\nshows  \"List.length xs > 0 \\<Longrightarrow> sum_list xs / real (length xs) \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers, if the sum of the numbers in the list is equal to the sum of the squares of the numbers in the list, then the average of the numbers in the list is less than or equal to 1. This statement is true for any non-empty list.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5235177278518677,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "1",
+    "natural problem": "Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers.",
+    "natural solution": [
+        "Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$",
+        "\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$"
+    ],
+    "oracle": "TODO",
+    "prediction": {
+        "0": [
+            3,
+            5
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "str_pred": "[[3, 5], [0], [1], [2], [4], [6], [7], [8], [9]]",
+    "level": "Level 2",
+    "type": "Intermediate Algebra",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a list of real numbers, xs. If the sum of all the numbers in the list is equal to the sum of the squares of all the numbers in the list, then the maximum number in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.5536822217653221,
+        "symbolic_score": 0.6
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set (map (op / (real (length xs))) xs)) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set (map (op / (real (length xs))) xs)) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, where the sum of the elements in the list is equal to the sum of the squares of the elements in the list, prove that the maximum value of the list obtained by dividing each element of the original list by the length of the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.4939962114515406,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"max_snorm xs = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"max_snorm xs = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, where the sum of all elements in the list is equal to the sum of the squares of all elements in the list, prove that the maximum absolute value of the elements in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.507499892181176,
+        "symbolic_score": 0.2
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a list of real numbers, xs. If the sum of all the numbers in the list is equal to the sum of the squares of all the numbers in the list, then the maximum value in the set of xs is 1.",
+        "syntax": 0,
+        "semantic_score": 0.554560763745514,
+        "symbolic_score": 0.6
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, if the sum of the elements in the list is equal to the sum of the squares of the elements in the list, then the maximum value in the set of xs is 1.",
+        "syntax": 0,
+        "semantic_score": 0.5553301602992712,
+        "symbolic_score": 0.6
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a list of real numbers, xs. If the sum of all the numbers in the list is equal to the sum of the squares of all the numbers in the list, then the maximum number in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.5536822217653221,
+        "symbolic_score": 0.6
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"max_snorm xs = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"max_snorm xs = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, if the sum of all elements in the list is equal to the sum of the squares of all elements in the list, then the maximum absolute value of the elements in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.498893846691735,
+        "symbolic_score": 0.2
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (\u03bbx. x^2) xs)\"\nshows \"max_snorm xs = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (\u03bbx. x^2) xs)\"\nshows \"max_snorm xs = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, where the sum of the elements in the list is equal to the sum of the squares of the elements in the list, prove that the maximum absolute value of the elements in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.51323435984558,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, where the sum of the elements in the list is equal to the sum of the squares of the elements in the list, prove that the maximum value in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.4707971588550093,
+        "symbolic_score": 0.6
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, where the sum of the elements in the list is equal to the sum of the squares of the elements in the list, prove that the maximum value in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.4707971588550093,
+        "symbolic_score": 0.6
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes lst :: \"real list\"\nassumes h0 : \"(\\<Sum>x\\<leftarrow>lst. x) = (\\<Sum>x\\<leftarrow>lst. x * x)\"\nshows \"real(length lst) \\<le> (\\<Sum>x\\<leftarrow>lst. x) / real(length lst)\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes lst :: \"real list\"\nassumes h0 : \"(\\<Sum>x\\<leftarrow>lst. x) = (\\<Sum>x\\<leftarrow>lst. x * x)\"\nshows \"real(length lst) \\<le> (\\<Sum>x\\<leftarrow>lst. x) / real(length lst)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of the squares of the elements in a list is equal to the sum of the elements in the list. Prove that the length of the list is less than or equal to the average value of the elements in the list.",
+        "syntax": 1,
+        "semantic_score": 0.442652502680432,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes lst :: \"real list\"\nassumes h0 : \"sum_list lst = sum_list (map (\\<lambda>x. x powr 2) lst)\"\nshows \"real (length lst) / sum_list lst \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes lst :: \"real list\"\nassumes h0 : \"sum_list lst = sum_list (map (\\<lambda>x. x powr 2) lst)\"\nshows \"real (length lst) / sum_list lst \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Suppose you have a list of real numbers. The sum of the numbers in the list is equal to the sum of the squares of the numbers in the list. What is the largest number of elements that the list can have, if the sum of the elements in the list is at least one? The answer is that the length of the list divided by the sum of the elements in the list is less than or equal to 1.\"",
+        "syntax": 1,
+        "semantic_score": 0.802622362393931,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes lst :: \"real list\"\nassumes h0 : \"sum_list lst = sum (\\<lambda>x. x^2) lst\"\nshows \"max_list lst \\<le> mean_list lst\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes lst :: \"real list\"\nassumes h0 : \"sum_list lst = sum (\\<lambda>x. x^2) lst\"\nshows \"max_list lst \\<le> mean_list lst\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If the sum of the squares of the numbers in a list equals the sum of the numbers in the list, prove that the largest number in the list is less than or equal to the average of the list.\"",
+        "syntax": 0,
+        "semantic_score": 0.9207861678986834,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x powr 2) xs)\"\nshows \"1 \\<ge> (sum_list xs) / (real (length xs))\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x powr 2) xs)\"\nshows \"1 \\<ge> (sum_list xs) / (real (length xs))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers, if the sum of the squares of the numbers in the list is equal to the square of the sum of the numbers in the list, then the average value of the numbers in the list is less than or equal to $1$.",
+        "syntax": 1,
+        "semantic_score": 0.41188782208309505,
+        "symbolic_score": 0.1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x * x) xs)\"\nshows \"Max (set xs) \\<le> 1 / length xs \\<and> 1 / length xs \\<le> Min (set xs)\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x * x) xs)\"\nshows \"Max (set xs) \\<le> 1 / length xs \\<and> 1 / length xs \\<le> Min (set xs)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers, if the sum of the list is equal to the sum of the squares of the numbers in the list, prove that the maximum number in the list is less than or equal to the reciprocal of the length of the list, and that the reciprocal of the length of the list is less than or equal to the minimum number in the list.",
+        "syntax": 1,
+        "semantic_score": 0.5202131408316865,
+        "symbolic_score": 0.1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes lst :: \"real list\"\nassumes h0 : \"(\\<Sum>x\\<leftarrow>lst. x) = (\\<Sum>x\\<leftarrow>lst. x\\<^sup>2)\"\nand h1 : \"length lst > 0\"\nshows \"Max (set lst) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes lst :: \"real list\"\nassumes h0 : \"(\\<Sum>x\\<leftarrow>lst. x) = (\\<Sum>x\\<leftarrow>lst. x\\<^sup>2)\"\nand h1 : \"length lst > 0\"\nshows \"Max (set lst) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If the sum of the elements in a non-empty list is equal to the sum of their squares, what is the maximum element in the list? The final answer is 1.\"",
+        "syntax": 1,
+        "semantic_score": 0.7330035098637588,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes lst :: \"real list\"\nassumes h0 : \"sum_list lst = sum (\\<lambda>x. x^2) lst\"\nshows \"max (set lst) \\<le> 1 / length lst\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes lst :: \"real list\"\nassumes h0 : \"sum_list lst = sum (\\<lambda>x. x^2) lst\"\nshows \"max (set lst) \\<le> 1 / length lst\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If the sum of the squares of the numbers in a list is equal to the sum of the numbers in the list, what is the maximum value of any number in the list? The maximum value is less than or equal to the reciprocal of the length of the list.\"",
+        "syntax": 0,
+        "semantic_score": 0.7420175296015924,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes lst :: \"real list\"\nassumes h0 : \"sum_list lst = sum_list (map (op ^ 2) lst)\"\nshows \"Max {mean_set (set lst)} = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes lst :: \"real list\"\nassumes h0 : \"sum_list lst = sum_list (map (op ^ 2) lst)\"\nshows \"Max {mean_set (set lst)} = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers, if the sum of the list is equal to the sum of the squares of the elements in the list, then what is the maximum value of the mean of any subset of the list? The final answer is $1$.",
+        "syntax": 0,
+        "semantic_score": 0.9399491856182316,
+        "symbolic_score": 0.1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes lst :: \"real list\"\nassumes h0 : \"sum_list lst = sum (\\<lambda>x. x^2) lst\"\nshows \"(sum_list lst) / (real (length lst)) \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes lst :: \"real list\"\nassumes h0 : \"sum_list lst = sum (\\<lambda>x. x^2) lst\"\nshows \"(sum_list lst) / (real (length lst)) \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The average of the squares of the numbers in a list is less than or equal to $1$.",
+        "syntax": 0,
+        "semantic_score": 0.5656829612825386,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes lst :: \"real list\"\nassumes h0 : \"(\\<Sum>x\\<leftarrow>lst. x) = (\\<Sum>x\\<leftarrow>lst. x^2)\"\nshows \"listsum lst / (real_of_nat (length lst)) \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes lst :: \"real list\"\nassumes h0 : \"(\\<Sum>x\\<leftarrow>lst. x) = (\\<Sum>x\\<leftarrow>lst. x^2)\"\nshows \"listsum lst / (real_of_nat (length lst)) \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If the sum of the elements in a list is equal to the sum of the squares of the elements in the list, then the average (arithmetic mean) of the elements in the list is less than or equal to 1.\"",
+        "syntax": 1,
+        "semantic_score": 0.6781482653206855,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            3,
+            4,
+            5,
+            8,
+            9
+        ],
+        "1": [
+            2,
+            6
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            7
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> real\" and n :: nat\nassumes h0 : \"(\\<Sum>i\\<in>{1..n}. f i) = (\\<Sum>i\\<in>{1..n}. (f i)^2)\"\nshows  \"(\\<Sum>i\\<in>{1..n}. f i) / n \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> real\" and n :: nat\nassumes h0 : \"(\\<Sum>i\\<in>{1..n}. f i) = (\\<Sum>i\\<in>{1..n}. (f i)^2)\"\nshows  \"(\\<Sum>i\\<in>{1..n}. f i) / n \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sequence of real numbers $f(i)$ for $i$ in $\\{1, 2, ..., n\\}$ such that the sum of the sequence from $1$ to $n$ equals the sum of the square of each term from $1$ to $n$, show that the average of this sequence from $1$ to $n$ is less than or equal to $1$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.815260168988681,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem \nfixes n :: real and xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x^2) xs)\"\nand h1 : \"n = length xs\"\nshows  \"sum_list xs / n \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem \nfixes n :: real and xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x^2) xs)\"\nand h1 : \"n = length xs\"\nshows  \"sum_list xs / n \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers where the sum of the elements in the list is equal to the sum of the squares of the elements in the list, and $n$ is the length of the list, prove that the average of the list is less than or equal to 1.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8611275892773634,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes list :: \"real list\"\nassumes h0 : \"sum list id = sum list (\\<lambda>x. x powr 2)\"\nshows  \"Max (set list) \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes list :: \"real list\"\nassumes h0 : \"sum list id = sum list (\\<lambda>x. x powr 2)\"\nshows  \"Max (set list) \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the sum of all elements in a list is equal to the sum of the squares of all elements in the list, show that the maximum element in the list is less than or equal to one.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8405525373677681,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda> x. x powr 2) xs)\"\nshows  \"Max(set xs) \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda> x. x powr 2) xs)\"\nshows  \"Max(set xs) \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the sum of a list of real numbers equals the sum of the squares of those numbers, then the maximum number in that list is less than or equal to 1.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8394359417971141,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes x :: \"real list\"\nassumes h0 : \"sum_list x = sum_list (map (\u03bbx. x powr 2) x)\"\nshows  \"Max (set x) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes x :: \"real list\"\nassumes h0 : \"sum_list x = sum_list (map (\u03bbx. x powr 2) x)\"\nshows  \"Max (set x) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Given a list of real numbers, if the sum of the elements in the list equals the sum of the squares of the elements in the list, what is the maximum value in the list? The maximum value in the list is 1.\"",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8851426065273056,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes x :: \"real list\"\nassumes h0 : \"sum_list x = sum_list (map (\\<lambda> y. y powr 2) x)\"\nshows  \"Max (set x) \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes x :: \"real list\"\nassumes h0 : \"sum_list x = sum_list (map (\\<lambda> y. y powr 2) x)\"\nshows  \"Max (set x) \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers $x$, if the sum of all elements in the list is equal to the sum of the squares of all elements in the list, then the maximum element in the list is less than or equal to 1.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8353986869815888,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes x :: \"real list\"\nassumes h0 : \"sum_list x = sum_list (map (\u03bb x. x * x) x)\"\nshows  \"Max (set x) \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes x :: \"real list\"\nassumes h0 : \"sum_list x = sum_list (map (\u03bb x. x * x) x)\"\nshows  \"Max (set x) \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the sum of a list of real numbers equals the sum of the squares of the numbers in that list, then the maximum value in the list should be less than or equal to 1.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8476254818091868,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes list :: \"real list\"\nassumes h0 : \"sum list id = sum list (\\<lambda>x. x powr 2)\"\nshows  \"Max (set (map (\\<lambda>x. x / real (length list)) list)) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes list :: \"real list\"\nassumes h0 : \"sum list id = sum list (\\<lambda>x. x powr 2)\"\nshows  \"Max (set (map (\\<lambda>x. x / real (length list)) list)) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers, it is known that the sum of the numbers in the list is equal to the sum of the squares of the numbers in the list. Find the maximum value of the numbers in the list after each number is divided by the length of the list. The final answer is 1.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.899551933375186,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x * x) xs)\"\nshows  \"ListMax xs <= 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x * x) xs)\"\nshows  \"ListMax xs <= 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers, if the sum of the numbers in the list is equal to the sum of the squares of the numbers in the list, then the maximum number in the list is less than or equal to 1.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8489368115830335,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x^2) xs)\"\nshows  \"List.length xs > 0 \\<Longrightarrow> sum_list xs / real (length xs) \\<le> 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is 1\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n \\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum_list xs = sum_list (map (\\<lambda>x. x^2) xs)\"\nshows  \"List.length xs > 0 \\<Longrightarrow> sum_list xs / real (length xs) \\<le> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers, if the sum of the numbers in the list is equal to the sum of the squares of the numbers in the list, then the average of the numbers in the list is less than or equal to 1. This statement is true for any non-empty list.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8384241727890985,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a list of real numbers, xs. If the sum of all the numbers in the list is equal to the sum of the squares of all the numbers in the list, then the maximum number in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.8647105636181398,
+        "symbolic_score": 0.6
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set (map (op / (real (length xs))) xs)) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set (map (op / (real (length xs))) xs)) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, where the sum of the elements in the list is equal to the sum of the squares of the elements in the list, prove that the maximum value of the list obtained by dividing each element of the original list by the length of the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.8415101227657513,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"max_snorm xs = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"max_snorm xs = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, where the sum of all elements in the list is equal to the sum of the squares of all elements in the list, prove that the maximum absolute value of the elements in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.8301261112257682,
+        "symbolic_score": 0.2
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a list of real numbers, xs. If the sum of all the numbers in the list is equal to the sum of the squares of all the numbers in the list, then the maximum value in the set of xs is 1.",
+        "syntax": 0,
+        "semantic_score": 0.8649242154442944,
+        "symbolic_score": 0.6
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, if the sum of the elements in the list is equal to the sum of the squares of the elements in the list, then the maximum value in the set of xs is 1.",
+        "syntax": 0,
+        "semantic_score": 0.8385413184521833,
+        "symbolic_score": 0.6
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a list of real numbers, xs. If the sum of all the numbers in the list is equal to the sum of the squares of all the numbers in the list, then the maximum number in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.8647105636181398,
+        "symbolic_score": 0.6
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"max_snorm xs = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"max_snorm xs = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, if the sum of all elements in the list is equal to the sum of the squares of all elements in the list, then the maximum absolute value of the elements in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.824094268088723,
+        "symbolic_score": 0.2
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (\u03bbx. x^2) xs)\"\nshows \"max_snorm xs = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (\u03bbx. x^2) xs)\"\nshows \"max_snorm xs = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, where the sum of the elements in the list is equal to the sum of the squares of the elements in the list, prove that the maximum absolute value of the elements in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.833768052249085,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, where the sum of the elements in the list is equal to the sum of the squares of the elements in the list, prove that the maximum value in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.8483594834992938,
+        "symbolic_score": 0.6
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"",
+        "formal solution": "(* ### Problem\n Katie has a list of real numbers such that the sum of the numbers on her list is equal to the sum of the squares of the numbers on her list. Compute the largest possible value of the arithmetic mean of her numbers. The final Answer is $1$\n ### Proof\n Let the numbers in the list be $x_1,$ $x_2,$ $\\dots,$ $x_n.$  Then by the trivial inequality, \\[(x_1 - 1)^2 + (x_2 - 1)^2 + \\dots + (x_n - 1)^2 \\ge 0.\\]Expanding, we get \\[(x_1^2 + x_2^2 + \\dots + x_n^2) - 2(x_1 + x_2 + \\dots + x_n) + n \\ge 0.\\]Since $x_1^2 + x_2^2 + \\dots + x_n^2 = x_1 + x_2 + \\dots + x_n,$\n\\[x_1 + x_2 + \\dots + x_n \\le n,\\]so $\\frac{x_1 + x_2 + \\dots + x_n}{n} \\le 1.$ Equality occurs when all the $x_i$ are equal to 1, so the largest possible arithmetic mean is $\\boxed{1}.$\n *)\n\ntheorem\nfixes xs :: \"real list\"\nassumes h0 : \"sum xs = sum (map (op powr 2) xs)\"\nshows \"Max (set xs) = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers xs, where the sum of the elements in the list is equal to the sum of the squares of the elements in the list, prove that the maximum value in the list is 1.",
+        "syntax": 0,
+        "semantic_score": 0.8483594834992938,
+        "symbolic_score": 0.6
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0,
+            3,
+            4,
+            5,
+            8,
+            9
+        ],
+        "1": [
+            2,
+            6
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            7
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

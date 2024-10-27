@@ -1,0 +1,147 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat and P :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"finite {n. n \\<in> {1..100} \\<and> P n}\"\nand h1 : \"P n = ((\\<exists> k. n = k^2 \\<or> n = k^3) \\<and> \\<not> (\\<exists> k. n = k^2 \\<and> n = k^3))\"\nand h2 : \"card {n. n \\<in> {1..100} \\<and> P n} = 10\"\nshows  \"Prob P = 1 / 10\"",
+        "formal solution": "(* ### Problem\n An integer is randomly chosen from the integers 1 through 100, inclusive. What is the probability that the chosen integer is a perfect square or a perfect cube, but not both? Express your answer as a common fraction. The final Answer is \\frac{1}{10}\n ### Proof\n A number is a perfect square and a perfect cube if and only if it is a perfect sixth power. Note that $10^2 = 100$ and $4^3<100<5^3$, while $2^6 < 100 < 3^6 = 9^3$.\n Hence, there are 10 squares and 4 cubes between 1 and 100, inclusive.\n However, there are also 2 sixth powers, so when we add $10 + 4$ to count the number of squares and cubes, we count these sixth powers twice.\n However, we don't want to count these sixth powers at all, so we must subtract them twice. This gives us a total of $10 + 4 - 2\\cdot 2 = 10$ different numbers that are perfect squares or perfect cubes, but not both.\n Thus, our probability is $\\frac{10}{100} = \\boxed{\\frac{1}{10}}$.\n *)\n\ntheorem\nfixes n :: nat and P :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"finite {n. n \\<in> {1..100} \\<and> P n}\"\nand h1 : \"P n = ((\\<exists> k. n = k^2 \\<or> n = k^3) \\<and> \\<not> (\\<exists> k. n = k^2 \\<and> n = k^3))\"\nand h2 : \"card {n. n \\<in> {1..100} \\<and> P n} = 10\"\nshows  \"Prob P = 1 / 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Out of the first 100 natural numbers, there are 10 numbers that are either perfect squares or perfect cubes, but not both. What is the probability that a number chosen at random from these 100 numbers has this property? The final answer is $\\frac{1}{10}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.832322359085083,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes probability :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. 1 \\<le> n \\<and> n \\<le> 100 \\<longrightarrow> probability n = 1 / 100\"\nand h1 : \"sum (\\<lambda>n. if (\\<exists> a. n = a * a) \\<or> (\\<exists> b. n = b * b * b) \\<and> \\<not> (\\<exists> c. n = c * c * c * c) then probability n else 0) {1..100} = p\"\nshows  \"p = 1 / 10\"",
+        "formal solution": "(* ### Problem\n An integer is randomly chosen from the integers 1 through 100, inclusive. What is the probability that the chosen integer is a perfect square or a perfect cube, but not both? Express your answer as a common fraction. The final Answer is \\frac{1}{10}\n ### Proof\n A number is a perfect square and a perfect cube if and only if it is a perfect sixth power. Note that $10^2 = 100$ and $4^3<100<5^3$, while $2^6 < 100 < 3^6 = 9^3$.\n Hence, there are 10 squares and 4 cubes between 1 and 100, inclusive.\n However, there are also 2 sixth powers, so when we add $10 + 4$ to count the number of squares and cubes, we count these sixth powers twice.\n However, we don't want to count these sixth powers at all, so we must subtract them twice. This gives us a total of $10 + 4 - 2\\cdot 2 = 10$ different numbers that are perfect squares or perfect cubes, but not both.\n Thus, our probability is $\\frac{10}{100} = \\boxed{\\frac{1}{10}}$.\n *)\n\ntheorem\nfixes probability :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. 1 \\<le> n \\<and> n \\<le> 100 \\<longrightarrow> probability n = 1 / 100\"\nand h1 : \"sum (\\<lambda>n. if (\\<exists> a. n = a * a) \\<or> (\\<exists> b. n = b * b * b) \\<and> \\<not> (\\<exists> c. n = c * c * c * c) then probability n else 0) {1..100} = p\"\nshows  \"p = 1 / 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are 100 equally likely outcomes numbered from 1 to 100. What is the probability that an outcome is either a perfect square or a perfect cube, but not a perfect fourth power? The final answer is $\\frac{1}{10}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8247457146644592,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes p :: \"real\"\nassumes h0 : \"p = card {n :: nat. 1 \\<le> n \\<and> n \\<le> 100 \\<and> ((\\<exists> a. n = a^2) \\<or> (\\<exists> b. n = b^3)) \\<and> \\<not>(\\<exists> a b. n = a^2 \\<and> n = b^3)}\"\nand h1 : \"card {1 .. 100} = 100\"\nshows  \"p / 100 = 1 / 10\"",
+        "formal solution": "(* ### Problem\n An integer is randomly chosen from the integers 1 through 100, inclusive. What is the probability that the chosen integer is a perfect square or a perfect cube, but not both? Express your answer as a common fraction. The final Answer is \\frac{1}{10}\n ### Proof\n A number is a perfect square and a perfect cube if and only if it is a perfect sixth power. Note that $10^2 = 100$ and $4^3<100<5^3$, while $2^6 < 100 < 3^6 = 9^3$.\n Hence, there are 10 squares and 4 cubes between 1 and 100, inclusive.\n However, there are also 2 sixth powers, so when we add $10 + 4$ to count the number of squares and cubes, we count these sixth powers twice.\n However, we don't want to count these sixth powers at all, so we must subtract them twice. This gives us a total of $10 + 4 - 2\\cdot 2 = 10$ different numbers that are perfect squares or perfect cubes, but not both.\n Thus, our probability is $\\frac{10}{100} = \\boxed{\\frac{1}{10}}$.\n *)\n\ntheorem\nfixes p :: \"real\"\nassumes h0 : \"p = card {n :: nat. 1 \\<le> n \\<and> n \\<le> 100 \\<and> ((\\<exists> a. n = a^2) \\<or> (\\<exists> b. n = b^3)) \\<and> \\<not>(\\<exists> a b. n = a^2 \\<and> n = b^3)}\"\nand h1 : \"card {1 .. 100} = 100\"\nshows  \"p / 100 = 1 / 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Out of the first 100 natural numbers, what is the probability that a number is either a perfect square or a perfect cube, but not both? Express your answer as a common fraction. The final answer is $\\frac{1}{10}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.887310266494751,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1 \\<and> n \\<le> 100\"\nand h1 : \"(\\<exists> m. m * m = n) \\<or> (\\<exists> m. m * m * m = n)\"\nand h2 : \"\\<not> ((\\<exists> m. m * m = n) \\<and> (\\<exists> m. m * m * m = n))\"\nshows  \"probability n = 1 / 10\"",
+        "formal solution": "(* ### Problem\n An integer is randomly chosen from the integers 1 through 100, inclusive. What is the probability that the chosen integer is a perfect square or a perfect cube, but not both? Express your answer as a common fraction. The final Answer is \\frac{1}{10}\n ### Proof\n A number is a perfect square and a perfect cube if and only if it is a perfect sixth power. Note that $10^2 = 100$ and $4^3<100<5^3$, while $2^6 < 100 < 3^6 = 9^3$.\n Hence, there are 10 squares and 4 cubes between 1 and 100, inclusive.\n However, there are also 2 sixth powers, so when we add $10 + 4$ to count the number of squares and cubes, we count these sixth powers twice.\n However, we don't want to count these sixth powers at all, so we must subtract them twice. This gives us a total of $10 + 4 - 2\\cdot 2 = 10$ different numbers that are perfect squares or perfect cubes, but not both.\n Thus, our probability is $\\frac{10}{100} = \\boxed{\\frac{1}{10}}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1 \\<and> n \\<le> 100\"\nand h1 : \"(\\<exists> m. m * m = n) \\<or> (\\<exists> m. m * m * m = n)\"\nand h2 : \"\\<not> ((\\<exists> m. m * m = n) \\<and> (\\<exists> m. m * m * m = n))\"\nshows  \"probability n = 1 / 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Determine the probability of selecting a number $n$ between 1 and 100 (inclusive), such that $n$ is either a perfect square or a perfect cube, but not both. The final answer is $\\frac{1}{10}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.4793304204940796,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes p :: \"real\"\nassumes h0 : \"finite {n::int. 1 \\<le> n \\<and> n \\<le> 100}\"\nand h1 : \"p = card {n::int. 1 \\<le> n \\<and> n \\<le> 100 \\<and> ( (\\<exists> k. n = k powr 2) \\<or> (\\<exists> k. n = k powr 3)) \\<and> \\<not> (\\<exists> k m. n = k powr 2 \\<and> n = m powr 3) } / card {n::int. 1 \\<le> n \\<and> n \\<le> 100}\"\nshows  \"p = 1 / 10\"",
+        "formal solution": "(* ### Problem\n An integer is randomly chosen from the integers 1 through 100, inclusive. What is the probability that the chosen integer is a perfect square or a perfect cube, but not both? Express your answer as a common fraction. The final Answer is \\frac{1}{10}\n ### Proof\n A number is a perfect square and a perfect cube if and only if it is a perfect sixth power. Note that $10^2 = 100$ and $4^3<100<5^3$, while $2^6 < 100 < 3^6 = 9^3$.\n Hence, there are 10 squares and 4 cubes between 1 and 100, inclusive.\n However, there are also 2 sixth powers, so when we add $10 + 4$ to count the number of squares and cubes, we count these sixth powers twice.\n However, we don't want to count these sixth powers at all, so we must subtract them twice. This gives us a total of $10 + 4 - 2\\cdot 2 = 10$ different numbers that are perfect squares or perfect cubes, but not both.\n Thus, our probability is $\\frac{10}{100} = \\boxed{\\frac{1}{10}}$.\n *)\n\ntheorem\nfixes p :: \"real\"\nassumes h0 : \"finite {n::int. 1 \\<le> n \\<and> n \\<le> 100}\"\nand h1 : \"p = card {n::int. 1 \\<le> n \\<and> n \\<le> 100 \\<and> ( (\\<exists> k. n = k powr 2) \\<or> (\\<exists> k. n = k powr 3)) \\<and> \\<not> (\\<exists> k m. n = k powr 2 \\<and> n = m powr 3) } / card {n::int. 1 \\<le> n \\<and> n \\<le> 100}\"\nshows  \"p = 1 / 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the probability that a randomly chosen integer between 1 and 100, inclusive, is either a perfect square or a perfect cube, but not both? Express your answer as a common fraction. The final answer is $\\frac{1}{10}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9323817491531372,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes N :: real\nassumes h0 : \"N = 100\"\nand h1 : \"card {n::int. 1 \\<le> n \\<and> n \\<le> N \\<and> (\\<exists>k. k^2 = n) \\<or> (\\<exists>k. k^3 = n)} = 10\"\nshows  \"probability (\\<lambda>n::int. 1 \\<le> n \\<and> n \\<le> N \\<and> (\\<exists>k. k^2 = n) \\<or> (\\<exists>k. k^3 = n)) = 1 / 10\"",
+        "formal solution": "(* ### Problem\n An integer is randomly chosen from the integers 1 through 100, inclusive. What is the probability that the chosen integer is a perfect square or a perfect cube, but not both? Express your answer as a common fraction. The final Answer is \\frac{1}{10}\n ### Proof\n A number is a perfect square and a perfect cube if and only if it is a perfect sixth power. Note that $10^2 = 100$ and $4^3<100<5^3$, while $2^6 < 100 < 3^6 = 9^3$.\n Hence, there are 10 squares and 4 cubes between 1 and 100, inclusive.\n However, there are also 2 sixth powers, so when we add $10 + 4$ to count the number of squares and cubes, we count these sixth powers twice.\n However, we don't want to count these sixth powers at all, so we must subtract them twice. This gives us a total of $10 + 4 - 2\\cdot 2 = 10$ different numbers that are perfect squares or perfect cubes, but not both.\n Thus, our probability is $\\frac{10}{100} = \\boxed{\\frac{1}{10}}$.\n *)\n\ntheorem\nfixes N :: real\nassumes h0 : \"N = 100\"\nand h1 : \"card {n::int. 1 \\<le> n \\<and> n \\<le> N \\<and> (\\<exists>k. k^2 = n) \\<or> (\\<exists>k. k^3 = n)} = 10\"\nshows  \"probability (\\<lambda>n::int. 1 \\<le> n \\<and> n \\<le> N \\<and> (\\<exists>k. k^2 = n) \\<or> (\\<exists>k. k^3 = n)) = 1 / 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a set of integers from 1 to 100, there are 10 numbers that are either perfect squares or perfect cubes. What is the probability that a randomly chosen integer from this set will be one of these numbers? The final answer is $\\frac{1}{10}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9742425084114075,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat and ps pc :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. ps n \\<longleftrightarrow> (\\<exists> x. x powr 2 = n)\"\nand h1 : \"\\<forall> n. pc n \\<longleftrightarrow> (\\<exists> x. x powr 3 = n)\"\nand h2 : \"card {n. n \\<in> {1..100} \\<and> (ps n \\<or> pc n) \\<and> \\<not> (ps n \\<and> pc n)} = p\"\nshows  \"p = 10\"",
+        "formal solution": "(* ### Problem\n An integer is randomly chosen from the integers 1 through 100, inclusive. What is the probability that the chosen integer is a perfect square or a perfect cube, but not both? Express your answer as a common fraction. The final Answer is \\frac{1}{10}\n ### Proof\n A number is a perfect square and a perfect cube if and only if it is a perfect sixth power. Note that $10^2 = 100$ and $4^3<100<5^3$, while $2^6 < 100 < 3^6 = 9^3$.\n Hence, there are 10 squares and 4 cubes between 1 and 100, inclusive.\n However, there are also 2 sixth powers, so when we add $10 + 4$ to count the number of squares and cubes, we count these sixth powers twice.\n However, we don't want to count these sixth powers at all, so we must subtract them twice. This gives us a total of $10 + 4 - 2\\cdot 2 = 10$ different numbers that are perfect squares or perfect cubes, but not both.\n Thus, our probability is $\\frac{10}{100} = \\boxed{\\frac{1}{10}}$.\n *)\n\ntheorem\nfixes n :: nat and ps pc :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. ps n \\<longleftrightarrow> (\\<exists> x. x powr 2 = n)\"\nand h1 : \"\\<forall> n. pc n \\<longleftrightarrow> (\\<exists> x. x powr 3 = n)\"\nand h2 : \"card {n. n \\<in> {1..100} \\<and> (ps n \\<or> pc n) \\<and> \\<not> (ps n \\<and> pc n)} = p\"\nshows  \"p = 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many numbers between 1 and 100 are either perfect squares (can be expressed as $x^2$ for some integer $x$) or perfect cubes (can be expressed as $x^3$ for some integer $x$), but not both? The final answer is 10.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8231475949287415,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x :: \"int set\"\nassumes h0 : \"card x = 100\"\nand h1 : \"x = {n. 1 \\<le> n \\<and> n \\<le> 100}\"\nand h2 : \"card {n \\<in> x. (is_perfect_square n \\<or> is_perfect_cube n) \\<and> \\<not> (is_perfect_square n \\<and> is_perfect_cube n)} = 10\"\nshows  \"probability x (\\<lambda>n. (is_perfect_square n \\<or> is_perfect_cube n) \\<and> \\<not> (is_perfect_square n \\<and> is_perfect_cube n)) = 1 / 10\"\n  where \"is_perfect_square n = (\\<exists> m. n = m^2)\"\n  and \"is_perfect_cube n = (\\<exists> m. n = m^3)\"\n  and \"probability x P = (real (card {n \\<in> x. P n})) / (real (card x))\"",
+        "formal solution": "(* ### Problem\n An integer is randomly chosen from the integers 1 through 100, inclusive. What is the probability that the chosen integer is a perfect square or a perfect cube, but not both? Express your answer as a common fraction. The final Answer is \\frac{1}{10}\n ### Proof\n A number is a perfect square and a perfect cube if and only if it is a perfect sixth power. Note that $10^2 = 100$ and $4^3<100<5^3$, while $2^6 < 100 < 3^6 = 9^3$.\n Hence, there are 10 squares and 4 cubes between 1 and 100, inclusive.\n However, there are also 2 sixth powers, so when we add $10 + 4$ to count the number of squares and cubes, we count these sixth powers twice.\n However, we don't want to count these sixth powers at all, so we must subtract them twice. This gives us a total of $10 + 4 - 2\\cdot 2 = 10$ different numbers that are perfect squares or perfect cubes, but not both.\n Thus, our probability is $\\frac{10}{100} = \\boxed{\\frac{1}{10}}$.\n *)\n\ntheorem\nfixes x :: \"int set\"\nassumes h0 : \"card x = 100\"\nand h1 : \"x = {n. 1 \\<le> n \\<and> n \\<le> 100}\"\nand h2 : \"card {n \\<in> x. (is_perfect_square n \\<or> is_perfect_cube n) \\<and> \\<not> (is_perfect_square n \\<and> is_perfect_cube n)} = 10\"\nshows  \"probability x (\\<lambda>n. (is_perfect_square n \\<or> is_perfect_cube n) \\<and> \\<not> (is_perfect_square n \\<and> is_perfect_cube n)) = 1 / 10\"\n  where \"is_perfect_square n = (\\<exists> m. n = m^2)\"\n  and \"is_perfect_cube n = (\\<exists> m. n = m^3)\"\n  and \"probability x P = (real (card {n \\<in> x. P n})) / (real (card x))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are 100 numbers in a set, ranging from 1 to 100. What is the probability that a randomly chosen number from this set is either a perfect square or a perfect cube, but not both? The final answer is $\\frac{1}{10}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8613293170928955,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: int and prob :: \"int \\<Rightarrow> real\"\nassumes h0 : \"prob n = 1 / 100\"\nand h1 : \"n \\<ge> 1\"\nand h2 : \"n \\<le> 100\"\nand h3 : \"(\\<exists> k. k powr 2 = n) \\<or> (\\<exists> k. k powr 3 = n)\"\nand h4 : \"\\<not> ((\\<exists> k. k powr 2 = n) \\<and> (\\<exists> k. k powr 3 = n))\"\nshows  \"prob n = 1 / 10\"",
+        "formal solution": "(* ### Problem\n An integer is randomly chosen from the integers 1 through 100, inclusive. What is the probability that the chosen integer is a perfect square or a perfect cube, but not both? Express your answer as a common fraction. The final Answer is \\frac{1}{10}\n ### Proof\n A number is a perfect square and a perfect cube if and only if it is a perfect sixth power. Note that $10^2 = 100$ and $4^3<100<5^3$, while $2^6 < 100 < 3^6 = 9^3$.\n Hence, there are 10 squares and 4 cubes between 1 and 100, inclusive.\n However, there are also 2 sixth powers, so when we add $10 + 4$ to count the number of squares and cubes, we count these sixth powers twice.\n However, we don't want to count these sixth powers at all, so we must subtract them twice. This gives us a total of $10 + 4 - 2\\cdot 2 = 10$ different numbers that are perfect squares or perfect cubes, but not both.\n Thus, our probability is $\\frac{10}{100} = \\boxed{\\frac{1}{10}}$.\n *)\n\ntheorem\nfixes n :: int and prob :: \"int \\<Rightarrow> real\"\nassumes h0 : \"prob n = 1 / 100\"\nand h1 : \"n \\<ge> 1\"\nand h2 : \"n \\<le> 100\"\nand h3 : \"(\\<exists> k. k powr 2 = n) \\<or> (\\<exists> k. k powr 3 = n)\"\nand h4 : \"\\<not> ((\\<exists> k. k powr 2 = n) \\<and> (\\<exists> k. k powr 3 = n))\"\nshows  \"prob n = 1 / 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a set of integers from 1 to 100, each integer has a probability of 1/100 of being selected. Find the probability of selecting an integer that is either a perfect square or a perfect cube, but not both. The final answer is 1/10.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8965702056884766,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat and prob :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"n \\<in> {1..100}\"\nand h1 : \"prob n = 1 / 100\"\nand h2 : \"card {n. n \\<in> {1..100} \\<and> (n = pown (natroot n 2) 2 \\<or> n = pown (natroot n 3) 3) \\<and> (n \\<noteq> pown (natroot n 2) 2 * pown (natroot n 3) 3)} = 10\"\nshows  \"sum prob {n. n \\<in> {1..100} \\<and> (n = pown (natroot n 2) 2 \\<or> n = pown (natroot n 3) 3) \\<and> (n \\<noteq> pown (natroot n 2) 2 * pown (natroot n 3) 3)} = 1 / 10\"",
+        "formal solution": "(* ### Problem\n An integer is randomly chosen from the integers 1 through 100, inclusive. What is the probability that the chosen integer is a perfect square or a perfect cube, but not both? Express your answer as a common fraction. The final Answer is \\frac{1}{10}\n ### Proof\n A number is a perfect square and a perfect cube if and only if it is a perfect sixth power. Note that $10^2 = 100$ and $4^3<100<5^3$, while $2^6 < 100 < 3^6 = 9^3$.\n Hence, there are 10 squares and 4 cubes between 1 and 100, inclusive.\n However, there are also 2 sixth powers, so when we add $10 + 4$ to count the number of squares and cubes, we count these sixth powers twice.\n However, we don't want to count these sixth powers at all, so we must subtract them twice. This gives us a total of $10 + 4 - 2\\cdot 2 = 10$ different numbers that are perfect squares or perfect cubes, but not both.\n Thus, our probability is $\\frac{10}{100} = \\boxed{\\frac{1}{10}}$.\n *)\n\ntheorem\nfixes n :: nat and prob :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"n \\<in> {1..100}\"\nand h1 : \"prob n = 1 / 100\"\nand h2 : \"card {n. n \\<in> {1..100} \\<and> (n = pown (natroot n 2) 2 \\<or> n = pown (natroot n 3) 3) \\<and> (n \\<noteq> pown (natroot n 2) 2 * pown (natroot n 3) 3)} = 10\"\nshows  \"sum prob {n. n \\<in> {1..100} \\<and> (n = pown (natroot n 2) 2 \\<or> n = pown (natroot n 3) 3) \\<and> (n \\<noteq> pown (natroot n 2) 2 * pown (natroot n 3) 3)} = 1 / 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a set of numbers from 1 to 100, there are 10 numbers that are either perfect squares or perfect cubes, but not both. What is the probability of randomly selecting one of these numbers? The final answer is $\\frac{1}{10}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9576084017753601,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "\\frac{1}{10}",
+    "natural problem": "An integer is randomly chosen from the integers 1 through 100, inclusive. What is the probability that the chosen integer is a perfect square or a perfect cube, but not both? Express your answer as a common fraction.",
+    "natural solution": [
+        "A number is a perfect square and a perfect cube if and only if it is a perfect sixth power. Note that $10^2 = 100$ and $4^3<100<5^3$, while $2^6 < 100 < 3^6 = 9^3$.",
+        "Hence, there are 10 squares and 4 cubes between 1 and 100, inclusive.",
+        "However, there are also 2 sixth powers, so when we add $10 + 4$ to count the number of squares and cubes, we count these sixth powers twice.",
+        "However, we don't want to count these sixth powers at all, so we must subtract them twice. This gives us a total of $10 + 4 - 2\\cdot 2 = 10$ different numbers that are perfect squares or perfect cubes, but not both.",
+        "Thus, our probability is $\\frac{10}{100} = \\boxed{\\frac{1}{10}}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 4",
+    "type": "Counting & Probability"
+}

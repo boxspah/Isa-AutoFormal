@@ -1,0 +1,128 @@
+{
+    "problem_name": "mathd_algebra_144",
+    "informal_statement": "How many distinct, non-equilateral triangles with a perimeter of 60 units have integer side lengths $a$, $b$, and $c$ such that $a$, $b$, $c$ is an arithmetic sequence? Show that it is 9.",
+    "informal_proof": "Let $d$ be the common difference, so $a = b - d$ and $c = b + d$.  We can assume that $d$ is positive.  (In particular, $d$ can't be 0, because the triangle is not equilateral.)  Then the perimeter of the triangle is $a + b + c = (b - d) + b + (b + d) = 3b = 60$, so $b = 20$.  Hence, the sides of the triangle are $20 - d$, 20, and $20 + d$.\n\nThese sides must satisfy the triangle inequality, which gives us \\[(20 - d) + 20 > 20 + d.\\] Solving for $d$, we find $2d < 20$, or $d < 10$.  Therefore, the possible values of $d$ are 1, 2, $\\dots$, 9, which gives us $9$ possible triangles.",
+    "a_0": {
+        "formal problem": "theorem\nfixes a b c :: int\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"a \\<noteq> b\"\nand h2 : \"a \\<noteq> c\"\nand h3 : \"b \\<noteq> c\"\nand h4 : \"c = a + d\"\nand h5 : \"b = a + d div 2\"\nand h6 : \"distinct_non_equilateral_triangles a b c\"\nshows  \"card (distinct_non_equilateral_triangles a b c) = 9\"",
+        "formal solution": "(* ### Problem\n How many distinct, non-equilateral triangles with a perimeter of 60 units have integer side lengths $a$, $b$, and $c$ such that $a$, $b$, $c$ is an arithmetic sequence? The final Answer is $9$\n ### Proof\n Let $d$ be the common difference, so $a = b - d$ and $c = b + d$.  We can assume that $d$ is positive.  (In particular, $d$ can't be 0, because the triangle is not equilateral.)  Then the perimeter of the triangle is $a + b + c = (b - d) + b + (b + d) = 3b = 60$, so $b = 20$.  Hence, the sides of the triangle are $20 - d$, 20, and $20 + d$.\n\nThese sides must satisfy the triangle inequality, which gives us \\[(20 - d) + 20 > 20 + d.\\] Solving for $d$, we find $2d < 20$, or $d < 10$.  Therefore, the possible values of $d$ are 1, 2, $\\dots$, 9, which gives us $9$ possible triangles.\n *)\n\ntheorem\nfixes a b c :: int\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"a \\<noteq> b\"\nand h2 : \"a \\<noteq> c\"\nand h3 : \"b \\<noteq> c\"\nand h4 : \"c = a + d\"\nand h5 : \"b = a + d div 2\"\nand h6 : \"distinct_non_equilateral_triangles a b c\"\nshows  \"card (distinct_non_equilateral_triangles a b c) = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of distinct non-equilateral triangles with integer side lengths $a, b, c$ that add up to $60$, where $a \\neq b$, $a \\neq c$, $b \\neq c$, and $c = a + d$, $b = a + \\frac{d}{2}$. The final answer is 9.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8797122836112976,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b c :: nat\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"b = (a + c) div 2\"\nand h2 : \"a \\<noteq> b \\<and> b \\<noteq> c \\<and> c \\<noteq> a\"\nand h3 : \"triangle a b c\"\nshows  \"card { (a, b, c) | a b c. a + b + c = 60 \\<and> b = (a + c) div 2 \\<and> a \\<noteq> b \\<and> b \\<noteq> c \\<and> c \\<noteq> a \\<and> triangle a b c } = 9\"\n\nwhere \"triangle a b c \\<equiv> a + b > c \\<and> a + c > b \\<and> b + c > a\"",
+        "formal solution": "(* ### Problem\n How many distinct, non-equilateral triangles with a perimeter of 60 units have integer side lengths $a$, $b$, and $c$ such that $a$, $b$, $c$ is an arithmetic sequence? The final Answer is $9$\n ### Proof\n Let $d$ be the common difference, so $a = b - d$ and $c = b + d$.  We can assume that $d$ is positive.  (In particular, $d$ can't be 0, because the triangle is not equilateral.)  Then the perimeter of the triangle is $a + b + c = (b - d) + b + (b + d) = 3b = 60$, so $b = 20$.  Hence, the sides of the triangle are $20 - d$, 20, and $20 + d$.\n\nThese sides must satisfy the triangle inequality, which gives us \\[(20 - d) + 20 > 20 + d.\\] Solving for $d$, we find $2d < 20$, or $d < 10$.  Therefore, the possible values of $d$ are 1, 2, $\\dots$, 9, which gives us $9$ possible triangles.\n *)\n\ntheorem\nfixes a b c :: nat\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"b = (a + c) div 2\"\nand h2 : \"a \\<noteq> b \\<and> b \\<noteq> c \\<and> c \\<noteq> a\"\nand h3 : \"triangle a b c\"\nshows  \"card { (a, b, c) | a b c. a + b + c = 60 \\<and> b = (a + c) div 2 \\<and> a \\<noteq> b \\<and> b \\<noteq> c \\<and> c \\<noteq> a \\<and> triangle a b c } = 9\"\n\nwhere \"triangle a b c \\<equiv> a + b > c \\<and> a + c > b \\<and> b + c > a\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many triangles with positive integer side lengths $a$, $b$, and $c$ have a perimeter of 60 units, satisfy the condition $b = \\frac{a+c}{2}$, and have distinct side lengths? The final answer is 9.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9957373738288879,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a b c :: nat\nassumes h0 : \"a \\<le> b\"\nand h1 : \"b \\<le> c\"\nand h2 : \"a + b + c = 60\"\nand h3 : \"b - a = c - b\"\nand h4 : \"a \\<noteq> b \\<or> b \\<noteq> c\"\nshows  \"card {(a, b, c). distinct_non_equilateral_arithmetic_sequence a b c} = 9\"\nwhere \"distinct_non_equilateral_arithmetic_sequence a b c = (a \\<le> b \\<and> b \\<le> c \\<and> a + b + c = 60 \\<and> b - a = c - b \\<and> (a \\<noteq> b \\<or> b \\<noteq> c))\"",
+        "formal solution": "(* ### Problem\n How many distinct, non-equilateral triangles with a perimeter of 60 units have integer side lengths $a$, $b$, and $c$ such that $a$, $b$, $c$ is an arithmetic sequence? The final Answer is $9$\n ### Proof\n Let $d$ be the common difference, so $a = b - d$ and $c = b + d$.  We can assume that $d$ is positive.  (In particular, $d$ can't be 0, because the triangle is not equilateral.)  Then the perimeter of the triangle is $a + b + c = (b - d) + b + (b + d) = 3b = 60$, so $b = 20$.  Hence, the sides of the triangle are $20 - d$, 20, and $20 + d$.\n\nThese sides must satisfy the triangle inequality, which gives us \\[(20 - d) + 20 > 20 + d.\\] Solving for $d$, we find $2d < 20$, or $d < 10$.  Therefore, the possible values of $d$ are 1, 2, $\\dots$, 9, which gives us $9$ possible triangles.\n *)\n\ntheorem\nfixes a b c :: nat\nassumes h0 : \"a \\<le> b\"\nand h1 : \"b \\<le> c\"\nand h2 : \"a + b + c = 60\"\nand h3 : \"b - a = c - b\"\nand h4 : \"a \\<noteq> b \\<or> b \\<noteq> c\"\nshows  \"card {(a, b, c). distinct_non_equilateral_arithmetic_sequence a b c} = 9\"\nwhere \"distinct_non_equilateral_arithmetic_sequence a b c = (a \\<le> b \\<and> b \\<le> c \\<and> a + b + c = 60 \\<and> b - a = c - b \\<and> (a \\<noteq> b \\<or> b \\<noteq> c))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of distinct non-equilateral arithmetic sequences $(a, b, c)$ with positive integer terms such that $a \\leq b \\leq c$, $a + b + c = 60$, $b - a = c - b$, and at least one term is different from the others. The final answer is 9.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8763970732688904,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a b c :: nat\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"b = (a + c) div 2\"\nand h2 : \"a \\<noteq> b \\<and> b \\<noteq> c \\<and> c \\<noteq> a\"\nshows  \"card {(a, b, c) | a b c. a + b + c = 60 \\<and> b = (a + c) div 2 \\<and> a \\<noteq> b \\<and> b \\<noteq> c \\<and> c \\<noteq> a} = 9\"",
+        "formal solution": "(* ### Problem\n How many distinct, non-equilateral triangles with a perimeter of 60 units have integer side lengths $a$, $b$, and $c$ such that $a$, $b$, $c$ is an arithmetic sequence? The final Answer is $9$\n ### Proof\n Let $d$ be the common difference, so $a = b - d$ and $c = b + d$.  We can assume that $d$ is positive.  (In particular, $d$ can't be 0, because the triangle is not equilateral.)  Then the perimeter of the triangle is $a + b + c = (b - d) + b + (b + d) = 3b = 60$, so $b = 20$.  Hence, the sides of the triangle are $20 - d$, 20, and $20 + d$.\n\nThese sides must satisfy the triangle inequality, which gives us \\[(20 - d) + 20 > 20 + d.\\] Solving for $d$, we find $2d < 20$, or $d < 10$.  Therefore, the possible values of $d$ are 1, 2, $\\dots$, 9, which gives us $9$ possible triangles.\n *)\n\ntheorem\nfixes a b c :: nat\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"b = (a + c) div 2\"\nand h2 : \"a \\<noteq> b \\<and> b \\<noteq> c \\<and> c \\<noteq> a\"\nshows  \"card {(a, b, c) | a b c. a + b + c = 60 \\<and> b = (a + c) div 2 \\<and> a \\<noteq> b \\<and> b \\<noteq> c \\<and> c \\<noteq> a} = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of distinct triples of positive integers $(a, b, c)$ such that $a + b + c = 60$, $b = \\frac{a+c}{2}$, and $a \\neq b \\neq c \\neq a$. The final answer is 9.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7826974987983704,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b c :: int\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"a \\<le> b\"\nand h2 : \"b \\<le> c\"\nand h3 : \"b - a = c - b\"\nand h4 : \"\\<not> (a = b \\<and> b = c)\"\nshows  \"card {a, b, c} = 9\"",
+        "formal solution": "(* ### Problem\n How many distinct, non-equilateral triangles with a perimeter of 60 units have integer side lengths $a$, $b$, and $c$ such that $a$, $b$, $c$ is an arithmetic sequence? The final Answer is $9$\n ### Proof\n Let $d$ be the common difference, so $a = b - d$ and $c = b + d$.  We can assume that $d$ is positive.  (In particular, $d$ can't be 0, because the triangle is not equilateral.)  Then the perimeter of the triangle is $a + b + c = (b - d) + b + (b + d) = 3b = 60$, so $b = 20$.  Hence, the sides of the triangle are $20 - d$, 20, and $20 + d$.\n\nThese sides must satisfy the triangle inequality, which gives us \\[(20 - d) + 20 > 20 + d.\\] Solving for $d$, we find $2d < 20$, or $d < 10$.  Therefore, the possible values of $d$ are 1, 2, $\\dots$, 9, which gives us $9$ possible triangles.\n *)\n\ntheorem\nfixes a b c :: int\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"a \\<le> b\"\nand h2 : \"b \\<le> c\"\nand h3 : \"b - a = c - b\"\nand h4 : \"\\<not> (a = b \\<and> b = c)\"\nshows  \"card {a, b, c} = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find three distinct integers $a, b, c$ such that $a + b + c = 60$, $a \\leq b \\leq c$, and $b - a = c - b$. How many possible combinations of $(a, b, c)$ are there? The final answer is 9.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9720181822776794,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes a b c :: nat\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"a \\<le> b\"\nand h2 : \"b \\<le> c\"\nand h3 : \"b = (a + c) div 2\"\nand h4 : \"a < b\"\nand h5 : \"b < c\"\nshows  \"card {(a, b, c). a + b + c = 60 \\<and> a \\<le> b \\<and> b \\<le> c \\<and> b = (a + c) div 2 \\<and> a < b \\<and> b < c} = 9\"",
+        "formal solution": "(* ### Problem\n How many distinct, non-equilateral triangles with a perimeter of 60 units have integer side lengths $a$, $b$, and $c$ such that $a$, $b$, $c$ is an arithmetic sequence? The final Answer is $9$\n ### Proof\n Let $d$ be the common difference, so $a = b - d$ and $c = b + d$.  We can assume that $d$ is positive.  (In particular, $d$ can't be 0, because the triangle is not equilateral.)  Then the perimeter of the triangle is $a + b + c = (b - d) + b + (b + d) = 3b = 60$, so $b = 20$.  Hence, the sides of the triangle are $20 - d$, 20, and $20 + d$.\n\nThese sides must satisfy the triangle inequality, which gives us \\[(20 - d) + 20 > 20 + d.\\] Solving for $d$, we find $2d < 20$, or $d < 10$.  Therefore, the possible values of $d$ are 1, 2, $\\dots$, 9, which gives us $9$ possible triangles.\n *)\n\ntheorem\nfixes a b c :: nat\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"a \\<le> b\"\nand h2 : \"b \\<le> c\"\nand h3 : \"b = (a + c) div 2\"\nand h4 : \"a < b\"\nand h5 : \"b < c\"\nshows  \"card {(a, b, c). a + b + c = 60 \\<and> a \\<le> b \\<and> b \\<le> c \\<and> b = (a + c) div 2 \\<and> a < b \\<and> b < c} = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of ordered triples $(a, b, c)$ of natural numbers such that $a + b + c = 60$, $a \\le b$, $b \\le c$, $b = \\frac{a + c}{2}$, $a < b$, and $b < c$. The final answer is 9.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8711836338043213,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b c :: int and count :: nat\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"b - a = c - b\"\nand h2 : \"a \\<noteq> b\"\nand h3 : \"b \\<noteq> c\"\nand h4 : \"\\<forall> a b c. (a + b + c = 60) \\<and> (b - a = c - b) \\<and> (a \\<noteq> b) \\<and> (b \\<noteq> c) \\<longrightarrow> count = count + 1\"\nshows  \"count = 9\"",
+        "formal solution": "(* ### Problem\n How many distinct, non-equilateral triangles with a perimeter of 60 units have integer side lengths $a$, $b$, and $c$ such that $a$, $b$, $c$ is an arithmetic sequence? The final Answer is $9$\n ### Proof\n Let $d$ be the common difference, so $a = b - d$ and $c = b + d$.  We can assume that $d$ is positive.  (In particular, $d$ can't be 0, because the triangle is not equilateral.)  Then the perimeter of the triangle is $a + b + c = (b - d) + b + (b + d) = 3b = 60$, so $b = 20$.  Hence, the sides of the triangle are $20 - d$, 20, and $20 + d$.\n\nThese sides must satisfy the triangle inequality, which gives us \\[(20 - d) + 20 > 20 + d.\\] Solving for $d$, we find $2d < 20$, or $d < 10$.  Therefore, the possible values of $d$ are 1, 2, $\\dots$, 9, which gives us $9$ possible triangles.\n *)\n\ntheorem\nfixes a b c :: int and count :: nat\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"b - a = c - b\"\nand h2 : \"a \\<noteq> b\"\nand h3 : \"b \\<noteq> c\"\nand h4 : \"\\<forall> a b c. (a + b + c = 60) \\<and> (b - a = c - b) \\<and> (a \\<noteq> b) \\<and> (b \\<noteq> c) \\<longrightarrow> count = count + 1\"\nshows  \"count = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of possible distinct integer triplets $(a, b, c)$ such that $a + b + c = 60$ and $b - a = c - b$. The final answer is 9.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7436797618865967,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a b c :: int and n :: nat\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"b - a = c - b\"\nand h2 : \"a > 0 \\<and> b > 0 \\<and> c > 0\"\nand h3 : \"a \\<noteq> b \\<and> b \\<noteq> c\"\nshows  \"n = 9\"",
+        "formal solution": "(* ### Problem\n How many distinct, non-equilateral triangles with a perimeter of 60 units have integer side lengths $a$, $b$, and $c$ such that $a$, $b$, $c$ is an arithmetic sequence? The final Answer is $9$\n ### Proof\n Let $d$ be the common difference, so $a = b - d$ and $c = b + d$.  We can assume that $d$ is positive.  (In particular, $d$ can't be 0, because the triangle is not equilateral.)  Then the perimeter of the triangle is $a + b + c = (b - d) + b + (b + d) = 3b = 60$, so $b = 20$.  Hence, the sides of the triangle are $20 - d$, 20, and $20 + d$.\n\nThese sides must satisfy the triangle inequality, which gives us \\[(20 - d) + 20 > 20 + d.\\] Solving for $d$, we find $2d < 20$, or $d < 10$.  Therefore, the possible values of $d$ are 1, 2, $\\dots$, 9, which gives us $9$ possible triangles.\n *)\n\ntheorem\nfixes a b c :: int and n :: nat\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"b - a = c - b\"\nand h2 : \"a > 0 \\<and> b > 0 \\<and> c > 0\"\nand h3 : \"a \\<noteq> b \\<and> b \\<noteq> c\"\nshows  \"n = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Three positive integers $a$, $b$, and $c$ satisfy $a + b + c = 60$ and $b - a = c - b$. If $a$, $b$, and $c$ are all distinct, find the value of $n = |b - a|$. The final answer is $9$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9498220086097717,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a b c :: int\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"b = (a + c) div 2\"\nand h2 : \"distinct_non_equilateral_triangles a b c\"\nshows  \"card {a,b,c} = 9\"",
+        "formal solution": "(* ### Problem\n How many distinct, non-equilateral triangles with a perimeter of 60 units have integer side lengths $a$, $b$, and $c$ such that $a$, $b$, $c$ is an arithmetic sequence? The final Answer is $9$\n ### Proof\n Let $d$ be the common difference, so $a = b - d$ and $c = b + d$.  We can assume that $d$ is positive.  (In particular, $d$ can't be 0, because the triangle is not equilateral.)  Then the perimeter of the triangle is $a + b + c = (b - d) + b + (b + d) = 3b = 60$, so $b = 20$.  Hence, the sides of the triangle are $20 - d$, 20, and $20 + d$.\n\nThese sides must satisfy the triangle inequality, which gives us \\[(20 - d) + 20 > 20 + d.\\] Solving for $d$, we find $2d < 20$, or $d < 10$.  Therefore, the possible values of $d$ are 1, 2, $\\dots$, 9, which gives us $9$ possible triangles.\n *)\n\ntheorem\nfixes a b c :: int\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"b = (a + c) div 2\"\nand h2 : \"distinct_non_equilateral_triangles a b c\"\nshows  \"card {a,b,c} = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a + b + c = 60$, $b = \\frac{a + c}{2}$, and the triangle formed by the side lengths $a$, $b$, and $c$ is not equilateral and has distinct side lengths, find the number of possible values for the set $\\{a, b, c\\}$. The final answer is 9.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9839487671852112,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a b c :: nat\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"a \\<le> b\"\nand h2 : \"b \\<le> c\"\nand h3 : \"b - a = c - b\"\nand h4 : \"a \\<noteq> b\"\nand h5 : \"b \\<noteq> c\"\nshows  \"card {(a, b, c) | a b c. a + b + c = 60 \\<and> a \\<le> b \\<and> b \\<le> c \\<and> b - a = c - b \\<and> a \\<noteq> b \\<and> b \\<noteq> c} = 9\"",
+        "formal solution": "(* ### Problem\n How many distinct, non-equilateral triangles with a perimeter of 60 units have integer side lengths $a$, $b$, and $c$ such that $a$, $b$, $c$ is an arithmetic sequence? The final Answer is $9$\n ### Proof\n Let $d$ be the common difference, so $a = b - d$ and $c = b + d$.  We can assume that $d$ is positive.  (In particular, $d$ can't be 0, because the triangle is not equilateral.)  Then the perimeter of the triangle is $a + b + c = (b - d) + b + (b + d) = 3b = 60$, so $b = 20$.  Hence, the sides of the triangle are $20 - d$, 20, and $20 + d$.\n\nThese sides must satisfy the triangle inequality, which gives us \\[(20 - d) + 20 > 20 + d.\\] Solving for $d$, we find $2d < 20$, or $d < 10$.  Therefore, the possible values of $d$ are 1, 2, $\\dots$, 9, which gives us $9$ possible triangles.\n *)\n\ntheorem\nfixes a b c :: nat\nassumes h0 : \"a + b + c = 60\"\nand h1 : \"a \\<le> b\"\nand h2 : \"b \\<le> c\"\nand h3 : \"b - a = c - b\"\nand h4 : \"a \\<noteq> b\"\nand h5 : \"b \\<noteq> c\"\nshows  \"card {(a, b, c) | a b c. a + b + c = 60 \\<and> a \\<le> b \\<and> b \\<le> c \\<and> b - a = c - b \\<and> a \\<noteq> b \\<and> b \\<noteq> c} = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of distinct ordered triples (a, b, c) of non-negative integers that satisfy the following conditions:\n\n1. a + b + c = 60\n2. a \u2264 b \u2264 c\n3. b - a = c - b\n4. a \u2260 b \u2260 c\n\nThe final answer is 9.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9708083271980286,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes a b c d :: nat\nassumes h0:\"c - b = d\"\nand h1:\"b - a = d\"\nand h2: \"a+b+c = 60\"\nand h3: \"a + b > c\"\nshows \"d < 10\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    }
+}

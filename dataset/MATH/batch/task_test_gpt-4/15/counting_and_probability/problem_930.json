@@ -1,0 +1,146 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial = (\\<lambda> n. if n = 0 then 1 else n * factorial (n - 1))\"\nand h1 : \"\\<forall> n. factorial n > 0\"\nshows  \"count_zeros (factorial 100 * factorial 200 * factorial 300) = 147\"\nwhere \"count_zeros n = (\\<lambda> n. card {i. i \\<le> n \\<and> i dvd n \\<and> i mod 10 = 0})\"",
+        "formal solution": "(* ### Problem\n How many zeros are at the end of (100!)(200!)(300!) when multiplied out? The final Answer is 147\n ### Proof\n The number of zeros at the end of a number is equivalent to the number of factors of 10 that number has. Since there are more factors of 2 than there are of 5 in a factorial, this is determined by the number of factors of 5.\n So, we go about computing this for each factorial separately.\n To count the number of zeroes at the end of $100!$, we must count the number of factors of 5 in the product. There are $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ multiples of 5 from 1 to 100. (The notation $\\left\\lfloor x\\right\\rfloor$ means the greatest integer less than or equal to $x$, so basically, $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ means \"divide 100 by 5 and round down.\")\n This gives us 20 multiples of 5. But the multiples of 25 contribute an additional factor of 5, so we have to add in the total number of multiples of 25, which gives us a total number of factors of 5 of $\\left\\lfloor \\frac{100}{5} \\right\\rfloor + \\left\\lfloor \\frac{100}{25} \\right\\rfloor = 20+ 4 = 24$.\n Similarly, for $200!$ the contributed zeros total $\\left\\lfloor \\frac{200}{5} \\right\\rfloor + \\left\\lfloor \\frac{200}{25} \\right\\rfloor + \\left\\lfloor \\frac{200}{125} \\right\\rfloor = 40 + 8 + 1 = 49$; and for $300!$, $\\left\\lfloor \\frac{300}{5} \\right\\rfloor + \\left\\lfloor \\frac{300}{25} \\right\\rfloor + \\left\\lfloor \\frac{300}{125} \\right\\rfloor = 60 + 12 + 2 = 74$.\n So, our answer is $24 + 49 + 74 = \\boxed{147}$.\n *)\n\ntheorem\nfixes factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial = (\\<lambda> n. if n = 0 then 1 else n * factorial (n - 1))\"\nand h1 : \"\\<forall> n. factorial n > 0\"\nshows  \"count_zeros (factorial 100 * factorial 200 * factorial 300) = 147\"\nwhere \"count_zeros n = (\\<lambda> n. card {i. i \\<le> n \\<and> i dvd n \\<and> i mod 10 = 0})\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the total number of trailing zeros in the product of the factorials of 100, 200, and 300. The final answer is 147.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.840838611125946,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes factorial_zeros :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial_zeros = (\\<lambda>n. (\\<Sum> i \\<in> {1..n}. n div (5 ^ i)))\"\nshows  \"factorial_zeros 100 + factorial_zeros 200 + factorial_zeros 300 = 147\"",
+        "formal solution": "(* ### Problem\n How many zeros are at the end of (100!)(200!)(300!) when multiplied out? The final Answer is 147\n ### Proof\n The number of zeros at the end of a number is equivalent to the number of factors of 10 that number has. Since there are more factors of 2 than there are of 5 in a factorial, this is determined by the number of factors of 5.\n So, we go about computing this for each factorial separately.\n To count the number of zeroes at the end of $100!$, we must count the number of factors of 5 in the product. There are $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ multiples of 5 from 1 to 100. (The notation $\\left\\lfloor x\\right\\rfloor$ means the greatest integer less than or equal to $x$, so basically, $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ means \"divide 100 by 5 and round down.\")\n This gives us 20 multiples of 5. But the multiples of 25 contribute an additional factor of 5, so we have to add in the total number of multiples of 25, which gives us a total number of factors of 5 of $\\left\\lfloor \\frac{100}{5} \\right\\rfloor + \\left\\lfloor \\frac{100}{25} \\right\\rfloor = 20+ 4 = 24$.\n Similarly, for $200!$ the contributed zeros total $\\left\\lfloor \\frac{200}{5} \\right\\rfloor + \\left\\lfloor \\frac{200}{25} \\right\\rfloor + \\left\\lfloor \\frac{200}{125} \\right\\rfloor = 40 + 8 + 1 = 49$; and for $300!$, $\\left\\lfloor \\frac{300}{5} \\right\\rfloor + \\left\\lfloor \\frac{300}{25} \\right\\rfloor + \\left\\lfloor \\frac{300}{125} \\right\\rfloor = 60 + 12 + 2 = 74$.\n So, our answer is $24 + 49 + 74 = \\boxed{147}$.\n *)\n\ntheorem\nfixes factorial_zeros :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial_zeros = (\\<lambda>n. (\\<Sum> i \\<in> {1..n}. n div (5 ^ i)))\"\nshows  \"factorial_zeros 100 + factorial_zeros 200 + factorial_zeros 300 = 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the number of trailing zeros in the factorials of 100, 200, and 300. The final answer is 147.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8919302821159363,
+        "symbolic_score": 0.2
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes factorial :: \"nat \\<Rightarrow> nat\" and zero_count :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. factorial n = (if n = 0 then 1 else n * factorial (n - 1))\"\nand h1 : \"\\<forall>n. zero_count n = (\\<Sum>i\\<in>{1..n}. n div (5 ^ i))\"\nshows  \"zero_count 100 + zero_count 200 + zero_count 300 = 147\"",
+        "formal solution": "(* ### Problem\n How many zeros are at the end of (100!)(200!)(300!) when multiplied out? The final Answer is 147\n ### Proof\n The number of zeros at the end of a number is equivalent to the number of factors of 10 that number has. Since there are more factors of 2 than there are of 5 in a factorial, this is determined by the number of factors of 5.\n So, we go about computing this for each factorial separately.\n To count the number of zeroes at the end of $100!$, we must count the number of factors of 5 in the product. There are $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ multiples of 5 from 1 to 100. (The notation $\\left\\lfloor x\\right\\rfloor$ means the greatest integer less than or equal to $x$, so basically, $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ means \"divide 100 by 5 and round down.\")\n This gives us 20 multiples of 5. But the multiples of 25 contribute an additional factor of 5, so we have to add in the total number of multiples of 25, which gives us a total number of factors of 5 of $\\left\\lfloor \\frac{100}{5} \\right\\rfloor + \\left\\lfloor \\frac{100}{25} \\right\\rfloor = 20+ 4 = 24$.\n Similarly, for $200!$ the contributed zeros total $\\left\\lfloor \\frac{200}{5} \\right\\rfloor + \\left\\lfloor \\frac{200}{25} \\right\\rfloor + \\left\\lfloor \\frac{200}{125} \\right\\rfloor = 40 + 8 + 1 = 49$; and for $300!$, $\\left\\lfloor \\frac{300}{5} \\right\\rfloor + \\left\\lfloor \\frac{300}{25} \\right\\rfloor + \\left\\lfloor \\frac{300}{125} \\right\\rfloor = 60 + 12 + 2 = 74$.\n So, our answer is $24 + 49 + 74 = \\boxed{147}$.\n *)\n\ntheorem\nfixes factorial :: \"nat \\<Rightarrow> nat\" and zero_count :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. factorial n = (if n = 0 then 1 else n * factorial (n - 1))\"\nand h1 : \"\\<forall>n. zero_count n = (\\<Sum>i\\<in>{1..n}. n div (5 ^ i))\"\nshows  \"zero_count 100 + zero_count 200 + zero_count 300 = 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the number of trailing zeros in the factorials of 100, 200, and 300. The final answer is 147.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8919302821159363,
+        "symbolic_score": 0.2
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes factorial_zeros :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. factorial_zeros n = count_p_factors n 5\"\nshows  \"factorial_zeros 100 + factorial_zeros 200 + factorial_zeros 300 = 147\"",
+        "formal solution": "(* ### Problem\n How many zeros are at the end of (100!)(200!)(300!) when multiplied out? The final Answer is 147\n ### Proof\n The number of zeros at the end of a number is equivalent to the number of factors of 10 that number has. Since there are more factors of 2 than there are of 5 in a factorial, this is determined by the number of factors of 5.\n So, we go about computing this for each factorial separately.\n To count the number of zeroes at the end of $100!$, we must count the number of factors of 5 in the product. There are $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ multiples of 5 from 1 to 100. (The notation $\\left\\lfloor x\\right\\rfloor$ means the greatest integer less than or equal to $x$, so basically, $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ means \"divide 100 by 5 and round down.\")\n This gives us 20 multiples of 5. But the multiples of 25 contribute an additional factor of 5, so we have to add in the total number of multiples of 25, which gives us a total number of factors of 5 of $\\left\\lfloor \\frac{100}{5} \\right\\rfloor + \\left\\lfloor \\frac{100}{25} \\right\\rfloor = 20+ 4 = 24$.\n Similarly, for $200!$ the contributed zeros total $\\left\\lfloor \\frac{200}{5} \\right\\rfloor + \\left\\lfloor \\frac{200}{25} \\right\\rfloor + \\left\\lfloor \\frac{200}{125} \\right\\rfloor = 40 + 8 + 1 = 49$; and for $300!$, $\\left\\lfloor \\frac{300}{5} \\right\\rfloor + \\left\\lfloor \\frac{300}{25} \\right\\rfloor + \\left\\lfloor \\frac{300}{125} \\right\\rfloor = 60 + 12 + 2 = 74$.\n So, our answer is $24 + 49 + 74 = \\boxed{147}$.\n *)\n\ntheorem\nfixes factorial_zeros :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. factorial_zeros n = count_p_factors n 5\"\nshows  \"factorial_zeros 100 + factorial_zeros 200 + factorial_zeros 300 = 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the number of trailing zeros in the factorials of 100, 200, and 300. The final answer is 147.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8919302821159363,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes factorial :: \"nat \\<Rightarrow> nat\" and trailing_zeros :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. trailing_zeros n = (n div 5) + (n div 25) + (n div 125)\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> factorial n = n * factorial (n - 1)\"\nand h2 : \"factorial 0 = 1\"\nshows  \"trailing_zeros (factorial 100 * factorial 200 * factorial 300) = 147\"",
+        "formal solution": "(* ### Problem\n How many zeros are at the end of (100!)(200!)(300!) when multiplied out? The final Answer is 147\n ### Proof\n The number of zeros at the end of a number is equivalent to the number of factors of 10 that number has. Since there are more factors of 2 than there are of 5 in a factorial, this is determined by the number of factors of 5.\n So, we go about computing this for each factorial separately.\n To count the number of zeroes at the end of $100!$, we must count the number of factors of 5 in the product. There are $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ multiples of 5 from 1 to 100. (The notation $\\left\\lfloor x\\right\\rfloor$ means the greatest integer less than or equal to $x$, so basically, $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ means \"divide 100 by 5 and round down.\")\n This gives us 20 multiples of 5. But the multiples of 25 contribute an additional factor of 5, so we have to add in the total number of multiples of 25, which gives us a total number of factors of 5 of $\\left\\lfloor \\frac{100}{5} \\right\\rfloor + \\left\\lfloor \\frac{100}{25} \\right\\rfloor = 20+ 4 = 24$.\n Similarly, for $200!$ the contributed zeros total $\\left\\lfloor \\frac{200}{5} \\right\\rfloor + \\left\\lfloor \\frac{200}{25} \\right\\rfloor + \\left\\lfloor \\frac{200}{125} \\right\\rfloor = 40 + 8 + 1 = 49$; and for $300!$, $\\left\\lfloor \\frac{300}{5} \\right\\rfloor + \\left\\lfloor \\frac{300}{25} \\right\\rfloor + \\left\\lfloor \\frac{300}{125} \\right\\rfloor = 60 + 12 + 2 = 74$.\n So, our answer is $24 + 49 + 74 = \\boxed{147}$.\n *)\n\ntheorem\nfixes factorial :: \"nat \\<Rightarrow> nat\" and trailing_zeros :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. trailing_zeros n = (n div 5) + (n div 25) + (n div 125)\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> factorial n = n * factorial (n - 1)\"\nand h2 : \"factorial 0 = 1\"\nshows  \"trailing_zeros (factorial 100 * factorial 200 * factorial 300) = 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of trailing zeros in the product of the factorials of 100, 200, and 300. The final answer is 147.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8623945116996765,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes factorial_zeros :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial_zeros 100 = 24\"\nand h1 : \"factorial_zeros 200 = 49\"\nand h2 : \"factorial_zeros 300 = 74\"\nshows  \"factorial_zeros (100 * 200 * 300) = 147\"",
+        "formal solution": "(* ### Problem\n How many zeros are at the end of (100!)(200!)(300!) when multiplied out? The final Answer is 147\n ### Proof\n The number of zeros at the end of a number is equivalent to the number of factors of 10 that number has. Since there are more factors of 2 than there are of 5 in a factorial, this is determined by the number of factors of 5.\n So, we go about computing this for each factorial separately.\n To count the number of zeroes at the end of $100!$, we must count the number of factors of 5 in the product. There are $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ multiples of 5 from 1 to 100. (The notation $\\left\\lfloor x\\right\\rfloor$ means the greatest integer less than or equal to $x$, so basically, $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ means \"divide 100 by 5 and round down.\")\n This gives us 20 multiples of 5. But the multiples of 25 contribute an additional factor of 5, so we have to add in the total number of multiples of 25, which gives us a total number of factors of 5 of $\\left\\lfloor \\frac{100}{5} \\right\\rfloor + \\left\\lfloor \\frac{100}{25} \\right\\rfloor = 20+ 4 = 24$.\n Similarly, for $200!$ the contributed zeros total $\\left\\lfloor \\frac{200}{5} \\right\\rfloor + \\left\\lfloor \\frac{200}{25} \\right\\rfloor + \\left\\lfloor \\frac{200}{125} \\right\\rfloor = 40 + 8 + 1 = 49$; and for $300!$, $\\left\\lfloor \\frac{300}{5} \\right\\rfloor + \\left\\lfloor \\frac{300}{25} \\right\\rfloor + \\left\\lfloor \\frac{300}{125} \\right\\rfloor = 60 + 12 + 2 = 74$.\n So, our answer is $24 + 49 + 74 = \\boxed{147}$.\n *)\n\ntheorem\nfixes factorial_zeros :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial_zeros 100 = 24\"\nand h1 : \"factorial_zeros 200 = 49\"\nand h2 : \"factorial_zeros 300 = 74\"\nshows  \"factorial_zeros (100 * 200 * 300) = 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of trailing zeros in the factorial of the product of 100, 200, and 300. The final answer is 147.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8167513012886047,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes zeros :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. fact n = (\\<Prod>i\\<in>{1..n}. i)\"\nand h1 : \"zeros = count_factors_5 (fact 100 * fact 200 * fact 300)\"\nshows  \"zeros = 147\"",
+        "formal solution": "(* ### Problem\n How many zeros are at the end of (100!)(200!)(300!) when multiplied out? The final Answer is 147\n ### Proof\n The number of zeros at the end of a number is equivalent to the number of factors of 10 that number has. Since there are more factors of 2 than there are of 5 in a factorial, this is determined by the number of factors of 5.\n So, we go about computing this for each factorial separately.\n To count the number of zeroes at the end of $100!$, we must count the number of factors of 5 in the product. There are $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ multiples of 5 from 1 to 100. (The notation $\\left\\lfloor x\\right\\rfloor$ means the greatest integer less than or equal to $x$, so basically, $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ means \"divide 100 by 5 and round down.\")\n This gives us 20 multiples of 5. But the multiples of 25 contribute an additional factor of 5, so we have to add in the total number of multiples of 25, which gives us a total number of factors of 5 of $\\left\\lfloor \\frac{100}{5} \\right\\rfloor + \\left\\lfloor \\frac{100}{25} \\right\\rfloor = 20+ 4 = 24$.\n Similarly, for $200!$ the contributed zeros total $\\left\\lfloor \\frac{200}{5} \\right\\rfloor + \\left\\lfloor \\frac{200}{25} \\right\\rfloor + \\left\\lfloor \\frac{200}{125} \\right\\rfloor = 40 + 8 + 1 = 49$; and for $300!$, $\\left\\lfloor \\frac{300}{5} \\right\\rfloor + \\left\\lfloor \\frac{300}{25} \\right\\rfloor + \\left\\lfloor \\frac{300}{125} \\right\\rfloor = 60 + 12 + 2 = 74$.\n So, our answer is $24 + 49 + 74 = \\boxed{147}$.\n *)\n\ntheorem\nfixes zeros :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. fact n = (\\<Prod>i\\<in>{1..n}. i)\"\nand h1 : \"zeros = count_factors_5 (fact 100 * fact 200 * fact 300)\"\nshows  \"zeros = 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of trailing zeros in the product of the factorials of 100, 200, and 300. The final answer is 147.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8623945116996765,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = fact n\"\nand h1 : \"count_zeros (f 100 * f 200 * f 300) = 147\"\nshows  \"147 = count_zeros (f 100 * f 200 * f 300)\"",
+        "formal solution": "(* ### Problem\n How many zeros are at the end of (100!)(200!)(300!) when multiplied out? The final Answer is 147\n ### Proof\n The number of zeros at the end of a number is equivalent to the number of factors of 10 that number has. Since there are more factors of 2 than there are of 5 in a factorial, this is determined by the number of factors of 5.\n So, we go about computing this for each factorial separately.\n To count the number of zeroes at the end of $100!$, we must count the number of factors of 5 in the product. There are $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ multiples of 5 from 1 to 100. (The notation $\\left\\lfloor x\\right\\rfloor$ means the greatest integer less than or equal to $x$, so basically, $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ means \"divide 100 by 5 and round down.\")\n This gives us 20 multiples of 5. But the multiples of 25 contribute an additional factor of 5, so we have to add in the total number of multiples of 25, which gives us a total number of factors of 5 of $\\left\\lfloor \\frac{100}{5} \\right\\rfloor + \\left\\lfloor \\frac{100}{25} \\right\\rfloor = 20+ 4 = 24$.\n Similarly, for $200!$ the contributed zeros total $\\left\\lfloor \\frac{200}{5} \\right\\rfloor + \\left\\lfloor \\frac{200}{25} \\right\\rfloor + \\left\\lfloor \\frac{200}{125} \\right\\rfloor = 40 + 8 + 1 = 49$; and for $300!$, $\\left\\lfloor \\frac{300}{5} \\right\\rfloor + \\left\\lfloor \\frac{300}{25} \\right\\rfloor + \\left\\lfloor \\frac{300}{125} \\right\\rfloor = 60 + 12 + 2 = 74$.\n So, our answer is $24 + 49 + 74 = \\boxed{147}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = fact n\"\nand h1 : \"count_zeros (f 100 * f 200 * f 300) = 147\"\nshows  \"147 = count_zeros (f 100 * f 200 * f 300)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the total number of trailing zeros in the product of the factorials of 100, 200, and 300. The final answer is 147.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.840838611125946,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes num_zeros :: nat\nand factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial = (\\<lambda>n. if n = 0 then 1 else n * factorial (n - 1))\"\nand h1 : \"num_zeros = (\\<lambda>n. (\\<Sum> i = 1..n. n div (5 ^ i)))\"\nshows  \"num_zeros 100 + num_zeros 200 + num_zeros 300 = 147\"",
+        "formal solution": "(* ### Problem\n How many zeros are at the end of (100!)(200!)(300!) when multiplied out? The final Answer is 147\n ### Proof\n The number of zeros at the end of a number is equivalent to the number of factors of 10 that number has. Since there are more factors of 2 than there are of 5 in a factorial, this is determined by the number of factors of 5.\n So, we go about computing this for each factorial separately.\n To count the number of zeroes at the end of $100!$, we must count the number of factors of 5 in the product. There are $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ multiples of 5 from 1 to 100. (The notation $\\left\\lfloor x\\right\\rfloor$ means the greatest integer less than or equal to $x$, so basically, $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ means \"divide 100 by 5 and round down.\")\n This gives us 20 multiples of 5. But the multiples of 25 contribute an additional factor of 5, so we have to add in the total number of multiples of 25, which gives us a total number of factors of 5 of $\\left\\lfloor \\frac{100}{5} \\right\\rfloor + \\left\\lfloor \\frac{100}{25} \\right\\rfloor = 20+ 4 = 24$.\n Similarly, for $200!$ the contributed zeros total $\\left\\lfloor \\frac{200}{5} \\right\\rfloor + \\left\\lfloor \\frac{200}{25} \\right\\rfloor + \\left\\lfloor \\frac{200}{125} \\right\\rfloor = 40 + 8 + 1 = 49$; and for $300!$, $\\left\\lfloor \\frac{300}{5} \\right\\rfloor + \\left\\lfloor \\frac{300}{25} \\right\\rfloor + \\left\\lfloor \\frac{300}{125} \\right\\rfloor = 60 + 12 + 2 = 74$.\n So, our answer is $24 + 49 + 74 = \\boxed{147}$.\n *)\n\ntheorem\nfixes num_zeros :: nat\nand factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial = (\\<lambda>n. if n = 0 then 1 else n * factorial (n - 1))\"\nand h1 : \"num_zeros = (\\<lambda>n. (\\<Sum> i = 1..n. n div (5 ^ i)))\"\nshows  \"num_zeros 100 + num_zeros 200 + num_zeros 300 = 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many trailing zeros are there in the product of the factorials of 100, 200, and 300? The final answer is 147.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9701937437057495,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes factorial :: \"nat \\<Rightarrow> nat\" and zeros :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial n = fact n\"\nand h1 : \"zeros n = (\\<Sum>i\\<in>{1..n}. n div (5^i))\"\nand h2 : \"n = 100 * factorial 100 * 200 * factorial 200 * 300 * factorial 300\"\nshows  \"zeros n = 147\"",
+        "formal solution": "(* ### Problem\n How many zeros are at the end of (100!)(200!)(300!) when multiplied out? The final Answer is 147\n ### Proof\n The number of zeros at the end of a number is equivalent to the number of factors of 10 that number has. Since there are more factors of 2 than there are of 5 in a factorial, this is determined by the number of factors of 5.\n So, we go about computing this for each factorial separately.\n To count the number of zeroes at the end of $100!$, we must count the number of factors of 5 in the product. There are $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ multiples of 5 from 1 to 100. (The notation $\\left\\lfloor x\\right\\rfloor$ means the greatest integer less than or equal to $x$, so basically, $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ means \"divide 100 by 5 and round down.\")\n This gives us 20 multiples of 5. But the multiples of 25 contribute an additional factor of 5, so we have to add in the total number of multiples of 25, which gives us a total number of factors of 5 of $\\left\\lfloor \\frac{100}{5} \\right\\rfloor + \\left\\lfloor \\frac{100}{25} \\right\\rfloor = 20+ 4 = 24$.\n Similarly, for $200!$ the contributed zeros total $\\left\\lfloor \\frac{200}{5} \\right\\rfloor + \\left\\lfloor \\frac{200}{25} \\right\\rfloor + \\left\\lfloor \\frac{200}{125} \\right\\rfloor = 40 + 8 + 1 = 49$; and for $300!$, $\\left\\lfloor \\frac{300}{5} \\right\\rfloor + \\left\\lfloor \\frac{300}{25} \\right\\rfloor + \\left\\lfloor \\frac{300}{125} \\right\\rfloor = 60 + 12 + 2 = 74$.\n So, our answer is $24 + 49 + 74 = \\boxed{147}$.\n *)\n\ntheorem\nfixes factorial :: \"nat \\<Rightarrow> nat\" and zeros :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial n = fact n\"\nand h1 : \"zeros n = (\\<Sum>i\\<in>{1..n}. n div (5^i))\"\nand h2 : \"n = 100 * factorial 100 * 200 * factorial 200 * 300 * factorial 300\"\nshows  \"zeros n = 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the total number of trailing zeros in the product of the factorials of 100, 200, and 300? The final answer is 147.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.994445264339447,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "147",
+    "natural problem": "How many zeros are at the end of (100!)(200!)(300!) when multiplied out?",
+    "natural solution": [
+        "The number of zeros at the end of a number is equivalent to the number of factors of 10 that number has. Since there are more factors of 2 than there are of 5 in a factorial, this is determined by the number of factors of 5.",
+        "So, we go about computing this for each factorial separately.",
+        "To count the number of zeroes at the end of $100!$, we must count the number of factors of 5 in the product. There are $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ multiples of 5 from 1 to 100. (The notation $\\left\\lfloor x\\right\\rfloor$ means the greatest integer less than or equal to $x$, so basically, $\\left\\lfloor \\frac{100}{5}\\right\\rfloor$ means \"divide 100 by 5 and round down.\")",
+        "This gives us 20 multiples of 5. But the multiples of 25 contribute an additional factor of 5, so we have to add in the total number of multiples of 25, which gives us a total number of factors of 5 of $\\left\\lfloor \\frac{100}{5} \\right\\rfloor + \\left\\lfloor \\frac{100}{25} \\right\\rfloor = 20+ 4 = 24$.",
+        "Similarly, for $200!$ the contributed zeros total $\\left\\lfloor \\frac{200}{5} \\right\\rfloor + \\left\\lfloor \\frac{200}{25} \\right\\rfloor + \\left\\lfloor \\frac{200}{125} \\right\\rfloor = 40 + 8 + 1 = 49$; and for $300!$, $\\left\\lfloor \\frac{300}{5} \\right\\rfloor + \\left\\lfloor \\frac{300}{25} \\right\\rfloor + \\left\\lfloor \\frac{300}{125} \\right\\rfloor = 60 + 12 + 2 = 74$.",
+        "So, our answer is $24 + 49 + 74 = \\boxed{147}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            1,
+            2
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "str_pred": "[[1, 2], [0], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 5",
+    "type": "Counting & Probability"
+}

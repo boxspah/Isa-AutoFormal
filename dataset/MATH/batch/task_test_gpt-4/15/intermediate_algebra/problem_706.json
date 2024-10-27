@@ -1,0 +1,132 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x y. f x * f (x + y) = f (2*x + y) - x * f (x + y) + x\"\nand h1 : \"\\<forall> a b. f a = f b \\<longrightarrow> a = b\"\nshows  \"\\<forall> x. f x = 1 - x\"",
+        "formal solution": "(* ### Problem\n The injective function $f(x)$ satisfies\n\\[f(x) f(x + y) = f(2x + y) - xf(x + y) + x\\]for all real numbers $x$ and $y.$  Find $f(x).$\n\nNote: A function $f$ is injective if $f(a) = f(b)$ implies $a = b.$ The final Answer is 1 - x\n ### Proof\n Setting $x = y = 0$ in the given functional equation, we get \\[f(0)^2 = f(0),\\]so $f(0) = 0$ or $f(0) = 1.$ Setting $x = 0,$ we get \\[f(0) f(y) = f(y).\\]If $f(0) = 0,$ then $f(y) = 0$ for all $y,$ but this function is not injective.\n Hence, $f(0) = 1.$ Setting $y = x,$ we get \\[f(x) f(2x) = f(3x) - xf(2x) + x\\]for all $x.$ Setting $x = 2t$ and $y = -t,$ we get \\[f(2t) f(t) = f(3t) - 2tf(t) + 2t\\]for all $t.$  In other words, \\[f(2x) f(x) = f(3x) - 2xf(x) + 2x\\]for all $x.$  comparing this to the equation $f(x) f(2x) = f(3x) - xf(2x) + x,$ we can conlucde that\n \\[-xf(2x) + x = -2xf(x) + 2x,\\]or $xf(2x) = 2xf(x) - x$ for all $x.$  Assuming $x$ is nonzero, we can divide both sides by $x,$ to get $f(2x) = 2f(x) - 1.$  Since this equation holds for $x = 0,$ we can say that it holds for all $x.$\n Setting $y = 0,$ we get \\[f(x)^2 = f(2x) - xf(x) + x\\]Substituting $f(2x) = 2f(x) - 1,$ we get \\[f(x)^2 = 2f(x) - 1 - xf(x) + x,\\]so \\[f(x)^2 + (x - 2) f(x) - x + 1 = 0.\\]This factors as \\[(f(x) - 1)(f(x) + x - 1) = 0.\\]Hence, $f(x) = 1$ or $f(x) = 1 - x$ for each individual value of $x.$  If $x \\neq 0,$ then $f(x)$ cannot be equal to 1, since $f$ is injective, so $f(x) = \\boxed{1 - x}.$  Note that this formula also holds when $x = 0.$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x y. f x * f (x + y) = f (2*x + y) - x * f (x + y) + x\"\nand h1 : \"\\<forall> a b. f a = f b \\<longrightarrow> a = b\"\nshows  \"\\<forall> x. f x = 1 - x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a function $f$ such that for all real numbers $x$ and $y$, $f(x) * f(x + y) = f(2x + y) - x * f(x + y) + x$, and $f(a) = f(b)$ implies $a = b$. Prove that for all real numbers $x$, $f(x) = 1 - x$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.2918325662612915,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"\\<forall> x. f x = 1 - x\"",
+        "formal solution": "(* ### Problem\n The injective function $f(x)$ satisfies\n\\[f(x) f(x + y) = f(2x + y) - xf(x + y) + x\\]for all real numbers $x$ and $y.$  Find $f(x).$\n\nNote: A function $f$ is injective if $f(a) = f(b)$ implies $a = b.$ The final Answer is 1 - x\n ### Proof\n Setting $x = y = 0$ in the given functional equation, we get \\[f(0)^2 = f(0),\\]so $f(0) = 0$ or $f(0) = 1.$ Setting $x = 0,$ we get \\[f(0) f(y) = f(y).\\]If $f(0) = 0,$ then $f(y) = 0$ for all $y,$ but this function is not injective.\n Hence, $f(0) = 1.$ Setting $y = x,$ we get \\[f(x) f(2x) = f(3x) - xf(2x) + x\\]for all $x.$ Setting $x = 2t$ and $y = -t,$ we get \\[f(2t) f(t) = f(3t) - 2tf(t) + 2t\\]for all $t.$  In other words, \\[f(2x) f(x) = f(3x) - 2xf(x) + 2x\\]for all $x.$  comparing this to the equation $f(x) f(2x) = f(3x) - xf(2x) + x,$ we can conlucde that\n \\[-xf(2x) + x = -2xf(x) + 2x,\\]or $xf(2x) = 2xf(x) - x$ for all $x.$  Assuming $x$ is nonzero, we can divide both sides by $x,$ to get $f(2x) = 2f(x) - 1.$  Since this equation holds for $x = 0,$ we can say that it holds for all $x.$\n Setting $y = 0,$ we get \\[f(x)^2 = f(2x) - xf(x) + x\\]Substituting $f(2x) = 2f(x) - 1,$ we get \\[f(x)^2 = 2f(x) - 1 - xf(x) + x,\\]so \\[f(x)^2 + (x - 2) f(x) - x + 1 = 0.\\]This factors as \\[(f(x) - 1)(f(x) + x - 1) = 0.\\]Hence, $f(x) = 1$ or $f(x) = 1 - x$ for each individual value of $x.$  If $x \\neq 0,$ then $f(x)$ cannot be equal to 1, since $f$ is injective, so $f(x) = \\boxed{1 - x}.$  Note that this formula also holds when $x = 0.$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"\\<forall> x. f x = 1 - x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ such that $f(x) * f(x + y) = f(2x + y) - x * f(x + y) + x$ for all real numbers $x$ and $y$, and that $f$ is a one-to-one function, show that $f(x) = 1 - x$ for all real numbers $x$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.2330891340970993,
+        "symbolic_score": 0.2
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x y :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"",
+        "formal solution": "(* ### Problem\n The injective function $f(x)$ satisfies\n\\[f(x) f(x + y) = f(2x + y) - xf(x + y) + x\\]for all real numbers $x$ and $y.$  Find $f(x).$\n\nNote: A function $f$ is injective if $f(a) = f(b)$ implies $a = b.$ The final Answer is 1 - x\n ### Proof\n Setting $x = y = 0$ in the given functional equation, we get \\[f(0)^2 = f(0),\\]so $f(0) = 0$ or $f(0) = 1.$ Setting $x = 0,$ we get \\[f(0) f(y) = f(y).\\]If $f(0) = 0,$ then $f(y) = 0$ for all $y,$ but this function is not injective.\n Hence, $f(0) = 1.$ Setting $y = x,$ we get \\[f(x) f(2x) = f(3x) - xf(2x) + x\\]for all $x.$ Setting $x = 2t$ and $y = -t,$ we get \\[f(2t) f(t) = f(3t) - 2tf(t) + 2t\\]for all $t.$  In other words, \\[f(2x) f(x) = f(3x) - 2xf(x) + 2x\\]for all $x.$  comparing this to the equation $f(x) f(2x) = f(3x) - xf(2x) + x,$ we can conlucde that\n \\[-xf(2x) + x = -2xf(x) + 2x,\\]or $xf(2x) = 2xf(x) - x$ for all $x.$  Assuming $x$ is nonzero, we can divide both sides by $x,$ to get $f(2x) = 2f(x) - 1.$  Since this equation holds for $x = 0,$ we can say that it holds for all $x.$\n Setting $y = 0,$ we get \\[f(x)^2 = f(2x) - xf(x) + x\\]Substituting $f(2x) = 2f(x) - 1,$ we get \\[f(x)^2 = 2f(x) - 1 - xf(x) + x,\\]so \\[f(x)^2 + (x - 2) f(x) - x + 1 = 0.\\]This factors as \\[(f(x) - 1)(f(x) + x - 1) = 0.\\]Hence, $f(x) = 1$ or $f(x) = 1 - x$ for each individual value of $x.$  If $x \\neq 0,$ then $f(x)$ cannot be equal to 1, since $f$ is injective, so $f(x) = \\boxed{1 - x}.$  Note that this formula also holds when $x = 0.$\n *)\n\ntheorem\nfixes x y :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a function $f$ such that for all real numbers $x$ and $y$, the equation $f(x) * f(x + y) = f(2x + y) - x * f(x + y) + x$ holds and $f$ is injective. The function $f(x) = 1 - x$ satisfies these conditions.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.2578326165676117,
+        "symbolic_score": 0.7
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"",
+        "formal solution": "(* ### Problem\n The injective function $f(x)$ satisfies\n\\[f(x) f(x + y) = f(2x + y) - xf(x + y) + x\\]for all real numbers $x$ and $y.$  Find $f(x).$\n\nNote: A function $f$ is injective if $f(a) = f(b)$ implies $a = b.$ The final Answer is 1 - x\n ### Proof\n Setting $x = y = 0$ in the given functional equation, we get \\[f(0)^2 = f(0),\\]so $f(0) = 0$ or $f(0) = 1.$ Setting $x = 0,$ we get \\[f(0) f(y) = f(y).\\]If $f(0) = 0,$ then $f(y) = 0$ for all $y,$ but this function is not injective.\n Hence, $f(0) = 1.$ Setting $y = x,$ we get \\[f(x) f(2x) = f(3x) - xf(2x) + x\\]for all $x.$ Setting $x = 2t$ and $y = -t,$ we get \\[f(2t) f(t) = f(3t) - 2tf(t) + 2t\\]for all $t.$  In other words, \\[f(2x) f(x) = f(3x) - 2xf(x) + 2x\\]for all $x.$  comparing this to the equation $f(x) f(2x) = f(3x) - xf(2x) + x,$ we can conlucde that\n \\[-xf(2x) + x = -2xf(x) + 2x,\\]or $xf(2x) = 2xf(x) - x$ for all $x.$  Assuming $x$ is nonzero, we can divide both sides by $x,$ to get $f(2x) = 2f(x) - 1.$  Since this equation holds for $x = 0,$ we can say that it holds for all $x.$\n Setting $y = 0,$ we get \\[f(x)^2 = f(2x) - xf(x) + x\\]Substituting $f(2x) = 2f(x) - 1,$ we get \\[f(x)^2 = 2f(x) - 1 - xf(x) + x,\\]so \\[f(x)^2 + (x - 2) f(x) - x + 1 = 0.\\]This factors as \\[(f(x) - 1)(f(x) + x - 1) = 0.\\]Hence, $f(x) = 1$ or $f(x) = 1 - x$ for each individual value of $x.$  If $x \\neq 0,$ then $f(x)$ cannot be equal to 1, since $f$ is injective, so $f(x) = \\boxed{1 - x}.$  Note that this formula also holds when $x = 0.$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ that is injective (i.e., it never maps distinct arguments to the same value), and for all real numbers $x$ and $y$, it satisfies the equation $f(x) * f(x + y) = f(2x + y) - x * f(x + y) + x$. Find a function that fulfills these conditions. The solution is $f(x) = 1 - x$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.12462742626667023,
+        "symbolic_score": 0.7
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x y :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"",
+        "formal solution": "(* ### Problem\n The injective function $f(x)$ satisfies\n\\[f(x) f(x + y) = f(2x + y) - xf(x + y) + x\\]for all real numbers $x$ and $y.$  Find $f(x).$\n\nNote: A function $f$ is injective if $f(a) = f(b)$ implies $a = b.$ The final Answer is 1 - x\n ### Proof\n Setting $x = y = 0$ in the given functional equation, we get \\[f(0)^2 = f(0),\\]so $f(0) = 0$ or $f(0) = 1.$ Setting $x = 0,$ we get \\[f(0) f(y) = f(y).\\]If $f(0) = 0,$ then $f(y) = 0$ for all $y,$ but this function is not injective.\n Hence, $f(0) = 1.$ Setting $y = x,$ we get \\[f(x) f(2x) = f(3x) - xf(2x) + x\\]for all $x.$ Setting $x = 2t$ and $y = -t,$ we get \\[f(2t) f(t) = f(3t) - 2tf(t) + 2t\\]for all $t.$  In other words, \\[f(2x) f(x) = f(3x) - 2xf(x) + 2x\\]for all $x.$  comparing this to the equation $f(x) f(2x) = f(3x) - xf(2x) + x,$ we can conlucde that\n \\[-xf(2x) + x = -2xf(x) + 2x,\\]or $xf(2x) = 2xf(x) - x$ for all $x.$  Assuming $x$ is nonzero, we can divide both sides by $x,$ to get $f(2x) = 2f(x) - 1.$  Since this equation holds for $x = 0,$ we can say that it holds for all $x.$\n Setting $y = 0,$ we get \\[f(x)^2 = f(2x) - xf(x) + x\\]Substituting $f(2x) = 2f(x) - 1,$ we get \\[f(x)^2 = 2f(x) - 1 - xf(x) + x,\\]so \\[f(x)^2 + (x - 2) f(x) - x + 1 = 0.\\]This factors as \\[(f(x) - 1)(f(x) + x - 1) = 0.\\]Hence, $f(x) = 1$ or $f(x) = 1 - x$ for each individual value of $x.$  If $x \\neq 0,$ then $f(x)$ cannot be equal to 1, since $f$ is injective, so $f(x) = \\boxed{1 - x}.$  Note that this formula also holds when $x = 0.$\n *)\n\ntheorem\nfixes x y :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a bijective function $f(x)$ such that $f(x) * f(x + y) = f(2x + y) - x * f(x + y) + x$ for all real $x$ and $y$, find the function $f(x)$. The final answer is $f(x) = 1 - x$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7075293660163879,
+        "symbolic_score": 0.7
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"",
+        "formal solution": "(* ### Problem\n The injective function $f(x)$ satisfies\n\\[f(x) f(x + y) = f(2x + y) - xf(x + y) + x\\]for all real numbers $x$ and $y.$  Find $f(x).$\n\nNote: A function $f$ is injective if $f(a) = f(b)$ implies $a = b.$ The final Answer is 1 - x\n ### Proof\n Setting $x = y = 0$ in the given functional equation, we get \\[f(0)^2 = f(0),\\]so $f(0) = 0$ or $f(0) = 1.$ Setting $x = 0,$ we get \\[f(0) f(y) = f(y).\\]If $f(0) = 0,$ then $f(y) = 0$ for all $y,$ but this function is not injective.\n Hence, $f(0) = 1.$ Setting $y = x,$ we get \\[f(x) f(2x) = f(3x) - xf(2x) + x\\]for all $x.$ Setting $x = 2t$ and $y = -t,$ we get \\[f(2t) f(t) = f(3t) - 2tf(t) + 2t\\]for all $t.$  In other words, \\[f(2x) f(x) = f(3x) - 2xf(x) + 2x\\]for all $x.$  comparing this to the equation $f(x) f(2x) = f(3x) - xf(2x) + x,$ we can conlucde that\n \\[-xf(2x) + x = -2xf(x) + 2x,\\]or $xf(2x) = 2xf(x) - x$ for all $x.$  Assuming $x$ is nonzero, we can divide both sides by $x,$ to get $f(2x) = 2f(x) - 1.$  Since this equation holds for $x = 0,$ we can say that it holds for all $x.$\n Setting $y = 0,$ we get \\[f(x)^2 = f(2x) - xf(x) + x\\]Substituting $f(2x) = 2f(x) - 1,$ we get \\[f(x)^2 = 2f(x) - 1 - xf(x) + x,\\]so \\[f(x)^2 + (x - 2) f(x) - x + 1 = 0.\\]This factors as \\[(f(x) - 1)(f(x) + x - 1) = 0.\\]Hence, $f(x) = 1$ or $f(x) = 1 - x$ for each individual value of $x.$  If $x \\neq 0,$ then $f(x)$ cannot be equal to 1, since $f$ is injective, so $f(x) = \\boxed{1 - x}.$  Note that this formula also holds when $x = 0.$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f$ is an injective function, such that for all real numbers $x$ and $y$, it holds that $f(x) * f(x + y) = f(2x + y) - x * f(x + y) + x$. What is $f(x)$? The final answer is $1 - x$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9171419739723206,
+        "symbolic_score": 0.7
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f(x) * f(x + y) = f(2*x + y) - x * f(x + y) + x\"\nshows  \"\\<forall> x. f x = 1 - x\"",
+        "formal solution": "(* ### Problem\n The injective function $f(x)$ satisfies\n\\[f(x) f(x + y) = f(2x + y) - xf(x + y) + x\\]for all real numbers $x$ and $y.$  Find $f(x).$\n\nNote: A function $f$ is injective if $f(a) = f(b)$ implies $a = b.$ The final Answer is 1 - x\n ### Proof\n Setting $x = y = 0$ in the given functional equation, we get \\[f(0)^2 = f(0),\\]so $f(0) = 0$ or $f(0) = 1.$ Setting $x = 0,$ we get \\[f(0) f(y) = f(y).\\]If $f(0) = 0,$ then $f(y) = 0$ for all $y,$ but this function is not injective.\n Hence, $f(0) = 1.$ Setting $y = x,$ we get \\[f(x) f(2x) = f(3x) - xf(2x) + x\\]for all $x.$ Setting $x = 2t$ and $y = -t,$ we get \\[f(2t) f(t) = f(3t) - 2tf(t) + 2t\\]for all $t.$  In other words, \\[f(2x) f(x) = f(3x) - 2xf(x) + 2x\\]for all $x.$  comparing this to the equation $f(x) f(2x) = f(3x) - xf(2x) + x,$ we can conlucde that\n \\[-xf(2x) + x = -2xf(x) + 2x,\\]or $xf(2x) = 2xf(x) - x$ for all $x.$  Assuming $x$ is nonzero, we can divide both sides by $x,$ to get $f(2x) = 2f(x) - 1.$  Since this equation holds for $x = 0,$ we can say that it holds for all $x.$\n Setting $y = 0,$ we get \\[f(x)^2 = f(2x) - xf(x) + x\\]Substituting $f(2x) = 2f(x) - 1,$ we get \\[f(x)^2 = 2f(x) - 1 - xf(x) + x,\\]so \\[f(x)^2 + (x - 2) f(x) - x + 1 = 0.\\]This factors as \\[(f(x) - 1)(f(x) + x - 1) = 0.\\]Hence, $f(x) = 1$ or $f(x) = 1 - x$ for each individual value of $x.$  If $x \\neq 0,$ then $f(x)$ cannot be equal to 1, since $f$ is injective, so $f(x) = \\boxed{1 - x}.$  Note that this formula also holds when $x = 0.$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f(x) * f(x + y) = f(2*x + y) - x * f(x + y) + x\"\nshows  \"\\<forall> x. f x = 1 - x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume $f$ is a function such that for all $x$ and $y$, $f(x) * f(x + y) = f(2*x + y) - x * f(x + y) + x$ and $f$ is injective. Show that for all $x$, $f(x) = 1 - x$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.21868453919887543,
+        "symbolic_score": 0.2
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x y :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2*x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"",
+        "formal solution": "(* ### Problem\n The injective function $f(x)$ satisfies\n\\[f(x) f(x + y) = f(2x + y) - xf(x + y) + x\\]for all real numbers $x$ and $y.$  Find $f(x).$\n\nNote: A function $f$ is injective if $f(a) = f(b)$ implies $a = b.$ The final Answer is 1 - x\n ### Proof\n Setting $x = y = 0$ in the given functional equation, we get \\[f(0)^2 = f(0),\\]so $f(0) = 0$ or $f(0) = 1.$ Setting $x = 0,$ we get \\[f(0) f(y) = f(y).\\]If $f(0) = 0,$ then $f(y) = 0$ for all $y,$ but this function is not injective.\n Hence, $f(0) = 1.$ Setting $y = x,$ we get \\[f(x) f(2x) = f(3x) - xf(2x) + x\\]for all $x.$ Setting $x = 2t$ and $y = -t,$ we get \\[f(2t) f(t) = f(3t) - 2tf(t) + 2t\\]for all $t.$  In other words, \\[f(2x) f(x) = f(3x) - 2xf(x) + 2x\\]for all $x.$  comparing this to the equation $f(x) f(2x) = f(3x) - xf(2x) + x,$ we can conlucde that\n \\[-xf(2x) + x = -2xf(x) + 2x,\\]or $xf(2x) = 2xf(x) - x$ for all $x.$  Assuming $x$ is nonzero, we can divide both sides by $x,$ to get $f(2x) = 2f(x) - 1.$  Since this equation holds for $x = 0,$ we can say that it holds for all $x.$\n Setting $y = 0,$ we get \\[f(x)^2 = f(2x) - xf(x) + x\\]Substituting $f(2x) = 2f(x) - 1,$ we get \\[f(x)^2 = 2f(x) - 1 - xf(x) + x,\\]so \\[f(x)^2 + (x - 2) f(x) - x + 1 = 0.\\]This factors as \\[(f(x) - 1)(f(x) + x - 1) = 0.\\]Hence, $f(x) = 1$ or $f(x) = 1 - x$ for each individual value of $x.$  If $x \\neq 0,$ then $f(x)$ cannot be equal to 1, since $f$ is injective, so $f(x) = \\boxed{1 - x}.$  Note that this formula also holds when $x = 0.$\n *)\n\ntheorem\nfixes x y :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2*x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a function $f$ that is injective and satisfies the condition $f(x) * f(x + y) = f(2x + y) - x * f(x + y) + x$ for all real numbers $x$ and $y$. The final Answer is $f(x) = 1 - x$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.5309891104698181,
+        "symbolic_score": 0.7
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall>x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"",
+        "formal solution": "(* ### Problem\n The injective function $f(x)$ satisfies\n\\[f(x) f(x + y) = f(2x + y) - xf(x + y) + x\\]for all real numbers $x$ and $y.$  Find $f(x).$\n\nNote: A function $f$ is injective if $f(a) = f(b)$ implies $a = b.$ The final Answer is 1 - x\n ### Proof\n Setting $x = y = 0$ in the given functional equation, we get \\[f(0)^2 = f(0),\\]so $f(0) = 0$ or $f(0) = 1.$ Setting $x = 0,$ we get \\[f(0) f(y) = f(y).\\]If $f(0) = 0,$ then $f(y) = 0$ for all $y,$ but this function is not injective.\n Hence, $f(0) = 1.$ Setting $y = x,$ we get \\[f(x) f(2x) = f(3x) - xf(2x) + x\\]for all $x.$ Setting $x = 2t$ and $y = -t,$ we get \\[f(2t) f(t) = f(3t) - 2tf(t) + 2t\\]for all $t.$  In other words, \\[f(2x) f(x) = f(3x) - 2xf(x) + 2x\\]for all $x.$  comparing this to the equation $f(x) f(2x) = f(3x) - xf(2x) + x,$ we can conlucde that\n \\[-xf(2x) + x = -2xf(x) + 2x,\\]or $xf(2x) = 2xf(x) - x$ for all $x.$  Assuming $x$ is nonzero, we can divide both sides by $x,$ to get $f(2x) = 2f(x) - 1.$  Since this equation holds for $x = 0,$ we can say that it holds for all $x.$\n Setting $y = 0,$ we get \\[f(x)^2 = f(2x) - xf(x) + x\\]Substituting $f(2x) = 2f(x) - 1,$ we get \\[f(x)^2 = 2f(x) - 1 - xf(x) + x,\\]so \\[f(x)^2 + (x - 2) f(x) - x + 1 = 0.\\]This factors as \\[(f(x) - 1)(f(x) + x - 1) = 0.\\]Hence, $f(x) = 1$ or $f(x) = 1 - x$ for each individual value of $x.$  If $x \\neq 0,$ then $f(x)$ cannot be equal to 1, since $f$ is injective, so $f(x) = \\boxed{1 - x}.$  Note that this formula also holds when $x = 0.$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall>x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f$ be a function with the property that for all real numbers $x$ and $y$, $f(x) \\cdot f(x + y) = f(2x + y) - x \\cdot f(x + y) + x$. If $f$ is injective (each output value is produced by exactly one input), find a formula for $f(x)$. The final answer is $f(x) = 1 - x$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8256717920303345,
+        "symbolic_score": 0.7
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x y :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"",
+        "formal solution": "(* ### Problem\n The injective function $f(x)$ satisfies\n\\[f(x) f(x + y) = f(2x + y) - xf(x + y) + x\\]for all real numbers $x$ and $y.$  Find $f(x).$\n\nNote: A function $f$ is injective if $f(a) = f(b)$ implies $a = b.$ The final Answer is 1 - x\n ### Proof\n Setting $x = y = 0$ in the given functional equation, we get \\[f(0)^2 = f(0),\\]so $f(0) = 0$ or $f(0) = 1.$ Setting $x = 0,$ we get \\[f(0) f(y) = f(y).\\]If $f(0) = 0,$ then $f(y) = 0$ for all $y,$ but this function is not injective.\n Hence, $f(0) = 1.$ Setting $y = x,$ we get \\[f(x) f(2x) = f(3x) - xf(2x) + x\\]for all $x.$ Setting $x = 2t$ and $y = -t,$ we get \\[f(2t) f(t) = f(3t) - 2tf(t) + 2t\\]for all $t.$  In other words, \\[f(2x) f(x) = f(3x) - 2xf(x) + 2x\\]for all $x.$  comparing this to the equation $f(x) f(2x) = f(3x) - xf(2x) + x,$ we can conlucde that\n \\[-xf(2x) + x = -2xf(x) + 2x,\\]or $xf(2x) = 2xf(x) - x$ for all $x.$  Assuming $x$ is nonzero, we can divide both sides by $x,$ to get $f(2x) = 2f(x) - 1.$  Since this equation holds for $x = 0,$ we can say that it holds for all $x.$\n Setting $y = 0,$ we get \\[f(x)^2 = f(2x) - xf(x) + x\\]Substituting $f(2x) = 2f(x) - 1,$ we get \\[f(x)^2 = 2f(x) - 1 - xf(x) + x,\\]so \\[f(x)^2 + (x - 2) f(x) - x + 1 = 0.\\]This factors as \\[(f(x) - 1)(f(x) + x - 1) = 0.\\]Hence, $f(x) = 1$ or $f(x) = 1 - x$ for each individual value of $x.$  If $x \\neq 0,$ then $f(x)$ cannot be equal to 1, since $f$ is injective, so $f(x) = \\boxed{1 - x}.$  Note that this formula also holds when $x = 0.$\n *)\n\ntheorem\nfixes x y :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> x y. f x * f (x + y) = f (2 * x + y) - x * f (x + y) + x\"\nshows  \"f x = 1 - x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f$ be a real-valued function such that for all real numbers $x$ and $y$, $f(x) * f(x + y) = f(2x + y) - x * f(x + y) + x$. If $f$ is injective, find a formula for $f(x)$. The final answer is $f(x) = 1 - x$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7078492045402527,
+        "symbolic_score": 0.7
+    },
+    "natural answer": "1 - x",
+    "natural problem": "The injective function $f(x)$ satisfies\n\\[f(x) f(x + y) = f(2x + y) - xf(x + y) + x\\]for all real numbers $x$ and $y.$  Find $f(x).$\n\nNote: A function $f$ is injective if $f(a) = f(b)$ implies $a = b.$",
+    "natural solution": [
+        "Setting $x = y = 0$ in the given functional equation, we get \\[f(0)^2 = f(0),\\]so $f(0) = 0$ or $f(0) = 1.$ Setting $x = 0,$ we get \\[f(0) f(y) = f(y).\\]If $f(0) = 0,$ then $f(y) = 0$ for all $y,$ but this function is not injective.",
+        "Hence, $f(0) = 1.$ Setting $y = x,$ we get \\[f(x) f(2x) = f(3x) - xf(2x) + x\\]for all $x.$ Setting $x = 2t$ and $y = -t,$ we get \\[f(2t) f(t) = f(3t) - 2tf(t) + 2t\\]for all $t.$  In other words, \\[f(2x) f(x) = f(3x) - 2xf(x) + 2x\\]for all $x.$  comparing this to the equation $f(x) f(2x) = f(3x) - xf(2x) + x,$ we can conlucde that",
+        "\\[-xf(2x) + x = -2xf(x) + 2x,\\]or $xf(2x) = 2xf(x) - x$ for all $x.$  Assuming $x$ is nonzero, we can divide both sides by $x,$ to get $f(2x) = 2f(x) - 1.$  Since this equation holds for $x = 0,$ we can say that it holds for all $x.$",
+        "Setting $y = 0,$ we get \\[f(x)^2 = f(2x) - xf(x) + x\\]Substituting $f(2x) = 2f(x) - 1,$ we get \\[f(x)^2 = 2f(x) - 1 - xf(x) + x,\\]so \\[f(x)^2 + (x - 2) f(x) - x + 1 = 0.\\]This factors as \\[(f(x) - 1)(f(x) + x - 1) = 0.\\]Hence, $f(x) = 1$ or $f(x) = 1 - x$ for each individual value of $x.$  If $x \\neq 0,$ then $f(x)$ cannot be equal to 1, since $f$ is injective, so $f(x) = \\boxed{1 - x}.$  Note that this formula also holds when $x = 0.$"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            1,
+            6
+        ],
+        "2": [
+            0
+        ]
+    },
+    "str_pred": "[[2, 3, 4, 5, 7, 8, 9], [1, 6], [0]]",
+    "level": "Level 5",
+    "type": "Intermediate Algebra"
+}

@@ -1,0 +1,59 @@
+{
+    "natural problem": "Define $A\\star B$ as $A\\star B = \\frac{(A+B)}{3}$. What is the value of $(2\\star 10) \\star 5$?",
+    "natural solution": [
+        "We have $2 \\star 10 = \\frac{2+10}{3} = \\frac{12}{3} = 4$. Then $4 \\star 5 = \\frac{4+5}{3} = \\frac{9}{3} = \\boxed{3}$."
+    ],
+    "natural answer": "3",
+    "a_0": {
+        "formal problem": "theorem\nfixes A B C :: real\nassumes h0 : \"\\<forall> A B. A * B = (A + B) / 3\"\nand h1 : \"A = 2\"\nand h2 : \"B = 10\"\nand h3 : \"C = 5\"\nshows  \"((A * B) * C) = 3\"",
+        "formal solution": "(* ### Problem\n Define $A\\star B$ as $A\\star B = \\frac{(A+B)}{3}$. What is the value of $(2\\star 10) \\star 5$? The final Answer is 3\n ### Proof\n We have $2 \\star 10 = \\frac{2+10}{3} = \\frac{12}{3} = 4$. Then $4 \\star 5 = \\frac{4+5}{3} = \\frac{9}{3} = \\boxed{3}$.\n *)\n\ntheorem\nfixes A B C :: real\nassumes h0 : \"\\<forall> A B. A * B = (A + B) / 3\"\nand h1 : \"A = 2\"\nand h2 : \"B = 10\"\nand h3 : \"C = 5\"\nshows  \"((A * B) * C) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that for any two numbers $A$ and $B$, the product $AB$ is equal to $\\frac{A + B}{3}$, find the value of $(2 \\cdot 10) \\cdot 5$. The final answer is $3$."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes A B :: real\ndefines h0: \"star A B \\<equiv> (A + B) / 3\"\nshows  \"star (star 2 10) 5 = 3\"",
+        "formal solution": "(* ### Problem\n Define $A\\star B$ as $A\\star B = \\frac{(A+B)}{3}$. What is the value of $(2\\star 10) \\star 5$? The final Answer is 3\n ### Proof\n We have $2 \\star 10 = \\frac{2+10}{3} = \\frac{12}{3} = 4$. Then $4 \\star 5 = \\frac{4+5}{3} = \\frac{9}{3} = \\boxed{3}$.\n *)\n\ntheorem\nfixes A B :: real\ndefines h0: \"star A B \\<equiv> (A + B) / 3\"\nshows  \"star (star 2 10) 5 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the operation \"star\" is defined on two real numbers A and B as \"(A + B) / 3\", find the result of \"star\" applied on the result of \"star\" applied on 2 and 10, and 5. The final answer is 3."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes A B C :: real\ndefines \"star A B \\<equiv> (A + B) / 3\"\nassumes h0 : \"C = star (star 2 10) 5\"\nshows  \"C = 3\"",
+        "formal solution": "(* ### Problem\n Define $A\\star B$ as $A\\star B = \\frac{(A+B)}{3}$. What is the value of $(2\\star 10) \\star 5$? The final Answer is 3\n ### Proof\n We have $2 \\star 10 = \\frac{2+10}{3} = \\frac{12}{3} = 4$. Then $4 \\star 5 = \\frac{4+5}{3} = \\frac{9}{3} = \\boxed{3}$.\n *)\n\ntheorem\nfixes A B C :: real\ndefines \"star A B \\<equiv> (A + B) / 3\"\nassumes h0 : \"C = star (star 2 10) 5\"\nshows  \"C = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function \"star\" such that for any two real numbers A and B, \"star A B\" is equal to the average of A and B divided by 3. Given that C equals \"star\" of the result of \"star 2 10\" and 5, find the value of C. The final answer is 3."
+    },
+    "a_3": {
+        "formal problem": "definition star :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nwhere \"star A B = (A + B) / 3\"\n\ntheorem\nassumes h0 : \"star 2 10 = 4\"\nand h1 : \"star 4 5 = 3\"\nshows  \"(star (star 2 10) 5) = 3\"",
+        "formal solution": "(* ### Problem\n Define $A\\star B$ as $A\\star B = \\frac{(A+B)}{3}$. What is the value of $(2\\star 10) \\star 5$? The final Answer is 3\n ### Proof\n We have $2 \\star 10 = \\frac{2+10}{3} = \\frac{12}{3} = 4$. Then $4 \\star 5 = \\frac{4+5}{3} = \\frac{9}{3} = \\boxed{3}$.\n *)\n\ndefinition star :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nwhere \"star A B = (A + B) / 3\"\n\ntheorem\nassumes h0 : \"star 2 10 = 4\"\nand h1 : \"star 4 5 = 3\"\nshows  \"(star (star 2 10) 5) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function \"star\" which takes two real numbers A and B and returns the mean of A and B divided by 3. \n\nGiven the following conditions:\n1) The value of star function for A=2 and B=10 is 4.\n2) The value of star function for A=4 and B=5 is 3.\n\nFind the value of the star function when the first argument is the star of 2 and 10, and the second argument is 5. The final answer is 3."
+    },
+    "a_4": {
+        "formal problem": "fun star :: \"real \\<Rightarrow> real \\<Rightarrow> real\" where\n\"star A B = (A + B) / 3\"\n\ntheorem \nshows  \"star (star 2 10) 5 = 3\"",
+        "formal solution": "(* ### Problem\n Define $A\\star B$ as $A\\star B = \\frac{(A+B)}{3}$. What is the value of $(2\\star 10) \\star 5$? The final Answer is 3\n ### Proof\n We have $2 \\star 10 = \\frac{2+10}{3} = \\frac{12}{3} = 4$. Then $4 \\star 5 = \\frac{4+5}{3} = \\frac{9}{3} = \\boxed{3}$.\n *)\n\nfun star :: \"real \\<Rightarrow> real \\<Rightarrow> real\" where\n\"star A B = (A + B) / 3\"\n\ntheorem \nshows  \"star (star 2 10) 5 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define the function \"star\" as the average of two numbers divided by 3, i.e., star(A, B) = (A + B) / 3. What is the value of star(star(2, 10), 5)? The final answer is 3."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes A B C :: real\nassumes h0 : \"A * B = (A + B) / 3\"\nand h1 : \"A = 2\"\nand h2 : \"B = 10\"\nand h3 : \"C = 5\"\nshows  \"(A * B) * C = 3\"",
+        "formal solution": "(* ### Problem\n Define $A\\star B$ as $A\\star B = \\frac{(A+B)}{3}$. What is the value of $(2\\star 10) \\star 5$? The final Answer is 3\n ### Proof\n We have $2 \\star 10 = \\frac{2+10}{3} = \\frac{12}{3} = 4$. Then $4 \\star 5 = \\frac{4+5}{3} = \\frac{9}{3} = \\boxed{3}$.\n *)\n\ntheorem\nfixes A B C :: real\nassumes h0 : \"A * B = (A + B) / 3\"\nand h1 : \"A = 2\"\nand h2 : \"B = 10\"\nand h3 : \"C = 5\"\nshows  \"(A * B) * C = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A = 2$, $B = 10$, and $C = 5$, and given that $A * B = \\frac{A + B}{3}$, find the value of $(A * B) * C$. The final answer is $3$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes A B :: real\ndefines AB_star: \"A_star B \\<equiv> (A + B) / 3\"\nshows  \"A_star (A_star 2 10) 5 = 3\"",
+        "formal solution": "(* ### Problem\n Define $A\\star B$ as $A\\star B = \\frac{(A+B)}{3}$. What is the value of $(2\\star 10) \\star 5$? The final Answer is 3\n ### Proof\n We have $2 \\star 10 = \\frac{2+10}{3} = \\frac{12}{3} = 4$. Then $4 \\star 5 = \\frac{4+5}{3} = \\frac{9}{3} = \\boxed{3}$.\n *)\n\ntheorem\nfixes A B :: real\ndefines AB_star: \"A_star B \\<equiv> (A + B) / 3\"\nshows  \"A_star (A_star 2 10) 5 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the result of the following operation: $A^*(A^*(2, 10), 5)$, where $A^*(A, B) = \\frac{A + B}{3}$. The final answer is $3$."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes A B C :: real\nassumes h0 : \"A = 2\"\nand h1 : \"B = 10\"\nand h2 : \"C = 5\"\nand h3 : \"\\<forall> A B. A *star* B = (A + B) / 3\"\nshows  \"(A *star* B) *star* C = 3\"",
+        "formal solution": "(* ### Problem\n Define $A\\star B$ as $A\\star B = \\frac{(A+B)}{3}$. What is the value of $(2\\star 10) \\star 5$? The final Answer is 3\n ### Proof\n We have $2 \\star 10 = \\frac{2+10}{3} = \\frac{12}{3} = 4$. Then $4 \\star 5 = \\frac{4+5}{3} = \\frac{9}{3} = \\boxed{3}$.\n *)\n\ntheorem\nfixes A B C :: real\nassumes h0 : \"A = 2\"\nand h1 : \"B = 10\"\nand h2 : \"C = 5\"\nand h3 : \"\\<forall> A B. A *star* B = (A + B) / 3\"\nshows  \"(A *star* B) *star* C = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a new operation $*star*$, such that $A *star* B = \\frac{A + B}{3}$. Given $A = 2$, $B = 10$, and $C = 5$, find the value of $(A *star* B) *star* C$. The final answer is $3$."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes A B C :: real\nassumes h0 : \"A * B = (A + B) / 3\"\nand h1 : \"A = 2\"\nand h2 : \"B = 10\"\nand h3 : \"C = 5\"\nshows  \"((A * B) * C) = 3\"",
+        "formal solution": "(* ### Problem\n Define $A\\star B$ as $A\\star B = \\frac{(A+B)}{3}$. What is the value of $(2\\star 10) \\star 5$? The final Answer is 3\n ### Proof\n We have $2 \\star 10 = \\frac{2+10}{3} = \\frac{12}{3} = 4$. Then $4 \\star 5 = \\frac{4+5}{3} = \\frac{9}{3} = \\boxed{3}$.\n *)\n\ntheorem\nfixes A B C :: real\nassumes h0 : \"A * B = (A + B) / 3\"\nand h1 : \"A = 2\"\nand h2 : \"B = 10\"\nand h3 : \"C = 5\"\nshows  \"((A * B) * C) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A = 2$ and $B = 10$, and it is given that $A * B = \\frac{A + B}{3}$, find the value of $(A * B) * C$ when $C = 5$. The final answer is $3$."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes A B C :: real and star :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>A B. star A B = (A + B) / 3\"\nand h1 : \"star (star 2 10) 5 = 3\"\nshows  \"star (star 2 10) 5 = 3\"",
+        "formal solution": "(* ### Problem\n Define $A\\star B$ as $A\\star B = \\frac{(A+B)}{3}$. What is the value of $(2\\star 10) \\star 5$? The final Answer is 3\n ### Proof\n We have $2 \\star 10 = \\frac{2+10}{3} = \\frac{12}{3} = 4$. Then $4 \\star 5 = \\frac{4+5}{3} = \\frac{9}{3} = \\boxed{3}$.\n *)\n\ntheorem\nfixes A B C :: real and star :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>A B. star A B = (A + B) / 3\"\nand h1 : \"star (star 2 10) 5 = 3\"\nshows  \"star (star 2 10) 5 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider the operation $star(A, B) = \\frac{A + B}{3}$. If $star(star(2, 10), 5) = 3$, what is the value of $star(star(2, 10), 5)$? The final answer is $3$."
+    },
+    "level": "Level 2",
+    "type": "Algebra"
+}

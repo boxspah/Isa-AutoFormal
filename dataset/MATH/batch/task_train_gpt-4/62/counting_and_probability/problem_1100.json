@@ -1,0 +1,61 @@
+{
+    "natural problem": "How many total days were there in the years 2001 through 2004?",
+    "natural solution": [
+        "Including 2001 and 2004, there are 4 years total.",
+        "However, 2004 is a leap year.",
+        "Therefore, the number of days is $4\\times 365 + 1 = \\boxed{1461}$."
+    ],
+    "natural answer": "1461",
+    "a_0": {
+        "formal problem": "theorem\nfixes year :: nat and total_days :: nat\nassumes h0 : \"\\<forall> year. leap_year year \\<longleftrightarrow> (year mod 4 = 0 \\<and> (year mod 100 \\<noteq> 0 \\<or> year mod 400 = 0))\"\nand h1 : \"total_days = (\\<Sum>year=2001..2004. if leap_year year then 366 else 365)\"\nshows  \"total_days = 1461\"",
+        "formal solution": "(* ### Problem\n How many total days were there in the years 2001 through 2004? The final Answer is 1461\n ### Proof\n Including 2001 and 2004, there are 4 years total.\n However, 2004 is a leap year.\n Therefore, the number of days is $4\\times 365 + 1 = \\boxed{1461}$.\n *)\n\ntheorem\nfixes year :: nat and total_days :: nat\nassumes h0 : \"\\<forall> year. leap_year year \\<longleftrightarrow> (year mod 4 = 0 \\<and> (year mod 100 \\<noteq> 0 \\<or> year mod 400 = 0))\"\nand h1 : \"total_days = (\\<Sum>year=2001..2004. if leap_year year then 366 else 365)\"\nshows  \"total_days = 1461\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the total number of days from 2001 to 2004, inclusive, considering leap years. A leap year occurs if the year is divisible by 4, but not divisible by 100, unless it is also divisible by 400. The final answer is 1461."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes days_in_years :: \"int \\<Rightarrow> int\"\nassumes h0 : \"days_in_years 2004 = 366\"\nand h1 : \"\\<forall>year. year = 2001 \\<or> year = 2002 \\<or> year = 2003 \\<longrightarrow> days_in_years year = 365\"\nshows  \"(\\<Sum>year = 2001..2004. days_in_years year) = 1461\"",
+        "formal solution": "(* ### Problem\n How many total days were there in the years 2001 through 2004? The final Answer is 1461\n ### Proof\n Including 2001 and 2004, there are 4 years total.\n However, 2004 is a leap year.\n Therefore, the number of days is $4\\times 365 + 1 = \\boxed{1461}$.\n *)\n\ntheorem\nfixes days_in_years :: \"int \\<Rightarrow> int\"\nassumes h0 : \"days_in_years 2004 = 366\"\nand h1 : \"\\<forall>year. year = 2001 \\<or> year = 2002 \\<or> year = 2003 \\<longrightarrow> days_in_years year = 365\"\nshows  \"(\\<Sum>year = 2001..2004. days_in_years year) = 1461\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many days are there in total from 2001 to 2004, inclusive, given that 2004 has 366 days and 2001, 2002, and 2003 each have 365 days? The final answer is 1461."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes days :: nat\nassumes h0 : \"days = (365 * 3) + 366\"\nshows  \"days = 1461\"",
+        "formal solution": "(* ### Problem\n How many total days were there in the years 2001 through 2004? The final Answer is 1461\n ### Proof\n Including 2001 and 2004, there are 4 years total.\n However, 2004 is a leap year.\n Therefore, the number of days is $4\\times 365 + 1 = \\boxed{1461}$.\n *)\n\ntheorem\nfixes days :: nat\nassumes h0 : \"days = (365 * 3) + 366\"\nshows  \"days = 1461\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many days are there in a period of 3 regular years and 1 leap year? The final answer is 1461 days."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes days_2001 days_2002 days_2003 days_2004 total_days :: nat\nassumes h0 : \"days_2001 = 365\"\nand h1 : \"days_2002 = 365\"\nand h2 : \"days_2003 = 365\"\nand h3 : \"days_2004 = 366\"\nshows  \"total_days = days_2001 + days_2002 + days_2003 + days_2004\"\nand \"total_days = 1461\"",
+        "formal solution": "(* ### Problem\n How many total days were there in the years 2001 through 2004? The final Answer is 1461\n ### Proof\n Including 2001 and 2004, there are 4 years total.\n However, 2004 is a leap year.\n Therefore, the number of days is $4\\times 365 + 1 = \\boxed{1461}$.\n *)\n\ntheorem\nfixes days_2001 days_2002 days_2003 days_2004 total_days :: nat\nassumes h0 : \"days_2001 = 365\"\nand h1 : \"days_2002 = 365\"\nand h2 : \"days_2003 = 365\"\nand h3 : \"days_2004 = 366\"\nshows  \"total_days = days_2001 + days_2002 + days_2003 + days_2004\"\nand \"total_days = 1461\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many total days are there in the years 2001, 2002, 2003, and 2004, given that 2001, 2002, and 2003 each have 365 days and 2004 has 366 days? The final answer is 1461 days."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes days :: nat\nassumes h0 : \"days = (\\<Sum>year = 2001..2004. if (year mod 4 = 0 \\<and> (year mod 100 \\<noteq> 0 \\<or> year mod 400 = 0)) then 366 else 365)\"\nshows  \"days = 1461\"",
+        "formal solution": "(* ### Problem\n How many total days were there in the years 2001 through 2004? The final Answer is 1461\n ### Proof\n Including 2001 and 2004, there are 4 years total.\n However, 2004 is a leap year.\n Therefore, the number of days is $4\\times 365 + 1 = \\boxed{1461}$.\n *)\n\ntheorem\nfixes days :: nat\nassumes h0 : \"days = (\\<Sum>year = 2001..2004. if (year mod 4 = 0 \\<and> (year mod 100 \\<noteq> 0 \\<or> year mod 400 = 0)) then 366 else 365)\"\nshows  \"days = 1461\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many days are there from the beginning of the year 2001 to the end of the year 2004, taking leap years into account? The final answer is 1461."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes days :: nat\nassumes h0 : \"days = 365 * 3 + 366\"\nshows  \"days = 1461\"",
+        "formal solution": "(* ### Problem\n How many total days were there in the years 2001 through 2004? The final Answer is 1461\n ### Proof\n Including 2001 and 2004, there are 4 years total.\n However, 2004 is a leap year.\n Therefore, the number of days is $4\\times 365 + 1 = \\boxed{1461}$.\n *)\n\ntheorem\nfixes days :: nat\nassumes h0 : \"days = 365 * 3 + 366\"\nshows  \"days = 1461\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many days are there in a period of three non-leap years and one leap year? The final answer is 1461 days."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes total_days :: nat\nassumes h0 : \"total_days = (\\<lambda>n. if n mod 4 = 0 \\<and> (n mod 100 \\<noteq> 0 \\<or> n mod 400 = 0) then 366 else 365)\"\nshows  \"total_days 2001 + total_days 2002 + total_days 2003 + total_days 2004 = 1461\"",
+        "formal solution": "(* ### Problem\n How many total days were there in the years 2001 through 2004? The final Answer is 1461\n ### Proof\n Including 2001 and 2004, there are 4 years total.\n However, 2004 is a leap year.\n Therefore, the number of days is $4\\times 365 + 1 = \\boxed{1461}$.\n *)\n\ntheorem\nfixes total_days :: nat\nassumes h0 : \"total_days = (\\<lambda>n. if n mod 4 = 0 \\<and> (n mod 100 \\<noteq> 0 \\<or> n mod 400 = 0) then 366 else 365)\"\nshows  \"total_days 2001 + total_days 2002 + total_days 2003 + total_days 2004 = 1461\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many days are there in total from the year 2001 to 2004, inclusive, considering leap years? The final answer is 1461."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes days :: nat\nassumes h0 : \"days = 365 * 3 + 366\"\nshows  \"days = 1461\"",
+        "formal solution": "(* ### Problem\n How many total days were there in the years 2001 through 2004? The final Answer is 1461\n ### Proof\n Including 2001 and 2004, there are 4 years total.\n However, 2004 is a leap year.\n Therefore, the number of days is $4\\times 365 + 1 = \\boxed{1461}$.\n *)\n\ntheorem\nfixes days :: nat\nassumes h0 : \"days = 365 * 3 + 366\"\nshows  \"days = 1461\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many days are in a period of 3 regular years and 1 leap year? The final answer is 1461."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes days :: nat\nassumes h0 : \"days = count_days (2001::nat) (2004::nat)\"\nshows  \"days = 1461\"",
+        "formal solution": "(* ### Problem\n How many total days were there in the years 2001 through 2004? The final Answer is 1461\n ### Proof\n Including 2001 and 2004, there are 4 years total.\n However, 2004 is a leap year.\n Therefore, the number of days is $4\\times 365 + 1 = \\boxed{1461}$.\n *)\n\ntheorem\nfixes days :: nat\nassumes h0 : \"days = count_days (2001::nat) (2004::nat)\"\nshows  \"days = 1461\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many days are there between the years 2001 and 2004, inclusive? The final answer is 1461."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes days_years :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"days_years 2001 = 365\"\nand h1 : \"days_years 2002 = 365\"\nand h2 : \"days_years 2003 = 365\"\nand h3 : \"days_years 2004 = 366\"\nshows  \"(\\<Sum> i \\<in> {2001..2004}. days_years i) = 1461\"",
+        "formal solution": "(* ### Problem\n How many total days were there in the years 2001 through 2004? The final Answer is 1461\n ### Proof\n Including 2001 and 2004, there are 4 years total.\n However, 2004 is a leap year.\n Therefore, the number of days is $4\\times 365 + 1 = \\boxed{1461}$.\n *)\n\ntheorem\nfixes days_years :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"days_years 2001 = 365\"\nand h1 : \"days_years 2002 = 365\"\nand h2 : \"days_years 2003 = 365\"\nand h3 : \"days_years 2004 = 366\"\nshows  \"(\\<Sum> i \\<in> {2001..2004}. days_years i) = 1461\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many total days are there from 2001 to 2004, inclusive, given that 2001, 2002, and 2003 have 365 days each, and 2004 has 366 days? The final answer is 1461."
+    },
+    "level": "Level 2",
+    "type": "Counting & Probability"
+}

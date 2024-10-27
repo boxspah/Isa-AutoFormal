@@ -1,0 +1,116 @@
+{
+    "problem_name": "imo_1988_p6",
+    "informal_statement": "Let $a$ and $b$ be positive integers such that $ab + 1$ divides $a^{2} + b^{2}$. Show that\n$\n\\frac {a^{2} + b^{2}}{ab + 1}\n$\nis the square of an integer.",
+    "informal_proof": "Choose integers $a,b,k$ such that $a^2+b^2=k(ab+1)$\nNow, for fixed $k$, out of all pairs $(a,b)$ choose the one with the lowest value of $\\min(a,b)$. Label $b'=\\min(a,b), a'=\\max(a,b)$. Thus, $a'^2-kb'a'+b'^2-k=0$ is a quadratic in $a'$. Should there be another root, $c'$, the root would satisfy: $b'c'\\leq a'c'=b'^2-k<b'^2\\implies c'<b'$\nThus, $c'$ isn't a positive integer (if it were, it would contradict the minimality condition). But $c'=kb'-a'$, so $c'$ is an integer; hence, $c'\\leq 0$. In addition, $(a'+1)(c'+1)=a'c'+a'+c'+1=b'^2-k+b'k+1=b'^2+(b'-1)k+1\\geq 1$ so that $c'>-1$. We conclude that $c'=0$ so that $b'^2=k$.\n\nThis construction works whenever there exists a solution $(a,b)$ for a fixed $k$, hence $k$ is always a perfect square.",
+    "a_0": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\\<exists> k. k^2 = (a^2 + b^2) div (a * b + 1)\"",
+        "formal solution": "(* ### Problem\n Let $a$ and $b$ be positive integers such that $ab + 1$ divides $a^{2} + b^{2}$. Show that\n$\n\\frac {a^{2} + b^{2}}{ab + 1}\n$\nis the square of an integer.\n ### Proof\n Choose integers $a,b,k$ such that $a^2+b^2=k(ab+1)$\nNow, for fixed $k$, out of all pairs $(a,b)$ choose the one with the lowest value of $\\min(a,b)$. Label $b'=\\min(a,b), a'=\\max(a,b)$. Thus, $a'^2-kb'a'+b'^2-k=0$ is a quadratic in $a'$. Should there be another root, $c'$, the root would satisfy: $b'c'\\leq a'c'=b'^2-k<b'^2\\implies c'<b'$\nThus, $c'$ isn't a positive integer (if it were, it would contradict the minimality condition). But $c'=kb'-a'$, so $c'$ is an integer; hence, $c'\\leq 0$. In addition, $(a'+1)(c'+1)=a'c'+a'+c'+1=b'^2-k+b'k+1=b'^2+(b'-1)k+1\\geq 1$ so that $c'>-1$. We conclude that $c'=0$ so that $b'^2=k$.\n\nThis construction works whenever there exists a solution $(a,b)$ for a fixed $k$, hence $k$ is always a perfect square.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\\<exists> k. k^2 = (a^2 + b^2) div (a * b + 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If the sum of the square of two natural numbers $a$ and $b$ is divisible by the product of $a$ and $b$ incremented by 1, find a natural number $k$ such that $k^2$ is equal to the quotient of the sum of the squares of $a$ and $b$ divided by the product of $a$ and $b$ incremented by 1.\"",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.2751104235649109,
+        "symbolic_score": 0.4
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\u2203 k. k^2 = (a^2 + b^2) div (a * b + 1)\"",
+        "formal solution": "(* ### Problem\n Let $a$ and $b$ be positive integers such that $ab + 1$ divides $a^{2} + b^{2}$. Show that\n$\n\\frac {a^{2} + b^{2}}{ab + 1}\n$\nis the square of an integer.\n ### Proof\n Choose integers $a,b,k$ such that $a^2+b^2=k(ab+1)$\nNow, for fixed $k$, out of all pairs $(a,b)$ choose the one with the lowest value of $\\min(a,b)$. Label $b'=\\min(a,b), a'=\\max(a,b)$. Thus, $a'^2-kb'a'+b'^2-k=0$ is a quadratic in $a'$. Should there be another root, $c'$, the root would satisfy: $b'c'\\leq a'c'=b'^2-k<b'^2\\implies c'<b'$\nThus, $c'$ isn't a positive integer (if it were, it would contradict the minimality condition). But $c'=kb'-a'$, so $c'$ is an integer; hence, $c'\\leq 0$. In addition, $(a'+1)(c'+1)=a'c'+a'+c'+1=b'^2-k+b'k+1=b'^2+(b'-1)k+1\\geq 1$ so that $c'>-1$. We conclude that $c'=0$ so that $b'^2=k$.\n\nThis construction works whenever there exists a solution $(a,b)$ for a fixed $k$, hence $k$ is always a perfect square.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\u2203 k. k^2 = (a^2 + b^2) div (a * b + 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $(a*b + 1)$ divides $(a^2 + b^2)$, find a natural number $k$ such that $k^2$ equals to the quotient when $(a^2 + b^2)$ is divided by $(a*b + 1)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9671825170516968,
+        "symbolic_score": 0.4
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\\<exists> k. k^2 = (a^2 + b^2) div (a * b + 1)\"",
+        "formal solution": "(* ### Problem\n Let $a$ and $b$ be positive integers such that $ab + 1$ divides $a^{2} + b^{2}$. Show that\n$\n\\frac {a^{2} + b^{2}}{ab + 1}\n$\nis the square of an integer.\n ### Proof\n Choose integers $a,b,k$ such that $a^2+b^2=k(ab+1)$\nNow, for fixed $k$, out of all pairs $(a,b)$ choose the one with the lowest value of $\\min(a,b)$. Label $b'=\\min(a,b), a'=\\max(a,b)$. Thus, $a'^2-kb'a'+b'^2-k=0$ is a quadratic in $a'$. Should there be another root, $c'$, the root would satisfy: $b'c'\\leq a'c'=b'^2-k<b'^2\\implies c'<b'$\nThus, $c'$ isn't a positive integer (if it were, it would contradict the minimality condition). But $c'=kb'-a'$, so $c'$ is an integer; hence, $c'\\leq 0$. In addition, $(a'+1)(c'+1)=a'c'+a'+c'+1=b'^2-k+b'k+1=b'^2+(b'-1)k+1\\geq 1$ so that $c'>-1$. We conclude that $c'=0$ so that $b'^2=k$.\n\nThis construction works whenever there exists a solution $(a,b)$ for a fixed $k$, hence $k$ is always a perfect square.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\\<exists> k. k^2 = (a^2 + b^2) div (a * b + 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a$ and $b$ are positive integers such that $(a * b + 1)$ is a divisor of $(a^2 + b^2)$, find an integer $k$ such that $k^2$ is equal to the quotient of $(a^2 + b^2)$ divided by $(a * b + 1)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8792404532432556,
+        "symbolic_score": 0.4
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\\<exists> k. k^2 = (a^2 + b^2) div (a * b + 1)\"",
+        "formal solution": "(* ### Problem\n Let $a$ and $b$ be positive integers such that $ab + 1$ divides $a^{2} + b^{2}$. Show that\n$\n\\frac {a^{2} + b^{2}}{ab + 1}\n$\nis the square of an integer.\n ### Proof\n Choose integers $a,b,k$ such that $a^2+b^2=k(ab+1)$\nNow, for fixed $k$, out of all pairs $(a,b)$ choose the one with the lowest value of $\\min(a,b)$. Label $b'=\\min(a,b), a'=\\max(a,b)$. Thus, $a'^2-kb'a'+b'^2-k=0$ is a quadratic in $a'$. Should there be another root, $c'$, the root would satisfy: $b'c'\\leq a'c'=b'^2-k<b'^2\\implies c'<b'$\nThus, $c'$ isn't a positive integer (if it were, it would contradict the minimality condition). But $c'=kb'-a'$, so $c'$ is an integer; hence, $c'\\leq 0$. In addition, $(a'+1)(c'+1)=a'c'+a'+c'+1=b'^2-k+b'k+1=b'^2+(b'-1)k+1\\geq 1$ so that $c'>-1$. We conclude that $c'=0$ so that $b'^2=k$.\n\nThis construction works whenever there exists a solution $(a,b)$ for a fixed $k$, hence $k$ is always a perfect square.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\\<exists> k. k^2 = (a^2 + b^2) div (a * b + 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive natural numbers $a$ and $b$ such that $(a * b + 1)$ is a divisor of $(a^2 + b^2)$. Prove that there exists a natural number $k$ such that $k^2$ is equal to the quotient of $(a^2 + b^2)$ divided by $(a * b + 1)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9745002388954163,
+        "symbolic_score": 0.4
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\\<exists> k :: nat. a^2 + b^2 = (a * b + 1) * k^2\"",
+        "formal solution": "(* ### Problem\n Let $a$ and $b$ be positive integers such that $ab + 1$ divides $a^{2} + b^{2}$. Show that\n$\n\\frac {a^{2} + b^{2}}{ab + 1}\n$\nis the square of an integer.\n ### Proof\n Choose integers $a,b,k$ such that $a^2+b^2=k(ab+1)$\nNow, for fixed $k$, out of all pairs $(a,b)$ choose the one with the lowest value of $\\min(a,b)$. Label $b'=\\min(a,b), a'=\\max(a,b)$. Thus, $a'^2-kb'a'+b'^2-k=0$ is a quadratic in $a'$. Should there be another root, $c'$, the root would satisfy: $b'c'\\leq a'c'=b'^2-k<b'^2\\implies c'<b'$\nThus, $c'$ isn't a positive integer (if it were, it would contradict the minimality condition). But $c'=kb'-a'$, so $c'$ is an integer; hence, $c'\\leq 0$. In addition, $(a'+1)(c'+1)=a'c'+a'+c'+1=b'^2-k+b'k+1=b'^2+(b'-1)k+1\\geq 1$ so that $c'>-1$. We conclude that $c'=0$ so that $b'^2=k$.\n\nThis construction works whenever there exists a solution $(a,b)$ for a fixed $k$, hence $k$ is always a perfect square.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\\<exists> k :: nat. a^2 + b^2 = (a * b + 1) * k^2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume that $a$ and $b$ are positive natural numbers. If $a \\cdot b + 1$ is a divisor of $a^2 + b^2$, then there exists a natural number $k$ such that $a^2 + b^2 = (a \\cdot b + 1) \\cdot k^2$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9893946647644043,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\\<exists> n. ((a^2 + b^2) div (a * b + 1)) = n^2\"",
+        "formal solution": "(* ### Problem\n Let $a$ and $b$ be positive integers such that $ab + 1$ divides $a^{2} + b^{2}$. Show that\n$\n\\frac {a^{2} + b^{2}}{ab + 1}\n$\nis the square of an integer.\n ### Proof\n Choose integers $a,b,k$ such that $a^2+b^2=k(ab+1)$\nNow, for fixed $k$, out of all pairs $(a,b)$ choose the one with the lowest value of $\\min(a,b)$. Label $b'=\\min(a,b), a'=\\max(a,b)$. Thus, $a'^2-kb'a'+b'^2-k=0$ is a quadratic in $a'$. Should there be another root, $c'$, the root would satisfy: $b'c'\\leq a'c'=b'^2-k<b'^2\\implies c'<b'$\nThus, $c'$ isn't a positive integer (if it were, it would contradict the minimality condition). But $c'=kb'-a'$, so $c'$ is an integer; hence, $c'\\leq 0$. In addition, $(a'+1)(c'+1)=a'c'+a'+c'+1=b'^2-k+b'k+1=b'^2+(b'-1)k+1\\geq 1$ so that $c'>-1$. We conclude that $c'=0$ so that $b'^2=k$.\n\nThis construction works whenever there exists a solution $(a,b)$ for a fixed $k$, hence $k$ is always a perfect square.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\\<exists> n. ((a^2 + b^2) div (a * b + 1)) = n^2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a natural number $n$ such that the square of $n$ equals the quotient of $(a^2 + b^2)$ divided by $(a * b + 1)$, given that $(a * b + 1)$ is a divisor of $(a^2 + b^2)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9809712767601013,
+        "symbolic_score": 0.4
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"ab + 1 dvd a^2 + b^2\"\nshows  \"\u2203 k. k^2 = (a^2 + b^2) div (ab + 1)\"",
+        "formal solution": "(* ### Problem\n Let $a$ and $b$ be positive integers such that $ab + 1$ divides $a^{2} + b^{2}$. Show that\n$\n\\frac {a^{2} + b^{2}}{ab + 1}\n$\nis the square of an integer.\n ### Proof\n Choose integers $a,b,k$ such that $a^2+b^2=k(ab+1)$\nNow, for fixed $k$, out of all pairs $(a,b)$ choose the one with the lowest value of $\\min(a,b)$. Label $b'=\\min(a,b), a'=\\max(a,b)$. Thus, $a'^2-kb'a'+b'^2-k=0$ is a quadratic in $a'$. Should there be another root, $c'$, the root would satisfy: $b'c'\\leq a'c'=b'^2-k<b'^2\\implies c'<b'$\nThus, $c'$ isn't a positive integer (if it were, it would contradict the minimality condition). But $c'=kb'-a'$, so $c'$ is an integer; hence, $c'\\leq 0$. In addition, $(a'+1)(c'+1)=a'c'+a'+c'+1=b'^2-k+b'k+1=b'^2+(b'-1)k+1\\geq 1$ so that $c'>-1$. We conclude that $c'=0$ so that $b'^2=k$.\n\nThis construction works whenever there exists a solution $(a,b)$ for a fixed $k$, hence $k$ is always a perfect square.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"ab + 1 dvd a^2 + b^2\"\nshows  \"\u2203 k. k^2 = (a^2 + b^2) div (ab + 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the sum of a natural number and 1 divides the sum of the squares of two natural numbers, then there exists a natural number whose square is equal to the quotient of the sum of the squares of the two numbers and the sum of the first natural number and 1.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9429842233657837,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\\<exists> k. (a^2 + b^2) div (a * b + 1) = k^2\"",
+        "formal solution": "(* ### Problem\n Let $a$ and $b$ be positive integers such that $ab + 1$ divides $a^{2} + b^{2}$. Show that\n$\n\\frac {a^{2} + b^{2}}{ab + 1}\n$\nis the square of an integer.\n ### Proof\n Choose integers $a,b,k$ such that $a^2+b^2=k(ab+1)$\nNow, for fixed $k$, out of all pairs $(a,b)$ choose the one with the lowest value of $\\min(a,b)$. Label $b'=\\min(a,b), a'=\\max(a,b)$. Thus, $a'^2-kb'a'+b'^2-k=0$ is a quadratic in $a'$. Should there be another root, $c'$, the root would satisfy: $b'c'\\leq a'c'=b'^2-k<b'^2\\implies c'<b'$\nThus, $c'$ isn't a positive integer (if it were, it would contradict the minimality condition). But $c'=kb'-a'$, so $c'$ is an integer; hence, $c'\\leq 0$. In addition, $(a'+1)(c'+1)=a'c'+a'+c'+1=b'^2-k+b'k+1=b'^2+(b'-1)k+1\\geq 1$ so that $c'>-1$. We conclude that $c'=0$ so that $b'^2=k$.\n\nThis construction works whenever there exists a solution $(a,b)$ for a fixed $k$, hence $k$ is always a perfect square.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\\<exists> k. (a^2 + b^2) div (a * b + 1) = k^2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Given that $(a * b + 1)$ is a divisor of $(a^2 + b^2)$ for natural numbers $a$ and $b$, prove that the quotient of $(a^2 + b^2)$ divided by $(a * b + 1)$ is a perfect square.\"",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.14967399835586548,
+        "symbolic_score": 0.4
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"(a*b + 1) dvd (a^2 + b^2)\"\nshows  \"\u2203 k. k^2 = (a^2 + b^2) div (a*b + 1)\"",
+        "formal solution": "(* ### Problem\n Let $a$ and $b$ be positive integers such that $ab + 1$ divides $a^{2} + b^{2}$. Show that\n$\n\\frac {a^{2} + b^{2}}{ab + 1}\n$\nis the square of an integer.\n ### Proof\n Choose integers $a,b,k$ such that $a^2+b^2=k(ab+1)$\nNow, for fixed $k$, out of all pairs $(a,b)$ choose the one with the lowest value of $\\min(a,b)$. Label $b'=\\min(a,b), a'=\\max(a,b)$. Thus, $a'^2-kb'a'+b'^2-k=0$ is a quadratic in $a'$. Should there be another root, $c'$, the root would satisfy: $b'c'\\leq a'c'=b'^2-k<b'^2\\implies c'<b'$\nThus, $c'$ isn't a positive integer (if it were, it would contradict the minimality condition). But $c'=kb'-a'$, so $c'$ is an integer; hence, $c'\\leq 0$. In addition, $(a'+1)(c'+1)=a'c'+a'+c'+1=b'^2-k+b'k+1=b'^2+(b'-1)k+1\\geq 1$ so that $c'>-1$. We conclude that $c'=0$ so that $b'^2=k$.\n\nThis construction works whenever there exists a solution $(a,b)$ for a fixed $k$, hence $k$ is always a perfect square.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"(a*b + 1) dvd (a^2 + b^2)\"\nshows  \"\u2203 k. k^2 = (a^2 + b^2) div (a*b + 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive natural numbers $a$ and $b$ such that $a*b + 1$ divides $a^2 + b^2$, find a natural number $k$ such that $k^2$ equals the quotient of $a^2 + b^2$ divided by $a*b + 1$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9743672609329224,
+        "symbolic_score": 0.4
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\u2203 k. (a^2 + b^2) div (a * b + 1) = k^2\"",
+        "formal solution": "(* ### Problem\n Let $a$ and $b$ be positive integers such that $ab + 1$ divides $a^{2} + b^{2}$. Show that\n$\n\\frac {a^{2} + b^{2}}{ab + 1}\n$\nis the square of an integer.\n ### Proof\n Choose integers $a,b,k$ such that $a^2+b^2=k(ab+1)$\nNow, for fixed $k$, out of all pairs $(a,b)$ choose the one with the lowest value of $\\min(a,b)$. Label $b'=\\min(a,b), a'=\\max(a,b)$. Thus, $a'^2-kb'a'+b'^2-k=0$ is a quadratic in $a'$. Should there be another root, $c'$, the root would satisfy: $b'c'\\leq a'c'=b'^2-k<b'^2\\implies c'<b'$\nThus, $c'$ isn't a positive integer (if it were, it would contradict the minimality condition). But $c'=kb'-a'$, so $c'$ is an integer; hence, $c'\\leq 0$. In addition, $(a'+1)(c'+1)=a'c'+a'+c'+1=b'^2-k+b'k+1=b'^2+(b'-1)k+1\\geq 1$ so that $c'>-1$. We conclude that $c'=0$ so that $b'^2=k$.\n\nThis construction works whenever there exists a solution $(a,b)$ for a fixed $k$, hence $k$ is always a perfect square.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"(a * b + 1) dvd (a^2 + b^2)\"\nshows  \"\u2203 k. (a^2 + b^2) div (a * b + 1) = k^2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two natural numbers $a$ and $b$ greater than zero. If $a*b+1$ divides $a^2 + b^2$, find a natural number $k$ such that the result of the division of $a^2 + b^2$ by $a*b+1$ equals $k^2$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.98725825548172,
+        "symbolic_score": 0.4
+    },
+    "oracle": "theorem\nfixes a b :: nat\nassumes h0 : \"0<a \\<and> 0<b\"\nand h1 : \"(a*b+1) dvd (a^2 + b^2)\"\nshows \"\\<exists>(x::nat). ((x^2) = (a^2+b^2)/(a*b+1))\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            5,
+            7
+        ],
+        "1": [
+            8,
+            9,
+            2,
+            3
+        ],
+        "2": [
+            4
+        ],
+        "3": [
+            6
+        ]
+    }
+}

@@ -1,0 +1,120 @@
+{
+    "problem_name": "imo_1978_p5",
+    "informal_statement": "Let $f$ be an injective function from ${1,2,3,\\ldots}$ in itself. Prove that for any $n$ we have: $\\sum_{k=1}^{n} f(k)k^{-2} \\geq \\sum_{k=1}^{n} k^{-1}.$",
+    "informal_proof": "We know that all the unknowns are integers, so the smallest one must greater or equal to 1.\n\nLet me denote the permutations of $(k_1,k_2,...,k_n)$ with $(y_1,y_2,...,y_n)=y_i (*)$.\n\nFrom the rearrangement's inequality we know that $\\text{Random Sum} \\geq \\text{Reversed Sum}$.\n\nWe will denote we permutations of $y_i$ in this form $y_n \\geq ...\\geq y_1$.\n\nSo we have $\\frac{k_1}{1^2}+\\frac{k_2}{2^2}+...+\\frac{k_n}{n^2} \\geq \\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2} \\geq 1+\\frac{1}{2}+...+\\frac{1}{n}$.\n\nLet's denote $\\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2}=T$ and $1+\\frac{1}{2}+...+\\frac{1}{n}=S$.\n\nWe have $T \\geq S$. Which comes from $y_1 \\geq1, y_2 \\geq2, ...,y_n \\geq n$.\n\nSo we are done.\n\nThe above solution was posted and copyrighted by Davron. The original thread for this problem can be found here: [https://aops.com/community/p509573]",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"bij_betw f {1..} {1..}\"\nshows  \"(\\<Sum>k = 1..n. f k / (k powr 2)) \\<ge> (\\<Sum>k = 1..n. 1 / k)\"",
+        "formal solution": "(* ### Problem\n Let $f$ be an injective function from ${1,2,3,\\ldots}$ in itself. Prove that for any $n$ we have: $\\sum_{k=1}^{n} f(k)k^{-2} \\geq \\sum_{k=1}^{n} k^{-1}.$\n ### Proof\n We know that all the unknowns are integers, so the smallest one must greater or equal to 1.\n\nLet me denote the permutations of $(k_1,k_2,...,k_n)$ with $(y_1,y_2,...,y_n)=y_i (*)$.\n\nFrom the rearrangement's inequality we know that $\\text{Random Sum} \\geq \\text{Reversed Sum}$.\n\nWe will denote we permutations of $y_i$ in this form $y_n \\geq ...\\geq y_1$.\n\nSo we have $\\frac{k_1}{1^2}+\\frac{k_2}{2^2}+...+\\frac{k_n}{n^2} \\geq \\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2} \\geq 1+\\frac{1}{2}+...+\\frac{1}{n}$.\n\nLet's denote $\\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2}=T$ and $1+\\frac{1}{2}+...+\\frac{1}{n}=S$.\n\nWe have $T \\geq S$. Which comes from $y_1 \\geq1, y_2 \\geq2, ...,y_n \\geq n$.\n\nSo we are done.\n\nThe above solution was posted and copyrighted by Davron. The original thread for this problem can be found here: [https://aops.com/community/p509573]\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"bij_betw f {1..} {1..}\"\nshows  \"(\\<Sum>k = 1..n. f k / (k powr 2)) \\<ge> (\\<Sum>k = 1..n. 1 / k)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a bijective function $f$ from the set of natural numbers starting from 1 onwards to itself, show that the sum from $k=1$ to $n$ of $\\frac{f(k)}{k^2}$ is greater than or equal to the sum from $k=1$ to $n$ of $\\frac{1}{k}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.3545437157154083,
+        "symbolic_score": 0.4
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand n :: nat\nassumes h0 : \"bij_betw f {1..} {1..}\"\nshows  \"(\\<Sum>k = 1..n. f k / k powr 2) \\<ge> (\\<Sum>k = 1..n. 1 / k)\"",
+        "formal solution": "(* ### Problem\n Let $f$ be an injective function from ${1,2,3,\\ldots}$ in itself. Prove that for any $n$ we have: $\\sum_{k=1}^{n} f(k)k^{-2} \\geq \\sum_{k=1}^{n} k^{-1}.$\n ### Proof\n We know that all the unknowns are integers, so the smallest one must greater or equal to 1.\n\nLet me denote the permutations of $(k_1,k_2,...,k_n)$ with $(y_1,y_2,...,y_n)=y_i (*)$.\n\nFrom the rearrangement's inequality we know that $\\text{Random Sum} \\geq \\text{Reversed Sum}$.\n\nWe will denote we permutations of $y_i$ in this form $y_n \\geq ...\\geq y_1$.\n\nSo we have $\\frac{k_1}{1^2}+\\frac{k_2}{2^2}+...+\\frac{k_n}{n^2} \\geq \\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2} \\geq 1+\\frac{1}{2}+...+\\frac{1}{n}$.\n\nLet's denote $\\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2}=T$ and $1+\\frac{1}{2}+...+\\frac{1}{n}=S$.\n\nWe have $T \\geq S$. Which comes from $y_1 \\geq1, y_2 \\geq2, ...,y_n \\geq n$.\n\nSo we are done.\n\nThe above solution was posted and copyrighted by Davron. The original thread for this problem can be found here: [https://aops.com/community/p509573]\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand n :: nat\nassumes h0 : \"bij_betw f {1..} {1..}\"\nshows  \"(\\<Sum>k = 1..n. f k / k powr 2) \\<ge> (\\<Sum>k = 1..n. 1 / k)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume that $f$ is a bijective function defined on the set of natural numbers. We want to prove that the sum from $k=1$ to $n$ of $\\frac{f(k)}{k^2}$ is greater than or equal to the sum from $k=1$ to $n$ of $\\frac{1}{k}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6834214925765991,
+        "symbolic_score": 0.4
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"inj_on f {1..}\"\nshows  \"(\\<Sum>k=1..n. f k / (k^2)) \\<ge> (\\<Sum>k=1..n. 1 / k)\"",
+        "formal solution": "(* ### Problem\n Let $f$ be an injective function from ${1,2,3,\\ldots}$ in itself. Prove that for any $n$ we have: $\\sum_{k=1}^{n} f(k)k^{-2} \\geq \\sum_{k=1}^{n} k^{-1}.$\n ### Proof\n We know that all the unknowns are integers, so the smallest one must greater or equal to 1.\n\nLet me denote the permutations of $(k_1,k_2,...,k_n)$ with $(y_1,y_2,...,y_n)=y_i (*)$.\n\nFrom the rearrangement's inequality we know that $\\text{Random Sum} \\geq \\text{Reversed Sum}$.\n\nWe will denote we permutations of $y_i$ in this form $y_n \\geq ...\\geq y_1$.\n\nSo we have $\\frac{k_1}{1^2}+\\frac{k_2}{2^2}+...+\\frac{k_n}{n^2} \\geq \\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2} \\geq 1+\\frac{1}{2}+...+\\frac{1}{n}$.\n\nLet's denote $\\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2}=T$ and $1+\\frac{1}{2}+...+\\frac{1}{n}=S$.\n\nWe have $T \\geq S$. Which comes from $y_1 \\geq1, y_2 \\geq2, ...,y_n \\geq n$.\n\nSo we are done.\n\nThe above solution was posted and copyrighted by Davron. The original thread for this problem can be found here: [https://aops.com/community/p509573]\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"inj_on f {1..}\"\nshows  \"(\\<Sum>k=1..n. f k / (k^2)) \\<ge> (\\<Sum>k=1..n. 1 / k)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f$ is a function from natural numbers to natural numbers that is injective, then prove that the sum from $k=1$ to $n$ of $\\frac{f(k)}{k^2}$ is greater than or equal to the sum from $k=1$ to $n$ of $\\frac{1}{k}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5008990168571472,
+        "symbolic_score": 0.4
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand n :: nat\nassumes h0 : \"inj_on f {1..}\"\nshows  \"(\\<Sum>k=1..n. f k / k^2) \\<ge> (\\<Sum>k=1..n. 1 / k)\"",
+        "formal solution": "(* ### Problem\n Let $f$ be an injective function from ${1,2,3,\\ldots}$ in itself. Prove that for any $n$ we have: $\\sum_{k=1}^{n} f(k)k^{-2} \\geq \\sum_{k=1}^{n} k^{-1}.$\n ### Proof\n We know that all the unknowns are integers, so the smallest one must greater or equal to 1.\n\nLet me denote the permutations of $(k_1,k_2,...,k_n)$ with $(y_1,y_2,...,y_n)=y_i (*)$.\n\nFrom the rearrangement's inequality we know that $\\text{Random Sum} \\geq \\text{Reversed Sum}$.\n\nWe will denote we permutations of $y_i$ in this form $y_n \\geq ...\\geq y_1$.\n\nSo we have $\\frac{k_1}{1^2}+\\frac{k_2}{2^2}+...+\\frac{k_n}{n^2} \\geq \\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2} \\geq 1+\\frac{1}{2}+...+\\frac{1}{n}$.\n\nLet's denote $\\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2}=T$ and $1+\\frac{1}{2}+...+\\frac{1}{n}=S$.\n\nWe have $T \\geq S$. Which comes from $y_1 \\geq1, y_2 \\geq2, ...,y_n \\geq n$.\n\nSo we are done.\n\nThe above solution was posted and copyrighted by Davron. The original thread for this problem can be found here: [https://aops.com/community/p509573]\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand n :: nat\nassumes h0 : \"inj_on f {1..}\"\nshows  \"(\\<Sum>k=1..n. f k / k^2) \\<ge> (\\<Sum>k=1..n. 1 / k)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The function $f$ is an injection on the set of natural numbers starting from 1. Prove that for all natural numbers $n$, the sum of the sequence $f(k) / k^2$ from $k = 1$ to $n$ is always greater than or equal to the sum of the sequence $1/k$ from $k = 1$ to $n$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.4467732608318329,
+        "symbolic_score": 0.4
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"bij_betw f {1..} {1..}\"\nshows  \"(\\<Sum>k = 1..n. f k / (k*k)) \\<ge> (\\<Sum>k = 1..n. 1/k)\"",
+        "formal solution": "(* ### Problem\n Let $f$ be an injective function from ${1,2,3,\\ldots}$ in itself. Prove that for any $n$ we have: $\\sum_{k=1}^{n} f(k)k^{-2} \\geq \\sum_{k=1}^{n} k^{-1}.$\n ### Proof\n We know that all the unknowns are integers, so the smallest one must greater or equal to 1.\n\nLet me denote the permutations of $(k_1,k_2,...,k_n)$ with $(y_1,y_2,...,y_n)=y_i (*)$.\n\nFrom the rearrangement's inequality we know that $\\text{Random Sum} \\geq \\text{Reversed Sum}$.\n\nWe will denote we permutations of $y_i$ in this form $y_n \\geq ...\\geq y_1$.\n\nSo we have $\\frac{k_1}{1^2}+\\frac{k_2}{2^2}+...+\\frac{k_n}{n^2} \\geq \\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2} \\geq 1+\\frac{1}{2}+...+\\frac{1}{n}$.\n\nLet's denote $\\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2}=T$ and $1+\\frac{1}{2}+...+\\frac{1}{n}=S$.\n\nWe have $T \\geq S$. Which comes from $y_1 \\geq1, y_2 \\geq2, ...,y_n \\geq n$.\n\nSo we are done.\n\nThe above solution was posted and copyrighted by Davron. The original thread for this problem can be found here: [https://aops.com/community/p509573]\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"bij_betw f {1..} {1..}\"\nshows  \"(\\<Sum>k = 1..n. f k / (k*k)) \\<ge> (\\<Sum>k = 1..n. 1/k)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ that is a bijection between the set of natural numbers and itself, prove that for all natural numbers $n$, the sum from $k=1$ to $n$ of $\\frac{f(k)}{k^2}$ is greater than or equal to the sum from $k=1$ to $n$ of $\\frac{1}{k}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.41647058725357056,
+        "symbolic_score": 0.2
+    },
+    "a_5": {
+        "formal problem": "theorem \nfixes n :: int and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"bij_betw f {1..} {1..}\"\nand h1 : \"\\<forall> n. (\\<Sum>k=1..n. f k / (k*k)) \\<ge> (\\<Sum>k=1..n. 1 / k)\"\nshows  \"\\<forall> n. (\\<Sum>k=1..n. f k / (k*k)) \\<ge> (\\<Sum>k=1..n. 1 / k)\"",
+        "formal solution": "(* ### Problem\n Let $f$ be an injective function from ${1,2,3,\\ldots}$ in itself. Prove that for any $n$ we have: $\\sum_{k=1}^{n} f(k)k^{-2} \\geq \\sum_{k=1}^{n} k^{-1}.$\n ### Proof\n We know that all the unknowns are integers, so the smallest one must greater or equal to 1.\n\nLet me denote the permutations of $(k_1,k_2,...,k_n)$ with $(y_1,y_2,...,y_n)=y_i (*)$.\n\nFrom the rearrangement's inequality we know that $\\text{Random Sum} \\geq \\text{Reversed Sum}$.\n\nWe will denote we permutations of $y_i$ in this form $y_n \\geq ...\\geq y_1$.\n\nSo we have $\\frac{k_1}{1^2}+\\frac{k_2}{2^2}+...+\\frac{k_n}{n^2} \\geq \\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2} \\geq 1+\\frac{1}{2}+...+\\frac{1}{n}$.\n\nLet's denote $\\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2}=T$ and $1+\\frac{1}{2}+...+\\frac{1}{n}=S$.\n\nWe have $T \\geq S$. Which comes from $y_1 \\geq1, y_2 \\geq2, ...,y_n \\geq n$.\n\nSo we are done.\n\nThe above solution was posted and copyrighted by Davron. The original thread for this problem can be found here: [https://aops.com/community/p509573]\n *)\n\ntheorem \nfixes n :: int and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"bij_betw f {1..} {1..}\"\nand h1 : \"\\<forall> n. (\\<Sum>k=1..n. f k / (k*k)) \\<ge> (\\<Sum>k=1..n. 1 / k)\"\nshows  \"\\<forall> n. (\\<Sum>k=1..n. f k / (k*k)) \\<ge> (\\<Sum>k=1..n. 1 / k)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ that is a bijection between the set of natural numbers and itself, if for all natural numbers $n$, the sum from 1 to $n$ of $f(k)/(k^2)$ is greater than or equal to the sum from 1 to $n$ of $1/k$, then this inequality holds for all natural numbers $n$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.48675766587257385,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand n :: nat\nassumes h0 : \"inj_on f {1..}\"\nand h1 : \"(\\<Sum>k=1..n. f k / k powr 2) \\<ge> (\\<Sum>k=1..n. 1 / k)\"\nshows  True",
+        "formal solution": "(* ### Problem\n Let $f$ be an injective function from ${1,2,3,\\ldots}$ in itself. Prove that for any $n$ we have: $\\sum_{k=1}^{n} f(k)k^{-2} \\geq \\sum_{k=1}^{n} k^{-1}.$\n ### Proof\n We know that all the unknowns are integers, so the smallest one must greater or equal to 1.\n\nLet me denote the permutations of $(k_1,k_2,...,k_n)$ with $(y_1,y_2,...,y_n)=y_i (*)$.\n\nFrom the rearrangement's inequality we know that $\\text{Random Sum} \\geq \\text{Reversed Sum}$.\n\nWe will denote we permutations of $y_i$ in this form $y_n \\geq ...\\geq y_1$.\n\nSo we have $\\frac{k_1}{1^2}+\\frac{k_2}{2^2}+...+\\frac{k_n}{n^2} \\geq \\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2} \\geq 1+\\frac{1}{2}+...+\\frac{1}{n}$.\n\nLet's denote $\\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2}=T$ and $1+\\frac{1}{2}+...+\\frac{1}{n}=S$.\n\nWe have $T \\geq S$. Which comes from $y_1 \\geq1, y_2 \\geq2, ...,y_n \\geq n$.\n\nSo we are done.\n\nThe above solution was posted and copyrighted by Davron. The original thread for this problem can be found here: [https://aops.com/community/p509573]\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand n :: nat\nassumes h0 : \"inj_on f {1..}\"\nand h1 : \"(\\<Sum>k=1..n. f k / k powr 2) \\<ge> (\\<Sum>k=1..n. 1 / k)\"\nshows  True\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ defined on the set of natural numbers starting from 1, which is injective (i.e., no two different natural numbers get mapped to the same natural number by the function), prove or show that for any natural number $n$, the sum of the series from $k=1$ to $n$ of $\\frac{f(k)}{k^2}$ is always greater than or equal to the sum of the series from $k=1$ to $n$ of $\\frac{1}{k}$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.3111259639263153,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "In the context of Isabelle, this theorem cannot be directly proven as it involves the concept of \"infinite\" sets and \"sums over infinite sets\", which are not directly supported in Isabelle. However, a similar concept can be represented using lists and the fold function to sum over lists.\n\nHere is a rough approximation of how you could represent this problem in Isabelle:\n\nconsts f :: \"nat => nat\"\nconsts g :: \"nat list => nat\"\n\ndefinition injective :: \"('a => 'b) => bool\" where\n\"injective f = ((!x y. (f x = f y) = (x = y)))\"\n\ndefinition \"g xs = foldl (+) 0 (map (\\<lambda>k. f k / k^2) xs)\"\n\ndefinition \"h xs = foldl (+) 0 (map (\\<lambda>k. 1 / k) xs)\"\n\ntheorem\nassumes h0 : \"injective f\"\nshows  \"g [1..n] \\<ge> h [1..n]\"",
+        "formal solution": "(* ### Problem\n Let $f$ be an injective function from ${1,2,3,\\ldots}$ in itself. Prove that for any $n$ we have: $\\sum_{k=1}^{n} f(k)k^{-2} \\geq \\sum_{k=1}^{n} k^{-1}.$\n ### Proof\n We know that all the unknowns are integers, so the smallest one must greater or equal to 1.\n\nLet me denote the permutations of $(k_1,k_2,...,k_n)$ with $(y_1,y_2,...,y_n)=y_i (*)$.\n\nFrom the rearrangement's inequality we know that $\\text{Random Sum} \\geq \\text{Reversed Sum}$.\n\nWe will denote we permutations of $y_i$ in this form $y_n \\geq ...\\geq y_1$.\n\nSo we have $\\frac{k_1}{1^2}+\\frac{k_2}{2^2}+...+\\frac{k_n}{n^2} \\geq \\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2} \\geq 1+\\frac{1}{2}+...+\\frac{1}{n}$.\n\nLet's denote $\\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2}=T$ and $1+\\frac{1}{2}+...+\\frac{1}{n}=S$.\n\nWe have $T \\geq S$. Which comes from $y_1 \\geq1, y_2 \\geq2, ...,y_n \\geq n$.\n\nSo we are done.\n\nThe above solution was posted and copyrighted by Davron. The original thread for this problem can be found here: [https://aops.com/community/p509573]\n *)\n\nIn the context of Isabelle, this theorem cannot be directly proven as it involves the concept of \"infinite\" sets and \"sums over infinite sets\", which are not directly supported in Isabelle. However, a similar concept can be represented using lists and the fold function to sum over lists.\n\nHere is a rough approximation of how you could represent this problem in Isabelle:\n\nconsts f :: \"nat => nat\"\nconsts g :: \"nat list => nat\"\n\ndefinition injective :: \"('a => 'b) => bool\" where\n\"injective f = ((!x y. (f x = f y) = (x = y)))\"\n\ndefinition \"g xs = foldl (+) 0 (map (\\<lambda>k. f k / k^2) xs)\"\n\ndefinition \"h xs = foldl (+) 0 (map (\\<lambda>k. 1 / k) xs)\"\n\ntheorem\nassumes h0 : \"injective f\"\nshows  \"g [1..n] \\<ge> h [1..n]\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume $f$ is a function mapping natural numbers to natural numbers and is injective (i.e., distinct input values map to distinct output values). Consider $g$ and $h$ as two functions defined as follows: \n\n$g(n) = \\sum_{k=1}^n \\frac{f(k)}{k^2}$ and \n$h(n) = \\sum_{k=1}^n \\frac{1}{k}$.\n\nProve that for any given natural number $n$, the value of $g(n)$ is always greater than or equal to the value of $h(n)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.3945772051811218,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "lemma \nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj_on f {1..}\"\nshows  \"\\<forall> n. (\\<Sum>k = 1..n. f k / k\\<^sup>2) \\<ge> (\\<Sum>k = 1..n. 1/k)\"",
+        "formal solution": "(* ### Problem\n Let $f$ be an injective function from ${1,2,3,\\ldots}$ in itself. Prove that for any $n$ we have: $\\sum_{k=1}^{n} f(k)k^{-2} \\geq \\sum_{k=1}^{n} k^{-1}.$\n ### Proof\n We know that all the unknowns are integers, so the smallest one must greater or equal to 1.\n\nLet me denote the permutations of $(k_1,k_2,...,k_n)$ with $(y_1,y_2,...,y_n)=y_i (*)$.\n\nFrom the rearrangement's inequality we know that $\\text{Random Sum} \\geq \\text{Reversed Sum}$.\n\nWe will denote we permutations of $y_i$ in this form $y_n \\geq ...\\geq y_1$.\n\nSo we have $\\frac{k_1}{1^2}+\\frac{k_2}{2^2}+...+\\frac{k_n}{n^2} \\geq \\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2} \\geq 1+\\frac{1}{2}+...+\\frac{1}{n}$.\n\nLet's denote $\\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2}=T$ and $1+\\frac{1}{2}+...+\\frac{1}{n}=S$.\n\nWe have $T \\geq S$. Which comes from $y_1 \\geq1, y_2 \\geq2, ...,y_n \\geq n$.\n\nSo we are done.\n\nThe above solution was posted and copyrighted by Davron. The original thread for this problem can be found here: [https://aops.com/community/p509573]\n *)\n\nlemma \nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj_on f {1..}\"\nshows  \"\\<forall> n. (\\<Sum>k = 1..n. f k / k\\<^sup>2) \\<ge> (\\<Sum>k = 1..n. 1/k)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a function $f$ mapping natural numbers to natural numbers that is injective (i.e., no two different natural numbers map to the same number) for all natural numbers starting from 1, show that for all $n$, the sum from $k=1$ to $n$ of $\\frac{f(k)}{k^2}$ is greater than or equal to the sum from $k=1$ to $n$ of $\\frac{1}{k}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.45219388604164124,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"bij_betw f {1..} {1..}\"\nshows  \"(\\<Sum>k = 1..n. f k / (k * k)) \\<ge> (\\<Sum>k = 1..n. 1 / k)\"",
+        "formal solution": "(* ### Problem\n Let $f$ be an injective function from ${1,2,3,\\ldots}$ in itself. Prove that for any $n$ we have: $\\sum_{k=1}^{n} f(k)k^{-2} \\geq \\sum_{k=1}^{n} k^{-1}.$\n ### Proof\n We know that all the unknowns are integers, so the smallest one must greater or equal to 1.\n\nLet me denote the permutations of $(k_1,k_2,...,k_n)$ with $(y_1,y_2,...,y_n)=y_i (*)$.\n\nFrom the rearrangement's inequality we know that $\\text{Random Sum} \\geq \\text{Reversed Sum}$.\n\nWe will denote we permutations of $y_i$ in this form $y_n \\geq ...\\geq y_1$.\n\nSo we have $\\frac{k_1}{1^2}+\\frac{k_2}{2^2}+...+\\frac{k_n}{n^2} \\geq \\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2} \\geq 1+\\frac{1}{2}+...+\\frac{1}{n}$.\n\nLet's denote $\\frac{y_1}{1^2}+ \\frac{y_2}{2^2}+...+ \\frac{y_n}{n^2}=T$ and $1+\\frac{1}{2}+...+\\frac{1}{n}=S$.\n\nWe have $T \\geq S$. Which comes from $y_1 \\geq1, y_2 \\geq2, ...,y_n \\geq n$.\n\nSo we are done.\n\nThe above solution was posted and copyrighted by Davron. The original thread for this problem can be found here: [https://aops.com/community/p509573]\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"bij_betw f {1..} {1..}\"\nshows  \"(\\<Sum>k = 1..n. f k / (k * k)) \\<ge> (\\<Sum>k = 1..n. 1 / k)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f$ be a bijective function mapping the set of natural numbers to itself. Show that the sum from $k=1$ to $n$ of $\\frac{f(k)}{k^2}$ is greater than or equal to the sum from $k=1$ to $n$ of $\\frac{1}{k}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.47488173842430115,
+        "symbolic_score": 0.2
+    },
+    "oracle": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes \"inj f\" and \"f 0 = 0\"\nshows \"(\\<Sum> k \\<in>{1..<n+1}. 1 / k) \\<le> (\\<Sum> k \\<in>{1..<n+1}. (f k) / k^2)\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            2,
+            3
+        ],
+        "1": [
+            9,
+            4
+        ],
+        "2": [
+            5
+        ],
+        "3": [
+            6
+        ],
+        "4": [
+            7
+        ],
+        "5": [
+            8
+        ]
+    }
+}

@@ -1,0 +1,120 @@
+{
+    "problem_name": "aime_1997_p11",
+    "informal_statement": "Let $x=\\frac{\\sum\\limits_{n=1}^{44} \\cos n^\\circ}{\\sum\\limits_{n=1}^{44} \\sin n^\\circ}$. What is the greatest integer that does not exceed $100x$? Show that it is 241.",
+    "informal_proof": "A slight variant of the above solution, note that \n\n$$\\begin{eqnarray*}\n\\sum_{n=1}^{44} \\cos n + \\sum_{n=1}^{44} \\sin n &=& \\sum_{n=1}^{44} \\sin n + \\sin(90-n)\\\\\n&=& \\sqrt{2}\\sum_{n=1}^{44} \\cos(45-n) = \\sqrt{2}\\sum_{n=1}^{44} \\cos n\\\\\n\\sum_{n=1}^{44} \\sin n &=& (\\sqrt{2}-1)\\sum_{n=1}^{44} \\cos n\n\\end{eqnarray*}$$\n\nThis is the [[ratio]] we are looking for. $x$ reduces to $\\frac{1}{\\sqrt{2} - 1} = \\sqrt{2} + 1$, and $\\lfloor 100(\\sqrt{2} + 1)\\rfloor = 241$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nshows  \"floor (100 * x) = 241\"",
+        "formal solution": "(* ### Problem\n Let $x=\\frac{\\sum\\limits_{n=1}^{44} \\cos n^\\circ}{\\sum\\limits_{n=1}^{44} \\sin n^\\circ}$. What is the greatest integer that does not exceed $100x$? The final Answer is $241$\n ### Proof\n A slight variant of the above solution, note that \n\n$$\\begin{eqnarray*}\n\\sum_{n=1}^{44} \\cos n + \\sum_{n=1}^{44} \\sin n &=& \\sum_{n=1}^{44} \\sin n + \\sin(90-n)\\\\\n&=& \\sqrt{2}\\sum_{n=1}^{44} \\cos(45-n) = \\sqrt{2}\\sum_{n=1}^{44} \\cos n\\\\\n\\sum_{n=1}^{44} \\sin n &=& (\\sqrt{2}-1)\\sum_{n=1}^{44} \\cos n\n\\end{eqnarray*}$$\n\nThis is the [[ratio]] we are looking for. $x$ reduces to $\\frac{1}{\\sqrt{2} - 1} = \\sqrt{2} + 1$, and $\\lfloor 100(\\sqrt{2} + 1)\\rfloor = 241$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nshows  \"floor (100 * x) = 241\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Evaluate the expression $\\frac{\\sum_{n=1}^{44} \\cos(\\frac{n\\pi}{180})}{\\sum_{n=1}^{44} \\sin(\\frac{n\\pi}{180})}$. What is the floor of the result multiplied by 100? The final answer is 241.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9831339120864868,
+        "symbolic_score": 0.5
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x :: real and sum_cos sum_sin :: \"int \\<Rightarrow> real\"\nassumes h0 : \"sum_cos 44 = (\\<Sum>n\\<in>{1..44}. cos (real_of_int n * pi / 180))\"\nand h1 : \"sum_sin 44 = (\\<Sum>n\\<in>{1..44}. sin (real_of_int n * pi / 180))\"\nand h2 : \"x = sum_cos 44 / sum_sin 44\"\nshows  \"floor (100 * x) = 241\"",
+        "formal solution": "(* ### Problem\n Let $x=\\frac{\\sum\\limits_{n=1}^{44} \\cos n^\\circ}{\\sum\\limits_{n=1}^{44} \\sin n^\\circ}$. What is the greatest integer that does not exceed $100x$? The final Answer is $241$\n ### Proof\n A slight variant of the above solution, note that \n\n$$\\begin{eqnarray*}\n\\sum_{n=1}^{44} \\cos n + \\sum_{n=1}^{44} \\sin n &=& \\sum_{n=1}^{44} \\sin n + \\sin(90-n)\\\\\n&=& \\sqrt{2}\\sum_{n=1}^{44} \\cos(45-n) = \\sqrt{2}\\sum_{n=1}^{44} \\cos n\\\\\n\\sum_{n=1}^{44} \\sin n &=& (\\sqrt{2}-1)\\sum_{n=1}^{44} \\cos n\n\\end{eqnarray*}$$\n\nThis is the [[ratio]] we are looking for. $x$ reduces to $\\frac{1}{\\sqrt{2} - 1} = \\sqrt{2} + 1$, and $\\lfloor 100(\\sqrt{2} + 1)\\rfloor = 241$.\n *)\n\ntheorem\nfixes x :: real and sum_cos sum_sin :: \"int \\<Rightarrow> real\"\nassumes h0 : \"sum_cos 44 = (\\<Sum>n\\<in>{1..44}. cos (real_of_int n * pi / 180))\"\nand h1 : \"sum_sin 44 = (\\<Sum>n\\<in>{1..44}. sin (real_of_int n * pi / 180))\"\nand h2 : \"x = sum_cos 44 / sum_sin 44\"\nshows  \"floor (100 * x) = 241\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $x$ such that $x = \\frac{\\sum_{n=1}^{44} \\cos(\\frac{n\\pi}{180})}{\\sum_{n=1}^{44} \\sin(\\frac{n\\pi}{180})}$. What is the largest integer less than or equal to $100x$? The final answer is 241.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.97682124376297,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nshows  \"floor (100 * x) = 241\"",
+        "formal solution": "(* ### Problem\n Let $x=\\frac{\\sum\\limits_{n=1}^{44} \\cos n^\\circ}{\\sum\\limits_{n=1}^{44} \\sin n^\\circ}$. What is the greatest integer that does not exceed $100x$? The final Answer is $241$\n ### Proof\n A slight variant of the above solution, note that \n\n$$\\begin{eqnarray*}\n\\sum_{n=1}^{44} \\cos n + \\sum_{n=1}^{44} \\sin n &=& \\sum_{n=1}^{44} \\sin n + \\sin(90-n)\\\\\n&=& \\sqrt{2}\\sum_{n=1}^{44} \\cos(45-n) = \\sqrt{2}\\sum_{n=1}^{44} \\cos n\\\\\n\\sum_{n=1}^{44} \\sin n &=& (\\sqrt{2}-1)\\sum_{n=1}^{44} \\cos n\n\\end{eqnarray*}$$\n\nThis is the [[ratio]] we are looking for. $x$ reduces to $\\frac{1}{\\sqrt{2} - 1} = \\sqrt{2} + 1$, and $\\lfloor 100(\\sqrt{2} + 1)\\rfloor = 241$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nshows  \"floor (100 * x) = 241\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $x$ such that $x = \\frac{\\sum_{n=1}^{44} \\cos(\\frac{n\\pi}{180})}{\\sum_{n=1}^{44} \\sin(\\frac{n\\pi}{180})}$. What is the floor of $100x$? The final answer is $241$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9810881018638611,
+        "symbolic_score": 0.5
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nshows  \"floor (100 * x) = 241\"",
+        "formal solution": "(* ### Problem\n Let $x=\\frac{\\sum\\limits_{n=1}^{44} \\cos n^\\circ}{\\sum\\limits_{n=1}^{44} \\sin n^\\circ}$. What is the greatest integer that does not exceed $100x$? The final Answer is $241$\n ### Proof\n A slight variant of the above solution, note that \n\n$$\\begin{eqnarray*}\n\\sum_{n=1}^{44} \\cos n + \\sum_{n=1}^{44} \\sin n &=& \\sum_{n=1}^{44} \\sin n + \\sin(90-n)\\\\\n&=& \\sqrt{2}\\sum_{n=1}^{44} \\cos(45-n) = \\sqrt{2}\\sum_{n=1}^{44} \\cos n\\\\\n\\sum_{n=1}^{44} \\sin n &=& (\\sqrt{2}-1)\\sum_{n=1}^{44} \\cos n\n\\end{eqnarray*}$$\n\nThis is the [[ratio]] we are looking for. $x$ reduces to $\\frac{1}{\\sqrt{2} - 1} = \\sqrt{2} + 1$, and $\\lfloor 100(\\sqrt{2} + 1)\\rfloor = 241$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nshows  \"floor (100 * x) = 241\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $x$ such that $x = \\frac{\\sum_{n=1}^{44} \\cos(\\frac{n\\pi}{180})}{\\sum_{n=1}^{44} \\sin(\\frac{n\\pi}{180})}$. Calculate the floor of $100x$, which is 241.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.708508312702179,
+        "symbolic_score": 0.5
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nshows  \"floor (100 * x) = 241\"",
+        "formal solution": "(* ### Problem\n Let $x=\\frac{\\sum\\limits_{n=1}^{44} \\cos n^\\circ}{\\sum\\limits_{n=1}^{44} \\sin n^\\circ}$. What is the greatest integer that does not exceed $100x$? The final Answer is $241$\n ### Proof\n A slight variant of the above solution, note that \n\n$$\\begin{eqnarray*}\n\\sum_{n=1}^{44} \\cos n + \\sum_{n=1}^{44} \\sin n &=& \\sum_{n=1}^{44} \\sin n + \\sin(90-n)\\\\\n&=& \\sqrt{2}\\sum_{n=1}^{44} \\cos(45-n) = \\sqrt{2}\\sum_{n=1}^{44} \\cos n\\\\\n\\sum_{n=1}^{44} \\sin n &=& (\\sqrt{2}-1)\\sum_{n=1}^{44} \\cos n\n\\end{eqnarray*}$$\n\nThis is the [[ratio]] we are looking for. $x$ reduces to $\\frac{1}{\\sqrt{2} - 1} = \\sqrt{2} + 1$, and $\\lfloor 100(\\sqrt{2} + 1)\\rfloor = 241$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nshows  \"floor (100 * x) = 241\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Evaluate the expression $\\frac{\\sum_{n=1}^{44} \\cos(\\frac{n\\pi}{180})}{\\sum_{n=1}^{44} \\sin(\\frac{n\\pi}{180})}$, and find the greatest integer less than or equal to 100 times the value of the expression. The final answer is 241.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9936904311180115,
+        "symbolic_score": 0.5
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nand h1 : \"floor (100 * x) = 241\"\nshows  \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"",
+        "formal solution": "(* ### Problem\n Let $x=\\frac{\\sum\\limits_{n=1}^{44} \\cos n^\\circ}{\\sum\\limits_{n=1}^{44} \\sin n^\\circ}$. What is the greatest integer that does not exceed $100x$? The final Answer is $241$\n ### Proof\n A slight variant of the above solution, note that \n\n$$\\begin{eqnarray*}\n\\sum_{n=1}^{44} \\cos n + \\sum_{n=1}^{44} \\sin n &=& \\sum_{n=1}^{44} \\sin n + \\sin(90-n)\\\\\n&=& \\sqrt{2}\\sum_{n=1}^{44} \\cos(45-n) = \\sqrt{2}\\sum_{n=1}^{44} \\cos n\\\\\n\\sum_{n=1}^{44} \\sin n &=& (\\sqrt{2}-1)\\sum_{n=1}^{44} \\cos n\n\\end{eqnarray*}$$\n\nThis is the [[ratio]] we are looking for. $x$ reduces to $\\frac{1}{\\sqrt{2} - 1} = \\sqrt{2} + 1$, and $\\lfloor 100(\\sqrt{2} + 1)\\rfloor = 241$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nand h1 : \"floor (100 * x) = 241\"\nshows  \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $x$ be the ratio of the sum of the cosine of the first 44 positive integer multiples of $\\frac{\\pi}{180}$ to the sum of the sine of the first 44 positive integer multiples of $\\frac{\\pi}{180}$. If the floor of $100x$ is 241, what is the value of $x$? The final answer is $x = \\frac{\\sum_{n=1}^{44} \\cos (n * \\frac{\\pi}{180})}{\\sum_{n=1}^{44} \\sin (n * \\frac{\\pi}{180})}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.96779465675354,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n\\<in>{1..44}. cos (n * pi / 180)) / (\\<Sum>n\\<in>{1..44}. sin (n * pi / 180))\"\nand h1 : \"nat \\<lfloor> 100 * x \\<rfloor> = 241\"\nshows  \"nat \\<lfloor> 100 * x \\<rfloor> = 241\"",
+        "formal solution": "(* ### Problem\n Let $x=\\frac{\\sum\\limits_{n=1}^{44} \\cos n^\\circ}{\\sum\\limits_{n=1}^{44} \\sin n^\\circ}$. What is the greatest integer that does not exceed $100x$? The final Answer is $241$\n ### Proof\n A slight variant of the above solution, note that \n\n$$\\begin{eqnarray*}\n\\sum_{n=1}^{44} \\cos n + \\sum_{n=1}^{44} \\sin n &=& \\sum_{n=1}^{44} \\sin n + \\sin(90-n)\\\\\n&=& \\sqrt{2}\\sum_{n=1}^{44} \\cos(45-n) = \\sqrt{2}\\sum_{n=1}^{44} \\cos n\\\\\n\\sum_{n=1}^{44} \\sin n &=& (\\sqrt{2}-1)\\sum_{n=1}^{44} \\cos n\n\\end{eqnarray*}$$\n\nThis is the [[ratio]] we are looking for. $x$ reduces to $\\frac{1}{\\sqrt{2} - 1} = \\sqrt{2} + 1$, and $\\lfloor 100(\\sqrt{2} + 1)\\rfloor = 241$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n\\<in>{1..44}. cos (n * pi / 180)) / (\\<Sum>n\\<in>{1..44}. sin (n * pi / 180))\"\nand h1 : \"nat \\<lfloor> 100 * x \\<rfloor> = 241\"\nshows  \"nat \\<lfloor> 100 * x \\<rfloor> = 241\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $x$ such that $x = \\frac{\\sum_{n=1}^{44} \\cos(n \\pi / 180)}{\\sum_{n=1}^{44} \\sin(n \\pi / 180)}$ and the integer part of $100x$ is equal to 241. The final answer is 241.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9489829540252686,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nshows  \"floor (100 * x) = 241\"",
+        "formal solution": "(* ### Problem\n Let $x=\\frac{\\sum\\limits_{n=1}^{44} \\cos n^\\circ}{\\sum\\limits_{n=1}^{44} \\sin n^\\circ}$. What is the greatest integer that does not exceed $100x$? The final Answer is $241$\n ### Proof\n A slight variant of the above solution, note that \n\n$$\\begin{eqnarray*}\n\\sum_{n=1}^{44} \\cos n + \\sum_{n=1}^{44} \\sin n &=& \\sum_{n=1}^{44} \\sin n + \\sin(90-n)\\\\\n&=& \\sqrt{2}\\sum_{n=1}^{44} \\cos(45-n) = \\sqrt{2}\\sum_{n=1}^{44} \\cos n\\\\\n\\sum_{n=1}^{44} \\sin n &=& (\\sqrt{2}-1)\\sum_{n=1}^{44} \\cos n\n\\end{eqnarray*}$$\n\nThis is the [[ratio]] we are looking for. $x$ reduces to $\\frac{1}{\\sqrt{2} - 1} = \\sqrt{2} + 1$, and $\\lfloor 100(\\sqrt{2} + 1)\\rfloor = 241$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nshows  \"floor (100 * x) = 241\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $x$ such that $x = \\frac{\\sum_{n=1}^{44} \\cos(\\frac{n\\pi}{180})}{\\sum_{n=1}^{44} \\sin(\\frac{n\\pi}{180})}$. Calculate the floor of $100x$. The final answer is $241$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9772616028785706,
+        "symbolic_score": 0.5
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n = 1..44. cos (rad_of n)) / (\\<Sum>n = 1..44. sin (rad_of n))\"\nshows  \"floor (100 * x) = 241\"",
+        "formal solution": "(* ### Problem\n Let $x=\\frac{\\sum\\limits_{n=1}^{44} \\cos n^\\circ}{\\sum\\limits_{n=1}^{44} \\sin n^\\circ}$. What is the greatest integer that does not exceed $100x$? The final Answer is $241$\n ### Proof\n A slight variant of the above solution, note that \n\n$$\\begin{eqnarray*}\n\\sum_{n=1}^{44} \\cos n + \\sum_{n=1}^{44} \\sin n &=& \\sum_{n=1}^{44} \\sin n + \\sin(90-n)\\\\\n&=& \\sqrt{2}\\sum_{n=1}^{44} \\cos(45-n) = \\sqrt{2}\\sum_{n=1}^{44} \\cos n\\\\\n\\sum_{n=1}^{44} \\sin n &=& (\\sqrt{2}-1)\\sum_{n=1}^{44} \\cos n\n\\end{eqnarray*}$$\n\nThis is the [[ratio]] we are looking for. $x$ reduces to $\\frac{1}{\\sqrt{2} - 1} = \\sqrt{2} + 1$, and $\\lfloor 100(\\sqrt{2} + 1)\\rfloor = 241$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n = 1..44. cos (rad_of n)) / (\\<Sum>n = 1..44. sin (rad_of n))\"\nshows  \"floor (100 * x) = 241\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $x$ such that $x = \\frac{\\sum_{n=1}^{44} \\cos(n\u00b0)}{\\sum_{n=1}^{44} \\sin(n\u00b0)}$. What is the floor of $100x$? The final answer is 241.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9902205467224121,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nand h1 : \"floor (100 * x) = 241\"\nshows  \"241 = (GREATEST n. \\<exists> x. floor (100 * x) = n)\"",
+        "formal solution": "(* ### Problem\n Let $x=\\frac{\\sum\\limits_{n=1}^{44} \\cos n^\\circ}{\\sum\\limits_{n=1}^{44} \\sin n^\\circ}$. What is the greatest integer that does not exceed $100x$? The final Answer is $241$\n ### Proof\n A slight variant of the above solution, note that \n\n$$\\begin{eqnarray*}\n\\sum_{n=1}^{44} \\cos n + \\sum_{n=1}^{44} \\sin n &=& \\sum_{n=1}^{44} \\sin n + \\sin(90-n)\\\\\n&=& \\sqrt{2}\\sum_{n=1}^{44} \\cos(45-n) = \\sqrt{2}\\sum_{n=1}^{44} \\cos n\\\\\n\\sum_{n=1}^{44} \\sin n &=& (\\sqrt{2}-1)\\sum_{n=1}^{44} \\cos n\n\\end{eqnarray*}$$\n\nThis is the [[ratio]] we are looking for. $x$ reduces to $\\frac{1}{\\sqrt{2} - 1} = \\sqrt{2} + 1$, and $\\lfloor 100(\\sqrt{2} + 1)\\rfloor = 241$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>n=1..44. cos (n * pi / 180)) / (\\<Sum>n=1..44. sin (n * pi / 180))\"\nand h1 : \"floor (100 * x) = 241\"\nshows  \"241 = (GREATEST n. \\<exists> x. floor (100 * x) = n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $x$ is the ratio of the sum of the cosine of the angles from $1^\\circ$ to $44^\\circ$ over the sum of the sine of the same angles, and the greatest integer less than or equal to $100x$ is $241$. What is the largest integer $n$ such that there exists an $x$ for which the greatest integer less than or equal to $100x$ is equal to $n$? The final answer is $241$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9930986166000366,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes x :: real\nassumes h0 : \"x = (\\<Sum>(n::nat) =1..44. cos(n*pi/180)) / (\\<Sum>(n::nat) =1..44. sin(n*pi/180))\"\nshows \"floor (100*x) = 241\"",
+    "prediction": {
+        "0": [
+            0,
+            2,
+            3,
+            4,
+            7
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            5
+        ],
+        "3": [
+            6
+        ],
+        "4": [
+            8
+        ],
+        "5": [
+            9
+        ]
+    }
+}

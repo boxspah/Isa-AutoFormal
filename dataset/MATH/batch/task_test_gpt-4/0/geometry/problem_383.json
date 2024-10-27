@@ -1,0 +1,606 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real^2\"\nand angle :: \"real^2 \\<Rightarrow> real^2 \\<Rightarrow> real^2 \\<Rightarrow> real\"\nassumes h0 : \"M = midpoint B C\"\nand h1 : \"N = midpoint A C\"\nand h2 : \"O \\<in> perp_bisect B C \\<inter> perp_bisect A C\"\nand h3 : \"angle A C B = 47\"\nshows  \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real^2\"\nand angle :: \"real^2 \\<Rightarrow> real^2 \\<Rightarrow> real^2 \\<Rightarrow> real\"\nassumes h0 : \"M = midpoint B C\"\nand h1 : \"N = midpoint A C\"\nand h2 : \"O \\<in> perp_bisect B C \\<inter> perp_bisect A C\"\nand h3 : \"angle A C B = 47\"\nshows  \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given points A, B, and C on a plane, let M be the midpoint of line segment BC and N be the midpoint of line segment AC. Point O lies on the intersection of the perpendicular bisectors of line segments BC and AC. If the angle ACB is 47 degrees, find the measure of angle MON. The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8531310558319092,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes M N O A B C :: \"real*real\" and ang :: \"(real*real) \\<Rightarrow> (real*real) \\<Rightarrow> (real*real) \\<Rightarrow> real\"\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"perpendicular_bisector O B C\"\nand h3 : \"perpendicular_bisector O A C\"\nand h4 : \"ang C A B = 47\"\nshows  \"ang M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes M N O A B C :: \"real*real\" and ang :: \"(real*real) \\<Rightarrow> (real*real) \\<Rightarrow> (real*real) \\<Rightarrow> real\"\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"perpendicular_bisector O B C\"\nand h3 : \"perpendicular_bisector O A C\"\nand h4 : \"ang C A B = 47\"\nshows  \"ang M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a plane, M is the midpoint of line segment BC, N is the midpoint of line segment AC. Lines BC and AC have perpendicular bisectors that intersect at point O. If the angle CAB is 47 degrees, find the measure of angle MON. The answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.6384338140487671,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real2\"\nand \\<alpha> \\<beta> :: real\nassumes h0 : \"is_midpoint M (B, C)\"\nand h1 : \"is_midpoint N (A, C)\"\nand h2 : \"B \\<noteq> C\"\nand h3 : \"A \\<noteq> C\"\nand h4 : \"is_perpendicular (B, M) (A, N)\"\nand h5 : \"is_perpendicular (A, N) (B, C)\"\nand h6 : \"is_perpendicular (B, M) (A, C)\"\nand h7 : \"\\<alpha> = angle B C A\"\nand h8 : \"\\<beta> = angle M O N\"\nand h9 : \"\\<alpha> = 47\"\nshows  \"\\<beta> = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real2\"\nand \\<alpha> \\<beta> :: real\nassumes h0 : \"is_midpoint M (B, C)\"\nand h1 : \"is_midpoint N (A, C)\"\nand h2 : \"B \\<noteq> C\"\nand h3 : \"A \\<noteq> C\"\nand h4 : \"is_perpendicular (B, M) (A, N)\"\nand h5 : \"is_perpendicular (A, N) (B, C)\"\nand h6 : \"is_perpendicular (B, M) (A, C)\"\nand h7 : \"\\<alpha> = angle B C A\"\nand h8 : \"\\<beta> = angle M O N\"\nand h9 : \"\\<alpha> = 47\"\nshows  \"\\<beta> = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a plane, let $M$ and $N$ be the midpoints of segments $\\overline{BC}$ and $\\overline{AC}$ respectively, where $A$, $B$, and $C$ are distinct points. Also, let $O$ be a point such that lines $\\overline{BM}$, $\\overline{AN}$, $\\overline{BC}$, and $\\overline{AC}$ are all perpendicular to each other. If the measure of angle $BCA$ is 47 degrees, what is the measure of angle $MON$? The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.93660569190979,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle ABC with points M, N, and O such that M is the midpoint of BC, N is the midpoint of AC, and O is a point that is a perpendicular bisector of both BC and AC. If the measure of angle C is 47 degrees, what is the measure of angle MON? The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9180842638015747,
+        "symbolic_score": 0.2
+    },
+    "a_4": {
+        "formal problem": "theorem \nfixes A B C M N O :: point\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem \nfixes A B C M N O :: point\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that M is the midpoint of line segment BC, N is the midpoint of line segment AC, O is the perpendicular bisector of both line segments BC and AC, and angle C measures 47 degrees, find the measure of angle MON. The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9184727072715759,
+        "symbolic_score": 0.2
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real * real\"\nand angle :: \"(real * real) \\<Rightarrow> (real * real) \\<Rightarrow> (real * real) \\<Rightarrow> real\"\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle B C A = 47\"\nshows  \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real * real\"\nand angle :: \"(real * real) \\<Rightarrow> (real * real) \\<Rightarrow> (real * real) \\<Rightarrow> real\"\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle B C A = 47\"\nshows  \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a triangle ABC, M and N are the midpoints of BC and AC, respectively. O is the point where the perpendicular bisectors of BC and AC intersect. If the angle BCA is 47 degrees, what is the measure of angle MON? The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9685456156730652,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes angle_C angle_MON :: real\nassumes h0 : \"angle_C = 47\"\nand h1 : \"angle_MON = 180 - 2 * angle_C\"\nshows  \"angle_MON = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes angle_C angle_MON :: real\nassumes h0 : \"angle_C = 47\"\nand h1 : \"angle_MON = 180 - 2 * angle_C\"\nshows  \"angle_MON = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the value of angle C is 47 degrees, find the value of angle MON if it is calculated as 180 minus twice the value of angle C. The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9199187755584717,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "lemma\nfixes A B C M N O :: point\nand \u03b1 \u03b2 \u03b3 :: real\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\nlemma\nfixes A B C M N O :: point\nand \u03b1 \u03b2 \u03b3 :: real\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the points A, B, and C, with M being the midpoint between B and C, and N being the midpoint between A and C, and O being the perpendicular bisector of both line segments BC and AC. If the angle at point C is 47 degrees, find the angle between M, O, and N. The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.656879723072052,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes C MON :: real\nassumes h0 : \"C = 47\"\nand h1 : \"is_midpoint M BC\"\nand h2 : \"is_midpoint N AC\"\nand h3 : \"is_perpendicular_bisector BC O\"\nand h4 : \"is_perpendicular_bisector AC O\"\nshows  \"MON = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes C MON :: real\nassumes h0 : \"C = 47\"\nand h1 : \"is_midpoint M BC\"\nand h2 : \"is_midpoint N AC\"\nand h3 : \"is_perpendicular_bisector BC O\"\nand h4 : \"is_perpendicular_bisector AC O\"\nshows  \"MON = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle with vertices A, B, and C, where C = 47 units, M is the midpoint of BC, and N is the midpoint of AC. Also, there is a point O such that it is the perpendicular bisector of BC and AC. What is the length of the line segment MON? The final answer is 133 units.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9953357577323914,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem \nfixes A B C M N O :: \"real*real\" and angle_MON :: real\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector (line_through M O) B C\"\nand h3 : \"is_perpendicular_bisector (line_through N O) A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle_MON = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem \nfixes A B C M N O :: \"real*real\" and angle_MON :: real\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector (line_through M O) B C\"\nand h3 : \"is_perpendicular_bisector (line_through N O) A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle_MON = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a plane, points A, B, and C are vertices of a triangle. Points M and N are the midpoints of sides BC and AC, respectively. Line MO is a perpendicular bisector of line BC and line NO is a perpendicular bisector of line AC. If angle C is 47 degrees, what is the measure of angle MON? The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9462762475013733,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "133^\\circ",
+    "natural problem": "In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees.",
+    "natural solution": [
+        "The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.",
+        "Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);",
+        "B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);",
+        "label(\"$O$\", O, NW); [/asy]"
+    ],
+    "oracle": "TODO",
+    "prediction": {
+        "0": [
+            3,
+            4
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "str_pred": "[[3, 4], [0], [1], [2], [5], [6], [7], [8], [9]]",
+    "level": "Level 4",
+    "type": "Geometry",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"bet A M B \\<and> seg_length A M = seg_length M B\"\nand h1 : \"bet A N C \\<and> seg_length A N = seg_length N C\"\nand h2 : \"perpendicular M O B C\"\nand h3 : \"perpendicular N O A C\"\nand h4 : \"angle C = 47\"\nshows \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"bet A M B \\<and> seg_length A M = seg_length M B\"\nand h1 : \"bet A N C \\<and> seg_length A N = seg_length N C\"\nand h2 : \"perpendicular M O B C\"\nand h3 : \"perpendicular N O A C\"\nand h4 : \"angle C = 47\"\nshows \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with points M and N on sides AB and AC respectively, such that AM = MB and AN = NC. There are two perpendiculars drawn from points M and N to line BC and AC respectively, intersecting at point O. The angle at C is measured to be 47 degrees. What is the measure of the angle formed by the lines MO and NO? The answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.7042923985833064,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O \\<in> intriangle A B C\"\nand h4 : \"perpendicular_bisector B C \\<inter> perpendicular_bisector A C = {O}\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O \\<in> intriangle A B C\"\nand h4 : \"perpendicular_bisector B C \\<inter> perpendicular_bisector A C = {O}\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with distinct vertices A, B, and C, let M be the midpoint of BC, N be the midpoint of AC, and O be an interior point of the triangle ABC such that the perpendicular bisectors of BC and AC intersect at O. If the measure of angle C is 47 degrees, find the measure of angle MON. The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.8397034344604124,
+        "symbolic_score": 0.2
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: \"real^2\"\nand M N O :: \"real^2\"\nand a b c :: real\nassumes h0 : \"a = dist A B\"\nand h1 : \"b = dist B C\"\nand h2 : \"c = dist C A\"\nand h3 : \"M = midpoint B C\"\nand h4 : \"N = midpoint A C\"\nand h5 : \"O = intersection (perpendicular_bisector B C) (perpendicular_bisector A C)\"\nand h6 : \"angle C = 47\"\nshows \"angle MON = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C :: \"real^2\"\nand M N O :: \"real^2\"\nand a b c :: real\nassumes h0 : \"a = dist A B\"\nand h1 : \"b = dist B C\"\nand h2 : \"c = dist C A\"\nand h3 : \"M = midpoint B C\"\nand h4 : \"N = midpoint A C\"\nand h5 : \"O = intersection (perpendicular_bisector B C) (perpendicular_bisector A C)\"\nand h6 : \"angle C = 47\"\nshows \"angle MON = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with side lengths a, b, and c, where a is the distance between points A and B, b is the distance between points B and C, and c is the distance between points C and A. Let M be the midpoint of BC, N be the midpoint of AC, and O be the intersection of the perpendicular bisectors of BC and AC. If the angle at C is 47 degrees, find the measure of angle MON. The answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.5219824936408347,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: \"real^2\" and M N O :: \"real^2\"\nassumes h0 : \"A + C = 2 * N\"\nand h1 : \"B + C = 2 * M\"\nand h2 : \"orthogonal (A - C) (N - O)\"\nand h3 : \"orthogonal (B - C) (M - O)\"\nand h4 : \"angle (C - B) (C - A) = pi / 4\"\nshows \"angle (M - O) (N - O) = 133 / 180 * pi\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C :: \"real^2\" and M N O :: \"real^2\"\nassumes h0 : \"A + C = 2 * N\"\nand h1 : \"B + C = 2 * M\"\nand h2 : \"orthogonal (A - C) (N - O)\"\nand h3 : \"orthogonal (B - C) (M - O)\"\nand h4 : \"angle (C - B) (C - A) = pi / 4\"\nshows \"angle (M - O) (N - O) = 133 / 180 * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle with vertices A, B, and C in a two-dimensional space, and another triangle with vertices M, N, and O in the same space, we have the following conditions:\n\n1. The sum of vectors A and C is equal to twice the vector N.\n2. The sum of vectors B and C is equal to twice the vector M.\n3. The vector (A - C) is orthogonal to the vector (N - O), meaning they are perpendicular to each other.\n4. The vector (B - C) is orthogonal to the vector (M - O), also meaning they are perpendicular to each other.\n5. The angle between the vectors (C - B) and (C - A) is pi/4 radians.\n\nWe are asked to find the angle between the vectors (M - O) and (N - O). According to the theorem, this angle is 133/180 * pi radians.",
+        "syntax": 0,
+        "semantic_score": 0.8226162455112709,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O \\<in> interior_angle A B C\"\nand h4 : \"perpendicular_bisector B C \\<inter> perpendicular_bisector A C = {O}\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O \\<in> interior_angle A B C\"\nand h4 : \"perpendicular_bisector B C \\<inter> perpendicular_bisector A C = {O}\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with distinct vertices A, B, and C, let M be the midpoint of BC, N be the midpoint of AC, and O be an interior point of angle ABC such that the perpendicular bisectors of BC and AC intersect at O. If the measure of angle C is 47 degrees, find the measure of angle MON. The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.8291776805629301,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"\u00ac collinear {A, B, C}\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector B C = line O M\"\nand h4 : \"perpendicular_bisector A C = line O N\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"\u00ac collinear {A, B, C}\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector B C = line O M\"\nand h4 : \"perpendicular_bisector A C = line O N\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a non-collinear triangle ABC, where M is the midpoint of BC, N is the midpoint of AC, and O is the intersection point of the perpendicular bisectors of BC and AC, with the angle C having a measure of 47 degrees, find the measure of the angle MON. The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.879903667188426,
+        "symbolic_score": 0.2
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"triangle A B C\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector B C O\"\nand h4 : \"perpendicular_bisector A C O\"\nand h5 : \"interior_point O A B C\"\nand h6 : \"angle C = 47\"\nshows \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"triangle A B C\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector B C O\"\nand h4 : \"perpendicular_bisector A C O\"\nand h5 : \"interior_point O A B C\"\nand h6 : \"angle C = 47\"\nshows \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with a 47-degree angle at C, where M is the midpoint of BC, N is the midpoint of AC, and O is the intersection point of the perpendicular bisectors of BC and AC within the triangle. What is the measure of the angle MON? The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.8852735596085606,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O = intersection (perpendicular_bisector B C) (perpendicular_bisector A C)\"\nand h4 : \"\\<angle> C = 47\"\nshows \"\\<angle> M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O = intersection (perpendicular_bisector B C) (perpendicular_bisector A C)\"\nand h4 : \"\\<angle> C = 47\"\nshows \"\\<angle> M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with distinct vertices A, B, and C, where angle C measures 47 degrees, we construct the midpoints M and N of the sides BC and AC, respectively. We also construct the perpendicular bisectors of sides BC and AC, and find their intersection point O. What is the measure of angle MON? The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9620436272285552,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: point\nand M N O :: point\nand a b c :: real\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O \\<in> intriangle A B C\"\nand h4 : \"perpendicular_bisector B C \\<inter> perpendicular_bisector A C = {O}\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C :: point\nand M N O :: point\nand a b c :: real\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O \\<in> intriangle A B C\"\nand h4 : \"perpendicular_bisector B C \\<inter> perpendicular_bisector A C = {O}\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with distinct vertices A, B, and C, let M be the midpoint of BC, N be the midpoint of AC, and O be an interior point of the triangle ABC such that the perpendicular bisectors of BC and AC intersect at O. If the measure of angle C is 47 degrees, find the measure of angle MON. The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.8397034344604124,
+        "symbolic_score": 0.2
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"\u00ac collinear {A, B, C}\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector B C = line O M\"\nand h4 : \"perpendicular_bisector A C = line O N\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"\u00ac collinear {A, B, C}\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector B C = line O M\"\nand h4 : \"perpendicular_bisector A C = line O N\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a non-collinear triangle ABC, with M and N as the midpoints of BC and AC, respectively, and O as the intersection point of the perpendicular bisectors of BC and AC, where the measure of angle C is 47 degrees, find the measure of angle MON. The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.8253350419859649,
+        "symbolic_score": 0.2
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B C\"\nand h1 : \"midpoint B C M\"\nand h2 : \"midpoint A C N\"\nand h3 : \"perp_bisector A C \\<inter> perp_bisector B C = {O}\"\nand h4 : \"\\<angle> C = 47\"\nshows \"angle MON = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B C\"\nand h1 : \"midpoint B C M\"\nand h2 : \"midpoint A C N\"\nand h3 : \"perp_bisector A C \\<inter> perp_bisector B C = {O}\"\nand h4 : \"\\<angle> C = 47\"\nshows \"angle MON = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a triangle $ABC$, points $N$ and $M$ are the midpoints of sides $AC$ and $BC$, respectively. Point $O$ lies on the perpendicular bisectors of segments $AB$ and $BC$. If $\\angle C = 47^\\circ$, find $\\angle MON$, where $O$ is the intersection of the perpendicular bisectors of $AB$ and $BC$ and $M$, $N$, and $O$ are collinear.",
+        "syntax": 0,
+        "semantic_score": 0.12400169007791695,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B = N\"\nand h1 : \"midpoint B C = M\"\nand h2 : \"perp (line A N) (line B M)\"\nand h3 : \"perp (line C M) (line A N)\"\nand h4 : \"\\<angle> C = 47\"\nshows \"angle MON = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B = N\"\nand h1 : \"midpoint B C = M\"\nand h2 : \"perp (line A N) (line B M)\"\nand h3 : \"perp (line C M) (line A N)\"\nand h4 : \"\\<angle> C = 47\"\nshows \"angle MON = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three points $A$, $B$, and $C$, with $N$ the midpoint of $AB$ and $M$ the midpoint of $BC$, find the measure of angle $MON$ if $\\angle C$ is $47$ degrees and lines $AN$ and $BM$ are perpendicular to each other, as well as lines $CM$ and $AN$. The final answer is $133$ degrees.",
+        "syntax": 0,
+        "semantic_score": 0.8071604214877243,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B M\"\nand h1 : \"midpoint A C N\"\nand h2 : \"|BC| = |AC|\"\nand h3 : \"\\<angle C = 47\\<degree>\"\nand h4 : \"perp (A - C) (B - C)\"\nand h5 : \"perp (B - C) (A - B)\"\nand h6 : \"midpoint B C O\"\nand h7 : \"perp (O - B) (O - C)\"\nshows \"\\<angle MON = 133\\<degree>\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B M\"\nand h1 : \"midpoint A C N\"\nand h2 : \"|BC| = |AC|\"\nand h3 : \"\\<angle C = 47\\<degree>\"\nand h4 : \"perp (A - C) (B - C)\"\nand h5 : \"perp (B - C) (A - B)\"\nand h6 : \"midpoint B C O\"\nand h7 : \"perp (O - B) (O - C)\"\nshows \"\\<angle MON = 133\\<degree>\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a triangle $ABC$, let $M$ and $N$ be the midpoints of sides $AB$ and $AC$ respectively. Suppose that $BC=AC$, $\\angle C = 47^\\circ$, and $AB$ is perpendicular to $CB$. Moreover, let $O$ be the midpoint of segment $BC$ such that $BO$ is perpendicular to $OC$. Find the measure of $\\angle MON$. The final answer is $133^\\circ$.",
+        "syntax": 0,
+        "semantic_score": 0.9965594385628793,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint B C = M\"\nand h1 : \"midpoint A C = N\"\nand h2 : \"perp_bisector B C \\<inter> perp_bisector A C = {O}\"\nand h3 : \"angle C = pi / 4\"\nshows \"angle_between (M - O) (N - O) = pi - (4 * arctan (sqrt 2) - pi / 4)\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint B C = M\"\nand h1 : \"midpoint A C = N\"\nand h2 : \"perp_bisector B C \\<inter> perp_bisector A C = {O}\"\nand h3 : \"angle C = pi / 4\"\nshows \"angle_between (M - O) (N - O) = pi - (4 * arctan (sqrt 2) - pi / 4)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three points $A$, $B$, and $C$ in the plane, where $N$ is the midpoint of segment $AC$ and $M$ is the midpoint of segment $BC$. Let $O$ be the unique point in the plane that lies on both the perpendicular bisector of segment $AB$ and the perpendicular bisector of segment $AC$. If the measure of angle $C$ is $\\frac{\\pi}{4}$ radians, what is the measure of the angle formed by the vectors $\\overrightarrow{OM}$ and $\\overrightarrow{ON}$, in radians? The final answer is $\\pi - (4 \\arctan (\\sqrt 2) - \\frac{\\pi}{4})$.",
+        "syntax": 0,
+        "semantic_score": 0.9224053411307226,
+        "symbolic_score": 0.1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B C\"\nand h1 : \"midpoint A C M\"\nand h2 : \"midpoint B C N\"\nand h3 : \"orthogonal_bisector A B O\"\nand h4 : \"orthogonal_bisector A C O\"\nand h5 : \"\\<angle> C = pi * 47 / 180\"\nshows \"\\<angle> MON = pi * 133 / 180\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B C\"\nand h1 : \"midpoint A C M\"\nand h2 : \"midpoint B C N\"\nand h3 : \"orthogonal_bisector A B O\"\nand h4 : \"orthogonal_bisector A C O\"\nand h5 : \"\\<angle> C = pi * 47 / 180\"\nshows \"\\<angle> MON = pi * 133 / 180\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a triangle $ABC$, let $M$, $N$, and $O$ be the midpoints of sides $AC$, $BC$, and $AB$, respectively. Let $O$ be the intersection of the perpendicular bisectors of $AB$ and $AC$. Given that $\\angle C$ measures $47$ degrees, find the measure of $\\angle MON$ in degrees. The final answer is $133$ degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9151877465986953,
+        "symbolic_score": 0.1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B C\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector A B C\"\nand h4 : \"perpendicular_bisector M B C\"\nand h5 : \"angle C = 47\"\nshows \"angle (vector_angle (M - O) (N - O)) = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B C\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector A B C\"\nand h4 : \"perpendicular_bisector M B C\"\nand h5 : \"angle C = 47\"\nshows \"angle (vector_angle (M - O) (N - O)) = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a triangle $ABC$ with $M, N$ and $O$ being points on the plane, it is given that $A$, $B$, $C$, $M$, and $N$ are midpoints of line segments $BC$, $AC$, $AB$, $BC$, and $AC$ respectively. Additionally, the perpendicular bisectors of $AB$ and $BC$ intersect at $C$. Given that the angle $C$ measures $47$ degrees, find the angle between the vectors $\\vec{M}-\\vec{O}$ and $\\vec{N}-\\vec{O}$, measured in degrees, and the answer is $133$.",
+        "syntax": 0,
+        "semantic_score": 0.9524111483913267,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B M\"\nand h1 : \"midpoint A C N\"\nand h2 : \"perp (B - C) (midpoint B C)\"\nand h3 : \"perp (A - C) (midpoint A C)\"\nand h4 : \"angle C A B = pi / 4\"\nshows \"angle M O N = 133 / (180 / pi)\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B M\"\nand h1 : \"midpoint A C N\"\nand h2 : \"perp (B - C) (midpoint B C)\"\nand h3 : \"perp (A - C) (midpoint A C)\"\nand h4 : \"angle C A B = pi / 4\"\nshows \"angle M O N = 133 / (180 / pi)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a triangle $ABC$, let $M$ and $N$ be the midpoints of sides $AB$ and $AC$, respectively. Let $O$ be a point such that $BOC$ is a right angle. If $CACB$ is a $45$-degree angle, find the measure of angle $MON$ in degrees, rounded to the nearest whole number. The final answer is $133^\\circ$.",
+        "syntax": 0,
+        "semantic_score": 0.9491609774244892,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint B C = M\"\nand h1 : \"midpoint A C = N\"\nand h2 : \"perp (B - C) O \\<and> perp (A - C) O\"\nand h3 : \"angle C = pi / 4\"\nshows \"angle M O N = 133 / 180 * pi\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint B C = M\"\nand h1 : \"midpoint A C = N\"\nand h2 : \"perp (B - C) O \\<and> perp (A - C) O\"\nand h3 : \"angle C = pi / 4\"\nshows \"angle M O N = 133 / 180 * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle $ABC$ with midpoints $M$ and $N$ of sides $BC$ and $AC$ respectively, and a point $O$ such that $BO$ and $AO$ are perpendicular to $BC$ and $AC$ respectively, and $\\angle C = \\frac{\\pi}{4}$, find the measure of $\\angle MON$ in radians. The final answer is $\\frac{133}{180}\\pi$.",
+        "syntax": 0,
+        "semantic_score": 0.7789358127248948,
+        "symbolic_score": 0.1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B = O\"\nand h1 : \"midpoint B C = M\"\nand h2 : \"midpoint A C = N\"\nand h3 : \"perp Bisector {A, C} \\<inter> perp Bisector {B, C} = {O}\"\nand h4 : \"\\<angle> C = pi / 4\"\nshows \"angle MON = pi * 133 / 180\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B = O\"\nand h1 : \"midpoint B C = M\"\nand h2 : \"midpoint A C = N\"\nand h3 : \"perp Bisector {A, C} \\<inter> perp Bisector {B, C} = {O}\"\nand h4 : \"\\<angle> C = pi / 4\"\nshows \"angle MON = pi * 133 / 180\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle $ABC$ with midpoints $O$, $M$, and $N$, where $O$ is the intersection of the perpendicular bisectors of $AC$ and $BC$. If $\\angle C$ is $45$ degrees, what is the measure of $\\angle MON$ in radians, rounded to the nearest hundredth? The final answer is approximately $2.33$ radians.",
+        "syntax": 0,
+        "semantic_score": 0.6326123091313154,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B = M\"\nand h1 : \"midpoint B C = M\"\nand h2 : \"midpoint A C = N\"\nand h3 : \"midpoint C B = N\"\nand h4 : \"perp (B - C) (O - midpoint B C)\"\nand h5 : \"perp (A - C) (O - midpoint A C)\"\nand h6 : \"\\<angle> C = 47\"\nshows \"angle MON = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real^2\"\nassumes h0 : \"midpoint A B = M\"\nand h1 : \"midpoint B C = M\"\nand h2 : \"midpoint A C = N\"\nand h3 : \"midpoint C B = N\"\nand h4 : \"perp (B - C) (O - midpoint B C)\"\nand h5 : \"perp (A - C) (O - midpoint A C)\"\nand h6 : \"\\<angle> C = 47\"\nshows \"angle MON = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have points $A$, $B$, and $C$ in the plane. Let $M$ be the midpoint of segment $AB$, $N$ be the midpoint of segment $AC$, and $O$ be a point in the plane. If $BM=CM$, $CN=BN$, $\\angle C=47^\\circ$, and $\\overline{BC} \\perp \\overline{OM}$ and $\\overline{AC} \\perp \\overline{ON}$, then $\\angle MON=133^\\circ$.",
+        "syntax": 0,
+        "semantic_score": 0.2688625406517293,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek": {
+        "0": [
+            8,
+            1
+        ],
+        "1": [
+            9,
+            5
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            4
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            3,
+            4
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real^2\"\nand angle :: \"real^2 \\<Rightarrow> real^2 \\<Rightarrow> real^2 \\<Rightarrow> real\"\nassumes h0 : \"M = midpoint B C\"\nand h1 : \"N = midpoint A C\"\nand h2 : \"O \\<in> perp_bisect B C \\<inter> perp_bisect A C\"\nand h3 : \"angle A C B = 47\"\nshows  \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real^2\"\nand angle :: \"real^2 \\<Rightarrow> real^2 \\<Rightarrow> real^2 \\<Rightarrow> real\"\nassumes h0 : \"M = midpoint B C\"\nand h1 : \"N = midpoint A C\"\nand h2 : \"O \\<in> perp_bisect B C \\<inter> perp_bisect A C\"\nand h3 : \"angle A C B = 47\"\nshows  \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given points A, B, and C on a plane, let M be the midpoint of line segment BC and N be the midpoint of line segment AC. Point O lies on the intersection of the perpendicular bisectors of line segments BC and AC. If the angle ACB is 47 degrees, find the measure of angle MON. The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9552648319446077,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes M N O A B C :: \"real*real\" and ang :: \"(real*real) \\<Rightarrow> (real*real) \\<Rightarrow> (real*real) \\<Rightarrow> real\"\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"perpendicular_bisector O B C\"\nand h3 : \"perpendicular_bisector O A C\"\nand h4 : \"ang C A B = 47\"\nshows  \"ang M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes M N O A B C :: \"real*real\" and ang :: \"(real*real) \\<Rightarrow> (real*real) \\<Rightarrow> (real*real) \\<Rightarrow> real\"\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"perpendicular_bisector O B C\"\nand h3 : \"perpendicular_bisector O A C\"\nand h4 : \"ang C A B = 47\"\nshows  \"ang M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a plane, M is the midpoint of line segment BC, N is the midpoint of line segment AC. Lines BC and AC have perpendicular bisectors that intersect at point O. If the angle CAB is 47 degrees, find the measure of angle MON. The answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9478656314066491,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real2\"\nand \\<alpha> \\<beta> :: real\nassumes h0 : \"is_midpoint M (B, C)\"\nand h1 : \"is_midpoint N (A, C)\"\nand h2 : \"B \\<noteq> C\"\nand h3 : \"A \\<noteq> C\"\nand h4 : \"is_perpendicular (B, M) (A, N)\"\nand h5 : \"is_perpendicular (A, N) (B, C)\"\nand h6 : \"is_perpendicular (B, M) (A, C)\"\nand h7 : \"\\<alpha> = angle B C A\"\nand h8 : \"\\<beta> = angle M O N\"\nand h9 : \"\\<alpha> = 47\"\nshows  \"\\<beta> = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real2\"\nand \\<alpha> \\<beta> :: real\nassumes h0 : \"is_midpoint M (B, C)\"\nand h1 : \"is_midpoint N (A, C)\"\nand h2 : \"B \\<noteq> C\"\nand h3 : \"A \\<noteq> C\"\nand h4 : \"is_perpendicular (B, M) (A, N)\"\nand h5 : \"is_perpendicular (A, N) (B, C)\"\nand h6 : \"is_perpendicular (B, M) (A, C)\"\nand h7 : \"\\<alpha> = angle B C A\"\nand h8 : \"\\<beta> = angle M O N\"\nand h9 : \"\\<alpha> = 47\"\nshows  \"\\<beta> = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a plane, let $M$ and $N$ be the midpoints of segments $\\overline{BC}$ and $\\overline{AC}$ respectively, where $A$, $B$, and $C$ are distinct points. Also, let $O$ be a point such that lines $\\overline{BM}$, $\\overline{AN}$, $\\overline{BC}$, and $\\overline{AC}$ are all perpendicular to each other. If the measure of angle $BCA$ is 47 degrees, what is the measure of angle $MON$? The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9128860939969882,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle ABC with points M, N, and O such that M is the midpoint of BC, N is the midpoint of AC, and O is a point that is a perpendicular bisector of both BC and AC. If the measure of angle C is 47 degrees, what is the measure of angle MON? The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9626606750128345,
+        "symbolic_score": 0.2
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem \nfixes A B C M N O :: point\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem \nfixes A B C M N O :: point\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that M is the midpoint of line segment BC, N is the midpoint of line segment AC, O is the perpendicular bisector of both line segments BC and AC, and angle C measures 47 degrees, find the measure of angle MON. The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.953820034460201,
+        "symbolic_score": 0.2
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes A B C M N O :: \"real * real\"\nand angle :: \"(real * real) \\<Rightarrow> (real * real) \\<Rightarrow> (real * real) \\<Rightarrow> real\"\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle B C A = 47\"\nshows  \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: \"real * real\"\nand angle :: \"(real * real) \\<Rightarrow> (real * real) \\<Rightarrow> (real * real) \\<Rightarrow> real\"\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle B C A = 47\"\nshows  \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a triangle ABC, M and N are the midpoints of BC and AC, respectively. O is the point where the perpendicular bisectors of BC and AC intersect. If the angle BCA is 47 degrees, what is the measure of angle MON? The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9658746492016144,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes angle_C angle_MON :: real\nassumes h0 : \"angle_C = 47\"\nand h1 : \"angle_MON = 180 - 2 * angle_C\"\nshows  \"angle_MON = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes angle_C angle_MON :: real\nassumes h0 : \"angle_C = 47\"\nand h1 : \"angle_MON = 180 - 2 * angle_C\"\nshows  \"angle_MON = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the value of angle C is 47 degrees, find the value of angle MON if it is calculated as 180 minus twice the value of angle C. The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8754521774720672,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "lemma\nfixes A B C M N O :: point\nand \u03b1 \u03b2 \u03b3 :: real\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\nlemma\nfixes A B C M N O :: point\nand \u03b1 \u03b2 \u03b3 :: real\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector O B C\"\nand h3 : \"is_perpendicular_bisector O A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the points A, B, and C, with M being the midpoint between B and C, and N being the midpoint between A and C, and O being the perpendicular bisector of both line segments BC and AC. If the angle at point C is 47 degrees, find the angle between M, O, and N. The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9330240524066956,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes C MON :: real\nassumes h0 : \"C = 47\"\nand h1 : \"is_midpoint M BC\"\nand h2 : \"is_midpoint N AC\"\nand h3 : \"is_perpendicular_bisector BC O\"\nand h4 : \"is_perpendicular_bisector AC O\"\nshows  \"MON = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes C MON :: real\nassumes h0 : \"C = 47\"\nand h1 : \"is_midpoint M BC\"\nand h2 : \"is_midpoint N AC\"\nand h3 : \"is_perpendicular_bisector BC O\"\nand h4 : \"is_perpendicular_bisector AC O\"\nshows  \"MON = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle with vertices A, B, and C, where C = 47 units, M is the midpoint of BC, and N is the midpoint of AC. Also, there is a point O such that it is the perpendicular bisector of BC and AC. What is the length of the line segment MON? The final answer is 133 units.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.917487860390149,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem \nfixes A B C M N O :: \"real*real\" and angle_MON :: real\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector (line_through M O) B C\"\nand h3 : \"is_perpendicular_bisector (line_through N O) A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle_MON = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is 133^\\circ\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\n Therefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\n B = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\n label(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem \nfixes A B C M N O :: \"real*real\" and angle_MON :: real\nassumes h0 : \"is_midpoint M B C\"\nand h1 : \"is_midpoint N A C\"\nand h2 : \"is_perpendicular_bisector (line_through M O) B C\"\nand h3 : \"is_perpendicular_bisector (line_through N O) A C\"\nand h4 : \"angle C = 47\"\nshows  \"angle_MON = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a plane, points A, B, and C are vertices of a triangle. Points M and N are the midpoints of sides BC and AC, respectively. Line MO is a perpendicular bisector of line BC and line NO is a perpendicular bisector of line AC. If angle C is 47 degrees, what is the measure of angle MON? The final answer is 133 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9450820592791899,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"bet A M B \\<and> seg_length A M = seg_length M B\"\nand h1 : \"bet A N C \\<and> seg_length A N = seg_length N C\"\nand h2 : \"perpendicular M O B C\"\nand h3 : \"perpendicular N O A C\"\nand h4 : \"angle C = 47\"\nshows \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"bet A M B \\<and> seg_length A M = seg_length M B\"\nand h1 : \"bet A N C \\<and> seg_length A N = seg_length N C\"\nand h2 : \"perpendicular M O B C\"\nand h3 : \"perpendicular N O A C\"\nand h4 : \"angle C = 47\"\nshows \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with points M and N on sides AB and AC respectively, such that AM = MB and AN = NC. There are two perpendiculars drawn from points M and N to line BC and AC respectively, intersecting at point O. The angle at C is measured to be 47 degrees. What is the measure of the angle formed by the lines MO and NO? The answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9124765966502406,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O \\<in> intriangle A B C\"\nand h4 : \"perpendicular_bisector B C \\<inter> perpendicular_bisector A C = {O}\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O \\<in> intriangle A B C\"\nand h4 : \"perpendicular_bisector B C \\<inter> perpendicular_bisector A C = {O}\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with distinct vertices A, B, and C, let M be the midpoint of BC, N be the midpoint of AC, and O be an interior point of the triangle ABC such that the perpendicular bisectors of BC and AC intersect at O. If the measure of angle C is 47 degrees, find the measure of angle MON. The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9692960240872786,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real^2\"\nand M N O :: \"real^2\"\nand a b c :: real\nassumes h0 : \"a = dist A B\"\nand h1 : \"b = dist B C\"\nand h2 : \"c = dist C A\"\nand h3 : \"M = midpoint B C\"\nand h4 : \"N = midpoint A C\"\nand h5 : \"O = intersection (perpendicular_bisector B C) (perpendicular_bisector A C)\"\nand h6 : \"angle C = 47\"\nshows \"angle MON = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C :: \"real^2\"\nand M N O :: \"real^2\"\nand a b c :: real\nassumes h0 : \"a = dist A B\"\nand h1 : \"b = dist B C\"\nand h2 : \"c = dist C A\"\nand h3 : \"M = midpoint B C\"\nand h4 : \"N = midpoint A C\"\nand h5 : \"O = intersection (perpendicular_bisector B C) (perpendicular_bisector A C)\"\nand h6 : \"angle C = 47\"\nshows \"angle MON = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with side lengths a, b, and c, where a is the distance between points A and B, b is the distance between points B and C, and c is the distance between points C and A. Let M be the midpoint of BC, N be the midpoint of AC, and O be the intersection of the perpendicular bisectors of BC and AC. If the angle at C is 47 degrees, find the measure of angle MON. The answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9310016943249197,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: \"real^2\" and M N O :: \"real^2\"\nassumes h0 : \"A + C = 2 * N\"\nand h1 : \"B + C = 2 * M\"\nand h2 : \"orthogonal (A - C) (N - O)\"\nand h3 : \"orthogonal (B - C) (M - O)\"\nand h4 : \"angle (C - B) (C - A) = pi / 4\"\nshows \"angle (M - O) (N - O) = 133 / 180 * pi\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C :: \"real^2\" and M N O :: \"real^2\"\nassumes h0 : \"A + C = 2 * N\"\nand h1 : \"B + C = 2 * M\"\nand h2 : \"orthogonal (A - C) (N - O)\"\nand h3 : \"orthogonal (B - C) (M - O)\"\nand h4 : \"angle (C - B) (C - A) = pi / 4\"\nshows \"angle (M - O) (N - O) = 133 / 180 * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle with vertices A, B, and C in a two-dimensional space, and another triangle with vertices M, N, and O in the same space, we have the following conditions:\n\n1. The sum of vectors A and C is equal to twice the vector N.\n2. The sum of vectors B and C is equal to twice the vector M.\n3. The vector (A - C) is orthogonal to the vector (N - O), meaning they are perpendicular to each other.\n4. The vector (B - C) is orthogonal to the vector (M - O), also meaning they are perpendicular to each other.\n5. The angle between the vectors (C - B) and (C - A) is pi/4 radians.\n\nWe are asked to find the angle between the vectors (M - O) and (N - O). According to the theorem, this angle is 133/180 * pi radians.",
+        "syntax": 0,
+        "semantic_score": 0.7960500767247947,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O \\<in> interior_angle A B C\"\nand h4 : \"perpendicular_bisector B C \\<inter> perpendicular_bisector A C = {O}\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O \\<in> interior_angle A B C\"\nand h4 : \"perpendicular_bisector B C \\<inter> perpendicular_bisector A C = {O}\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with distinct vertices A, B, and C, let M be the midpoint of BC, N be the midpoint of AC, and O be an interior point of angle ABC such that the perpendicular bisectors of BC and AC intersect at O. If the measure of angle C is 47 degrees, find the measure of angle MON. The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.967829855772353,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"\u00ac collinear {A, B, C}\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector B C = line O M\"\nand h4 : \"perpendicular_bisector A C = line O N\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"\u00ac collinear {A, B, C}\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector B C = line O M\"\nand h4 : \"perpendicular_bisector A C = line O N\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a non-collinear triangle ABC, where M is the midpoint of BC, N is the midpoint of AC, and O is the intersection point of the perpendicular bisectors of BC and AC, with the angle C having a measure of 47 degrees, find the measure of the angle MON. The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.960498196429987,
+        "symbolic_score": 0.2
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"triangle A B C\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector B C O\"\nand h4 : \"perpendicular_bisector A C O\"\nand h5 : \"interior_point O A B C\"\nand h6 : \"angle C = 47\"\nshows \"angle M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"triangle A B C\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector B C O\"\nand h4 : \"perpendicular_bisector A C O\"\nand h5 : \"interior_point O A B C\"\nand h6 : \"angle C = 47\"\nshows \"angle M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with a 47-degree angle at C, where M is the midpoint of BC, N is the midpoint of AC, and O is the intersection point of the perpendicular bisectors of BC and AC within the triangle. What is the measure of the angle MON? The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9616402656549932,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O = intersection (perpendicular_bisector B C) (perpendicular_bisector A C)\"\nand h4 : \"\\<angle> C = 47\"\nshows \"\\<angle> M O N = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O = intersection (perpendicular_bisector B C) (perpendicular_bisector A C)\"\nand h4 : \"\\<angle> C = 47\"\nshows \"\\<angle> M O N = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with distinct vertices A, B, and C, where angle C measures 47 degrees, we construct the midpoints M and N of the sides BC and AC, respectively. We also construct the perpendicular bisectors of sides BC and AC, and find their intersection point O. What is the measure of angle MON? The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9559617578852152,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: point\nand M N O :: point\nand a b c :: real\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O \\<in> intriangle A B C\"\nand h4 : \"perpendicular_bisector B C \\<inter> perpendicular_bisector A C = {O}\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C :: point\nand M N O :: point\nand a b c :: real\nassumes h0 : \"A \\<noteq> B \\<and> A \\<noteq> C \\<and> B \\<noteq> C\"\nand h1 : \"M = midpoint B C\"\nand h2 : \"N = midpoint A C\"\nand h3 : \"O \\<in> intriangle A B C\"\nand h4 : \"perpendicular_bisector B C \\<inter> perpendicular_bisector A C = {O}\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle ABC with distinct vertices A, B, and C, let M be the midpoint of BC, N be the midpoint of AC, and O be an interior point of the triangle ABC such that the perpendicular bisectors of BC and AC intersect at O. If the measure of angle C is 47 degrees, find the measure of angle MON. The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9692960240872786,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C M N O :: point\nassumes h0 : \"\u00ac collinear {A, B, C}\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector B C = line O M\"\nand h4 : \"perpendicular_bisector A C = line O N\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"",
+        "formal solution": "(* ### Problem\n In triangle $ABC$, $M$ and $N$ are the midpoints of $BC$ and $AC$, respectively.  The perpendicular bisectors of $BC$ and $AC$ intersect at a point $O$ inside the triangle.  If $\\angle C = 47^\\circ$, then find the measure of $\\angle MON$, in degrees. The final Answer is $133^\\circ$\n ### Proof\n The angles in quadrilateral $MONC$ add up to $360^\\circ$. Two of these angles, namely $\\angle OMC$ and $\\angle ONC$, are right.\nTherefore, $\\angle MON + \\angle MCN = 180^\\circ$, which means $\\angle MON = 180^\\circ - \\angle MCN = 180^\\circ - 47^\\circ = \\boxed{133^\\circ}$. [asy] unitsize(3 cm); pair A, B, C, M, N, O; O = (0,0); A = dir(140);\nB = dir(200); C = dir(-20); M = (B + C)/2; N = (A + C)/2; draw(A--B--C--cycle); draw(M--O--N); label(\"$A$\", A, dir(90)); label(\"$B$\", B, SW); label(\"$C$\", C, SE); label(\"$M$\", M, S); label(\"$N$\", N, NE);\nlabel(\"$O$\", O, NW); [/asy]\n *)\n\ntheorem\nfixes A B C M N O :: point\nassumes h0 : \"\u00ac collinear {A, B, C}\"\nand h1 : \"midpoint M B C\"\nand h2 : \"midpoint N A C\"\nand h3 : \"perpendicular_bisector B C = line O M\"\nand h4 : \"perpendicular_bisector A C = line O N\"\nand h5 : \"measure (angle C) = 47\"\nshows \"measure (angle M O N) = 133\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a non-collinear triangle ABC, with M and N as the midpoints of BC and AC, respectively, and O as the intersection point of the perpendicular bisectors of BC and AC, where the measure of angle C is 47 degrees, find the measure of angle MON. The final answer is 133 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9626157067173351,
+        "symbolic_score": 0.2
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            9,
+            5
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            4
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

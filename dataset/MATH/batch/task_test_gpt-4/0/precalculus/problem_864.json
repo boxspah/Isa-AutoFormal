@@ -1,0 +1,146 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes r :: real\nassumes h0 : \"r \\<ge> 0\"\nand h1 : \"r - 50 = 0\"\nand h2 : \"r - 29 = 0\"\nand h3 : \"r - 41 = 0\"\nshows  \"r = 27 \\<or> r = 93\"",
+        "formal solution": "(* ### Problem\n A sphere, lying in the octant where all the coordinates are nonnegative, is tangent to the $xy$-, $xz$-, and $yz$-plane.  A point on the sphere has distances of 50, 29, and 41 from the $xy$-, $xz$-, and $yz$-planes, respectively.  Enter all possible values for the radius of the sphere, separated by commas. The final Answer is 27,93\n ### Proof\n Let $P$ be the point lying on the sphere, so $P = (41,29,50).$ [asy] import three; size(180); currentprojection = perspective(6,3,2); triple I = (1,0,0), J = (0,1,0), K = (0,0,1), O = (0,0,0), P = (2,1.5,1);\n draw(surface((0,0,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(0,0,2.5)--(2.5,0,2.5)--(2.5,0,0)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--cycle),paleyellow,nolight);\n draw((2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--(2.5,0,2.5)--cycle); draw(O--3*I, Arrow3(6)); draw(O--3*J, Arrow3(6)); draw(O--3*K, Arrow3(6)); draw(P--(0,1.5,1),dashed); draw(P--(2,0,1),dashed);\n draw(P--(2,1.5,0),dashed); label(\"$x$\", 3.2*I); label(\"$y$\", 3.2*J); label(\"$z$\", 3.2*K); label(\"$50$\", (2,1.5,1/2), W); label(\"$29$\", (2,1.5/2,1), S); label(\"$41$\", (2/2,1.5,1), SE); dot(\"$P$\", P, N);\n dot((0,1.5,1)); dot((2,0,1)); dot((2,1.5,0)); [/asy]\n Let $r$ be the radius of the sphere. Since the sphere is tangent to all three planes, its center is at $(r,r,r).$  Hence, \\[(r - 41)^2 + (r - 29)^2 + (r - 50)^2 = r^2.\\]This simplifies to $r^2 - 120r + 2511 = 0,$ which factors as $(r - 27)(r - 93) = 0.$  Hence, the possible values of $r$ are $\\boxed{27,93}.$\n *)\n\ntheorem\nfixes r :: real\nassumes h0 : \"r \\<ge> 0\"\nand h1 : \"r - 50 = 0\"\nand h2 : \"r - 29 = 0\"\nand h3 : \"r - 41 = 0\"\nshows  \"r = 27 \\<or> r = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of a non-negative real number $r$ that satisfies the equations $r - 50 = 0$, $r - 29 = 0$, and $r - 41 = 0$. The final answer is $r = 27$ or $r = 93$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9132787585258484,
+        "symbolic_score": 0.2
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes r :: real\nassumes h0 : \"r \\<ge> 0\"\nand h1 : \"distance_from_xy_plane = 50\"\nand h2 : \"distance_from_xz_plane = 29\"\nand h3 : \"distance_from_yz_plane = 41\"\nshows  \"r = 27 \\<or> r = 93\"",
+        "formal solution": "(* ### Problem\n A sphere, lying in the octant where all the coordinates are nonnegative, is tangent to the $xy$-, $xz$-, and $yz$-plane.  A point on the sphere has distances of 50, 29, and 41 from the $xy$-, $xz$-, and $yz$-planes, respectively.  Enter all possible values for the radius of the sphere, separated by commas. The final Answer is 27,93\n ### Proof\n Let $P$ be the point lying on the sphere, so $P = (41,29,50).$ [asy] import three; size(180); currentprojection = perspective(6,3,2); triple I = (1,0,0), J = (0,1,0), K = (0,0,1), O = (0,0,0), P = (2,1.5,1);\n draw(surface((0,0,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(0,0,2.5)--(2.5,0,2.5)--(2.5,0,0)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--cycle),paleyellow,nolight);\n draw((2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--(2.5,0,2.5)--cycle); draw(O--3*I, Arrow3(6)); draw(O--3*J, Arrow3(6)); draw(O--3*K, Arrow3(6)); draw(P--(0,1.5,1),dashed); draw(P--(2,0,1),dashed);\n draw(P--(2,1.5,0),dashed); label(\"$x$\", 3.2*I); label(\"$y$\", 3.2*J); label(\"$z$\", 3.2*K); label(\"$50$\", (2,1.5,1/2), W); label(\"$29$\", (2,1.5/2,1), S); label(\"$41$\", (2/2,1.5,1), SE); dot(\"$P$\", P, N);\n dot((0,1.5,1)); dot((2,0,1)); dot((2,1.5,0)); [/asy]\n Let $r$ be the radius of the sphere. Since the sphere is tangent to all three planes, its center is at $(r,r,r).$  Hence, \\[(r - 41)^2 + (r - 29)^2 + (r - 50)^2 = r^2.\\]This simplifies to $r^2 - 120r + 2511 = 0,$ which factors as $(r - 27)(r - 93) = 0.$  Hence, the possible values of $r$ are $\\boxed{27,93}.$\n *)\n\ntheorem\nfixes r :: real\nassumes h0 : \"r \\<ge> 0\"\nand h1 : \"distance_from_xy_plane = 50\"\nand h2 : \"distance_from_xz_plane = 29\"\nand h3 : \"distance_from_yz_plane = 41\"\nshows  \"r = 27 \\<or> r = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the distances from the x-y plane, x-z plane, and y-z plane are 50, 29, and 41 units respectively, find the possible values for the radius $r$. The final answer is $r=27$ or $r=93$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9350259900093079,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes r :: real\nassumes h0 : \"\\<exists> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> (x - r)^2 + (y - r)^2 + (z - r)^2 = r^2\"\nand h1 : \"\\<exists> r. \\<forall> x y z. (x - r)^2 + y^2 = 50^2 \\<and> x^2 + (y - r)^2 = 29^2 \\<and> x^2 + y^2 = (z - r)^2\"\nshows  \"r = 27 \\<or> r = 93\"",
+        "formal solution": "(* ### Problem\n A sphere, lying in the octant where all the coordinates are nonnegative, is tangent to the $xy$-, $xz$-, and $yz$-plane.  A point on the sphere has distances of 50, 29, and 41 from the $xy$-, $xz$-, and $yz$-planes, respectively.  Enter all possible values for the radius of the sphere, separated by commas. The final Answer is 27,93\n ### Proof\n Let $P$ be the point lying on the sphere, so $P = (41,29,50).$ [asy] import three; size(180); currentprojection = perspective(6,3,2); triple I = (1,0,0), J = (0,1,0), K = (0,0,1), O = (0,0,0), P = (2,1.5,1);\n draw(surface((0,0,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(0,0,2.5)--(2.5,0,2.5)--(2.5,0,0)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--cycle),paleyellow,nolight);\n draw((2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--(2.5,0,2.5)--cycle); draw(O--3*I, Arrow3(6)); draw(O--3*J, Arrow3(6)); draw(O--3*K, Arrow3(6)); draw(P--(0,1.5,1),dashed); draw(P--(2,0,1),dashed);\n draw(P--(2,1.5,0),dashed); label(\"$x$\", 3.2*I); label(\"$y$\", 3.2*J); label(\"$z$\", 3.2*K); label(\"$50$\", (2,1.5,1/2), W); label(\"$29$\", (2,1.5/2,1), S); label(\"$41$\", (2/2,1.5,1), SE); dot(\"$P$\", P, N);\n dot((0,1.5,1)); dot((2,0,1)); dot((2,1.5,0)); [/asy]\n Let $r$ be the radius of the sphere. Since the sphere is tangent to all three planes, its center is at $(r,r,r).$  Hence, \\[(r - 41)^2 + (r - 29)^2 + (r - 50)^2 = r^2.\\]This simplifies to $r^2 - 120r + 2511 = 0,$ which factors as $(r - 27)(r - 93) = 0.$  Hence, the possible values of $r$ are $\\boxed{27,93}.$\n *)\n\ntheorem\nfixes r :: real\nassumes h0 : \"\\<exists> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> (x - r)^2 + (y - r)^2 + (z - r)^2 = r^2\"\nand h1 : \"\\<exists> r. \\<forall> x y z. (x - r)^2 + y^2 = 50^2 \\<and> x^2 + (y - r)^2 = 29^2 \\<and> x^2 + y^2 = (z - r)^2\"\nshows  \"r = 27 \\<or> r = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the possible values of $r$ that satisfy the system of equations $(x - r)^2 + y^2 = 50^2$, $x^2 + (y - r)^2 = 29^2$, and $x^2 + y^2 = (z - r)^2$, where $x$, $y$, and $z$ are all non-negative real numbers. The possible values of $r$ are $27$ or $93$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7437325716018677,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes R :: real and d1 d2 d3 :: real\nassumes h0 : \"d1 = 50\"\nand h1 : \"d2 = 29\"\nand h2 : \"d3 = 41\"\nand h3 : \"R powr 2 = d1 powr 2 + d2 powr 2 + d3 powr 2\"\nshows  \"R = 27 \\<or> R = 93\"",
+        "formal solution": "(* ### Problem\n A sphere, lying in the octant where all the coordinates are nonnegative, is tangent to the $xy$-, $xz$-, and $yz$-plane.  A point on the sphere has distances of 50, 29, and 41 from the $xy$-, $xz$-, and $yz$-planes, respectively.  Enter all possible values for the radius of the sphere, separated by commas. The final Answer is 27,93\n ### Proof\n Let $P$ be the point lying on the sphere, so $P = (41,29,50).$ [asy] import three; size(180); currentprojection = perspective(6,3,2); triple I = (1,0,0), J = (0,1,0), K = (0,0,1), O = (0,0,0), P = (2,1.5,1);\n draw(surface((0,0,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(0,0,2.5)--(2.5,0,2.5)--(2.5,0,0)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--cycle),paleyellow,nolight);\n draw((2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--(2.5,0,2.5)--cycle); draw(O--3*I, Arrow3(6)); draw(O--3*J, Arrow3(6)); draw(O--3*K, Arrow3(6)); draw(P--(0,1.5,1),dashed); draw(P--(2,0,1),dashed);\n draw(P--(2,1.5,0),dashed); label(\"$x$\", 3.2*I); label(\"$y$\", 3.2*J); label(\"$z$\", 3.2*K); label(\"$50$\", (2,1.5,1/2), W); label(\"$29$\", (2,1.5/2,1), S); label(\"$41$\", (2/2,1.5,1), SE); dot(\"$P$\", P, N);\n dot((0,1.5,1)); dot((2,0,1)); dot((2,1.5,0)); [/asy]\n Let $r$ be the radius of the sphere. Since the sphere is tangent to all three planes, its center is at $(r,r,r).$  Hence, \\[(r - 41)^2 + (r - 29)^2 + (r - 50)^2 = r^2.\\]This simplifies to $r^2 - 120r + 2511 = 0,$ which factors as $(r - 27)(r - 93) = 0.$  Hence, the possible values of $r$ are $\\boxed{27,93}.$\n *)\n\ntheorem\nfixes R :: real and d1 d2 d3 :: real\nassumes h0 : \"d1 = 50\"\nand h1 : \"d2 = 29\"\nand h2 : \"d3 = 41\"\nand h3 : \"R powr 2 = d1 powr 2 + d2 powr 2 + d3 powr 2\"\nshows  \"R = 27 \\<or> R = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three distances $d1 = 50$, $d2 = 29$, $d3 = 41$. Find the value of $R$ that satisfies the equation $R^2 = d1^2 + d2^2 + d3^2$. The possible solutions are $R = 27$ or $R = 93$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7700238823890686,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes r :: real\nassumes h0 : \"r > 0\"\nand h1 : \"r \\<le> min (50 - r) (min (29 - r) (41 - r))\"\nshows  \"r = 27 \\<or> r = 93\"",
+        "formal solution": "(* ### Problem\n A sphere, lying in the octant where all the coordinates are nonnegative, is tangent to the $xy$-, $xz$-, and $yz$-plane.  A point on the sphere has distances of 50, 29, and 41 from the $xy$-, $xz$-, and $yz$-planes, respectively.  Enter all possible values for the radius of the sphere, separated by commas. The final Answer is 27,93\n ### Proof\n Let $P$ be the point lying on the sphere, so $P = (41,29,50).$ [asy] import three; size(180); currentprojection = perspective(6,3,2); triple I = (1,0,0), J = (0,1,0), K = (0,0,1), O = (0,0,0), P = (2,1.5,1);\n draw(surface((0,0,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(0,0,2.5)--(2.5,0,2.5)--(2.5,0,0)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--cycle),paleyellow,nolight);\n draw((2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--(2.5,0,2.5)--cycle); draw(O--3*I, Arrow3(6)); draw(O--3*J, Arrow3(6)); draw(O--3*K, Arrow3(6)); draw(P--(0,1.5,1),dashed); draw(P--(2,0,1),dashed);\n draw(P--(2,1.5,0),dashed); label(\"$x$\", 3.2*I); label(\"$y$\", 3.2*J); label(\"$z$\", 3.2*K); label(\"$50$\", (2,1.5,1/2), W); label(\"$29$\", (2,1.5/2,1), S); label(\"$41$\", (2/2,1.5,1), SE); dot(\"$P$\", P, N);\n dot((0,1.5,1)); dot((2,0,1)); dot((2,1.5,0)); [/asy]\n Let $r$ be the radius of the sphere. Since the sphere is tangent to all three planes, its center is at $(r,r,r).$  Hence, \\[(r - 41)^2 + (r - 29)^2 + (r - 50)^2 = r^2.\\]This simplifies to $r^2 - 120r + 2511 = 0,$ which factors as $(r - 27)(r - 93) = 0.$  Hence, the possible values of $r$ are $\\boxed{27,93}.$\n *)\n\ntheorem\nfixes r :: real\nassumes h0 : \"r > 0\"\nand h1 : \"r \\<le> min (50 - r) (min (29 - r) (41 - r))\"\nshows  \"r = 27 \\<or> r = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a positive number $r$ which is less than or equal to the minimum of the three numbers $50 - r$, $29 - r$, and $41 - r$. The possible values of $r$ are $27$ or $93$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7882934212684631,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes r :: real\nassumes h0 : \"r \\<ge> 0\"\nand h1 : \"50 - r >= 0\"\nand h2 : \"29 - r >= 0\"\nand h3 : \"41 - r >= 0\"\nshows  \"r = 27 \\<or> r = 93\"",
+        "formal solution": "(* ### Problem\n A sphere, lying in the octant where all the coordinates are nonnegative, is tangent to the $xy$-, $xz$-, and $yz$-plane.  A point on the sphere has distances of 50, 29, and 41 from the $xy$-, $xz$-, and $yz$-planes, respectively.  Enter all possible values for the radius of the sphere, separated by commas. The final Answer is 27,93\n ### Proof\n Let $P$ be the point lying on the sphere, so $P = (41,29,50).$ [asy] import three; size(180); currentprojection = perspective(6,3,2); triple I = (1,0,0), J = (0,1,0), K = (0,0,1), O = (0,0,0), P = (2,1.5,1);\n draw(surface((0,0,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(0,0,2.5)--(2.5,0,2.5)--(2.5,0,0)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--cycle),paleyellow,nolight);\n draw((2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--(2.5,0,2.5)--cycle); draw(O--3*I, Arrow3(6)); draw(O--3*J, Arrow3(6)); draw(O--3*K, Arrow3(6)); draw(P--(0,1.5,1),dashed); draw(P--(2,0,1),dashed);\n draw(P--(2,1.5,0),dashed); label(\"$x$\", 3.2*I); label(\"$y$\", 3.2*J); label(\"$z$\", 3.2*K); label(\"$50$\", (2,1.5,1/2), W); label(\"$29$\", (2,1.5/2,1), S); label(\"$41$\", (2/2,1.5,1), SE); dot(\"$P$\", P, N);\n dot((0,1.5,1)); dot((2,0,1)); dot((2,1.5,0)); [/asy]\n Let $r$ be the radius of the sphere. Since the sphere is tangent to all three planes, its center is at $(r,r,r).$  Hence, \\[(r - 41)^2 + (r - 29)^2 + (r - 50)^2 = r^2.\\]This simplifies to $r^2 - 120r + 2511 = 0,$ which factors as $(r - 27)(r - 93) = 0.$  Hence, the possible values of $r$ are $\\boxed{27,93}.$\n *)\n\ntheorem\nfixes r :: real\nassumes h0 : \"r \\<ge> 0\"\nand h1 : \"50 - r >= 0\"\nand h2 : \"29 - r >= 0\"\nand h3 : \"41 - r >= 0\"\nshows  \"r = 27 \\<or> r = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a non-negative real number $r$ such that $r$ is less than or equal to $50$, $29$, and $41$. The possible values for $r$ are $27$ or $93$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7220426797866821,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes r :: real\nassumes h0 : \"r \\<ge> 0\"\nand h1 : \"distance_to_plane (sphere_center r) xy_plane = 50\"\nand h2 : \"distance_to_plane (sphere_center r) xz_plane = 29\"\nand h3 : \"distance_to_plane (sphere_center r) yz_plane = 41\"\nshows  \"r \\<in> {27, 93}\"",
+        "formal solution": "(* ### Problem\n A sphere, lying in the octant where all the coordinates are nonnegative, is tangent to the $xy$-, $xz$-, and $yz$-plane.  A point on the sphere has distances of 50, 29, and 41 from the $xy$-, $xz$-, and $yz$-planes, respectively.  Enter all possible values for the radius of the sphere, separated by commas. The final Answer is 27,93\n ### Proof\n Let $P$ be the point lying on the sphere, so $P = (41,29,50).$ [asy] import three; size(180); currentprojection = perspective(6,3,2); triple I = (1,0,0), J = (0,1,0), K = (0,0,1), O = (0,0,0), P = (2,1.5,1);\n draw(surface((0,0,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(0,0,2.5)--(2.5,0,2.5)--(2.5,0,0)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--cycle),paleyellow,nolight);\n draw((2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--(2.5,0,2.5)--cycle); draw(O--3*I, Arrow3(6)); draw(O--3*J, Arrow3(6)); draw(O--3*K, Arrow3(6)); draw(P--(0,1.5,1),dashed); draw(P--(2,0,1),dashed);\n draw(P--(2,1.5,0),dashed); label(\"$x$\", 3.2*I); label(\"$y$\", 3.2*J); label(\"$z$\", 3.2*K); label(\"$50$\", (2,1.5,1/2), W); label(\"$29$\", (2,1.5/2,1), S); label(\"$41$\", (2/2,1.5,1), SE); dot(\"$P$\", P, N);\n dot((0,1.5,1)); dot((2,0,1)); dot((2,1.5,0)); [/asy]\n Let $r$ be the radius of the sphere. Since the sphere is tangent to all three planes, its center is at $(r,r,r).$  Hence, \\[(r - 41)^2 + (r - 29)^2 + (r - 50)^2 = r^2.\\]This simplifies to $r^2 - 120r + 2511 = 0,$ which factors as $(r - 27)(r - 93) = 0.$  Hence, the possible values of $r$ are $\\boxed{27,93}.$\n *)\n\ntheorem\nfixes r :: real\nassumes h0 : \"r \\<ge> 0\"\nand h1 : \"distance_to_plane (sphere_center r) xy_plane = 50\"\nand h2 : \"distance_to_plane (sphere_center r) xz_plane = 29\"\nand h3 : \"distance_to_plane (sphere_center r) yz_plane = 41\"\nshows  \"r \\<in> {27, 93}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sphere with radius $r$ (where $r \\geq 0$) and the distances from the sphere's center to the xy, xz, and yz planes are 50, 29, and 41 respectively, find the possible values for $r$. The final answer is $r$ belongs to the set {27, 93}.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9455658197402954,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes radius :: real\nassumes h0 : \"radius \\<ge> 0\"\nand h1 : \"\\<exists> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> sqrt ((x - 50)^2 + (y - 29)^2 + (z - 41)^2) = radius\"\nshows  \"radius = 27 \\<or> radius = 93\"",
+        "formal solution": "(* ### Problem\n A sphere, lying in the octant where all the coordinates are nonnegative, is tangent to the $xy$-, $xz$-, and $yz$-plane.  A point on the sphere has distances of 50, 29, and 41 from the $xy$-, $xz$-, and $yz$-planes, respectively.  Enter all possible values for the radius of the sphere, separated by commas. The final Answer is 27,93\n ### Proof\n Let $P$ be the point lying on the sphere, so $P = (41,29,50).$ [asy] import three; size(180); currentprojection = perspective(6,3,2); triple I = (1,0,0), J = (0,1,0), K = (0,0,1), O = (0,0,0), P = (2,1.5,1);\n draw(surface((0,0,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(0,0,2.5)--(2.5,0,2.5)--(2.5,0,0)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--cycle),paleyellow,nolight);\n draw((2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--(2.5,0,2.5)--cycle); draw(O--3*I, Arrow3(6)); draw(O--3*J, Arrow3(6)); draw(O--3*K, Arrow3(6)); draw(P--(0,1.5,1),dashed); draw(P--(2,0,1),dashed);\n draw(P--(2,1.5,0),dashed); label(\"$x$\", 3.2*I); label(\"$y$\", 3.2*J); label(\"$z$\", 3.2*K); label(\"$50$\", (2,1.5,1/2), W); label(\"$29$\", (2,1.5/2,1), S); label(\"$41$\", (2/2,1.5,1), SE); dot(\"$P$\", P, N);\n dot((0,1.5,1)); dot((2,0,1)); dot((2,1.5,0)); [/asy]\n Let $r$ be the radius of the sphere. Since the sphere is tangent to all three planes, its center is at $(r,r,r).$  Hence, \\[(r - 41)^2 + (r - 29)^2 + (r - 50)^2 = r^2.\\]This simplifies to $r^2 - 120r + 2511 = 0,$ which factors as $(r - 27)(r - 93) = 0.$  Hence, the possible values of $r$ are $\\boxed{27,93}.$\n *)\n\ntheorem\nfixes radius :: real\nassumes h0 : \"radius \\<ge> 0\"\nand h1 : \"\\<exists> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> sqrt ((x - 50)^2 + (y - 29)^2 + (z - 41)^2) = radius\"\nshows  \"radius = 27 \\<or> radius = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a radius of a sphere centered at (50, 29, 41) such that there exists a point in the first octant on the sphere. The radius could either be 27 or 93.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8709502220153809,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes r :: real\nassumes h0 : \"r \\<ge> 0\"\nand h1 : \"\\<exists> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> r = sqrt (x^2 + y^2 + z^2)\"\nand h2 : \"\\<exists> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> sqrt (x^2 + y^2) = 50 \\<and> sqrt (x^2 + z^2) = 29 \\<and> sqrt (y^2 + z^2) = 41\"\nshows  \"r = 27 \\<or> r = 93\"",
+        "formal solution": "(* ### Problem\n A sphere, lying in the octant where all the coordinates are nonnegative, is tangent to the $xy$-, $xz$-, and $yz$-plane.  A point on the sphere has distances of 50, 29, and 41 from the $xy$-, $xz$-, and $yz$-planes, respectively.  Enter all possible values for the radius of the sphere, separated by commas. The final Answer is 27,93\n ### Proof\n Let $P$ be the point lying on the sphere, so $P = (41,29,50).$ [asy] import three; size(180); currentprojection = perspective(6,3,2); triple I = (1,0,0), J = (0,1,0), K = (0,0,1), O = (0,0,0), P = (2,1.5,1);\n draw(surface((0,0,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(0,0,2.5)--(2.5,0,2.5)--(2.5,0,0)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--cycle),paleyellow,nolight);\n draw((2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--(2.5,0,2.5)--cycle); draw(O--3*I, Arrow3(6)); draw(O--3*J, Arrow3(6)); draw(O--3*K, Arrow3(6)); draw(P--(0,1.5,1),dashed); draw(P--(2,0,1),dashed);\n draw(P--(2,1.5,0),dashed); label(\"$x$\", 3.2*I); label(\"$y$\", 3.2*J); label(\"$z$\", 3.2*K); label(\"$50$\", (2,1.5,1/2), W); label(\"$29$\", (2,1.5/2,1), S); label(\"$41$\", (2/2,1.5,1), SE); dot(\"$P$\", P, N);\n dot((0,1.5,1)); dot((2,0,1)); dot((2,1.5,0)); [/asy]\n Let $r$ be the radius of the sphere. Since the sphere is tangent to all three planes, its center is at $(r,r,r).$  Hence, \\[(r - 41)^2 + (r - 29)^2 + (r - 50)^2 = r^2.\\]This simplifies to $r^2 - 120r + 2511 = 0,$ which factors as $(r - 27)(r - 93) = 0.$  Hence, the possible values of $r$ are $\\boxed{27,93}.$\n *)\n\ntheorem\nfixes r :: real\nassumes h0 : \"r \\<ge> 0\"\nand h1 : \"\\<exists> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> r = sqrt (x^2 + y^2 + z^2)\"\nand h2 : \"\\<exists> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> sqrt (x^2 + y^2) = 50 \\<and> sqrt (x^2 + z^2) = 29 \\<and> sqrt (y^2 + z^2) = 41\"\nshows  \"r = 27 \\<or> r = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a non-negative number $r$ such that $r$ can be expressed as the square root of the sum of squares of three non-negative numbers $x$, $y$, and $z$. Moreover, the square root of the sum of squares of $x$ and $y$ is 50, the square root of the sum of squares of $x$ and $z$ is 29, and the square root of the sum of squares of $y$ and $z$ is 41. The possible values for $r$ are 27 and 93.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7854116559028625,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes r :: real and d1 d2 d3 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. d1 x = abs(50 - x)\"\nand h1 : \"\\<forall> x. d2 x = abs(29 - x)\"\nand h2 : \"\\<forall> x. d3 x = abs(41 - x)\"\nand h3 : \"\\<forall> x. d1 x = d2 x\"\nand h4 : \"\\<forall> x. d2 x = d3 x\"\nand h5 : \"\\<forall> x. d3 x = r\"\nshows  \"r = 27 \\<or> r = 93\"",
+        "formal solution": "(* ### Problem\n A sphere, lying in the octant where all the coordinates are nonnegative, is tangent to the $xy$-, $xz$-, and $yz$-plane.  A point on the sphere has distances of 50, 29, and 41 from the $xy$-, $xz$-, and $yz$-planes, respectively.  Enter all possible values for the radius of the sphere, separated by commas. The final Answer is 27,93\n ### Proof\n Let $P$ be the point lying on the sphere, so $P = (41,29,50).$ [asy] import three; size(180); currentprojection = perspective(6,3,2); triple I = (1,0,0), J = (0,1,0), K = (0,0,1), O = (0,0,0), P = (2,1.5,1);\n draw(surface((0,0,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(0,0,2.5)--(2.5,0,2.5)--(2.5,0,0)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--cycle),paleyellow,nolight);\n draw((2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--(2.5,0,2.5)--cycle); draw(O--3*I, Arrow3(6)); draw(O--3*J, Arrow3(6)); draw(O--3*K, Arrow3(6)); draw(P--(0,1.5,1),dashed); draw(P--(2,0,1),dashed);\n draw(P--(2,1.5,0),dashed); label(\"$x$\", 3.2*I); label(\"$y$\", 3.2*J); label(\"$z$\", 3.2*K); label(\"$50$\", (2,1.5,1/2), W); label(\"$29$\", (2,1.5/2,1), S); label(\"$41$\", (2/2,1.5,1), SE); dot(\"$P$\", P, N);\n dot((0,1.5,1)); dot((2,0,1)); dot((2,1.5,0)); [/asy]\n Let $r$ be the radius of the sphere. Since the sphere is tangent to all three planes, its center is at $(r,r,r).$  Hence, \\[(r - 41)^2 + (r - 29)^2 + (r - 50)^2 = r^2.\\]This simplifies to $r^2 - 120r + 2511 = 0,$ which factors as $(r - 27)(r - 93) = 0.$  Hence, the possible values of $r$ are $\\boxed{27,93}.$\n *)\n\ntheorem\nfixes r :: real and d1 d2 d3 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. d1 x = abs(50 - x)\"\nand h1 : \"\\<forall> x. d2 x = abs(29 - x)\"\nand h2 : \"\\<forall> x. d3 x = abs(41 - x)\"\nand h3 : \"\\<forall> x. d1 x = d2 x\"\nand h4 : \"\\<forall> x. d2 x = d3 x\"\nand h5 : \"\\<forall> x. d3 x = r\"\nshows  \"r = 27 \\<or> r = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If three distances from points to the numbers 50, 29, and 41 on the real number line are all equal to each other and to a real number $r$, find $r$. The possible values of $r$ are 27 and 93.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7251715064048767,
+        "symbolic_score": 0.2
+    },
+    "natural answer": "27,93",
+    "natural problem": "A sphere, lying in the octant where all the coordinates are nonnegative, is tangent to the $xy$-, $xz$-, and $yz$-plane.  A point on the sphere has distances of 50, 29, and 41 from the $xy$-, $xz$-, and $yz$-planes, respectively.  Enter all possible values for the radius of the sphere, separated by commas.",
+    "natural solution": [
+        "Let $P$ be the point lying on the sphere, so $P = (41,29,50).$ [asy] import three; size(180); currentprojection = perspective(6,3,2); triple I = (1,0,0), J = (0,1,0), K = (0,0,1), O = (0,0,0), P = (2,1.5,1);",
+        "draw(surface((0,0,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(0,0,2.5)--(2.5,0,2.5)--(2.5,0,0)--cycle),paleyellow,nolight); draw(surface((0,0,0)--(2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--cycle),paleyellow,nolight);",
+        "draw((2.5,0,0)--(2.5,2.5,0)--(0,2.5,0)--(0,2.5,2.5)--(0,0,2.5)--(2.5,0,2.5)--cycle); draw(O--3*I, Arrow3(6)); draw(O--3*J, Arrow3(6)); draw(O--3*K, Arrow3(6)); draw(P--(0,1.5,1),dashed); draw(P--(2,0,1),dashed);",
+        "draw(P--(2,1.5,0),dashed); label(\"$x$\", 3.2*I); label(\"$y$\", 3.2*J); label(\"$z$\", 3.2*K); label(\"$50$\", (2,1.5,1/2), W); label(\"$29$\", (2,1.5/2,1), S); label(\"$41$\", (2/2,1.5,1), SE); dot(\"$P$\", P, N);",
+        "dot((0,1.5,1)); dot((2,0,1)); dot((2,1.5,0)); [/asy]",
+        "Let $r$ be the radius of the sphere. Since the sphere is tangent to all three planes, its center is at $(r,r,r).$  Hence, \\[(r - 41)^2 + (r - 29)^2 + (r - 50)^2 = r^2.\\]This simplifies to $r^2 - 120r + 2511 = 0,$ which factors as $(r - 27)(r - 93) = 0.$  Hence, the possible values of $r$ are $\\boxed{27,93}.$"
+    ],
+    "oracle": "theorem\nfixes r :: real\nassumes h0 : \"\\<exists> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> (x - r)^2 + (y - r)^2 + (z - r)^2 = r^2\"\nand h1 : \"let (z,y,x)=(50,29,41) in (x - r)^2 + (y - r)^2 + (z - r)^2 = r^2\"\nshows \"r = 27 \\<or> r = 93\"",
+    "prediction": {
+        "0": [
+            0,
+            9
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ]
+    },
+    "str_pred": "[[0, 9], [1], [2], [3], [4], [5], [6], [7], [8]]",
+    "level": "Level 5",
+    "type": "Precalculus"
+}

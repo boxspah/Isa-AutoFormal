@@ -1,0 +1,60 @@
+{
+    "natural problem": "A stack of logs has 12 logs on the bottom row, and one less in each successive row, ending with three logs at the top. How many logs are in the stack?",
+    "natural solution": [
+        "We can manually add $3+4+\\cdots+12$, or we can use the formula for the sum of an arithmetic series.",
+        "We multiply the average of the first and last terms $\\frac{3+12}{2}$ by the number of terms, $12-3+1=10$. The value of the sum is $\\frac{15}{2}\\cdot10=15\\cdot5=75$, so there are $\\boxed{75}$ logs in the stack."
+    ],
+    "natural answer": "75",
+    "a_0": {
+        "formal problem": "theorem\nfixes logs :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"logs 1 = 12\"\nand h1 : \"\\<forall>n>1. logs n = logs (n-1) - 1\"\nand h2 : \"logs 10 = 3\"\nshows  \"(\\<Sum>i=1..10. logs i) = 75\"",
+        "formal solution": "(* ### Problem\n A stack of logs has 12 logs on the bottom row, and one less in each successive row, ending with three logs at the top. How many logs are in the stack? The final Answer is 75\n ### Proof\n We can manually add $3+4+\\cdots+12$, or we can use the formula for the sum of an arithmetic series.\n We multiply the average of the first and last terms $\\frac{3+12}{2}$ by the number of terms, $12-3+1=10$. The value of the sum is $\\frac{15}{2}\\cdot10=15\\cdot5=75$, so there are $\\boxed{75}$ logs in the stack.\n *)\n\ntheorem\nfixes logs :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"logs 1 = 12\"\nand h1 : \"\\<forall>n>1. logs n = logs (n-1) - 1\"\nand h2 : \"logs 10 = 3\"\nshows  \"(\\<Sum>i=1..10. logs i) = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the first term of a sequence is 12 and each subsequent term is 1 less than the preceding term, find the sum of the first 10 terms if the 10th term is 3. The final answer is 75."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and sum_seq :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_seq n = (n * (n + 1)) div 2\"\nand h1 : \"n = 10\"\nshows  \"sum_seq n = 75\"",
+        "formal solution": "(* ### Problem\n A stack of logs has 12 logs on the bottom row, and one less in each successive row, ending with three logs at the top. How many logs are in the stack? The final Answer is 75\n ### Proof\n We can manually add $3+4+\\cdots+12$, or we can use the formula for the sum of an arithmetic series.\n We multiply the average of the first and last terms $\\frac{3+12}{2}$ by the number of terms, $12-3+1=10$. The value of the sum is $\\frac{15}{2}\\cdot10=15\\cdot5=75$, so there are $\\boxed{75}$ logs in the stack.\n *)\n\ntheorem\nfixes n :: nat and sum_seq :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_seq n = (n * (n + 1)) div 2\"\nand h1 : \"n = 10\"\nshows  \"sum_seq n = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the first 10 natural numbers. The final answer is 75."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = (\\<Sum>i=3..12. i)\"\nshows  \"n = 75\"",
+        "formal solution": "(* ### Problem\n A stack of logs has 12 logs on the bottom row, and one less in each successive row, ending with three logs at the top. How many logs are in the stack? The final Answer is 75\n ### Proof\n We can manually add $3+4+\\cdots+12$, or we can use the formula for the sum of an arithmetic series.\n We multiply the average of the first and last terms $\\frac{3+12}{2}$ by the number of terms, $12-3+1=10$. The value of the sum is $\\frac{15}{2}\\cdot10=15\\cdot5=75$, so there are $\\boxed{75}$ logs in the stack.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = (\\<Sum>i=3..12. i)\"\nshows  \"n = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all natural numbers from 3 to 12. The final answer is 75."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes logs :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"logs 0 = 12\"\nand h1 : \"\\<forall>n. n > 0 \\<longrightarrow> logs n = logs (n - 1) - 1\"\nshows  \"(\\<Sum>i=0..9. logs i) = 75\"",
+        "formal solution": "(* ### Problem\n A stack of logs has 12 logs on the bottom row, and one less in each successive row, ending with three logs at the top. How many logs are in the stack? The final Answer is 75\n ### Proof\n We can manually add $3+4+\\cdots+12$, or we can use the formula for the sum of an arithmetic series.\n We multiply the average of the first and last terms $\\frac{3+12}{2}$ by the number of terms, $12-3+1=10$. The value of the sum is $\\frac{15}{2}\\cdot10=15\\cdot5=75$, so there are $\\boxed{75}$ logs in the stack.\n *)\n\ntheorem\nfixes logs :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"logs 0 = 12\"\nand h1 : \"\\<forall>n. n > 0 \\<longrightarrow> logs n = logs (n - 1) - 1\"\nshows  \"(\\<Sum>i=0..9. logs i) = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sequence of natural numbers where the first term is 12 and each subsequent term is one less than the previous term, find the sum of the first 10 terms of the sequence. The final answer is 75."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> f n = 12 - (n - 1)\"\nand h1 : \"\\<forall> n. n \\<ge> 10 \\<longrightarrow> f n = 3\"\nshows  \"sum f {1..10} = 75\"",
+        "formal solution": "(* ### Problem\n A stack of logs has 12 logs on the bottom row, and one less in each successive row, ending with three logs at the top. How many logs are in the stack? The final Answer is 75\n ### Proof\n We can manually add $3+4+\\cdots+12$, or we can use the formula for the sum of an arithmetic series.\n We multiply the average of the first and last terms $\\frac{3+12}{2}$ by the number of terms, $12-3+1=10$. The value of the sum is $\\frac{15}{2}\\cdot10=15\\cdot5=75$, so there are $\\boxed{75}$ logs in the stack.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> f n = 12 - (n - 1)\"\nand h1 : \"\\<forall> n. n \\<ge> 10 \\<longrightarrow> f n = 3\"\nshows  \"sum f {1..10} = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on the natural numbers such that $f(n) = 12 - (n - 1)$ for all $n \\geq 1$, but for all $n \\geq 10$, $f(n) = 3$. What is the sum of $f(n)$ for $n$ from $1$ to $10$? The final answer is $75$."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n logs :: nat\nassumes h0 : \"n = 10\"\nand h1 : \"logs = (\\<Sum> i = 0..n. (12 - i))\"\nshows  \"logs = 75\"",
+        "formal solution": "(* ### Problem\n A stack of logs has 12 logs on the bottom row, and one less in each successive row, ending with three logs at the top. How many logs are in the stack? The final Answer is 75\n ### Proof\n We can manually add $3+4+\\cdots+12$, or we can use the formula for the sum of an arithmetic series.\n We multiply the average of the first and last terms $\\frac{3+12}{2}$ by the number of terms, $12-3+1=10$. The value of the sum is $\\frac{15}{2}\\cdot10=15\\cdot5=75$, so there are $\\boxed{75}$ logs in the stack.\n *)\n\ntheorem\nfixes n logs :: nat\nassumes h0 : \"n = 10\"\nand h1 : \"logs = (\\<Sum> i = 0..n. (12 - i))\"\nshows  \"logs = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the numbers from 12 to 2, decreasing by 1 at each step. The final answer is 75."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 10\"\nand h1 : \"\\<forall> i \\<in> {1 .. n}. (\\<Sum> k \\<in> {1 .. i}. (12 - (k - 1))) = 75\"\nshows  \"75 = (\\<Sum> i \\<in> {1 .. n}. 12 - (i - 1))\"",
+        "formal solution": "(* ### Problem\n A stack of logs has 12 logs on the bottom row, and one less in each successive row, ending with three logs at the top. How many logs are in the stack? The final Answer is 75\n ### Proof\n We can manually add $3+4+\\cdots+12$, or we can use the formula for the sum of an arithmetic series.\n We multiply the average of the first and last terms $\\frac{3+12}{2}$ by the number of terms, $12-3+1=10$. The value of the sum is $\\frac{15}{2}\\cdot10=15\\cdot5=75$, so there are $\\boxed{75}$ logs in the stack.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 10\"\nand h1 : \"\\<forall> i \\<in> {1 .. n}. (\\<Sum> k \\<in> {1 .. i}. (12 - (k - 1))) = 75\"\nshows  \"75 = (\\<Sum> i \\<in> {1 .. n}. 12 - (i - 1))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the first 10 terms of the arithmetic sequence with a common difference of 1, starting with 12. The final answer is 75."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 12\"\nand h1 : \"\\<forall> i \\<in> {1..n}. i \\<ge> 3\"\nshows  \"(\\<Sum>i\\<in>{1..n}. i) = 75\"",
+        "formal solution": "(* ### Problem\n A stack of logs has 12 logs on the bottom row, and one less in each successive row, ending with three logs at the top. How many logs are in the stack? The final Answer is 75\n ### Proof\n We can manually add $3+4+\\cdots+12$, or we can use the formula for the sum of an arithmetic series.\n We multiply the average of the first and last terms $\\frac{3+12}{2}$ by the number of terms, $12-3+1=10$. The value of the sum is $\\frac{15}{2}\\cdot10=15\\cdot5=75$, so there are $\\boxed{75}$ logs in the stack.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 12\"\nand h1 : \"\\<forall> i \\<in> {1..n}. i \\<ge> 3\"\nshows  \"(\\<Sum>i\\<in>{1..n}. i) = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a set of numbers from 1 to 12 where each number is greater than or equal to 3. Find the sum of all the numbers in the set. The final answer is 75."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = (\\<Sum>i = 3..12. i)\"\nshows  \"n = 75\"",
+        "formal solution": "(* ### Problem\n A stack of logs has 12 logs on the bottom row, and one less in each successive row, ending with three logs at the top. How many logs are in the stack? The final Answer is 75\n ### Proof\n We can manually add $3+4+\\cdots+12$, or we can use the formula for the sum of an arithmetic series.\n We multiply the average of the first and last terms $\\frac{3+12}{2}$ by the number of terms, $12-3+1=10$. The value of the sum is $\\frac{15}{2}\\cdot10=15\\cdot5=75$, so there are $\\boxed{75}$ logs in the stack.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = (\\<Sum>i = 3..12. i)\"\nshows  \"n = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all the natural numbers from 3 to 12. The final answer is 75."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = (\\<Sum>i = 3..12. i)\"\nshows  \"n = 75\"",
+        "formal solution": "(* ### Problem\n A stack of logs has 12 logs on the bottom row, and one less in each successive row, ending with three logs at the top. How many logs are in the stack? The final Answer is 75\n ### Proof\n We can manually add $3+4+\\cdots+12$, or we can use the formula for the sum of an arithmetic series.\n We multiply the average of the first and last terms $\\frac{3+12}{2}$ by the number of terms, $12-3+1=10$. The value of the sum is $\\frac{15}{2}\\cdot10=15\\cdot5=75$, so there are $\\boxed{75}$ logs in the stack.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = (\\<Sum>i = 3..12. i)\"\nshows  \"n = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all natural numbers from 3 to 12 inclusive. The final answer is 75."
+    },
+    "level": "Level 2",
+    "type": "Algebra"
+}

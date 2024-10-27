@@ -1,0 +1,112 @@
+{
+    "problem_name": "mathd_numbertheory_530",
+    "informal_statement": "If $n$ and $k$ are positive integers such that $5<\\frac nk<6$, then what is the smallest possible value of $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}$? Show that it is 22.",
+    "informal_proof": "We can consider both $n$ and $k$ as multiples of their greatest common divisor: \\begin{align*}\nn &= n'\\cdot\\gcd(n,k), \\\\\nk &= k'\\cdot\\gcd(n,k),\n\\end{align*}where $n'$ and $k'$ are relatively prime integers. Then $\\mathop{\\text{lcm}}[n,k] = \\frac{n\\cdot k}{\\gcd(n,k)} = n'\\cdot k'\\cdot\\gcd(n,k)$, so $$\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)} = n'k'.$$We have $\\frac{n'}{k'} = \\frac nk$. So, we wish to minimize $n'k'$ under the constraint that $5<\\frac{n'}{k'}<6$. That is, we wish to find the smallest possible product of the numerator and denominator of a fraction whose value is between 5 and 6. Clearly the denominator $k'$ is at least $2$, and the numerator $n'$ is at least $5(2)+1=11$, so the smallest possible value for $n'k'$ is $(11)(2)=22$.\n\nNote that this result, $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}=22$, can be achieved by the example $n=11,k=2$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n / k\"\nand h3 : \"n / k < 6\"\nshows  \"lcm n k / gcd n k = 22\"",
+        "formal solution": "(* ### Problem\n If $n$ and $k$ are positive integers such that $5<\\frac nk<6$, then what is the smallest possible value of $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}$? The final Answer is $22$\n ### Proof\n We can consider both $n$ and $k$ as multiples of their greatest common divisor: \\begin{align*}\nn &= n'\\cdot\\gcd(n,k), \\\\\nk &= k'\\cdot\\gcd(n,k),\n\\end{align*}where $n'$ and $k'$ are relatively prime integers. Then $\\mathop{\\text{lcm}}[n,k] = \\frac{n\\cdot k}{\\gcd(n,k)} = n'\\cdot k'\\cdot\\gcd(n,k)$, so $$\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)} = n'k'.$$We have $\\frac{n'}{k'} = \\frac nk$. So, we wish to minimize $n'k'$ under the constraint that $5<\\frac{n'}{k'}<6$. That is, we wish to find the smallest possible product of the numerator and denominator of a fraction whose value is between 5 and 6. Clearly the denominator $k'$ is at least $2$, and the numerator $n'$ is at least $5(2)+1=11$, so the smallest possible value for $n'k'$ is $(11)(2)=22$.\n\nNote that this result, $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}=22$, can be achieved by the example $n=11,k=2$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n / k\"\nand h3 : \"n / k < 6\"\nshows  \"lcm n k / gcd n k = 22\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $n$ and $k$ are positive integers such that $\\frac{n}{k}$ lies strictly between 5 and 6, what is the ratio of the least common multiple of $n$ and $k$ to their greatest common divisor? The final answer is $22$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9950650930404663,
+        "symbolic_score": 0.9
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0 \\<and> k > 0\"\nand h1 : \"5 < n div k \\<and> n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"",
+        "formal solution": "(* ### Problem\n If $n$ and $k$ are positive integers such that $5<\\frac nk<6$, then what is the smallest possible value of $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}$? The final Answer is $22$\n ### Proof\n We can consider both $n$ and $k$ as multiples of their greatest common divisor: \\begin{align*}\nn &= n'\\cdot\\gcd(n,k), \\\\\nk &= k'\\cdot\\gcd(n,k),\n\\end{align*}where $n'$ and $k'$ are relatively prime integers. Then $\\mathop{\\text{lcm}}[n,k] = \\frac{n\\cdot k}{\\gcd(n,k)} = n'\\cdot k'\\cdot\\gcd(n,k)$, so $$\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)} = n'k'.$$We have $\\frac{n'}{k'} = \\frac nk$. So, we wish to minimize $n'k'$ under the constraint that $5<\\frac{n'}{k'}<6$. That is, we wish to find the smallest possible product of the numerator and denominator of a fraction whose value is between 5 and 6. Clearly the denominator $k'$ is at least $2$, and the numerator $n'$ is at least $5(2)+1=11$, so the smallest possible value for $n'k'$ is $(11)(2)=22$.\n\nNote that this result, $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}=22$, can be achieved by the example $n=11,k=2$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0 \\<and> k > 0\"\nand h1 : \"5 < n div k \\<and> n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive natural numbers $n$ and $k$, where the division of $n$ by $k$ results in a number greater than $5$ and less than $6$, find the value of the least common multiple of $n$ and $k$ divided by the greatest common divisor of $n$ and $k$. The final answer is $22$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9854438900947571,
+        "symbolic_score": 0.9
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"",
+        "formal solution": "(* ### Problem\n If $n$ and $k$ are positive integers such that $5<\\frac nk<6$, then what is the smallest possible value of $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}$? The final Answer is $22$\n ### Proof\n We can consider both $n$ and $k$ as multiples of their greatest common divisor: \\begin{align*}\nn &= n'\\cdot\\gcd(n,k), \\\\\nk &= k'\\cdot\\gcd(n,k),\n\\end{align*}where $n'$ and $k'$ are relatively prime integers. Then $\\mathop{\\text{lcm}}[n,k] = \\frac{n\\cdot k}{\\gcd(n,k)} = n'\\cdot k'\\cdot\\gcd(n,k)$, so $$\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)} = n'k'.$$We have $\\frac{n'}{k'} = \\frac nk$. So, we wish to minimize $n'k'$ under the constraint that $5<\\frac{n'}{k'}<6$. That is, we wish to find the smallest possible product of the numerator and denominator of a fraction whose value is between 5 and 6. Clearly the denominator $k'$ is at least $2$, and the numerator $n'$ is at least $5(2)+1=11$, so the smallest possible value for $n'k'$ is $(11)(2)=22$.\n\nNote that this result, $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}=22$, can be achieved by the example $n=11,k=2$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive natural numbers $n$ and $k$, if the integer division of $n$ by $k$ is greater than $5$ but less than $6$, find the value of the least common multiple of $n$ and $k$ divided by the greatest common divisor of $n$ and $k$. The final answer is $22$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9859955310821533,
+        "symbolic_score": 0.9
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"SOME x. x = (lcm n k) div (gcd n k) \\<and> x \\<ge> 22\"",
+        "formal solution": "(* ### Problem\n If $n$ and $k$ are positive integers such that $5<\\frac nk<6$, then what is the smallest possible value of $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}$? The final Answer is $22$\n ### Proof\n We can consider both $n$ and $k$ as multiples of their greatest common divisor: \\begin{align*}\nn &= n'\\cdot\\gcd(n,k), \\\\\nk &= k'\\cdot\\gcd(n,k),\n\\end{align*}where $n'$ and $k'$ are relatively prime integers. Then $\\mathop{\\text{lcm}}[n,k] = \\frac{n\\cdot k}{\\gcd(n,k)} = n'\\cdot k'\\cdot\\gcd(n,k)$, so $$\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)} = n'k'.$$We have $\\frac{n'}{k'} = \\frac nk$. So, we wish to minimize $n'k'$ under the constraint that $5<\\frac{n'}{k'}<6$. That is, we wish to find the smallest possible product of the numerator and denominator of a fraction whose value is between 5 and 6. Clearly the denominator $k'$ is at least $2$, and the numerator $n'$ is at least $5(2)+1=11$, so the smallest possible value for $n'k'$ is $(11)(2)=22$.\n\nNote that this result, $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}=22$, can be achieved by the example $n=11,k=2$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"SOME x. x = (lcm n k) div (gcd n k) \\<and> x \\<ge> 22\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $n$ and $k$ are positive integers such that the quotient of $n$ divided by $k$ is greater than 5 but less than 6. Find an integer $x$ such that $x$ is equal to the least common multiple of $n$ and $k$ divided by the greatest common divisor of $n$ and $k$, and $x$ is at least 22.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.49982553720474243,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0 \\<and> k > 0\"\nand h1 : \"5 < n div k \\<and> n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"",
+        "formal solution": "(* ### Problem\n If $n$ and $k$ are positive integers such that $5<\\frac nk<6$, then what is the smallest possible value of $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}$? The final Answer is $22$\n ### Proof\n We can consider both $n$ and $k$ as multiples of their greatest common divisor: \\begin{align*}\nn &= n'\\cdot\\gcd(n,k), \\\\\nk &= k'\\cdot\\gcd(n,k),\n\\end{align*}where $n'$ and $k'$ are relatively prime integers. Then $\\mathop{\\text{lcm}}[n,k] = \\frac{n\\cdot k}{\\gcd(n,k)} = n'\\cdot k'\\cdot\\gcd(n,k)$, so $$\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)} = n'k'.$$We have $\\frac{n'}{k'} = \\frac nk$. So, we wish to minimize $n'k'$ under the constraint that $5<\\frac{n'}{k'}<6$. That is, we wish to find the smallest possible product of the numerator and denominator of a fraction whose value is between 5 and 6. Clearly the denominator $k'$ is at least $2$, and the numerator $n'$ is at least $5(2)+1=11$, so the smallest possible value for $n'k'$ is $(11)(2)=22$.\n\nNote that this result, $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}=22$, can be achieved by the example $n=11,k=2$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0 \\<and> k > 0\"\nand h1 : \"5 < n div k \\<and> n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive natural numbers $n$ and $k$, such that the integer division of $n$ by $k$ results in a number between $5$ and $6$. What is the integer division of the least common multiple (lcm) of $n$ and $k$ by the greatest common divisor (gcd) of $n$ and $k$? The final answer is $22$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9568353891372681,
+        "symbolic_score": 0.9
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"",
+        "formal solution": "(* ### Problem\n If $n$ and $k$ are positive integers such that $5<\\frac nk<6$, then what is the smallest possible value of $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}$? The final Answer is $22$\n ### Proof\n We can consider both $n$ and $k$ as multiples of their greatest common divisor: \\begin{align*}\nn &= n'\\cdot\\gcd(n,k), \\\\\nk &= k'\\cdot\\gcd(n,k),\n\\end{align*}where $n'$ and $k'$ are relatively prime integers. Then $\\mathop{\\text{lcm}}[n,k] = \\frac{n\\cdot k}{\\gcd(n,k)} = n'\\cdot k'\\cdot\\gcd(n,k)$, so $$\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)} = n'k'.$$We have $\\frac{n'}{k'} = \\frac nk$. So, we wish to minimize $n'k'$ under the constraint that $5<\\frac{n'}{k'}<6$. That is, we wish to find the smallest possible product of the numerator and denominator of a fraction whose value is between 5 and 6. Clearly the denominator $k'$ is at least $2$, and the numerator $n'$ is at least $5(2)+1=11$, so the smallest possible value for $n'k'$ is $(11)(2)=22$.\n\nNote that this result, $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}=22$, can be achieved by the example $n=11,k=2$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive natural numbers $n$ and $k$, if the quotient of $n$ divided by $k$ is greater than 5 and less than 6, find the value of the least common multiple of $n$ and $k$ divided by the greatest common divisor of $n$ and $k$. The final answer is 22.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9614550471305847,
+        "symbolic_score": 0.9
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"",
+        "formal solution": "(* ### Problem\n If $n$ and $k$ are positive integers such that $5<\\frac nk<6$, then what is the smallest possible value of $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}$? The final Answer is $22$\n ### Proof\n We can consider both $n$ and $k$ as multiples of their greatest common divisor: \\begin{align*}\nn &= n'\\cdot\\gcd(n,k), \\\\\nk &= k'\\cdot\\gcd(n,k),\n\\end{align*}where $n'$ and $k'$ are relatively prime integers. Then $\\mathop{\\text{lcm}}[n,k] = \\frac{n\\cdot k}{\\gcd(n,k)} = n'\\cdot k'\\cdot\\gcd(n,k)$, so $$\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)} = n'k'.$$We have $\\frac{n'}{k'} = \\frac nk$. So, we wish to minimize $n'k'$ under the constraint that $5<\\frac{n'}{k'}<6$. That is, we wish to find the smallest possible product of the numerator and denominator of a fraction whose value is between 5 and 6. Clearly the denominator $k'$ is at least $2$, and the numerator $n'$ is at least $5(2)+1=11$, so the smallest possible value for $n'k'$ is $(11)(2)=22$.\n\nNote that this result, $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}=22$, can be achieved by the example $n=11,k=2$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For positive integers $n$ and $k$, if the quotient of $n$ divided by $k$ is greater than $5$ but less than $6$, find the quotient of the least common multiple of $n$ and $k$ divided by their greatest common divisor. The final answer is $22$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9769197702407837,
+        "symbolic_score": 0.9
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"",
+        "formal solution": "(* ### Problem\n If $n$ and $k$ are positive integers such that $5<\\frac nk<6$, then what is the smallest possible value of $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}$? The final Answer is $22$\n ### Proof\n We can consider both $n$ and $k$ as multiples of their greatest common divisor: \\begin{align*}\nn &= n'\\cdot\\gcd(n,k), \\\\\nk &= k'\\cdot\\gcd(n,k),\n\\end{align*}where $n'$ and $k'$ are relatively prime integers. Then $\\mathop{\\text{lcm}}[n,k] = \\frac{n\\cdot k}{\\gcd(n,k)} = n'\\cdot k'\\cdot\\gcd(n,k)$, so $$\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)} = n'k'.$$We have $\\frac{n'}{k'} = \\frac nk$. So, we wish to minimize $n'k'$ under the constraint that $5<\\frac{n'}{k'}<6$. That is, we wish to find the smallest possible product of the numerator and denominator of a fraction whose value is between 5 and 6. Clearly the denominator $k'$ is at least $2$, and the numerator $n'$ is at least $5(2)+1=11$, so the smallest possible value for $n'k'$ is $(11)(2)=22$.\n\nNote that this result, $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}=22$, can be achieved by the example $n=11,k=2$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $n$ and $k$ are positive integers such that the quotient of $n$ divided by $k$ is greater than $5$ but less than $6$, find the least common multiple of $n$ and $k$ divided by their greatest common divisor. The final answer is $22$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9915099740028381,
+        "symbolic_score": 0.9
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"",
+        "formal solution": "(* ### Problem\n If $n$ and $k$ are positive integers such that $5<\\frac nk<6$, then what is the smallest possible value of $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}$? The final Answer is $22$\n ### Proof\n We can consider both $n$ and $k$ as multiples of their greatest common divisor: \\begin{align*}\nn &= n'\\cdot\\gcd(n,k), \\\\\nk &= k'\\cdot\\gcd(n,k),\n\\end{align*}where $n'$ and $k'$ are relatively prime integers. Then $\\mathop{\\text{lcm}}[n,k] = \\frac{n\\cdot k}{\\gcd(n,k)} = n'\\cdot k'\\cdot\\gcd(n,k)$, so $$\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)} = n'k'.$$We have $\\frac{n'}{k'} = \\frac nk$. So, we wish to minimize $n'k'$ under the constraint that $5<\\frac{n'}{k'}<6$. That is, we wish to find the smallest possible product of the numerator and denominator of a fraction whose value is between 5 and 6. Clearly the denominator $k'$ is at least $2$, and the numerator $n'$ is at least $5(2)+1=11$, so the smallest possible value for $n'k'$ is $(11)(2)=22$.\n\nNote that this result, $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}=22$, can be achieved by the example $n=11,k=2$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"lcm n k div gcd n k = 22\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive natural numbers $n$ and $k$, if $\\frac{n}{k}$ is strictly greater than 5 and strictly less than 6, find the value of $\\frac{lcm(n,k)}{gcd(n,k)}$. The final answer is 22.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9899972677230835,
+        "symbolic_score": 0.9
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"lcm n k div gcd n k = (22::nat)\"",
+        "formal solution": "(* ### Problem\n If $n$ and $k$ are positive integers such that $5<\\frac nk<6$, then what is the smallest possible value of $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}$? The final Answer is $22$\n ### Proof\n We can consider both $n$ and $k$ as multiples of their greatest common divisor: \\begin{align*}\nn &= n'\\cdot\\gcd(n,k), \\\\\nk &= k'\\cdot\\gcd(n,k),\n\\end{align*}where $n'$ and $k'$ are relatively prime integers. Then $\\mathop{\\text{lcm}}[n,k] = \\frac{n\\cdot k}{\\gcd(n,k)} = n'\\cdot k'\\cdot\\gcd(n,k)$, so $$\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)} = n'k'.$$We have $\\frac{n'}{k'} = \\frac nk$. So, we wish to minimize $n'k'$ under the constraint that $5<\\frac{n'}{k'}<6$. That is, we wish to find the smallest possible product of the numerator and denominator of a fraction whose value is between 5 and 6. Clearly the denominator $k'$ is at least $2$, and the numerator $n'$ is at least $5(2)+1=11$, so the smallest possible value for $n'k'$ is $(11)(2)=22$.\n\nNote that this result, $\\frac{\\mathop{\\text{lcm}}[n,k]}{\\gcd(n,k)}=22$, can be achieved by the example $n=11,k=2$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"k > 0\"\nand h2 : \"5 < n div k\"\nand h3 : \"n div k < 6\"\nshows  \"lcm n k div gcd n k = (22::nat)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive integers $n$ and $k$, where $5$ is less than the quotient of $n$ divided by $k$, which is less than $6$, find the quotient of the least common multiple of $n$ and $k$ divided by their greatest common divisor. The final answer is $22$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9921479821205139,
+        "symbolic_score": 0.9
+    },
+    "oracle": "theorem\nfixes n k :: nat\nassumes \"n / k < 6\"\nand \"5 < n / k\"\nshows \"22 \\<le> (lcm n k) / (gcd n k)\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            3
+        ]
+    }
+}

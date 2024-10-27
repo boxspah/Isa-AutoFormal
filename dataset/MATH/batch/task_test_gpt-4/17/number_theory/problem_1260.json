@@ -1,0 +1,138 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes GCD :: \"nat set \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> a. \\<exists> n. a = n * (n+1) * (n+2) * (n+3)\"\nshows  \"GCD (range (\\<lambda>n. n * (n+1) * (n+2) * (n+3))) = 24\"",
+        "formal solution": "(* ### Problem\n What is the greatest common divisor of all of the members of the set containing all numbers that are the product of four consecutive positive integers? The final Answer is 24\n ### Proof\n These numbers are all in the form $n(n+1)(n+2)(n+3)\\pmod 4$, there will be one number of each residue, so one of the numbers will be divisible by 2 and another divisible by 4, leaving the product divisible by 8.\n Similarly, one of the numbers will be $0\\mod 3$, so the product will be divisible by 3. The GCD must therefore be divisible by $3\\cdot8=24$. It also must be less than or equal to the smallest number in the set, $1\\cdot2\\cdot3\\cdot4=24$, so it must be $\\boxed{24}$ exactly.\n *)\n\ntheorem\nfixes GCD :: \"nat set \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> a. \\<exists> n. a = n * (n+1) * (n+2) * (n+3)\"\nshows  \"GCD (range (\\<lambda>n. n * (n+1) * (n+2) * (n+3))) = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the greatest common divisor of the set of natural numbers that can be expressed as the product of four consecutive numbers. The final answer is 24.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.763685405254364,
+        "symbolic_score": 0.4
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n > 0\"\nand h1 : \"\\<forall> n. n * (n + 1) * (n + 2) * (n + 3) \\<in> S\"\nshows  \"Gcd S = 24\"",
+        "formal solution": "(* ### Problem\n What is the greatest common divisor of all of the members of the set containing all numbers that are the product of four consecutive positive integers? The final Answer is 24\n ### Proof\n These numbers are all in the form $n(n+1)(n+2)(n+3)\\pmod 4$, there will be one number of each residue, so one of the numbers will be divisible by 2 and another divisible by 4, leaving the product divisible by 8.\n Similarly, one of the numbers will be $0\\mod 3$, so the product will be divisible by 3. The GCD must therefore be divisible by $3\\cdot8=24$. It also must be less than or equal to the smallest number in the set, $1\\cdot2\\cdot3\\cdot4=24$, so it must be $\\boxed{24}$ exactly.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n > 0\"\nand h1 : \"\\<forall> n. n * (n + 1) * (n + 2) * (n + 3) \\<in> S\"\nshows  \"Gcd S = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a set $S$ of integers that contains every number of the form $n*(n+1)*(n+2)*(n+3)$ for $n > 0$, find the greatest common divisor of all elements in the set $S$. The final answer is $24$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9620000720024109,
+        "symbolic_score": 0.4
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. \\<exists> x y z w. x > 0 \\<and> y > 0 \\<and> z > 0 \\<and> w > 0 \\<and> x = y + 1 \\<and> z = y + 2 \\<and> w = y + 3 \\<and> n = x * y * z * w\"\nshows  \"Gcd {n. \\<exists> x y z w. x > 0 \\<and> y > 0 \\<and> z > 0 \\<and> w > 0 \\<and> x = y + 1 \\<and> z = y + 2 \\<and> w = y + 3 \\<and> n = x * y * z * w} = 24\"",
+        "formal solution": "(* ### Problem\n What is the greatest common divisor of all of the members of the set containing all numbers that are the product of four consecutive positive integers? The final Answer is 24\n ### Proof\n These numbers are all in the form $n(n+1)(n+2)(n+3)\\pmod 4$, there will be one number of each residue, so one of the numbers will be divisible by 2 and another divisible by 4, leaving the product divisible by 8.\n Similarly, one of the numbers will be $0\\mod 3$, so the product will be divisible by 3. The GCD must therefore be divisible by $3\\cdot8=24$. It also must be less than or equal to the smallest number in the set, $1\\cdot2\\cdot3\\cdot4=24$, so it must be $\\boxed{24}$ exactly.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. \\<exists> x y z w. x > 0 \\<and> y > 0 \\<and> z > 0 \\<and> w > 0 \\<and> x = y + 1 \\<and> z = y + 2 \\<and> w = y + 3 \\<and> n = x * y * z * w\"\nshows  \"Gcd {n. \\<exists> x y z w. x > 0 \\<and> y > 0 \\<and> z > 0 \\<and> w > 0 \\<and> x = y + 1 \\<and> z = y + 2 \\<and> w = y + 3 \\<and> n = x * y * z * w} = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the greatest common divisor of the set of numbers that can be written as the product of four consecutive positive integers. The final answer is 24.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7302424907684326,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> (\\<exists> a b c d. a * b * c * d = n \\<and> b = a + 1 \\<and> c = b + 1 \\<and> d = c + 1)\"\nshows  \"Gcd {n. \\<exists> a b c d. a * b * c * d = n \\<and> b = a + 1 \\<and> c = b + 1 \\<and> d = c + 1} = 24\"",
+        "formal solution": "(* ### Problem\n What is the greatest common divisor of all of the members of the set containing all numbers that are the product of four consecutive positive integers? The final Answer is 24\n ### Proof\n These numbers are all in the form $n(n+1)(n+2)(n+3)\\pmod 4$, there will be one number of each residue, so one of the numbers will be divisible by 2 and another divisible by 4, leaving the product divisible by 8.\n Similarly, one of the numbers will be $0\\mod 3$, so the product will be divisible by 3. The GCD must therefore be divisible by $3\\cdot8=24$. It also must be less than or equal to the smallest number in the set, $1\\cdot2\\cdot3\\cdot4=24$, so it must be $\\boxed{24}$ exactly.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> (\\<exists> a b c d. a * b * c * d = n \\<and> b = a + 1 \\<and> c = b + 1 \\<and> d = c + 1)\"\nshows  \"Gcd {n. \\<exists> a b c d. a * b * c * d = n \\<and> b = a + 1 \\<and> c = b + 1 \\<and> d = c + 1} = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For every natural number $n$ greater than or equal to 1, there exist four numbers $a$, $b$, $c$, and $d$ such that $b = a + 1$, $c = b + 1$, $d = c + 1$ and $a * b * c * d = n$. What is the greatest common divisor of all such $n$? The answer is $24$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9898759126663208,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem \nfixes n :: nat\nassumes h0 : \"\\<forall> m. m \\<in> {n, n+1, n+2, n+3}\"\nshows  \"Gcd {n * (n+1) * (n+2) * (n+3)} = 24\"",
+        "formal solution": "(* ### Problem\n What is the greatest common divisor of all of the members of the set containing all numbers that are the product of four consecutive positive integers? The final Answer is 24\n ### Proof\n These numbers are all in the form $n(n+1)(n+2)(n+3)\\pmod 4$, there will be one number of each residue, so one of the numbers will be divisible by 2 and another divisible by 4, leaving the product divisible by 8.\n Similarly, one of the numbers will be $0\\mod 3$, so the product will be divisible by 3. The GCD must therefore be divisible by $3\\cdot8=24$. It also must be less than or equal to the smallest number in the set, $1\\cdot2\\cdot3\\cdot4=24$, so it must be $\\boxed{24}$ exactly.\n *)\n\ntheorem \nfixes n :: nat\nassumes h0 : \"\\<forall> m. m \\<in> {n, n+1, n+2, n+3}\"\nshows  \"Gcd {n * (n+1) * (n+2) * (n+3)} = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the greatest common divisor (GCD) of the product of four consecutive natural numbers, namely $n, n+1, n+2,$ and $n+3$. The final answer is $24$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8319024443626404,
+        "symbolic_score": 0.4
+    },
+    "a_5": {
+        "formal problem": "theorem \nfixes a b c d :: \"nat\"\nassumes h0 : \"a = b * (b+1) * (b+2) * (b+3)\"\nand h1 : \"b = c * (c+1) * (c+2) * (c+3)\"\nand h2 : \"c = d * (d+1) * (d+2) * (d+3)\"\nshows  \"Gcd {a, b, c, d} = 24\"",
+        "formal solution": "(* ### Problem\n What is the greatest common divisor of all of the members of the set containing all numbers that are the product of four consecutive positive integers? The final Answer is 24\n ### Proof\n These numbers are all in the form $n(n+1)(n+2)(n+3)\\pmod 4$, there will be one number of each residue, so one of the numbers will be divisible by 2 and another divisible by 4, leaving the product divisible by 8.\n Similarly, one of the numbers will be $0\\mod 3$, so the product will be divisible by 3. The GCD must therefore be divisible by $3\\cdot8=24$. It also must be less than or equal to the smallest number in the set, $1\\cdot2\\cdot3\\cdot4=24$, so it must be $\\boxed{24}$ exactly.\n *)\n\ntheorem \nfixes a b c d :: \"nat\"\nassumes h0 : \"a = b * (b+1) * (b+2) * (b+3)\"\nand h1 : \"b = c * (c+1) * (c+2) * (c+3)\"\nand h2 : \"c = d * (d+1) * (d+2) * (d+3)\"\nshows  \"Gcd {a, b, c, d} = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $a$ equals the product of $b$ and the next three consecutive integers, $b$ equals the product of $c$ and the next three consecutive integers, and $c$ equals the product of $d$ and the next three consecutive integers. What is the greatest common divisor of $a$, $b$, $c$, and $d$? The final answer is 24.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9687633514404297,
+        "symbolic_score": 0.4
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: int and S :: \"int set\"\nassumes h0 : \"S = {n * (n + 1) * (n + 2) * (n + 3) |n. n \\<in> {1..}}\"\nand h1 : \"\\<forall> a b. a \\<in> S \\<and> b \\<in> S \\<longrightarrow> gcd a b = 24\"\nshows  \"GREATEST d. \\<forall> a \\<in> S. gcd a d = d = 24\"",
+        "formal solution": "(* ### Problem\n What is the greatest common divisor of all of the members of the set containing all numbers that are the product of four consecutive positive integers? The final Answer is 24\n ### Proof\n These numbers are all in the form $n(n+1)(n+2)(n+3)\\pmod 4$, there will be one number of each residue, so one of the numbers will be divisible by 2 and another divisible by 4, leaving the product divisible by 8.\n Similarly, one of the numbers will be $0\\mod 3$, so the product will be divisible by 3. The GCD must therefore be divisible by $3\\cdot8=24$. It also must be less than or equal to the smallest number in the set, $1\\cdot2\\cdot3\\cdot4=24$, so it must be $\\boxed{24}$ exactly.\n *)\n\ntheorem\nfixes n :: int and S :: \"int set\"\nassumes h0 : \"S = {n * (n + 1) * (n + 2) * (n + 3) |n. n \\<in> {1..}}\"\nand h1 : \"\\<forall> a b. a \\<in> S \\<and> b \\<in> S \\<longrightarrow> gcd a b = 24\"\nshows  \"GREATEST d. \\<forall> a \\<in> S. gcd a d = d = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a set $S$ of all integers in the form $n*(n+1)*(n+2)*(n+3)$ where $n$ ranges over all positive integers. If the greatest common divisor (gcd) of any two elements of $S$ is 24, what is the greatest integer $d$ such that the gcd of any element of $S$ and $d$ is $d$ itself? The final answer is 24.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9825192093849182,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and S :: \"nat set\"\nassumes h0 : \"S = {n * (n+1) * (n+2) * (n+3) | n. n \\<in> UNIV}\"\nshows  \"Gcd S = 24\"",
+        "formal solution": "(* ### Problem\n What is the greatest common divisor of all of the members of the set containing all numbers that are the product of four consecutive positive integers? The final Answer is 24\n ### Proof\n These numbers are all in the form $n(n+1)(n+2)(n+3)\\pmod 4$, there will be one number of each residue, so one of the numbers will be divisible by 2 and another divisible by 4, leaving the product divisible by 8.\n Similarly, one of the numbers will be $0\\mod 3$, so the product will be divisible by 3. The GCD must therefore be divisible by $3\\cdot8=24$. It also must be less than or equal to the smallest number in the set, $1\\cdot2\\cdot3\\cdot4=24$, so it must be $\\boxed{24}$ exactly.\n *)\n\ntheorem\nfixes n :: nat and S :: \"nat set\"\nassumes h0 : \"S = {n * (n+1) * (n+2) * (n+3) | n. n \\<in> UNIV}\"\nshows  \"Gcd S = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the greatest common divisor (Gcd) of the set of all natural numbers that can be expressed as the product of four consecutive natural numbers ($n*(n+1)*(n+2)*(n+3)$). The final answer is 24.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8110132217407227,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {x * (x+1) * (x+2) * (x+3) | x. x \\<in> {1..}}\"\nshows  \"Gcd n = 24\"",
+        "formal solution": "(* ### Problem\n What is the greatest common divisor of all of the members of the set containing all numbers that are the product of four consecutive positive integers? The final Answer is 24\n ### Proof\n These numbers are all in the form $n(n+1)(n+2)(n+3)\\pmod 4$, there will be one number of each residue, so one of the numbers will be divisible by 2 and another divisible by 4, leaving the product divisible by 8.\n Similarly, one of the numbers will be $0\\mod 3$, so the product will be divisible by 3. The GCD must therefore be divisible by $3\\cdot8=24$. It also must be less than or equal to the smallest number in the set, $1\\cdot2\\cdot3\\cdot4=24$, so it must be $\\boxed{24}$ exactly.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {x * (x+1) * (x+2) * (x+3) | x. x \\<in> {1..}}\"\nshows  \"Gcd n = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Find the greatest common divisor of a number 'n' which is a product of four consecutive numbers starting from 1. The result is 24.\"",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.6620055437088013,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: int and S :: \"int set\"\nassumes h0 : \"S = {n * (n+1) * (n+2) * (n+3) | n. n \\<ge> 0}\"\nshows  \"Gcd S = 24\"",
+        "formal solution": "(* ### Problem\n What is the greatest common divisor of all of the members of the set containing all numbers that are the product of four consecutive positive integers? The final Answer is 24\n ### Proof\n These numbers are all in the form $n(n+1)(n+2)(n+3)\\pmod 4$, there will be one number of each residue, so one of the numbers will be divisible by 2 and another divisible by 4, leaving the product divisible by 8.\n Similarly, one of the numbers will be $0\\mod 3$, so the product will be divisible by 3. The GCD must therefore be divisible by $3\\cdot8=24$. It also must be less than or equal to the smallest number in the set, $1\\cdot2\\cdot3\\cdot4=24$, so it must be $\\boxed{24}$ exactly.\n *)\n\ntheorem\nfixes n :: int and S :: \"int set\"\nassumes h0 : \"S = {n * (n+1) * (n+2) * (n+3) | n. n \\<ge> 0}\"\nshows  \"Gcd S = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the greatest common divisor (GCD) of the set of integers produced by the function $n * (n+1) * (n+2) * (n+3)$ for all non-negative integers $n$. The final answer is $24$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8676038980484009,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "24",
+    "natural problem": "What is the greatest common divisor of all of the members of the set containing all numbers that are the product of four consecutive positive integers?",
+    "natural solution": [
+        "These numbers are all in the form $n(n+1)(n+2)(n+3)\\pmod 4$, there will be one number of each residue, so one of the numbers will be divisible by 2 and another divisible by 4, leaving the product divisible by 8.",
+        "Similarly, one of the numbers will be $0\\mod 3$, so the product will be divisible by 3. The GCD must therefore be divisible by $3\\cdot8=24$. It also must be less than or equal to the smallest number in the set, $1\\cdot2\\cdot3\\cdot4=24$, so it must be $\\boxed{24}$ exactly."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            4,
+            5
+        ],
+        "1": [
+            2
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            6
+        ],
+        "4": [
+            7
+        ],
+        "5": [
+            8
+        ],
+        "6": [
+            9
+        ]
+    },
+    "str_pred": "[[0, 1, 4, 5], [2], [3], [6], [7], [8], [9]]",
+    "level": "Level 5",
+    "type": "Number Theory"
+}

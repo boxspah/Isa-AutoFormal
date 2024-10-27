@@ -1,0 +1,59 @@
+{
+    "natural problem": "What is the sum of the composite numbers between 10 and 20 (not including 10 and 20)?",
+    "natural solution": [
+        "Between 10 and 20, the prime numbers are 11, 13, 17, and 19, so the composite numbers are 12, 14, 15, 16, and 18. There are five of them, and their sum is $12+14+15+16+18 = \\boxed{75}$."
+    ],
+    "natural answer": "75",
+    "a_0": {
+        "formal problem": "\n\ndefinition is_composite :: \"nat \\<Rightarrow> bool\" where\n\"is_composite n = (n > 1 \\<and> (\\<exists> m \\<in> {2..<n}. n mod m = 0))\"\n\ndefinition composite_sum :: \"nat\" where\n\"composite_sum = sum_list (filter is_composite [11..<20])\"\n\ntheorem composite_sum_value:\n\"composite_sum = 75\"\nusing composite_sum_def is_composite_def\nby auto\n\nend",
+        "formal solution": "(* ### Problem\n What is the sum of the composite numbers between 10 and 20 (not including 10 and 20)? The final Answer is 75\n ### Proof\n Between 10 and 20, the prime numbers are 11, 13, 17, and 19, so the composite numbers are 12, 14, 15, 16, and 18. There are five of them, and their sum is $12+14+15+16+18 = \\boxed{75}$.\n *)\n\n\n\ndefinition is_composite :: \"nat \\<Rightarrow> bool\" where\n\"is_composite n = (n > 1 \\<and> (\\<exists> m \\<in> {2..<n}. n mod m = 0))\"\n\ndefinition composite_sum :: \"nat\" where\n\"composite_sum = sum_list (filter is_composite [11..<20])\"\n\ntheorem composite_sum_value:\n\"composite_sum = 75\"\nusing composite_sum_def is_composite_def\nby auto\n\nend\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all composite numbers between 11 and 20. The final answer is 75."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes composite :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. composite n = (\\<exists> k1 k2. 1 < k1 \\<and> k1 < n \\<and> 1 < k2 \\<and> k2 < n \\<and> k1 * k2 = n)\"\nshows  \"sum (\\<lambda> n. if composite n then n else 0) {11..19} = 75\"",
+        "formal solution": "(* ### Problem\n What is the sum of the composite numbers between 10 and 20 (not including 10 and 20)? The final Answer is 75\n ### Proof\n Between 10 and 20, the prime numbers are 11, 13, 17, and 19, so the composite numbers are 12, 14, 15, 16, and 18. There are five of them, and their sum is $12+14+15+16+18 = \\boxed{75}$.\n *)\n\ntheorem\nfixes composite :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. composite n = (\\<exists> k1 k2. 1 < k1 \\<and> k1 < n \\<and> 1 < k2 \\<and> k2 < n \\<and> k1 * k2 = n)\"\nshows  \"sum (\\<lambda> n. if composite n then n else 0) {11..19} = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of composite numbers between 11 and 19 inclusive. The final answer is 75."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes is_composite :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. is_composite n = (n > 1 \\<and> (\\<exists> a b. a > 1 \\<and> b > 1 \\<and> a * b = n))\"\nshows  \"sum is_composite {11..19} = 75\"",
+        "formal solution": "(* ### Problem\n What is the sum of the composite numbers between 10 and 20 (not including 10 and 20)? The final Answer is 75\n ### Proof\n Between 10 and 20, the prime numbers are 11, 13, 17, and 19, so the composite numbers are 12, 14, 15, 16, and 18. There are five of them, and their sum is $12+14+15+16+18 = \\boxed{75}$.\n *)\n\ntheorem\nfixes is_composite :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. is_composite n = (n > 1 \\<and> (\\<exists> a b. a > 1 \\<and> b > 1 \\<and> a * b = n))\"\nshows  \"sum is_composite {11..19} = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the composite numbers between 11 and 19. The final answer is 75."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. 10 < n \\<and> n < 20 \\<longrightarrow> (\\<exists> m k. 1 < m \\<and> m < n \\<and> k > 1 \\<and> n = m * k)\"\nshows  \"sum id {n. 10 < n \\<and> n < 20 \\<and> (\\<exists> m k. 1 < m \\<and> m < n \\<and> k > 1 \\<and> n = m * k)} = 75\"",
+        "formal solution": "(* ### Problem\n What is the sum of the composite numbers between 10 and 20 (not including 10 and 20)? The final Answer is 75\n ### Proof\n Between 10 and 20, the prime numbers are 11, 13, 17, and 19, so the composite numbers are 12, 14, 15, 16, and 18. There are five of them, and their sum is $12+14+15+16+18 = \\boxed{75}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. 10 < n \\<and> n < 20 \\<longrightarrow> (\\<exists> m k. 1 < m \\<and> m < n \\<and> k > 1 \\<and> n = m * k)\"\nshows  \"sum id {n. 10 < n \\<and> n < 20 \\<and> (\\<exists> m k. 1 < m \\<and> m < n \\<and> k > 1 \\<and> n = m * k)} = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all natural numbers between 10 and 20 that can be expressed as the product of two factors, both of which are greater than 1 and one of them is less than the number itself. The final answer is 75."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat and composite :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. composite n = (n > 1 \\<and> (\\<exists> m. m < n \\<and> m > 1 \\<and> n mod m = 0))\"\nshows  \"sum composite {11..19} = 75\"",
+        "formal solution": "(* ### Problem\n What is the sum of the composite numbers between 10 and 20 (not including 10 and 20)? The final Answer is 75\n ### Proof\n Between 10 and 20, the prime numbers are 11, 13, 17, and 19, so the composite numbers are 12, 14, 15, 16, and 18. There are five of them, and their sum is $12+14+15+16+18 = \\boxed{75}$.\n *)\n\ntheorem\nfixes n :: nat and composite :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. composite n = (n > 1 \\<and> (\\<exists> m. m < n \\<and> m > 1 \\<and> n mod m = 0))\"\nshows  \"sum composite {11..19} = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the sum of the composite numbers between 11 and 19? The final answer is 75."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes composite :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. composite n = (\\<exists> m k. m > 1 \\<and> k > 1 \\<and> n = m * k)\"\nshows  \"sum composite {11..19} = 75\"",
+        "formal solution": "(* ### Problem\n What is the sum of the composite numbers between 10 and 20 (not including 10 and 20)? The final Answer is 75\n ### Proof\n Between 10 and 20, the prime numbers are 11, 13, 17, and 19, so the composite numbers are 12, 14, 15, 16, and 18. There are five of them, and their sum is $12+14+15+16+18 = \\boxed{75}$.\n *)\n\ntheorem\nfixes composite :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. composite n = (\\<exists> m k. m > 1 \\<and> k > 1 \\<and> n = m * k)\"\nshows  \"sum composite {11..19} = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of composite numbers between 11 and 19. The final answer is 75."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes isComposite :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>n. isComposite n \\<longleftrightarrow> (n > 1 \\<and> (\\<exists>d. 1 < d \\<and> d < n \\<and> n mod d = 0))\"\nand h1 : \"sum isComposite {11..19} = 75\"\nshows  \"sum isComposite {11..19} = 75\"",
+        "formal solution": "(* ### Problem\n What is the sum of the composite numbers between 10 and 20 (not including 10 and 20)? The final Answer is 75\n ### Proof\n Between 10 and 20, the prime numbers are 11, 13, 17, and 19, so the composite numbers are 12, 14, 15, 16, and 18. There are five of them, and their sum is $12+14+15+16+18 = \\boxed{75}$.\n *)\n\ntheorem\nfixes isComposite :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>n. isComposite n \\<longleftrightarrow> (n > 1 \\<and> (\\<exists>d. 1 < d \\<and> d < n \\<and> n mod d = 0))\"\nand h1 : \"sum isComposite {11..19} = 75\"\nshows  \"sum isComposite {11..19} = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let's define a composite number as a natural number that has at least one natural number divisor other than one and itself. Given that the sum of all composite numbers between 11 and 19 (inclusive) is 75, confirm that this sum is indeed 75."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and is_composite :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. is_composite n \\<longleftrightarrow> (\\<exists> a b. 1 < a \\<and> a < n \\<and> 1 < b \\<and> b < n \\<and> a * b = n)\"\nand h1 : \"sum (\\<lambda> n. if is_composite n then n else 0) {11..19} = 75\"\nshows  \"sum (\\<lambda> n. if is_composite n then n else 0) {11..19} = 75\"",
+        "formal solution": "(* ### Problem\n What is the sum of the composite numbers between 10 and 20 (not including 10 and 20)? The final Answer is 75\n ### Proof\n Between 10 and 20, the prime numbers are 11, 13, 17, and 19, so the composite numbers are 12, 14, 15, 16, and 18. There are five of them, and their sum is $12+14+15+16+18 = \\boxed{75}$.\n *)\n\ntheorem\nfixes n :: nat and is_composite :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. is_composite n \\<longleftrightarrow> (\\<exists> a b. 1 < a \\<and> a < n \\<and> 1 < b \\<and> b < n \\<and> a * b = n)\"\nand h1 : \"sum (\\<lambda> n. if is_composite n then n else 0) {11..19} = 75\"\nshows  \"sum (\\<lambda> n. if is_composite n then n else 0) {11..19} = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A natural number is composite if and only if it can be expressed as the product of two natural numbers each greater than 1 and less than itself. What is the sum of the composite numbers between 11 and 19 inclusive? The final answer is 75."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes composite_sum :: int\nassumes h0 : \"composite_sum = sum (\\<lambda> n. if (is_composite n) then n else 0) {11..19}\"\nshows  \"composite_sum = 75\"",
+        "formal solution": "(* ### Problem\n What is the sum of the composite numbers between 10 and 20 (not including 10 and 20)? The final Answer is 75\n ### Proof\n Between 10 and 20, the prime numbers are 11, 13, 17, and 19, so the composite numbers are 12, 14, 15, 16, and 18. There are five of them, and their sum is $12+14+15+16+18 = \\boxed{75}$.\n *)\n\ntheorem\nfixes composite_sum :: int\nassumes h0 : \"composite_sum = sum (\\<lambda> n. if (is_composite n) then n else 0) {11..19}\"\nshows  \"composite_sum = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of all composite numbers between 11 and 19. The final answer is 75."
+    },
+    "a_9": {
+        "formal problem": "theorem\nassumes h0 : \"list_all (\\<lambda>n. \\<exists>m1 m2. m1 > 1 \\<and> m2 > 1 \\<and> m1 * m2 = n) [11..<20]\"\nshows  \"sum_list [11..<20] = 75\"",
+        "formal solution": "(* ### Problem\n What is the sum of the composite numbers between 10 and 20 (not including 10 and 20)? The final Answer is 75\n ### Proof\n Between 10 and 20, the prime numbers are 11, 13, 17, and 19, so the composite numbers are 12, 14, 15, 16, and 18. There are five of them, and their sum is $12+14+15+16+18 = \\boxed{75}$.\n *)\n\ntheorem\nassumes h0 : \"list_all (\\<lambda>n. \\<exists>m1 m2. m1 > 1 \\<and> m2 > 1 \\<and> m1 * m2 = n) [11..<20]\"\nshows  \"sum_list [11..<20] = 75\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "All numbers in the list from 11 to 19 can be expressed as the product of two numbers, both greater than 1. What is the sum of all these numbers? The final answer is 75."
+    },
+    "level": "Level 2",
+    "type": "Prealgebra"
+}

@@ -1,0 +1,116 @@
+{
+    "problem_name": "amc12b_2002_p11",
+    "informal_statement": "The positive integers $A, B, A-B, $ and $A+B$ are all prime numbers. The sum of these four primes is\n\n$\\mathrm{(A)}\\ \\mathrm{even}\n\\qquad\\mathrm{(B)}\\ \\mathrm{divisible\\ by\\ }3\n\\qquad\\mathrm{(C)}\\ \\mathrm{divisible\\ by\\ }5\n\\qquad\\mathrm{(D)}\\ \\mathrm{divisible\\ by\\ }7\n\\qquad\\mathrm{(E)}\\ \\mathrm{prime}$ Show that it is \\mathrm{(E)}\\ \\text{prime}.",
+    "informal_proof": "Since $A-B$ and $A+B$ must have the same [[parity]], and since there is only one even prime number, it follows that $A-B$ and $A+B$ are both odd. Thus one of $A, B$ is odd and the other even. Since $A+B > A > A-B > 2$, it follows that $A$ (as a prime greater than $2$) is odd. Thus $B = 2$, and $A-2, A, A+2$ are consecutive odd primes. At least one of $A-2, A, A+2$ is divisible by $3$, from which it follows that $A-2 = 3$ and $A = 5$. The sum of these numbers is thus $17$, a prime, so the answer is $\\mathrm{(E)}\\ \\text{prime}$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + (A + B))\"",
+        "formal solution": "(* ### Problem\n The positive integers $A, B, A-B, $ and $A+B$ are all prime numbers. The sum of these four primes is\n\n$\\mathrm{(A)}\\ \\mathrm{even}\n\\qquad\\mathrm{(B)}\\ \\mathrm{divisible\\ by\\ }3\n\\qquad\\mathrm{(C)}\\ \\mathrm{divisible\\ by\\ }5\n\\qquad\\mathrm{(D)}\\ \\mathrm{divisible\\ by\\ }7\n\\qquad\\mathrm{(E)}\\ \\mathrm{prime}$ Show that it is \\mathrm{(E)}\\ \\text{prime}.\n ### Proof\n Since $A-B$ and $A+B$ must have the same [[parity]], and since there is only one even prime number, it follows that $A-B$ and $A+B$ are both odd. Thus one of $A, B$ is odd and the other even. Since $A+B > A > A-B > 2$, it follows that $A$ (as a prime greater than $2$) is odd. Thus $B = 2$, and $A-2, A, A+2$ are consecutive odd primes. At least one of $A-2, A, A+2$ is divisible by $3$, from which it follows that $A-2 = 3$ and $A = 5$. The sum of these numbers is thus $17$, a prime, so the answer is $\\mathrm{(E)}\\ \\text{prime}$.\n *)\n\ntheorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + (A + B))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $A$ and $B$ are prime numbers, and that both $(A - B)$ and $(A + B)$ are also prime, prove that the sum $(A + B + (A - B) + (A + B))$ is a prime number.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.35092243552207947,
+        "symbolic_score": 0.5
+    },
+    "a_1": {
+        "formal problem": "theorem prime_sum:\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + (A + B))\"\n",
+        "formal solution": "(* ### Problem\n The positive integers $A, B, A-B, $ and $A+B$ are all prime numbers. The sum of these four primes is\n\n$\\mathrm{(A)}\\ \\mathrm{even}\n\\qquad\\mathrm{(B)}\\ \\mathrm{divisible\\ by\\ }3\n\\qquad\\mathrm{(C)}\\ \\mathrm{divisible\\ by\\ }5\n\\qquad\\mathrm{(D)}\\ \\mathrm{divisible\\ by\\ }7\n\\qquad\\mathrm{(E)}\\ \\mathrm{prime}$ Show that it is \\mathrm{(E)}\\ \\text{prime}.\n ### Proof\n Since $A-B$ and $A+B$ must have the same [[parity]], and since there is only one even prime number, it follows that $A-B$ and $A+B$ are both odd. Thus one of $A, B$ is odd and the other even. Since $A+B > A > A-B > 2$, it follows that $A$ (as a prime greater than $2$) is odd. Thus $B = 2$, and $A-2, A, A+2$ are consecutive odd primes. At least one of $A-2, A, A+2$ is divisible by $3$, from which it follows that $A-2 = 3$ and $A = 5$. The sum of these numbers is thus $17$, a prime, so the answer is $\\mathrm{(E)}\\ \\text{prime}$.\n *)\n\ntheorem prime_sum:\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + (A + B))\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A$ and $B$ are prime numbers, and both $A-B$ and $A+B$ are also prime, show that the sum $(A + B) + (A - B) + (A + B)$ is a prime number.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.3779458999633789,
+        "symbolic_score": 0.5
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes A B :: nat\nassumes h0 : \"is_prime A\"\nand h1 : \"is_prime B\"\nand h2 : \"is_prime (A - B)\"\nand h3 : \"is_prime (A + B)\"\nshows  \"is_prime (A + B + (A - B) + (A + B))\"",
+        "formal solution": "(* ### Problem\n The positive integers $A, B, A-B, $ and $A+B$ are all prime numbers. The sum of these four primes is\n\n$\\mathrm{(A)}\\ \\mathrm{even}\n\\qquad\\mathrm{(B)}\\ \\mathrm{divisible\\ by\\ }3\n\\qquad\\mathrm{(C)}\\ \\mathrm{divisible\\ by\\ }5\n\\qquad\\mathrm{(D)}\\ \\mathrm{divisible\\ by\\ }7\n\\qquad\\mathrm{(E)}\\ \\mathrm{prime}$ Show that it is \\mathrm{(E)}\\ \\text{prime}.\n ### Proof\n Since $A-B$ and $A+B$ must have the same [[parity]], and since there is only one even prime number, it follows that $A-B$ and $A+B$ are both odd. Thus one of $A, B$ is odd and the other even. Since $A+B > A > A-B > 2$, it follows that $A$ (as a prime greater than $2$) is odd. Thus $B = 2$, and $A-2, A, A+2$ are consecutive odd primes. At least one of $A-2, A, A+2$ is divisible by $3$, from which it follows that $A-2 = 3$ and $A = 5$. The sum of these numbers is thus $17$, a prime, so the answer is $\\mathrm{(E)}\\ \\text{prime}$.\n *)\n\ntheorem\nfixes A B :: nat\nassumes h0 : \"is_prime A\"\nand h1 : \"is_prime B\"\nand h2 : \"is_prime (A - B)\"\nand h3 : \"is_prime (A + B)\"\nshows  \"is_prime (A + B + (A - B) + (A + B))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A$ and $B$ are prime numbers, and both $(A-B)$ and $(A+B)$ are prime, show that the sum $(A+B+(A-B)+(A+B))$ is also a prime number.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.3052102029323578,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + (A + B))\"",
+        "formal solution": "(* ### Problem\n The positive integers $A, B, A-B, $ and $A+B$ are all prime numbers. The sum of these four primes is\n\n$\\mathrm{(A)}\\ \\mathrm{even}\n\\qquad\\mathrm{(B)}\\ \\mathrm{divisible\\ by\\ }3\n\\qquad\\mathrm{(C)}\\ \\mathrm{divisible\\ by\\ }5\n\\qquad\\mathrm{(D)}\\ \\mathrm{divisible\\ by\\ }7\n\\qquad\\mathrm{(E)}\\ \\mathrm{prime}$ Show that it is \\mathrm{(E)}\\ \\text{prime}.\n ### Proof\n Since $A-B$ and $A+B$ must have the same [[parity]], and since there is only one even prime number, it follows that $A-B$ and $A+B$ are both odd. Thus one of $A, B$ is odd and the other even. Since $A+B > A > A-B > 2$, it follows that $A$ (as a prime greater than $2$) is odd. Thus $B = 2$, and $A-2, A, A+2$ are consecutive odd primes. At least one of $A-2, A, A+2$ is divisible by $3$, from which it follows that $A-2 = 3$ and $A = 5$. The sum of these numbers is thus $17$, a prime, so the answer is $\\mathrm{(E)}\\ \\text{prime}$.\n *)\n\ntheorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + (A + B))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two prime numbers $A$ and $B$ such that the difference $A-B$ and the sum $A+B$ are also prime numbers, show that the expression $A + B + (A - B) + (A + B)$ is a prime number.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.34771376848220825,
+        "symbolic_score": 0.5
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + (A + B))\"",
+        "formal solution": "(* ### Problem\n The positive integers $A, B, A-B, $ and $A+B$ are all prime numbers. The sum of these four primes is\n\n$\\mathrm{(A)}\\ \\mathrm{even}\n\\qquad\\mathrm{(B)}\\ \\mathrm{divisible\\ by\\ }3\n\\qquad\\mathrm{(C)}\\ \\mathrm{divisible\\ by\\ }5\n\\qquad\\mathrm{(D)}\\ \\mathrm{divisible\\ by\\ }7\n\\qquad\\mathrm{(E)}\\ \\mathrm{prime}$ Show that it is \\mathrm{(E)}\\ \\text{prime}.\n ### Proof\n Since $A-B$ and $A+B$ must have the same [[parity]], and since there is only one even prime number, it follows that $A-B$ and $A+B$ are both odd. Thus one of $A, B$ is odd and the other even. Since $A+B > A > A-B > 2$, it follows that $A$ (as a prime greater than $2$) is odd. Thus $B = 2$, and $A-2, A, A+2$ are consecutive odd primes. At least one of $A-2, A, A+2$ is divisible by $3$, from which it follows that $A-2 = 3$ and $A = 5$. The sum of these numbers is thus $17$, a prime, so the answer is $\\mathrm{(E)}\\ \\text{prime}$.\n *)\n\ntheorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + (A + B))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two prime numbers A and B such that both A - B and A + B are also prime numbers, prove that the sum (A + B + (A - B) + (A + B)) is also a prime number.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.35916897654533386,
+        "symbolic_score": 0.5
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + A + B)\"",
+        "formal solution": "(* ### Problem\n The positive integers $A, B, A-B, $ and $A+B$ are all prime numbers. The sum of these four primes is\n\n$\\mathrm{(A)}\\ \\mathrm{even}\n\\qquad\\mathrm{(B)}\\ \\mathrm{divisible\\ by\\ }3\n\\qquad\\mathrm{(C)}\\ \\mathrm{divisible\\ by\\ }5\n\\qquad\\mathrm{(D)}\\ \\mathrm{divisible\\ by\\ }7\n\\qquad\\mathrm{(E)}\\ \\mathrm{prime}$ Show that it is \\mathrm{(E)}\\ \\text{prime}.\n ### Proof\n Since $A-B$ and $A+B$ must have the same [[parity]], and since there is only one even prime number, it follows that $A-B$ and $A+B$ are both odd. Thus one of $A, B$ is odd and the other even. Since $A+B > A > A-B > 2$, it follows that $A$ (as a prime greater than $2$) is odd. Thus $B = 2$, and $A-2, A, A+2$ are consecutive odd primes. At least one of $A-2, A, A+2$ is divisible by $3$, from which it follows that $A-2 = 3$ and $A = 5$. The sum of these numbers is thus $17$, a prime, so the answer is $\\mathrm{(E)}\\ \\text{prime}$.\n *)\n\ntheorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + A + B)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A$ and $B$ are prime numbers such that $(A - B)$ and $(A + B)$ are also prime, prove that the sum $(A + B + (A - B) + A + B)$ is a prime number.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.3583196699619293,
+        "symbolic_score": 0.3
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes A B :: nat\nassumes h0 : \"is_prime A\"\nand h1 : \"is_prime B\"\nand h2 : \"is_prime (A - B)\"\nand h3 : \"is_prime (A + B)\"\nshows  \"is_prime (A + B + (A - B) + A)\"",
+        "formal solution": "(* ### Problem\n The positive integers $A, B, A-B, $ and $A+B$ are all prime numbers. The sum of these four primes is\n\n$\\mathrm{(A)}\\ \\mathrm{even}\n\\qquad\\mathrm{(B)}\\ \\mathrm{divisible\\ by\\ }3\n\\qquad\\mathrm{(C)}\\ \\mathrm{divisible\\ by\\ }5\n\\qquad\\mathrm{(D)}\\ \\mathrm{divisible\\ by\\ }7\n\\qquad\\mathrm{(E)}\\ \\mathrm{prime}$ Show that it is \\mathrm{(E)}\\ \\text{prime}.\n ### Proof\n Since $A-B$ and $A+B$ must have the same [[parity]], and since there is only one even prime number, it follows that $A-B$ and $A+B$ are both odd. Thus one of $A, B$ is odd and the other even. Since $A+B > A > A-B > 2$, it follows that $A$ (as a prime greater than $2$) is odd. Thus $B = 2$, and $A-2, A, A+2$ are consecutive odd primes. At least one of $A-2, A, A+2$ is divisible by $3$, from which it follows that $A-2 = 3$ and $A = 5$. The sum of these numbers is thus $17$, a prime, so the answer is $\\mathrm{(E)}\\ \\text{prime}$.\n *)\n\ntheorem\nfixes A B :: nat\nassumes h0 : \"is_prime A\"\nand h1 : \"is_prime B\"\nand h2 : \"is_prime (A - B)\"\nand h3 : \"is_prime (A + B)\"\nshows  \"is_prime (A + B + (A - B) + A)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given four prime numbers, $A$, $B$, $A-B$, and $A+B$, prove that the sum of these numbers, $(A + B + (A - B) + A)$, is also a prime number.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.27447474002838135,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + A + B)\"",
+        "formal solution": "(* ### Problem\n The positive integers $A, B, A-B, $ and $A+B$ are all prime numbers. The sum of these four primes is\n\n$\\mathrm{(A)}\\ \\mathrm{even}\n\\qquad\\mathrm{(B)}\\ \\mathrm{divisible\\ by\\ }3\n\\qquad\\mathrm{(C)}\\ \\mathrm{divisible\\ by\\ }5\n\\qquad\\mathrm{(D)}\\ \\mathrm{divisible\\ by\\ }7\n\\qquad\\mathrm{(E)}\\ \\mathrm{prime}$ Show that it is \\mathrm{(E)}\\ \\text{prime}.\n ### Proof\n Since $A-B$ and $A+B$ must have the same [[parity]], and since there is only one even prime number, it follows that $A-B$ and $A+B$ are both odd. Thus one of $A, B$ is odd and the other even. Since $A+B > A > A-B > 2$, it follows that $A$ (as a prime greater than $2$) is odd. Thus $B = 2$, and $A-2, A, A+2$ are consecutive odd primes. At least one of $A-2, A, A+2$ is divisible by $3$, from which it follows that $A-2 = 3$ and $A = 5$. The sum of these numbers is thus $17$, a prime, so the answer is $\\mathrm{(E)}\\ \\text{prime}$.\n *)\n\ntheorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + A + B)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A$ and $B$ are prime numbers, and both $A - B$ and $A + B$ are also prime, prove that the sum $(A + B) + (A - B) + A + B$ is a prime number.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.38872528076171875,
+        "symbolic_score": 0.3
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + A + B)\"",
+        "formal solution": "(* ### Problem\n The positive integers $A, B, A-B, $ and $A+B$ are all prime numbers. The sum of these four primes is\n\n$\\mathrm{(A)}\\ \\mathrm{even}\n\\qquad\\mathrm{(B)}\\ \\mathrm{divisible\\ by\\ }3\n\\qquad\\mathrm{(C)}\\ \\mathrm{divisible\\ by\\ }5\n\\qquad\\mathrm{(D)}\\ \\mathrm{divisible\\ by\\ }7\n\\qquad\\mathrm{(E)}\\ \\mathrm{prime}$ Show that it is \\mathrm{(E)}\\ \\text{prime}.\n ### Proof\n Since $A-B$ and $A+B$ must have the same [[parity]], and since there is only one even prime number, it follows that $A-B$ and $A+B$ are both odd. Thus one of $A, B$ is odd and the other even. Since $A+B > A > A-B > 2$, it follows that $A$ (as a prime greater than $2$) is odd. Thus $B = 2$, and $A-2, A, A+2$ are consecutive odd primes. At least one of $A-2, A, A+2$ is divisible by $3$, from which it follows that $A-2 = 3$ and $A = 5$. The sum of these numbers is thus $17$, a prime, so the answer is $\\mathrm{(E)}\\ \\text{prime}$.\n *)\n\ntheorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + A + B)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A$ and $B$ are prime numbers, and both $(A - B)$ and $(A + B)$ are also prime, prove that the sum $(A + B + (A - B) + A + B)$ is a prime number.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.34644970297813416,
+        "symbolic_score": 0.3
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + (A + B))\"",
+        "formal solution": "(* ### Problem\n The positive integers $A, B, A-B, $ and $A+B$ are all prime numbers. The sum of these four primes is\n\n$\\mathrm{(A)}\\ \\mathrm{even}\n\\qquad\\mathrm{(B)}\\ \\mathrm{divisible\\ by\\ }3\n\\qquad\\mathrm{(C)}\\ \\mathrm{divisible\\ by\\ }5\n\\qquad\\mathrm{(D)}\\ \\mathrm{divisible\\ by\\ }7\n\\qquad\\mathrm{(E)}\\ \\mathrm{prime}$ Show that it is \\mathrm{(E)}\\ \\text{prime}.\n ### Proof\n Since $A-B$ and $A+B$ must have the same [[parity]], and since there is only one even prime number, it follows that $A-B$ and $A+B$ are both odd. Thus one of $A, B$ is odd and the other even. Since $A+B > A > A-B > 2$, it follows that $A$ (as a prime greater than $2$) is odd. Thus $B = 2$, and $A-2, A, A+2$ are consecutive odd primes. At least one of $A-2, A, A+2$ is divisible by $3$, from which it follows that $A-2 = 3$ and $A = 5$. The sum of these numbers is thus $17$, a prime, so the answer is $\\mathrm{(E)}\\ \\text{prime}$.\n *)\n\ntheorem\nfixes A B :: nat\nassumes h0 : \"prime A\"\nand h1 : \"prime B\"\nand h2 : \"prime (A - B)\"\nand h3 : \"prime (A + B)\"\nshows  \"prime (A + B + (A - B) + (A + B))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given four prime numbers $A$, $B$, $A-B$, and $A+B$, show that the sum of these prime numbers, $(A + B + (A - B) + (A + B))$, is also prime.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.28668779134750366,
+        "symbolic_score": 0.5
+    },
+    "oracle": "theorem\nfixes a b::nat\nassumes \"prime a\" and \"prime b\"\nand \"prime (a+b)\" and \"prime (a-b)\"\nshows \"prime (a + b + (a - b + (a + b)))\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            3,
+            4,
+            9
+        ],
+        "1": [
+            8,
+            5,
+            7
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            6
+        ]
+    }
+}

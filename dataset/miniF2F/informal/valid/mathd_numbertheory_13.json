@@ -1,0 +1,128 @@
+{
+    "problem_name": "mathd_numbertheory_13",
+    "informal_statement": "What is the average of the two smallest positive integer solutions to the congruence $$14u \\equiv 46 \\pmod{100}~?$$ Show that it is 64.",
+    "informal_proof": "Note that $14$, $46$, and $100$ all have a common factor of $2$, so we can divide it out: the solutions to $$14u \\equiv 46 \\pmod{100}$$ are identical to the solutions to $$7u \\equiv 23 \\pmod{50}.$$ Make sure you see why this is the case.\n\nNow we can multiply both sides of the congruence by $7$ to obtain $$49u \\equiv 161 \\pmod{50},$$ which also has the same solutions as the previous congruence, since we could reverse the step above by multiplying both sides by $7^{-1}$. (We know that $7^{-1}$ exists modulo $50$ because $7$ and $50$ are relatively prime.)\n\nReplacing each side of $49u\\equiv 161$ by a $\\pmod{50}$ equivalent, we have $$-u \\equiv 11\\pmod{50},$$ and thus $$u \\equiv -11\\pmod{50}.$$ This is the set of solutions to our original congruence. The two smallest positive solutions are $-11+50 = 39$ and $-11+2\\cdot 50 = 89$. Their average is $64$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes u :: nat and cong :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>u. cong u = (14 * u) mod 100\"\nand h1 : \"cong u = 46\"\nand h2 : \"u > 0\"\nand h3 : \"\\<forall>v. v > 0 \\<and> cong v = 46 \\<longrightarrow> u \\<le> v\"\nand h4 : \"u + 82 = 128\"\nshows  \"64 = (u + 82) div 2\"",
+        "formal solution": "(* ### Problem\n What is the average of the two smallest positive integer solutions to the congruence $$14u \\equiv 46 \\pmod{100}~?$$ The final Answer is $64$\n ### Proof\n Note that $14$, $46$, and $100$ all have a common factor of $2$, so we can divide it out: the solutions to $$14u \\equiv 46 \\pmod{100}$$ are identical to the solutions to $$7u \\equiv 23 \\pmod{50}.$$ Make sure you see why this is the case.\n\nNow we can multiply both sides of the congruence by $7$ to obtain $$49u \\equiv 161 \\pmod{50},$$ which also has the same solutions as the previous congruence, since we could reverse the step above by multiplying both sides by $7^{-1}$. (We know that $7^{-1}$ exists modulo $50$ because $7$ and $50$ are relatively prime.)\n\nReplacing each side of $49u\\equiv 161$ by a $\\pmod{50}$ equivalent, we have $$-u \\equiv 11\\pmod{50},$$ and thus $$u \\equiv -11\\pmod{50}.$$ This is the set of solutions to our original congruence. The two smallest positive solutions are $-11+50 = 39$ and $-11+2\\cdot 50 = 89$. Their average is $64$.\n *)\n\ntheorem\nfixes u :: nat and cong :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>u. cong u = (14 * u) mod 100\"\nand h1 : \"cong u = 46\"\nand h2 : \"u > 0\"\nand h3 : \"\\<forall>v. v > 0 \\<and> cong v = 46 \\<longrightarrow> u \\<le> v\"\nand h4 : \"u + 82 = 128\"\nshows  \"64 = (u + 82) div 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of numbers is defined by the rule $c(u) = (14u) \\bmod 100$. Find the smallest positive integer $u$ such that $c(u) = 46$. If $u + 82 = 128$, what is the value of $\\frac{u + 82}{2}$? The final answer is 64.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8717570900917053,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes u :: int and cong :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> u. cong u = (14 * u) mod 100\"\nand h1 : \"cong u = 46\"\nand h2 : \"u > 0\"\nand h3 : \"smallest_pos_int_solution u\"\nand h4 : \"u' > u\"\nand h5 : \"cong u' = 46\"\nand h6 : \"u' > 0\"\nand h7 : \"smallest_pos_int_solution u'\"\nshows  \"average u u' = 64\"",
+        "formal solution": "(* ### Problem\n What is the average of the two smallest positive integer solutions to the congruence $$14u \\equiv 46 \\pmod{100}~?$$ The final Answer is $64$\n ### Proof\n Note that $14$, $46$, and $100$ all have a common factor of $2$, so we can divide it out: the solutions to $$14u \\equiv 46 \\pmod{100}$$ are identical to the solutions to $$7u \\equiv 23 \\pmod{50}.$$ Make sure you see why this is the case.\n\nNow we can multiply both sides of the congruence by $7$ to obtain $$49u \\equiv 161 \\pmod{50},$$ which also has the same solutions as the previous congruence, since we could reverse the step above by multiplying both sides by $7^{-1}$. (We know that $7^{-1}$ exists modulo $50$ because $7$ and $50$ are relatively prime.)\n\nReplacing each side of $49u\\equiv 161$ by a $\\pmod{50}$ equivalent, we have $$-u \\equiv 11\\pmod{50},$$ and thus $$u \\equiv -11\\pmod{50}.$$ This is the set of solutions to our original congruence. The two smallest positive solutions are $-11+50 = 39$ and $-11+2\\cdot 50 = 89$. Their average is $64$.\n *)\n\ntheorem\nfixes u :: int and cong :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> u. cong u = (14 * u) mod 100\"\nand h1 : \"cong u = 46\"\nand h2 : \"u > 0\"\nand h3 : \"smallest_pos_int_solution u\"\nand h4 : \"u' > u\"\nand h5 : \"cong u' = 46\"\nand h6 : \"u' > 0\"\nand h7 : \"smallest_pos_int_solution u'\"\nshows  \"average u u' = 64\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integers $u$ and $u'$ such that $14u \\equiv 46 \\pmod{100}$ and $14u' \\equiv 46 \\pmod{100}$, respectively. What is the average of $u$ and $u'$? The final answer is 64.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9885473847389221,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes u :: int\nassumes h0 : \"\\<exists> u1 u2. u1 \\<noteq> u2 \\<and> u1 > 0 \\<and> u2 > 0 \\<and> u1 \\<le> u2 \\<and> [14 * u1 = 46] (mod 100) \\<and> [14 * u2 = 46] (mod 100) \\<and> (\\<forall> u. u > 0 \\<and> [14 * u = 46] (mod 100) \\<longrightarrow> u \\<ge> u1) \\<and> (\\<forall> u. u > 0 \\<and> [14 * u = 46] (mod 100) \\<and> u > u1 \\<longrightarrow> u \\<ge> u2)\"\nshows  \"average u1 u2 = 64\"",
+        "formal solution": "(* ### Problem\n What is the average of the two smallest positive integer solutions to the congruence $$14u \\equiv 46 \\pmod{100}~?$$ The final Answer is $64$\n ### Proof\n Note that $14$, $46$, and $100$ all have a common factor of $2$, so we can divide it out: the solutions to $$14u \\equiv 46 \\pmod{100}$$ are identical to the solutions to $$7u \\equiv 23 \\pmod{50}.$$ Make sure you see why this is the case.\n\nNow we can multiply both sides of the congruence by $7$ to obtain $$49u \\equiv 161 \\pmod{50},$$ which also has the same solutions as the previous congruence, since we could reverse the step above by multiplying both sides by $7^{-1}$. (We know that $7^{-1}$ exists modulo $50$ because $7$ and $50$ are relatively prime.)\n\nReplacing each side of $49u\\equiv 161$ by a $\\pmod{50}$ equivalent, we have $$-u \\equiv 11\\pmod{50},$$ and thus $$u \\equiv -11\\pmod{50}.$$ This is the set of solutions to our original congruence. The two smallest positive solutions are $-11+50 = 39$ and $-11+2\\cdot 50 = 89$. Their average is $64$.\n *)\n\ntheorem\nfixes u :: int\nassumes h0 : \"\\<exists> u1 u2. u1 \\<noteq> u2 \\<and> u1 > 0 \\<and> u2 > 0 \\<and> u1 \\<le> u2 \\<and> [14 * u1 = 46] (mod 100) \\<and> [14 * u2 = 46] (mod 100) \\<and> (\\<forall> u. u > 0 \\<and> [14 * u = 46] (mod 100) \\<longrightarrow> u \\<ge> u1) \\<and> (\\<forall> u. u > 0 \\<and> [14 * u = 46] (mod 100) \\<and> u > u1 \\<longrightarrow> u \\<ge> u2)\"\nshows  \"average u1 u2 = 64\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two positive integers $u_1$ and $u_2$ such that $u_1 \\neq u_2$, $14u_1 \\equiv 46 \\pmod{100}$, and $14u_2 \\equiv 46 \\pmod{100}$. Moreover, $u_1$ is the smallest positive integer satisfying the congruence, and $u_2$ is the smallest positive integer greater than $u_1$ that also satisfies the congruence. What is the average of $u_1$ and $u_2$? The final answer is $64$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9872701168060303,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes u :: int and cong :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"cong u = (14 * u mod 100 = 46)\"\nand h1 : \"\\<forall>u1 u2. u1 \\<ge> 1 \\<and> u2 \\<ge> 1 \\<and> u1 \\<noteq> u2 \\<and> cong u1 \\<and> cong u2 \\<longrightarrow> u1 + u2 = 128\"\nshows  \"average u1 u2 = 64\"",
+        "formal solution": "(* ### Problem\n What is the average of the two smallest positive integer solutions to the congruence $$14u \\equiv 46 \\pmod{100}~?$$ The final Answer is $64$\n ### Proof\n Note that $14$, $46$, and $100$ all have a common factor of $2$, so we can divide it out: the solutions to $$14u \\equiv 46 \\pmod{100}$$ are identical to the solutions to $$7u \\equiv 23 \\pmod{50}.$$ Make sure you see why this is the case.\n\nNow we can multiply both sides of the congruence by $7$ to obtain $$49u \\equiv 161 \\pmod{50},$$ which also has the same solutions as the previous congruence, since we could reverse the step above by multiplying both sides by $7^{-1}$. (We know that $7^{-1}$ exists modulo $50$ because $7$ and $50$ are relatively prime.)\n\nReplacing each side of $49u\\equiv 161$ by a $\\pmod{50}$ equivalent, we have $$-u \\equiv 11\\pmod{50},$$ and thus $$u \\equiv -11\\pmod{50}.$$ This is the set of solutions to our original congruence. The two smallest positive solutions are $-11+50 = 39$ and $-11+2\\cdot 50 = 89$. Their average is $64$.\n *)\n\ntheorem\nfixes u :: int and cong :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"cong u = (14 * u mod 100 = 46)\"\nand h1 : \"\\<forall>u1 u2. u1 \\<ge> 1 \\<and> u2 \\<ge> 1 \\<and> u1 \\<noteq> u2 \\<and> cong u1 \\<and> cong u2 \\<longrightarrow> u1 + u2 = 128\"\nshows  \"average u1 u2 = 64\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two different positive integers $u_1$ and $u_2$ that satisfy the congruence $14u \\equiv 46 \\pmod{100}$ and have a sum of 128. What is the average of $u_1$ and $u_2$? The final answer is 64.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.99235999584198,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes u :: int and smallest_solutions :: \"int set\"\nassumes h0 : \"smallest_solutions = {u. u \\<ge> 1 \\<and> 14 * u mod 100 = 46} \\<inter> {1..2}\"\nand h1 : \"finite smallest_solutions\"\nshows  \"sum id smallest_solutions / card smallest_solutions = 64\"",
+        "formal solution": "(* ### Problem\n What is the average of the two smallest positive integer solutions to the congruence $$14u \\equiv 46 \\pmod{100}~?$$ The final Answer is $64$\n ### Proof\n Note that $14$, $46$, and $100$ all have a common factor of $2$, so we can divide it out: the solutions to $$14u \\equiv 46 \\pmod{100}$$ are identical to the solutions to $$7u \\equiv 23 \\pmod{50}.$$ Make sure you see why this is the case.\n\nNow we can multiply both sides of the congruence by $7$ to obtain $$49u \\equiv 161 \\pmod{50},$$ which also has the same solutions as the previous congruence, since we could reverse the step above by multiplying both sides by $7^{-1}$. (We know that $7^{-1}$ exists modulo $50$ because $7$ and $50$ are relatively prime.)\n\nReplacing each side of $49u\\equiv 161$ by a $\\pmod{50}$ equivalent, we have $$-u \\equiv 11\\pmod{50},$$ and thus $$u \\equiv -11\\pmod{50}.$$ This is the set of solutions to our original congruence. The two smallest positive solutions are $-11+50 = 39$ and $-11+2\\cdot 50 = 89$. Their average is $64$.\n *)\n\ntheorem\nfixes u :: int and smallest_solutions :: \"int set\"\nassumes h0 : \"smallest_solutions = {u. u \\<ge> 1 \\<and> 14 * u mod 100 = 46} \\<inter> {1..2}\"\nand h1 : \"finite smallest_solutions\"\nshows  \"sum id smallest_solutions / card smallest_solutions = 64\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the average of the smallest positive integers $u$ in the range from $1$ to $2$ inclusive, such that $14u \\equiv 46 \\pmod{100}$. The final answer is $64$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8994035720825195,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes u :: int and modulo :: int\nassumes h0 : \"14 * u \\<equiv> 46 [MOD 100]\"\nand h1 : \"u > 0\"\nand h2 : \"is_min u\"\nshows  \"average_of_u = 64\"",
+        "formal solution": "(* ### Problem\n What is the average of the two smallest positive integer solutions to the congruence $$14u \\equiv 46 \\pmod{100}~?$$ The final Answer is $64$\n ### Proof\n Note that $14$, $46$, and $100$ all have a common factor of $2$, so we can divide it out: the solutions to $$14u \\equiv 46 \\pmod{100}$$ are identical to the solutions to $$7u \\equiv 23 \\pmod{50}.$$ Make sure you see why this is the case.\n\nNow we can multiply both sides of the congruence by $7$ to obtain $$49u \\equiv 161 \\pmod{50},$$ which also has the same solutions as the previous congruence, since we could reverse the step above by multiplying both sides by $7^{-1}$. (We know that $7^{-1}$ exists modulo $50$ because $7$ and $50$ are relatively prime.)\n\nReplacing each side of $49u\\equiv 161$ by a $\\pmod{50}$ equivalent, we have $$-u \\equiv 11\\pmod{50},$$ and thus $$u \\equiv -11\\pmod{50}.$$ This is the set of solutions to our original congruence. The two smallest positive solutions are $-11+50 = 39$ and $-11+2\\cdot 50 = 89$. Their average is $64$.\n *)\n\ntheorem\nfixes u :: int and modulo :: int\nassumes h0 : \"14 * u \\<equiv> 46 [MOD 100]\"\nand h1 : \"u > 0\"\nand h2 : \"is_min u\"\nshows  \"average_of_u = 64\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $u$ such that $14u \\equiv 46 \\pmod{100}$. The final answer is $u=64$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8756595253944397,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes u1 u2 :: int\nassumes h0 : \"[14 * u1 = 46] (mod 100)\"\nand h1 : \"[14 * u2 = 46] (mod 100)\"\nand h2 : \"u1 > 0\"\nand h3 : \"u2 > 0\"\nand h4 : \"u1 \\<noteq> u2\"\nand h5 : \"\\<forall> u. (u > 0) \\<and> ([14 * u = 46] (mod 100)) \\<longrightarrow> (u = u1 \\<or> u = u2)\"\nshows  \"(u1 + u2) div 2 = 64\"",
+        "formal solution": "(* ### Problem\n What is the average of the two smallest positive integer solutions to the congruence $$14u \\equiv 46 \\pmod{100}~?$$ The final Answer is $64$\n ### Proof\n Note that $14$, $46$, and $100$ all have a common factor of $2$, so we can divide it out: the solutions to $$14u \\equiv 46 \\pmod{100}$$ are identical to the solutions to $$7u \\equiv 23 \\pmod{50}.$$ Make sure you see why this is the case.\n\nNow we can multiply both sides of the congruence by $7$ to obtain $$49u \\equiv 161 \\pmod{50},$$ which also has the same solutions as the previous congruence, since we could reverse the step above by multiplying both sides by $7^{-1}$. (We know that $7^{-1}$ exists modulo $50$ because $7$ and $50$ are relatively prime.)\n\nReplacing each side of $49u\\equiv 161$ by a $\\pmod{50}$ equivalent, we have $$-u \\equiv 11\\pmod{50},$$ and thus $$u \\equiv -11\\pmod{50}.$$ This is the set of solutions to our original congruence. The two smallest positive solutions are $-11+50 = 39$ and $-11+2\\cdot 50 = 89$. Their average is $64$.\n *)\n\ntheorem\nfixes u1 u2 :: int\nassumes h0 : \"[14 * u1 = 46] (mod 100)\"\nand h1 : \"[14 * u2 = 46] (mod 100)\"\nand h2 : \"u1 > 0\"\nand h3 : \"u2 > 0\"\nand h4 : \"u1 \\<noteq> u2\"\nand h5 : \"\\<forall> u. (u > 0) \\<and> ([14 * u = 46] (mod 100)) \\<longrightarrow> (u = u1 \\<or> u = u2)\"\nshows  \"(u1 + u2) div 2 = 64\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two positive integers $u_1$ and $u_2$ that are not equal and satisfy the congruence relation $14u_1 \\equiv 46 \\pmod{100}$ and $14u_2 \\equiv 46 \\pmod{100}$. If no other positive integers satisfy these conditions, what is the average of $u_1$ and $u_2$? The final answer is 64.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9866771697998047,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes u :: int\nassumes h0 : \"\\<exists>u. (14 * u) mod 100 = 46\"\nand h1 : \"u > 0\"\nand h2 : \"Min (u, {u. (14 * u) mod 100 = 46 \\<and> u > 0}) = u\"\nshows  \"average u = 64\"",
+        "formal solution": "(* ### Problem\n What is the average of the two smallest positive integer solutions to the congruence $$14u \\equiv 46 \\pmod{100}~?$$ The final Answer is $64$\n ### Proof\n Note that $14$, $46$, and $100$ all have a common factor of $2$, so we can divide it out: the solutions to $$14u \\equiv 46 \\pmod{100}$$ are identical to the solutions to $$7u \\equiv 23 \\pmod{50}.$$ Make sure you see why this is the case.\n\nNow we can multiply both sides of the congruence by $7$ to obtain $$49u \\equiv 161 \\pmod{50},$$ which also has the same solutions as the previous congruence, since we could reverse the step above by multiplying both sides by $7^{-1}$. (We know that $7^{-1}$ exists modulo $50$ because $7$ and $50$ are relatively prime.)\n\nReplacing each side of $49u\\equiv 161$ by a $\\pmod{50}$ equivalent, we have $$-u \\equiv 11\\pmod{50},$$ and thus $$u \\equiv -11\\pmod{50}.$$ This is the set of solutions to our original congruence. The two smallest positive solutions are $-11+50 = 39$ and $-11+2\\cdot 50 = 89$. Their average is $64$.\n *)\n\ntheorem\nfixes u :: int\nassumes h0 : \"\\<exists>u. (14 * u) mod 100 = 46\"\nand h1 : \"u > 0\"\nand h2 : \"Min (u, {u. (14 * u) mod 100 = 46 \\<and> u > 0}) = u\"\nshows  \"average u = 64\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $u$ such that $14u \\equiv 46 \\pmod{100}$. What is the average of this integer? The final answer is 64.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9905534982681274,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes u :: int and congruence :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>u. congruence u = (14 * u) mod 100\"\nand h1 : \"\\<forall>u. congruence u = 46\"\nand h2 : \"u > 0\"\nand h3 : \"finite {u. h1 u \\<and> h2 u}\"\nand h4 : \"\\<exists>u1 u2. u1 \\<noteq> u2 \\<and> u1 \\<in> {u. h1 u \\<and> h2 u} \\<and> u2 \\<in> {u. h1 u \\<and> h2 u} \\<and> (\\<forall>u. u \\<in> {u. h1 u \\<and> h2 u} \\<longrightarrow> u = u1 \\<or> u = u2)\"\nshows  \"(u1 + u2) / 2 = 64\"",
+        "formal solution": "(* ### Problem\n What is the average of the two smallest positive integer solutions to the congruence $$14u \\equiv 46 \\pmod{100}~?$$ The final Answer is $64$\n ### Proof\n Note that $14$, $46$, and $100$ all have a common factor of $2$, so we can divide it out: the solutions to $$14u \\equiv 46 \\pmod{100}$$ are identical to the solutions to $$7u \\equiv 23 \\pmod{50}.$$ Make sure you see why this is the case.\n\nNow we can multiply both sides of the congruence by $7$ to obtain $$49u \\equiv 161 \\pmod{50},$$ which also has the same solutions as the previous congruence, since we could reverse the step above by multiplying both sides by $7^{-1}$. (We know that $7^{-1}$ exists modulo $50$ because $7$ and $50$ are relatively prime.)\n\nReplacing each side of $49u\\equiv 161$ by a $\\pmod{50}$ equivalent, we have $$-u \\equiv 11\\pmod{50},$$ and thus $$u \\equiv -11\\pmod{50}.$$ This is the set of solutions to our original congruence. The two smallest positive solutions are $-11+50 = 39$ and $-11+2\\cdot 50 = 89$. Their average is $64$.\n *)\n\ntheorem\nfixes u :: int and congruence :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>u. congruence u = (14 * u) mod 100\"\nand h1 : \"\\<forall>u. congruence u = 46\"\nand h2 : \"u > 0\"\nand h3 : \"finite {u. h1 u \\<and> h2 u}\"\nand h4 : \"\\<exists>u1 u2. u1 \\<noteq> u2 \\<and> u1 \\<in> {u. h1 u \\<and> h2 u} \\<and> u2 \\<in> {u. h1 u \\<and> h2 u} \\<and> (\\<forall>u. u \\<in> {u. h1 u \\<and> h2 u} \\<longrightarrow> u = u1 \\<or> u = u2)\"\nshows  \"(u1 + u2) / 2 = 64\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two positive integers $u_1$ and $u_2$ such that $14u \\equiv 46 \\pmod{100}$ for both $u_1$ and $u_2$, and they are the only two such positive integers. What is the average of $u_1$ and $u_2$? The final answer is 64.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9505919814109802,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes u :: int\nassumes h0 : \"(14 * u) mod 100 = 46\"\nand h1 : \"u > 0\"\nand h2 : \"u \\<noteq> min_pos_solution1\"\nand h3 : \"u \\<noteq> min_pos_solution2\"\nand h4 : \"min_pos_solution1 > 0\"\nand h5 : \"min_pos_solution2 > 0\"\nand h6 : \"min_pos_solution1 < min_pos_solution2\"\nand h7 : \"\\<nexists> v. v > 0 \\<and> v < min_pos_solution1 \\<and> (14 * v) mod 100 = 46\"\nand h8 : \"\\<nexists> v. v > 0 \\<and> v < min_pos_solution2 \\<and> v \\<noteq> min_pos_solution1 \\<and> (14 * v) mod 100 = 46\"\nshows  \"average (min_pos_solution1, min_pos_solution2) = 64\"",
+        "formal solution": "(* ### Problem\n What is the average of the two smallest positive integer solutions to the congruence $$14u \\equiv 46 \\pmod{100}~?$$ The final Answer is $64$\n ### Proof\n Note that $14$, $46$, and $100$ all have a common factor of $2$, so we can divide it out: the solutions to $$14u \\equiv 46 \\pmod{100}$$ are identical to the solutions to $$7u \\equiv 23 \\pmod{50}.$$ Make sure you see why this is the case.\n\nNow we can multiply both sides of the congruence by $7$ to obtain $$49u \\equiv 161 \\pmod{50},$$ which also has the same solutions as the previous congruence, since we could reverse the step above by multiplying both sides by $7^{-1}$. (We know that $7^{-1}$ exists modulo $50$ because $7$ and $50$ are relatively prime.)\n\nReplacing each side of $49u\\equiv 161$ by a $\\pmod{50}$ equivalent, we have $$-u \\equiv 11\\pmod{50},$$ and thus $$u \\equiv -11\\pmod{50}.$$ This is the set of solutions to our original congruence. The two smallest positive solutions are $-11+50 = 39$ and $-11+2\\cdot 50 = 89$. Their average is $64$.\n *)\n\ntheorem\nfixes u :: int\nassumes h0 : \"(14 * u) mod 100 = 46\"\nand h1 : \"u > 0\"\nand h2 : \"u \\<noteq> min_pos_solution1\"\nand h3 : \"u \\<noteq> min_pos_solution2\"\nand h4 : \"min_pos_solution1 > 0\"\nand h5 : \"min_pos_solution2 > 0\"\nand h6 : \"min_pos_solution1 < min_pos_solution2\"\nand h7 : \"\\<nexists> v. v > 0 \\<and> v < min_pos_solution1 \\<and> (14 * v) mod 100 = 46\"\nand h8 : \"\\<nexists> v. v > 0 \\<and> v < min_pos_solution2 \\<and> v \\<noteq> min_pos_solution1 \\<and> (14 * v) mod 100 = 46\"\nshows  \"average (min_pos_solution1, min_pos_solution2) = 64\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two smallest positive integer solutions $u$ to the equation $14u \\equiv 46 \\pmod{100}$. Let the smaller solution be $min\\_pos\\_solution1$ and the larger solution be $min\\_pos\\_solution2$. What is the average of these two solutions? The final answer is 64.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.956902265548706,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes u v :: nat\nassumes \"u>0 \\<and> v>0\"\nand \"(14 * u) mod 100 = 46\"\nand \"(14 * v) mod 100 = 46\"\nand \"u < 50\"\nand \"v < 100\"\nand \"50 < v\"\nshows \"(u + v) / 2 = 64\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    }
+}

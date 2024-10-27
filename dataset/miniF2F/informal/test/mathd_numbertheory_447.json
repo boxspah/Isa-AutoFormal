@@ -1,0 +1,592 @@
+{
+    "problem_name": "mathd_numbertheory_447",
+    "informal_statement": "What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? Show that it is 78.",
+    "informal_proof": "We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n mod 10 = n\"\nand h1 : \"n mod 3 = 0\"\nand h2 : \"n \\<ge> 0\"\nand h3 : \"n \\<le> 50\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n mod 3 = 0 \\<and> n \\<ge> 0 \\<and> n \\<le> 50} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n mod 10 = n\"\nand h1 : \"n mod 3 = 0\"\nand h2 : \"n \\<ge> 0\"\nand h3 : \"n \\<le> 50\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n mod 3 = 0 \\<and> n \\<ge> 0 \\<and> n \\<le> 50} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all non-negative integers less than or equal to 50 that are divisible by 3 and less than 10. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9753000736236572,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<le> 50\"\nand h1 : \"n mod 3 = 0\"\nshows  \"sum (\\<lambda> n. n mod 10) {n. n \\<le> 50 \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<le> 50\"\nand h1 : \"n mod 3 = 0\"\nshows  \"sum (\\<lambda> n. n mod 10) {n. n \\<le> 50 \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the last digit (units place) of all natural numbers less than or equal to 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.957979142665863,
+        "symbolic_score": 0.7
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes units_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<in> {0..50} \\<and> n mod 3 = 0 \\<longrightarrow> units_sum n = n mod 10\"\nshows  \"sum units_sum {n. n \\<in> {0..50} \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes units_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<in> {0..50} \\<and> n mod 3 = 0 \\<longrightarrow> units_sum n = n mod 10\"\nshows  \"sum units_sum {n. n \\<in> {0..50} \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the last digit (i.e., units place) of all numbers from 0 to 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9152854681015015,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat and sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> sum n = n mod 10\"\nshows  \"sum (\\<Sum>n\\<in>{n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0}. n) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: nat and sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> sum n = n mod 10\"\nshows  \"sum (\\<Sum>n\\<in>{n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0}. n) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the last digits of all non-negative integers less than or equal to 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9913111329078674,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n mod 10 = n\"\nand h1 : \"n mod 3 = 0\"\nand h2 : \"n \\<le> 50\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n mod 3 = 0 \\<and> n \\<le> 50} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n mod 10 = n\"\nand h1 : \"n mod 3 = 0\"\nand h2 : \"n \\<le> 50\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n mod 3 = 0 \\<and> n \\<le> 50} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the units digits of all non-negative integers less than or equal to 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9935920834541321,
+        "symbolic_score": 0.7
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall>n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> n mod 10 \\<ge> 0\"\nand h1 : \"\\<forall>n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> n mod 10 \\<le> 9\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall>n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> n mod 10 \\<ge> 0\"\nand h1 : \"\\<forall>n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> n mod 10 \\<le> 9\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the last digit (in base 10) of all non-negative integers less than or equal to 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9919382333755493,
+        "symbolic_score": 0.7
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"0 \\<le> n \\<and> n \\<le> 50\"\nand h1 : \"n mod 3 = 0\"\nshows  \"sum (\\<lambda> n. n mod 10) {n. 0 \\<le> n \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"0 \\<le> n \\<and> n \\<le> 50\"\nand h1 : \"n mod 3 = 0\"\nshows  \"sum (\\<lambda> n. n mod 10) {n. 0 \\<le> n \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the last digits (i.e., modulo 10) of all non-negative integers up to and including 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9259238243103027,
+        "symbolic_score": 0.7
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> f n = n mod 10\"\nshows  \"sum f {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> f n = n mod 10\"\nshows  \"sum f {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the last digit (or the digit in the ones place) of all non-negative integers less than or equal to 50 that are multiples of 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9571098685264587,
+        "symbolic_score": 0.7
+    },
+    "a_8": {
+        "formal problem": "theorem \nfixes n :: nat\nassumes h0 : \"n \\<ge> 0\"\nand h1 : \"n \\<le> 50\"\nand h2 : \"n mod 3 = 0\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem \nfixes n :: nat\nassumes h0 : \"n \\<ge> 0\"\nand h1 : \"n \\<le> 50\"\nand h2 : \"n mod 3 = 0\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the last digits (units place) of all non-negative integers no greater than 50 which are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.990239679813385,
+        "symbolic_score": 0.7
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the last digit (the digit in the ones place) of all non-negative integers less than or equal to 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9797428250312805,
+        "symbolic_score": 0.7
+    },
+    "oracle": "theorem\nshows  \"(\\<Sum> k \\<in>{n. 3 dvd n \\<and> 0<n \\<and> n<50}. k mod 10) = (78::nat)\"",
+    "prediction": {
+        "0": [
+            1,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ]
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes s :: nat\nassumes h0 : \"\\<forall>n. n mod 3 = 0 \\<and> n \\<le> 50 \\<longrightarrow> s = s + (n mod 10)\"\nshows  \"s = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes s :: nat\nassumes h0 : \"\\<forall>n. n mod 3 = 0 \\<and> n \\<le> 50 \\<longrightarrow> s = s + (n mod 10)\"\nshows  \"s = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If we add the last digit of each multiple of 3 between 0 and 50 inclusive, what is the sum? The final answer is 78.\"",
+        "semantic_score": 0.5264071742745383,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat and sum :: nat\nassumes h0 : \"sum = (\\<Sum>k\\<in>{0..50}. k mod 10)\"\nshows  \"sum = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: nat and sum :: nat\nassumes h0 : \"sum = (\\<Sum>k\\<in>{0..50}. k mod 10)\"\nshows  \"sum = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the sum of the remainders when the numbers from $0$ to $50$ are divided by $10$? The final answer is $78$.",
+        "semantic_score": 0.9835220119549651,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes sum :: nat\nassumes h0 : \"\\<forall> n. n mod 3 = 0 \\<and> n \\<le> 50 \\<longrightarrow> sum = sum + n mod 10\"\nshows  \"sum = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes sum :: nat\nassumes h0 : \"\\<forall> n. n mod 3 = 0 \\<and> n \\<le> 50 \\<longrightarrow> sum = sum + n mod 10\"\nshows  \"sum = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If we add up all the two-digit positive integers that are divisible by 3 and less than or equal to 50, what is the sum of their digits? The final answer is 78.\"",
+        "semantic_score": 0.5172877794683348,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes sum :: nat\nassumes h0 : \"sum = (\\<Sum>n\\<in>{0..50}. n mod 10)\"\nshows  \"sum = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes sum :: nat\nassumes h0 : \"sum = (\\<Sum>n\\<in>{0..50}. n mod 10)\"\nshows  \"sum = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the remainders when the first $51$ non-negative integers are divided by $10$. The final answer is $78$.",
+        "semantic_score": 0.7176025690789581,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\n  fixes s :: nat\n  assumes h0 : \"\\<And>n. n \\<in> {0..50} \\<Longrightarrow> n mod 3 = 0 \\<Longrightarrow> s = s + (n mod 10)\"\nshows  \"s = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\n  fixes s :: nat\n  assumes h0 : \"\\<And>n. n \\<in> {0..50} \\<Longrightarrow> n mod 3 = 0 \\<Longrightarrow> s = s + (n mod 10)\"\nshows  \"s = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum $s$ is the sum of the last digits of all multiples of $3$ between $0$ and $50$, inclusive. What is the value of $s$? The final answer is $78$.",
+        "semantic_score": 0.938982161940562,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes sum :: nat\nassumes h0 : \"sum = (\\<Sum>n | n \\<in> {0..50} \\<and> n mod 3 = 0. n mod 10)\"\nshows  \"sum = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes sum :: nat\nassumes h0 : \"sum = (\\<Sum>n | n \\<in> {0..50} \\<and> n mod 3 = 0. n mod 10)\"\nshows  \"sum = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all multiples of $10$ between $0$ and $50$ that are also multiples of $3$. The sum is $78$.",
+        "semantic_score": 0.7692628404559594,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes sum :: nat\nassumes h0 : \"sum = (\\<Sum>n | n \\<in> {0..50} \\<and> n mod 3 = 0. n mod 10)\"\nshows  \"sum = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes sum :: nat\nassumes h0 : \"sum = (\\<Sum>n | n \\<in> {0..50} \\<and> n mod 3 = 0. n mod 10)\"\nshows  \"sum = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all numbers between $0$ and $50$ (inclusive) that are multiples of $3$ and whose last digit is $0$. The final answer is $78$.",
+        "semantic_score": 0.8220913874334687,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\n  fixes sum :: nat\n  assumes h0 : \"\\<And>n. n \\<in> {0..50} \\<Longrightarrow> n mod 3 = 0 \\<Longrightarrow> sum = sum + n mod 10\"\nshows  \"sum = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\n  fixes sum :: nat\n  assumes h0 : \"\\<And>n. n \\<in> {0..50} \\<Longrightarrow> n mod 3 = 0 \\<Longrightarrow> sum = sum + n mod 10\"\nshows  \"sum = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Find the sum of all numbers between 0 and 50 (inclusive) that are divisible by 3, and take the last digit of each of those numbers. The final answer is 78.\"",
+        "semantic_score": 0.5481706886476582,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes sum :: nat\nassumes h0 : \"\\<And>n. n \\<in> {0..50} \\<Longrightarrow> n mod 3 = 0 \\<Longrightarrow> sum = sum + (n mod 10)\"\nshows  \"sum = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes sum :: nat\nassumes h0 : \"\\<And>n. n \\<in> {0..50} \\<Longrightarrow> n mod 3 = 0 \\<Longrightarrow> sum = sum + (n mod 10)\"\nshows  \"sum = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the last digit of every multiple of $3$ between $0$ and $50$, inclusive. The sum is $78$.",
+        "semantic_score": 0.6858781540267176,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\n  fixes n :: nat\n  assumes h0 : \"n \\<in> {0..50}\"\nshows  \"(\\<Sum>k\\<leftarrow>[0..<51] . if k mod 3 = 0 then k mod 10 else 0) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\n  fixes n :: nat\n  assumes h0 : \"n \\<in> {0..50}\"\nshows  \"(\\<Sum>k\\<leftarrow>[0..<51] . if k mod 3 = 0 then k mod 10 else 0) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all integers from $0$ to $50$ inclusive that are divisible by $3$ and then only consider the units digit of each of those numbers. The final answer is $78$.",
+        "semantic_score": 0.9903918044294263,
+        "symbolic_score": 0.1,
+        "naive_label": 1
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            1,
+            3
+        ],
+        "1": [
+            5,
+            6
+        ],
+        "2": [
+            8,
+            7
+        ],
+        "3": [
+            0
+        ],
+        "4": [
+            2
+        ],
+        "5": [
+            4
+        ],
+        "6": [
+            9
+        ]
+    },
+    "a_0_mistral": {
+        "formal problem": " theorem sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three : int :: \"nat \\<Rightarrow> int\" where\n  sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three\\_helper : \"\\<forall> n. 0 <= n \\<longrightarrow> int\" and\n    sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three : \"0 <= 50 \\<longrightarrow> sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three n = 78\"\n  proof (induction 50)\n    case (0)\n    show \"sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three 0 = 0\"\n    then simpl in *\n\n    case (Suc n)\n    have h1 : \"3 * n <= 50\" using [0 <= n] [Suc\\_le\\_add] [50]\n    have h2 : \"sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three n = s\" by (auto simp: sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three\\_helper[n])\n    have h3 : \"sum\\_of\\_digits (3 * n) = d\" by (auto simp: digit\\_sum\\_mult\\_by\\_digit)\n    have h4 : \"sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three (Suc n) = s + d\" by (simp add: Suc h2 h3)\n    show \"sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three (Suc n) = 78\" using h4, 1, 2\n  qed\n\n(* The above theorem proves that the sum of the units digits of all the multiples of 3 between 0 and 50 is 78 *)\n\n(* To get the final answer, we can evaluate sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three (50) *)\n\nvalue from sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three (50)\n\n(* The answer is 78 *)",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three : int :: \"nat \\<Rightarrow> int\" where\n  sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three\\_helper : \"\\<forall> n. 0 <= n \\<longrightarrow> int\" and\n    sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three : \"0 <= 50 \\<longrightarrow> sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three n = 78\"\n  proof (induction 50)\n    case (0)\n    show \"sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three 0 = 0\"\n    then simpl in *\n\n    case (Suc n)\n    have h1 : \"3 * n <= 50\" using [0 <= n] [Suc\\_le\\_add] [50]\n    have h2 : \"sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three n = s\" by (auto simp: sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three\\_helper[n])\n    have h3 : \"sum\\_of\\_digits (3 * n) = d\" by (auto simp: digit\\_sum\\_mult\\_by\\_digit)\n    have h4 : \"sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three (Suc n) = s + d\" by (simp add: Suc h2 h3)\n    show \"sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three (Suc n) = 78\" using h4, 1, 2\n  qed\n\n(* The above theorem proves that the sum of the units digits of all the multiples of 3 between 0 and 50 is 78 *)\n\n(* To get the final answer, we can evaluate sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three (50) *)\n\nvalue from sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three (50)\n\n(* The answer is 78 *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The theorem \"sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three\" states that the sum of the units digits of all multiples of three from 0 to 50 is equal to 78."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three : int >= 0 -> int <= 50 -> int\n| i, j where i >= 0, j <= 50 =>\nsum (map (fn n => digit (n mod 3)) [0..j]) = 78\n\nProof.\ninduct j.\n- simp only.\n- assume i j.\n  have sum := sum (map (fn n => digit (n mod 3)) [0..j])\n  have next := digit ((i + 1) mod 3)\n  have sum\\_next := sum + digit (i mod 3)\n  have sum\\_next\\_list := map (fn n => digit (n mod 3)) [0..(j + 1)]\n  have next\\_elements := [digit (i mod 3)] @ list (map (fn n => digit (n mod 3)) [0..j])\n  have sum\\_next\\_list : sum (next\\_elements) = sum\\_next\n  by (auto, simp, cases: sum).\n  thus sum\\_next\\_list.\nQed.\n\nNote: The `digit` function returns the digit of a given number, and the `map` function applies a given function to each element of a given list.",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three : int >= 0 -> int <= 50 -> int\n| i, j where i >= 0, j <= 50 =>\nsum (map (fn n => digit (n mod 3)) [0..j]) = 78\n\nProof.\ninduct j.\n- simp only.\n- assume i j.\n  have sum := sum (map (fn n => digit (n mod 3)) [0..j])\n  have next := digit ((i + 1) mod 3)\n  have sum\\_next := sum + digit (i mod 3)\n  have sum\\_next\\_list := map (fn n => digit (n mod 3)) [0..(j + 1)]\n  have next\\_elements := [digit (i mod 3)] @ list (map (fn n => digit (n mod 3)) [0..j])\n  have sum\\_next\\_list : sum (next\\_elements) = sum\\_next\n  by (auto, simp, cases: sum).\n  thus sum\\_next\\_list.\nQed.\n\nNote: The `digit` function returns the digit of a given number, and the `map` function applies a given function to each element of a given list.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the units digits of all multiples of three between 0 and 50, inclusive. The final answer is 78.\n\nProof by mathematical induction on j:\n\nBase Case: When j = 0, the sum is equal to the units digit of 0, which is 0, and 0 = 78.\n\nInductive Step: Assume the sum of the units digits of all multiples of three between 0 and j is equal to 78. Then, the units digit of the next multiple of three (i + 1) is added to the sum, resulting in a new sum. The sum of the units digits of all multiples of three between 0 and (j + 1) is equal to the new sum. By the mathematical induction hypothesis, the sum of the units digits of all multiples of three between 0 and j is equal to 78. Therefore, the sum of the units digits of all multiples of three between 0 and (j + 1) is also equal to 78."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three : int :=\n let sum := 0\n in for i in [0..50] where i mod 3 = 0 do\n sum := sum + (digit (last (string\\_of\\_int i)) 0)\n in sum\n\n(* The above Isabelle code calculates the sum of the units digits of all multiples of 3 between 0 and 50 *)\n\ntheorem final\\_answer : int = 78\n\n(* This theorem states that the answer is 78 *)",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three : int :=\n let sum := 0\n in for i in [0..50] where i mod 3 = 0 do\n sum := sum + (digit (last (string\\_of\\_int i)) 0)\n in sum\n\n(* The above Isabelle code calculates the sum of the units digits of all multiples of 3 between 0 and 50 *)\n\ntheorem final\\_answer : int = 78\n\n(* This theorem states that the answer is 78 *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the units digits of all multiples of 3 between 0 and 50. The final answer is 78."
+    },
+    "a_3_mistral": {
+        "formal problem": " theorem sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_3 : int :=\n let sum := 0\n in for i in [0..50] where i mod 3 = 0 do\n sum := sum + (digit i 0)\n in sum\n\n(* This theorem calculates the sum of the units digits of all the multiples of 3 between 0 and 50 *)\n\n(* The final answer is 78 *)\n\n(* Note: In Isabelle, the function digit returns the nth digit of a number *)\n\n(* The theorem can be proved by using an explicit definition of a loop and calculating the sum of the units digits for each multiple of 3 *)",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_3 : int :=\n let sum := 0\n in for i in [0..50] where i mod 3 = 0 do\n sum := sum + (digit i 0)\n in sum\n\n(* This theorem calculates the sum of the units digits of all the multiples of 3 between 0 and 50 *)\n\n(* The final answer is 78 *)\n\n(* Note: In Isabelle, the function digit returns the nth digit of a number *)\n\n(* The theorem can be proved by using an explicit definition of a loop and calculating the sum of the units digits for each multiple of 3 *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the units digits for all multiples of 3 between 0 and 50. The final answer is 78."
+    },
+    "a_4_mistral": {
+        "formal problem": " theorem sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three : int :=\n let sum := 0\n in for i from 0 to 50 with 3 | i do\n add (digits i last) sum\n in sum\n\n(* This theorem calculates the sum of the units digits of all multiples of 3 between 0 and 50 *)\n\n (* The initial sum is set to 0 *)\n\n (* The loop goes through all integers from 0 to 50 *)\n\n (* The guard condition checks if the current integer is a multiple of 3 *)\n\n (* The expression digits i last returns the units digit of the current integer *)\n\n (* The loop adds the units digit to the sum for each multiple of 3 *)\n\n (* The final result is the sum of all the units digits *)\n\n lemma sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three\\_is\\_78 : sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three = 78\n\n (* This lemma checks that the result of the theorem is indeed 78 *)",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three : int :=\n let sum := 0\n in for i from 0 to 50 with 3 | i do\n add (digits i last) sum\n in sum\n\n(* This theorem calculates the sum of the units digits of all multiples of 3 between 0 and 50 *)\n\n (* The initial sum is set to 0 *)\n\n (* The loop goes through all integers from 0 to 50 *)\n\n (* The guard condition checks if the current integer is a multiple of 3 *)\n\n (* The expression digits i last returns the units digit of the current integer *)\n\n (* The loop adds the units digit to the sum for each multiple of 3 *)\n\n (* The final result is the sum of all the units digits *)\n\n lemma sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three\\_is\\_78 : sum\\_of\\_units\\_digits\\_of\\_multiples\\_of\\_three = 78\n\n (* This lemma checks that the result of the theorem is indeed 78 *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the units digits of all multiples of 3 between 0 and 50. The final answer is 78."
+    },
+    "a_5_mistral": {
+        "formal problem": " theorem sum\\_units\\_digits\\_of\\_multiples\\_of\\_three : int = 78\n\n fixes i :: nat\n  i_ge_zero : 0 <= i\n and multiple\\_of\\_three : 3 | i\n shows  sum (digit (mod i 10))\n\n where sum : \"list int \\<Top> int \\<Longrightarrow> int\"\n and digit : int \\<Top> int\n sum [] = 0\n sum (x :: xs) = x + sum xs\n digit 0 = 0\n digit d = d\n\n lemma sum\\_digits\\_of\\_multiples\\_of\\_three : sum (filter (fun i => 3 | i) [0..50]) = 78\n proof (induct 50)\n assumption\n show \"filter (fun i => 3 | i) [0..50] = {i | 3 | i, 0 <= i, i <= 50}\"\n by (auto simp add: zero\\_less\\_than\\_five\\_zero)\n show \"sum (filter (fun i => 3 | i) [0..50]) = sum (map (fun i => digit (mod i 10)) (filter (fun i => 3 | i) [0..50]))\"\n by (auto simp add: filter\\_map\\_def map\\_def)\n show \"sum (map (fun i => digit (mod i 10)) (filter (fun i => 3 | i) [0..50])) = sum (map (fun i => digit (mod i 10)) [0..50])\"\n by (induct i) (auto simp add: zero\\_less\\_than\\_five\\_zero)\n show \"sum (map (fun i => digit (mod i 10)) [0..50]) = sum (map (fn i => (digit (mod i 10))) [0..50])\"\n by (auto simp add: map\\_fn\\_def)\n show \"sum (map (fn i => (digit (mod i 10))) [0..50]) = sum (list\\_foldl (fn x s => s + x) 0 (map (fn i => digit (mod i 10)) [0..50]))\"\n by (auto simp add: list\\_foldl\\_def map\\_fn\\_def)\n show \"sum (list\\_foldl (fn x s => s + x) 0 (map (fn i => digit (mod i 10)) [0..50])) = sum (map (fn i => digit (mod i 10)) [0..50])\"\n by (simp add: foldl\\_map\\_assoc)\n show \"sum (map (fn i => digit (mod i 10)) [0..50]) = sum (filter (fun i => 0 = (mod i 10)) [0..9] ++ map (fn i => digit i) (filter (fn i => 3 | i) [10..50]))\"\n by (induct i) (auto simp add: zero\\_less\\_than\\_five\\_zero)\n show \"sum (map (fn i => digit (mod i 10)) [0..50]) = sum (filter (fn i => 0 = (mod i 10)) [0..9]) + sum (map (fn i => digit i) (filter (fn i => 3 | i) [10..50]))\"\n by (auto simp add: filter\\_",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem sum\\_units\\_digits\\_of\\_multiples\\_of\\_three : int = 78\n\n fixes i :: nat\n  i_ge_zero : 0 <= i\n and multiple\\_of\\_three : 3 | i\n shows  sum (digit (mod i 10))\n\n where sum : \"list int \\<Top> int \\<Longrightarrow> int\"\n and digit : int \\<Top> int\n sum [] = 0\n sum (x :: xs) = x + sum xs\n digit 0 = 0\n digit d = d\n\n lemma sum\\_digits\\_of\\_multiples\\_of\\_three : sum (filter (fun i => 3 | i) [0..50]) = 78\n proof (induct 50)\n assumption\n show \"filter (fun i => 3 | i) [0..50] = {i | 3 | i, 0 <= i, i <= 50}\"\n by (auto simp add: zero\\_less\\_than\\_five\\_zero)\n show \"sum (filter (fun i => 3 | i) [0..50]) = sum (map (fun i => digit (mod i 10)) (filter (fun i => 3 | i) [0..50]))\"\n by (auto simp add: filter\\_map\\_def map\\_def)\n show \"sum (map (fun i => digit (mod i 10)) (filter (fun i => 3 | i) [0..50])) = sum (map (fun i => digit (mod i 10)) [0..50])\"\n by (induct i) (auto simp add: zero\\_less\\_than\\_five\\_zero)\n show \"sum (map (fun i => digit (mod i 10)) [0..50]) = sum (map (fn i => (digit (mod i 10))) [0..50])\"\n by (auto simp add: map\\_fn\\_def)\n show \"sum (map (fn i => (digit (mod i 10))) [0..50]) = sum (list\\_foldl (fn x s => s + x) 0 (map (fn i => digit (mod i 10)) [0..50]))\"\n by (auto simp add: list\\_foldl\\_def map\\_fn\\_def)\n show \"sum (list\\_foldl (fn x s => s + x) 0 (map (fn i => digit (mod i 10)) [0..50])) = sum (map (fn i => digit (mod i 10)) [0..50])\"\n by (simp add: foldl\\_map\\_assoc)\n show \"sum (map (fn i => digit (mod i 10)) [0..50]) = sum (filter (fun i => 0 = (mod i 10)) [0..9] ++ map (fn i => digit i) (filter (fn i => 3 | i) [10..50]))\"\n by (induct i) (auto simp add: zero\\_less\\_than\\_five\\_zero)\n show \"sum (map (fn i => digit (mod i 10)) [0..50]) = sum (filter (fn i => 0 = (mod i 10)) [0..9]) + sum (map (fn i => digit i) (filter (fn i => 3 | i) [10..50]))\"\n by (auto simp add: filter\\_\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the sum of the digits in the numbers from 0 to 50 that are multiples of 3? The final answer is 78.\n\nTo find the sum, first, filter out the multiples of 3 from the list of numbers from 0 to 50, then calculate the sum of their digits using the digit function. The digit function returns the last digit of a number.\n\nThe sum of digits of the multiples of 3 can be calculated by summing the digits of these numbers directly.\n\nSo, the sum of digits of the numbers from 0 to 50 that are multiples of 3 is equal to the sum of the digits of numbers in the following list:\n\nFiltered list = [3, 6, 9, 12, 15, ..., 48, 51, 54]\n\nThere are 10 digits from 0 to 9, and there are 17 multiples of 3 in the given list.\n\nSo the sum of digits of multiples of 3 is equal to:\n\nSum of digits of multiples of 3 = Sum of digits of {0, 3, 6, 9, ..., 9} + Sum of digits of {12, 15, ..., 54}\n\nCalculate the sum of digits of {0, 3, 6, 9, ..., 9}:\n\nSum of digits of {0, 3, 6, 9, ..., 9} = 10 * (Sum of digits of 9) = 10 * 9 = 90\n\nCalculate the sum of digits of {12, 15, ..., 54}:\n\nSum of digits of {12, 15, ..., 54} = Sum of digits of 15 + Sum of digits of 18 + ... + Sum of digits of 54\n\nCalculate the sum of digits of 15:\n\nSum of digits of 15 = 1 + 5 = 6\n\nCalculate the sum of digits of 18:\n\nSum of digits of 18 = 1 + 8 = 9\n\nCalculate the sum of digits of 54:\n\nSum of digits of 54 = 5 + 4 = 9\n\nNow calculate the sum of digits of {12, 15, ..., 54}:\n\nSum of digits of {12, 15, ..., 54} = 16 * 9 = 144\n\nFinally, the sum of digits of the numbers from 0 to 50 that are multiples of 3 is:\n\nSum of digits of multiples of 3 = 90 + 144 = 234\n\nHowever, the final answer in the Isabelle proof is 78, which is incorrect. This might be due to an error in the proof or a mistake in the original theorem statement."
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nfixes sum :: real and i :: \"nat\"\nassumes h0 : \"\\<forall> i. i <= 50 \\<Longrightarrow> (3 mod i) <> 0 \\<Longrightarrow> sum = sum + (digit i)\"\nand h1 : \"\\<forall> i. i <= 50 \\<Longrightarrow> (sum + digit i = sum + (3 * quot i 3))\"\nshows  \"sum = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes sum :: real and i :: \"nat\"\nassumes h0 : \"\\<forall> i. i <= 50 \\<Longrightarrow> (3 mod i) <> 0 \\<Longrightarrow> sum = sum + (digit i)\"\nand h1 : \"\\<forall> i. i <= 50 \\<Longrightarrow> (sum + digit i = sum + (3 * quot i 3))\"\nshows  \"sum = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the digits in the number $78$. The sum can only be obtained by adding the digits of a number between $0$ and $50$ whose remainder when divided by $3$ is not equal to $0$. The sum after adding the digit of such a number is equal to the sum after adding the digit of the number obtained by dividing it by $3$."
+    },
+    "a_7_mistral": {
+        "formal problem": "theorem\nfixes i :: \"nat\" and sum :: \"nat\"\nassumes h0 : \"0 <= i <= 50\"\nand h1 : \"3 | i\"\nand h2 : \"sum = \\<SUM> j. 0 <= j <= 50 \\<longrightarrow> 3 | j \\<longrightarrow> (j mod 10) + sum\"\nshows  \"sum = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes i :: \"nat\" and sum :: \"nat\"\nassumes h0 : \"0 <= i <= 50\"\nand h1 : \"3 | i\"\nand h2 : \"sum = \\<SUM> j. 0 <= j <= 50 \\<longrightarrow> 3 | j \\<longrightarrow> (j mod 10) + sum\"\nshows  \"sum = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all numbers from 0 to 50 that leave a remainder of 3 when divided by 10. The final answer is 78.\n\nIn other words, find the sum of all numbers between 0 and 50 that can be expressed as 3n, where n is an integer. The final answer is 78."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes i :: \"nat\" and sum :: \"nat\"\nassumes h0 : \"\\<forall>n. 3 | n \\<Longrightarrow> n mod 10 in {0, 2, 5}\"\nand h1 : \"\\<forall>n. 0 \\<= n \\<= 50 \\<Longrightarrow> \\<exists>q. n = 3 * q\"\nshows  \"sum = sum (\\<n from> 0 \\<to> 50) (if n mod 10 = 2 then 2 else if n mod 10 = 5 then 5 else 0)\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes i :: \"nat\" and sum :: \"nat\"\nassumes h0 : \"\\<forall>n. 3 | n \\<Longrightarrow> n mod 10 in {0, 2, 5}\"\nand h1 : \"\\<forall>n. 0 \\<= n \\<= 50 \\<Longrightarrow> \\<exists>q. n = 3 * q\"\nshows  \"sum = sum (\\<n from> 0 \\<to> 50) (if n mod 10 = 2 then 2 else if n mod 10 = 5 then 5 else 0)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all numbers from 0 to 50 where the last digit is either 2 or 5. The final answer is the value of the sum variable."
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes sum :: real\nassumes h0 : \"sum = (\\<Sum> i. 3 * i \\<isin> [0..50] \\<Imp> sum + last_digit (3 * i))\"\nand h1 : \"\\<forall> i. 3 * i \\<isin> [0..50] \\<Imp> 0 < i\"\nshows  \"sum = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes sum :: real\nassumes h0 : \"sum = (\\<Sum> i. 3 * i \\<isin> [0..50] \\<Imp> sum + last_digit (3 * i))\"\nand h1 : \"\\<forall> i. 3 * i \\<isin> [0..50] \\<Imp> 0 < i\"\nshows  \"sum = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the first 51 terms of the sequence, where each term is obtained by adding a number to the previous term, and the first number is 0, and each subsequent number is three times the previous number. What is the final sum? The final answer is 78."
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"\\<forall> n \\<in> {0..50}. \\<exists> m. m \\<in> {0..16} \\<and> n = 3 * m\"\nshows  \"(\\<Sum>n\\<in>{0..50}. n mod 10) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"\\<forall> n \\<in> {0..50}. \\<exists> m. m \\<in> {0..16} \\<and> n = 3 * m\"\nshows  \"(\\<Sum>n\\<in>{0..50}. n mod 10) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of natural numbers from 0 to 50, inclusive. For each number in this set, there exists another number in the set from 0 to 16, inclusive, such that the original number is three times the latter number. Calculate the sum of the remainders when each number in the set from 0 to 50 is divided by 10. The result is 78."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50}. (n mod 10)) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50}. (n mod 10)) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n that falls within the range from 0 to 50 (inclusive). Additionally, this number n is divisible by 3. The task is to find the sum of the remainders when each number in the range from 0 to 50 (inclusive) is divided by 10. The result of this summation is given as 78."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50}. (n mod 10)) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50}. (n mod 10)) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n that falls within the range from 0 to 50 (inclusive). Additionally, this number n is divisible by 3. The problem then asks to find the sum of the remainders when each number in the range from 0 to 50 (inclusive) is divided by 10. The result of this summation is given as 78.\n\nIn simpler terms, the problem is asking to find the sum of the last digit of each number from 0 to 50, but only for those numbers that are divisible by 3. The answer to this sum is 78."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"sum (map (op mod 10) {n. n \\<in> {0..50} \\<and> n mod 3 = 0}) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"sum (map (op mod 10) {n. n \\<in> {0..50} \\<and> n mod 3 = 0}) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that we need to find the sum of the last digit (obtained by taking modulo 10) of all numbers between 0 and 50 (inclusive) that are divisible by 3. The result of this summation should be 78."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50} \\<inter> {n. n mod 3 = 0}. n mod 10) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50} \\<inter> {n. n mod 3 = 0}. n mod 10) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the sum of the last digit (obtained by taking the modulus 10) of all numbers between 0 and 50 (inclusive) that are divisible by 3. The sum is equal to 78."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50} \\<inter> {n. n mod 3 = 0}. n mod 10) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50} \\<inter> {n. n mod 3 = 0}. n mod 10) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the sum of the last digit (obtained by taking the modulo 10) of all numbers between 0 and 50 (inclusive) that are divisible by 3. The sum is equal to 78."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"\\<forall> n \\<in> {0..50}. \\<exists> m. n = 3 * m\"\nshows  \"(\\<Sum>n\\<in>{0..50}. n mod 10) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"\\<forall> n \\<in> {0..50}. \\<exists> m. n = 3 * m\"\nshows  \"(\\<Sum>n\\<in>{0..50}. n mod 10) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of natural numbers from 0 to 50, inclusive. For each number in this set, there exists a corresponding multiplier 'm' such that the number is equal to 3 times 'm'. Calculate the sum of the remainders when each number in the set is divided by 10. The result is 78."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"\\<forall> n \\<in> {0..50}. \\<exists> m. m \\<in> {0..16} \\<and> n = 3 * m\"\nshows  \"(\\<Sum>n\\<in>{0..50}. n mod 10) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"\\<forall> n \\<in> {0..50}. \\<exists> m. m \\<in> {0..16} \\<and> n = 3 * m\"\nshows  \"(\\<Sum>n\\<in>{0..50}. n mod 10) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of natural numbers from 0 to 50, inclusive. For each number in this set, there exists another number in the set from 0 to 16, inclusive, such that the original number is three times the second number. Calculate the sum of the remainders when each number in the set from 0 to 50 is divided by 10. The result is 78."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50} \\<inter> {n. n mod 3 = 0}. n mod 10) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50} \\<inter> {n. n mod 3 = 0}. n mod 10) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the sum of the last digit (obtained by taking the modulo 10) of all numbers between 0 and 50 (inclusive) that are divisible by 3. The sum of these last digits is 78."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 50\"\nshows  \"(\\<Sum>k\\<in>{0..n}. if 3 dvd k then nat_of_int (int_of_nat k mod 10) else 0) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 50\"\nshows  \"(\\<Sum>k\\<in>{0..n}. if 3 dvd k then nat_of_int (int_of_nat k mod 10) else 0) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n, where n is equal to 50. Calculate the sum of the following series: for each integer k from 0 to n, if 3 divides k, then add the remainder of the integer division of k by 10 (converted to a natural number), otherwise add 0. The result of this sum is 78."
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            1,
+            2,
+            6,
+            7
+        ],
+        "1": [
+            8,
+            4,
+            5
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n mod 10 = n\"\nand h1 : \"n mod 3 = 0\"\nand h2 : \"n \\<ge> 0\"\nand h3 : \"n \\<le> 50\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n mod 3 = 0 \\<and> n \\<ge> 0 \\<and> n \\<le> 50} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n mod 10 = n\"\nand h1 : \"n mod 3 = 0\"\nand h2 : \"n \\<ge> 0\"\nand h3 : \"n \\<le> 50\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n mod 3 = 0 \\<and> n \\<ge> 0 \\<and> n \\<le> 50} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all non-negative integers less than or equal to 50 that are divisible by 3 and less than 10. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.877016582540015,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<le> 50\"\nand h1 : \"n mod 3 = 0\"\nshows  \"sum (\\<lambda> n. n mod 10) {n. n \\<le> 50 \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<le> 50\"\nand h1 : \"n mod 3 = 0\"\nshows  \"sum (\\<lambda> n. n mod 10) {n. n \\<le> 50 \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the last digit (units place) of all natural numbers less than or equal to 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9100366073978227,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes units_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<in> {0..50} \\<and> n mod 3 = 0 \\<longrightarrow> units_sum n = n mod 10\"\nshows  \"sum units_sum {n. n \\<in> {0..50} \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes units_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<in> {0..50} \\<and> n mod 3 = 0 \\<longrightarrow> units_sum n = n mod 10\"\nshows  \"sum units_sum {n. n \\<in> {0..50} \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the last digit (i.e., units place) of all numbers from 0 to 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.915671266504147,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> sum n = n mod 10\"\nshows  \"sum (\\<Sum>n\\<in>{n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0}. n) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: nat and sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> sum n = n mod 10\"\nshows  \"sum (\\<Sum>n\\<in>{n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0}. n) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the last digits of all non-negative integers less than or equal to 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8988252614629494,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n mod 10 = n\"\nand h1 : \"n mod 3 = 0\"\nand h2 : \"n \\<le> 50\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n mod 3 = 0 \\<and> n \\<le> 50} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n mod 10 = n\"\nand h1 : \"n mod 3 = 0\"\nand h2 : \"n \\<le> 50\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n mod 3 = 0 \\<and> n \\<le> 50} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the units digits of all non-negative integers less than or equal to 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9161067310108297,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall>n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> n mod 10 \\<ge> 0\"\nand h1 : \"\\<forall>n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> n mod 10 \\<le> 9\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall>n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> n mod 10 \\<ge> 0\"\nand h1 : \"\\<forall>n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> n mod 10 \\<le> 9\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the last digit (in base 10) of all non-negative integers less than or equal to 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9025587191264849,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"0 \\<le> n \\<and> n \\<le> 50\"\nand h1 : \"n mod 3 = 0\"\nshows  \"sum (\\<lambda> n. n mod 10) {n. 0 \\<le> n \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"0 \\<le> n \\<and> n \\<le> 50\"\nand h1 : \"n mod 3 = 0\"\nshows  \"sum (\\<lambda> n. n mod 10) {n. 0 \\<le> n \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the last digits (i.e., modulo 10) of all non-negative integers up to and including 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8977447244752901,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> f n = n mod 10\"\nshows  \"sum f {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0 \\<longrightarrow> f n = n mod 10\"\nshows  \"sum f {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the last digit (or the digit in the ones place) of all non-negative integers less than or equal to 50 that are multiples of 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9127442184067037,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem \nfixes n :: nat\nassumes h0 : \"n \\<ge> 0\"\nand h1 : \"n \\<le> 50\"\nand h2 : \"n mod 3 = 0\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem \nfixes n :: nat\nassumes h0 : \"n \\<ge> 0\"\nand h1 : \"n \\<le> 50\"\nand h2 : \"n mod 3 = 0\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the last digits (units place) of all non-negative integers no greater than 50 which are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9171289262005861,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0\"\nshows  \"sum (\\<lambda>n. n mod 10) {n. n \\<ge> 0 \\<and> n \\<le> 50 \\<and> n mod 3 = 0} = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the last digit (the digit in the ones place) of all non-negative integers less than or equal to 50 that are divisible by 3. The final answer is 78.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8986494355667827,
+        "symbolic_score": 0.1
+    },
+    "equivalence_oracle_solve_direct": [],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"\\<forall> n \\<in> {0..50}. \\<exists> m. m \\<in> {0..16} \\<and> n = 3 * m\"\nshows  \"(\\<Sum>n\\<in>{0..50}. n mod 10) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"\\<forall> n \\<in> {0..50}. \\<exists> m. m \\<in> {0..16} \\<and> n = 3 * m\"\nshows  \"(\\<Sum>n\\<in>{0..50}. n mod 10) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of natural numbers from 0 to 50, inclusive. For each number in this set, there exists another number in the set from 0 to 16, inclusive, such that the original number is three times the latter number. Calculate the sum of the remainders when each number in the set from 0 to 50 is divided by 10. The result is 78.",
+        "semantic_score": 0.8016594285070928,
+        "symbolic_score": 0.2
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50}. (n mod 10)) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50}. (n mod 10)) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n that falls within the range from 0 to 50 (inclusive). Additionally, this number n is divisible by 3. The task is to find the sum of the remainders when each number in the range from 0 to 50 (inclusive) is divided by 10. The result of this summation is given as 78.",
+        "semantic_score": 0.7754028815651519,
+        "symbolic_score": 0.2
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50}. (n mod 10)) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50}. (n mod 10)) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n that falls within the range from 0 to 50 (inclusive). Additionally, this number n is divisible by 3. The problem then asks to find the sum of the remainders when each number in the range from 0 to 50 (inclusive) is divided by 10. The result of this summation is given as 78.\n\nIn simpler terms, the problem is asking to find the sum of the last digit of each number from 0 to 50, but only for those numbers that are divisible by 3. The answer to this sum is 78.",
+        "semantic_score": 0.7689670275768709,
+        "symbolic_score": 0.2
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"sum (map (op mod 10) {n. n \\<in> {0..50} \\<and> n mod 3 = 0}) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"sum (map (op mod 10) {n. n \\<in> {0..50} \\<and> n mod 3 = 0}) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that we need to find the sum of the last digit (obtained by taking modulo 10) of all numbers between 0 and 50 (inclusive) that are divisible by 3. The result of this summation should be 78.",
+        "semantic_score": 0.8366884150951248,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50} \\<inter> {n. n mod 3 = 0}. n mod 10) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50} \\<inter> {n. n mod 3 = 0}. n mod 10) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the sum of the last digit (obtained by taking the modulus 10) of all numbers between 0 and 50 (inclusive) that are divisible by 3. The sum is equal to 78.",
+        "semantic_score": 0.8863276546828774,
+        "symbolic_score": 0.3
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50} \\<inter> {n. n mod 3 = 0}. n mod 10) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50} \\<inter> {n. n mod 3 = 0}. n mod 10) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the sum of the last digit (obtained by taking the modulo 10) of all numbers between 0 and 50 (inclusive) that are divisible by 3. The sum is equal to 78.",
+        "semantic_score": 0.8908797303571125,
+        "symbolic_score": 0.3
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"\\<forall> n \\<in> {0..50}. \\<exists> m. n = 3 * m\"\nshows  \"(\\<Sum>n\\<in>{0..50}. n mod 10) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"\\<forall> n \\<in> {0..50}. \\<exists> m. n = 3 * m\"\nshows  \"(\\<Sum>n\\<in>{0..50}. n mod 10) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of natural numbers from 0 to 50, inclusive. For each number in this set, there exists a corresponding multiplier 'm' such that the number is equal to 3 times 'm'. Calculate the sum of the remainders when each number in the set is divided by 10. The result is 78.",
+        "semantic_score": 0.8066457880328171,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"\\<forall> n \\<in> {0..50}. \\<exists> m. m \\<in> {0..16} \\<and> n = 3 * m\"\nshows  \"(\\<Sum>n\\<in>{0..50}. n mod 10) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"\\<forall> n \\<in> {0..50}. \\<exists> m. m \\<in> {0..16} \\<and> n = 3 * m\"\nshows  \"(\\<Sum>n\\<in>{0..50}. n mod 10) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a set of natural numbers from 0 to 50, inclusive. For each number in this set, there exists another number in the set from 0 to 16, inclusive, such that the original number is three times the second number. Calculate the sum of the remainders when each number in the set from 0 to 50 is divided by 10. The result is 78.",
+        "semantic_score": 0.8011910027565244,
+        "symbolic_score": 0.2
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50} \\<inter> {n. n mod 3 = 0}. n mod 10) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n \\<in> {0..50}\"\nand h1 : \"n mod 3 = 0\"\nshows  \"(\\<Sum>n\\<in>{0..50} \\<inter> {n. n mod 3 = 0}. n mod 10) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the sum of the last digit (obtained by taking the modulo 10) of all numbers between 0 and 50 (inclusive) that are divisible by 3. The sum of these last digits is 78.",
+        "semantic_score": 0.8889831878569772,
+        "symbolic_score": 0.3
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 50\"\nshows  \"(\\<Sum>k\\<in>{0..n}. if 3 dvd k then nat_of_int (int_of_nat k mod 10) else 0) = 78\"",
+        "formal solution": "(* ### Problem\n What is the sum of the units digits of all the multiples of $3$ between $0$ and $50$? The final Answer is $78$\n ### Proof\n We start by computing the sum of the units digits of all multiples of $3$ between $0$ and $30$. Excluding $0$, every possible digit appears exactly once as a unit digit of a multiple of $3$: the set of multiples of $3$ between $0$ and $30$ consists of the numbers $0,3,6,9,12,15,18,21,24,27,30$. Thus, the sum of their units digits is equal to $$1+2+3+4+5+6+7+8+9 = \\frac{9 \\cdot 10}{2} = 45.$$ We must sum the units digits of the multiples of $3$ between $31$ and $50$. The relevant multiples of $3$ are  $33,36,39,42,45,48$, and the sum of their units digits is $3+6+9+2+5+8 = 33$. Thus, the answer is $45 + 33 = 78$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 50\"\nshows  \"(\\<Sum>k\\<in>{0..n}. if 3 dvd k then nat_of_int (int_of_nat k mod 10) else 0) = 78\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n, where n is equal to 50. Calculate the sum of the following series: for each integer k from 0 to n, if 3 divides k, then add the remainder of the integer division of k by 10 (converted to a natural number), otherwise add 0. The result of this sum is 78.",
+        "semantic_score": 0.7796302285058073,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            8,
+            4,
+            5
+        ],
+        "1": [
+            0,
+            7
+        ],
+        "2": [
+            1,
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            6
+        ],
+        "5": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": []
+}

@@ -1,0 +1,574 @@
+{
+    "problem_name": "imo_1981_p6",
+    "informal_statement": "The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.",
+    "informal_proof": "We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.",
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively as follows: for all natural numbers $x$ and $y$, $f(0, y) = y + 1$, $f(x + 1, 0) = f(x, 1)$, and $f(x + 1, y + 1) = f(x, f(x + 1, y))$. What is the value of $f(4, 1981)$?",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7138119339942932,
+        "symbolic_score": 0.6
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x, y)$ with the following properties:\n\n1. $f(0, y) = y + 1$ for all $y$.\n2. $f(x + 1, 0) = f(x, 1)$ for all $x$.\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$ for all $x$ and $y$.\n\nWhat is the value of $f(4, 1981)$?",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7536885142326355,
+        "symbolic_score": 0.6
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?result\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?result\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x, y)$ recursively as follows:\n\n1. $f(0, y) = y + 1$ for all $y$,\n2. $f(x + 1, 0) = f(x, 1)$ for all $x$, and\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$ for all $x$ and $y$.\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8629810810089111,
+        "symbolic_score": 0.2
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = _\"  (* The final answer is not given, so we use an underscore to indicate that it needs to be determined. *)",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = _\"  (* The final answer is not given, so we use an underscore to indicate that it needs to be determined. *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively as follows: \n\n1. $f(0, y) = y + 1$ for all natural numbers $y$,\n2. $f(x + 1, 0) = f(x, 1)$ for all natural numbers $x$, and\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$ for all natural numbers $x$ and $y$.\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9055682420730591,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(x, y)$ defined for natural numbers $x$ and $y$ with the following properties:\n\n1. $f(0, y) = y + 1$ for all $y$.\n2. $f(x+1, 0) = f(x, 1)$ for all $x$.\n3. $f(x+1, y+1) = f(x, f(x+1, y))$ for all $x$ and $y$.\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8288723826408386,
+        "symbolic_score": 0.6
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?result\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?result\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x, y)$ for natural numbers $x$ and $y$ as follows:\n\n1. $f(0, y) = y + 1$\n2. $f(x + 1, 0) = f(x, 1)$\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9667026400566101,
+        "symbolic_score": 0.2
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x, y)$ with the following properties:\n\n1. $f(0, y) = y + 1$ for all natural numbers $y$.\n2. $f(x + 1, 0) = f(x, 1)$ for all natural numbers $x$.\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$ for all natural numbers $x$ and $y$.\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9298285841941833,
+        "symbolic_score": 0.6
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x, y)$ defined by the following rules:\n\n1. $f(0, y) = y + 1$,\n2. $f(x + 1, 0) = f(x, 1)$,\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$,\n\nfind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8511027693748474,
+        "symbolic_score": 0.6
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = some_value\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = some_value\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x, y)$ defined recursively as follows:\n\n1. $f(0, y) = y + 1$ for all $y$.\n2. $f(x+1, 0) = f(x, 1)$ for all $x$.\n3. $f(x+1, y+1) = f(x, f(x+1, y))$ for all $x$ and $y$.\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7216682434082031,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x, y)$ with the following conditions:\n1. $f(0, y) = y + 1$ for all $y$.\n2. $f(x + 1, 0) = f(x, 1)$ for all $x$.\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$ for all $x$ and $y$.\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8513612747192383,
+        "symbolic_score": 0.6
+    },
+    "oracle": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes \"\\<forall> y. f 0 y = y + 1\"\nand \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows \"\\<forall> y. f 4 (y + 1) = 2^(f 4 y + 3) - 3\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            4,
+            6,
+            7,
+            9
+        ],
+        "1": [
+            2,
+            5
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            8
+        ]
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = 2 ^ 11 * 3 ^ 2 * 5 * 7 * 11 * 13 + 1\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = 2 ^ 11 * 3 ^ 2 * 5 * 7 * 11 * 13 + 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x,y)$ recursively such that $f(0,y)=y+1$, $f(x+1,0)=f(x,1)$, and $f(x+1,y+1)=f(x,f(x+1,y))$. Find $f(4,1981)$ and express it in the form $2^{11} \\cdot 3^2 \\cdot 5 \\cdot 7 \\cdot 11 \\cdot 13 +1$.",
+        "semantic_score": 0.8387978921467005,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = 2 ^ 11 * 3 ^ 2 * 61 - 1\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = 2 ^ 11 * 3 ^ 2 * 61 - 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ that takes two natural numbers and outputs a natural number. Assume that $f$ satisfies the following conditions: $f(0,y) = y+1$ for all $y$, $f(x+1,0) = f(x,1)$ for all $x$, and $f(x+1,y+1) = f(x,f(x+1,y))$ for all $x$ and $y$. Find $f(4,1981)$. The final answer is $2^{11} \\cdot 3^2 \\cdot 61 - 1$.",
+        "semantic_score": 0.9314561690264815,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x+1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x+1) (y+1) = f x (f (x+1) y)\"\nshows  \"f 4 1981 = 2\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x+1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x+1) (y+1) = f x (f (x+1) y)\"\nshows  \"f 4 1981 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ from the set of non-negative integers to itself, where $f(0, y) = y + 1$ and $f(x+1, 0) = f(x, 1)$, and $f(x+1, y+1) = f(x, f(x+1, y))$. Determine $f(4, 1981)$. The final answer is $2$.",
+        "semantic_score": 0.9810216268257893,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ defined by $f(x,y)$, where $x$ and $y$ are non-negative integers, such that $f(0,y) = y + 1$, $f(x+1,0) = f(x,1)$, and $f(x+1,y+1) = f(x,f(x+1,y))$, what is the value of $f(4,1981)$?",
+        "semantic_score": 0.8657077834692923,
+        "symbolic_score": 0.5,
+        "naive_label": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ that takes two natural number inputs and outputs a natural number. The function $f$ is defined recursively as follows: $f(0,y)=y+1$, $f(x+1,0)=f(x,1)$, and $f(x+1,y+1)=f(x,f(x+1,y))$. Find the value of $f(4,1981)$.",
+        "semantic_score": 0.8291122398047044,
+        "symbolic_score": 0.5,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x+1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x+1) (y+1) = f x (f (x+1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x+1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x+1) (y+1) = f x (f (x+1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ on pairs of natural numbers as follows: $f(0,y) = y+1$, $f(x+1,0) = f(x,1)$, and $f(x+1,y+1) = f(x,f(x+1,y))$. What is $f(4,1981)$?",
+        "semantic_score": 0.8450171626124899,
+        "symbolic_score": 0.5,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define $f(x,y)$ as a function that satisfies $f(0,y)=y+1$, $f(x+1,0)=f(x,1)$, and $f(x+1,y+1)=f(x,f(x+1,y))$. What is $f(4,1981)$?",
+        "semantic_score": 0.8882561031531399,
+        "symbolic_score": 0.5,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes x y :: nat and f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x+1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x+1) (y+1) = f x (f (x+1) y)\"\nshows  \"f 4 1981 = 2\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes x y :: nat and f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x+1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x+1) (y+1) = f x (f (x+1) y)\"\nshows  \"f 4 1981 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x,y)$ recursively as follows: $f(0,y)=y+1$ for all $y$, $f(x+1,0)=f(x,1)$ for all $x$, and $f(x+1,y+1)=f(x,f(x+1,y))$ for all $x$ and $y$. What is the value of $f(4,1981)$? The final answer is $2$.",
+        "semantic_score": 0.6188963633928404,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ defined recursively as $f(0,y) = y+1$, $f(x+1,0) = f(x,1)$, and $f(x+1,y+1) = f(x,f(x+1,y))$, find $f(4,1981)$.",
+        "semantic_score": 0.865034048889309,
+        "symbolic_score": 0.5,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = 2 ^ 11 * 3 ^ 2 * 7 * 47\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = 2 ^ 11 * 3 ^ 2 * 7 * 47\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ that takes two natural numbers as input and returns a natural number. We have the following properties: $f(0,y) = y+1$ for all $y$. For all $x$, $f(x+1,0) = f(x,1)$. For all $x,y$, $f(x+1,y+1) = f(x,f(x+1,y))$. Find $f(4,1981)$. The final answer is $2^{11} \\cdot 3^2 \\cdot 7 \\cdot 47$.",
+        "semantic_score": 0.9523685995166021,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            3,
+            4,
+            5,
+            6,
+            8
+        ],
+        "1": [
+            2,
+            7
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            1
+        ],
+        "4": [
+            9
+        ]
+    },
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f (0, y) = S y\"\nand h1 : \"f (S x, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (S x, S y) = f (x, f (S x, y))\"\nshows  \"f (4, 1981) = ??\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f (0, y) = S y\"\nand h1 : \"f (S x, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (S x, S y) = f (x, f (S x, y))\"\nshows  \"f (4, 1981) = ??\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the function $f(4, 1981)$. The final answer is unknown without further information about the definition of the function $f$."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f(0, y) = y + 1\"\nand h1 : \"f(x + 1, 0) = f(x, 1)\"\nand h2 : \"\\<forall> x y. f(x + 1, y + 1) = f(x, f(x + 1, y))\"\nshows  \"f(4, 1981) = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f(0, y) = y + 1\"\nand h1 : \"f(x + 1, 0) = f(x, 1)\"\nand h2 : \"\\<forall> x y. f(x + 1, y + 1) = f(x, f(x + 1, y))\"\nshows  \"f(4, 1981) = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $f(4, 1981)$. The function $f$ is defined recursively by $f(0, y) = y + 1$, $f(x + 1, 0) = f(x, 1)$, and $f(x + 1, y + 1) = f(x, f(x + 1, y))$. The final answer is unknown."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f(0, y) = y + 1\"\nand h1 : \"f(x + 1, 0) = f(x, 1)\"\nand h2 : \"\\<forall> x. f(x + 1, y + 1) = f(x, f(x + 1, y))\"\nshows  \"f(4, 1981) = ??\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f(0, y) = y + 1\"\nand h1 : \"f(x + 1, 0) = f(x, 1)\"\nand h2 : \"\\<forall> x. f(x + 1, y + 1) = f(x, f(x + 1, y))\"\nshows  \"f(4, 1981) = ??\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Find the value of $f(4, 1981)$. The function $f$ is defined recursively, with $f(0, y) = y+1$, $f(x+1, 0) = f(x, 1)$, and $f(x+1, y+1) = f(x, f(x+1, y))$. Your answer should replace the '?' in the theorem statement.\"\n\nNote: This is a classic recursive function definition, often referred to as a \"successor function\" or \"counting numbers\" function. It is a common function in mathematical logic and computer science. The function $f(x,y)$ can be interpreted as $x$ steps forward from $y$. In this case, we are asked to find $f(4,1981)$, which is $4$ steps forward from $1981$."
+    },
+    "a_3_mistral": {
+        "formal problem": "theorem\nfixes x y :: \"nat\" and f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0) y = Suc y\"\nand h1 : \"\\<forall> x. f (Suc x) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (Suc x) (Suc y) = f x (f (Suc x) y)\"\nshows  \"f (4) 1981\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes x y :: \"nat\" and f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0) y = Suc y\"\nand h1 : \"\\<forall> x. f (Suc x) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (Suc x) (Suc y) = f x (f (Suc x) y)\"\nshows  \"f (4) 1981\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ that takes two natural numbers as arguments and is defined recursively such that $f(0,y) = Suc(y)$, $f(Suc(x),0) = f(x,1)$, and $f(Suc(x),Suc(y)) = f(x,f(Suc(x),y))$. What is the value of $f(4,1981)$? The final answer is the result of applying the function $f$ five times, starting with arguments $4$ and $1981$."
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f(0, y) = y + 1\"\nand h1 : \"f(x + 1, 0) = f(x, 1)\"\nand h2 : \"\\<forall> x. f(x + 1, y + 1) = f(x, f(x + 1, y))\"\nshows  \"f(4, 1981) = ??\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f(0, y) = y + 1\"\nand h1 : \"f(x + 1, 0) = f(x, 1)\"\nand h2 : \"\\<forall> x. f(x + 1, y + 1) = f(x, f(x + 1, y))\"\nshows  \"f(4, 1981) = ??\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the result of applying the function $f$ to the arguments $4$ and $1981$?\n\n(Function $f$ is defined recursively: $f(0, y) = y + 1$, $f(x + 1, 0) = f(x, 1)$, and for all $x$, $f(x + 1, y + 1) = f(x, f(x + 1, y))$)\n\nThe final answer is unknown."
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = Suc y\"\nand h1 : \"\\<forall> x. f (Suc x, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (Suc x, Suc y) = f (x, f (Suc x, y))\"\nshows  \"f (4, 1981) = ?x\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = Suc y\"\nand h1 : \"\\<forall> x. f (Suc x, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (Suc x, Suc y) = f (x, f (Suc x, y))\"\nshows  \"f (4, 1981) = ?x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $f(4, 1981)$. The final answer is unknown without providing a definition for the function $f$."
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f(0, y) = Suc y\"\nand h1 : \"f(Suc x, 0) = f(x, 1)\"\nand h2 : \"\\<forall> x y. f(Suc x, Suc y) = f(x, f(Suc x, y))\"\nshows  \"f(4, 1981) = ??\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f(0, y) = Suc y\"\nand h1 : \"f(Suc x, 0) = f(x, 1)\"\nand h2 : \"\\<forall> x y. f(Suc x, Suc y) = f(x, f(Suc x, y))\"\nshows  \"f(4, 1981) = ??\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $f(4, 1981)$. The final answer is unknown without more information about the function $f$."
+    },
+    "a_7_mistral": {
+        "formal problem": "theorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f (0, y) = Suc y\"\nand h1 : \"f (Suc x, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (Suc x, Suc y) = f (x, f (Suc x, y))\"\nshows  \"f (4, 1981) = ?f\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f (0, y) = Suc y\"\nand h1 : \"f (Suc x, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (Suc x, Suc y) = f (x, f (Suc x, y))\"\nshows  \"f (4, 1981) = ?f\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the value of the function $f(4, 1981)$? The function $f$ is defined recursively such that $f(0, y) = Suc(y)$, $f(Suc(x), 0) = f(x, 1)$, and $f(Suc(x), Suc(y)) = f(x, f(Suc(x), y))$."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f (0, y) = Suc y\"\nand h1 : \"f (Suc x, 0) = f x 1\"\nand h2 : \"\\<forall> x y. f (Suc x, Suc y) = f x (f (Suc x, y))\"\nshows  \"f 4 1981\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes x y :: nat and f :: \"nat \\<Times> nat \\<Rightarrow> nat\"\nassumes h0 : \"f (0, y) = Suc y\"\nand h1 : \"f (Suc x, 0) = f x 1\"\nand h2 : \"\\<forall> x y. f (Suc x, Suc y) = f x (f (Suc x, y))\"\nshows  \"f 4 1981\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the recursive function $f$ when the first argument is $4$ and the second argument is $1981$.\n\nIn Isabelle, the function $f$ takes two natural numbers as arguments and returns a natural number. The base cases are $f(0,y) = Suc(y)$ and $f(Suc x, 0) = f(x) 1$. The recursive step is defined as $f(Suc x, Suc y) = f(x)(f(Suc x, y))$.\n\nIn natural language, the problem can be described as follows:\n\nDetermine the result of the function $f$ when the first argument is $4$ and the second argument is $1981$. The function $f$ takes two natural numbers as inputs and produces a natural number as output. The base cases are $f(0,y) = Suc(y)$ and $f(Suc x, 0) = f(x) 1$. The recursive step is given by $f(Suc x, Suc y) = f(x)(f(Suc x, y))$."
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes x y :: nat and f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"f (0) y = Suc y\"\nand h1 : \"f (Suc x) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (Suc x) (Suc y) = f x (f (Suc x) y)\"\nshows  \"f 4 1981\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes x y :: nat and f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"f (0) y = Suc y\"\nand h1 : \"f (Suc x) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (Suc x) (Suc y) = f x (f (Suc x) y)\"\nshows  \"f 4 1981\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the function $f(4)$ when $f$ is defined as follows: $f(0)y = Suc(y)$, $f(Suc x)0 = f(x)1$, and $f(Suc x)(Suc y) = f(x)(f(Suc x)y)$. The final answer is the value of $f(4)$ with input $1981$.\n\nIn simpler terms: Find the result of applying the function $f$ four times, starting with $f$ and using $1981$ as the second argument for the last application."
+    },
+    "prediction_mistral": {
+        "0": [
+            2,
+            4
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = ?result\"\nsorry",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = ?result\"\nsorry\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem is defined by a function `f` that takes two natural numbers as input and returns a natural number. The function `f` follows these rules:\n\n1. For any natural number `y`, `f(0, y) = y + 1`.\n2. For any natural number `x`, `f(x + 1, 0) = f(x, 1)`.\n3. For any natural numbers `x` and `y`, `f(x + 1, y + 1) = f(x, f(x + 1, y))`.\n\nWe are asked to find the value of `f(4, 1981)`."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = ?result\"\nsorry",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = ?result\"\nsorry\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem defines a function f that takes two natural numbers as inputs and produces a natural number as output. The function f is defined recursively with the following rules:\n\n1. For any natural number y, f(0, y) equals y + 1.\n2. For any natural number x, f(x + 1, 0) equals f(x, 1).\n3. For any natural numbers x and y, f(x + 1, y + 1) equals f(x, f(x + 1, y)).\n\nThe problem asks to find the value of f(4, 1981) using these rules. However, the Isabelle version does not provide the result (?result) directly, so we need to compute it using the given rules."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = 1985\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = 1985\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function `f` that takes two natural numbers as inputs and returns a natural number as output. The function `f` is defined recursively as follows:\n\n1. For any natural number `y`, `f(0, y) = y + 1`.\n2. For any natural number `x`, `f(x + 1, 0) = f(x, 1)`.\n3. For any natural numbers `x` and `y`, `f(x + 1, y + 1) = f(x, f(x + 1, y))`.\n\nUsing these rules, find the value of `f(4, 1981)`. The answer is `1985`."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = ?result\"\nsorry",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = ?result\"\nsorry\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes two natural numbers as input and returns a natural number. The function f is defined recursively as follows:\n\n1. For any natural number y, f(0, y) = y + 1.\n2. For any natural number x, f(x + 1, 0) = f(x, 1).\n3. For any natural numbers x and y, f(x + 1, y + 1) = f(x, f(x + 1, y)).\n\nUsing these rules, find the value of f(4, 1981)."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = 1985\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = 1985\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function `f` that takes two natural numbers as input and returns a natural number. The function `f` is defined recursively as follows:\n\n1. For any natural number `y`, `f(0, y) = y + 1`.\n2. For any natural number `x`, `f(x + 1, 0) = f(x, 1)`.\n3. For any natural numbers `x` and `y`, `f(x + 1, y + 1) = f(x, f(x + 1, y))`.\n\nUsing these rules, calculate the value of `f(4, 1981)`. The result should be 1985."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = undefined\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = undefined\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function `f` that takes two natural numbers as inputs and returns a natural number as output. The function `f` is defined recursively as follows:\n\n1. For any natural number `y`, `f(0, y) = y + 1`.\n2. For any natural number `x`, `f(x + 1, 0) = f(x, 1)`.\n3. For any natural numbers `x` and `y`, `f(x + 1, y + 1) = f(x, f(x + 1, y))`.\n\nUsing these rules, we want to find the value of `f(4, 1981)`. However, the theorem states that the value of `f(4, 1981)` is undefined."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = (some_value)\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = (some_value)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes two natural numbers as input and returns a natural number. The function f is defined recursively as follows:\n\n1. For any natural number y, f(0, y) equals y + 1.\n2. For any natural number x, f(x + 1, 0) equals f(x, 1).\n3. For any natural numbers x and y, f(x + 1, y + 1) equals f(x, f(x + 1, y)).\n\nUsing these rules, find the value of f(4, 1981)."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = f (3, f (4, 1980))\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = f (3, f (4, 1980))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function `f` that takes two natural numbers as inputs and returns a natural number as output. The function `f` is defined recursively as follows:\n\n1. For any natural number `y`, `f(0, y) = y + 1`.\n2. For any natural number `x`, `f(x + 1, 0) = f(x, 1)`.\n3. For any natural numbers `x` and `y`, `f(x + 1, y + 1) = f(x, f(x + 1, y))`.\n\nUsing these rules, we want to show that `f(4, 1981) = f(3, f(4, 1980))`."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = f (3, f (4, 1980))\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = f (3, f (4, 1980))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function `f` that takes two natural numbers as input and returns a natural number as output. The function `f` is defined recursively as follows:\n\n1. For any natural number `y`, `f(0, y) = y + 1`.\n2. For any natural number `x`, `f(x + 1, 0) = f(x, 1)`.\n3. For any natural numbers `x` and `y`, `f(x + 1, y + 1) = f(x, f(x + 1, y))`.\n\nUsing these rules, prove that `f(4, 1981) = f(3, f(4, 1980))`."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = 1985\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = 1985\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes two natural numbers as inputs and returns a natural number. The function f is defined recursively as follows:\n\n1. For any natural number y, f(0, y) is equal to y + 1.\n2. For any natural number x, f(x + 1, 0) is equal to f(x, 1).\n3. For any natural numbers x and y, f(x + 1, y + 1) is equal to f(x, f(x + 1, y)).\n\nUsing these rules, find the value of f(4, 1981). The answer is 1985."
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            1,
+            3
+        ],
+        "1": [
+            9,
+            2,
+            4
+        ],
+        "2": [
+            8,
+            7
+        ],
+        "3": [
+            5
+        ],
+        "4": [
+            6
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0,
+            1,
+            4,
+            6,
+            7,
+            9
+        ],
+        "1": [
+            2,
+            5
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            8
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively as follows: for all natural numbers $x$ and $y$, $f(0, y) = y + 1$, $f(x + 1, 0) = f(x, 1)$, and $f(x + 1, y + 1) = f(x, f(x + 1, y))$. What is the value of $f(4, 1981)$?",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9230229712594223,
+        "symbolic_score": 0.6
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x, y)$ with the following properties:\n\n1. $f(0, y) = y + 1$ for all $y$.\n2. $f(x + 1, 0) = f(x, 1)$ for all $x$.\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$ for all $x$ and $y$.\n\nWhat is the value of $f(4, 1981)$?",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9649833010111236,
+        "symbolic_score": 0.6
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?result\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?result\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x, y)$ recursively as follows:\n\n1. $f(0, y) = y + 1$ for all $y$,\n2. $f(x + 1, 0) = f(x, 1)$ for all $x$, and\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$ for all $x$ and $y$.\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9528937100214963,
+        "symbolic_score": 0.2
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = _\"  (* The final answer is not given, so we use an underscore to indicate that it needs to be determined. *)",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = _\"  (* The final answer is not given, so we use an underscore to indicate that it needs to be determined. *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively as follows: \n\n1. $f(0, y) = y + 1$ for all natural numbers $y$,\n2. $f(x + 1, 0) = f(x, 1)$ for all natural numbers $x$, and\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$ for all natural numbers $x$ and $y$.\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9494432875536453,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(x, y)$ defined for natural numbers $x$ and $y$ with the following properties:\n\n1. $f(0, y) = y + 1$ for all $y$.\n2. $f(x+1, 0) = f(x, 1)$ for all $x$.\n3. $f(x+1, y+1) = f(x, f(x+1, y))$ for all $x$ and $y$.\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9386259814139137,
+        "symbolic_score": 0.6
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?result\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?result\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x, y)$ for natural numbers $x$ and $y$ as follows:\n\n1. $f(0, y) = y + 1$\n2. $f(x + 1, 0) = f(x, 1)$\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9608284197325617,
+        "symbolic_score": 0.2
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x, y)$ with the following properties:\n\n1. $f(0, y) = y + 1$ for all natural numbers $y$.\n2. $f(x + 1, 0) = f(x, 1)$ for all natural numbers $x$.\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$ for all natural numbers $x$ and $y$.\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9514353301814646,
+        "symbolic_score": 0.6
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x, y)$ defined by the following rules:\n\n1. $f(0, y) = y + 1$,\n2. $f(x + 1, 0) = f(x, 1)$,\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$,\n\nfind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9653121414313699,
+        "symbolic_score": 0.6
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = some_value\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f 0 y = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall> x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = some_value\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x, y)$ defined recursively as follows:\n\n1. $f(0, y) = y + 1$ for all $y$.\n2. $f(x+1, 0) = f(x, 1)$ for all $x$.\n3. $f(x+1, y+1) = f(x, f(x+1, y))$ for all $x$ and $y$.\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9446827323379472,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. f 0 y = y + 1\"\nand h1 : \"\\<forall>x. f (x + 1) 0 = f x 1\"\nand h2 : \"\\<forall>x y. f (x + 1) (y + 1) = f x (f (x + 1) y)\"\nshows  \"f 4 1981 = ?\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x, y)$ with the following conditions:\n1. $f(0, y) = y + 1$ for all $y$.\n2. $f(x + 1, 0) = f(x, 1)$ for all $x$.\n3. $f(x + 1, y + 1) = f(x, f(x + 1, y))$ for all $x$ and $y$.\n\nFind the value of $f(4, 1981)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9559290413069843,
+        "symbolic_score": 0.6
+    },
+    "equivalence_oracle_solve_direct": [],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = ?result\"\nsorry",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = ?result\"\nsorry\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem is defined by a function `f` that takes two natural numbers as input and returns a natural number. The function `f` follows these rules:\n\n1. For any natural number `y`, `f(0, y) = y + 1`.\n2. For any natural number `x`, `f(x + 1, 0) = f(x, 1)`.\n3. For any natural numbers `x` and `y`, `f(x + 1, y + 1) = f(x, f(x + 1, y))`.\n\nWe are asked to find the value of `f(4, 1981)`.",
+        "semantic_score": 0.9148578125310215,
+        "symbolic_score": 0.3
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = ?result\"\nsorry",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = ?result\"\nsorry\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem defines a function f that takes two natural numbers as inputs and produces a natural number as output. The function f is defined recursively with the following rules:\n\n1. For any natural number y, f(0, y) equals y + 1.\n2. For any natural number x, f(x + 1, 0) equals f(x, 1).\n3. For any natural numbers x and y, f(x + 1, y + 1) equals f(x, f(x + 1, y)).\n\nThe problem asks to find the value of f(4, 1981) using these rules. However, the Isabelle version does not provide the result (?result) directly, so we need to compute it using the given rules.",
+        "semantic_score": 0.8353668173876726,
+        "symbolic_score": 0.3
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = 1985\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = 1985\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function `f` that takes two natural numbers as inputs and returns a natural number as output. The function `f` is defined recursively as follows:\n\n1. For any natural number `y`, `f(0, y) = y + 1`.\n2. For any natural number `x`, `f(x + 1, 0) = f(x, 1)`.\n3. For any natural numbers `x` and `y`, `f(x + 1, y + 1) = f(x, f(x + 1, y))`.\n\nUsing these rules, find the value of `f(4, 1981)`. The answer is `1985`.",
+        "semantic_score": 0.8801532896461608,
+        "symbolic_score": 0.3
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = ?result\"\nsorry",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = ?result\"\nsorry\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes two natural numbers as input and returns a natural number. The function f is defined recursively as follows:\n\n1. For any natural number y, f(0, y) = y + 1.\n2. For any natural number x, f(x + 1, 0) = f(x, 1).\n3. For any natural numbers x and y, f(x + 1, y + 1) = f(x, f(x + 1, y)).\n\nUsing these rules, find the value of f(4, 1981).",
+        "semantic_score": 0.8874363650351579,
+        "symbolic_score": 0.3
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = 1985\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = 1985\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function `f` that takes two natural numbers as input and returns a natural number. The function `f` is defined recursively as follows:\n\n1. For any natural number `y`, `f(0, y) = y + 1`.\n2. For any natural number `x`, `f(x + 1, 0) = f(x, 1)`.\n3. For any natural numbers `x` and `y`, `f(x + 1, y + 1) = f(x, f(x + 1, y))`.\n\nUsing these rules, calculate the value of `f(4, 1981)`. The result should be 1985.",
+        "semantic_score": 0.8718413382435383,
+        "symbolic_score": 0.3
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = undefined\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = undefined\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function `f` that takes two natural numbers as inputs and returns a natural number as output. The function `f` is defined recursively as follows:\n\n1. For any natural number `y`, `f(0, y) = y + 1`.\n2. For any natural number `x`, `f(x + 1, 0) = f(x, 1)`.\n3. For any natural numbers `x` and `y`, `f(x + 1, y + 1) = f(x, f(x + 1, y))`.\n\nUsing these rules, we want to find the value of `f(4, 1981)`. However, the theorem states that the value of `f(4, 1981)` is undefined.",
+        "semantic_score": 0.8064134690311385,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = (some_value)\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = (some_value)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes two natural numbers as input and returns a natural number. The function f is defined recursively as follows:\n\n1. For any natural number y, f(0, y) equals y + 1.\n2. For any natural number x, f(x + 1, 0) equals f(x, 1).\n3. For any natural numbers x and y, f(x + 1, y + 1) equals f(x, f(x + 1, y)).\n\nUsing these rules, find the value of f(4, 1981).",
+        "semantic_score": 0.8871055694045009,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = f (3, f (4, 1980))\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = f (3, f (4, 1980))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function `f` that takes two natural numbers as inputs and returns a natural number as output. The function `f` is defined recursively as follows:\n\n1. For any natural number `y`, `f(0, y) = y + 1`.\n2. For any natural number `x`, `f(x + 1, 0) = f(x, 1)`.\n3. For any natural numbers `x` and `y`, `f(x + 1, y + 1) = f(x, f(x + 1, y))`.\n\nUsing these rules, we want to show that `f(4, 1981) = f(3, f(4, 1980))`.",
+        "semantic_score": 0.8768853861168693,
+        "symbolic_score": 0.2
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = f (3, f (4, 1980))\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = f (3, f (4, 1980))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function `f` that takes two natural numbers as input and returns a natural number as output. The function `f` is defined recursively as follows:\n\n1. For any natural number `y`, `f(0, y) = y + 1`.\n2. For any natural number `x`, `f(x + 1, 0) = f(x, 1)`.\n3. For any natural numbers `x` and `y`, `f(x + 1, y + 1) = f(x, f(x + 1, y))`.\n\nUsing these rules, prove that `f(4, 1981) = f(3, f(4, 1980))`.",
+        "semantic_score": 0.8654723447301864,
+        "symbolic_score": 0.2
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = 1985\"",
+        "formal solution": "(* ### Problem\n The function $f(x,y)$ satisfies\n\n(1) $f(0,y)=y+1, $\n\n(2) $f(x+1,0)=f(x,1), $\n\n(3) $f(x+1,y+1)=f(x,f(x+1,y)), $\n\nfor all non-negative integers $x,y $. Determine $f(4,1981) $.\n ### Proof\n We observe that $f(1,0) = f(0,1) = 2 $ and that $f(1, y+1) = f(1, f(1,y)) = f(1,y) + 1$, so by induction, $f(1,y) = y+2 $.  Similarly, $f(2,0) = f(1,1) = 3$ and $f(2, y+1) = f(2,y) + 2$, yielding $f(2,y) = 2y + 3$.\n\nWe continue with $f(3,0) + 3 = 8 $; $f(3, y+1) + 3 = 2(f(3,y) + 3)$; $f(3,y) + 3 = 2^{y+3}$; and $f(4,0) + 3 = 2^{2^2}$; $f(4,y) + 3 = 2^{f(4,y) + 3}$.\n\nIt follows that $f(4,1981) = 2^{2\\cdot ^{ . \\cdot 2}} - 3 $ when there are 1984 2s, Q.E.D.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> y. f (0, y) = y + 1\"\nand h1 : \"\\<forall> x. f (x + 1, 0) = f (x, 1)\"\nand h2 : \"\\<forall> x y. f (x + 1, y + 1) = f (x, f (x + 1, y))\"\nshows  \"f (4, 1981) = 1985\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes two natural numbers as inputs and returns a natural number. The function f is defined recursively as follows:\n\n1. For any natural number y, f(0, y) is equal to y + 1.\n2. For any natural number x, f(x + 1, 0) is equal to f(x, 1).\n3. For any natural numbers x and y, f(x + 1, y + 1) is equal to f(x, f(x + 1, y)).\n\nUsing these rules, find the value of f(4, 1981). The answer is 1985.",
+        "semantic_score": 0.8879500267130876,
+        "symbolic_score": 0.3
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0,
+            1,
+            3
+        ],
+        "1": [
+            9,
+            2,
+            4
+        ],
+        "2": [
+            8,
+            7
+        ],
+        "3": [
+            5
+        ],
+        "4": [
+            6
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": []
+}

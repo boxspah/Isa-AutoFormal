@@ -1,0 +1,604 @@
+{
+    "problem_name": "amc12b_2021_p9",
+    "informal_statement": "What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.",
+    "informal_proof": "$\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes log2_80 log2_160 log40_2 log20_2 :: real\nassumes h0 : \"log2_80 = log 80 / log 2\"\nand h1 : \"log2_160 = log 160 / log 2\"\nand h2 : \"log40_2 = log 2 / log 40\"\nand h3 : \"log20_2 = log 2 / log 20\"\nshows  \"(log2_80 / log40_2) - (log2_160 / log20_2) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2_80 log2_160 log40_2 log20_2 :: real\nassumes h0 : \"log2_80 = log 80 / log 2\"\nand h1 : \"log2_160 = log 160 / log 2\"\nand h2 : \"log40_2 = log 2 / log 40\"\nand h3 : \"log20_2 = log 2 / log 20\"\nshows  \"(log2_80 / log40_2) - (log2_160 / log20_2) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Determine the value of $\\frac{\\log_{2}(80)}{\\log_{40}(2)} - \\frac{\\log_{2}(160)}{\\log_{20}(2)}$. The final answer is $2$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9948521852493286,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $\\frac{\\log_2 80}{\\log_{40} 2} - \\frac{\\log_2 160}{\\log_{20} 2} = 2$, confirm that the expression is equal to 2.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9794448614120483,
+        "symbolic_score": 0.4
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 = log 80 / log 2\"\nand h1 : \"log40_2 = log 2 / log 40\"\nand h2 : \"log2_160 = log 160 / log 2\"\nand h3 : \"log20_2 = log 2 / log 20\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 = log 80 / log 2\"\nand h1 : \"log40_2 = log 2 / log 40\"\nand h2 : \"log2_160 = log 160 / log 2\"\nand h3 : \"log20_2 = log 2 / log 20\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{\\log_{2}{80}}{\\log_{40}{2}} - \\frac{\\log_{2}{160}}{\\log_{20}{2}}$. The final answer is 2.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9599789977073669,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{\\log_2 80}{\\log_{40} 2} - \\frac{\\log_2 160}{\\log_{20} 2}$ such that it equals to 2.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9642449021339417,
+        "symbolic_score": 0.4
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $\\frac{\\log_2{80}}{\\log_{40}{2}} - \\frac{\\log_2{160}}{\\log_{20}{2}} = 2$, verify that the equation holds true. The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.861600399017334,
+        "symbolic_score": 0.4
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the expression $\\frac{\\log_2{80}}{\\log_{40}{2}} - \\frac{\\log_2{160}}{\\log_{20}{2}}$. The final answer is $2$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9907106757164001,
+        "symbolic_score": 0.4
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes log_2_80 log_2_160 log_40_2 log_20_2 :: real\nassumes h0 : \"log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2\"\nshows  \"2 = (GREATEST a. a \\<in> {0, 1, 5/4, 2, log_2_80 / log_40_2 - log_2_160 / log_20_2})\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log_2_80 log_2_160 log_40_2 log_20_2 :: real\nassumes h0 : \"log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2\"\nshows  \"2 = (GREATEST a. a \\<in> {0, 1, 5/4, 2, log_2_80 / log_40_2 - log_2_160 / log_20_2})\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the greatest number in the set {0, 1, 5/4, 2, log_2_80 / log_40_2 - log_2_160 / log_20_2}, given that log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2. The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7842168211936951,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes log_2_80 log_2_160 log_40_2 log_20_2 :: real\nassumes h0 : \"log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2\"\nshows  \"log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log_2_80 log_2_160 log_40_2 log_20_2 :: real\nassumes h0 : \"log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2\"\nshows  \"log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{\\log_2 80}{\\log_{40} 2} - \\frac{\\log_2 160}{\\log_{20} 2}$, where log denotes logarithm. The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.984244704246521,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes log2 log40 log20 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. log2 x = ln x / ln 2\"\nand h1 : \"\\<forall> x. log40 x = ln x / ln 40\"\nand h2 : \"\\<forall> x. log20 x = ln x / ln 20\"\nshows  \"(log2 80 / log40 2) - (log2 160 / log20 2) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2 log40 log20 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. log2 x = ln x / ln 2\"\nand h1 : \"\\<forall> x. log40 x = ln x / ln 40\"\nand h2 : \"\\<forall> x. log20 x = ln x / ln 20\"\nshows  \"(log2 80 / log40 2) - (log2 160 / log20 2) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{\\log_2{80}}{\\log_{40}{2}} - \\frac{\\log_2{160}}{\\log_{20}{2}}$. The final answer is $2$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9951527714729309,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes log_base_2_80 log_base_40_2 log_base_2_160 log_base_20_2 :: real\nassumes h0 : \"log_base_2_80 = log 80 / log 2\"\nand h1 : \"log_base_40_2 = log 2 / log 40\"\nand h2 : \"log_base_2_160 = log 160 / log 2\"\nand h3 : \"log_base_20_2 = log 2 / log 20\"\nshows  \"(log_base_2_80 / log_base_40_2) - (log_base_2_160 / log_base_20_2) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log_base_2_80 log_base_40_2 log_base_2_160 log_base_20_2 :: real\nassumes h0 : \"log_base_2_80 = log 80 / log 2\"\nand h1 : \"log_base_40_2 = log 2 / log 40\"\nand h2 : \"log_base_2_160 = log 160 / log 2\"\nand h3 : \"log_base_20_2 = log 2 / log 20\"\nshows  \"(log_base_2_80 / log_base_40_2) - (log_base_2_160 / log_base_20_2) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{\\log_2{80}}{\\log_{40}{2}} - \\frac{\\log_2{160}}{\\log_{20}{2}}$. The final answer is 2.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9600692987442017,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nshows \"(ln 80 / ln 2) / (ln 2 / ln 40) - (ln 160 / ln 2)\n/ (ln 2 / ln 20) = (2::real)\"",
+    "prediction": {
+        "0": [
+            1,
+            3,
+            4,
+            5
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            6
+        ],
+        "4": [
+            7
+        ],
+        "5": [
+            8
+        ],
+        "6": [
+            9
+        ]
+    },
+    "equivalence_oracle": [
+        8
+    ],
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes log :: \"real \\<Rightarrow> real\"\nassumes h0 : \"log 2 = ln 2\"\nand h1 : \"log 20 = ln 20 / ln 10\"\nand h2 : \"log 40 = ln 40 / ln 10\"\nand h3 : \"log 80 = ln 80 / ln 10\"\nshows  \"(log 80 / log 40) - (log 160 / log 20) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log :: \"real \\<Rightarrow> real\"\nassumes h0 : \"log 2 = ln 2\"\nand h1 : \"log 20 = ln 20 / ln 10\"\nand h2 : \"log 40 = ln 40 / ln 10\"\nand h3 : \"log 80 = ln 80 / ln 10\"\nshows  \"(log 80 / log 40) - (log 160 / log 20) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Express the quantity $\\frac{\\log 80}{\\log 40} - \\frac{\\log 160}{\\log 20}$ in terms of the natural logarithm $\\ln 2$ and the common logarithm $\\log 10$. The final answer is $2$.",
+        "semantic_score": 0.95197928422625,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes result :: real\nassumes h0 : \"log 2 80 / log 40 2 - log 2 160 / log 20 2 = result\"\nshows  \"result = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes result :: real\nassumes h0 : \"log 2 80 / log 40 2 - log 2 160 / log 20 2 = result\"\nshows  \"result = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $\\log_{2}{80}/\\log_{40}{2} - \\log_{2}{160}/\\log_{20}{2} = \\text{result}$, find the value of $\\text{result}$ such that it equals $2$.",
+        "semantic_score": 0.8916679586741346,
+        "symbolic_score": 0.8,
+        "naive_label": 0
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x > 0\"\nand h1 : \"log 2 80 / log 40 2 - log 2 160 / log 20 2 = x\"\nshows  \"x = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x > 0\"\nand h1 : \"log 2 80 / log 40 2 - log 2 160 / log 20 2 = x\"\nshows  \"x = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $x$ is a positive real number and $\\frac{\\log_2{80}}{\\log_{40}{2}} - \\frac{\\log_2{160}}{\\log_{20}{2}} = x$, what is the value of $x$? The final answer is $2$.\"",
+        "semantic_score": 0.249512835263078,
+        "symbolic_score": 0.8,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes a b c d :: real\nassumes h0 : \"a = log 2 80\"\nand h1 : \"b = log 40 2\"\nand h2 : \"c = log 2 160\"\nand h3 : \"d = log 20 2\"\nshows  \"(a/b) - (c/d) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes a b c d :: real\nassumes h0 : \"a = log 2 80\"\nand h1 : \"b = log 40 2\"\nand h2 : \"c = log 2 160\"\nand h3 : \"d = log 20 2\"\nshows  \"(a/b) - (c/d) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The logarithms of $80$ to the base $2$, $2$ to the base $40$, $160$ to the base $2$, and $2$ to the base $20$ are denoted by $a$, $b$, $c$, and $d$, respectively. Find $(a/b) - (c/d)$. The final answer is $2$.",
+        "semantic_score": 0.9768152483033683,
+        "symbolic_score": 0.8,
+        "naive_label": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes log :: \"real \\<Rightarrow> real\"\nassumes h0 : \"log 2 = ln 2 / ln (exp 1)\"\nand h1 : \"log 20 = ln 20 / ln (exp 1)\"\nand h2 : \"log 40 = ln 40 / ln (exp 1)\"\nshows  \"(log 80 / log 40 - log 160 / log 20) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log :: \"real \\<Rightarrow> real\"\nassumes h0 : \"log 2 = ln 2 / ln (exp 1)\"\nand h1 : \"log 20 = ln 20 / ln (exp 1)\"\nand h2 : \"log 40 = ln 40 / ln (exp 1)\"\nshows  \"(log 80 / log 40 - log 160 / log 20) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{\\log 80}{\\log 40} - \\frac{\\log 160}{\\log 20}$. The final answer is $2$. Assume that $\\log$ denotes the base-$10$ logarithm and $\\ln$ denotes the natural logarithm.",
+        "semantic_score": 0.792159592384427,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes a b c d :: real\nassumes h0 : \"a = log 2 80\"\nand h1 : \"b = log 40 2\"\nand h2 : \"c = log 2 160\"\nand h3 : \"d = log 20 2\"\nshows  \"a / b - c / d = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes a b c d :: real\nassumes h0 : \"a = log 2 80\"\nand h1 : \"b = log 40 2\"\nand h2 : \"c = log 2 160\"\nand h3 : \"d = log 20 2\"\nshows  \"a / b - c / d = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a$ is the base-2 logarithm of 80, $b$ is the base-40 logarithm of 2, $c$ is the base-2 logarithm of 160, and $d$ is the base-20 logarithm of 2, find $\\frac{a}{b} - \\frac{c}{d}$. The final answer is 2.",
+        "semantic_score": 0.6279471770955438,
+        "symbolic_score": 0.8,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x > 0\"\nshows  \"log 2 80 / log 40 2 - log 2 160 / log 20 2 = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x > 0\"\nshows  \"log 2 80 / log 40 2 - log 2 160 / log 20 2 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $x$ is a positive real number, find the value of $\\frac{\\log_2 80}{\\log_{40} 2} - \\frac{\\log_2 160}{\\log_{20} 2}$ such that it equals $2$.",
+        "semantic_score": 0.9712241554716909,
+        "symbolic_score": 0.8,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes ans :: real\nassumes h0 : \"log 2 80 / log 40 2 - log 2 160 / log 20 2 = ans\"\nshows  \"ans = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes ans :: real\nassumes h0 : \"log 2 80 / log 40 2 - log 2 160 / log 20 2 = ans\"\nshows  \"ans = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the value of $\\frac{\\log_2 80}{\\log_{40} 2} - \\frac{\\log_2 160}{\\log_{20} 2}$? The final answer is $2$.",
+        "semantic_score": 0.8222595487063886,
+        "symbolic_score": 0.8,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a = log 2 80 / log 40 2\"\nand h1 : \"b = log 2 160 / log 20 2\"\nshows  \"a - b = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a = log 2 80 / log 40 2\"\nand h1 : \"b = log 2 160 / log 20 2\"\nshows  \"a - b = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a$ is the logarithm base 2 of 80 divided by the logarithm base 40 of 2, and $b$ is the logarithm base 2 of 160 divided by the logarithm base 20 of 2, what is the difference between $a$ and $b$? The final answer is 2.",
+        "semantic_score": 0.7306720579806322,
+        "symbolic_score": 0.8,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes ans :: real\nassumes h0 : \"log 2 80 / log 40 2 - log 2 160 / log 20 2 = ans\"\nshows  \"ans = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes ans :: real\nassumes h0 : \"log 2 80 / log 40 2 - log 2 160 / log 20 2 = ans\"\nshows  \"ans = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the value of $\\frac{\\log_{2}{80}}{\\log_{40}{2}} - \\frac{\\log_{2}{160}}{\\log_{20}{2}}$? The final answer is $2$.",
+        "semantic_score": 0.9044441825802464,
+        "symbolic_score": 0.8,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            4
+        ]
+    },
+    "equivalence_oracle_gpt3.5": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        9
+    ],
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes log base :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x y. log (base x) y = ln y / ln base x\"\nand h1 : \"ln 2 = ln (2.0)\"\nand h2 : \"ln 40 = ln (2 ^ 2.5)\"\nand h3 : \"ln 80 = ln (2 ^ 3.386)\"\nand h4 : \"ln 20 = ln (2 ^ 3)\"\nand h5 : \"ln 160 = ln (2 ^ 4.7)\"\nshows  \"(log (fn log base => ln base) 80 / log (fn log base => ln base) 40) - (log (fn log base => ln base) 160 / log (fn log base => ln base) 20) = ln 5\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log base :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x y. log (base x) y = ln y / ln base x\"\nand h1 : \"ln 2 = ln (2.0)\"\nand h2 : \"ln 40 = ln (2 ^ 2.5)\"\nand h3 : \"ln 80 = ln (2 ^ 3.386)\"\nand h4 : \"ln 20 = ln (2 ^ 3)\"\nand h5 : \"ln 160 = ln (2 ^ 4.7)\"\nshows  \"(log (fn log base => ln base) 80 / log (fn log base => ln base) 40) - (log (fn log base => ln base) 160 / log (fn log base => ln base) 20) = ln 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the difference between the log base 2 values of 80 and 40, and the log base 2 values of 160 and 20. The final answer is the natural logarithm of 5.\n\nOr,\n\nUsing log base 2, find the difference between the number of bits required to represent 80 and 40, and the difference between the number of bits required to represent 160 and 20. The final answer is the base 10 logarithm (logarithm to the base 10 is equivalent to natural logarithm) of 5."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem\nfixes log2 log40 log20 :: real\nassumes h0 : \"log2 80 = log2 2 ^ 3 * log2 5\"\nand h1 : \"log40 2 = log2 2 ^ 2\"\nand h2 : \"log2 160 = log2 2 ^ 4 * log2 5\"\nshows  \"((log2 80 /. log40 2) - (log2 160 /. log20 2)) = log2 5 ^ 2 - log2 2 ^ 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2 log40 log20 :: real\nassumes h0 : \"log2 80 = log2 2 ^ 3 * log2 5\"\nand h1 : \"log40 2 = log2 2 ^ 2\"\nand h2 : \"log2 160 = log2 2 ^ 4 * log2 5\"\nshows  \"((log2 80 /. log40 2) - (log2 160 /. log20 2)) = log2 5 ^ 2 - log2 2 ^ 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the difference of the following logarithmic expressions:\n\n$\\frac{\\log\\_2 80}{\\log\\_40 2} - \\frac{\\log\\_2 160}{\\log\\_20 2}$\n\nThe final answer is $\\log\\_2 5^2 - \\log\\_2 2^2$."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes log base a b c :: real\nassumes h0 : \"log base 2 80 = log base 2 2^(3 * 5) = 3 * log base 2 2^5\"\nand h1 : \"log base 40 2 = log base 40 2^(2 * 5) = 2 * log base 40 2^5\"\nand h2 : \"log base a b = log base a c / log base a b\"\nshows  \"3 * log base 2 2^5 - 2 * log base 40 2^5 \\<neq> 0\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log base a b c :: real\nassumes h0 : \"log base 2 80 = log base 2 2^(3 * 5) = 3 * log base 2 2^5\"\nand h1 : \"log base 40 2 = log base 40 2^(2 * 5) = 2 * log base 40 2^5\"\nand h2 : \"log base a b = log base a c / log base a b\"\nshows  \"3 * log base 2 2^5 - 2 * log base 40 2^5 \\<neq> 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Determine if the following expression is not equal to zero: $3\\log\\_2(2^5) - 2\\log\\_{40}(2^5)$.\n\nIn other words, is $3\\cdot5\\log\\_2(2) - 2\\cdot5\\log\\_{40}(2)$ not equal to zero?\n\nThe final answer depends on the value of $\\log\\_2(2)$ and $\\log\\_{40}(2)$.\n\nIf $\\log\\_2(2)=1$, then the expression simplifies to $3*5-2*5=0$, which is not equal to zero for this specific value but not in general. However, in the original Isabelle version, it's assumed that the logarithms have certain values, so the answer should be based on those assumptions."
+    },
+    "a_3_mistral": {
+        "formal problem": "theorem\nfixes log base a b c :: real\nassumes h0 : \"log base 2 80 = log base 2 2 ^ 6\"\nand h1 : \"log base 40 2 = log base 40 2 ^ 3\"\nand h2 : \"log base a b = log base a c / log base b c\"\nshows  \"(\\ log base 2 80 /. log base 40 2 ) - (\\ log base 2 160 /. log base 20 2 ) = log base 2 5\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log base a b c :: real\nassumes h0 : \"log base 2 80 = log base 2 2 ^ 6\"\nand h1 : \"log base 40 2 = log base 40 2 ^ 3\"\nand h2 : \"log base a b = log base a c / log base b c\"\nshows  \"(\\ log base 2 80 /. log base 40 2 ) - (\\ log base 2 160 /. log base 20 2 ) = log base 2 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the quotient of the log base 2 of 80 and the log base 2 of 2 raised to the power 6, and subtract the quotient of the log base 2 of 160 and the log base 20 of 2. The final answer is the log base 2 of 5."
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes log base x :: real\nassumes h0 : \"log base 2 80 = 3.397063265\"\nand h1 : \"log base 40 2 = 1.5\"\nand h2 : \"log base 2 160 = 4.098612393\"\nand h3 : \"log base a b c = log base a b c\"\nshows  \"(\\frac{log base 2 80}{log base 40 2} - \\frac{log base 2 160}{log base 20 2}) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log base x :: real\nassumes h0 : \"log base 2 80 = 3.397063265\"\nand h1 : \"log base 40 2 = 1.5\"\nand h2 : \"log base 2 160 = 4.098612393\"\nand h3 : \"log base a b c = log base a b c\"\nshows  \"(\\frac{log base 2 80}{log base 40 2} - \\frac{log base 2 160}{log base 20 2}) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the quotient of $\\log\\_2 80$ and $\\log\\_2 40$, and subtract it from the quotient of $\\log\\_2 160$ and $\\log\\_2 20$. The final answer is 2.\n\nIn other words, what is the difference between the number of bits needed to represent $\\log\\_2 80$ and $\\log\\_2 40$, and the difference between the number of bits needed to represent $\\log\\_2 160$ and $\\log\\_2 20$? The final answer is 2."
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes log2 log10 :: \"real \\<Rightarrow> real\" and x y z w :: real\nassumes h0 : \"log2 x = log10 x / log10 2\"\nand h1 : \"log2 y = log10 y / log10 2\"\nand h2 : \"log40 2 = log10 2 / log10 40\"\nand h3 : \"log20 2 = log10 2 / log10 20\"\nand h4 : \"x = 80\"\nand h5 : \"y = 160\"\nshows  \"(\\frac (log2 x) (log40 2) - \\frac (log2 y) (log20 2)) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2 log10 :: \"real \\<Rightarrow> real\" and x y z w :: real\nassumes h0 : \"log2 x = log10 x / log10 2\"\nand h1 : \"log2 y = log10 y / log10 2\"\nand h2 : \"log40 2 = log10 2 / log10 40\"\nand h3 : \"log20 2 = log10 2 / log10 20\"\nand h4 : \"x = 80\"\nand h5 : \"y = 160\"\nshows  \"(\\frac (log2 x) (log40 2) - \\frac (log2 y) (log20 2)) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the difference between the log base 2 of 80 and the log base 2 of 160, both divided by the log base 2 of 2 in base 40 and log base 2 of 2 in base 20, respectively. The final answer is 2."
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nreal log_2_80, real log_40_2, real log_2_160, real log_20_2,\nassumes h0 : \"log 2 (80)\"\nand h1 : \"log 40 2\"\nand h2 : \"log 2 160\"\nand h3 : \"log 2 20\"\nshows  \"a /. b - c /. d = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nreal log_2_80, real log_40_2, real log_2_160, real log_20_2,\nassumes h0 : \"log 2 (80)\"\nand h1 : \"log 40 2\"\nand h2 : \"log 2 160\"\nand h3 : \"log 2 20\"\nshows  \"a /. b - c /. d = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a value for $\\frac{a}{b} - \\frac{c}{d}$, where $a = \\log\\_2 80$, $b = \\log\\_2 2$, $c = \\log\\_2 160$, and $d = \\log\\_2 2$.\n\nTranslate to natural language: Find a value for $\\frac{\\log\\_2 80}{\\log\\_2 2} - \\frac{\\log\\_2 160}{\\log\\_2 2}$.\n\nThe answer is 2."
+    },
+    "a_7_mistral": {
+        "formal problem": "theorem\nfixes log2 log40 log20 :: real\nassumes h0 : \"\\<log base> 2 80 = \\<log base> 2 2^6\"\nand h1 : \"\\<log base> 40 2 = \\<log base> 10 2^2\"\nand h2 : \"\\<log base> 2 160 = \\<log base> 2 2^6 \\* 2^2\"\nand h3 : \"\\<log base> 20 2 = \\<log base> 2 2^3\"\nshows  \"(\\<log base> 2 80 / \\<log base> 40 2) - (\\<log base> 2 160 / \\<log base> 20 2) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2 log40 log20 :: real\nassumes h0 : \"\\<log base> 2 80 = \\<log base> 2 2^6\"\nand h1 : \"\\<log base> 40 2 = \\<log base> 10 2^2\"\nand h2 : \"\\<log base> 2 160 = \\<log base> 2 2^6 \\* 2^2\"\nand h3 : \"\\<log base> 20 2 = \\<log base> 2 2^3\"\nshows  \"(\\<log base> 2 80 / \\<log base> 40 2) - (\\<log base> 2 160 / \\<log base> 20 2) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the difference between the quotients:\n\n1. The number of times 2 can be logged base 2 in 80\n2. The number of times 2 can be logged base 2 in 160\n3. The number of times 2 can be logged base 10 in 2\n\nThe final answer is 2.\n\nIn other words, calculate the difference between:\n\n\\[\\frac{\\log\\_2(80)}{\\log\\_2(2)} - \\frac{\\log\\_2(160)}{\\log\\_2(2)} - \\frac{\\log\\_2(2)}{\\log\\_2(10)}\\]\n\nwhich simplifies to 2."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"log2 80 = l\"\nand h1 : \"log40 2 = m\"\nand h2 : \"log2 160 = n\"\nshows  \"((l /. m) - (n /. (log2 2))) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"log2 80 = l\"\nand h1 : \"log40 2 = m\"\nand h2 : \"log2 160 = n\"\nshows  \"((l /. m) - (n /. (log2 2))) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the difference between the quotients $\\frac{\\log_2 80}{\\log_2 2}$ and $\\frac{\\log_4 160}{\\log_2 2}$. The final answer is 2."
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes logbase logexpr :: real\nassumes h0 : \"log2 80 = logbase (2) 80\"\nand h1 : \"log40 2 = logbase 40 2\"\nand h2 : \"log2 160 = logbase (2) 160\"\nand h3 : \"log2 5 = logbase 2 5\"\nshows  \"(\\frac (log2 80) (log40 2) - \\frac (log2 160) (log20 2)) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes logbase logexpr :: real\nassumes h0 : \"log2 80 = logbase (2) 80\"\nand h1 : \"log40 2 = logbase 40 2\"\nand h2 : \"log2 160 = logbase (2) 160\"\nand h3 : \"log2 5 = logbase 2 5\"\nshows  \"(\\frac (log2 80) (log40 2) - \\frac (log2 160) (log20 2)) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the difference between the log base 2 of 80 and the log base 2 of 160, divided by the log base 2 of 2 raised to the power of 2? The final answer is 2."
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given the values of x, y, z, and w as follows:\nx = log base 2 of 80\ny = log base 40 of 2\nz = log base 2 of 160\nw = log base 20 of 2\n\nFind the value of the expression (x * y - z * w). The final answer is 2."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given the following logarithmic expressions:\n\nx = log base 2 of 80\ny = log base 40 of 2\nz = log base 2 of 160\nw = log base 20 of 2\n\nCalculate the value of the expression x * y - z * w. The result should be 2."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given the following logarithmic expressions:\n\n1. x = log base 2 of 80\n2. y = log base 40 of 2\n3. z = log base 2 of 160\n4. w = log base 20 of 2\n\nFind the value of the expression (x * y) - (z * w). The final answer is 2."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given the following logarithmic expressions:\n\n1. x = log base 2 of 80\n2. y = log base 40 of 2\n3. z = log base 2 of 160\n4. w = log base 20 of 2\n\nCalculate the value of the expression x * y - z * w and show that it equals 2."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes a b c d :: real\nassumes h0 : \"a = log 2 80\"\nand h1 : \"b = log 40 2\"\nand h2 : \"c = log 2 160\"\nand h3 : \"d = log 20 2\"\nshows  \"a / b - c / d = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes a b c d :: real\nassumes h0 : \"a = log 2 80\"\nand h1 : \"b = log 40 2\"\nand h2 : \"c = log 2 160\"\nand h3 : \"d = log 20 2\"\nshows  \"a / b - c / d = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Calculate the value of the expression $\\frac{\\log_2 80}{\\log_{40} 2} - \\frac{\\log_2 160}{\\log_{20} 2}$ and show that it equals 2."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes x :: real\nassumes h0 : \"x = (log 80 / log 2) / (log 40 / log 2) - (log 160 / log 2) / (log 20 / log 2)\"\nshows  \"x = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x :: real\nassumes h0 : \"x = (log 80 / log 2) / (log 40 / log 2) - (log 160 / log 2) / (log 20 / log 2)\"\nshows  \"x = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a real number x, which is defined as the ratio of two logarithmic expressions. Specifically, x is equal to the result of dividing the logarithm of 80 base 2 by the logarithm of 40 base 2, and then subtracting from this the result of dividing the logarithm of 160 base 2 by the logarithm of 20 base 2. The theorem asserts that the value of x is 2."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x = log 2 / log 40\"\nand h3 : \"y = log 2 / log 20\"\nshows  \"x - y = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x = log 2 / log 40\"\nand h3 : \"y = log 2 / log 20\"\nshows  \"x - y = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given the following logarithmic equations:\n\n1. x equals the logarithm of 80 with base 2, divided by the logarithm of 2 with base 2.\n2. y equals the logarithm of 160 with base 2, divided by the logarithm of 2 with base 2.\n3. x equals the logarithm of 2 with base 2, divided by the logarithm of 40 with base 2.\n4. y equals the logarithm of 2 with base 2, divided by the logarithm of 20 with base 2.\n\nProve that the difference between x and y is equal to 2."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x = log 2 / log 40\"\nand h3 : \"y = log 2 / log 20\"\nshows  \"x - y = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x = log 2 / log 40\"\nand h3 : \"y = log 2 / log 20\"\nshows  \"x - y = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given the values of x and y as follows:\nx is the result of dividing the logarithm of 80 by the logarithm of 2,\ny is the result of dividing the logarithm of 160 by the logarithm of 2,\nx is also the result of dividing the logarithm of 2 by the logarithm of 40,\ny is also the result of dividing the logarithm of 2 by the logarithm of 20.\n\nFind the value of x - y. The final answer is 2."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x / y = 2\"\nshows  \"x / y = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x / y = 2\"\nshows  \"x / y = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that x equals the logarithm of 80 with base 2, and y equals the logarithm of 160 with base 2, and it is also given that the ratio of x to y is 2, prove that the ratio of x to y is indeed 2."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x = log 2 / log 40\"\nand h3 : \"y = log 2 / log 20\"\nshows  \"x - y = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x = log 2 / log 40\"\nand h3 : \"y = log 2 / log 20\"\nshows  \"x - y = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that:\n- x is equal to the logarithm of 80 with base 2, divided by the logarithm of 2 with base 2.\n- y is equal to the logarithm of 160 with base 2, divided by the logarithm of 2 with base 2.\n- x is also equal to the logarithm of 2 with base 2, divided by the logarithm of 40 with base 2.\n- y is also equal to the logarithm of 2 with base 2, divided by the logarithm of 20 with base 2.\n\nFind the value of x - y. The answer is 2."
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            1,
+            2,
+            3
+        ],
+        "1": [
+            9,
+            6,
+            7
+        ],
+        "2": [
+            4
+        ],
+        "3": [
+            5
+        ],
+        "4": [
+            8
+        ]
+    },
+    "equivalence_oracle_deepseek": [
+        4
+    ],
+    "prediction_solve_direct": {
+        "0": [
+            1,
+            3,
+            4,
+            5
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            6
+        ],
+        "4": [
+            7
+        ],
+        "5": [
+            8
+        ],
+        "6": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes log2_80 log2_160 log40_2 log20_2 :: real\nassumes h0 : \"log2_80 = log 80 / log 2\"\nand h1 : \"log2_160 = log 160 / log 2\"\nand h2 : \"log40_2 = log 2 / log 40\"\nand h3 : \"log20_2 = log 2 / log 20\"\nshows  \"(log2_80 / log40_2) - (log2_160 / log20_2) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2_80 log2_160 log40_2 log20_2 :: real\nassumes h0 : \"log2_80 = log 80 / log 2\"\nand h1 : \"log2_160 = log 160 / log 2\"\nand h2 : \"log40_2 = log 2 / log 40\"\nand h3 : \"log20_2 = log 2 / log 20\"\nshows  \"(log2_80 / log40_2) - (log2_160 / log20_2) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Determine the value of $\\frac{\\log_{2}(80)}{\\log_{40}(2)} - \\frac{\\log_{2}(160)}{\\log_{20}(2)}$. The final answer is $2$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9294587487591256,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $\\frac{\\log_2 80}{\\log_{40} 2} - \\frac{\\log_2 160}{\\log_{20} 2} = 2$, confirm that the expression is equal to 2.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8819362431556568,
+        "symbolic_score": 0.4
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 = log 80 / log 2\"\nand h1 : \"log40_2 = log 2 / log 40\"\nand h2 : \"log2_160 = log 160 / log 2\"\nand h3 : \"log20_2 = log 2 / log 20\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 = log 80 / log 2\"\nand h1 : \"log40_2 = log 2 / log 40\"\nand h2 : \"log2_160 = log 160 / log 2\"\nand h3 : \"log20_2 = log 2 / log 20\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{\\log_{2}{80}}{\\log_{40}{2}} - \\frac{\\log_{2}{160}}{\\log_{20}{2}}$. The final answer is 2.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9318510824658554,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{\\log_2 80}{\\log_{40} 2} - \\frac{\\log_2 160}{\\log_{20} 2}$ such that it equals to 2.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9130256054477178,
+        "symbolic_score": 0.4
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $\\frac{\\log_2{80}}{\\log_{40}{2}} - \\frac{\\log_2{160}}{\\log_{20}{2}} = 2$, verify that the equation holds true. The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8988388698902082,
+        "symbolic_score": 0.4
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2_80 log40_2 log2_160 log20_2 :: real\nassumes h0 : \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\nshows  \"log2_80 / log40_2 - log2_160 / log20_2 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the expression $\\frac{\\log_2{80}}{\\log_{40}{2}} - \\frac{\\log_2{160}}{\\log_{20}{2}}$. The final answer is $2$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9244790073222373,
+        "symbolic_score": 0.4
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes log_2_80 log_2_160 log_40_2 log_20_2 :: real\nassumes h0 : \"log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2\"\nshows  \"2 = (GREATEST a. a \\<in> {0, 1, 5/4, 2, log_2_80 / log_40_2 - log_2_160 / log_20_2})\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log_2_80 log_2_160 log_40_2 log_20_2 :: real\nassumes h0 : \"log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2\"\nshows  \"2 = (GREATEST a. a \\<in> {0, 1, 5/4, 2, log_2_80 / log_40_2 - log_2_160 / log_20_2})\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the greatest number in the set {0, 1, 5/4, 2, log_2_80 / log_40_2 - log_2_160 / log_20_2}, given that log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2. The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8637246822676162,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes log_2_80 log_2_160 log_40_2 log_20_2 :: real\nassumes h0 : \"log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2\"\nshows  \"log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log_2_80 log_2_160 log_40_2 log_20_2 :: real\nassumes h0 : \"log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2\"\nshows  \"log_2_80 / log_40_2 - log_2_160 / log_20_2 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{\\log_2 80}{\\log_{40} 2} - \\frac{\\log_2 160}{\\log_{20} 2}$, where log denotes logarithm. The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.928209605218606,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes log2 log40 log20 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. log2 x = ln x / ln 2\"\nand h1 : \"\\<forall> x. log40 x = ln x / ln 40\"\nand h2 : \"\\<forall> x. log20 x = ln x / ln 20\"\nshows  \"(log2 80 / log40 2) - (log2 160 / log20 2) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log2 log40 log20 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. log2 x = ln x / ln 2\"\nand h1 : \"\\<forall> x. log40 x = ln x / ln 40\"\nand h2 : \"\\<forall> x. log20 x = ln x / ln 20\"\nshows  \"(log2 80 / log40 2) - (log2 160 / log20 2) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{\\log_2{80}}{\\log_{40}{2}} - \\frac{\\log_2{160}}{\\log_{20}{2}}$. The final answer is $2$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9320453870917834,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes log_base_2_80 log_base_40_2 log_base_2_160 log_base_20_2 :: real\nassumes h0 : \"log_base_2_80 = log 80 / log 2\"\nand h1 : \"log_base_40_2 = log 2 / log 40\"\nand h2 : \"log_base_2_160 = log 160 / log 2\"\nand h3 : \"log_base_20_2 = log 2 / log 20\"\nshows  \"(log_base_2_80 / log_base_40_2) - (log_base_2_160 / log_base_20_2) = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\ntheorem\nfixes log_base_2_80 log_base_40_2 log_base_2_160 log_base_20_2 :: real\nassumes h0 : \"log_base_2_80 = log 80 / log 2\"\nand h1 : \"log_base_40_2 = log 2 / log 40\"\nand h2 : \"log_base_2_160 = log 160 / log 2\"\nand h3 : \"log_base_20_2 = log 2 / log 20\"\nshows  \"(log_base_2_80 / log_base_40_2) - (log_base_2_160 / log_base_20_2) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{\\log_2{80}}{\\log_{40}{2}} - \\frac{\\log_2{160}}{\\log_{20}{2}}$. The final answer is 2.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.934070876934628,
+        "symbolic_score": 0.1
+    },
+    "equivalence_oracle_solve_direct": [
+        8
+    ],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given the values of x, y, z, and w as follows:\nx = log base 2 of 80\ny = log base 40 of 2\nz = log base 2 of 160\nw = log base 20 of 2\n\nFind the value of the expression (x * y - z * w). The final answer is 2.",
+        "semantic_score": 0.8512350219957896,
+        "symbolic_score": 0.4
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given the following logarithmic expressions:\n\nx = log base 2 of 80\ny = log base 40 of 2\nz = log base 2 of 160\nw = log base 20 of 2\n\nCalculate the value of the expression x * y - z * w. The result should be 2.",
+        "semantic_score": 0.8261276103938306,
+        "symbolic_score": 0.4
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given the following logarithmic expressions:\n\n1. x = log base 2 of 80\n2. y = log base 40 of 2\n3. z = log base 2 of 160\n4. w = log base 20 of 2\n\nFind the value of the expression (x * y) - (z * w). The final answer is 2.",
+        "semantic_score": 0.8419716219669856,
+        "symbolic_score": 0.4
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y z w :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 2 / log 40\"\nand h2 : \"z = log 160 / log 2\"\nand h3 : \"w = log 2 / log 20\"\nshows  \"x * y - z * w = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given the following logarithmic expressions:\n\n1. x = log base 2 of 80\n2. y = log base 40 of 2\n3. z = log base 2 of 160\n4. w = log base 20 of 2\n\nCalculate the value of the expression x * y - z * w and show that it equals 2.",
+        "semantic_score": 0.8240536267729146,
+        "symbolic_score": 0.4
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes a b c d :: real\nassumes h0 : \"a = log 2 80\"\nand h1 : \"b = log 40 2\"\nand h2 : \"c = log 2 160\"\nand h3 : \"d = log 20 2\"\nshows  \"a / b - c / d = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes a b c d :: real\nassumes h0 : \"a = log 2 80\"\nand h1 : \"b = log 40 2\"\nand h2 : \"c = log 2 160\"\nand h3 : \"d = log 20 2\"\nshows  \"a / b - c / d = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Calculate the value of the expression $\\frac{\\log_2 80}{\\log_{40} 2} - \\frac{\\log_2 160}{\\log_{20} 2}$ and show that it equals 2.",
+        "semantic_score": 0.8938418139725698,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes x :: real\nassumes h0 : \"x = (log 80 / log 2) / (log 40 / log 2) - (log 160 / log 2) / (log 20 / log 2)\"\nshows  \"x = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x :: real\nassumes h0 : \"x = (log 80 / log 2) / (log 40 / log 2) - (log 160 / log 2) / (log 20 / log 2)\"\nshows  \"x = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a real number x, which is defined as the ratio of two logarithmic expressions. Specifically, x is equal to the result of dividing the logarithm of 80 base 2 by the logarithm of 40 base 2, and then subtracting from this the result of dividing the logarithm of 160 base 2 by the logarithm of 20 base 2. The theorem asserts that the value of x is 2.",
+        "semantic_score": 0.7590644754707242,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x = log 2 / log 40\"\nand h3 : \"y = log 2 / log 20\"\nshows  \"x - y = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x = log 2 / log 40\"\nand h3 : \"y = log 2 / log 20\"\nshows  \"x - y = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given the following logarithmic equations:\n\n1. x equals the logarithm of 80 with base 2, divided by the logarithm of 2 with base 2.\n2. y equals the logarithm of 160 with base 2, divided by the logarithm of 2 with base 2.\n3. x equals the logarithm of 2 with base 2, divided by the logarithm of 40 with base 2.\n4. y equals the logarithm of 2 with base 2, divided by the logarithm of 20 with base 2.\n\nProve that the difference between x and y is equal to 2.",
+        "semantic_score": 0.8295079761432981,
+        "symbolic_score": 0.3
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x = log 2 / log 40\"\nand h3 : \"y = log 2 / log 20\"\nshows  \"x - y = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x = log 2 / log 40\"\nand h3 : \"y = log 2 / log 20\"\nshows  \"x - y = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given the values of x and y as follows:\nx is the result of dividing the logarithm of 80 by the logarithm of 2,\ny is the result of dividing the logarithm of 160 by the logarithm of 2,\nx is also the result of dividing the logarithm of 2 by the logarithm of 40,\ny is also the result of dividing the logarithm of 2 by the logarithm of 20.\n\nFind the value of x - y. The final answer is 2.",
+        "semantic_score": 0.8843154439772907,
+        "symbolic_score": 0.3
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x / y = 2\"\nshows  \"x / y = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x / y = 2\"\nshows  \"x / y = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that x equals the logarithm of 80 with base 2, and y equals the logarithm of 160 with base 2, and it is also given that the ratio of x to y is 2, prove that the ratio of x to y is indeed 2.",
+        "semantic_score": 0.8463041074507445,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x = log 2 / log 40\"\nand h3 : \"y = log 2 / log 20\"\nshows  \"x - y = 2\"",
+        "formal solution": "(* ### Problem\n What is the value of$\\frac{\\log_2 80}{\\log_{40}2}-\\frac{\\log_2 160}{\\log_{20}2}?$$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }\\frac54 \\qquad \\textbf{(D) }2 \\qquad \\textbf{(E) }\\log_2 5$ Show that it is \\text{(D)}.\n ### Proof\n $\\frac{\\log_{2}{80}}{\\log_{40}{2}}-\\frac{\\log_{2}{160}}{\\log_{20}{2}}$\n\nNote that $\\log_{40}{2}=\\frac{1}{\\log_{2}{40}}$, and similarly $\\log_{20}{2}=\\frac{1}{\\log_{2}{20}}$\n\n$= \\log_{2}{80}\\cdot \\log_{2}{40}-\\log_{2}{160}\\cdot \\log_{2}{20}$\n\n$=(\\log_{2}{4}+\\log_{2}{20})(\\log_{2}{2}+\\log_{2}{20})-(\\log_{2}{8}+\\log_{2}{20})\\log_{2}{20}$\n\n$=(2+\\log_{2}{20})(1+\\log_{2}{20})-(3+\\log_{2}{20})\\log_{2}{20}$\n\nExpanding, $2+2\\log_{2}{20}+\\log_{2}{20}+(\\log_{2}{20})^2-3\\log_{2}{20}-(\\log_{2}{20})^2$\n\nAll the log terms cancel, so the answer is $2\\implies\\text{(D)}$.\n *)\n\n theorem\nfixes x y :: real\nassumes h0 : \"x = log 80 / log 2\"\nand h1 : \"y = log 160 / log 2\"\nand h2 : \"x = log 2 / log 40\"\nand h3 : \"y = log 2 / log 20\"\nshows  \"x - y = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that:\n- x is equal to the logarithm of 80 with base 2, divided by the logarithm of 2 with base 2.\n- y is equal to the logarithm of 160 with base 2, divided by the logarithm of 2 with base 2.\n- x is also equal to the logarithm of 2 with base 2, divided by the logarithm of 40 with base 2.\n- y is also equal to the logarithm of 2 with base 2, divided by the logarithm of 20 with base 2.\n\nFind the value of x - y. The answer is 2.",
+        "semantic_score": 0.8871832820304156,
+        "symbolic_score": 0.3
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0,
+            1,
+            2,
+            3
+        ],
+        "1": [
+            9,
+            6,
+            7
+        ],
+        "2": [
+            4
+        ],
+        "3": [
+            5
+        ],
+        "4": [
+            8
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [
+        4
+    ]
+}

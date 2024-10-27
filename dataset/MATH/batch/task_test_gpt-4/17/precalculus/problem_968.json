@@ -1,0 +1,144 @@
+{
+    "a_0": {
+        "formal problem": "Here is the Isabelle version of the problem:\n\ndefinition R :: \"real^3^3\"\nwhere \"R = mat 1 0 0 0 1 0 0 0 -1\"\n\ntheorem \nfixes v :: \"real^3\"\nshows  \"R *v v = \\<chi> i. if i < 3 then v$i else - v$i\" \nusing R_def\nby auto",
+        "formal solution": "(* ### Problem\n Find the matrix $\\mathbf{R}$ such that for any vector $\\mathbf{v},$ $\\mathbf{R} \\mathbf{v}$ is the reflection of $\\mathbf{v}$ through the $xy$-plane. The final Answer is \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}\n ### Proof\n Geometrically, we see that \\[\\mathbf{P} \\mathbf{i} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{j} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{k} = \\begin{pmatrix} 0 \\\\ 0 \\\\ -1 \\end{pmatrix},\\]so\n \\[\\mathbf{P} = \\boxed{\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}}.\\]\n *)\n\nHere is the Isabelle version of the problem:\n\ndefinition R :: \"real^3^3\"\nwhere \"R = mat 1 0 0 0 1 0 0 0 -1\"\n\ntheorem \nfixes v :: \"real^3\"\nshows  \"R *v v = \\<chi> i. if i < 3 then v$i else - v$i\" \nusing R_def\nby auto\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a matrix R defined as R = [1, 0, 0; 0, 1, 0; 0, 0, -1], show that the result of multiplying this matrix with a three-dimensional vector v is a new vector where the first two components are the same as in vector v and the third component is the negative of the third component in vector v.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.35231655836105347,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes R :: \"real^3^3\" and v :: \"real^3\"\nassumes h0 : \"R = matrix([[1, 0, 0], [0, 1, 0], [0, 0, -1]])\"\nand h1 : \"v = vector [x, y, z]\"\nshows  \"R *v v = vector [x, y, -z]\"",
+        "formal solution": "(* ### Problem\n Find the matrix $\\mathbf{R}$ such that for any vector $\\mathbf{v},$ $\\mathbf{R} \\mathbf{v}$ is the reflection of $\\mathbf{v}$ through the $xy$-plane. The final Answer is \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}\n ### Proof\n Geometrically, we see that \\[\\mathbf{P} \\mathbf{i} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{j} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{k} = \\begin{pmatrix} 0 \\\\ 0 \\\\ -1 \\end{pmatrix},\\]so\n \\[\\mathbf{P} = \\boxed{\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}}.\\]\n *)\n\ntheorem\nfixes R :: \"real^3^3\" and v :: \"real^3\"\nassumes h0 : \"R = matrix([[1, 0, 0], [0, 1, 0], [0, 0, -1]])\"\nand h1 : \"v = vector [x, y, z]\"\nshows  \"R *v v = vector [x, y, -z]\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a 3x3 matrix R defined as R = [[1, 0, 0], [0, 1, 0], [0, 0, -1]] and a 3D vector v = [x, y, z], find the result of the matrix multiplication between R and v. The result should be another 3D vector [x, y, -z].",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.5537830591201782,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem \nfixes R :: \"real^3^3\" and v :: \"real^3\"\nassumes h0 : \"R = matrix([[1,0,0], [0,1,0], [0,0,-1]])\"\nshows  \"\\<forall> v. R *v v = v - 2 * (vector [0,0,1] \\<bullet> v) *s vector [0,0,1]\"",
+        "formal solution": "(* ### Problem\n Find the matrix $\\mathbf{R}$ such that for any vector $\\mathbf{v},$ $\\mathbf{R} \\mathbf{v}$ is the reflection of $\\mathbf{v}$ through the $xy$-plane. The final Answer is \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}\n ### Proof\n Geometrically, we see that \\[\\mathbf{P} \\mathbf{i} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{j} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{k} = \\begin{pmatrix} 0 \\\\ 0 \\\\ -1 \\end{pmatrix},\\]so\n \\[\\mathbf{P} = \\boxed{\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}}.\\]\n *)\n\ntheorem \nfixes R :: \"real^3^3\" and v :: \"real^3\"\nassumes h0 : \"R = matrix([[1,0,0], [0,1,0], [0,0,-1]])\"\nshows  \"\\<forall> v. R *v v = v - 2 * (vector [0,0,1] \\<bullet> v) *s vector [0,0,1]\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a 3x3 matrix R defined as [[1,0,0], [0,1,0], [0,0,-1]], show that for any 3-dimensional vector v, the result of multiplying R by v is equal to v minus twice the dot product of v and the vector [0,0,1], all scaled by the vector [0,0,1].",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.3601042628288269,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes R :: \"real^3^3\" and v :: \"real^3\"\nassumes h0 : \"\\<forall>v. R *v v = vector [v$1, v$2, -v$3]\"\nshows  \"R = matrix [[1, 0, 0], [0, 1, 0], [0, 0, -1]]\"",
+        "formal solution": "(* ### Problem\n Find the matrix $\\mathbf{R}$ such that for any vector $\\mathbf{v},$ $\\mathbf{R} \\mathbf{v}$ is the reflection of $\\mathbf{v}$ through the $xy$-plane. The final Answer is \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}\n ### Proof\n Geometrically, we see that \\[\\mathbf{P} \\mathbf{i} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{j} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{k} = \\begin{pmatrix} 0 \\\\ 0 \\\\ -1 \\end{pmatrix},\\]so\n \\[\\mathbf{P} = \\boxed{\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}}.\\]\n *)\n\ntheorem\nfixes R :: \"real^3^3\" and v :: \"real^3\"\nassumes h0 : \"\\<forall>v. R *v v = vector [v$1, v$2, -v$3]\"\nshows  \"R = matrix [[1, 0, 0], [0, 1, 0], [0, 0, -1]]\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the matrix $R$ such that for all vectors $v$, the product $Rv$ is a new vector whose first two components are the same as $v$, and whose third component is the negative of the third component of $v$. The final answer is the matrix $\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{bmatrix}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9158583879470825,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes R :: \"real^3^3\" and v :: \"real^3\"\nassumes h0 : \"R = matrix([[1,0,0],[0,1,0],[0,0,-1]])\"\nshows  \"matrix_vector_mult R v = vector [- v$1, - v$2, v$3]\"",
+        "formal solution": "(* ### Problem\n Find the matrix $\\mathbf{R}$ such that for any vector $\\mathbf{v},$ $\\mathbf{R} \\mathbf{v}$ is the reflection of $\\mathbf{v}$ through the $xy$-plane. The final Answer is \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}\n ### Proof\n Geometrically, we see that \\[\\mathbf{P} \\mathbf{i} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{j} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{k} = \\begin{pmatrix} 0 \\\\ 0 \\\\ -1 \\end{pmatrix},\\]so\n \\[\\mathbf{P} = \\boxed{\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}}.\\]\n *)\n\ntheorem\nfixes R :: \"real^3^3\" and v :: \"real^3\"\nassumes h0 : \"R = matrix([[1,0,0],[0,1,0],[0,0,-1]])\"\nshows  \"matrix_vector_mult R v = vector [- v$1, - v$2, v$3]\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a 3x3 matrix R = [[1,0,0],[0,1,0],[0,0,-1]], find the result of the multiplication of this matrix by a 3-dimensional vector v. The result should be a vector where the first two elements are the negatives of the first two elements of v, and the third element is the same as the third element of v.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.4822080731391907,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes v :: \"real^3\" and R :: \"real^3^3\"\nassumes h0 : \"R = (1, 0, 0, 0, 1, 0, 0, 0, -1)\"\nshows  \"\\<forall> v. R *v v = reflection (UNIV - {v. v$3 = 0}) v\"",
+        "formal solution": "(* ### Problem\n Find the matrix $\\mathbf{R}$ such that for any vector $\\mathbf{v},$ $\\mathbf{R} \\mathbf{v}$ is the reflection of $\\mathbf{v}$ through the $xy$-plane. The final Answer is \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}\n ### Proof\n Geometrically, we see that \\[\\mathbf{P} \\mathbf{i} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{j} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{k} = \\begin{pmatrix} 0 \\\\ 0 \\\\ -1 \\end{pmatrix},\\]so\n \\[\\mathbf{P} = \\boxed{\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}}.\\]\n *)\n\ntheorem\nfixes v :: \"real^3\" and R :: \"real^3^3\"\nassumes h0 : \"R = (1, 0, 0, 0, 1, 0, 0, 0, -1)\"\nshows  \"\\<forall> v. R *v v = reflection (UNIV - {v. v$3 = 0}) v\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the reflection of any vector $v$ in 3D space through a plane orthogonal to the third basis vector. Given the reflection matrix $R = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}$, show that for all $v$, $Rv$ equals the reflection of $v$ through the plane where the third coordinate is not equal to zero.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.28618261218070984,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes v :: \"real^3\" and R :: \"real^3^3\"\nassumes h0 : \"R = matrix([[1, 0, 0], [0, 1, 0], [0, 0, -1]])\"\nshows  \"R *v v = vector [v$1, v$2, -v$3]\"",
+        "formal solution": "(* ### Problem\n Find the matrix $\\mathbf{R}$ such that for any vector $\\mathbf{v},$ $\\mathbf{R} \\mathbf{v}$ is the reflection of $\\mathbf{v}$ through the $xy$-plane. The final Answer is \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}\n ### Proof\n Geometrically, we see that \\[\\mathbf{P} \\mathbf{i} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{j} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{k} = \\begin{pmatrix} 0 \\\\ 0 \\\\ -1 \\end{pmatrix},\\]so\n \\[\\mathbf{P} = \\boxed{\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}}.\\]\n *)\n\ntheorem\nfixes v :: \"real^3\" and R :: \"real^3^3\"\nassumes h0 : \"R = matrix([[1, 0, 0], [0, 1, 0], [0, 0, -1]])\"\nshows  \"R *v v = vector [v$1, v$2, -v$3]\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a 3x3 matrix R defined as $R = \\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{bmatrix}$ and a vector v in 3-dimensional space, find the result of the matrix-vector multiplication R*v. The final answer is a vector whose elements are the first and second elements of v and the negative of the third element of v.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.47030970454216003,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes R :: \"real^3^3\" and v :: \"real^3\"\nassumes h0 : \"R = matrix(\\<lambda>i j. if i = j then if i = 3 then -1 else 1 else 0)\"\nand h1 : \"\\<forall> v. R *v v = v \\<longleftrightarrow> v$3 = 0\"\nshows  \"R = matrix(\\<lambda>i j. if i = j then if i = 3 then -1 else 1 else 0)\"",
+        "formal solution": "(* ### Problem\n Find the matrix $\\mathbf{R}$ such that for any vector $\\mathbf{v},$ $\\mathbf{R} \\mathbf{v}$ is the reflection of $\\mathbf{v}$ through the $xy$-plane. The final Answer is \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}\n ### Proof\n Geometrically, we see that \\[\\mathbf{P} \\mathbf{i} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{j} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{k} = \\begin{pmatrix} 0 \\\\ 0 \\\\ -1 \\end{pmatrix},\\]so\n \\[\\mathbf{P} = \\boxed{\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}}.\\]\n *)\n\ntheorem\nfixes R :: \"real^3^3\" and v :: \"real^3\"\nassumes h0 : \"R = matrix(\\<lambda>i j. if i = j then if i = 3 then -1 else 1 else 0)\"\nand h1 : \"\\<forall> v. R *v v = v \\<longleftrightarrow> v$3 = 0\"\nshows  \"R = matrix(\\<lambda>i j. if i = j then if i = 3 then -1 else 1 else 0)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a 3x3 matrix R such that the entries of R are determined by the rule: if the row number equals the column number, then the entry is 1 if the row number is not 3 and -1 if the row number is 3, otherwise the entry is 0. Now, let's say that for any 3-dimensional vector v, the multiplication of R with v equals v if and only if the third component of v is 0. Can we conclude that R is indeed a matrix where the entries are determined by the same rule as initially described?",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.87162184715271,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes R v :: \"real^3^3\"\nassumes h0 : \"R = (\\<chi> i j. if i = j then (if i = 3 then -1 else 1) else 0)\"\nshows  \"R ** v = v reflect_through (vec 0)\"",
+        "formal solution": "(* ### Problem\n Find the matrix $\\mathbf{R}$ such that for any vector $\\mathbf{v},$ $\\mathbf{R} \\mathbf{v}$ is the reflection of $\\mathbf{v}$ through the $xy$-plane. The final Answer is \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}\n ### Proof\n Geometrically, we see that \\[\\mathbf{P} \\mathbf{i} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{j} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{k} = \\begin{pmatrix} 0 \\\\ 0 \\\\ -1 \\end{pmatrix},\\]so\n \\[\\mathbf{P} = \\boxed{\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}}.\\]\n *)\n\ntheorem\nfixes R v :: \"real^3^3\"\nassumes h0 : \"R = (\\<chi> i j. if i = j then (if i = 3 then -1 else 1) else 0)\"\nshows  \"R ** v = v reflect_through (vec 0)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a 3x3 matrix R, where each diagonal entry is 1 except for the third row and third column where it is -1, and every off-diagonal entry is 0, show that the multiplication of R and any 3x3 matrix v is equivalent to reflecting matrix v through the origin.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.33392059803009033,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem \nfixes R :: \"real^3^3\" and v :: \"real^3\" \nassumes h0 : \"\\<forall> v. (R ** v)$1 = v$1 \\<and> (R ** v)$2 = v$2 \\<and> (R ** v)$3 = - v$3\"\nshows  \"R = matrix([[1, 0, 0], [0, 1, 0], [0, 0, -1]])\"",
+        "formal solution": "(* ### Problem\n Find the matrix $\\mathbf{R}$ such that for any vector $\\mathbf{v},$ $\\mathbf{R} \\mathbf{v}$ is the reflection of $\\mathbf{v}$ through the $xy$-plane. The final Answer is \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}\n ### Proof\n Geometrically, we see that \\[\\mathbf{P} \\mathbf{i} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{j} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{k} = \\begin{pmatrix} 0 \\\\ 0 \\\\ -1 \\end{pmatrix},\\]so\n \\[\\mathbf{P} = \\boxed{\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}}.\\]\n *)\n\ntheorem \nfixes R :: \"real^3^3\" and v :: \"real^3\" \nassumes h0 : \"\\<forall> v. (R ** v)$1 = v$1 \\<and> (R ** v)$2 = v$2 \\<and> (R ** v)$3 = - v$3\"\nshows  \"R = matrix([[1, 0, 0], [0, 1, 0], [0, 0, -1]])\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a 3x3 matrix $R$ and a 3-dimensional vector $v$, if the matrix-vector product $Rv$ results in a vector whose first and second components are the same as $v$'s, and the third component is the negation of $v$'s third component, prove that the matrix $R$ is a reflection matrix across the xy-plane. The matrix $R$ is $\\begin{bmatrix}1 & 0 & 0\\\\0 & 1 & 0\\\\0 & 0 & -1\\end{bmatrix}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.5683493614196777,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}",
+    "natural problem": "Find the matrix $\\mathbf{R}$ such that for any vector $\\mathbf{v},$ $\\mathbf{R} \\mathbf{v}$ is the reflection of $\\mathbf{v}$ through the $xy$-plane.",
+    "natural solution": [
+        "Geometrically, we see that \\[\\mathbf{P} \\mathbf{i} = \\begin{pmatrix} 1 \\\\ 0 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{j} = \\begin{pmatrix} 0 \\\\ 1 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{P} \\mathbf{k} = \\begin{pmatrix} 0 \\\\ 0 \\\\ -1 \\end{pmatrix},\\]so",
+        "\\[\\mathbf{P} = \\boxed{\\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & -1 \\end{pmatrix}}.\\]"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 4",
+    "type": "Precalculus"
+}

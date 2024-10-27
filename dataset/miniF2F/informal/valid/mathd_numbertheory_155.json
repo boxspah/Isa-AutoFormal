@@ -1,0 +1,124 @@
+{
+    "problem_name": "mathd_numbertheory_155",
+    "informal_statement": "How many positive three-digit integers are congruent to $7 \\pmod{19}?$ Show that it is 48.",
+    "informal_proof": "An integer congruent to $7 \\pmod{19}$ can be written as $19n+7$. Therefore, we have the inequality $$100 \\le 19n+7 \\le 999.$$We solve for the inequality by subtracting each term by $7$ and then dividing by $19$ to get  $$93\\le 19n \\le 992 \\implies \\frac{93}{19} \\le n \\le \\frac{992}{19}.$$The smallest integer greater than $\\frac{93}{19}$ is $5$ and the largest integer less than $\\frac{992}{19}$ is $52$. There are $52-4=48$ integers from $5$ to $52$ inclusive.",
+    "a_0": {
+        "formal problem": "theorem\nfixes count :: nat\nassumes h0 : \"count = card {x::nat. 100 \\<le> x \\<and> x \\<le> 999 \\<and> x mod 19 = 7}\"\nshows  \"count = 48\"",
+        "formal solution": "(* ### Problem\n How many positive three-digit integers are congruent to $7 \\pmod{19}?$ The final Answer is $48$\n ### Proof\n An integer congruent to $7 \\pmod{19}$ can be written as $19n+7$. Therefore, we have the inequality $$100 \\le 19n+7 \\le 999.$$We solve for the inequality by subtracting each term by $7$ and then dividing by $19$ to get  $$93\\le 19n \\le 992 \\implies \\frac{93}{19} \\le n \\le \\frac{992}{19}.$$The smallest integer greater than $\\frac{93}{19}$ is $5$ and the largest integer less than $\\frac{992}{19}$ is $52$. There are $52-4=48$ integers from $5$ to $52$ inclusive.\n *)\n\ntheorem\nfixes count :: nat\nassumes h0 : \"count = card {x::nat. 100 \\<le> x \\<and> x \\<le> 999 \\<and> x mod 19 = 7}\"\nshows  \"count = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many integers between 100 and 999 are congruent to 7 modulo 19? The final answer is 48.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9837034940719604,
+        "symbolic_score": 0.3
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and S :: \"nat set\"\nassumes h0 : \"S = {x \\<in> {100..999} . x mod 19 = 7}\"\nshows  \"card S = 48\"",
+        "formal solution": "(* ### Problem\n How many positive three-digit integers are congruent to $7 \\pmod{19}?$ The final Answer is $48$\n ### Proof\n An integer congruent to $7 \\pmod{19}$ can be written as $19n+7$. Therefore, we have the inequality $$100 \\le 19n+7 \\le 999.$$We solve for the inequality by subtracting each term by $7$ and then dividing by $19$ to get  $$93\\le 19n \\le 992 \\implies \\frac{93}{19} \\le n \\le \\frac{992}{19}.$$The smallest integer greater than $\\frac{93}{19}$ is $5$ and the largest integer less than $\\frac{992}{19}$ is $52$. There are $52-4=48$ integers from $5$ to $52$ inclusive.\n *)\n\ntheorem\nfixes n :: nat and S :: \"nat set\"\nassumes h0 : \"S = {x \\<in> {100..999} . x mod 19 = 7}\"\nshows  \"card S = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many numbers between 100 and 999 are congruent to 7 modulo 19? The final answer is 48.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9856550097465515,
+        "symbolic_score": 0.3
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"\\<forall>k. 7 + 19 * k = n \\<longrightarrow> 100 \\<le> n \\<and> n \\<le> 999\"\nshows  \"card {n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> (\\<exists>k. 7 + 19 * k = n)} = 48\"",
+        "formal solution": "(* ### Problem\n How many positive three-digit integers are congruent to $7 \\pmod{19}?$ The final Answer is $48$\n ### Proof\n An integer congruent to $7 \\pmod{19}$ can be written as $19n+7$. Therefore, we have the inequality $$100 \\le 19n+7 \\le 999.$$We solve for the inequality by subtracting each term by $7$ and then dividing by $19$ to get  $$93\\le 19n \\le 992 \\implies \\frac{93}{19} \\le n \\le \\frac{992}{19}.$$The smallest integer greater than $\\frac{93}{19}$ is $5$ and the largest integer less than $\\frac{992}{19}$ is $52$. There are $52-4=48$ integers from $5$ to $52$ inclusive.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"\\<forall>k. 7 + 19 * k = n \\<longrightarrow> 100 \\<le> n \\<and> n \\<le> 999\"\nshows  \"card {n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> (\\<exists>k. 7 + 19 * k = n)} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many positive integers $n$ between 100 and 999, inclusive, satisfy the condition that there exists a non-negative integer $k$ such that $n = 7 + 19k$? The final answer is 48.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.910883903503418,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"7 \\<le> n\"\nand h1 : \"n < 1000\"\nand h2 : \"n mod 19 = 7\"\nshows  \"card {n. 7 \\<le> n \\<and> n < 1000 \\<and> n mod 19 = 7} = 48\"",
+        "formal solution": "(* ### Problem\n How many positive three-digit integers are congruent to $7 \\pmod{19}?$ The final Answer is $48$\n ### Proof\n An integer congruent to $7 \\pmod{19}$ can be written as $19n+7$. Therefore, we have the inequality $$100 \\le 19n+7 \\le 999.$$We solve for the inequality by subtracting each term by $7$ and then dividing by $19$ to get  $$93\\le 19n \\le 992 \\implies \\frac{93}{19} \\le n \\le \\frac{992}{19}.$$The smallest integer greater than $\\frac{93}{19}$ is $5$ and the largest integer less than $\\frac{992}{19}$ is $52$. There are $52-4=48$ integers from $5$ to $52$ inclusive.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"7 \\<le> n\"\nand h1 : \"n < 1000\"\nand h2 : \"n mod 19 = 7\"\nshows  \"card {n. 7 \\<le> n \\<and> n < 1000 \\<and> n mod 19 = 7} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of positive integers $n$ between $7$ and $1000$ such that $n$ leaves a remainder of $7$ when divided by $19$. The final answer is $48$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8555372357368469,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"\\<forall>k. k \\<ge> 100 \\<and> k \\<le> 999 \\<and> k mod 19 = 7 \\<longrightarrow> n > 0\"\nand h2 : \"card {k. k \\<ge> 100 \\<and> k \\<le> 999 \\<and> k mod 19 = 7} = n\"\nshows  \"n = 48\"",
+        "formal solution": "(* ### Problem\n How many positive three-digit integers are congruent to $7 \\pmod{19}?$ The final Answer is $48$\n ### Proof\n An integer congruent to $7 \\pmod{19}$ can be written as $19n+7$. Therefore, we have the inequality $$100 \\le 19n+7 \\le 999.$$We solve for the inequality by subtracting each term by $7$ and then dividing by $19$ to get  $$93\\le 19n \\le 992 \\implies \\frac{93}{19} \\le n \\le \\frac{992}{19}.$$The smallest integer greater than $\\frac{93}{19}$ is $5$ and the largest integer less than $\\frac{992}{19}$ is $52$. There are $52-4=48$ integers from $5$ to $52$ inclusive.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"\\<forall>k. k \\<ge> 100 \\<and> k \\<le> 999 \\<and> k mod 19 = 7 \\<longrightarrow> n > 0\"\nand h2 : \"card {k. k \\<ge> 100 \\<and> k \\<le> 999 \\<and> k mod 19 = 7} = n\"\nshows  \"n = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many positive integers between 100 and 999 are divisible by 19 with a remainder of 7? The final answer is 48.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9630232453346252,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"n \\<le> 999\"\nand h2 : \"n mod 19 = 7\"\nshows  \"card {n. n > 0 \\<and> n \\<le> 999 \\<and> n mod 19 = 7} = 48\"",
+        "formal solution": "(* ### Problem\n How many positive three-digit integers are congruent to $7 \\pmod{19}?$ The final Answer is $48$\n ### Proof\n An integer congruent to $7 \\pmod{19}$ can be written as $19n+7$. Therefore, we have the inequality $$100 \\le 19n+7 \\le 999.$$We solve for the inequality by subtracting each term by $7$ and then dividing by $19$ to get  $$93\\le 19n \\le 992 \\implies \\frac{93}{19} \\le n \\le \\frac{992}{19}.$$The smallest integer greater than $\\frac{93}{19}$ is $5$ and the largest integer less than $\\frac{992}{19}$ is $52$. There are $52-4=48$ integers from $5$ to $52$ inclusive.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"n \\<le> 999\"\nand h2 : \"n mod 19 = 7\"\nshows  \"card {n. n > 0 \\<and> n \\<le> 999 \\<and> n mod 19 = 7} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many positive integers less than or equal to 999 have a remainder of 7 when divided by 19? The final answer is 48.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9801481366157532,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nshows  \"card {n :: nat. 100 \\<le> n \\<and> n \\<le> 999 \\<and> n mod 19 = 7} = 48\"",
+        "formal solution": "(* ### Problem\n How many positive three-digit integers are congruent to $7 \\pmod{19}?$ The final Answer is $48$\n ### Proof\n An integer congruent to $7 \\pmod{19}$ can be written as $19n+7$. Therefore, we have the inequality $$100 \\le 19n+7 \\le 999.$$We solve for the inequality by subtracting each term by $7$ and then dividing by $19$ to get  $$93\\le 19n \\le 992 \\implies \\frac{93}{19} \\le n \\le \\frac{992}{19}.$$The smallest integer greater than $\\frac{93}{19}$ is $5$ and the largest integer less than $\\frac{992}{19}$ is $52$. There are $52-4=48$ integers from $5$ to $52$ inclusive.\n *)\n\ntheorem\nshows  \"card {n :: nat. 100 \\<le> n \\<and> n \\<le> 999 \\<and> n mod 19 = 7} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many natural numbers between 100 and 999, inclusive, have a remainder of 7 when divided by 19? The final answer is 48.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9746246933937073,
+        "symbolic_score": 0.3
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x :: nat\nassumes h0 : \"100 \\<le> x\"\nand h1 : \"x \\<le> 999\"\nand h2 : \"x mod 19 = 7\"\nshows  \"card {x. 100 \\<le> x \\<and> x \\<le> 999 \\<and> x mod 19 = 7} = 48\"",
+        "formal solution": "(* ### Problem\n How many positive three-digit integers are congruent to $7 \\pmod{19}?$ The final Answer is $48$\n ### Proof\n An integer congruent to $7 \\pmod{19}$ can be written as $19n+7$. Therefore, we have the inequality $$100 \\le 19n+7 \\le 999.$$We solve for the inequality by subtracting each term by $7$ and then dividing by $19$ to get  $$93\\le 19n \\le 992 \\implies \\frac{93}{19} \\le n \\le \\frac{992}{19}.$$The smallest integer greater than $\\frac{93}{19}$ is $5$ and the largest integer less than $\\frac{992}{19}$ is $52$. There are $52-4=48$ integers from $5$ to $52$ inclusive.\n *)\n\ntheorem\nfixes x :: nat\nassumes h0 : \"100 \\<le> x\"\nand h1 : \"x \\<le> 999\"\nand h2 : \"x mod 19 = 7\"\nshows  \"card {x. 100 \\<le> x \\<and> x \\<le> 999 \\<and> x mod 19 = 7} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many positive integers $x$ between 100 and 999 inclusive satisfy the condition that $x \\equiv 7 \\pmod{19}$? The final answer is 48.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9466800689697266,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = 19 * n + 7\"\nand h1 : \"\\<forall> n. f n > 0 \\<longrightarrow> n \\<ge> 0\"\nand h2 : \"card {x. 100 \\<le> f x \\<and> f x \\<le> 999} = 48\"\nshows  \"card {x. 100 \\<le> f x \\<and> f x \\<le> 999} = 48\"",
+        "formal solution": "(* ### Problem\n How many positive three-digit integers are congruent to $7 \\pmod{19}?$ The final Answer is $48$\n ### Proof\n An integer congruent to $7 \\pmod{19}$ can be written as $19n+7$. Therefore, we have the inequality $$100 \\le 19n+7 \\le 999.$$We solve for the inequality by subtracting each term by $7$ and then dividing by $19$ to get  $$93\\le 19n \\le 992 \\implies \\frac{93}{19} \\le n \\le \\frac{992}{19}.$$The smallest integer greater than $\\frac{93}{19}$ is $5$ and the largest integer less than $\\frac{992}{19}$ is $52$. There are $52-4=48$ integers from $5$ to $52$ inclusive.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = 19 * n + 7\"\nand h1 : \"\\<forall> n. f n > 0 \\<longrightarrow> n \\<ge> 0\"\nand h2 : \"card {x. 100 \\<le> f x \\<and> f x \\<le> 999} = 48\"\nshows  \"card {x. 100 \\<le> f x \\<and> f x \\<le> 999} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f(n) = 19n + 7$ is defined for all integers $n$. If $f(n) > 0$ for all non-negative integers $n$, find the number of integers $n$ such that $100 \\leq f(n) \\leq 999$. The final answer is 48.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9640922546386719,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> n mod 19 = 7\"\nshows  \"card {n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> n mod 19 = 7} = 48\"",
+        "formal solution": "(* ### Problem\n How many positive three-digit integers are congruent to $7 \\pmod{19}?$ The final Answer is $48$\n ### Proof\n An integer congruent to $7 \\pmod{19}$ can be written as $19n+7$. Therefore, we have the inequality $$100 \\le 19n+7 \\le 999.$$We solve for the inequality by subtracting each term by $7$ and then dividing by $19$ to get  $$93\\le 19n \\le 992 \\implies \\frac{93}{19} \\le n \\le \\frac{992}{19}.$$The smallest integer greater than $\\frac{93}{19}$ is $5$ and the largest integer less than $\\frac{992}{19}$ is $52$. There are $52-4=48$ integers from $5$ to $52$ inclusive.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> n mod 19 = 7\"\nshows  \"card {n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> n mod 19 = 7} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many three-digit numbers are divisible by 19 and have a remainder of 7 when divided by 19? The final answer is 48.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9872271418571472,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nshows  \"card ({x::nat. x mod 19  = 7 \\<and> 100\\<le>x \\<and> x < 1000}) = 48\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            6
+        ],
+        "1": [
+            2
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            7
+        ],
+        "6": [
+            8
+        ],
+        "7": [
+            9
+        ]
+    }
+}

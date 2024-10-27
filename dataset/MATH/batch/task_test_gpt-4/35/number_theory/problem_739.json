@@ -1,0 +1,59 @@
+{
+    "natural problem": "For each positive integer $n$, let $n!$ denote the product $1\\cdot 2\\cdot 3\\cdot\\,\\cdots\\,\\cdot (n-1)\\cdot n$.\n\nWhat is the remainder when $9!$ is divided by $10$?",
+    "natural solution": [
+        "Notice that $10=2\\cdot 5$. Both are factors of $9!$, so the remainder is $\\boxed{0}$."
+    ],
+    "natural answer": "0",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat\ndefines \"fact n == foldl1 (op *) [1..n]\"\nassumes h0 : \"9 mod 10 = 0\"\nshows  \"fact 9 mod 10 = 0\"",
+        "formal solution": "(* ### Problem\n For each positive integer $n$, let $n!$ denote the product $1\\cdot 2\\cdot 3\\cdot\\,\\cdots\\,\\cdot (n-1)\\cdot n$.\n\nWhat is the remainder when $9!$ is divided by $10$? The final Answer is 0\n ### Proof\n Notice that $10=2\\cdot 5$. Both are factors of $9!$, so the remainder is $\\boxed{0}$.\n *)\n\ntheorem\nfixes n :: nat\ndefines \"fact n == foldl1 (op *) [1..n]\"\nassumes h0 : \"9 mod 10 = 0\"\nshows  \"fact 9 mod 10 = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The factorial of a number $n$ is defined as the product of all natural numbers from $1$ to $n$. If $9$ is divisible by $10$, what is the remainder when the factorial of $9$ is divided by $10$? The final answer is $0$."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes factorial :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> factorial n = n * factorial (n - 1)\"\nand h1 : \"factorial 0 = 1\"\nshows  \"factorial 9 mod 10 = 0\"",
+        "formal solution": "(* ### Problem\n For each positive integer $n$, let $n!$ denote the product $1\\cdot 2\\cdot 3\\cdot\\,\\cdots\\,\\cdot (n-1)\\cdot n$.\n\nWhat is the remainder when $9!$ is divided by $10$? The final Answer is 0\n ### Proof\n Notice that $10=2\\cdot 5$. Both are factors of $9!$, so the remainder is $\\boxed{0}$.\n *)\n\ntheorem\nfixes factorial :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> factorial n = n * factorial (n - 1)\"\nand h1 : \"factorial 0 = 1\"\nshows  \"factorial 9 mod 10 = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Find the last digit (in base 10) of the factorial of 9. The final answer is 0.\""
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"\\<forall> n > 0. n! = prod id {1..n}\"\nshows  \"(fact 9) mod 10 = 0\"",
+        "formal solution": "(* ### Problem\n For each positive integer $n$, let $n!$ denote the product $1\\cdot 2\\cdot 3\\cdot\\,\\cdots\\,\\cdot (n-1)\\cdot n$.\n\nWhat is the remainder when $9!$ is divided by $10$? The final Answer is 0\n ### Proof\n Notice that $10=2\\cdot 5$. Both are factors of $9!$, so the remainder is $\\boxed{0}$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"\\<forall> n > 0. n! = prod id {1..n}\"\nshows  \"(fact 9) mod 10 = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the last digit of 9 factorial (9!)? The final answer is 0."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: \"nat\"\nassumes h0 : \"n = 9\"\nand h1 : \"fact n = n * fact (n - 1)\"\nshows  \"fact n mod 10 = 0\"",
+        "formal solution": "(* ### Problem\n For each positive integer $n$, let $n!$ denote the product $1\\cdot 2\\cdot 3\\cdot\\,\\cdots\\,\\cdot (n-1)\\cdot n$.\n\nWhat is the remainder when $9!$ is divided by $10$? The final Answer is 0\n ### Proof\n Notice that $10=2\\cdot 5$. Both are factors of $9!$, so the remainder is $\\boxed{0}$.\n *)\n\ntheorem\nfixes n :: \"nat\"\nassumes h0 : \"n = 9\"\nand h1 : \"fact n = n * fact (n - 1)\"\nshows  \"fact n mod 10 = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the last digit (in base 10) of the factorial of 9. The final answer is 0."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n > 0. fact n = prod {1..n}\"\nshows  \"fact 9 mod 10 = 0\"",
+        "formal solution": "(* ### Problem\n For each positive integer $n$, let $n!$ denote the product $1\\cdot 2\\cdot 3\\cdot\\,\\cdots\\,\\cdot (n-1)\\cdot n$.\n\nWhat is the remainder when $9!$ is divided by $10$? The final Answer is 0\n ### Proof\n Notice that $10=2\\cdot 5$. Both are factors of $9!$, so the remainder is $\\boxed{0}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n > 0. fact n = prod {1..n}\"\nshows  \"fact 9 mod 10 = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the last digit (or the remainder when divided by 10) of the factorial of 9? The answer is 0."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact 0 = 1\"\nand h1 : \"\\<forall>n. fact (Suc n) = fact n * Suc n\"\nshows  \"fact 9 mod 10 = 0\"",
+        "formal solution": "(* ### Problem\n For each positive integer $n$, let $n!$ denote the product $1\\cdot 2\\cdot 3\\cdot\\,\\cdots\\,\\cdot (n-1)\\cdot n$.\n\nWhat is the remainder when $9!$ is divided by $10$? The final Answer is 0\n ### Proof\n Notice that $10=2\\cdot 5$. Both are factors of $9!$, so the remainder is $\\boxed{0}$.\n *)\n\ntheorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact 0 = 1\"\nand h1 : \"\\<forall>n. fact (Suc n) = fact n * Suc n\"\nshows  \"fact 9 mod 10 = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the last digit of $9!$ (9 factorial)? The final answer is 0."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact 0 = 1\"\nand h1 : \"\\<forall> n > 0. fact n = n * fact (n - 1)\"\nshows  \"(fact 9) mod 10 = 0\"",
+        "formal solution": "(* ### Problem\n For each positive integer $n$, let $n!$ denote the product $1\\cdot 2\\cdot 3\\cdot\\,\\cdots\\,\\cdot (n-1)\\cdot n$.\n\nWhat is the remainder when $9!$ is divided by $10$? The final Answer is 0\n ### Proof\n Notice that $10=2\\cdot 5$. Both are factors of $9!$, so the remainder is $\\boxed{0}$.\n *)\n\ntheorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact 0 = 1\"\nand h1 : \"\\<forall> n > 0. fact n = n * fact (n - 1)\"\nshows  \"(fact 9) mod 10 = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the last digit of the factorial of 9? The final answer is 0."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n \\<in> {1..9}. fact n = foldl (*) 1 [1..n]\"\nshows  \"fact 9 mod 10 = 0\"",
+        "formal solution": "(* ### Problem\n For each positive integer $n$, let $n!$ denote the product $1\\cdot 2\\cdot 3\\cdot\\,\\cdots\\,\\cdot (n-1)\\cdot n$.\n\nWhat is the remainder when $9!$ is divided by $10$? The final Answer is 0\n ### Proof\n Notice that $10=2\\cdot 5$. Both are factors of $9!$, so the remainder is $\\boxed{0}$.\n *)\n\ntheorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n \\<in> {1..9}. fact n = foldl (*) 1 [1..n]\"\nshows  \"fact 9 mod 10 = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder when the factorial of 9 is divided by 10. The final answer is 0."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 9\"\nshows  \"n factorial mod 10 = 0\"",
+        "formal solution": "(* ### Problem\n For each positive integer $n$, let $n!$ denote the product $1\\cdot 2\\cdot 3\\cdot\\,\\cdots\\,\\cdot (n-1)\\cdot n$.\n\nWhat is the remainder when $9!$ is divided by $10$? The final Answer is 0\n ### Proof\n Notice that $10=2\\cdot 5$. Both are factors of $9!$, so the remainder is $\\boxed{0}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 9\"\nshows  \"n factorial mod 10 = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit (in decimal representation) of the factorial of 9. The final answer is 0."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 9\"\nand h1 : \"fact n = fact n mod 10\"\nshows  \"fact n mod 10 = 0\"",
+        "formal solution": "(* ### Problem\n For each positive integer $n$, let $n!$ denote the product $1\\cdot 2\\cdot 3\\cdot\\,\\cdots\\,\\cdot (n-1)\\cdot n$.\n\nWhat is the remainder when $9!$ is divided by $10$? The final Answer is 0\n ### Proof\n Notice that $10=2\\cdot 5$. Both are factors of $9!$, so the remainder is $\\boxed{0}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 9\"\nand h1 : \"fact n = fact n mod 10\"\nshows  \"fact n mod 10 = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $n$ is a natural number equal to $9$, and the factorial of $n$ is congruent to $n$ modulo 10, what is the remainder when the factorial of $n$ is divided by $10$? The final answer is $0$."
+    },
+    "level": "Level 1",
+    "type": "Number Theory"
+}

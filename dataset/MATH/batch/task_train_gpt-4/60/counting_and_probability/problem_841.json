@@ -1,0 +1,61 @@
+{
+    "natural problem": "Find the sum of all integers $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$.",
+    "natural solution": [
+        "By Pascal's Identity, we have $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{5}$.",
+        "However, we also have $\\binom{24}{5} = \\binom{24}{24-5} = \\binom{24}{19}$. There are no other values of $k$ such that $\\binom{24}{5} = \\binom{24}{k}$, so the sum of all integers that satisfy the problem is $5+19 = \\boxed{24}$.",
+        "Challenge: Is it a coincidence that the answer is 24?"
+    ],
+    "natural answer": "24",
+    "a_0": {
+        "formal problem": "theorem\nfixes k :: nat and binomial :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n k. binomial n k = (fact n) div (fact k * fact (n-k))\"\nand h1 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"k = 9\"",
+        "formal solution": "(* ### Problem\n Find the sum of all integers $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final Answer is 24\n ### Proof\n By Pascal's Identity, we have $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{5}$.\n However, we also have $\\binom{24}{5} = \\binom{24}{24-5} = \\binom{24}{19}$. There are no other values of $k$ such that $\\binom{24}{5} = \\binom{24}{k}$, so the sum of all integers that satisfy the problem is $5+19 = \\boxed{24}$.\n Challenge: Is it a coincidence that the answer is 24?\n *)\n\ntheorem\nfixes k :: nat and binomial :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n k. binomial n k = (fact n) div (fact k * fact (n-k))\"\nand h1 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"k = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Using the binomial coefficient formula, where $\\binom{n}{k} = \\frac{n!}{k!(n-k)!}$, find the value of $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final answer is $k = 9$."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes k :: nat and binomial :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"k = 24\"",
+        "formal solution": "(* ### Problem\n Find the sum of all integers $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final Answer is 24\n ### Proof\n By Pascal's Identity, we have $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{5}$.\n However, we also have $\\binom{24}{5} = \\binom{24}{24-5} = \\binom{24}{19}$. There are no other values of $k$ such that $\\binom{24}{5} = \\binom{24}{k}$, so the sum of all integers that satisfy the problem is $5+19 = \\boxed{24}$.\n Challenge: Is it a coincidence that the answer is 24?\n *)\n\ntheorem\nfixes k :: nat and binomial :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"k = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$, find the value of $k$. The final answer is 24."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes k :: nat and binom :: \"nat \\<times> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n m. binom (n, m) = fact n div (fact m * fact (n - m))\"\nand h1 : \"binom (23, 4) + binom (23, 5) = binom (24, k)\"\nshows  \"k = 24\"",
+        "formal solution": "(* ### Problem\n Find the sum of all integers $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final Answer is 24\n ### Proof\n By Pascal's Identity, we have $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{5}$.\n However, we also have $\\binom{24}{5} = \\binom{24}{24-5} = \\binom{24}{19}$. There are no other values of $k$ such that $\\binom{24}{5} = \\binom{24}{k}$, so the sum of all integers that satisfy the problem is $5+19 = \\boxed{24}$.\n Challenge: Is it a coincidence that the answer is 24?\n *)\n\ntheorem\nfixes k :: nat and binom :: \"nat \\<times> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n m. binom (n, m) = fact n div (fact m * fact (n - m))\"\nand h1 : \"binom (23, 4) + binom (23, 5) = binom (24, k)\"\nshows  \"k = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a set of 23 items, you can choose 4 or 5 items at a time. What is the total number of ways to choose 24 items from a set of 24 items? The final answer is 24."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes k :: nat and sum :: nat\nassumes h0 : \"sum = (\\<Sum>k | choose 23 4 + choose 23 5 = choose 24 k. k)\"\nshows  \"sum = 24\"",
+        "formal solution": "(* ### Problem\n Find the sum of all integers $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final Answer is 24\n ### Proof\n By Pascal's Identity, we have $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{5}$.\n However, we also have $\\binom{24}{5} = \\binom{24}{24-5} = \\binom{24}{19}$. There are no other values of $k$ such that $\\binom{24}{5} = \\binom{24}{k}$, so the sum of all integers that satisfy the problem is $5+19 = \\boxed{24}$.\n Challenge: Is it a coincidence that the answer is 24?\n *)\n\ntheorem\nfixes k :: nat and sum :: nat\nassumes h0 : \"sum = (\\<Sum>k | choose 23 4 + choose 23 5 = choose 24 k. k)\"\nshows  \"sum = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all natural numbers $k$ such that the sum of the binomial coefficients $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final answer is $24$."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes k :: nat\nassumes h0 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"setsum (\\<lambda> k. k) {k. binomial 23 4 + binomial 23 5 = binomial 24 k} = 24\"",
+        "formal solution": "(* ### Problem\n Find the sum of all integers $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final Answer is 24\n ### Proof\n By Pascal's Identity, we have $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{5}$.\n However, we also have $\\binom{24}{5} = \\binom{24}{24-5} = \\binom{24}{19}$. There are no other values of $k$ such that $\\binom{24}{5} = \\binom{24}{k}$, so the sum of all integers that satisfy the problem is $5+19 = \\boxed{24}$.\n Challenge: Is it a coincidence that the answer is 24?\n *)\n\ntheorem\nfixes k :: nat\nassumes h0 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"setsum (\\<lambda> k. k) {k. binomial 23 4 + binomial 23 5 = binomial 24 k} = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all values of $k$ for which the equation $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$ holds true. The final answer is 24."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes k :: nat\nassumes h0 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"k = 24\"",
+        "formal solution": "(* ### Problem\n Find the sum of all integers $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final Answer is 24\n ### Proof\n By Pascal's Identity, we have $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{5}$.\n However, we also have $\\binom{24}{5} = \\binom{24}{24-5} = \\binom{24}{19}$. There are no other values of $k$ such that $\\binom{24}{5} = \\binom{24}{k}$, so the sum of all integers that satisfy the problem is $5+19 = \\boxed{24}$.\n Challenge: Is it a coincidence that the answer is 24?\n *)\n\ntheorem\nfixes k :: nat\nassumes h0 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"k = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In combinatorics, find the value of $k$ such that ${23 \\choose 4} + {23 \\choose 5} = {24 \\choose k}$. The final answer is $k = 24$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes k :: nat\nassumes h0 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"k = 24\"",
+        "formal solution": "(* ### Problem\n Find the sum of all integers $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final Answer is 24\n ### Proof\n By Pascal's Identity, we have $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{5}$.\n However, we also have $\\binom{24}{5} = \\binom{24}{24-5} = \\binom{24}{19}$. There are no other values of $k$ such that $\\binom{24}{5} = \\binom{24}{k}$, so the sum of all integers that satisfy the problem is $5+19 = \\boxed{24}$.\n Challenge: Is it a coincidence that the answer is 24?\n *)\n\ntheorem\nfixes k :: nat\nassumes h0 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"k = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final answer is $k=24$."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes k :: nat\nassumes h0 : \"binomial (23::nat) (4::nat) + binomial (23::nat) (5::nat) = binomial (24::nat) k\"\nshows  \"k = 24\"",
+        "formal solution": "(* ### Problem\n Find the sum of all integers $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final Answer is 24\n ### Proof\n By Pascal's Identity, we have $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{5}$.\n However, we also have $\\binom{24}{5} = \\binom{24}{24-5} = \\binom{24}{19}$. There are no other values of $k$ such that $\\binom{24}{5} = \\binom{24}{k}$, so the sum of all integers that satisfy the problem is $5+19 = \\boxed{24}$.\n Challenge: Is it a coincidence that the answer is 24?\n *)\n\ntheorem\nfixes k :: nat\nassumes h0 : \"binomial (23::nat) (4::nat) + binomial (23::nat) (5::nat) = binomial (24::nat) k\"\nshows  \"k = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final answer is $k = 24$."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes k :: nat\nassumes h0 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"k = 24\"",
+        "formal solution": "(* ### Problem\n Find the sum of all integers $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final Answer is 24\n ### Proof\n By Pascal's Identity, we have $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{5}$.\n However, we also have $\\binom{24}{5} = \\binom{24}{24-5} = \\binom{24}{19}$. There are no other values of $k$ such that $\\binom{24}{5} = \\binom{24}{k}$, so the sum of all integers that satisfy the problem is $5+19 = \\boxed{24}$.\n Challenge: Is it a coincidence that the answer is 24?\n *)\n\ntheorem\nfixes k :: nat\nassumes h0 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"k = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $k$ such that ${23 \\choose 4} + {23 \\choose 5} = {24 \\choose k}$. The final answer is $k = 24$."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes k :: nat\nassumes h0 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"k = 24\"",
+        "formal solution": "(* ### Problem\n Find the sum of all integers $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final Answer is 24\n ### Proof\n By Pascal's Identity, we have $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{5}$.\n However, we also have $\\binom{24}{5} = \\binom{24}{24-5} = \\binom{24}{19}$. There are no other values of $k$ such that $\\binom{24}{5} = \\binom{24}{k}$, so the sum of all integers that satisfy the problem is $5+19 = \\boxed{24}$.\n Challenge: Is it a coincidence that the answer is 24?\n *)\n\ntheorem\nfixes k :: nat\nassumes h0 : \"binomial 23 4 + binomial 23 5 = binomial 24 k\"\nshows  \"k = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Using the binomial coefficients, find the value of $k$ such that $\\binom{23}{4} + \\binom{23}{5} = \\binom{24}{k}$. The final answer is $k=24$."
+    },
+    "level": "Level 4",
+    "type": "Counting & Probability"
+}

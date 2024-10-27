@@ -1,0 +1,59 @@
+{
+    "natural problem": "Find the product of all integer divisors of $105$ that also divide $14$.  (Recall that the divisors of an integer may be positive or negative.)",
+    "natural solution": [
+        "The factors of $105$ are $\\pm 1, \\pm 3, \\pm 5, \\pm 7, \\pm 15, \\pm 21, \\pm 35, \\pm 105$. Of these, only $\\pm 1$ and $\\pm 7$ divide $14$. Their product is $-7\\cdot -1\\cdot 1\\cdot 7 = \\boxed{49}$."
+    ],
+    "natural answer": "49",
+    "a_0": {
+        "formal problem": "theorem\nfixes x :: int and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>x. (x dvd 105) \\<and> (x dvd 14) \\<longrightarrow> f x = x\"\nshows  \"prod f {x. (x dvd 105) \\<and> (x dvd 14)} = 49\"",
+        "formal solution": "(* ### Problem\n Find the product of all integer divisors of $105$ that also divide $14$.  (Recall that the divisors of an integer may be positive or negative.) The final Answer is 49\n ### Proof\n The factors of $105$ are $\\pm 1, \\pm 3, \\pm 5, \\pm 7, \\pm 15, \\pm 21, \\pm 35, \\pm 105$. Of these, only $\\pm 1$ and $\\pm 7$ divide $14$. Their product is $-7\\cdot -1\\cdot 1\\cdot 7 = \\boxed{49}$.\n *)\n\ntheorem\nfixes x :: int and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>x. (x dvd 105) \\<and> (x dvd 14) \\<longrightarrow> f x = x\"\nshows  \"prod f {x. (x dvd 105) \\<and> (x dvd 14)} = 49\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x)$ is defined such that for all integers $x$, $f(x) = x$ if $x$ divides both $105$ and $14$, what is the product of $f(x)$ for all such $x$? The final answer is $49$."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes divisors :: \"int set\"\nassumes h0 : \"divisors = {d. d dvd 105 \\<and> d dvd 14}\"\nand h1 : \"finite divisors\"\nshows  \"setprod id divisors = 49\"",
+        "formal solution": "(* ### Problem\n Find the product of all integer divisors of $105$ that also divide $14$.  (Recall that the divisors of an integer may be positive or negative.) The final Answer is 49\n ### Proof\n The factors of $105$ are $\\pm 1, \\pm 3, \\pm 5, \\pm 7, \\pm 15, \\pm 21, \\pm 35, \\pm 105$. Of these, only $\\pm 1$ and $\\pm 7$ divide $14$. Their product is $-7\\cdot -1\\cdot 1\\cdot 7 = \\boxed{49}$.\n *)\n\ntheorem\nfixes divisors :: \"int set\"\nassumes h0 : \"divisors = {d. d dvd 105 \\<and> d dvd 14}\"\nand h1 : \"finite divisors\"\nshows  \"setprod id divisors = 49\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all integers that divide both 105 and 14. The final answer is 49."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes d :: int and S :: \"int set\"\nassumes h0 : \"S = {d. d dvd 105 \\<and> d dvd 14}\"\nshows  \"prod id S = 49\"",
+        "formal solution": "(* ### Problem\n Find the product of all integer divisors of $105$ that also divide $14$.  (Recall that the divisors of an integer may be positive or negative.) The final Answer is 49\n ### Proof\n The factors of $105$ are $\\pm 1, \\pm 3, \\pm 5, \\pm 7, \\pm 15, \\pm 21, \\pm 35, \\pm 105$. Of these, only $\\pm 1$ and $\\pm 7$ divide $14$. Their product is $-7\\cdot -1\\cdot 1\\cdot 7 = \\boxed{49}$.\n *)\n\ntheorem\nfixes d :: int and S :: \"int set\"\nassumes h0 : \"S = {d. d dvd 105 \\<and> d dvd 14}\"\nshows  \"prod id S = 49\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all integers that divide both 105 and 14. The final answer is 49."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes divisors :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"divisors 105 = {d. d dvd 105}\"\nand h1 : \"divisors 14 = {d. d dvd 14}\"\nand h2 : \"\\<forall>d. d \\<in> divisors 105 \\<longrightarrow> d \\<in> divisors 14\"\nshows  \"prod id (divisors 105) = 49\"",
+        "formal solution": "(* ### Problem\n Find the product of all integer divisors of $105$ that also divide $14$.  (Recall that the divisors of an integer may be positive or negative.) The final Answer is 49\n ### Proof\n The factors of $105$ are $\\pm 1, \\pm 3, \\pm 5, \\pm 7, \\pm 15, \\pm 21, \\pm 35, \\pm 105$. Of these, only $\\pm 1$ and $\\pm 7$ divide $14$. Their product is $-7\\cdot -1\\cdot 1\\cdot 7 = \\boxed{49}$.\n *)\n\ntheorem\nfixes divisors :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"divisors 105 = {d. d dvd 105}\"\nand h1 : \"divisors 14 = {d. d dvd 14}\"\nand h2 : \"\\<forall>d. d \\<in> divisors 105 \\<longrightarrow> d \\<in> divisors 14\"\nshows  \"prod id (divisors 105) = 49\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the set of divisors of 105 and the set of divisors of 14, if every divisor of 105 is also a divisor of 14, prove that the product of all the divisors of 105 is 49."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b :: int\nassumes h0 : \"\\<forall> a. a dvd 105 \\<and> a dvd 14\"\nshows  \"product id {a. a dvd 105 \\<and> a dvd 14} = 49\"",
+        "formal solution": "(* ### Problem\n Find the product of all integer divisors of $105$ that also divide $14$.  (Recall that the divisors of an integer may be positive or negative.) The final Answer is 49\n ### Proof\n The factors of $105$ are $\\pm 1, \\pm 3, \\pm 5, \\pm 7, \\pm 15, \\pm 21, \\pm 35, \\pm 105$. Of these, only $\\pm 1$ and $\\pm 7$ divide $14$. Their product is $-7\\cdot -1\\cdot 1\\cdot 7 = \\boxed{49}$.\n *)\n\ntheorem\nfixes a b :: int\nassumes h0 : \"\\<forall> a. a dvd 105 \\<and> a dvd 14\"\nshows  \"product id {a. a dvd 105 \\<and> a dvd 14} = 49\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all integers that divide both 105 and 14. The final answer is 49."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes divisors :: \"int set\"\nassumes h0 : \"divisors = {d. d dvd 105 \\<and> d dvd 14}\"\nshows  \"prod id divisors = 49\"",
+        "formal solution": "(* ### Problem\n Find the product of all integer divisors of $105$ that also divide $14$.  (Recall that the divisors of an integer may be positive or negative.) The final Answer is 49\n ### Proof\n The factors of $105$ are $\\pm 1, \\pm 3, \\pm 5, \\pm 7, \\pm 15, \\pm 21, \\pm 35, \\pm 105$. Of these, only $\\pm 1$ and $\\pm 7$ divide $14$. Their product is $-7\\cdot -1\\cdot 1\\cdot 7 = \\boxed{49}$.\n *)\n\ntheorem\nfixes divisors :: \"int set\"\nassumes h0 : \"divisors = {d. d dvd 105 \\<and> d dvd 14}\"\nshows  \"prod id divisors = 49\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all integers that are divisors of both 105 and 14. The final answer is 49."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>d. (d dvd 105 \\<and> d dvd 14) \\<longrightarrow> f d = d\"\nshows  \"listprod (map f (divisors 105)) = 49\"",
+        "formal solution": "(* ### Problem\n Find the product of all integer divisors of $105$ that also divide $14$.  (Recall that the divisors of an integer may be positive or negative.) The final Answer is 49\n ### Proof\n The factors of $105$ are $\\pm 1, \\pm 3, \\pm 5, \\pm 7, \\pm 15, \\pm 21, \\pm 35, \\pm 105$. Of these, only $\\pm 1$ and $\\pm 7$ divide $14$. Their product is $-7\\cdot -1\\cdot 1\\cdot 7 = \\boxed{49}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>d. (d dvd 105 \\<and> d dvd 14) \\<longrightarrow> f d = d\"\nshows  \"listprod (map f (divisors 105)) = 49\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For all integers $d$, if $d$ is a divisor of both 105 and 14, let $f(d) = d$. What is the product of $f(d)$ for all divisors of 105? The final answer is 49."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes d :: int\nassumes h0 : \"d dvd 105\"\nand h1 : \"d dvd 14\"\nshows  \"prod id {d. d dvd 105 \\<and> d dvd 14} = 49\"",
+        "formal solution": "(* ### Problem\n Find the product of all integer divisors of $105$ that also divide $14$.  (Recall that the divisors of an integer may be positive or negative.) The final Answer is 49\n ### Proof\n The factors of $105$ are $\\pm 1, \\pm 3, \\pm 5, \\pm 7, \\pm 15, \\pm 21, \\pm 35, \\pm 105$. Of these, only $\\pm 1$ and $\\pm 7$ divide $14$. Their product is $-7\\cdot -1\\cdot 1\\cdot 7 = \\boxed{49}$.\n *)\n\ntheorem\nfixes d :: int\nassumes h0 : \"d dvd 105\"\nand h1 : \"d dvd 14\"\nshows  \"prod id {d. d dvd 105 \\<and> d dvd 14} = 49\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all integers that divide both 105 and 14. The final answer is 49."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"f 105 = {x. x dvd 105}\"\nand h1 : \"f 14 = {x. x dvd 14}\"\nand h2 : \"\\<forall> x. x \\<in> f 105 \\<and> x \\<in> f 14\"\nshows  \"prod id (f 105 \\<inter> f 14) = 49\"",
+        "formal solution": "(* ### Problem\n Find the product of all integer divisors of $105$ that also divide $14$.  (Recall that the divisors of an integer may be positive or negative.) The final Answer is 49\n ### Proof\n The factors of $105$ are $\\pm 1, \\pm 3, \\pm 5, \\pm 7, \\pm 15, \\pm 21, \\pm 35, \\pm 105$. Of these, only $\\pm 1$ and $\\pm 7$ divide $14$. Their product is $-7\\cdot -1\\cdot 1\\cdot 7 = \\boxed{49}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int set\"\nassumes h0 : \"f 105 = {x. x dvd 105}\"\nand h1 : \"f 14 = {x. x dvd 14}\"\nand h2 : \"\\<forall> x. x \\<in> f 105 \\<and> x \\<in> f 14\"\nshows  \"prod id (f 105 \\<inter> f 14) = 49\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of common divisors of 105 and 14. The final answer is 49."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes d :: int\nassumes h0 : \"(\\<forall>d. (d dvd 105 \\<and> d dvd 14) \\<longrightarrow> d \\<noteq> 0)\"\nand h1 : \"prod id {d. d dvd 105 \\<and> d dvd 14} = 49\"\nshows  \"{d. d dvd 105 \\<and> d dvd 14} \\<noteq> {}\"",
+        "formal solution": "(* ### Problem\n Find the product of all integer divisors of $105$ that also divide $14$.  (Recall that the divisors of an integer may be positive or negative.) The final Answer is 49\n ### Proof\n The factors of $105$ are $\\pm 1, \\pm 3, \\pm 5, \\pm 7, \\pm 15, \\pm 21, \\pm 35, \\pm 105$. Of these, only $\\pm 1$ and $\\pm 7$ divide $14$. Their product is $-7\\cdot -1\\cdot 1\\cdot 7 = \\boxed{49}$.\n *)\n\ntheorem\nfixes d :: int\nassumes h0 : \"(\\<forall>d. (d dvd 105 \\<and> d dvd 14) \\<longrightarrow> d \\<noteq> 0)\"\nand h1 : \"prod id {d. d dvd 105 \\<and> d dvd 14} = 49\"\nshows  \"{d. d dvd 105 \\<and> d dvd 14} \\<noteq> {}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that any number that divides both 105 and 14 is not zero, and the product of all such numbers is 49, show that there exists at least one such number."
+    },
+    "level": "Level 5",
+    "type": "Prealgebra"
+}

@@ -1,0 +1,124 @@
+{
+    "problem_name": "imo_2019_p1",
+    "informal_statement": "'Let $\\mathbb{Z}$ be the set of integers. Determine all functions $f : \\mathbb{Z} \\to \\mathbb{Z}$ such that, for all\n''integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a + b)).$''",
+    "informal_proof": "Let us substitute $0$ in for $a$ to get\n$f(0) + 2f(b) = f(f(b)).$\n\nNow, since the domain and range of $f$ are the same, we can let $x = f(b)$ and $f(0)$ equal some constant $c$ to get\n$c + 2x = f(x).$\nTherefore, we have found that '''all''' solutions must be of the form $f(x) = 2x + c.$\n\nPlugging back into the original equation, we have: $4a + c + 4b + 2c = 4a + 4b + 2c + c$ which is true. Therefore, we know that $f(x) = 2x + c$ satisfies the above for any '''integral''' constant c, and that this family of equations is unique.",
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nshows  \"f x = x for all x in Z\" \n(* Here I am assuming that the solution to the functional equation is f(x) = x. The actual solution would depend on the nature of the functional equation and may not be possible to express in a general form. *)",
+        "formal solution": "(* ### Problem\n 'Let $\\mathbb{Z}$ be the set of integers. Determine all functions $f : \\mathbb{Z} \\to \\mathbb{Z}$ such that, for all\n''integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a + b)).$''\n ### Proof\n Let us substitute $0$ in for $a$ to get\n$f(0) + 2f(b) = f(f(b)).$\n\nNow, since the domain and range of $f$ are the same, we can let $x = f(b)$ and $f(0)$ equal some constant $c$ to get\n$c + 2x = f(x).$\nTherefore, we have found that '''all''' solutions must be of the form $f(x) = 2x + c.$\n\nPlugging back into the original equation, we have: $4a + c + 4b + 2c = 4a + 4b + 2c + c$ which is true. Therefore, we know that $f(x) = 2x + c$ satisfies the above for any '''integral''' constant c, and that this family of equations is unique.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nshows  \"f x = x for all x in Z\" \n(* Here I am assuming that the solution to the functional equation is f(x) = x. The actual solution would depend on the nature of the functional equation and may not be possible to express in a general form. *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume a function $f$ defined on integers satisfies the following property: for any integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a + b))$. Does this imply that $f(x) = x$ for all integers $x$?",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.911753237247467,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nshows  \"f is id\"",
+        "formal solution": "(* ### Problem\n 'Let $\\mathbb{Z}$ be the set of integers. Determine all functions $f : \\mathbb{Z} \\to \\mathbb{Z}$ such that, for all\n''integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a + b)).$''\n ### Proof\n Let us substitute $0$ in for $a$ to get\n$f(0) + 2f(b) = f(f(b)).$\n\nNow, since the domain and range of $f$ are the same, we can let $x = f(b)$ and $f(0)$ equal some constant $c$ to get\n$c + 2x = f(x).$\nTherefore, we have found that '''all''' solutions must be of the form $f(x) = 2x + c.$\n\nPlugging back into the original equation, we have: $4a + c + 4b + 2c = 4a + 4b + 2c + c$ which is true. Therefore, we know that $f(x) = 2x + c$ satisfies the above for any '''integral''' constant c, and that this family of equations is unique.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nshows  \"f is id\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ that for all integers $a$ and $b$, satisfies $f(2a) + 2f(b) = f(f(a + b))$. Show that $f$ is the identity function.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.980499267578125,
+        "symbolic_score": 0.3
+    },
+    "a_2": {
+        "formal problem": "\n\nfun f :: \"int \\<Rightarrow> int\"\nwhere \"f a = a\" (* Replace this with the correct definition of f *)\n\ntheorem\nfixes a b :: int and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nshows  \"\\<exists> f. \\<forall> a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nusing assms\nby auto\n\nend\n",
+        "formal solution": "(* ### Problem\n 'Let $\\mathbb{Z}$ be the set of integers. Determine all functions $f : \\mathbb{Z} \\to \\mathbb{Z}$ such that, for all\n''integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a + b)).$''\n ### Proof\n Let us substitute $0$ in for $a$ to get\n$f(0) + 2f(b) = f(f(b)).$\n\nNow, since the domain and range of $f$ are the same, we can let $x = f(b)$ and $f(0)$ equal some constant $c$ to get\n$c + 2x = f(x).$\nTherefore, we have found that '''all''' solutions must be of the form $f(x) = 2x + c.$\n\nPlugging back into the original equation, we have: $4a + c + 4b + 2c = 4a + 4b + 2c + c$ which is true. Therefore, we know that $f(x) = 2x + c$ satisfies the above for any '''integral''' constant c, and that this family of equations is unique.\n *)\n\n\n\nfun f :: \"int \\<Rightarrow> int\"\nwhere \"f a = a\" (* Replace this with the correct definition of f *)\n\ntheorem\nfixes a b :: int and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nshows  \"\\<exists> f. \\<forall> a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nusing assms\nby auto\n\nend\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a function $f$ that satisfies the following property: for all integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a+b))$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9673069715499878,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "\n\ntypedef integer = \"{n::int. True}\"\nby auto\n\ndefinition integer_plus :: \"integer \\<Rightarrow> integer \\<Rightarrow> integer\" (infixl \"\\<oplus>\" 65)\nwhere \"integer_plus a b = Abs_integer((Rep_integer a) + (Rep_integer b))\"\n\ndefinition integer_mult :: \"integer \\<Rightarrow> integer \\<Rightarrow> integer\" (infixl \"\\<otimes>\" 70)\nwhere \"integer_mult a b = Abs_integer((Rep_integer a) * (Rep_integer b))\"\n\ndefinition integer_two :: \"integer\"\nwhere \"integer_two = Abs_integer 2\"\n\ndefinition f :: \"integer \\<Rightarrow> integer\"\nwhere \"f a = a \\<oplus> a\" (* A potential definition for f. This would need to be adjusted based on the desired properties of f. *)\n\naxiomatization\nwhere\nf_axiom: \"\\<forall> a b. f (integer_mult integer_two a) \\<oplus> integer_mult integer_two (f b) = f (f (a \\<oplus> b))\"\n\nend\n",
+        "formal solution": "(* ### Problem\n 'Let $\\mathbb{Z}$ be the set of integers. Determine all functions $f : \\mathbb{Z} \\to \\mathbb{Z}$ such that, for all\n''integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a + b)).$''\n ### Proof\n Let us substitute $0$ in for $a$ to get\n$f(0) + 2f(b) = f(f(b)).$\n\nNow, since the domain and range of $f$ are the same, we can let $x = f(b)$ and $f(0)$ equal some constant $c$ to get\n$c + 2x = f(x).$\nTherefore, we have found that '''all''' solutions must be of the form $f(x) = 2x + c.$\n\nPlugging back into the original equation, we have: $4a + c + 4b + 2c = 4a + 4b + 2c + c$ which is true. Therefore, we know that $f(x) = 2x + c$ satisfies the above for any '''integral''' constant c, and that this family of equations is unique.\n *)\n\n\n\ntypedef integer = \"{n::int. True}\"\nby auto\n\ndefinition integer_plus :: \"integer \\<Rightarrow> integer \\<Rightarrow> integer\" (infixl \"\\<oplus>\" 65)\nwhere \"integer_plus a b = Abs_integer((Rep_integer a) + (Rep_integer b))\"\n\ndefinition integer_mult :: \"integer \\<Rightarrow> integer \\<Rightarrow> integer\" (infixl \"\\<otimes>\" 70)\nwhere \"integer_mult a b = Abs_integer((Rep_integer a) * (Rep_integer b))\"\n\ndefinition integer_two :: \"integer\"\nwhere \"integer_two = Abs_integer 2\"\n\ndefinition f :: \"integer \\<Rightarrow> integer\"\nwhere \"f a = a \\<oplus> a\" (* A potential definition for f. This would need to be adjusted based on the desired properties of f. *)\n\naxiomatization\nwhere\nf_axiom: \"\\<forall> a b. f (integer_mult integer_two a) \\<oplus> integer_mult integer_two (f b) = f (f (a \\<oplus> b))\"\n\nend\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a new type called 'integer' that includes all integers. Define the operations of addition and multiplication for this type, denoted by \"\u2295\" and \"\u2297\" respectively. Also define a specific integer 'two'. \n\nConsider a function 'f' that takes an integer 'a' and returns the result of 'a' added to itself using the new addition operation \"\u2295\". \n\nAssume that for all integers 'a' and 'b', the result of applying 'f' to two times 'a' (using the new multiplication operation \"\u2297\"), then adding two times the result of applying 'f' to 'b', is equal to applying 'f' to the result of applying 'f' to 'a' added to 'b'. \n\nWhat properties does 'f' have, given these definitions and this axiom?",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9676865339279175,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>a b. f (2*a) + 2 * f(b) = f (f (a + b))\"\nshows  \"f x = x\"",
+        "formal solution": "(* ### Problem\n 'Let $\\mathbb{Z}$ be the set of integers. Determine all functions $f : \\mathbb{Z} \\to \\mathbb{Z}$ such that, for all\n''integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a + b)).$''\n ### Proof\n Let us substitute $0$ in for $a$ to get\n$f(0) + 2f(b) = f(f(b)).$\n\nNow, since the domain and range of $f$ are the same, we can let $x = f(b)$ and $f(0)$ equal some constant $c$ to get\n$c + 2x = f(x).$\nTherefore, we have found that '''all''' solutions must be of the form $f(x) = 2x + c.$\n\nPlugging back into the original equation, we have: $4a + c + 4b + 2c = 4a + 4b + 2c + c$ which is true. Therefore, we know that $f(x) = 2x + c$ satisfies the above for any '''integral''' constant c, and that this family of equations is unique.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>a b. f (2*a) + 2 * f(b) = f (f (a + b))\"\nshows  \"f x = x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f$ be a function from the set of integers to the set of integers. If for every pair of integers $a$ and $b$, it is true that $f(2a) + 2f(b) = f(f(a + b))$, prove that $f(x) = x$ for any integer $x$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9260978102684021,
+        "symbolic_score": 0.3
+    },
+    "a_5": {
+        "formal problem": "definition \n  f :: \"int \u21d2 int \u21d2 int\" where \n  \"f a b = (if 2*a + 2*f(b) = f(f(a + b)) then f(a + b) else 0)\"\n\ntheorem\n  fixes f :: \"int \u21d2 int\"\n  assumes h0 : \"\\<forall> a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nshows  \"\u2203 g. \u2200 a b. f a = g (a + b)\"",
+        "formal solution": "(* ### Problem\n 'Let $\\mathbb{Z}$ be the set of integers. Determine all functions $f : \\mathbb{Z} \\to \\mathbb{Z}$ such that, for all\n''integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a + b)).$''\n ### Proof\n Let us substitute $0$ in for $a$ to get\n$f(0) + 2f(b) = f(f(b)).$\n\nNow, since the domain and range of $f$ are the same, we can let $x = f(b)$ and $f(0)$ equal some constant $c$ to get\n$c + 2x = f(x).$\nTherefore, we have found that '''all''' solutions must be of the form $f(x) = 2x + c.$\n\nPlugging back into the original equation, we have: $4a + c + 4b + 2c = 4a + 4b + 2c + c$ which is true. Therefore, we know that $f(x) = 2x + c$ satisfies the above for any '''integral''' constant c, and that this family of equations is unique.\n *)\n\ndefinition \n  f :: \"int \u21d2 int \u21d2 int\" where \n  \"f a b = (if 2*a + 2*f(b) = f(f(a + b)) then f(a + b) else 0)\"\n\ntheorem\n  fixes f :: \"int \u21d2 int\"\n  assumes h0 : \"\\<forall> a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nshows  \"\u2203 g. \u2200 a b. f a = g (a + b)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ such that for all integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a+b))$, prove that there exists a function $g$ such that for all integers $a$ and $b$, $f(a) = g(a+b)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9809290170669556,
+        "symbolic_score": 0.3
+    },
+    "a_6": {
+        "formal problem": "locale FunctionProperty =\nfixes f :: \"int \\<Rightarrow> int\"\nassumes property: \"\\<forall>a b. f (2 * a) + 2 * f b = f (f (a + b))\"",
+        "formal solution": "(* ### Problem\n 'Let $\\mathbb{Z}$ be the set of integers. Determine all functions $f : \\mathbb{Z} \\to \\mathbb{Z}$ such that, for all\n''integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a + b)).$''\n ### Proof\n Let us substitute $0$ in for $a$ to get\n$f(0) + 2f(b) = f(f(b)).$\n\nNow, since the domain and range of $f$ are the same, we can let $x = f(b)$ and $f(0)$ equal some constant $c$ to get\n$c + 2x = f(x).$\nTherefore, we have found that '''all''' solutions must be of the form $f(x) = 2x + c.$\n\nPlugging back into the original equation, we have: $4a + c + 4b + 2c = 4a + 4b + 2c + c$ which is true. Therefore, we know that $f(x) = 2x + c$ satisfies the above for any '''integral''' constant c, and that this family of equations is unique.\n *)\n\nlocale FunctionProperty =\nfixes f :: \"int \\<Rightarrow> int\"\nassumes property: \"\\<forall>a b. f (2 * a) + 2 * f b = f (f (a + b))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "We have a function $f$ that satisfies the property $f(2a) + 2f(b) = f(f(a + b))$ for all integers $a$ and $b$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9603643417358398,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"int => int\"\nassumes h0 : \"\\<forall> a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nshows  \"True\" ",
+        "formal solution": "(* ### Problem\n 'Let $\\mathbb{Z}$ be the set of integers. Determine all functions $f : \\mathbb{Z} \\to \\mathbb{Z}$ such that, for all\n''integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a + b)).$''\n ### Proof\n Let us substitute $0$ in for $a$ to get\n$f(0) + 2f(b) = f(f(b)).$\n\nNow, since the domain and range of $f$ are the same, we can let $x = f(b)$ and $f(0)$ equal some constant $c$ to get\n$c + 2x = f(x).$\nTherefore, we have found that '''all''' solutions must be of the form $f(x) = 2x + c.$\n\nPlugging back into the original equation, we have: $4a + c + 4b + 2c = 4a + 4b + 2c + c$ which is true. Therefore, we know that $f(x) = 2x + c$ satisfies the above for any '''integral''' constant c, and that this family of equations is unique.\n *)\n\ntheorem\nfixes f :: \"int => int\"\nassumes h0 : \"\\<forall> a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nshows  \"True\" \n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For all integers $a$ and $b$, if the function $f$ satisfies $f(2a) + 2f(b) = f(f(a + b))$, is it always true? The final answer is 'yes'.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.5619868040084839,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nshows  \"f is constant function\"\nNote: The above Isabelle translation is based on the assumption that the natural language problem is asking for the property of the function that satisfies the given condition. The problem does not provide enough information to determine the exact form of the function.",
+        "formal solution": "(* ### Problem\n 'Let $\\mathbb{Z}$ be the set of integers. Determine all functions $f : \\mathbb{Z} \\to \\mathbb{Z}$ such that, for all\n''integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a + b)).$''\n ### Proof\n Let us substitute $0$ in for $a$ to get\n$f(0) + 2f(b) = f(f(b)).$\n\nNow, since the domain and range of $f$ are the same, we can let $x = f(b)$ and $f(0)$ equal some constant $c$ to get\n$c + 2x = f(x).$\nTherefore, we have found that '''all''' solutions must be of the form $f(x) = 2x + c.$\n\nPlugging back into the original equation, we have: $4a + c + 4b + 2c = 4a + 4b + 2c + c$ which is true. Therefore, we know that $f(x) = 2x + c$ satisfies the above for any '''integral''' constant c, and that this family of equations is unique.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> a b. f (2 * a) + 2 * f b = f (f (a + b))\"\nshows  \"f is constant function\"\nNote: The above Isabelle translation is based on the assumption that the natural language problem is asking for the property of the function that satisfies the given condition. The problem does not provide enough information to determine the exact form of the function.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Determine the property of the function $f$ that satisfies the condition $f(2a) + 2f(b) = f(f(a+b))$ for all integers $a$ and $b$. The function is a constant function.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9755293726921082,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "\n\ndefinition is_solution :: \"(int \\<Rightarrow> int) \\<Rightarrow> bool\"\nwhere \"is_solution f \\<equiv> \\<forall>a b. f(2*a) + 2*f(b) = f(f(a + b))\"\n\nend",
+        "formal solution": "(* ### Problem\n 'Let $\\mathbb{Z}$ be the set of integers. Determine all functions $f : \\mathbb{Z} \\to \\mathbb{Z}$ such that, for all\n''integers $a$ and $b$, $f(2a) + 2f(b) = f(f(a + b)).$''\n ### Proof\n Let us substitute $0$ in for $a$ to get\n$f(0) + 2f(b) = f(f(b)).$\n\nNow, since the domain and range of $f$ are the same, we can let $x = f(b)$ and $f(0)$ equal some constant $c$ to get\n$c + 2x = f(x).$\nTherefore, we have found that '''all''' solutions must be of the form $f(x) = 2x + c.$\n\nPlugging back into the original equation, we have: $4a + c + 4b + 2c = 4a + 4b + 2c + c$ which is true. Therefore, we know that $f(x) = 2x + c$ satisfies the above for any '''integral''' constant c, and that this family of equations is unique.\n *)\n\n\n\ndefinition is_solution :: \"(int \\<Rightarrow> int) \\<Rightarrow> bool\"\nwhere \"is_solution f \\<equiv> \\<forall>a b. f(2*a) + 2*f(b) = f(f(a + b))\"\n\nend\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ to be a solution if for all integers $a$ and $b$, the function satisfies the equation $f(2a) + 2f(b) = f(f(a + b))$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9233874082565308,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nshows \"(\\<forall> a b. f (2 * a) + (2 * f b) = f (f (a + b)))\n\\<longleftrightarrow> (\\<forall> z. f z = 0 \\<or> (\\<exists> c. \\<forall> z. f z = 2 * z + c))\"",
+    "prediction": {
+        "0": [
+            1,
+            4,
+            5
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            6
+        ],
+        "5": [
+            7
+        ],
+        "6": [
+            8
+        ],
+        "7": [
+            9
+        ]
+    }
+}

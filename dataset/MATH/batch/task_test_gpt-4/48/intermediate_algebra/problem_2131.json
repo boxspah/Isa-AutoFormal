@@ -1,0 +1,144 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes r :: \"nat \\<Rightarrow> complex\" and K :: complex and P :: \"complex \\<Rightarrow> complex\"\nassumes h0 : \"\\<forall> x. P x = x ^ 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (r i) = 0\"\nand h2 : \"\\<forall> i j. 1 \\<le> i \\<and> i < j \\<and> j \\<le> 7 \\<longrightarrow> K = K * (r i + r j)\"\nshows  \"K ^ 2 = 117649\"",
+        "formal solution": "(* ### Problem\n Let $r_1,$ $r_2,$ $\\dots,$ $r_7$ be the distinct complex roots of the polynomial $P(x) = x^7 - 7.$  Let\n\\[K = \\prod_{1 \\le i < j \\le 7} (r_i + r_j).\\]In other words, $K$ is the product of all numbers of the of the form $r_i + r_j,$ where $i$ and $j$ are integers for which $1 \\le i < j \\le 7.$  Determine $K^2.$ The final Answer is 117649\n ### Proof\n We can write \\[x^7 - 7 = (x - r_1)(x - r_2) \\dotsm (x - r_7).\\]Substituting $-x$ for $x,$ we get \\[-x^7 - 7 = (-x - r_1)(-x - r_2) \\dotsm (-x - r_7),\\]so \\[x^7 + 7 = (x + r_1)(x + r_2) \\dotsm (x + r_7).\\]Setting $x = r_i,$ we get\n \\[r_i^7 + 7 = (r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7).\\]Since $r_i$ is a root of $x^7 - 7,$ $r_i^7 = 7.$  Hence, \\[(r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7) = 14.\\]Taking the product over $1 \\le i \\le 7,$ we get\n \\[(2r_1)(2r_2) \\dotsm (2r_7) K^2 = 14^7.\\]By Vieta's formulas, $r_1 r_2 \\dotsm r_7 = 7,$ so \\[K^2 = \\frac{14^7}{2^7 \\cdot 7} = 7^6 = \\boxed{117649}.\\]\n *)\n\ntheorem\nfixes r :: \"nat \\<Rightarrow> complex\" and K :: complex and P :: \"complex \\<Rightarrow> complex\"\nassumes h0 : \"\\<forall> x. P x = x ^ 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (r i) = 0\"\nand h2 : \"\\<forall> i j. 1 \\<le> i \\<and> i < j \\<and> j \\<le> 7 \\<longrightarrow> K = K * (r i + r j)\"\nshows  \"K ^ 2 = 117649\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a seventh-degree polynomial $P(x) = x^7 - 7$. We have seven roots of this polynomial, denoted $r(i)$ for $i$ from 1 to 7. If we choose a complex number $K$ such that the product of $K$ and the sum of any two distinct roots of the polynomial equals $K$, then what is the square of $K$? The final answer is $117649$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7683356404304504,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes K :: complex and ri :: \"int \\<Rightarrow> complex\" and P :: \"complex \\<Rightarrow> complex\"\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (ri i) = 0\"\nand h2 : \"\\<forall> i j. 1 \\<le> i \\<and> i < j \\<and> j \\<le> 7 \\<longrightarrow> ri i \\<noteq> ri j\"\nand h3 : \"K = (\\<Prod>i = 1..6. \\<Prod>j = i+1..7. ri i + ri j)\"\nshows  \"K * K = 117649\"",
+        "formal solution": "(* ### Problem\n Let $r_1,$ $r_2,$ $\\dots,$ $r_7$ be the distinct complex roots of the polynomial $P(x) = x^7 - 7.$  Let\n\\[K = \\prod_{1 \\le i < j \\le 7} (r_i + r_j).\\]In other words, $K$ is the product of all numbers of the of the form $r_i + r_j,$ where $i$ and $j$ are integers for which $1 \\le i < j \\le 7.$  Determine $K^2.$ The final Answer is 117649\n ### Proof\n We can write \\[x^7 - 7 = (x - r_1)(x - r_2) \\dotsm (x - r_7).\\]Substituting $-x$ for $x,$ we get \\[-x^7 - 7 = (-x - r_1)(-x - r_2) \\dotsm (-x - r_7),\\]so \\[x^7 + 7 = (x + r_1)(x + r_2) \\dotsm (x + r_7).\\]Setting $x = r_i,$ we get\n \\[r_i^7 + 7 = (r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7).\\]Since $r_i$ is a root of $x^7 - 7,$ $r_i^7 = 7.$  Hence, \\[(r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7) = 14.\\]Taking the product over $1 \\le i \\le 7,$ we get\n \\[(2r_1)(2r_2) \\dotsm (2r_7) K^2 = 14^7.\\]By Vieta's formulas, $r_1 r_2 \\dotsm r_7 = 7,$ so \\[K^2 = \\frac{14^7}{2^7 \\cdot 7} = 7^6 = \\boxed{117649}.\\]\n *)\n\ntheorem\nfixes K :: complex and ri :: \"int \\<Rightarrow> complex\" and P :: \"complex \\<Rightarrow> complex\"\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (ri i) = 0\"\nand h2 : \"\\<forall> i j. 1 \\<le> i \\<and> i < j \\<and> j \\<le> 7 \\<longrightarrow> ri i \\<noteq> ri j\"\nand h3 : \"K = (\\<Prod>i = 1..6. \\<Prod>j = i+1..7. ri i + ri j)\"\nshows  \"K * K = 117649\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $P(x) = x^7 - 7$. If there are 7 distinct complex roots of $P(x)$, denoted as $ri(i)$ for $i$ from 1 to 7, and if $K$ is the product of all pairwise sums of these roots, find the square of $K$. The final answer is 117649.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7761919498443604,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes r :: \"nat \\<Rightarrow> complex\"\nassumes h0 : \"\\<forall>x. x powr 7 - 7 = (\\<Prod>i\\<in>{1..7}. (x - r i))\"\nand h1 : \"\\<forall>i\\<in>{1..7}. \\<forall>j\\<in>{1..7}. i \\<noteq> j \\<longrightarrow> r i \\<noteq> r j\"\nand h2 : \"K \\<equiv> (\\<Prod>i\\<in>{1..6}. \\<Prod>j\\<in>{i+1..7}. (r i + r j))\"\nshows  \"K powr 2 = 117649\"",
+        "formal solution": "(* ### Problem\n Let $r_1,$ $r_2,$ $\\dots,$ $r_7$ be the distinct complex roots of the polynomial $P(x) = x^7 - 7.$  Let\n\\[K = \\prod_{1 \\le i < j \\le 7} (r_i + r_j).\\]In other words, $K$ is the product of all numbers of the of the form $r_i + r_j,$ where $i$ and $j$ are integers for which $1 \\le i < j \\le 7.$  Determine $K^2.$ The final Answer is 117649\n ### Proof\n We can write \\[x^7 - 7 = (x - r_1)(x - r_2) \\dotsm (x - r_7).\\]Substituting $-x$ for $x,$ we get \\[-x^7 - 7 = (-x - r_1)(-x - r_2) \\dotsm (-x - r_7),\\]so \\[x^7 + 7 = (x + r_1)(x + r_2) \\dotsm (x + r_7).\\]Setting $x = r_i,$ we get\n \\[r_i^7 + 7 = (r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7).\\]Since $r_i$ is a root of $x^7 - 7,$ $r_i^7 = 7.$  Hence, \\[(r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7) = 14.\\]Taking the product over $1 \\le i \\le 7,$ we get\n \\[(2r_1)(2r_2) \\dotsm (2r_7) K^2 = 14^7.\\]By Vieta's formulas, $r_1 r_2 \\dotsm r_7 = 7,$ so \\[K^2 = \\frac{14^7}{2^7 \\cdot 7} = 7^6 = \\boxed{117649}.\\]\n *)\n\ntheorem\nfixes r :: \"nat \\<Rightarrow> complex\"\nassumes h0 : \"\\<forall>x. x powr 7 - 7 = (\\<Prod>i\\<in>{1..7}. (x - r i))\"\nand h1 : \"\\<forall>i\\<in>{1..7}. \\<forall>j\\<in>{1..7}. i \\<noteq> j \\<longrightarrow> r i \\<noteq> r j\"\nand h2 : \"K \\<equiv> (\\<Prod>i\\<in>{1..6}. \\<Prod>j\\<in>{i+1..7}. (r i + r j))\"\nshows  \"K powr 2 = 117649\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let's consider a polynomial $x^7 - 7$ which is expressed as a product of linear factors $(x - r_i)$ for $i$ in the set {1,2,3,4,5,6,7}, where $r_i$ are distinct complex numbers (i.e., $r_i \\neq r_j$ for $i \\neq j$). Let's also consider a constant $K$ which is the product of the sum of each pair of distinct $r_i$ and $r_j$, where $i$ and $j$ range from 1 to 7 and $j$ is always greater than $i$. Determine whether the square of $K$ equals 117649.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.567464292049408,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes r :: \"nat \\<Rightarrow> complex\" and P :: \"complex \\<Rightarrow> complex\" and K :: complex\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (r i) = 0\"\nand h2 : \"K = prod (\\<lambda> (i, j). r i + r j) {(i, j). 1 \\<le> i \\<and> j \\<le> 7 \\<and> i < j}\"\nshows  \"K powr 2 = 117649\"",
+        "formal solution": "(* ### Problem\n Let $r_1,$ $r_2,$ $\\dots,$ $r_7$ be the distinct complex roots of the polynomial $P(x) = x^7 - 7.$  Let\n\\[K = \\prod_{1 \\le i < j \\le 7} (r_i + r_j).\\]In other words, $K$ is the product of all numbers of the of the form $r_i + r_j,$ where $i$ and $j$ are integers for which $1 \\le i < j \\le 7.$  Determine $K^2.$ The final Answer is 117649\n ### Proof\n We can write \\[x^7 - 7 = (x - r_1)(x - r_2) \\dotsm (x - r_7).\\]Substituting $-x$ for $x,$ we get \\[-x^7 - 7 = (-x - r_1)(-x - r_2) \\dotsm (-x - r_7),\\]so \\[x^7 + 7 = (x + r_1)(x + r_2) \\dotsm (x + r_7).\\]Setting $x = r_i,$ we get\n \\[r_i^7 + 7 = (r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7).\\]Since $r_i$ is a root of $x^7 - 7,$ $r_i^7 = 7.$  Hence, \\[(r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7) = 14.\\]Taking the product over $1 \\le i \\le 7,$ we get\n \\[(2r_1)(2r_2) \\dotsm (2r_7) K^2 = 14^7.\\]By Vieta's formulas, $r_1 r_2 \\dotsm r_7 = 7,$ so \\[K^2 = \\frac{14^7}{2^7 \\cdot 7} = 7^6 = \\boxed{117649}.\\]\n *)\n\ntheorem\nfixes r :: \"nat \\<Rightarrow> complex\" and P :: \"complex \\<Rightarrow> complex\" and K :: complex\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (r i) = 0\"\nand h2 : \"K = prod (\\<lambda> (i, j). r i + r j) {(i, j). 1 \\<le> i \\<and> j \\<le> 7 \\<and> i < j}\"\nshows  \"K powr 2 = 117649\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $P$ be a polynomial $P(x) = x^7 - 7$ and $r$ be a sequence of complex numbers such that for each $i$ in the range 1 to 7, $P(r_i) = 0$. Let $K$ be the product of the sum of $r_i + r_j$ for all pairs $(i, j)$ where $1 \\leq i < j \\leq 7$. Find the square of $K$. The final answer is $117649$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9890590310096741,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes r :: \"nat \\<Rightarrow> complex\" and P :: \"complex \\<Rightarrow> complex\" and K :: complex\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (r i) = 0\"\nand h2 : \"\\<forall> i j. 1 \\<le> i \\<and> i < j \\<and> j \\<le> 7 \\<longrightarrow> r i \\<noteq> r j\"\nand h3 : \"K = (\\<Prod>i\\<in>{1..7}. \\<Prod>j\\<in>{i+1..7}. r i + r j)\"\nshows  \"(K * K) = 117649\"",
+        "formal solution": "(* ### Problem\n Let $r_1,$ $r_2,$ $\\dots,$ $r_7$ be the distinct complex roots of the polynomial $P(x) = x^7 - 7.$  Let\n\\[K = \\prod_{1 \\le i < j \\le 7} (r_i + r_j).\\]In other words, $K$ is the product of all numbers of the of the form $r_i + r_j,$ where $i$ and $j$ are integers for which $1 \\le i < j \\le 7.$  Determine $K^2.$ The final Answer is 117649\n ### Proof\n We can write \\[x^7 - 7 = (x - r_1)(x - r_2) \\dotsm (x - r_7).\\]Substituting $-x$ for $x,$ we get \\[-x^7 - 7 = (-x - r_1)(-x - r_2) \\dotsm (-x - r_7),\\]so \\[x^7 + 7 = (x + r_1)(x + r_2) \\dotsm (x + r_7).\\]Setting $x = r_i,$ we get\n \\[r_i^7 + 7 = (r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7).\\]Since $r_i$ is a root of $x^7 - 7,$ $r_i^7 = 7.$  Hence, \\[(r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7) = 14.\\]Taking the product over $1 \\le i \\le 7,$ we get\n \\[(2r_1)(2r_2) \\dotsm (2r_7) K^2 = 14^7.\\]By Vieta's formulas, $r_1 r_2 \\dotsm r_7 = 7,$ so \\[K^2 = \\frac{14^7}{2^7 \\cdot 7} = 7^6 = \\boxed{117649}.\\]\n *)\n\ntheorem\nfixes r :: \"nat \\<Rightarrow> complex\" and P :: \"complex \\<Rightarrow> complex\" and K :: complex\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (r i) = 0\"\nand h2 : \"\\<forall> i j. 1 \\<le> i \\<and> i < j \\<and> j \\<le> 7 \\<longrightarrow> r i \\<noteq> r j\"\nand h3 : \"K = (\\<Prod>i\\<in>{1..7}. \\<Prod>j\\<in>{i+1..7}. r i + r j)\"\nshows  \"(K * K) = 117649\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $P(x)$ be a polynomial $x^7 - 7$. Consider seven distinct complex roots $r_1, r_2, \\ldots, r_7$ of this polynomial. Let $K$ be the product of the sum of each pair of distinct roots, that is, $K=\\prod_{1\\leq i<j\\leq 7} (r_i + r_j)$. What is the square of $K$? The final Answer is $117649$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.951708972454071,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes r :: \"nat \\<Rightarrow> complex\" and K :: complex\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> n. r n is a root of P x\"\nand h2 : \"\\<forall> i j. 1 \\<le> i \\<and> i < j \\<and> j \\<le> 7 \\<longrightarrow> K = \\<Prod> (r i + r j)\"\nshows  \"K^2 = 117649\"",
+        "formal solution": "(* ### Problem\n Let $r_1,$ $r_2,$ $\\dots,$ $r_7$ be the distinct complex roots of the polynomial $P(x) = x^7 - 7.$  Let\n\\[K = \\prod_{1 \\le i < j \\le 7} (r_i + r_j).\\]In other words, $K$ is the product of all numbers of the of the form $r_i + r_j,$ where $i$ and $j$ are integers for which $1 \\le i < j \\le 7.$  Determine $K^2.$ The final Answer is 117649\n ### Proof\n We can write \\[x^7 - 7 = (x - r_1)(x - r_2) \\dotsm (x - r_7).\\]Substituting $-x$ for $x,$ we get \\[-x^7 - 7 = (-x - r_1)(-x - r_2) \\dotsm (-x - r_7),\\]so \\[x^7 + 7 = (x + r_1)(x + r_2) \\dotsm (x + r_7).\\]Setting $x = r_i,$ we get\n \\[r_i^7 + 7 = (r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7).\\]Since $r_i$ is a root of $x^7 - 7,$ $r_i^7 = 7.$  Hence, \\[(r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7) = 14.\\]Taking the product over $1 \\le i \\le 7,$ we get\n \\[(2r_1)(2r_2) \\dotsm (2r_7) K^2 = 14^7.\\]By Vieta's formulas, $r_1 r_2 \\dotsm r_7 = 7,$ so \\[K^2 = \\frac{14^7}{2^7 \\cdot 7} = 7^6 = \\boxed{117649}.\\]\n *)\n\ntheorem\nfixes r :: \"nat \\<Rightarrow> complex\" and K :: complex\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> n. r n is a root of P x\"\nand h2 : \"\\<forall> i j. 1 \\<le> i \\<and> i < j \\<and> j \\<le> 7 \\<longrightarrow> K = \\<Prod> (r i + r j)\"\nshows  \"K^2 = 117649\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the square of the product of the sum of pairs of distinct roots of the equation $x^7 - 7 = 0$. The roots are denoted as $r_i$, where $1 \\leq i \\leq 7$ and $i \\neq j$. The final answer is $117649$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.712932825088501,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes r :: \"int \\<Rightarrow> complex\" and P :: \"complex \\<Rightarrow> complex\" and K :: complex\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (r i) = 0\"\nand h2 : \"distinct (map r [1..7])\"\nand h3 : \"K = prod (\\<lambda> (i, j). r i + r j) (filter (\\<lambda> (i, j). i < j) (all_pairs [1..7]))\"\nshows  \"K powr 2 = 117649\"",
+        "formal solution": "(* ### Problem\n Let $r_1,$ $r_2,$ $\\dots,$ $r_7$ be the distinct complex roots of the polynomial $P(x) = x^7 - 7.$  Let\n\\[K = \\prod_{1 \\le i < j \\le 7} (r_i + r_j).\\]In other words, $K$ is the product of all numbers of the of the form $r_i + r_j,$ where $i$ and $j$ are integers for which $1 \\le i < j \\le 7.$  Determine $K^2.$ The final Answer is 117649\n ### Proof\n We can write \\[x^7 - 7 = (x - r_1)(x - r_2) \\dotsm (x - r_7).\\]Substituting $-x$ for $x,$ we get \\[-x^7 - 7 = (-x - r_1)(-x - r_2) \\dotsm (-x - r_7),\\]so \\[x^7 + 7 = (x + r_1)(x + r_2) \\dotsm (x + r_7).\\]Setting $x = r_i,$ we get\n \\[r_i^7 + 7 = (r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7).\\]Since $r_i$ is a root of $x^7 - 7,$ $r_i^7 = 7.$  Hence, \\[(r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7) = 14.\\]Taking the product over $1 \\le i \\le 7,$ we get\n \\[(2r_1)(2r_2) \\dotsm (2r_7) K^2 = 14^7.\\]By Vieta's formulas, $r_1 r_2 \\dotsm r_7 = 7,$ so \\[K^2 = \\frac{14^7}{2^7 \\cdot 7} = 7^6 = \\boxed{117649}.\\]\n *)\n\ntheorem\nfixes r :: \"int \\<Rightarrow> complex\" and P :: \"complex \\<Rightarrow> complex\" and K :: complex\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (r i) = 0\"\nand h2 : \"distinct (map r [1..7])\"\nand h3 : \"K = prod (\\<lambda> (i, j). r i + r j) (filter (\\<lambda> (i, j). i < j) (all_pairs [1..7]))\"\nshows  \"K powr 2 = 117649\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a polynomial $P(x) = x^7 - 7$. There are 7 distinct roots of $P(x)$, denoted by $r(1), r(2), ..., r(7)$. Now, let $K$ be the product of all the pairwise sums of these roots ($r(i) + r(j)$ where $i$ is less than $j$). What is the square of $K$? The final answer is $117649$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.875286340713501,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes r :: \"int \\<Rightarrow> complex\" and P :: \"complex \\<Rightarrow> complex\" and K :: complex\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (r i) = 0\"\nand h2 : \"\\<forall> i j. 1 \\<le> i \\<and> i < j \\<and> j \\<le> 7 \\<longrightarrow> K = K * (r i + r j)\"\nshows  \"K * K = 117649\"",
+        "formal solution": "(* ### Problem\n Let $r_1,$ $r_2,$ $\\dots,$ $r_7$ be the distinct complex roots of the polynomial $P(x) = x^7 - 7.$  Let\n\\[K = \\prod_{1 \\le i < j \\le 7} (r_i + r_j).\\]In other words, $K$ is the product of all numbers of the of the form $r_i + r_j,$ where $i$ and $j$ are integers for which $1 \\le i < j \\le 7.$  Determine $K^2.$ The final Answer is 117649\n ### Proof\n We can write \\[x^7 - 7 = (x - r_1)(x - r_2) \\dotsm (x - r_7).\\]Substituting $-x$ for $x,$ we get \\[-x^7 - 7 = (-x - r_1)(-x - r_2) \\dotsm (-x - r_7),\\]so \\[x^7 + 7 = (x + r_1)(x + r_2) \\dotsm (x + r_7).\\]Setting $x = r_i,$ we get\n \\[r_i^7 + 7 = (r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7).\\]Since $r_i$ is a root of $x^7 - 7,$ $r_i^7 = 7.$  Hence, \\[(r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7) = 14.\\]Taking the product over $1 \\le i \\le 7,$ we get\n \\[(2r_1)(2r_2) \\dotsm (2r_7) K^2 = 14^7.\\]By Vieta's formulas, $r_1 r_2 \\dotsm r_7 = 7,$ so \\[K^2 = \\frac{14^7}{2^7 \\cdot 7} = 7^6 = \\boxed{117649}.\\]\n *)\n\ntheorem\nfixes r :: \"int \\<Rightarrow> complex\" and P :: \"complex \\<Rightarrow> complex\" and K :: complex\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (r i) = 0\"\nand h2 : \"\\<forall> i j. 1 \\<le> i \\<and> i < j \\<and> j \\<le> 7 \\<longrightarrow> K = K * (r i + r j)\"\nshows  \"K * K = 117649\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $P(x) = x^7 - 7$. Suppose there are 7 distinct complex roots $r_i$ (where $1 \\leq i \\leq 7$) of the function $P$. A complex number $K$ is multiplied by the sum of every pair of distinct roots. If the square of the final product of $K$ is $117649$, find the initial value of $K$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.472328782081604,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes K :: complex\nassumes h0 : \"K = prod (\\<lambda>i. prod (\\<lambda>j. root 7 i + root 7 j) {i+1..<7}) {1..<7}\"\nshows  \"K * K = 117649\"",
+        "formal solution": "(* ### Problem\n Let $r_1,$ $r_2,$ $\\dots,$ $r_7$ be the distinct complex roots of the polynomial $P(x) = x^7 - 7.$  Let\n\\[K = \\prod_{1 \\le i < j \\le 7} (r_i + r_j).\\]In other words, $K$ is the product of all numbers of the of the form $r_i + r_j,$ where $i$ and $j$ are integers for which $1 \\le i < j \\le 7.$  Determine $K^2.$ The final Answer is 117649\n ### Proof\n We can write \\[x^7 - 7 = (x - r_1)(x - r_2) \\dotsm (x - r_7).\\]Substituting $-x$ for $x,$ we get \\[-x^7 - 7 = (-x - r_1)(-x - r_2) \\dotsm (-x - r_7),\\]so \\[x^7 + 7 = (x + r_1)(x + r_2) \\dotsm (x + r_7).\\]Setting $x = r_i,$ we get\n \\[r_i^7 + 7 = (r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7).\\]Since $r_i$ is a root of $x^7 - 7,$ $r_i^7 = 7.$  Hence, \\[(r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7) = 14.\\]Taking the product over $1 \\le i \\le 7,$ we get\n \\[(2r_1)(2r_2) \\dotsm (2r_7) K^2 = 14^7.\\]By Vieta's formulas, $r_1 r_2 \\dotsm r_7 = 7,$ so \\[K^2 = \\frac{14^7}{2^7 \\cdot 7} = 7^6 = \\boxed{117649}.\\]\n *)\n\ntheorem\nfixes K :: complex\nassumes h0 : \"K = prod (\\<lambda>i. prod (\\<lambda>j. root 7 i + root 7 j) {i+1..<7}) {1..<7}\"\nshows  \"K * K = 117649\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all pairs of sums of seventh roots of unity, where each pair consists of two distinct roots and the order of the roots in the pair matters. If this product is represented by K, find the value of K squared. The final answer is 117649.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9673287272453308,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes r :: \"int \\<Rightarrow> complex\" and P :: \"complex \\<Rightarrow> complex\" and K :: complex\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (r i) = 0\"\nand h2 : \"K = (\\<Prod>i\\<in>{1..7}. \\<Prod>j\\<in>{i+1..7}. r i + r j)\"\nshows  \"K powr 2 = 117649\"",
+        "formal solution": "(* ### Problem\n Let $r_1,$ $r_2,$ $\\dots,$ $r_7$ be the distinct complex roots of the polynomial $P(x) = x^7 - 7.$  Let\n\\[K = \\prod_{1 \\le i < j \\le 7} (r_i + r_j).\\]In other words, $K$ is the product of all numbers of the of the form $r_i + r_j,$ where $i$ and $j$ are integers for which $1 \\le i < j \\le 7.$  Determine $K^2.$ The final Answer is 117649\n ### Proof\n We can write \\[x^7 - 7 = (x - r_1)(x - r_2) \\dotsm (x - r_7).\\]Substituting $-x$ for $x,$ we get \\[-x^7 - 7 = (-x - r_1)(-x - r_2) \\dotsm (-x - r_7),\\]so \\[x^7 + 7 = (x + r_1)(x + r_2) \\dotsm (x + r_7).\\]Setting $x = r_i,$ we get\n \\[r_i^7 + 7 = (r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7).\\]Since $r_i$ is a root of $x^7 - 7,$ $r_i^7 = 7.$  Hence, \\[(r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7) = 14.\\]Taking the product over $1 \\le i \\le 7,$ we get\n \\[(2r_1)(2r_2) \\dotsm (2r_7) K^2 = 14^7.\\]By Vieta's formulas, $r_1 r_2 \\dotsm r_7 = 7,$ so \\[K^2 = \\frac{14^7}{2^7 \\cdot 7} = 7^6 = \\boxed{117649}.\\]\n *)\n\ntheorem\nfixes r :: \"int \\<Rightarrow> complex\" and P :: \"complex \\<Rightarrow> complex\" and K :: complex\nassumes h0 : \"\\<forall> x. P x = x powr 7 - 7\"\nand h1 : \"\\<forall> i. 1 \\<le> i \\<and> i \\<le> 7 \\<longrightarrow> P (r i) = 0\"\nand h2 : \"K = (\\<Prod>i\\<in>{1..7}. \\<Prod>j\\<in>{i+1..7}. r i + r j)\"\nshows  \"K powr 2 = 117649\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $P(x)$ be a polynomial defined by $P(x) = x^7 - 7$, and let $r(i)$ be the $i$-th root of $P(x)$ for $1 \\leq i \\leq 7$. If $K$ is the product of all possible sums of two distinct roots of $P(x)$, find the square of $K$. The final answer is $117649$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9797562956809998,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "117649",
+    "natural problem": "Let $r_1,$ $r_2,$ $\\dots,$ $r_7$ be the distinct complex roots of the polynomial $P(x) = x^7 - 7.$  Let\n\\[K = \\prod_{1 \\le i < j \\le 7} (r_i + r_j).\\]In other words, $K$ is the product of all numbers of the of the form $r_i + r_j,$ where $i$ and $j$ are integers for which $1 \\le i < j \\le 7.$  Determine $K^2.$",
+    "natural solution": [
+        "We can write \\[x^7 - 7 = (x - r_1)(x - r_2) \\dotsm (x - r_7).\\]Substituting $-x$ for $x,$ we get \\[-x^7 - 7 = (-x - r_1)(-x - r_2) \\dotsm (-x - r_7),\\]so \\[x^7 + 7 = (x + r_1)(x + r_2) \\dotsm (x + r_7).\\]Setting $x = r_i,$ we get",
+        "\\[r_i^7 + 7 = (r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7).\\]Since $r_i$ is a root of $x^7 - 7,$ $r_i^7 = 7.$  Hence, \\[(r_i + r_1)(r_i + r_2) \\dotsm (r_i + r_7) = 14.\\]Taking the product over $1 \\le i \\le 7,$ we get",
+        "\\[(2r_1)(2r_2) \\dotsm (2r_7) K^2 = 14^7.\\]By Vieta's formulas, $r_1 r_2 \\dotsm r_7 = 7,$ so \\[K^2 = \\frac{14^7}{2^7 \\cdot 7} = 7^6 = \\boxed{117649}.\\]"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "level": "Level 5",
+    "type": "Intermediate Algebra"
+}

@@ -1,0 +1,128 @@
+{
+    "problem_name": "amc12a_2003_p23",
+    "informal_statement": "How many perfect squares are divisors of the product $1! \\cdot 2! \\cdot 3! \\cdot \\hdots \\cdot 9!$?\n\n$ \\textbf{(A)}\\ 504\\qquad\\textbf{(B)}\\ 672\\qquad\\textbf{(C)}\\ 864\\qquad\\textbf{(D)}\\ 936\\qquad\\textbf{(E)}\\ 1008 $ Show that it is \\mathrm{(B)}.",
+    "informal_proof": "We want to find the number of perfect square factors in the product of all the factorials of numbers from $1 - 9$. We can write this out and take out the factorials, and then find a prime factorization of the entire product. We can also find this prime factorization by finding the number of times each factor is repeated in each factorial. This comes out to be equal to $2^{30} \\cdot 3^{13} \\cdot 5^5 \\cdot 7^3$. To find the amount of perfect square factors, we realize that each exponent in the prime factorization must be even: $2^{15} \\cdot 3^{6}\\cdot 5^2 \\cdot 7^1$. To find the total number of possibilities, we add $1$ to each exponent and multiply them all together. This gives us $16 \\cdot 7 \\cdot 3 \\cdot 2 = 672$ $\\Rightarrow\\mathrm{(B)}$.",
+    "a_0": {
+        "formal problem": "function perfect_square_divisors :: \"nat \\<Rightarrow> nat\"\nwhere\n\"perfect_square_divisors 1 = 1\"\n| \"perfect_square_divisors n = (if \\<exists> k. k * k = n then \n                            perfect_square_divisors (n - 1) + 1 \n                            else \n                            perfect_square_divisors (n - 1))\"\nby pat_completeness auto\ntermination by size_change\n\nlemma\nshows  \"perfect_square_divisors ((fact 1) * (fact 2) * (fact 3) * (fact 4) * (fact 5) * (fact 6) * (fact 7) * (fact 8) * (fact 9)) = 672\"",
+        "formal solution": "(* ### Problem\n How many perfect squares are divisors of the product $1! \\cdot 2! \\cdot 3! \\cdot \\hdots \\cdot 9!$?\n\n$ \\textbf{(A)}\\ 504\\qquad\\textbf{(B)}\\ 672\\qquad\\textbf{(C)}\\ 864\\qquad\\textbf{(D)}\\ 936\\qquad\\textbf{(E)}\\ 1008 $ Show that it is \\mathrm{(B)}.\n ### Proof\n We want to find the number of perfect square factors in the product of all the factorials of numbers from $1 - 9$. We can write this out and take out the factorials, and then find a prime factorization of the entire product. We can also find this prime factorization by finding the number of times each factor is repeated in each factorial. This comes out to be equal to $2^{30} \\cdot 3^{13} \\cdot 5^5 \\cdot 7^3$. To find the amount of perfect square factors, we realize that each exponent in the prime factorization must be even: $2^{15} \\cdot 3^{6}\\cdot 5^2 \\cdot 7^1$. To find the total number of possibilities, we add $1$ to each exponent and multiply them all together. This gives us $16 \\cdot 7 \\cdot 3 \\cdot 2 = 672$ $\\Rightarrow\\mathrm{(B)}$.\n *)\n\nfunction perfect_square_divisors :: \"nat \\<Rightarrow> nat\"\nwhere\n\"perfect_square_divisors 1 = 1\"\n| \"perfect_square_divisors n = (if \\<exists> k. k * k = n then \n                            perfect_square_divisors (n - 1) + 1 \n                            else \n                            perfect_square_divisors (n - 1))\"\nby pat_completeness auto\ntermination by size_change\n\nlemma\nshows  \"perfect_square_divisors ((fact 1) * (fact 2) * (fact 3) * (fact 4) * (fact 5) * (fact 6) * (fact 7) * (fact 8) * (fact 9)) = 672\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of perfect square divisors in the product of the factorials of numbers from 1 to 9. The final answer is 672.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.977120578289032,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "The translation of this problem into Isabelle would be highly involved and beyond the scope of a typical use of the system, as Isabelle is not typically used for computations involving factorials and counting divisors. However, an indicative translation of the problem statement might look like this:\n\n```\ndatatype Answer = A | B | C | D | E\n\ntheorem perfect_squares_of_factorial_product:\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = prod id {1..n}\"\nand h1 : \"n = 9\"\nshows  \"let s = prod f {1..n}; d = count_divisors s in \n      (is_perfect_square d \\<and> answer = B)\"\n```\n\nIn this theorem, `f` is the factorial function, `prod` is the product function, `id` is the identity function, `count_divisors` counts the number of divisors of a number, and `is_perfect_square` checks whether a number is a perfect square. The `answer` is assumed to be a variable representing the multiple choice answer to the problem. This Isabelle representation of the problem assumes the existence of these functions, although they are not standard in Isabelle/HOL and would need to be defined or imported from a library.",
+        "formal solution": "(* ### Problem\n How many perfect squares are divisors of the product $1! \\cdot 2! \\cdot 3! \\cdot \\hdots \\cdot 9!$?\n\n$ \\textbf{(A)}\\ 504\\qquad\\textbf{(B)}\\ 672\\qquad\\textbf{(C)}\\ 864\\qquad\\textbf{(D)}\\ 936\\qquad\\textbf{(E)}\\ 1008 $ Show that it is \\mathrm{(B)}.\n ### Proof\n We want to find the number of perfect square factors in the product of all the factorials of numbers from $1 - 9$. We can write this out and take out the factorials, and then find a prime factorization of the entire product. We can also find this prime factorization by finding the number of times each factor is repeated in each factorial. This comes out to be equal to $2^{30} \\cdot 3^{13} \\cdot 5^5 \\cdot 7^3$. To find the amount of perfect square factors, we realize that each exponent in the prime factorization must be even: $2^{15} \\cdot 3^{6}\\cdot 5^2 \\cdot 7^1$. To find the total number of possibilities, we add $1$ to each exponent and multiply them all together. This gives us $16 \\cdot 7 \\cdot 3 \\cdot 2 = 672$ $\\Rightarrow\\mathrm{(B)}$.\n *)\n\nThe translation of this problem into Isabelle would be highly involved and beyond the scope of a typical use of the system, as Isabelle is not typically used for computations involving factorials and counting divisors. However, an indicative translation of the problem statement might look like this:\n\n```\ndatatype Answer = A | B | C | D | E\n\ntheorem perfect_squares_of_factorial_product:\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = prod id {1..n}\"\nand h1 : \"n = 9\"\nshows  \"let s = prod f {1..n}; d = count_divisors s in \n      (is_perfect_square d \\<and> answer = B)\"\n```\n\nIn this theorem, `f` is the factorial function, `prod` is the product function, `id` is the identity function, `count_divisors` counts the number of divisors of a number, and `is_perfect_square` checks whether a number is a perfect square. The `answer` is assumed to be a variable representing the multiple choice answer to the problem. This Isabelle representation of the problem assumes the existence of these functions, although they are not standard in Isabelle/HOL and would need to be defined or imported from a library.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $f(n)$ is the product of all numbers from 1 to $n$ (i.e., the factorial of $n$) and $n=9$, find whether the number of divisors of the product of $f(1),f(2),\\ldots,f(n)$ is a perfect square. If so, the answer is B.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9878987669944763,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem perfect_square_divisors_of_factorial_product:\nfixes n :: nat\nassumes h0 : \"n = 9\"\nand h1 : \"\\<forall> k. k \\<in> {1..9} \\<longrightarrow> perfect_square (prod (\\<lambda> k. fact k) {1..n})\"\nshows  \"card {x. x \\<in> {1..(prod (\\<lambda> k. fact k) {1..n})} \\<and> perfect_square x} = 672\"",
+        "formal solution": "(* ### Problem\n How many perfect squares are divisors of the product $1! \\cdot 2! \\cdot 3! \\cdot \\hdots \\cdot 9!$?\n\n$ \\textbf{(A)}\\ 504\\qquad\\textbf{(B)}\\ 672\\qquad\\textbf{(C)}\\ 864\\qquad\\textbf{(D)}\\ 936\\qquad\\textbf{(E)}\\ 1008 $ Show that it is \\mathrm{(B)}.\n ### Proof\n We want to find the number of perfect square factors in the product of all the factorials of numbers from $1 - 9$. We can write this out and take out the factorials, and then find a prime factorization of the entire product. We can also find this prime factorization by finding the number of times each factor is repeated in each factorial. This comes out to be equal to $2^{30} \\cdot 3^{13} \\cdot 5^5 \\cdot 7^3$. To find the amount of perfect square factors, we realize that each exponent in the prime factorization must be even: $2^{15} \\cdot 3^{6}\\cdot 5^2 \\cdot 7^1$. To find the total number of possibilities, we add $1$ to each exponent and multiply them all together. This gives us $16 \\cdot 7 \\cdot 3 \\cdot 2 = 672$ $\\Rightarrow\\mathrm{(B)}$.\n *)\n\ntheorem perfect_square_divisors_of_factorial_product:\nfixes n :: nat\nassumes h0 : \"n = 9\"\nand h1 : \"\\<forall> k. k \\<in> {1..9} \\<longrightarrow> perfect_square (prod (\\<lambda> k. fact k) {1..n})\"\nshows  \"card {x. x \\<in> {1..(prod (\\<lambda> k. fact k) {1..n})} \\<and> perfect_square x} = 672\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a natural number $n=9$. For each number $k$ in the set from $1$ to $n$, the factorial of $k$ is a perfect square. The product of all these factorials forms a set. Count the number of elements in this set that are perfect squares. The final answer is 672.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6659099459648132,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a :: nat\nassumes h0 : \"a = fact 1 * fact 2 * fact 3 * fact 4 * fact 5 * fact 6 * fact 7 * fact 8 * fact 9\"\nshows  \"card {x. x * x dvd a} = 672\"",
+        "formal solution": "(* ### Problem\n How many perfect squares are divisors of the product $1! \\cdot 2! \\cdot 3! \\cdot \\hdots \\cdot 9!$?\n\n$ \\textbf{(A)}\\ 504\\qquad\\textbf{(B)}\\ 672\\qquad\\textbf{(C)}\\ 864\\qquad\\textbf{(D)}\\ 936\\qquad\\textbf{(E)}\\ 1008 $ Show that it is \\mathrm{(B)}.\n ### Proof\n We want to find the number of perfect square factors in the product of all the factorials of numbers from $1 - 9$. We can write this out and take out the factorials, and then find a prime factorization of the entire product. We can also find this prime factorization by finding the number of times each factor is repeated in each factorial. This comes out to be equal to $2^{30} \\cdot 3^{13} \\cdot 5^5 \\cdot 7^3$. To find the amount of perfect square factors, we realize that each exponent in the prime factorization must be even: $2^{15} \\cdot 3^{6}\\cdot 5^2 \\cdot 7^1$. To find the total number of possibilities, we add $1$ to each exponent and multiply them all together. This gives us $16 \\cdot 7 \\cdot 3 \\cdot 2 = 672$ $\\Rightarrow\\mathrm{(B)}$.\n *)\n\ntheorem\nfixes a :: nat\nassumes h0 : \"a = fact 1 * fact 2 * fact 3 * fact 4 * fact 5 * fact 6 * fact 7 * fact 8 * fact 9\"\nshows  \"card {x. x * x dvd a} = 672\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The product of the factorials of all the natural numbers from 1 to 9 is denoted as 'a'. How many numbers are there whose square divides 'a'? The final answer is 672.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.694057285785675,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "In Isabelle, this would be quite a complex task, as it would require defining the factorial function, the product of a range of factorials, and a function to count the perfect square divisors. A partial translation could look like this:\n\ndefinition factorial :: \"nat \u21d2 nat\" where\n\"factorial n = (if n = 0 then 1 else n * factorial (n - 1))\"\n\ndefinition factorial_product :: \"nat \u21d2 nat\" where\n\"factorial_product n = (if n = 0 then 1 else factorial n * factorial_product (n - 1))\"\n\ndefinition perfect_square_divisors :: \"nat \u21d2 nat\" where\n\"perfect_square_divisors n = (count {i. i * i \u2264 n \u2227 n mod (i * i) = 0})\"\n\ntheorem\nassumes h0 : \"factorial_product 9 = n\"\nshows  \"perfect_square_divisors n = 672\"",
+        "formal solution": "(* ### Problem\n How many perfect squares are divisors of the product $1! \\cdot 2! \\cdot 3! \\cdot \\hdots \\cdot 9!$?\n\n$ \\textbf{(A)}\\ 504\\qquad\\textbf{(B)}\\ 672\\qquad\\textbf{(C)}\\ 864\\qquad\\textbf{(D)}\\ 936\\qquad\\textbf{(E)}\\ 1008 $ Show that it is \\mathrm{(B)}.\n ### Proof\n We want to find the number of perfect square factors in the product of all the factorials of numbers from $1 - 9$. We can write this out and take out the factorials, and then find a prime factorization of the entire product. We can also find this prime factorization by finding the number of times each factor is repeated in each factorial. This comes out to be equal to $2^{30} \\cdot 3^{13} \\cdot 5^5 \\cdot 7^3$. To find the amount of perfect square factors, we realize that each exponent in the prime factorization must be even: $2^{15} \\cdot 3^{6}\\cdot 5^2 \\cdot 7^1$. To find the total number of possibilities, we add $1$ to each exponent and multiply them all together. This gives us $16 \\cdot 7 \\cdot 3 \\cdot 2 = 672$ $\\Rightarrow\\mathrm{(B)}$.\n *)\n\nIn Isabelle, this would be quite a complex task, as it would require defining the factorial function, the product of a range of factorials, and a function to count the perfect square divisors. A partial translation could look like this:\n\ndefinition factorial :: \"nat \u21d2 nat\" where\n\"factorial n = (if n = 0 then 1 else n * factorial (n - 1))\"\n\ndefinition factorial_product :: \"nat \u21d2 nat\" where\n\"factorial_product n = (if n = 0 then 1 else factorial n * factorial_product (n - 1))\"\n\ndefinition perfect_square_divisors :: \"nat \u21d2 nat\" where\n\"perfect_square_divisors n = (count {i. i * i \u2264 n \u2227 n mod (i * i) = 0})\"\n\ntheorem\nassumes h0 : \"factorial_product 9 = n\"\nshows  \"perfect_square_divisors n = 672\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of perfect square divisors of the product of the factorials of all natural numbers up to and including 9. The final answer is 672.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9739741683006287,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f = (\\<Prod>i=1..9. fact i)\"\nshows  \"card {x. x dvd f \\<and> perfect_square x} = 672\"",
+        "formal solution": "(* ### Problem\n How many perfect squares are divisors of the product $1! \\cdot 2! \\cdot 3! \\cdot \\hdots \\cdot 9!$?\n\n$ \\textbf{(A)}\\ 504\\qquad\\textbf{(B)}\\ 672\\qquad\\textbf{(C)}\\ 864\\qquad\\textbf{(D)}\\ 936\\qquad\\textbf{(E)}\\ 1008 $ Show that it is \\mathrm{(B)}.\n ### Proof\n We want to find the number of perfect square factors in the product of all the factorials of numbers from $1 - 9$. We can write this out and take out the factorials, and then find a prime factorization of the entire product. We can also find this prime factorization by finding the number of times each factor is repeated in each factorial. This comes out to be equal to $2^{30} \\cdot 3^{13} \\cdot 5^5 \\cdot 7^3$. To find the amount of perfect square factors, we realize that each exponent in the prime factorization must be even: $2^{15} \\cdot 3^{6}\\cdot 5^2 \\cdot 7^1$. To find the total number of possibilities, we add $1$ to each exponent and multiply them all together. This gives us $16 \\cdot 7 \\cdot 3 \\cdot 2 = 672$ $\\Rightarrow\\mathrm{(B)}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f = (\\<Prod>i=1..9. fact i)\"\nshows  \"card {x. x dvd f \\<and> perfect_square x} = 672\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of perfect square numbers that divide the product of the factorials of all the numbers from 1 to 9. The final answer is 672.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9754066467285156,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = prod fact {1..9}\"\nshows  \"card {d. d dvd n \\<and> is_square d} = 672\"",
+        "formal solution": "(* ### Problem\n How many perfect squares are divisors of the product $1! \\cdot 2! \\cdot 3! \\cdot \\hdots \\cdot 9!$?\n\n$ \\textbf{(A)}\\ 504\\qquad\\textbf{(B)}\\ 672\\qquad\\textbf{(C)}\\ 864\\qquad\\textbf{(D)}\\ 936\\qquad\\textbf{(E)}\\ 1008 $ Show that it is \\mathrm{(B)}.\n ### Proof\n We want to find the number of perfect square factors in the product of all the factorials of numbers from $1 - 9$. We can write this out and take out the factorials, and then find a prime factorization of the entire product. We can also find this prime factorization by finding the number of times each factor is repeated in each factorial. This comes out to be equal to $2^{30} \\cdot 3^{13} \\cdot 5^5 \\cdot 7^3$. To find the amount of perfect square factors, we realize that each exponent in the prime factorization must be even: $2^{15} \\cdot 3^{6}\\cdot 5^2 \\cdot 7^1$. To find the total number of possibilities, we add $1$ to each exponent and multiply them all together. This gives us $16 \\cdot 7 \\cdot 3 \\cdot 2 = 672$ $\\Rightarrow\\mathrm{(B)}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = prod fact {1..9}\"\nshows  \"card {d. d dvd n \\<and> is_square d} = 672\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many square factors does the product of the factorials of the numbers from 1 to 9 have? The final Answer is 672.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8247547745704651,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes factorial :: \"int \\<Rightarrow> int\"\nassumes h0 : \"factorial 1 = 1\"\nand h1 : \"\\<forall>n. n > 1 \\<longrightarrow> factorial n = n * factorial (n - 1)\"\nand h2 : \"count_squares (factorial 1 * factorial 2 * factorial 3 * factorial 4 * factorial 5 * factorial 6 * factorial 7 * factorial 8 * factorial 9) = 672\"\nshows  \"count_squares (factorial 1 * factorial 2 * factorial 3 * factorial 4 * factorial 5 * factorial 6 * factorial 7 * factorial 8 * factorial 9) = 672\"",
+        "formal solution": "(* ### Problem\n How many perfect squares are divisors of the product $1! \\cdot 2! \\cdot 3! \\cdot \\hdots \\cdot 9!$?\n\n$ \\textbf{(A)}\\ 504\\qquad\\textbf{(B)}\\ 672\\qquad\\textbf{(C)}\\ 864\\qquad\\textbf{(D)}\\ 936\\qquad\\textbf{(E)}\\ 1008 $ Show that it is \\mathrm{(B)}.\n ### Proof\n We want to find the number of perfect square factors in the product of all the factorials of numbers from $1 - 9$. We can write this out and take out the factorials, and then find a prime factorization of the entire product. We can also find this prime factorization by finding the number of times each factor is repeated in each factorial. This comes out to be equal to $2^{30} \\cdot 3^{13} \\cdot 5^5 \\cdot 7^3$. To find the amount of perfect square factors, we realize that each exponent in the prime factorization must be even: $2^{15} \\cdot 3^{6}\\cdot 5^2 \\cdot 7^1$. To find the total number of possibilities, we add $1$ to each exponent and multiply them all together. This gives us $16 \\cdot 7 \\cdot 3 \\cdot 2 = 672$ $\\Rightarrow\\mathrm{(B)}$.\n *)\n\ntheorem\nfixes factorial :: \"int \\<Rightarrow> int\"\nassumes h0 : \"factorial 1 = 1\"\nand h1 : \"\\<forall>n. n > 1 \\<longrightarrow> factorial n = n * factorial (n - 1)\"\nand h2 : \"count_squares (factorial 1 * factorial 2 * factorial 3 * factorial 4 * factorial 5 * factorial 6 * factorial 7 * factorial 8 * factorial 9) = 672\"\nshows  \"count_squares (factorial 1 * factorial 2 * factorial 3 * factorial 4 * factorial 5 * factorial 6 * factorial 7 * factorial 8 * factorial 9) = 672\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The factorial of a number is the product of all positive integers less than or equal to that number. For example, the factorial of 1 is 1. For any number greater than 1, its factorial is the product of the number and the factorial of the number minus one. If the number of squares in the product of the factorials of the numbers 1 through 9 is 672, then the number of squares in the product of the factorials of the numbers 1 through 9 remains 672.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8823085427284241,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = fact 1 * fact 2 * fact 3 * fact 4 * fact 5 * fact 6 * fact 7 * fact 8 * fact 9\"\nshows  \"card {d. d dvd n \\<and> sqrt d \\<in> \\<nat>} = 672\"",
+        "formal solution": "(* ### Problem\n How many perfect squares are divisors of the product $1! \\cdot 2! \\cdot 3! \\cdot \\hdots \\cdot 9!$?\n\n$ \\textbf{(A)}\\ 504\\qquad\\textbf{(B)}\\ 672\\qquad\\textbf{(C)}\\ 864\\qquad\\textbf{(D)}\\ 936\\qquad\\textbf{(E)}\\ 1008 $ Show that it is \\mathrm{(B)}.\n ### Proof\n We want to find the number of perfect square factors in the product of all the factorials of numbers from $1 - 9$. We can write this out and take out the factorials, and then find a prime factorization of the entire product. We can also find this prime factorization by finding the number of times each factor is repeated in each factorial. This comes out to be equal to $2^{30} \\cdot 3^{13} \\cdot 5^5 \\cdot 7^3$. To find the amount of perfect square factors, we realize that each exponent in the prime factorization must be even: $2^{15} \\cdot 3^{6}\\cdot 5^2 \\cdot 7^1$. To find the total number of possibilities, we add $1$ to each exponent and multiply them all together. This gives us $16 \\cdot 7 \\cdot 3 \\cdot 2 = 672$ $\\Rightarrow\\mathrm{(B)}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = fact 1 * fact 2 * fact 3 * fact 4 * fact 5 * fact 6 * fact 7 * fact 8 * fact 9\"\nshows  \"card {d. d dvd n \\<and> sqrt d \\<in> \\<nat>} = 672\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of divisors of the number obtained by multiplying the factorials of the numbers from 1 to 9, that have a square root which is a natural number. The final answer is 672.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9241828918457031,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem perfect_square_divisors_of_factorial_product\nfixes count_perfect_squares :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n \\<in> {1..9}. count_perfect_squares (fact n) = 2*n\"\nshows  \"sum count_perfect_squares {1..9} = 672\"",
+        "formal solution": "(* ### Problem\n How many perfect squares are divisors of the product $1! \\cdot 2! \\cdot 3! \\cdot \\hdots \\cdot 9!$?\n\n$ \\textbf{(A)}\\ 504\\qquad\\textbf{(B)}\\ 672\\qquad\\textbf{(C)}\\ 864\\qquad\\textbf{(D)}\\ 936\\qquad\\textbf{(E)}\\ 1008 $ Show that it is \\mathrm{(B)}.\n ### Proof\n We want to find the number of perfect square factors in the product of all the factorials of numbers from $1 - 9$. We can write this out and take out the factorials, and then find a prime factorization of the entire product. We can also find this prime factorization by finding the number of times each factor is repeated in each factorial. This comes out to be equal to $2^{30} \\cdot 3^{13} \\cdot 5^5 \\cdot 7^3$. To find the amount of perfect square factors, we realize that each exponent in the prime factorization must be even: $2^{15} \\cdot 3^{6}\\cdot 5^2 \\cdot 7^1$. To find the total number of possibilities, we add $1$ to each exponent and multiply them all together. This gives us $16 \\cdot 7 \\cdot 3 \\cdot 2 = 672$ $\\Rightarrow\\mathrm{(B)}$.\n *)\n\ntheorem perfect_square_divisors_of_factorial_product\nfixes count_perfect_squares :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n \\<in> {1..9}. count_perfect_squares (fact n) = 2*n\"\nshows  \"sum count_perfect_squares {1..9} = 672\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For each natural number $n$ from 1 to 9, the number of perfect square divisors in the factorial of $n$ is equal to $2n$. What is the sum of the number of perfect square divisors of the factorials of all numbers from 1 to 9? The final Answer is 672.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.6618047952651978,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nshows  \"card {k::nat. (k * k) dvd (\\<Prod> i\\<in>{1..<10}. fact i)}  = 672\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    }
+}

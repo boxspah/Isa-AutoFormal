@@ -1,0 +1,59 @@
+{
+    "natural problem": "How many positive two-digit integers are there in which each of the two digits is prime?",
+    "natural solution": [
+        "The prime digits are 2, 3, 5, and 7. Since each of the two digits in the integer can be any of the four prime digits, there are $4\\cdot4=\\boxed{16}$ total such integers."
+    ],
+    "natural answer": "16",
+    "a_0": {
+        "formal problem": "theorem count_prime_digits_integers:\nfixes count :: nat\nassumes h0 : \"count = card {n :: nat. 10 \\<le> n \\<and> n \\<le> 99 \\<and> (\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> prime d)}\"\nshows  \"count = 16\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers are there in which each of the two digits is prime? The final Answer is 16\n ### Proof\n The prime digits are 2, 3, 5, and 7. Since each of the two digits in the integer can be any of the four prime digits, there are $4\\cdot4=\\boxed{16}$ total such integers.\n *)\n\ntheorem count_prime_digits_integers:\nfixes count :: nat\nassumes h0 : \"count = card {n :: nat. 10 \\<le> n \\<and> n \\<le> 99 \\<and> (\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> prime d)}\"\nshows  \"count = 16\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit integers have all their digits prime? The final answer is 16."
+    },
+    "a_1": {
+        "formal problem": "theorem\nshows  \"card {n :: nat. 10 \\<le> n \\<and> n < 100 \\<and> (\\<forall> d. d = n mod 10 \\<or> d = n div 10 \\<longrightarrow> prime d)} = 16\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers are there in which each of the two digits is prime? The final Answer is 16\n ### Proof\n The prime digits are 2, 3, 5, and 7. Since each of the two digits in the integer can be any of the four prime digits, there are $4\\cdot4=\\boxed{16}$ total such integers.\n *)\n\ntheorem\nshows  \"card {n :: nat. 10 \\<le> n \\<and> n < 100 \\<and> (\\<forall> d. d = n mod 10 \\<or> d = n div 10 \\<longrightarrow> prime d)} = 16\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit numbers have the property that both of their digits (the tens digit and the units digit) are prime numbers? The final answer is 16."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes prime_digits :: \"nat set\"\nassumes h0 : \"prime_digits = {2, 3, 5, 7}\"\nand h1 : \"count_two_digit_primes = card {(x, y) | x y. x \\<in> prime_digits \\<and> y \\<in> prime_digits \\<and> x * 10 + y \\<in> {10..99}}\"\nshows  \"count_two_digit_primes = 16\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers are there in which each of the two digits is prime? The final Answer is 16\n ### Proof\n The prime digits are 2, 3, 5, and 7. Since each of the two digits in the integer can be any of the four prime digits, there are $4\\cdot4=\\boxed{16}$ total such integers.\n *)\n\ntheorem\nfixes prime_digits :: \"nat set\"\nassumes h0 : \"prime_digits = {2, 3, 5, 7}\"\nand h1 : \"count_two_digit_primes = card {(x, y) | x y. x \\<in> prime_digits \\<and> y \\<in> prime_digits \\<and> x * 10 + y \\<in> {10..99}}\"\nshows  \"count_two_digit_primes = 16\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit prime numbers can be formed using the prime digits {2, 3, 5, 7} for the tens and units places? The final answer is 16."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes count_prime_digits :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. count_prime_digits n = card {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> (\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> prime d)}\"\nshows  \"count_prime_digits 2 = 16\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers are there in which each of the two digits is prime? The final Answer is 16\n ### Proof\n The prime digits are 2, 3, 5, and 7. Since each of the two digits in the integer can be any of the four prime digits, there are $4\\cdot4=\\boxed{16}$ total such integers.\n *)\n\ntheorem\nfixes count_prime_digits :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. count_prime_digits n = card {n. n \\<ge> 10 \\<and> n \\<le> 99 \\<and> (\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> prime d)}\"\nshows  \"count_prime_digits 2 = 16\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of two-digit natural numbers such that all their digits are prime. The final answer is 16."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes prime_count :: nat\nassumes h0 : \"prime_count = card {n :: nat. 10 \\<le> n \\<and> n \\<le> 99 \\<and> (\\<forall>d. d = n div 10 \\<or> d = n mod 10 \\<longrightarrow> prime d)}\"\nshows  \"prime_count = 16\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers are there in which each of the two digits is prime? The final Answer is 16\n ### Proof\n The prime digits are 2, 3, 5, and 7. Since each of the two digits in the integer can be any of the four prime digits, there are $4\\cdot4=\\boxed{16}$ total such integers.\n *)\n\ntheorem\nfixes prime_count :: nat\nassumes h0 : \"prime_count = card {n :: nat. 10 \\<le> n \\<and> n \\<le> 99 \\<and> (\\<forall>d. d = n div 10 \\<or> d = n mod 10 \\<longrightarrow> prime d)}\"\nshows  \"prime_count = 16\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit numbers have the property that both their tens digit and units digit are prime numbers? The final answer is 16."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"9 \\<le> n \\<and> n \\<le> 99\"\nand h1 : \"\\<forall> i. i \\<in> {2, 3, 5, 7} \\<longleftrightarrow> prime i\"\nand h2 : \"n = 10 * (nth_prime (fst (prime_factors n))) + (nth_prime (snd (prime_factors n)))\"\nshows  \"card {n. 9 \\<le> n \\<and> n \\<le> 99 \\<and> (\\<exists> i j. i \\<in> {2, 3, 5, 7} \\<and> j \\<in> {2, 3, 5, 7} \\<and> n = 10 * i + j)} = 16\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers are there in which each of the two digits is prime? The final Answer is 16\n ### Proof\n The prime digits are 2, 3, 5, and 7. Since each of the two digits in the integer can be any of the four prime digits, there are $4\\cdot4=\\boxed{16}$ total such integers.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"9 \\<le> n \\<and> n \\<le> 99\"\nand h1 : \"\\<forall> i. i \\<in> {2, 3, 5, 7} \\<longleftrightarrow> prime i\"\nand h2 : \"n = 10 * (nth_prime (fst (prime_factors n))) + (nth_prime (snd (prime_factors n)))\"\nshows  \"card {n. 9 \\<le> n \\<and> n \\<le> 99 \\<and> (\\<exists> i j. i \\<in> {2, 3, 5, 7} \\<and> j \\<in> {2, 3, 5, 7} \\<and> n = 10 * i + j)} = 16\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit numbers can be formed by using the digits 2, 3, 5, and 7 (which are prime numbers) as the tens and units digits? The final answer is 16."
+    },
+    "a_6": {
+        "formal problem": "theorem count_two_digit_integers_with_prime_digits:\nfixes count :: nat\nassumes h0 : \"count = card {n. 10 \\<le> n \\<and> n < 100 \\<and> (\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> prime d)}\"\nshows  \"count = 16\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers are there in which each of the two digits is prime? The final Answer is 16\n ### Proof\n The prime digits are 2, 3, 5, and 7. Since each of the two digits in the integer can be any of the four prime digits, there are $4\\cdot4=\\boxed{16}$ total such integers.\n *)\n\ntheorem count_two_digit_integers_with_prime_digits:\nfixes count :: nat\nassumes h0 : \"count = card {n. 10 \\<le> n \\<and> n < 100 \\<and> (\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> prime d)}\"\nshows  \"count = 16\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit integers have only prime digits? The final answer is 16."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes count_prime_digits :: nat\nassumes h0 : \"count_prime_digits = card {n. 10 \\<le> n \\<and> n \\<le> 99 \\<and> (\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> prime d)}\"\nshows  \"count_prime_digits = 16\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers are there in which each of the two digits is prime? The final Answer is 16\n ### Proof\n The prime digits are 2, 3, 5, and 7. Since each of the two digits in the integer can be any of the four prime digits, there are $4\\cdot4=\\boxed{16}$ total such integers.\n *)\n\ntheorem\nfixes count_prime_digits :: nat\nassumes h0 : \"count_prime_digits = card {n. 10 \\<le> n \\<and> n \\<le> 99 \\<and> (\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> prime d)}\"\nshows  \"count_prime_digits = 16\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit numbers have the property that all of their digits are prime numbers? The final answer is 16."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes two_digit_prime_integers_count :: nat\nassumes h0 : \"two_digit_prime_integers_count = card {n. 10 \\<le> n \\<and> n \\<le> 99 \\<and> (\\<forall>k \\<in> {0, 1}. prime (nat (n div (10^k) mod 10)))}\"\nshows  \"two_digit_prime_integers_count = 16\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers are there in which each of the two digits is prime? The final Answer is 16\n ### Proof\n The prime digits are 2, 3, 5, and 7. Since each of the two digits in the integer can be any of the four prime digits, there are $4\\cdot4=\\boxed{16}$ total such integers.\n *)\n\ntheorem\nfixes two_digit_prime_integers_count :: nat\nassumes h0 : \"two_digit_prime_integers_count = card {n. 10 \\<le> n \\<and> n \\<le> 99 \\<and> (\\<forall>k \\<in> {0, 1}. prime (nat (n div (10^k) mod 10)))}\"\nshows  \"two_digit_prime_integers_count = 16\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit integers have the property that both the tens digit and the units digit are prime numbers? The final answer is 16."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes prime_digits :: \"nat set\"\nassumes h0 : \"prime_digits = {2, 3, 5, 7}\"\nshows  \"card {n. 10 \\<le> n \\<and> n < 100 \\<and> (\\<forall> d. d < 10 \\<longrightarrow> n div (10^d) mod 10 \\<in> prime_digits)} = 16\"",
+        "formal solution": "(* ### Problem\n How many positive two-digit integers are there in which each of the two digits is prime? The final Answer is 16\n ### Proof\n The prime digits are 2, 3, 5, and 7. Since each of the two digits in the integer can be any of the four prime digits, there are $4\\cdot4=\\boxed{16}$ total such integers.\n *)\n\ntheorem\nfixes prime_digits :: \"nat set\"\nassumes h0 : \"prime_digits = {2, 3, 5, 7}\"\nshows  \"card {n. 10 \\<le> n \\<and> n < 100 \\<and> (\\<forall> d. d < 10 \\<longrightarrow> n div (10^d) mod 10 \\<in> prime_digits)} = 16\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit numbers have all their digits as prime numbers (2, 3, 5, and 7)? The final answer is 16."
+    },
+    "level": "Level 2",
+    "type": "Counting & Probability"
+}

@@ -1,0 +1,59 @@
+{
+    "natural problem": "What is the tens digit in the sum $7! + 8! + 9! + \\cdots + 2006!$?",
+    "natural solution": [
+        "Since $n!$ contains the product $2\\cdot5\\cdot10= 100$ whenever $n\\ge 10$,  it suffices to determine the tens digit of \\[ 7! + 8! + 9! = 7! (1 + 8 + 8\\cdot9) = 5040(1 + 8 + 72)= 5040\\cdot81. \\]This  is the same as the units digit of $4\\cdot 1$, which is $\\boxed{4}$."
+    ],
+    "natural answer": "4",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. fact n = prod (\\<lambda>i. i) {1..n}\"\nand h1 : \"n = 2006\"\nshows  \"digit (sum fact {7..n}) 10 = 4\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $7! + 8! + 9! + \\cdots + 2006!$? The final Answer is 4\n ### Proof\n Since $n!$ contains the product $2\\cdot5\\cdot10= 100$ whenever $n\\ge 10$,  it suffices to determine the tens digit of \\[ 7! + 8! + 9! = 7! (1 + 8 + 8\\cdot9) = 5040(1 + 8 + 72)= 5040\\cdot81. \\]This  is the same as the units digit of $4\\cdot 1$, which is $\\boxed{4}$.\n *)\n\ntheorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. fact n = prod (\\<lambda>i. i) {1..n}\"\nand h1 : \"n = 2006\"\nshows  \"digit (sum fact {7..n}) 10 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit (in base 10) of the sum of the factorials of all the numbers from 7 to 2006. The final answer is 4."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and sum_factorials :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_factorials 7 = fact 7\"\nand h1 : \"\\<forall> n. 8 \\<le> n \\<and> n \\<le> 2006 \\<longrightarrow> sum_factorials n = sum_factorials (n - 1) + fact n\"\nshows  \"digit (sum_factorials 2006) 1 = 4\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $7! + 8! + 9! + \\cdots + 2006!$? The final Answer is 4\n ### Proof\n Since $n!$ contains the product $2\\cdot5\\cdot10= 100$ whenever $n\\ge 10$,  it suffices to determine the tens digit of \\[ 7! + 8! + 9! = 7! (1 + 8 + 8\\cdot9) = 5040(1 + 8 + 72)= 5040\\cdot81. \\]This  is the same as the units digit of $4\\cdot 1$, which is $\\boxed{4}$.\n *)\n\ntheorem\nfixes n :: nat and sum_factorials :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_factorials 7 = fact 7\"\nand h1 : \"\\<forall> n. 8 \\<le> n \\<and> n \\<le> 2006 \\<longrightarrow> sum_factorials n = sum_factorials (n - 1) + fact n\"\nshows  \"digit (sum_factorials 2006) 1 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence of factorials where the sum of the first 7 factorials is equal to the factorial of 7. For each term from the 8th to the 2006th, the sum of factorials is equal to the previous sum plus the current factorial. Find the last digit (ones place) of the sum of the first 2006 factorials. The final answer is 4."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes sum_facts :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_facts n = (\\<Sum>i\\<in>{7..n}. fact i)\"\nand h1 : \"n = 2006\"\nshows  \"digit (sum_facts n) 10 = 4\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $7! + 8! + 9! + \\cdots + 2006!$? The final Answer is 4\n ### Proof\n Since $n!$ contains the product $2\\cdot5\\cdot10= 100$ whenever $n\\ge 10$,  it suffices to determine the tens digit of \\[ 7! + 8! + 9! = 7! (1 + 8 + 8\\cdot9) = 5040(1 + 8 + 72)= 5040\\cdot81. \\]This  is the same as the units digit of $4\\cdot 1$, which is $\\boxed{4}$.\n *)\n\ntheorem\nfixes sum_facts :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_facts n = (\\<Sum>i\\<in>{7..n}. fact i)\"\nand h1 : \"n = 2006\"\nshows  \"digit (sum_facts n) 10 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit of the sum of the factorials of all integers from 7 to 2006. The final answer is 4."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes sum_fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_fact = (\\<lambda> n. sum (\\<lambda> i. fact i) {7..n})\"\nand h1 : \"n \\<ge> 7\"\nshows  \"tens_digit (sum_fact 2006) = 4\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $7! + 8! + 9! + \\cdots + 2006!$? The final Answer is 4\n ### Proof\n Since $n!$ contains the product $2\\cdot5\\cdot10= 100$ whenever $n\\ge 10$,  it suffices to determine the tens digit of \\[ 7! + 8! + 9! = 7! (1 + 8 + 8\\cdot9) = 5040(1 + 8 + 72)= 5040\\cdot81. \\]This  is the same as the units digit of $4\\cdot 1$, which is $\\boxed{4}$.\n *)\n\ntheorem\nfixes sum_fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_fact = (\\<lambda> n. sum (\\<lambda> i. fact i) {7..n})\"\nand h1 : \"n \\<ge> 7\"\nshows  \"tens_digit (sum_fact 2006) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the tens digit of the sum of the factorials from 7 to 2006, where the sum of factorials is defined as $\\sum_{i=7}^{n} i!$. The final answer is 4."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes factorial_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial_sum n = (\\<Sum>i=7..n. fact i)\"\nand h1 : \"n = 2006\"\nshows  \"digit (factorial_sum n) 1 = 4\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $7! + 8! + 9! + \\cdots + 2006!$? The final Answer is 4\n ### Proof\n Since $n!$ contains the product $2\\cdot5\\cdot10= 100$ whenever $n\\ge 10$,  it suffices to determine the tens digit of \\[ 7! + 8! + 9! = 7! (1 + 8 + 8\\cdot9) = 5040(1 + 8 + 72)= 5040\\cdot81. \\]This  is the same as the units digit of $4\\cdot 1$, which is $\\boxed{4}$.\n *)\n\ntheorem\nfixes factorial_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial_sum n = (\\<Sum>i=7..n. fact i)\"\nand h1 : \"n = 2006\"\nshows  \"digit (factorial_sum n) 1 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit of the sum of the factorials of all integers from 7 to 2006. The final answer is 4."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial 0 = 1\"\nand h1 : \"\\<forall>n > 0. factorial n = n * factorial (n - 1)\"\nand h2 : \"sum (\\<lambda>n. factorial n) {7..2006} = x\"\nshows  \"tens_digit x = 4\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $7! + 8! + 9! + \\cdots + 2006!$? The final Answer is 4\n ### Proof\n Since $n!$ contains the product $2\\cdot5\\cdot10= 100$ whenever $n\\ge 10$,  it suffices to determine the tens digit of \\[ 7! + 8! + 9! = 7! (1 + 8 + 8\\cdot9) = 5040(1 + 8 + 72)= 5040\\cdot81. \\]This  is the same as the units digit of $4\\cdot 1$, which is $\\boxed{4}$.\n *)\n\ntheorem\nfixes factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial 0 = 1\"\nand h1 : \"\\<forall>n > 0. factorial n = n * factorial (n - 1)\"\nand h2 : \"sum (\\<lambda>n. factorial n) {7..2006} = x\"\nshows  \"tens_digit x = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the factorial function defined as $factorial(0) = 1$ and $factorial(n) = n * factorial(n-1)$ for all $n > 0$, find the tens digit of the sum of factorials of the numbers in the range from 7 to 2006. The final answer is 4."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat and sum_fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 7 \\<longrightarrow> sum_fact n = (\\<Sum>k = 7..n. fact k)\"\nand h1 : \"n = 2006\"\nshows  \"tens_digit (sum_fact n) = 4\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $7! + 8! + 9! + \\cdots + 2006!$? The final Answer is 4\n ### Proof\n Since $n!$ contains the product $2\\cdot5\\cdot10= 100$ whenever $n\\ge 10$,  it suffices to determine the tens digit of \\[ 7! + 8! + 9! = 7! (1 + 8 + 8\\cdot9) = 5040(1 + 8 + 72)= 5040\\cdot81. \\]This  is the same as the units digit of $4\\cdot 1$, which is $\\boxed{4}$.\n *)\n\ntheorem\nfixes n :: nat and sum_fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 7 \\<longrightarrow> sum_fact n = (\\<Sum>k = 7..n. fact k)\"\nand h1 : \"n = 2006\"\nshows  \"tens_digit (sum_fact n) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the tens digit of the sum of the factorials of the numbers from 7 to 2006. The final answer is 4."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = fact n\"\nand h1 : \"f 7 + f 8 + f 9 + ... + f 2006 = a\"\nshows  \"tens_digit a = 4\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $7! + 8! + 9! + \\cdots + 2006!$? The final Answer is 4\n ### Proof\n Since $n!$ contains the product $2\\cdot5\\cdot10= 100$ whenever $n\\ge 10$,  it suffices to determine the tens digit of \\[ 7! + 8! + 9! = 7! (1 + 8 + 8\\cdot9) = 5040(1 + 8 + 72)= 5040\\cdot81. \\]This  is the same as the units digit of $4\\cdot 1$, which is $\\boxed{4}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = fact n\"\nand h1 : \"f 7 + f 8 + f 9 + ... + f 2006 = a\"\nshows  \"tens_digit a = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the tens digit of the sum of the factorials of the numbers from 7 to 2006, that is, $7! + 8! + 9! + ... + 2006!$. The final answer is 4."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f n = fact n\"\nand h1 : \"sum f {7..2006} mod 100 = k\"\nshows  \"k div 10 = 4\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $7! + 8! + 9! + \\cdots + 2006!$? The final Answer is 4\n ### Proof\n Since $n!$ contains the product $2\\cdot5\\cdot10= 100$ whenever $n\\ge 10$,  it suffices to determine the tens digit of \\[ 7! + 8! + 9! = 7! (1 + 8 + 8\\cdot9) = 5040(1 + 8 + 72)= 5040\\cdot81. \\]This  is the same as the units digit of $4\\cdot 1$, which is $\\boxed{4}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f n = fact n\"\nand h1 : \"sum f {7..2006} mod 100 = k\"\nshows  \"k div 10 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(n)$ that computes the factorial of a natural number $n$. Calculate the sum of the factorials of all numbers in the range from $7$ to $2006$, inclusive. Find the last two digits of the sum (the remainder when the sum is divided by $100$), and then divide that number by $10$. What is the result? The final answer is $4$."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes factorial_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial_sum n = (\\<Sum>k \\<in> {7..n}. fact k)\"\nshows  \"digit (factorial_sum 2006) 1 = 4\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $7! + 8! + 9! + \\cdots + 2006!$? The final Answer is 4\n ### Proof\n Since $n!$ contains the product $2\\cdot5\\cdot10= 100$ whenever $n\\ge 10$,  it suffices to determine the tens digit of \\[ 7! + 8! + 9! = 7! (1 + 8 + 8\\cdot9) = 5040(1 + 8 + 72)= 5040\\cdot81. \\]This  is the same as the units digit of $4\\cdot 1$, which is $\\boxed{4}$.\n *)\n\ntheorem\nfixes factorial_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"factorial_sum n = (\\<Sum>k \\<in> {7..n}. fact k)\"\nshows  \"digit (factorial_sum 2006) 1 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit (ones place) of the sum of factorials of all numbers in the range from 7 to 2006. The final answer is 4."
+    },
+    "level": "Level 3",
+    "type": "Counting & Probability"
+}

@@ -1,0 +1,126 @@
+{
+    "problem_name": "amc12_2001_p2",
+    "informal_statement": "Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits\nof the integer $n$. For example, $P(23) = 6$ and $S(23) = 5$. Suppose $N$ is a\ntwo-digit number such that $N = P(N)+S(N)$. What is the units digit of $N$?\n\n$\\text{(A)}\\ 2\\qquad \\text{(B)}\\ 3\\qquad \\text{(C)}\\ 6\\qquad \\text{(D)}\\ 8\\qquad \\text{(E)}\\ 9$ Show that it is (\\text{E})9.",
+    "informal_proof": "Denote $a$ and $b$ as the tens and units digit of $N$, respectively. Then $N = 10a+b$. It follows that $10a+b=ab+a+b$, which implies that $9a=ab$. Since $a\\neq0$, $b=9$. So the units digit of $N$ is $(\\text{E})9$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N = (N div 10) * (N mod 10) + (N div 10) + (N mod 10)\"\nand h1 : \"N \\<ge> 10\"\nand h2 : \"N \\<le> 99\"\nshows  \"N mod 10 = 9\"",
+        "formal solution": "(* ### Problem\n Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits\nof the integer $n$. For example, $P(23) = 6$ and $S(23) = 5$. Suppose $N$ is a\ntwo-digit number such that $N = P(N)+S(N)$. What is the units digit of $N$?\n\n$\\text{(A)}\\ 2\\qquad \\text{(B)}\\ 3\\qquad \\text{(C)}\\ 6\\qquad \\text{(D)}\\ 8\\qquad \\text{(E)}\\ 9$ Show that it is (\\text{E})9.\n ### Proof\n Denote $a$ and $b$ as the tens and units digit of $N$, respectively. Then $N = 10a+b$. It follows that $10a+b=ab+a+b$, which implies that $9a=ab$. Since $a\\neq0$, $b=9$. So the units digit of $N$ is $(\\text{E})9$.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N = (N div 10) * (N mod 10) + (N div 10) + (N mod 10)\"\nand h1 : \"N \\<ge> 10\"\nand h2 : \"N \\<le> 99\"\nshows  \"N mod 10 = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a two-digit number $N$ such that the product of its digits plus the sum of its digits is equal to the number itself. The final answer is that the last digit is 9.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6352221965789795,
+        "symbolic_score": 0.6
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes N :: nat and P S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 10 \\<and> n < 100 \\<longrightarrow> P n = (n div 10) * (n mod 10)\"\nand h1 : \"\\<forall> n. n \\<ge> 10 \\<and> n < 100 \\<longrightarrow> S n = (n div 10) + (n mod 10)\"\nand h2 : \"N \\<ge> 10 \\<and> N < 100\"\nand h3 : \"N = P N + S N\"\nshows  \"N mod 10 = 9\"",
+        "formal solution": "(* ### Problem\n Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits\nof the integer $n$. For example, $P(23) = 6$ and $S(23) = 5$. Suppose $N$ is a\ntwo-digit number such that $N = P(N)+S(N)$. What is the units digit of $N$?\n\n$\\text{(A)}\\ 2\\qquad \\text{(B)}\\ 3\\qquad \\text{(C)}\\ 6\\qquad \\text{(D)}\\ 8\\qquad \\text{(E)}\\ 9$ Show that it is (\\text{E})9.\n ### Proof\n Denote $a$ and $b$ as the tens and units digit of $N$, respectively. Then $N = 10a+b$. It follows that $10a+b=ab+a+b$, which implies that $9a=ab$. Since $a\\neq0$, $b=9$. So the units digit of $N$ is $(\\text{E})9$.\n *)\n\ntheorem\nfixes N :: nat and P S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 10 \\<and> n < 100 \\<longrightarrow> P n = (n div 10) * (n mod 10)\"\nand h1 : \"\\<forall> n. n \\<ge> 10 \\<and> n < 100 \\<longrightarrow> S n = (n div 10) + (n mod 10)\"\nand h2 : \"N \\<ge> 10 \\<and> N < 100\"\nand h3 : \"N = P N + S N\"\nshows  \"N mod 10 = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a two-digit positive integer $N$, let $P(N)$ be the product of its tens and units digits and $S(N)$ be the sum of its tens and units digits. If $N = P(N) + S(N)$, find the units digit of $N$. The final answer is $9$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9686344861984253,
+        "symbolic_score": 0.6
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes N :: nat and P S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. P n = product_of_digits n\"\nand h1 : \"\\<forall> n. S n = sum_of_digits n\"\nand h2 : \"N = P N + S N\"\nand h3 : \"N \\<ge> 10\"\nand h4 : \"N \\<le> 99\"\nshows  \"N mod 10 = 9\"",
+        "formal solution": "(* ### Problem\n Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits\nof the integer $n$. For example, $P(23) = 6$ and $S(23) = 5$. Suppose $N$ is a\ntwo-digit number such that $N = P(N)+S(N)$. What is the units digit of $N$?\n\n$\\text{(A)}\\ 2\\qquad \\text{(B)}\\ 3\\qquad \\text{(C)}\\ 6\\qquad \\text{(D)}\\ 8\\qquad \\text{(E)}\\ 9$ Show that it is (\\text{E})9.\n ### Proof\n Denote $a$ and $b$ as the tens and units digit of $N$, respectively. Then $N = 10a+b$. It follows that $10a+b=ab+a+b$, which implies that $9a=ab$. Since $a\\neq0$, $b=9$. So the units digit of $N$ is $(\\text{E})9$.\n *)\n\ntheorem\nfixes N :: nat and P S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. P n = product_of_digits n\"\nand h1 : \"\\<forall> n. S n = sum_of_digits n\"\nand h2 : \"N = P N + S N\"\nand h3 : \"N \\<ge> 10\"\nand h4 : \"N \\<le> 99\"\nshows  \"N mod 10 = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a two-digit natural number N, such that the product of its digits plus the sum of its digits equals N, and the last digit of N is 9.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5900148153305054,
+        "symbolic_score": 0.6
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes N a b :: nat\nassumes h0 : \"N = 10 * a + b\"\nand h1 : \"a \\<ge> 1\"\nand h2 : \"a \\<le> 9\"\nand h3 : \"b \\<ge> 0\"\nand h4 : \"b \\<le> 9\"\nand h5 : \"N = a * b + a + b\"\nshows  \"b = 9\"",
+        "formal solution": "(* ### Problem\n Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits\nof the integer $n$. For example, $P(23) = 6$ and $S(23) = 5$. Suppose $N$ is a\ntwo-digit number such that $N = P(N)+S(N)$. What is the units digit of $N$?\n\n$\\text{(A)}\\ 2\\qquad \\text{(B)}\\ 3\\qquad \\text{(C)}\\ 6\\qquad \\text{(D)}\\ 8\\qquad \\text{(E)}\\ 9$ Show that it is (\\text{E})9.\n ### Proof\n Denote $a$ and $b$ as the tens and units digit of $N$, respectively. Then $N = 10a+b$. It follows that $10a+b=ab+a+b$, which implies that $9a=ab$. Since $a\\neq0$, $b=9$. So the units digit of $N$ is $(\\text{E})9$.\n *)\n\ntheorem\nfixes N a b :: nat\nassumes h0 : \"N = 10 * a + b\"\nand h1 : \"a \\<ge> 1\"\nand h2 : \"a \\<le> 9\"\nand h3 : \"b \\<ge> 0\"\nand h4 : \"b \\<le> 9\"\nand h5 : \"N = a * b + a + b\"\nshows  \"b = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a two-digit number N, where N is formed by the digits a and b (10a + b), such that a is between 1 and 9 (inclusive), b is between 0 and 9 (inclusive), and N equals the sum of its digits multiplied together (a * b) plus the sum of its digits (a + b). The final answer is that b must be 9.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8167701959609985,
+        "symbolic_score": 0.6
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes P S N :: nat\nassumes h0 : \"\\<forall> n. n > 9 \\<and> n < 100 \\<longrightarrow> P n = (\\<Prod> (digits n))\"\nand h1 : \"\\<forall> n. n > 9 \\<and> n < 100 \\<longrightarrow> S n = (\\<Sum> (digits n))\"\nand h2 : \"N > 9 \\<and> N < 100 \\<and> N = P N + S N\"\nshows  \"N mod 10 = 9\"",
+        "formal solution": "(* ### Problem\n Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits\nof the integer $n$. For example, $P(23) = 6$ and $S(23) = 5$. Suppose $N$ is a\ntwo-digit number such that $N = P(N)+S(N)$. What is the units digit of $N$?\n\n$\\text{(A)}\\ 2\\qquad \\text{(B)}\\ 3\\qquad \\text{(C)}\\ 6\\qquad \\text{(D)}\\ 8\\qquad \\text{(E)}\\ 9$ Show that it is (\\text{E})9.\n ### Proof\n Denote $a$ and $b$ as the tens and units digit of $N$, respectively. Then $N = 10a+b$. It follows that $10a+b=ab+a+b$, which implies that $9a=ab$. Since $a\\neq0$, $b=9$. So the units digit of $N$ is $(\\text{E})9$.\n *)\n\ntheorem\nfixes P S N :: nat\nassumes h0 : \"\\<forall> n. n > 9 \\<and> n < 100 \\<longrightarrow> P n = (\\<Prod> (digits n))\"\nand h1 : \"\\<forall> n. n > 9 \\<and> n < 100 \\<longrightarrow> S n = (\\<Sum> (digits n))\"\nand h2 : \"N > 9 \\<and> N < 100 \\<and> N = P N + S N\"\nshows  \"N mod 10 = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a two-digit natural number $N$ such that the product of its digits plus the sum of its digits is equal to $N$ itself, and the last digit of $N$ is 9.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.5430831909179688,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes N tens units :: nat and P S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"N = tens * 10 + units\"\nand h1 : \"tens < 10\"\nand h2 : \"units < 10\"\nand h3 : \"P N = tens * units\"\nand h4 : \"S N = tens + units\"\nand h5 : \"N = P N + S N\"\nshows  \"units = 9\"",
+        "formal solution": "(* ### Problem\n Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits\nof the integer $n$. For example, $P(23) = 6$ and $S(23) = 5$. Suppose $N$ is a\ntwo-digit number such that $N = P(N)+S(N)$. What is the units digit of $N$?\n\n$\\text{(A)}\\ 2\\qquad \\text{(B)}\\ 3\\qquad \\text{(C)}\\ 6\\qquad \\text{(D)}\\ 8\\qquad \\text{(E)}\\ 9$ Show that it is (\\text{E})9.\n ### Proof\n Denote $a$ and $b$ as the tens and units digit of $N$, respectively. Then $N = 10a+b$. It follows that $10a+b=ab+a+b$, which implies that $9a=ab$. Since $a\\neq0$, $b=9$. So the units digit of $N$ is $(\\text{E})9$.\n *)\n\ntheorem\nfixes N tens units :: nat and P S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"N = tens * 10 + units\"\nand h1 : \"tens < 10\"\nand h2 : \"units < 10\"\nand h3 : \"P N = tens * units\"\nand h4 : \"S N = tens + units\"\nand h5 : \"N = P N + S N\"\nshows  \"units = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a two-digit number N such that the product of its tens and units digits equals the sum of its tens and units digits. The final answer is a number with the units digit equal to 9.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7239989042282104,
+        "symbolic_score": 0.6
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes N :: nat and P S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. P n = product_of_digits n\"\nand h1 : \"\\<forall> n. S n = sum_of_digits n\"\nand h2 : \"N < 100\"\nand h3 : \"N > 9\"\nand h4 : \"N = P N + S N\"\nshows  \"N mod 10 = 9\"",
+        "formal solution": "(* ### Problem\n Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits\nof the integer $n$. For example, $P(23) = 6$ and $S(23) = 5$. Suppose $N$ is a\ntwo-digit number such that $N = P(N)+S(N)$. What is the units digit of $N$?\n\n$\\text{(A)}\\ 2\\qquad \\text{(B)}\\ 3\\qquad \\text{(C)}\\ 6\\qquad \\text{(D)}\\ 8\\qquad \\text{(E)}\\ 9$ Show that it is (\\text{E})9.\n ### Proof\n Denote $a$ and $b$ as the tens and units digit of $N$, respectively. Then $N = 10a+b$. It follows that $10a+b=ab+a+b$, which implies that $9a=ab$. Since $a\\neq0$, $b=9$. So the units digit of $N$ is $(\\text{E})9$.\n *)\n\ntheorem\nfixes N :: nat and P S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. P n = product_of_digits n\"\nand h1 : \"\\<forall> n. S n = sum_of_digits n\"\nand h2 : \"N < 100\"\nand h3 : \"N > 9\"\nand h4 : \"N = P N + S N\"\nshows  \"N mod 10 = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a two-digit natural number N such that the sum of its digits plus the product of its digits equals the number itself. In other words, N = (product of digits) + (sum of digits). The final answer is that the last digit of N is 9.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8798136115074158,
+        "symbolic_score": 0.6
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes P S N :: nat\nassumes h0 : \"\\<forall> n. P n = product_of_digits n\"\nand h1 : \"\\<forall> n. S n = sum_of_digits n\"\nand h2 : \"N \\<ge> 10\"\nand h3 : \"N < 100\"\nand h4 : \"N = P N + S N\"\nshows  \"N mod 10 = 9\"",
+        "formal solution": "(* ### Problem\n Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits\nof the integer $n$. For example, $P(23) = 6$ and $S(23) = 5$. Suppose $N$ is a\ntwo-digit number such that $N = P(N)+S(N)$. What is the units digit of $N$?\n\n$\\text{(A)}\\ 2\\qquad \\text{(B)}\\ 3\\qquad \\text{(C)}\\ 6\\qquad \\text{(D)}\\ 8\\qquad \\text{(E)}\\ 9$ Show that it is (\\text{E})9.\n ### Proof\n Denote $a$ and $b$ as the tens and units digit of $N$, respectively. Then $N = 10a+b$. It follows that $10a+b=ab+a+b$, which implies that $9a=ab$. Since $a\\neq0$, $b=9$. So the units digit of $N$ is $(\\text{E})9$.\n *)\n\ntheorem\nfixes P S N :: nat\nassumes h0 : \"\\<forall> n. P n = product_of_digits n\"\nand h1 : \"\\<forall> n. S n = sum_of_digits n\"\nand h2 : \"N \\<ge> 10\"\nand h3 : \"N < 100\"\nand h4 : \"N = P N + S N\"\nshows  \"N mod 10 = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a two-digit number $N$ such that the product of its digits plus the sum of its digits equals $N$. The final answer is a number with the last digit being $9$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7951492667198181,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes P S N :: nat\nassumes h0 : \"N \\<ge> 10 \\<and> N \\<le> 99\"\nand h1 : \"\\<forall> n. P n = prod_list (digits n)\"\nand h2 : \"\\<forall> n. S n = sum_list (digits n)\"\nand h3 : \"N = P N + S N\"\nshows  \"N mod 10 = 9\"",
+        "formal solution": "(* ### Problem\n Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits\nof the integer $n$. For example, $P(23) = 6$ and $S(23) = 5$. Suppose $N$ is a\ntwo-digit number such that $N = P(N)+S(N)$. What is the units digit of $N$?\n\n$\\text{(A)}\\ 2\\qquad \\text{(B)}\\ 3\\qquad \\text{(C)}\\ 6\\qquad \\text{(D)}\\ 8\\qquad \\text{(E)}\\ 9$ Show that it is (\\text{E})9.\n ### Proof\n Denote $a$ and $b$ as the tens and units digit of $N$, respectively. Then $N = 10a+b$. It follows that $10a+b=ab+a+b$, which implies that $9a=ab$. Since $a\\neq0$, $b=9$. So the units digit of $N$ is $(\\text{E})9$.\n *)\n\ntheorem\nfixes P S N :: nat\nassumes h0 : \"N \\<ge> 10 \\<and> N \\<le> 99\"\nand h1 : \"\\<forall> n. P n = prod_list (digits n)\"\nand h2 : \"\\<forall> n. S n = sum_list (digits n)\"\nand h3 : \"N = P N + S N\"\nshows  \"N mod 10 = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a two-digit number $N$ such that the product of its digits plus the sum of its digits is equal to $N$. Moreover, the last digit of $N$ should be 9.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.6078076958656311,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes P S N :: nat\nassumes h0 : \"N \\<ge> 10\"\nand h1 : \"N \\<le> 99\"\nand h2 : \"P N = (N div 10) * (N mod 10)\"\nand h3 : \"S N = (N div 10) + (N mod 10)\"\nand h4 : \"N = P N + S N\"\nshows  \"N mod 10 = 9\"",
+        "formal solution": "(* ### Problem\n Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits\nof the integer $n$. For example, $P(23) = 6$ and $S(23) = 5$. Suppose $N$ is a\ntwo-digit number such that $N = P(N)+S(N)$. What is the units digit of $N$?\n\n$\\text{(A)}\\ 2\\qquad \\text{(B)}\\ 3\\qquad \\text{(C)}\\ 6\\qquad \\text{(D)}\\ 8\\qquad \\text{(E)}\\ 9$ Show that it is (\\text{E})9.\n ### Proof\n Denote $a$ and $b$ as the tens and units digit of $N$, respectively. Then $N = 10a+b$. It follows that $10a+b=ab+a+b$, which implies that $9a=ab$. Since $a\\neq0$, $b=9$. So the units digit of $N$ is $(\\text{E})9$.\n *)\n\ntheorem\nfixes P S N :: nat\nassumes h0 : \"N \\<ge> 10\"\nand h1 : \"N \\<le> 99\"\nand h2 : \"P N = (N div 10) * (N mod 10)\"\nand h3 : \"S N = (N div 10) + (N mod 10)\"\nand h4 : \"N = P N + S N\"\nshows  \"N mod 10 = 9\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a two-digit positive integer $N$, let $P(N)$ be the product of its digits, and $S(N)$ be the sum of its digits. If $N = P(N) + S(N)$, find the units digit of $N$. The final answer is 9.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8892108201980591,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes a b n::nat\nassumes \"1 \\<le> a \\<and> a \\<le> 9\"\nand \"0 \\<le> b \\<and> b \\<le> 9\"\nand \"n = 10 * a + b\"\nand \"n = a * b + a + b\"\nshows \"b=9\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            6
+        ],
+        "1": [
+            4
+        ],
+        "2": [
+            7
+        ],
+        "3": [
+            8
+        ],
+        "4": [
+            9
+        ]
+    },
+    "equivalence_oracle": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6
+    ]
+}

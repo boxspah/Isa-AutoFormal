@@ -1,0 +1,583 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"lambda \\<le> 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"lambda \\<le> 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x^2 + y^2 + z^2 = 1$, and $x, y, z$ are non-negative, find the maximum value of $\\lambda$ such that $\\lambda x y + y z \\leq \\frac{\\sqrt{5}}{2}$. The answer is $\\lambda \\leq 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9443020224571228,
+        "symbolic_score": 0.4
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall>x y z. x * y * lambda + y * z \\<le> sqrt(5) / 2\"\nand h2 : \"x \\<ge> 0\"\nand h3 : \"y \\<ge> 0\"\nand h4 : \"z \\<ge> 0\"\nshows  \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall>x y z. x * y * lambda + y * z \\<le> sqrt(5) / 2\"\nand h2 : \"x \\<ge> 0\"\nand h3 : \"y \\<ge> 0\"\nand h4 : \"z \\<ge> 0\"\nshows  \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three non-negative real numbers $x, y, z$ such that $x^2 + y^2 + z^2 = 1$, and for every $x, y, z$, the inequality $xy\\lambda + yz \\leq \\frac{\\sqrt{5}}{2}$ holds. Find the value of $\\lambda$. The final answer is $\\lambda = 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9725271463394165,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x y z \u03bb :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\u03bb * x * y + y * z \u2264 sqrt 5 / 2\"\nand h2 : \"x \u2265 0\"\nand h3 : \"y \u2265 0\"\nand h4 : \"z \u2265 0\"\nshows  \"\u03bb \u2264 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z \u03bb :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\u03bb * x * y + y * z \u2264 sqrt 5 / 2\"\nand h2 : \"x \u2265 0\"\nand h3 : \"y \u2265 0\"\nand h4 : \"z \u2265 0\"\nshows  \"\u03bb \u2264 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three non-negative real numbers $x$, $y$, and $z$ such that $x^2 + y^2 + z^2 = 1$, find the maximum possible value of $\\lambda$ that satisfies $\\lambda xy + yz \\leq \\sqrt{5}/2$. The final answer is $\\lambda \\leq 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9869050979614258,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"lambda \\<le> 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"lambda \\<le> 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x^2 + y^2 + z^2 = 1$, where $x$, $y$, and $z$ are nonnegative, find the maximum possible value of $\\lambda$ such that $\\lambda xy + yz \\leq \\sqrt{5}/2$. The final answer is $\\lambda \\leq 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9860793948173523,
+        "symbolic_score": 0.4
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x >= 0\"\nand h2 : \"y >= 0\"\nand h3 : \"z >= 0\"\nand h4 : \"lambda * x * y + y * z <= sqrt(5) / 2\"\nshows  \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x >= 0\"\nand h2 : \"y >= 0\"\nand h3 : \"z >= 0\"\nand h4 : \"lambda * x * y + y * z <= sqrt(5) / 2\"\nshows  \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x^2 + y^2 + z^2 = 1$, where $x$, $y$, and $z$ are non-negative, and that $\\lambda x y + y z \\leq \\sqrt{5}/2$, find the value of $\\lambda$. The final answer is 2.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9688577055931091,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\\<forall> x y z. lambda * x * y + y * z \\<le> sqrt(5) / 2\"\nshows  \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\\<forall> x y z. lambda * x * y + y * z \\<le> sqrt(5) / 2\"\nshows  \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three non-negative real numbers $x$, $y$, $z$ such that $x^2 + y^2 + z^2 = 1$, find a real number $\\lambda$ such that for all $x$, $y$, $z$, $\\lambda * x * y + y * z \\leq \\sqrt{5}/2$. The final answer is $\\lambda = 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9850842952728271,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"lambda \\<le> 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"lambda \\<le> 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x^2 + y^2 + z^2 = 1$, $x \\geq 0$, $y \\geq 0$, $z \\geq 0$, and $\\lambda x y + yz \\leq \\sqrt{5}/2$, find the maximum possible value of $\\lambda$. The final answer is $\\lambda \\leq 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9864181876182556,
+        "symbolic_score": 0.4
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"y \\<ge> 0\"\nand h2 : \"z \\<ge> 0\"\nand h3 : \"x^2 + y^2 + z^2 = 1\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt(5) / 2\"\nshows  \"lambda \\<le> 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"y \\<ge> 0\"\nand h2 : \"z \\<ge> 0\"\nand h3 : \"x^2 + y^2 + z^2 = 1\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt(5) / 2\"\nshows  \"lambda \\<le> 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $x$, $y$, and $z$ be non-negative real numbers such that $x^2 + y^2 + z^2 = 1$. If $\\lambda x y + y z \\leq \\sqrt{5}/2$, find the maximum possible value of $\\lambda$. The final answer is $2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9403853416442871,
+        "symbolic_score": 0.4
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x y z \u03bb :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\u03bb * x * y + y * z \\<le> sqrt(5) / 2\"\nshows  \"\u03bb = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z \u03bb :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\u03bb * x * y + y * z \\<le> sqrt(5) / 2\"\nshows  \"\u03bb = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x^2 + y^2 + z^2 = 1$, $x \\geq 0$, $y \\geq 0$, $z \\geq 0$, and $\\lambda x y + y z \\leq \\frac{\\sqrt{5}}{2}$, find the value of $\\lambda$. The final answer is $\\lambda = 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.984987199306488,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x y z \u03bb :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\u03bb * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"\u03bb = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z \u03bb :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\u03bb * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"\u03bb = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x^2 + y^2 + z^2 = 1$, $x \\geq 0$, $y \\geq 0$, $z \\geq 0$, and $\\lambda x y + y z \\leq \\sqrt{5}/2$, find the value of $\\lambda$. The final answer is 2.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9516042470932007,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "2",
+    "natural problem": "Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds.",
+    "natural solution": [
+        "We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.",
+        "\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$",
+        "Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0,
+            3,
+            6,
+            7
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            8
+        ],
+        "6": [
+            9
+        ]
+    },
+    "str_pred": "[[0, 3, 6, 7], [1], [2], [4], [5], [8], [9]]",
+    "level": "Level 4",
+    "type": "Intermediate Algebra",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes \u03bb x y z :: real\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"y \\<ge> 0\"\nand h2 : \"z \\<ge> 0\"\nand h3 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h4 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> \u03bb * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"\u03bb = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes \u03bb x y z :: real\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"y \\<ge> 0\"\nand h2 : \"z \\<ge> 0\"\nand h3 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h4 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> \u03bb * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"\u03bb = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that x, y, and z are non-negative real numbers such that x^2 + y^2 + z^2 = 1, and for any non-negative real numbers x, y, and z with the same condition, the expression \u03bb * x * y + y * z is less than or equal to sqrt(5) / 2, find the value of \u03bb. The answer is \u03bb = 2.",
+        "syntax": 0,
+        "semantic_score": 0.9859339502283584,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"lambda = (GREATEST a. \\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> a * x * y + y * z \\<le> sqrt 5 / 2)\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"lambda = (GREATEST a. \\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> a * x * y + y * z \\<le> sqrt 5 / 2)\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the largest value of a constant, let's call it lambda, such that for all non-negative real numbers x, y, and z, where x^2 + y^2 + z^2 = 1, the expression a * x * y + y * z is less than or equal to sqrt(5) / 2. The theorem states that this maximum value of lambda is 2.",
+        "syntax": 1,
+        "semantic_score": 0.9531396026869058,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"lambda > 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"lambda > 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a positive real number lambda. We know that for any non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, the inequality lambda * x * y + y * z is less than or equal to sqrt(5) / 2 holds. Prove that lambda must be equal to 2.",
+        "syntax": 1,
+        "semantic_score": 0.7787967943315212,
+        "symbolic_score": 0.4
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"lambda \\<ge> 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"lambda \\<ge> 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a real number lambda that is greater than or equal to 0. For any non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, it is true that lambda * x * y + y * z is less than or equal to the square root of 5 divided by 2. Prove that lambda must be equal to 2.",
+        "syntax": 1,
+        "semantic_score": 0.7673614916215491,
+        "symbolic_score": 0.4
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"0 < lambda\"\nand h1 : \"\\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"0 < lambda\"\nand h1 : \"\\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a real number lambda greater than 0. For any non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, it is given that lambda * x * y + y * z is less than or equal to sqrt(5) / 2. Prove that lambda must be equal to 2.",
+        "syntax": 1,
+        "semantic_score": 0.7461185676775102,
+        "symbolic_score": 0.4
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"lambda > 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"lambda > 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a positive real number lambda, and for all non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, it is true that lambda * x * y + y * z is less than or equal to the square root of 5 divided by 2. Prove that lambda is equal to 2.",
+        "syntax": 1,
+        "semantic_score": 0.7386518019692208,
+        "symbolic_score": 0.4
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"0 \\<le> lambda\"\nand h1 : \"\\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"0 \\<le> lambda\"\nand h1 : \"\\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a real number lambda, where lambda is non-negative. Prove that for any non-negative real numbers x, y, and z, if x^2 + y^2 + z^2 = 1, then lambda * x * y + y * z is less than or equal to sqrt(5) / 2. The final answer is lambda = 2.",
+        "syntax": 1,
+        "semantic_score": 0.9672570996836389,
+        "symbolic_score": 0.4
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"0 < lambda\"\nand h1 : \"\\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"0 < lambda\"\nand h1 : \"\\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a positive real number lambda, we know that for any non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, the inequality lambda * x * y + y * z \u2264 sqrt(5) / 2 holds. Prove that lambda must be equal to 2.",
+        "syntax": 1,
+        "semantic_score": 0.7902103790067624,
+        "symbolic_score": 0.4
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"lambda \\<ge> 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"lambda \\<ge> 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a real number lambda, which is non-negative, and for all non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, the inequality lambda * x * y + y * z \u2264 sqrt(5) / 2 holds. Prove that lambda equals 2.",
+        "syntax": 1,
+        "semantic_score": 0.6835617950196208,
+        "symbolic_score": 0.4
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"lambda \\<ge> 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"lambda \\<ge> 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a real number lambda greater than or equal to 0, and for all non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, it is true that lambda * x * y + y * z is less than or equal to sqrt(5) / 2. Prove that lambda must be equal to 2.",
+        "syntax": 1,
+        "semantic_score": 0.7514964584487788,
+        "symbolic_score": 0.4
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"0 \\<le> x\"\nand h2 : \"0 \\<le> y\"\nand h3 : \"0 \\<le> z\"\nshows \"(\\<lambda>a b c. 2 * a * b + b * c) x y z \\<le> sqrt(5) / 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"0 \\<le> x\"\nand h2 : \"0 \\<le> y\"\nand h3 : \"0 \\<le> z\"\nshows \"(\\<lambda>a b c. 2 * a * b + b * c) x y z \\<le> sqrt(5) / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three real numbers $x, y,$ and $z$ such that $x^2+y^2+z^2=1$ and $x,y,z\\geq 0$, show that $2xy+y z \\leq \\frac{\\sqrt{5}}{2}$.",
+        "syntax": 1,
+        "semantic_score": 0.7893597105205152,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes lambda x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt(5) / 2\"\nshows \"lambda \\<le> 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt(5) / 2\"\nshows \"lambda \\<le> 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three real numbers $x$, $y$, and $z$ such that $x^2 + y^2 + z^2 = 1$, suppose that for all such numbers, $\\lambda xy + yz \\leq \\frac{\\sqrt{5}}{2}$. What is the largest possible value of $\\lambda$? The final answer is $2$.",
+        "syntax": 1,
+        "semantic_score": 0.8326246615748314,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"2 \\<ge> 0\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"2 \\<ge> 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three non-negative real numbers $x$, $y$, and $z$ such that $x^2 + y^2 + z^2 = 1$, prove that $2 \\geq 0$ under the condition that $2xy + yz \\leq \\frac{\\sqrt{5}}{2}$.",
+        "syntax": 1,
+        "semantic_score": 0.8238793619062266,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"2 \\<le> (GREATEST a. \\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> 2 * x * y + y * z \\<le> a)\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"2 \\<le> (GREATEST a. \\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> 2 * x * y + y * z \\<le> a)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three real numbers $x$, $y$, and $z$ such that $x^2 + y^2 + z^2 = 1$, find the largest possible value of $a$ such that $2xy + yz \\leq a$ for all such $x$, $y$, and $z$. Moreover, we know that $2xy + yz \\leq \\frac{\\sqrt{5}}{2}$ for all such $x$, $y$, and $z$. The final answer is $2$.",
+        "syntax": 1,
+        "semantic_score": 0.9285102782075315,
+        "symbolic_score": 0.1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall> x y z :: real. x powr 2 + y powr 2 + z powr 2 = 1\n\\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"2 \\<le> lambda\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall> x y z :: real. x powr 2 + y powr 2 + z powr 2 = 1\n\\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"2 \\<le> lambda\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given real numbers $x$, $y$, and $z$ such that $x^2+y^2+z^2=1$, and for any real numbers $x$, $y$, and $z$ such that $x^2+y^2+z^2=1$, we have $2xy+y z\\leq \\frac{\\sqrt{5}}{2}$. Find the smallest possible value of $\\lambda$ such that $2\\leq \\lambda$.",
+        "syntax": 1,
+        "semantic_score": 0.6279520043371989,
+        "symbolic_score": 0.2
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z\"\nshows \"(\\<lambda> :: real. \\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> \\<lambda> * x * y + y * z \\<le> sqrt 5 / 2) 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z\"\nshows \"(\\<lambda> :: real. \\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> \\<lambda> * x * y + y * z \\<le> sqrt 5 / 2) 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For real numbers $x$, $y$, and $z$, if $x^2 + y^2 + z^2 = 1$ and $x$, $y$, and $z$ are nonnegative, then for $\\lambda = 2$, $2xy + yz$ is less than or equal to $\\frac{\\sqrt{5}}{2}$.",
+        "syntax": 0,
+        "semantic_score": 0.9623926519811393,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"2 \\<le> lambda\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"2 \\<le> lambda\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x^2 + y^2 + z^2 = 1$, if $2xy + yz \\leq \\frac{\\sqrt{5}}{2}$ holds for all $x, y,$ and $z$ satisfying $x^2 + y^2 + z^2 = 1$, what is the smallest possible value of $\\lambda$ such that $2 \\leq \\lambda$? The final answer is $\\lambda = 2$.",
+        "syntax": 1,
+        "semantic_score": 0.7848375544465863,
+        "symbolic_score": 0.2
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"2 \\<le> lambda_max\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"2 \\<le> lambda_max\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given real numbers $x$, $y$, and $z$ such that $x^2 + y^2 + z^2 = 1$, and for any such $x$, $y$, and $z$ we have $2xy + yz \\leq \\frac{\\sqrt{5}}{2}$, find the maximum eigenvalue of a certain matrix denoted by $\\lambda_{max}$, and show that it is at least $2$.",
+        "syntax": 1,
+        "semantic_score": 0.899780359599451,
+        "symbolic_score": 0.1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nshows \"(\\<forall>x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2)\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nshows \"(\\<forall>x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three real numbers $x$, $y$, and $z$ such that $x^2+y^2+z^2=1$, prove that $2xy+yz\\leq \\frac{\\sqrt{5}}{2}$.",
+        "syntax": 1,
+        "semantic_score": 0.8034684634009079,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z\"\nand h2 : \"\\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<and> 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"2 \\<le> (GREATEST a. \\<forall>x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<and> 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<longrightarrow> 2 * x * y + y * z \\<le> a)\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z\"\nand h2 : \"\\<forall> x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<and> 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<longrightarrow> 2 * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"2 \\<le> (GREATEST a. \\<forall>x y z. x powr 2 + y powr 2 + z powr 2 = 1 \\<and> 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<longrightarrow> 2 * x * y + y * z \\<le> a)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a point $(x,y,z)$ on the surface of a unit sphere where $x,y,z \\geq 0$, we want to find the greatest value of $a$ such that $2xy + yz \\leq a$ holds for all such points $(x,y,z)$. The final answer is $2$.",
+        "syntax": 1,
+        "semantic_score": 0.9034642924204855,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek": {
+        "0": [
+            2,
+            4,
+            5,
+            7
+        ],
+        "1": [
+            8,
+            9,
+            3,
+            6
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            1
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            4,
+            6
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0,
+            3,
+            6
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            7
+        ],
+        "6": [
+            8
+        ],
+        "7": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"lambda \\<le> 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"lambda \\<le> 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x^2 + y^2 + z^2 = 1$, and $x, y, z$ are non-negative, find the maximum value of $\\lambda$ such that $\\lambda x y + y z \\leq \\frac{\\sqrt{5}}{2}$. The answer is $\\lambda \\leq 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9402128368088868,
+        "symbolic_score": 0.3
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall>x y z. x * y * lambda + y * z \\<le> sqrt(5) / 2\"\nand h2 : \"x \\<ge> 0\"\nand h3 : \"y \\<ge> 0\"\nand h4 : \"z \\<ge> 0\"\nshows  \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\\<forall>x y z. x * y * lambda + y * z \\<le> sqrt(5) / 2\"\nand h2 : \"x \\<ge> 0\"\nand h3 : \"y \\<ge> 0\"\nand h4 : \"z \\<ge> 0\"\nshows  \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three non-negative real numbers $x, y, z$ such that $x^2 + y^2 + z^2 = 1$, and for every $x, y, z$, the inequality $xy\\lambda + yz \\leq \\frac{\\sqrt{5}}{2}$ holds. Find the value of $\\lambda$. The final answer is $\\lambda = 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9445929074583874,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes x y z \u03bb :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\u03bb * x * y + y * z \u2264 sqrt 5 / 2\"\nand h2 : \"x \u2265 0\"\nand h3 : \"y \u2265 0\"\nand h4 : \"z \u2265 0\"\nshows  \"\u03bb \u2264 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z \u03bb :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"\u03bb * x * y + y * z \u2264 sqrt 5 / 2\"\nand h2 : \"x \u2265 0\"\nand h3 : \"y \u2265 0\"\nand h4 : \"z \u2265 0\"\nshows  \"\u03bb \u2264 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three non-negative real numbers $x$, $y$, and $z$ such that $x^2 + y^2 + z^2 = 1$, find the maximum possible value of $\\lambda$ that satisfies $\\lambda xy + yz \\leq \\sqrt{5}/2$. The final answer is $\\lambda \\leq 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.943798376332359,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"lambda \\<le> 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"lambda \\<le> 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x^2 + y^2 + z^2 = 1$, where $x$, $y$, and $z$ are nonnegative, find the maximum possible value of $\\lambda$ such that $\\lambda xy + yz \\leq \\sqrt{5}/2$. The final answer is $\\lambda \\leq 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9456969370514681,
+        "symbolic_score": 0.3
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x >= 0\"\nand h2 : \"y >= 0\"\nand h3 : \"z >= 0\"\nand h4 : \"lambda * x * y + y * z <= sqrt(5) / 2\"\nshows  \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x >= 0\"\nand h2 : \"y >= 0\"\nand h3 : \"z >= 0\"\nand h4 : \"lambda * x * y + y * z <= sqrt(5) / 2\"\nshows  \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x^2 + y^2 + z^2 = 1$, where $x$, $y$, and $z$ are non-negative, and that $\\lambda x y + y z \\leq \\sqrt{5}/2$, find the value of $\\lambda$. The final answer is 2.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9378651228455399,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\\<forall> x y z. lambda * x * y + y * z \\<le> sqrt(5) / 2\"\nshows  \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\\<forall> x y z. lambda * x * y + y * z \\<le> sqrt(5) / 2\"\nshows  \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three non-negative real numbers $x$, $y$, $z$ such that $x^2 + y^2 + z^2 = 1$, find a real number $\\lambda$ such that for all $x$, $y$, $z$, $\\lambda * x * y + y * z \\leq \\sqrt{5}/2$. The final answer is $\\lambda = 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9433283130755733,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"lambda \\<le> 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"lambda \\<le> 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x^2 + y^2 + z^2 = 1$, $x \\geq 0$, $y \\geq 0$, $z \\geq 0$, and $\\lambda x y + yz \\leq \\sqrt{5}/2$, find the maximum possible value of $\\lambda$. The final answer is $\\lambda \\leq 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9450645299650252,
+        "symbolic_score": 0.3
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes x y z lambda :: real\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"y \\<ge> 0\"\nand h2 : \"z \\<ge> 0\"\nand h3 : \"x^2 + y^2 + z^2 = 1\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt(5) / 2\"\nshows  \"lambda \\<le> 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z lambda :: real\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"y \\<ge> 0\"\nand h2 : \"z \\<ge> 0\"\nand h3 : \"x^2 + y^2 + z^2 = 1\"\nand h4 : \"lambda * x * y + y * z \\<le> sqrt(5) / 2\"\nshows  \"lambda \\<le> 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $x$, $y$, and $z$ be non-negative real numbers such that $x^2 + y^2 + z^2 = 1$. If $\\lambda x y + y z \\leq \\sqrt{5}/2$, find the maximum possible value of $\\lambda$. The final answer is $2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9479064749482777,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes x y z \u03bb :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\u03bb * x * y + y * z \\<le> sqrt(5) / 2\"\nshows  \"\u03bb = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z \u03bb :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\u03bb * x * y + y * z \\<le> sqrt(5) / 2\"\nshows  \"\u03bb = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x^2 + y^2 + z^2 = 1$, $x \\geq 0$, $y \\geq 0$, $z \\geq 0$, and $\\lambda x y + y z \\leq \\frac{\\sqrt{5}}{2}$, find the value of $\\lambda$. The final answer is $\\lambda = 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9409721468876395,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes x y z \u03bb :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\u03bb * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"\u03bb = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is 2\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n \\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\n Therefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes x y z \u03bb :: real\nassumes h0 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h1 : \"x \\<ge> 0\"\nand h2 : \"y \\<ge> 0\"\nand h3 : \"z \\<ge> 0\"\nand h4 : \"\u03bb * x * y + y * z \\<le> sqrt 5 / 2\"\nshows  \"\u03bb = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x^2 + y^2 + z^2 = 1$, $x \\geq 0$, $y \\geq 0$, $z \\geq 0$, and $\\lambda x y + y z \\leq \\sqrt{5}/2$, find the value of $\\lambda$. The final answer is 2.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9426640939213796,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes \u03bb x y z :: real\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"y \\<ge> 0\"\nand h2 : \"z \\<ge> 0\"\nand h3 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h4 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> \u03bb * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"\u03bb = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes \u03bb x y z :: real\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"y \\<ge> 0\"\nand h2 : \"z \\<ge> 0\"\nand h3 : \"x powr 2 + y powr 2 + z powr 2 = 1\"\nand h4 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> \u03bb * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"\u03bb = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that x, y, and z are non-negative real numbers such that x^2 + y^2 + z^2 = 1, and for any non-negative real numbers x, y, and z with the same condition, the expression \u03bb * x * y + y * z is less than or equal to sqrt(5) / 2, find the value of \u03bb. The answer is \u03bb = 2.",
+        "syntax": 0,
+        "semantic_score": 0.9250073053158662,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"lambda = (GREATEST a. \\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> a * x * y + y * z \\<le> sqrt 5 / 2)\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"lambda = (GREATEST a. \\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> a * x * y + y * z \\<le> sqrt 5 / 2)\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the largest value of a constant, let's call it lambda, such that for all non-negative real numbers x, y, and z, where x^2 + y^2 + z^2 = 1, the expression a * x * y + y * z is less than or equal to sqrt(5) / 2. The theorem states that this maximum value of lambda is 2.",
+        "syntax": 1,
+        "semantic_score": 0.8922081141464604,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"lambda > 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"lambda > 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a positive real number lambda. We know that for any non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, the inequality lambda * x * y + y * z is less than or equal to sqrt(5) / 2 holds. Prove that lambda must be equal to 2.",
+        "syntax": 1,
+        "semantic_score": 0.9171491196119986,
+        "symbolic_score": 0.2
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"lambda \\<ge> 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"lambda \\<ge> 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a real number lambda that is greater than or equal to 0. For any non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, it is true that lambda * x * y + y * z is less than or equal to the square root of 5 divided by 2. Prove that lambda must be equal to 2.",
+        "syntax": 1,
+        "semantic_score": 0.905658795193612,
+        "symbolic_score": 0.3
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"0 < lambda\"\nand h1 : \"\\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"0 < lambda\"\nand h1 : \"\\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a real number lambda greater than 0. For any non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, it is given that lambda * x * y + y * z is less than or equal to sqrt(5) / 2. Prove that lambda must be equal to 2.",
+        "syntax": 1,
+        "semantic_score": 0.9170069477561474,
+        "symbolic_score": 0.2
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"lambda > 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"lambda > 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a positive real number lambda, and for all non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, it is true that lambda * x * y + y * z is less than or equal to the square root of 5 divided by 2. Prove that lambda is equal to 2.",
+        "syntax": 1,
+        "semantic_score": 0.9034816590775424,
+        "symbolic_score": 0.2
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"0 \\<le> lambda\"\nand h1 : \"\\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"0 \\<le> lambda\"\nand h1 : \"\\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a real number lambda, where lambda is non-negative. Prove that for any non-negative real numbers x, y, and z, if x^2 + y^2 + z^2 = 1, then lambda * x * y + y * z is less than or equal to sqrt(5) / 2. The final answer is lambda = 2.",
+        "syntax": 1,
+        "semantic_score": 0.9317819733624441,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"0 < lambda\"\nand h1 : \"\\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"0 < lambda\"\nand h1 : \"\\<forall> x y z. 0 \\<le> x \\<and> 0 \\<le> y \\<and> 0 \\<le> z \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a positive real number lambda, we know that for any non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, the inequality lambda * x * y + y * z \u2264 sqrt(5) / 2 holds. Prove that lambda must be equal to 2.",
+        "syntax": 1,
+        "semantic_score": 0.9077122061700442,
+        "symbolic_score": 0.2
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"lambda \\<ge> 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"lambda \\<ge> 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a real number lambda, which is non-negative, and for all non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, the inequality lambda * x * y + y * z \u2264 sqrt(5) / 2 holds. Prove that lambda equals 2.",
+        "syntax": 1,
+        "semantic_score": 0.9125374050597995,
+        "symbolic_score": 0.3
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes lambda :: real\nassumes h0 : \"lambda \\<ge> 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"",
+        "formal solution": "(* ### Problem\n Find the largest positive real number $\\lambda$ such that for any nonnegative real numbers $x,$ $y,$ and $z$ such that $x^2 + y^2 + z^2 = 1,$ the inequality\n\\[\\lambda xy + yz \\le \\frac{\\sqrt{5}}{2}\\]holds. The final Answer is $2$\n ### Proof\n We write $x^2 + y^2 + z^2 = 1$ as $x^2 + ay^2 + (1 - a) y^2 + z^2 = 1,$ where $a$ is some real number, $0 \\le a \\le 1,$ that is to be determined. Then by AM-GM, \\[1 = x^2 + ay^2 + (1 - a) y^2 + z^2 \\ge 2xy \\sqrt{a} + 2yz \\sqrt{1 - a}.\\]To make this look more like $\\lambda xy + yz,$ we choose $a$ so that the coefficients are proportional, i.e.\n\\[\\frac{2 \\sqrt{a}}{\\lambda} = 2 \\sqrt{1 - a}.\\]Then $\\sqrt{a} = \\lambda \\sqrt{1 - a},$ so $a = \\lambda^2 (1 - a).$  Solving for $a,$ we find $a = \\frac{\\lambda^2}{\\lambda^2 + 1}.$\nTherefore, \\[\\frac{2 \\lambda xy}{\\sqrt{\\lambda^2 + 1}} + \\frac{2yz}{\\sqrt{\\lambda^2 + 1}} \\le 1,\\]so \\[\\lambda xy + yz \\le \\frac{\\sqrt{\\lambda^2 + 1}}{2}.\\]We want this to equal $\\frac{\\sqrt{5}}{2},$ so $\\lambda = \\boxed{2}.$  Equality occurs when $x = \\frac{\\sqrt{10}}{5},$ $y = \\frac{\\sqrt{2}}{2},$ and $z = \\frac{\\sqrt{10}}{10}.$\n *)\n\ntheorem\nfixes lambda :: real\nassumes h0 : \"lambda \\<ge> 0\"\nand h1 : \"\\<forall> x y z. x \\<ge> 0 \\<and> y \\<ge> 0 \\<and> z \\<ge> 0 \\<and> x powr 2 + y powr 2 + z powr 2 = 1 \\<longrightarrow> lambda * x * y + y * z \\<le> sqrt 5 / 2\"\nshows \"lambda = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a real number lambda greater than or equal to 0, and for all non-negative real numbers x, y, and z such that x^2 + y^2 + z^2 = 1, it is true that lambda * x * y + y * z is less than or equal to sqrt(5) / 2. Prove that lambda must be equal to 2.",
+        "syntax": 1,
+        "semantic_score": 0.9030455679749134,
+        "symbolic_score": 0.3
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            8,
+            9,
+            3
+        ],
+        "1": [
+            2,
+            5
+        ],
+        "2": [
+            4,
+            7
+        ],
+        "3": [
+            0
+        ],
+        "4": [
+            1
+        ],
+        "5": [
+            6
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

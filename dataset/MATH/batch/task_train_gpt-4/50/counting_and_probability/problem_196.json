@@ -1,0 +1,60 @@
+{
+    "natural problem": "In the expansion of $(x+1)^{42}$, what is the coefficient of the $x^2$ term?",
+    "natural solution": [
+        "The coefficient of $x^k$ in $(x+1)^{42}$ is $\\binom{42}{k}\\times 1^{42-k} = \\binom{42}{k}$.",
+        "Therefore, the answer is $\\binom{42}{2} = \\frac{42 \\times 41}{2} = 21 \\times 41 = \\boxed{861}$."
+    ],
+    "natural answer": "861",
+    "a_0": {
+        "formal problem": "theorem\nfixes x :: real and coef :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"coef = (\\<lambda>n. (fact 42) / (fact n * fact (42 - n)))\"\nand h1 : \"(x + 1) powr 42 = (\\<Sum>k = 0..42. coef k * x powr k)\"\nshows  \"coef 2 = 861\"",
+        "formal solution": "(* ### Problem\n In the expansion of $(x+1)^{42}$, what is the coefficient of the $x^2$ term? The final Answer is 861\n ### Proof\n The coefficient of $x^k$ in $(x+1)^{42}$ is $\\binom{42}{k}\\times 1^{42-k} = \\binom{42}{k}$.\n Therefore, the answer is $\\binom{42}{2} = \\frac{42 \\times 41}{2} = 21 \\times 41 = \\boxed{861}$.\n *)\n\ntheorem\nfixes x :: real and coef :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"coef = (\\<lambda>n. (fact 42) / (fact n * fact (42 - n)))\"\nand h1 : \"(x + 1) powr 42 = (\\<Sum>k = 0..42. coef k * x powr k)\"\nshows  \"coef 2 = 861\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the coefficient of $x^2$ in the expansion of $(x + 1)^{42}$. The final answer is 861."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"diff (diff P) x = 861\"\nshows  \"861 = binomial 42 2\"",
+        "formal solution": "(* ### Problem\n In the expansion of $(x+1)^{42}$, what is the coefficient of the $x^2$ term? The final Answer is 861\n ### Proof\n The coefficient of $x^k$ in $(x+1)^{42}$ is $\\binom{42}{k}\\times 1^{42-k} = \\binom{42}{k}$.\n Therefore, the answer is $\\binom{42}{2} = \\frac{42 \\times 41}{2} = 21 \\times 41 = \\boxed{861}$.\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"diff (diff P) x = 861\"\nshows  \"861 = binomial 42 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $P(x) = (x + 1)^{42}$, find the second derivative of $P$ with respect to $x$ at any point $x$. The final answer is 861, which is the same as the binomial coefficient $\\binom{42}{2}$."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x :: real\nand P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"diff (diff P x) x = 861 * x powr 0\"\nshows  \"coeff_x_squared = 861\"",
+        "formal solution": "(* ### Problem\n In the expansion of $(x+1)^{42}$, what is the coefficient of the $x^2$ term? The final Answer is 861\n ### Proof\n The coefficient of $x^k$ in $(x+1)^{42}$ is $\\binom{42}{k}\\times 1^{42-k} = \\binom{42}{k}$.\n Therefore, the answer is $\\binom{42}{2} = \\frac{42 \\times 41}{2} = 21 \\times 41 = \\boxed{861}$.\n *)\n\ntheorem\nfixes x :: real\nand P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"diff (diff P x) x = 861 * x powr 0\"\nshows  \"coeff_x_squared = 861\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the function $P(x) = (x+1)^{42}$, find the second derivative with respect to $x$. Then, determine the coefficient of the $x^2$ term in the second derivative. The final answer is 861."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"n = 42\"\nand h1 : \"k = 2\"\nand h2 : \"binomial n k = 861\"\nshows  \"coefficient (x + 1) powr 42 x 2 = 861\"",
+        "formal solution": "(* ### Problem\n In the expansion of $(x+1)^{42}$, what is the coefficient of the $x^2$ term? The final Answer is 861\n ### Proof\n The coefficient of $x^k$ in $(x+1)^{42}$ is $\\binom{42}{k}\\times 1^{42-k} = \\binom{42}{k}$.\n Therefore, the answer is $\\binom{42}{2} = \\frac{42 \\times 41}{2} = 21 \\times 41 = \\boxed{861}$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"n = 42\"\nand h1 : \"k = 2\"\nand h2 : \"binomial n k = 861\"\nshows  \"coefficient (x + 1) powr 42 x 2 = 861\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the coefficient of the $x^2$ term in the expansion of $(x + 1)^{42}$? The final answer is 861."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"\\<forall> x. (\\<Sum>k = 0..42. (42 choose k) * x powr k) = P x\"\nshows  \"42 choose 2 = 861\"",
+        "formal solution": "(* ### Problem\n In the expansion of $(x+1)^{42}$, what is the coefficient of the $x^2$ term? The final Answer is 861\n ### Proof\n The coefficient of $x^k$ in $(x+1)^{42}$ is $\\binom{42}{k}\\times 1^{42-k} = \\binom{42}{k}$.\n Therefore, the answer is $\\binom{42}{2} = \\frac{42 \\times 41}{2} = 21 \\times 41 = \\boxed{861}$.\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"\\<forall> x. (\\<Sum>k = 0..42. (42 choose k) * x powr k) = P x\"\nshows  \"42 choose 2 = 861\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the function $P(x) = (x + 1)^{42}$, and the fact that it can be represented as a sum of the form $\\sum_{k=0}^{42} {42 \\choose k} x^k$, find the value of ${42 \\choose 2}$. The final answer is $861$."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"coeff P 2 = 861\"\nshows  \"coeff P 2 = 861\"",
+        "formal solution": "(* ### Problem\n In the expansion of $(x+1)^{42}$, what is the coefficient of the $x^2$ term? The final Answer is 861\n ### Proof\n The coefficient of $x^k$ in $(x+1)^{42}$ is $\\binom{42}{k}\\times 1^{42-k} = \\binom{42}{k}$.\n Therefore, the answer is $\\binom{42}{2} = \\frac{42 \\times 41}{2} = 21 \\times 41 = \\boxed{861}$.\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"coeff P 2 = 861\"\nshows  \"coeff P 2 = 861\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the coefficient of the second term in the expansion of $(x + 1)^{42}$. The final answer is 861."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"(x + 1) powr 42 = (\\<Sum>k = 0..42. (binomial 42 k) * (x powr k))\"\nshows  \"binomial 42 2 = 861\"",
+        "formal solution": "(* ### Problem\n In the expansion of $(x+1)^{42}$, what is the coefficient of the $x^2$ term? The final Answer is 861\n ### Proof\n The coefficient of $x^k$ in $(x+1)^{42}$ is $\\binom{42}{k}\\times 1^{42-k} = \\binom{42}{k}$.\n Therefore, the answer is $\\binom{42}{2} = \\frac{42 \\times 41}{2} = 21 \\times 41 = \\boxed{861}$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"(x + 1) powr 42 = (\\<Sum>k = 0..42. (binomial 42 k) * (x powr k))\"\nshows  \"binomial 42 2 = 861\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the second binomial coefficient in the expansion of $(x + 1)^{42}$. The final answer is 861."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"coeff P 2 = 861\"\nshows  \"coeff P 2 = 861\"",
+        "formal solution": "(* ### Problem\n In the expansion of $(x+1)^{42}$, what is the coefficient of the $x^2$ term? The final Answer is 861\n ### Proof\n The coefficient of $x^k$ in $(x+1)^{42}$ is $\\binom{42}{k}\\times 1^{42-k} = \\binom{42}{k}$.\n Therefore, the answer is $\\binom{42}{2} = \\frac{42 \\times 41}{2} = 21 \\times 41 = \\boxed{861}$.\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"coeff P 2 = 861\"\nshows  \"coeff P 2 = 861\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $P(x) = (x + 1)^{42}$, confirm that the coefficient of the $x^2$ term is 861."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"\\<forall> x. diff (diff P) x = 861 * x powr 40\"\nshows  \"coefficient_of_x_pow_2_in_expansion = 861\"",
+        "formal solution": "(* ### Problem\n In the expansion of $(x+1)^{42}$, what is the coefficient of the $x^2$ term? The final Answer is 861\n ### Proof\n The coefficient of $x^k$ in $(x+1)^{42}$ is $\\binom{42}{k}\\times 1^{42-k} = \\binom{42}{k}$.\n Therefore, the answer is $\\binom{42}{2} = \\frac{42 \\times 41}{2} = 21 \\times 41 = \\boxed{861}$.\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"\\<forall> x. diff (diff P) x = 861 * x powr 40\"\nshows  \"coefficient_of_x_pow_2_in_expansion = 861\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the coefficient of the $x^2$ term in the expansion of $(x + 1)^{42}$. The final answer is $861$."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"binomial 42 2 = 861\"\nshows  \"coefficient (P x) 2 = 861\"",
+        "formal solution": "(* ### Problem\n In the expansion of $(x+1)^{42}$, what is the coefficient of the $x^2$ term? The final Answer is 861\n ### Proof\n The coefficient of $x^k$ in $(x+1)^{42}$ is $\\binom{42}{k}\\times 1^{42-k} = \\binom{42}{k}$.\n Therefore, the answer is $\\binom{42}{2} = \\frac{42 \\times 41}{2} = 21 \\times 41 = \\boxed{861}$.\n *)\n\ntheorem\nfixes x :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = (x + 1) powr 42\"\nand h1 : \"binomial 42 2 = 861\"\nshows  \"coefficient (P x) 2 = 861\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the coefficient of the $x^2$ term in the expansion of $(x + 1)^{42}$. The final answer is 861."
+    },
+    "level": "Level 4",
+    "type": "Counting & Probability"
+}

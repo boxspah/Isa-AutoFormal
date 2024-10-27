@@ -1,0 +1,116 @@
+{
+    "problem_name": "mathd_algebra_323",
+    "informal_statement": "If $f(x)=x^3-8$, what is $f^{-1}(f(f^{-1}(19)))$? Show that it is 3.",
+    "informal_proof": "First, by definition of the inverse of a function, $f(f^{-1}(19)) = 19$, so $f^{-1}(f(f^{-1}(19))) = f^{-1}(19)$.\n\nWe then find the inverse of $f(x)$. Substituting $f^{-1}(x)$ into the expression for $f$, and noting that $f(f^{-1}(x)) = x$ for all $x$ in the domain of $f^{-1}$, we get that  \\[x = (f^{-1}(x))^3 - 8.\\]Solving this equation for $f^{-1}(x)$, we get that $f^{-1}(x)=\\sqrt[3]{x+8}$. Then $f^{-1}(19) = \\sqrt[3]{19+8} = \\sqrt[3]{27}= 3$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (inv f (f (inv f 19))) = 3\"\nshows  \"f (inv f (f (inv f 19))) = 3\"",
+        "formal solution": "(* ### Problem\n If $f(x)=x^3-8$, what is $f^{-1}(f(f^{-1}(19)))$? The final Answer is $3$\n ### Proof\n First, by definition of the inverse of a function, $f(f^{-1}(19)) = 19$, so $f^{-1}(f(f^{-1}(19))) = f^{-1}(19)$.\n\nWe then find the inverse of $f(x)$. Substituting $f^{-1}(x)$ into the expression for $f$, and noting that $f(f^{-1}(x)) = x$ for all $x$ in the domain of $f^{-1}$, we get that  \\[x = (f^{-1}(x))^3 - 8.\\]Solving this equation for $f^{-1}(x)$, we get that $f^{-1}(x)=\\sqrt[3]{x+8}$. Then $f^{-1}(19) = \\sqrt[3]{19+8} = \\sqrt[3]{27}= 3$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (inv f (f (inv f 19))) = 3\"\nshows  \"f (inv f (f (inv f 19))) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a bijective function $f(x) = x^3 - 8$, find the value of $f(f^{-1}(f(f^{-1}(19))))$. The final answer is $3$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7278774976730347,
+        "symbolic_score": 0.6
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (f (inv f 19)) = 3\"\nshows  \"f (inv f 19) = 3\"",
+        "formal solution": "(* ### Problem\n If $f(x)=x^3-8$, what is $f^{-1}(f(f^{-1}(19)))$? The final Answer is $3$\n ### Proof\n First, by definition of the inverse of a function, $f(f^{-1}(19)) = 19$, so $f^{-1}(f(f^{-1}(19))) = f^{-1}(19)$.\n\nWe then find the inverse of $f(x)$. Substituting $f^{-1}(x)$ into the expression for $f$, and noting that $f(f^{-1}(x)) = x$ for all $x$ in the domain of $f^{-1}$, we get that  \\[x = (f^{-1}(x))^3 - 8.\\]Solving this equation for $f^{-1}(x)$, we get that $f^{-1}(x)=\\sqrt[3]{x+8}$. Then $f^{-1}(19) = \\sqrt[3]{19+8} = \\sqrt[3]{27}= 3$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (f (inv f 19)) = 3\"\nshows  \"f (inv f 19) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a bijective function $f(x) = x^3 - 8$, find the value of $f(f^{-1}(19))$ such that $f(f(f^{-1}(19))) = 3$. The final answer is $f(f^{-1}(19)) = 3$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5965756177902222,
+        "symbolic_score": 0.6
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\" and inv_f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"inv_f = inv f\"\nand h3 : \"f (inv_f (f (inv_f 19))) = 3\"\nshows  \"f (inv_f (f (inv_f 19))) = 3\"",
+        "formal solution": "(* ### Problem\n If $f(x)=x^3-8$, what is $f^{-1}(f(f^{-1}(19)))$? The final Answer is $3$\n ### Proof\n First, by definition of the inverse of a function, $f(f^{-1}(19)) = 19$, so $f^{-1}(f(f^{-1}(19))) = f^{-1}(19)$.\n\nWe then find the inverse of $f(x)$. Substituting $f^{-1}(x)$ into the expression for $f$, and noting that $f(f^{-1}(x)) = x$ for all $x$ in the domain of $f^{-1}$, we get that  \\[x = (f^{-1}(x))^3 - 8.\\]Solving this equation for $f^{-1}(x)$, we get that $f^{-1}(x)=\\sqrt[3]{x+8}$. Then $f^{-1}(19) = \\sqrt[3]{19+8} = \\sqrt[3]{27}= 3$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\" and inv_f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"inv_f = inv f\"\nand h3 : \"f (inv_f (f (inv_f 19))) = 3\"\nshows  \"f (inv_f (f (inv_f 19))) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a bijective function $f(x) = x^3 - 8$ and its inverse function $f^{-1}(x)$, find the value of $f(f^{-1}(f(f^{-1}(19))))$. The final answer is $3$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7346606850624084,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x f :: \"real \\<Rightarrow> real\" and f_inv :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f_inv = inv f\"\nshows  \"f_inv (f (f_inv 19)) = 3\"",
+        "formal solution": "(* ### Problem\n If $f(x)=x^3-8$, what is $f^{-1}(f(f^{-1}(19)))$? The final Answer is $3$\n ### Proof\n First, by definition of the inverse of a function, $f(f^{-1}(19)) = 19$, so $f^{-1}(f(f^{-1}(19))) = f^{-1}(19)$.\n\nWe then find the inverse of $f(x)$. Substituting $f^{-1}(x)$ into the expression for $f$, and noting that $f(f^{-1}(x)) = x$ for all $x$ in the domain of $f^{-1}$, we get that  \\[x = (f^{-1}(x))^3 - 8.\\]Solving this equation for $f^{-1}(x)$, we get that $f^{-1}(x)=\\sqrt[3]{x+8}$. Then $f^{-1}(19) = \\sqrt[3]{19+8} = \\sqrt[3]{27}= 3$.\n *)\n\ntheorem\nfixes x f :: \"real \\<Rightarrow> real\" and f_inv :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f_inv = inv f\"\nshows  \"f_inv (f (f_inv 19)) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = x^3 - 8$ and its inverse function $f^{-1}(x)$, find the value of $f^{-1}(f(f^{-1}(19)))$. The final answer is $3$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5738751292228699,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (inv f (f (inv f 19))) = 3\"\nshows  \"f (inv f (f (inv f 19))) = 3\"",
+        "formal solution": "(* ### Problem\n If $f(x)=x^3-8$, what is $f^{-1}(f(f^{-1}(19)))$? The final Answer is $3$\n ### Proof\n First, by definition of the inverse of a function, $f(f^{-1}(19)) = 19$, so $f^{-1}(f(f^{-1}(19))) = f^{-1}(19)$.\n\nWe then find the inverse of $f(x)$. Substituting $f^{-1}(x)$ into the expression for $f$, and noting that $f(f^{-1}(x)) = x$ for all $x$ in the domain of $f^{-1}$, we get that  \\[x = (f^{-1}(x))^3 - 8.\\]Solving this equation for $f^{-1}(x)$, we get that $f^{-1}(x)=\\sqrt[3]{x+8}$. Then $f^{-1}(19) = \\sqrt[3]{19+8} = \\sqrt[3]{27}= 3$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (inv f (f (inv f 19))) = 3\"\nshows  \"f (inv f (f (inv f 19))) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a bijective function $f(x) = x^3 - 8$, find the value of $f(f^{-1}(f(f^{-1}(19))))$. The final answer is $3$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7278774976730347,
+        "symbolic_score": 0.6
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (f (inv f 19)) = 3\"\nshows  \"f (inv f (f (inv f 19))) = 3\"",
+        "formal solution": "(* ### Problem\n If $f(x)=x^3-8$, what is $f^{-1}(f(f^{-1}(19)))$? The final Answer is $3$\n ### Proof\n First, by definition of the inverse of a function, $f(f^{-1}(19)) = 19$, so $f^{-1}(f(f^{-1}(19))) = f^{-1}(19)$.\n\nWe then find the inverse of $f(x)$. Substituting $f^{-1}(x)$ into the expression for $f$, and noting that $f(f^{-1}(x)) = x$ for all $x$ in the domain of $f^{-1}$, we get that  \\[x = (f^{-1}(x))^3 - 8.\\]Solving this equation for $f^{-1}(x)$, we get that $f^{-1}(x)=\\sqrt[3]{x+8}$. Then $f^{-1}(19) = \\sqrt[3]{19+8} = \\sqrt[3]{27}= 3$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (f (inv f 19)) = 3\"\nshows  \"f (inv f (f (inv f 19))) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a bijective function $f(x) = x^3 - 8$, find the value of $f(f^{-1}(f(f^{-1}(19))))$. The final answer is $3$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.7278774976730347,
+        "symbolic_score": 0.6
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\" and f_inv :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"\\<forall> x. f (f_inv x) = x\"\nshows  \"f (f_inv (f (f_inv 19))) = 3\"",
+        "formal solution": "(* ### Problem\n If $f(x)=x^3-8$, what is $f^{-1}(f(f^{-1}(19)))$? The final Answer is $3$\n ### Proof\n First, by definition of the inverse of a function, $f(f^{-1}(19)) = 19$, so $f^{-1}(f(f^{-1}(19))) = f^{-1}(19)$.\n\nWe then find the inverse of $f(x)$. Substituting $f^{-1}(x)$ into the expression for $f$, and noting that $f(f^{-1}(x)) = x$ for all $x$ in the domain of $f^{-1}$, we get that  \\[x = (f^{-1}(x))^3 - 8.\\]Solving this equation for $f^{-1}(x)$, we get that $f^{-1}(x)=\\sqrt[3]{x+8}$. Then $f^{-1}(19) = \\sqrt[3]{19+8} = \\sqrt[3]{27}= 3$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\" and f_inv :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"\\<forall> x. f (f_inv x) = x\"\nshows  \"f (f_inv (f (f_inv 19))) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a bijective function $f(x) = x^3 - 8$ and its inverse function $f^{-1}(x)$, find the value of $f(f^{-1}(f(f^{-1}(19))))$. The final answer is $3$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7346606850624084,
+        "symbolic_score": 0.6
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (f (inv f 19)) = 3\"\nshows  \"f (f (inv f 19)) = 3\"",
+        "formal solution": "(* ### Problem\n If $f(x)=x^3-8$, what is $f^{-1}(f(f^{-1}(19)))$? The final Answer is $3$\n ### Proof\n First, by definition of the inverse of a function, $f(f^{-1}(19)) = 19$, so $f^{-1}(f(f^{-1}(19))) = f^{-1}(19)$.\n\nWe then find the inverse of $f(x)$. Substituting $f^{-1}(x)$ into the expression for $f$, and noting that $f(f^{-1}(x)) = x$ for all $x$ in the domain of $f^{-1}$, we get that  \\[x = (f^{-1}(x))^3 - 8.\\]Solving this equation for $f^{-1}(x)$, we get that $f^{-1}(x)=\\sqrt[3]{x+8}$. Then $f^{-1}(19) = \\sqrt[3]{19+8} = \\sqrt[3]{27}= 3$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (f (inv f 19)) = 3\"\nshows  \"f (f (inv f 19)) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = x^3 - 8$ is a bijective function, find the value of $f(f(f^{-1}(19)))$. The final answer is $3$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8185853958129883,
+        "symbolic_score": 0.2
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (f (inv f 19)) = 3\"\nshows  \"f (f (inv f 19)) = 3\"",
+        "formal solution": "(* ### Problem\n If $f(x)=x^3-8$, what is $f^{-1}(f(f^{-1}(19)))$? The final Answer is $3$\n ### Proof\n First, by definition of the inverse of a function, $f(f^{-1}(19)) = 19$, so $f^{-1}(f(f^{-1}(19))) = f^{-1}(19)$.\n\nWe then find the inverse of $f(x)$. Substituting $f^{-1}(x)$ into the expression for $f$, and noting that $f(f^{-1}(x)) = x$ for all $x$ in the domain of $f^{-1}$, we get that  \\[x = (f^{-1}(x))^3 - 8.\\]Solving this equation for $f^{-1}(x)$, we get that $f^{-1}(x)=\\sqrt[3]{x+8}$. Then $f^{-1}(19) = \\sqrt[3]{19+8} = \\sqrt[3]{27}= 3$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (f (inv f 19)) = 3\"\nshows  \"f (f (inv f 19)) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a bijective function $f(x) = x^3 - 8$, find the value of $f(f(f^{-1}(19)))$. The final answer is $3$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.6148938536643982,
+        "symbolic_score": 0.2
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (inv f (f (inv f 19))) = 3\"\nshows  \"f (inv f (f (inv f 19))) = 3\"",
+        "formal solution": "(* ### Problem\n If $f(x)=x^3-8$, what is $f^{-1}(f(f^{-1}(19)))$? The final Answer is $3$\n ### Proof\n First, by definition of the inverse of a function, $f(f^{-1}(19)) = 19$, so $f^{-1}(f(f^{-1}(19))) = f^{-1}(19)$.\n\nWe then find the inverse of $f(x)$. Substituting $f^{-1}(x)$ into the expression for $f$, and noting that $f(f^{-1}(x)) = x$ for all $x$ in the domain of $f^{-1}$, we get that  \\[x = (f^{-1}(x))^3 - 8.\\]Solving this equation for $f^{-1}(x)$, we get that $f^{-1}(x)=\\sqrt[3]{x+8}$. Then $f^{-1}(19) = \\sqrt[3]{19+8} = \\sqrt[3]{27}= 3$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = x powr 3 - 8\"\nand h2 : \"f (inv f (f (inv f 19))) = 3\"\nshows  \"f (inv f (f (inv f 19))) = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a bijective function $f(x) = x^3 - 8$. If $f(f^{-1}(f(f^{-1}(19)))) = 3$, find the value of $f(f^{-1}(f(f^{-1}(19))))$. The final answer is $3$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9667788743972778,
+        "symbolic_score": 0.6
+    },
+    "oracle": "theorem\nfixes \\<sigma>:: \"real \\<Rightarrow> real\"\nassumes \"bij \\<sigma>\"\nand \"\\<forall> x. \\<sigma> x = x^3 - 8\"\nshows \"Hilbert_Choice.inv \\<sigma> (\\<sigma> (Hilbert_Choice.inv \\<sigma> 19)) = 3\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            4,
+            5,
+            6,
+            9
+        ],
+        "1": [
+            8,
+            7
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ]
+    }
+}

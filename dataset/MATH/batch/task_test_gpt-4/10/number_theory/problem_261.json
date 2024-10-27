@@ -1,0 +1,60 @@
+{
+    "natural problem": "Evaluate $3210_{7}-2401_{7}$. Express your answer in base 7.",
+    "natural solution": [
+        "We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 3 & 2 & 1 & 0_{7}\\\\ -& & 2& 4 & 0 & 1_{7}\\\\ \\cline{1-6}&& & 5 & 0 & 6 _{7}\\\\ \\end{array}$",
+        "So, our final answer is $\\boxed{506_7}$."
+    ],
+    "natural answer": "506_7",
+    "a_0": {
+        "formal problem": "Although Isabelle/HOL does not inherently support base 7 arithmetic, the problem can be translated as follows, assuming a function to_base7 that converts a decimal number to base 7:\n\ntheorem\nfixes to_base7 :: \"int \\<Rightarrow> int\"\nassumes h0 : \"to_base7 3210 = 1058\"\nand h1 : \"to_base7 2401 = 1001\"\nshows  \"to_base7 (1058 - 1001) = 506\" (* Conversion of the result back to base 7 *)",
+        "formal solution": "(* ### Problem\n Evaluate $3210_{7}-2401_{7}$. Express your answer in base 7. The final Answer is 506_7\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 3 & 2 & 1 & 0_{7}\\\\ -& & 2& 4 & 0 & 1_{7}\\\\ \\cline{1-6}&& & 5 & 0 & 6 _{7}\\\\ \\end{array}$\n So, our final answer is $\\boxed{506_7}$.\n *)\n\nAlthough Isabelle/HOL does not inherently support base 7 arithmetic, the problem can be translated as follows, assuming a function to_base7 that converts a decimal number to base 7:\n\ntheorem\nfixes to_base7 :: \"int \\<Rightarrow> int\"\nassumes h0 : \"to_base7 3210 = 1058\"\nand h1 : \"to_base7 2401 = 1001\"\nshows  \"to_base7 (1058 - 1001) = 506\" (* Conversion of the result back to base 7 *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Subtract the base-7 number 1001 from the base-7 number 1058. What is the result in base-7? The final answer is 506 in base-7."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x y :: nat\nassumes h0 : \"x = 3210\"\nand h1 : \"y = 2401\"\nand h2 : \"\\<forall> n. n = sum (\\<lambda>i. (n div (7^i) mod 7) * (7^i)) {..log 7 (real n)}\"\nshows  \"x - y = 506\"",
+        "formal solution": "(* ### Problem\n Evaluate $3210_{7}-2401_{7}$. Express your answer in base 7. The final Answer is 506_7\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 3 & 2 & 1 & 0_{7}\\\\ -& & 2& 4 & 0 & 1_{7}\\\\ \\cline{1-6}&& & 5 & 0 & 6 _{7}\\\\ \\end{array}$\n So, our final answer is $\\boxed{506_7}$.\n *)\n\ntheorem\nfixes x y :: nat\nassumes h0 : \"x = 3210\"\nand h1 : \"y = 2401\"\nand h2 : \"\\<forall> n. n = sum (\\<lambda>i. (n div (7^i) mod 7) * (7^i)) {..log 7 (real n)}\"\nshows  \"x - y = 506\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $x = 3210$ and $y = 2401$, and each natural number $n$ is equal to the sum $\\sum ((n \\div 7^i) \\mod 7) \\times 7^i$ for all $i$ from $0$ to $\\log_7 n$, then calculate the difference between $x$ and $y$. The answer is $506$."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a = (3 * (7^3)) + (2 * (7^2)) + (1 * (7^1)) + (0 * (7^0))\"\nand h1 : \"b = (2 * (7^3)) + (4 * (7^2)) + (0 * (7^1)) + (1 * (7^0))\"\nshows  \"a - b = (5 * (7^2)) + (0 * (7^1)) + (6 * (7^0))\"",
+        "formal solution": "(* ### Problem\n Evaluate $3210_{7}-2401_{7}$. Express your answer in base 7. The final Answer is 506_7\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 3 & 2 & 1 & 0_{7}\\\\ -& & 2& 4 & 0 & 1_{7}\\\\ \\cline{1-6}&& & 5 & 0 & 6 _{7}\\\\ \\end{array}$\n So, our final answer is $\\boxed{506_7}$.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a = (3 * (7^3)) + (2 * (7^2)) + (1 * (7^1)) + (0 * (7^0))\"\nand h1 : \"b = (2 * (7^3)) + (4 * (7^2)) + (0 * (7^1)) + (1 * (7^0))\"\nshows  \"a - b = (5 * (7^2)) + (0 * (7^1)) + (6 * (7^0))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two numbers a and b represented in base 7, where a is 3201 and b is 2401 (in base 7), find the difference between a and b in base 7. The final answer is 506 (in base 7)."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a = numeral (Num.Bit1 (Num.Bit1 (Num.Bit1 (Num.Bit0 (Num.Bit1 Num.One)))))\"\nand h1 : \"b = numeral (Num.Bit1 (Num.Bit0 (Num.Bit0 (Num.Bit0 Num.One))))\"\nshows  \"a - b = numeral (Num.Bit0 (Num.Bit0 (Num.Bit1 Num.One)))\" (* 506 in base 7 *)",
+        "formal solution": "(* ### Problem\n Evaluate $3210_{7}-2401_{7}$. Express your answer in base 7. The final Answer is 506_7\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 3 & 2 & 1 & 0_{7}\\\\ -& & 2& 4 & 0 & 1_{7}\\\\ \\cline{1-6}&& & 5 & 0 & 6 _{7}\\\\ \\end{array}$\n So, our final answer is $\\boxed{506_7}$.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a = numeral (Num.Bit1 (Num.Bit1 (Num.Bit1 (Num.Bit0 (Num.Bit1 Num.One)))))\"\nand h1 : \"b = numeral (Num.Bit1 (Num.Bit0 (Num.Bit0 (Num.Bit0 Num.One))))\"\nshows  \"a - b = numeral (Num.Bit0 (Num.Bit0 (Num.Bit1 Num.One)))\" (* 506 in base 7 *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the difference between the number 1511 (in base 2) and the number 11000 (in base 2). The final answer is 10110 (in base 2)."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b c :: nat\nassumes h0 : \"a = nat (int_of_string_base 7 \"\nand h1 : \")\"\nand h2 : \"b = nat (int_of_string_base 7 \"\nand h3 : \")\"\nshows  \"c = nat (int_of_string_base 7 \"506\")\"",
+        "formal solution": "(* ### Problem\n Evaluate $3210_{7}-2401_{7}$. Express your answer in base 7. The final Answer is 506_7\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 3 & 2 & 1 & 0_{7}\\\\ -& & 2& 4 & 0 & 1_{7}\\\\ \\cline{1-6}&& & 5 & 0 & 6 _{7}\\\\ \\end{array}$\n So, our final answer is $\\boxed{506_7}$.\n *)\n\ntheorem\nfixes a b c :: nat\nassumes h0 : \"a = nat (int_of_string_base 7 \"\nand h1 : \")\"\nand h2 : \"b = nat (int_of_string_base 7 \"\nand h3 : \")\"\nshows  \"c = nat (int_of_string_base 7 \"506\")\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two numbers $a$ and $b$ in base 7, find the number $c$ also in base 7 that equals to 506 in base 7."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x y :: int\nassumes h0 : \"x = int_of_digitlist_base 7 [3,2,1,0]\"\nand h1 : \"y = int_of_digitlist_base 7 [2,4,0,1]\"\nshows  \"x - y = int_of_digitlist_base 7 [5,0,6]\"",
+        "formal solution": "(* ### Problem\n Evaluate $3210_{7}-2401_{7}$. Express your answer in base 7. The final Answer is 506_7\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 3 & 2 & 1 & 0_{7}\\\\ -& & 2& 4 & 0 & 1_{7}\\\\ \\cline{1-6}&& & 5 & 0 & 6 _{7}\\\\ \\end{array}$\n So, our final answer is $\\boxed{506_7}$.\n *)\n\ntheorem\nfixes x y :: int\nassumes h0 : \"x = int_of_digitlist_base 7 [3,2,1,0]\"\nand h1 : \"y = int_of_digitlist_base 7 [2,4,0,1]\"\nshows  \"x - y = int_of_digitlist_base 7 [5,0,6]\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the difference between the base-7 numbers 3210 and 2401. Express the result as a base-7 number. The final answer is 506."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a = 3210\"\nand h1 : \"b = 2401\"\nand h2 : \"a and b are expressed in base 7\"\nshows  \"a - b = 506 (in base 7)\"",
+        "formal solution": "(* ### Problem\n Evaluate $3210_{7}-2401_{7}$. Express your answer in base 7. The final Answer is 506_7\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 3 & 2 & 1 & 0_{7}\\\\ -& & 2& 4 & 0 & 1_{7}\\\\ \\cline{1-6}&& & 5 & 0 & 6 _{7}\\\\ \\end{array}$\n So, our final answer is $\\boxed{506_7}$.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a = 3210\"\nand h1 : \"b = 2401\"\nand h2 : \"a and b are expressed in base 7\"\nshows  \"a - b = 506 (in base 7)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Subtract 2401 from 3210, where both numbers are expressed in base 7. The result should be 506, also in base 7."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a = nat_of_base 7 '3210'\"\nand h1 : \"b = nat_of_base 7 '2401'\"\nshows  \"base_of_nat 7 (a - b) = '506'\"",
+        "formal solution": "(* ### Problem\n Evaluate $3210_{7}-2401_{7}$. Express your answer in base 7. The final Answer is 506_7\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 3 & 2 & 1 & 0_{7}\\\\ -& & 2& 4 & 0 & 1_{7}\\\\ \\cline{1-6}&& & 5 & 0 & 6 _{7}\\\\ \\end{array}$\n So, our final answer is $\\boxed{506_7}$.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a = nat_of_base 7 '3210'\"\nand h1 : \"b = nat_of_base 7 '2401'\"\nshows  \"base_of_nat 7 (a - b) = '506'\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Subtract the base 7 number '2401' from the base 7 number '3210'. Express the result in base 7 notation. The final answer is '506'."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a = numeral (Num.Bit0 (Num.Bit1 (Num.Bit0 (Num.Bit0 (Num.Bit1 (Num.Bit0 (Num.Bit1 Num.One)))))))\"\nand h1 : \"b = numeral (Num.Bit0 (Num.Bit1 (Num.Bit0 (Num.Bit0 (Num.Bit1 (Num.Bit0 (Num.Bit1 Num.One)))))))\"\nshows  \"a - b = numeral (Num.Bit0 (Num.Bit1 (Num.Bit0 (Num.Bit0 (Num.Bit1 (Num.Bit0 (Num.Bit1 Num.One)))))))\"",
+        "formal solution": "(* ### Problem\n Evaluate $3210_{7}-2401_{7}$. Express your answer in base 7. The final Answer is 506_7\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 3 & 2 & 1 & 0_{7}\\\\ -& & 2& 4 & 0 & 1_{7}\\\\ \\cline{1-6}&& & 5 & 0 & 6 _{7}\\\\ \\end{array}$\n So, our final answer is $\\boxed{506_7}$.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a = numeral (Num.Bit0 (Num.Bit1 (Num.Bit0 (Num.Bit0 (Num.Bit1 (Num.Bit0 (Num.Bit1 Num.One)))))))\"\nand h1 : \"b = numeral (Num.Bit0 (Num.Bit1 (Num.Bit0 (Num.Bit0 (Num.Bit1 (Num.Bit0 (Num.Bit1 Num.One)))))))\"\nshows  \"a - b = numeral (Num.Bit0 (Num.Bit1 (Num.Bit0 (Num.Bit0 (Num.Bit1 (Num.Bit0 (Num.Bit1 Num.One)))))))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a$ and $b$ are both equal to the numeral represented by the binary number 1011010, find the result of $a - b$. The final answer is the numeral represented by the binary number 1011010."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n m :: int\nassumes h0 : \"n = 3210_7\"\nand h1 : \"m = 2401_7\"\nshows  \"n - m = 506_7\"",
+        "formal solution": "(* ### Problem\n Evaluate $3210_{7}-2401_{7}$. Express your answer in base 7. The final Answer is 506_7\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 3 & 2 & 1 & 0_{7}\\\\ -& & 2& 4 & 0 & 1_{7}\\\\ \\cline{1-6}&& & 5 & 0 & 6 _{7}\\\\ \\end{array}$\n So, our final answer is $\\boxed{506_7}$.\n *)\n\ntheorem\nfixes n m :: int\nassumes h0 : \"n = 3210_7\"\nand h1 : \"m = 2401_7\"\nshows  \"n - m = 506_7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Subtract the base-7 number 2401_7 from the base-7 number 3210_7. The final answer is 506_7."
+    },
+    "level": "Level 3",
+    "type": "Number Theory"
+}

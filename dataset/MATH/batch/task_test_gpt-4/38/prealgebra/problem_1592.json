@@ -1,0 +1,60 @@
+{
+    "natural problem": "What is the probability that when a fair 6-sided die is rolled, a prime number faces up?",
+    "natural solution": [
+        "In this problem there are 6 equally likely outcomes. Three of those outcomes, 2, 3, and 5, are successful.",
+        "Therefore, the probability is $\\frac{3}{6} = \\boxed{\\frac{1}{2}}$."
+    ],
+    "natural answer": "\\frac{1}{2}",
+    "a_0": {
+        "formal problem": "theorem\nfixes p :: real\nassumes h0 : \"p = 1 / 6\"\nand h1 : \"prime 2\"\nand h2 : \"prime 3\"\nand h3 : \"prime 5\"\nshows  \"3 * p = 1 / 2\" (*probability of prime number*)",
+        "formal solution": "(* ### Problem\n What is the probability that when a fair 6-sided die is rolled, a prime number faces up? The final Answer is \\frac{1}{2}\n ### Proof\n In this problem there are 6 equally likely outcomes. Three of those outcomes, 2, 3, and 5, are successful.\n Therefore, the probability is $\\frac{3}{6} = \\boxed{\\frac{1}{2}}$.\n *)\n\ntheorem\nfixes p :: real\nassumes h0 : \"p = 1 / 6\"\nand h1 : \"prime 2\"\nand h2 : \"prime 3\"\nand h3 : \"prime 5\"\nshows  \"3 * p = 1 / 2\" (*probability of prime number*)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the probability of getting a prime number (2, 3, or 5) is 1/6, what is the probability of getting a prime number three times? The final answer is 1/2."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes die :: \"nat set\"\nassumes h0 : \"die = {1, 2, 3, 4, 5, 6}\"\nand h1 : \"uniform_prob die\"\nand h2 : \"primes = {2, 3, 5}\"\nshows  \"prob primes = 1 / 2\"",
+        "formal solution": "(* ### Problem\n What is the probability that when a fair 6-sided die is rolled, a prime number faces up? The final Answer is \\frac{1}{2}\n ### Proof\n In this problem there are 6 equally likely outcomes. Three of those outcomes, 2, 3, and 5, are successful.\n Therefore, the probability is $\\frac{3}{6} = \\boxed{\\frac{1}{2}}$.\n *)\n\ntheorem\nfixes die :: \"nat set\"\nassumes h0 : \"die = {1, 2, 3, 4, 5, 6}\"\nand h1 : \"uniform_prob die\"\nand h2 : \"primes = {2, 3, 5}\"\nshows  \"prob primes = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A fair six-sided die is rolled. The numbers {1, 2, 3, 4, 5, 6} are on the faces of the die. What is the probability that the number rolled is prime (2, 3, or 5)? The final answer is 1/2."
+    },
+    "a_2": {
+        "formal problem": "definition prime_numbers :: \"int set\" where\n\"prime_numbers = {2, 3, 5}\"\n\ntheorem probability_of_prime_on_die :\nshows  \"card prime_numbers / 6 = (1::real) / 2\"\nunfolding prime_numbers_def by auto",
+        "formal solution": "(* ### Problem\n What is the probability that when a fair 6-sided die is rolled, a prime number faces up? The final Answer is \\frac{1}{2}\n ### Proof\n In this problem there are 6 equally likely outcomes. Three of those outcomes, 2, 3, and 5, are successful.\n Therefore, the probability is $\\frac{3}{6} = \\boxed{\\frac{1}{2}}$.\n *)\n\ndefinition prime_numbers :: \"int set\" where\n\"prime_numbers = {2, 3, 5}\"\n\ntheorem probability_of_prime_on_die :\nshows  \"card prime_numbers / 6 = (1::real) / 2\"\nunfolding prime_numbers_def by auto\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In the set of prime numbers less than 6, which are {2, 3, 5}, what is the probability of rolling a prime number on a standard six-sided die? The final answer is 1/2."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes P :: \"nat set \\<Rightarrow> real\"\nassumes h0 : \"finite {1, 2, 3, 4, 5, 6}\"\nand h1 : \"P {1, 2, 3, 4, 5, 6} = 1\"\nand h2 : \"\\<forall> n \\<in> {1, 2, 3, 4, 5, 6}. P {n} = 1 / 6\"\nshows  \"P {2, 3, 5} = 1 / 2\"",
+        "formal solution": "(* ### Problem\n What is the probability that when a fair 6-sided die is rolled, a prime number faces up? The final Answer is \\frac{1}{2}\n ### Proof\n In this problem there are 6 equally likely outcomes. Three of those outcomes, 2, 3, and 5, are successful.\n Therefore, the probability is $\\frac{3}{6} = \\boxed{\\frac{1}{2}}$.\n *)\n\ntheorem\nfixes P :: \"nat set \\<Rightarrow> real\"\nassumes h0 : \"finite {1, 2, 3, 4, 5, 6}\"\nand h1 : \"P {1, 2, 3, 4, 5, 6} = 1\"\nand h2 : \"\\<forall> n \\<in> {1, 2, 3, 4, 5, 6}. P {n} = 1 / 6\"\nshows  \"P {2, 3, 5} = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function P that assigns a real number to a set of natural numbers. The function assigns the value 1 to the set {1, 2, 3, 4, 5, 6}, which is finite, and assigns the value 1/6 to each individual element in this set. What does the function assign to the set {2, 3, 5}? The final answer is 1/2."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes P :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"P n = (n = 2 \\<or> n = 3 \\<or> n = 5)\"\nand h1 : \"\\<forall>n. n \\<in> {1..6} \\<longrightarrow> P n\"\nshows  \"card {n. P n} / card {1..6} = 1 / 2\"",
+        "formal solution": "(* ### Problem\n What is the probability that when a fair 6-sided die is rolled, a prime number faces up? The final Answer is \\frac{1}{2}\n ### Proof\n In this problem there are 6 equally likely outcomes. Three of those outcomes, 2, 3, and 5, are successful.\n Therefore, the probability is $\\frac{3}{6} = \\boxed{\\frac{1}{2}}$.\n *)\n\ntheorem\nfixes P :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"P n = (n = 2 \\<or> n = 3 \\<or> n = 5)\"\nand h1 : \"\\<forall>n. n \\<in> {1..6} \\<longrightarrow> P n\"\nshows  \"card {n. P n} / card {1..6} = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A property P is defined for natural numbers such that P is true if and only if the number is 2, 3, or 5. Among the numbers from 1 to 6, what is the ratio of the numbers for which P is true? The final answer is 1/2."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes P :: \"nat set \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> A. finite A \\<longrightarrow> P A = card A / 6\"\nand h1 : \"is_prime_set {2,3,5}\"\nshows  \"P {2,3,5} = 1/2\"",
+        "formal solution": "(* ### Problem\n What is the probability that when a fair 6-sided die is rolled, a prime number faces up? The final Answer is \\frac{1}{2}\n ### Proof\n In this problem there are 6 equally likely outcomes. Three of those outcomes, 2, 3, and 5, are successful.\n Therefore, the probability is $\\frac{3}{6} = \\boxed{\\frac{1}{2}}$.\n *)\n\ntheorem\nfixes P :: \"nat set \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> A. finite A \\<longrightarrow> P A = card A / 6\"\nand h1 : \"is_prime_set {2,3,5}\"\nshows  \"P {2,3,5} = 1/2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function P that maps a set of natural numbers to a real number, such that for any finite set A, P(A) is the cardinality of A divided by 6. If the set {2,3,5} is a prime set, what is the value of P({2,3,5})? The final Answer is 1/2."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes prime_numbers six_sided_die :: nat\nassumes h0 : \"prime_numbers = {2, 3, 5}\"\nand h1 : \"six_sided_die = {1, 2, 3, 4, 5, 6}\"\nshows  \"card(prime_numbers) / card(six_sided_die) = 1/2\"",
+        "formal solution": "(* ### Problem\n What is the probability that when a fair 6-sided die is rolled, a prime number faces up? The final Answer is \\frac{1}{2}\n ### Proof\n In this problem there are 6 equally likely outcomes. Three of those outcomes, 2, 3, and 5, are successful.\n Therefore, the probability is $\\frac{3}{6} = \\boxed{\\frac{1}{2}}$.\n *)\n\ntheorem\nfixes prime_numbers six_sided_die :: nat\nassumes h0 : \"prime_numbers = {2, 3, 5}\"\nand h1 : \"six_sided_die = {1, 2, 3, 4, 5, 6}\"\nshows  \"card(prime_numbers) / card(six_sided_die) = 1/2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the ratio of the number of prime numbers in the set {2, 3, 5} to the number of sides on a six-sided die {1, 2, 3, 4, 5, 6}? The final answer is 1/2."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes die :: \"nat set\"\nand prime :: \"nat set\"\nassumes h0 : \"die = {1..6}\"\nand h1 : \"prime = {2, 3, 5}\"\nshows  \"card prime / card die = 1 / 2\"",
+        "formal solution": "(* ### Problem\n What is the probability that when a fair 6-sided die is rolled, a prime number faces up? The final Answer is \\frac{1}{2}\n ### Proof\n In this problem there are 6 equally likely outcomes. Three of those outcomes, 2, 3, and 5, are successful.\n Therefore, the probability is $\\frac{3}{6} = \\boxed{\\frac{1}{2}}$.\n *)\n\ntheorem\nfixes die :: \"nat set\"\nand prime :: \"nat set\"\nassumes h0 : \"die = {1..6}\"\nand h1 : \"prime = {2, 3, 5}\"\nshows  \"card prime / card die = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the ratio of the number of prime numbers to the total numbers on a six-sided die? The answer is 1/2."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes P :: \"nat set \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> A. finite A \\<and> A \\<subseteq> {1..6} \\<longrightarrow> P A = real (card A) / 6\"\nand h1 : \"prime (n :: nat) \\<longleftrightarrow> (1 < n \\<and> (\\<forall>m. m dvd n \\<longrightarrow> m = 1 \\<or> m = n))\"\nshows  \"P {x. prime x \\<and> x \\<in> {1..6}} = 1 / 2\"",
+        "formal solution": "(* ### Problem\n What is the probability that when a fair 6-sided die is rolled, a prime number faces up? The final Answer is \\frac{1}{2}\n ### Proof\n In this problem there are 6 equally likely outcomes. Three of those outcomes, 2, 3, and 5, are successful.\n Therefore, the probability is $\\frac{3}{6} = \\boxed{\\frac{1}{2}}$.\n *)\n\ntheorem\nfixes P :: \"nat set \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> A. finite A \\<and> A \\<subseteq> {1..6} \\<longrightarrow> P A = real (card A) / 6\"\nand h1 : \"prime (n :: nat) \\<longleftrightarrow> (1 < n \\<and> (\\<forall>m. m dvd n \\<longrightarrow> m = 1 \\<or> m = n))\"\nshows  \"P {x. prime x \\<and> x \\<in> {1..6}} = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $P$ that assigns to each finite subset of the set $\\{1,2,3,4,5,6\\}$ a real number which is the size of that subset divided by 6. We recall that a natural number $n$ is prime if it is greater than 1 and its only divisors are 1 and itself. Find the value of $P$ applied to the set of prime numbers within $\\{1,2,3,4,5,6\\}$. The final answer is $\\frac{1}{2}$."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes prime_count total_sides :: real\nassumes h0 : \"prime_count = 3\"\nand h1 : \"total_sides = 6\"\nshows  \"prime_count / total_sides = 1 / 2\"",
+        "formal solution": "(* ### Problem\n What is the probability that when a fair 6-sided die is rolled, a prime number faces up? The final Answer is \\frac{1}{2}\n ### Proof\n In this problem there are 6 equally likely outcomes. Three of those outcomes, 2, 3, and 5, are successful.\n Therefore, the probability is $\\frac{3}{6} = \\boxed{\\frac{1}{2}}$.\n *)\n\ntheorem\nfixes prime_count total_sides :: real\nassumes h0 : \"prime_count = 3\"\nand h1 : \"total_sides = 6\"\nshows  \"prime_count / total_sides = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If there are 3 prime numbers and 6 total numbers, what is the ratio of prime numbers to total numbers? The final answer is 1/2.\""
+    },
+    "level": "Level 2",
+    "type": "Prealgebra"
+}

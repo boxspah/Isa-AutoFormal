@@ -1,0 +1,126 @@
+{
+    "problem_name": "aime_1996_p5",
+    "informal_statement": "Suppose that the [[root]]s of $x^3+3x^2+4x-11=0$ are $a$, $b$, and $c$, and that the roots of $x^3+rx^2+sx+t=0$ are $a+b$, $b+c$, and $c+a$. Find $t$. Show that it is 23.",
+    "informal_proof": "By [[Vieta's formulas]] on the polynomial $P(x) = x^3+3x^2+4x-11 = (x-a)(x-b)(x-c) = 0$, we have $a + b + c = s = -3$, $ab + bc + ca = 4$, and $abc = 11$. Then\n<center>$t = -(a+b)(b+c)(c+a) = -(s-a)(s-b)(s-c) = -(-3-a)(-3-b)(-3-c)$</center>\nThis is just the definition for $-P(-3) = 023$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes a b c r s t :: real\nassumes h0 : \"a * b * c = 11\"\nand h1 : \"a + b + c = -3\"\nand h2 : \"a * b + b * c + c * a = 4\"\nand h3 : \"(a + b) * (b + c) * (c + a) = t\"\nshows  \"t = 23\"",
+        "formal solution": "(* ### Problem\n Suppose that the [[root]]s of $x^3+3x^2+4x-11=0$ are $a$, $b$, and $c$, and that the roots of $x^3+rx^2+sx+t=0$ are $a+b$, $b+c$, and $c+a$. Find $t$. The final Answer is $23$\n ### Proof\n By [[Vieta's formulas]] on the polynomial $P(x) = x^3+3x^2+4x-11 = (x-a)(x-b)(x-c) = 0$, we have $a + b + c = s = -3$, $ab + bc + ca = 4$, and $abc = 11$. Then\n<center>$t = -(a+b)(b+c)(c+a) = -(s-a)(s-b)(s-c) = -(-3-a)(-3-b)(-3-c)$</center>\nThis is just the definition for $-P(-3) = 023$.\n *)\n\ntheorem\nfixes a b c r s t :: real\nassumes h0 : \"a * b * c = 11\"\nand h1 : \"a + b + c = -3\"\nand h2 : \"a * b + b * c + c * a = 4\"\nand h3 : \"(a + b) * (b + c) * (c + a) = t\"\nshows  \"t = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a, b, c$ are real numbers satisfying the equations $a \\cdot b \\cdot c = 11$, $a + b + c = -3$, and $a \\cdot b + b \\cdot c + c \\cdot a = 4$, find the value of $t$ where $t = (a + b)(b + c)(c + a)$. The final answer is $t = 23$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8639114499092102,
+        "symbolic_score": 0.2
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b c r s t :: real\nassumes h0 : \"a + b + c = -3\"\nand h1 : \"a * b + a * c + b * c = 4\"\nand h2 : \"a * b * c = 11\"\nand h3 : \"a + b + c + a * b * c = r\"\nand h4 : \"a * b + a * c + b * c + (a + b + c) * (a * b * c) = s\"\nand h5 : \"(a + b) * (b + c) * (c + a) = t\"\nshows  \"t = 23\"",
+        "formal solution": "(* ### Problem\n Suppose that the [[root]]s of $x^3+3x^2+4x-11=0$ are $a$, $b$, and $c$, and that the roots of $x^3+rx^2+sx+t=0$ are $a+b$, $b+c$, and $c+a$. Find $t$. The final Answer is $23$\n ### Proof\n By [[Vieta's formulas]] on the polynomial $P(x) = x^3+3x^2+4x-11 = (x-a)(x-b)(x-c) = 0$, we have $a + b + c = s = -3$, $ab + bc + ca = 4$, and $abc = 11$. Then\n<center>$t = -(a+b)(b+c)(c+a) = -(s-a)(s-b)(s-c) = -(-3-a)(-3-b)(-3-c)$</center>\nThis is just the definition for $-P(-3) = 023$.\n *)\n\ntheorem\nfixes a b c r s t :: real\nassumes h0 : \"a + b + c = -3\"\nand h1 : \"a * b + a * c + b * c = 4\"\nand h2 : \"a * b * c = 11\"\nand h3 : \"a + b + c + a * b * c = r\"\nand h4 : \"a * b + a * c + b * c + (a + b + c) * (a * b * c) = s\"\nand h5 : \"(a + b) * (b + c) * (c + a) = t\"\nshows  \"t = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three numbers $a$, $b$, and $c$ that satisfy the following conditions:\n\n1. $a + b + c = -3$\n2. $ab + ac + bc = 4$\n3. $abc = 11$\n\nCompute the value of the expression $(a + b)(b + c)(c + a)$. The final answer is $23$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.882706344127655,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a b c r s t :: real\nassumes h0 : \"poly [:-11, 4, 3, 1:] a = 0\"\nand h1 : \"poly [:-11, 4, 3, 1:] b = 0\"\nand h2 : \"poly [:-11, 4, 3, 1:] c = 0\"\nand h3 : \"poly [:-t, s, r, 1:] (a+b) = 0\"\nand h4 : \"poly [:-t, s, r, 1:] (b+c) = 0\"\nand h5 : \"poly [:-t, s, r, 1:] (c+a) = 0\"\nshows  \"t = 23\"",
+        "formal solution": "(* ### Problem\n Suppose that the [[root]]s of $x^3+3x^2+4x-11=0$ are $a$, $b$, and $c$, and that the roots of $x^3+rx^2+sx+t=0$ are $a+b$, $b+c$, and $c+a$. Find $t$. The final Answer is $23$\n ### Proof\n By [[Vieta's formulas]] on the polynomial $P(x) = x^3+3x^2+4x-11 = (x-a)(x-b)(x-c) = 0$, we have $a + b + c = s = -3$, $ab + bc + ca = 4$, and $abc = 11$. Then\n<center>$t = -(a+b)(b+c)(c+a) = -(s-a)(s-b)(s-c) = -(-3-a)(-3-b)(-3-c)$</center>\nThis is just the definition for $-P(-3) = 023$.\n *)\n\ntheorem\nfixes a b c r s t :: real\nassumes h0 : \"poly [:-11, 4, 3, 1:] a = 0\"\nand h1 : \"poly [:-11, 4, 3, 1:] b = 0\"\nand h2 : \"poly [:-11, 4, 3, 1:] c = 0\"\nand h3 : \"poly [:-t, s, r, 1:] (a+b) = 0\"\nand h4 : \"poly [:-t, s, r, 1:] (b+c) = 0\"\nand h5 : \"poly [:-t, s, r, 1:] (c+a) = 0\"\nshows  \"t = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a cubic polynomial $p(x) = x^3 + 3x^2 + 4x - 11$, find the roots $a, b, c$ such that $p(a) = p(b) = p(c) = 0$. Also given another cubic polynomial $q(x) = x^3 + rx^2 + sx - t$, find the value of $t$ such that $q(a+b) = q(b+c) = q(c+a) = 0$. The final answer is $t = 23$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.15099374949932098,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a b c r s t :: real\nassumes h0 : \"a * b * c = -11\"\nand h1 : \"(a + b) * (b + c) * (c + a) = t\"\nand h2 : \"a * b + a * c + b * c = 4\"\nand h3 : \"a + b + c = -3\"\nshows  \"t = 23\"",
+        "formal solution": "(* ### Problem\n Suppose that the [[root]]s of $x^3+3x^2+4x-11=0$ are $a$, $b$, and $c$, and that the roots of $x^3+rx^2+sx+t=0$ are $a+b$, $b+c$, and $c+a$. Find $t$. The final Answer is $23$\n ### Proof\n By [[Vieta's formulas]] on the polynomial $P(x) = x^3+3x^2+4x-11 = (x-a)(x-b)(x-c) = 0$, we have $a + b + c = s = -3$, $ab + bc + ca = 4$, and $abc = 11$. Then\n<center>$t = -(a+b)(b+c)(c+a) = -(s-a)(s-b)(s-c) = -(-3-a)(-3-b)(-3-c)$</center>\nThis is just the definition for $-P(-3) = 023$.\n *)\n\ntheorem\nfixes a b c r s t :: real\nassumes h0 : \"a * b * c = -11\"\nand h1 : \"(a + b) * (b + c) * (c + a) = t\"\nand h2 : \"a * b + a * c + b * c = 4\"\nand h3 : \"a + b + c = -3\"\nshows  \"t = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a * b * c = -11$, $a * b + a * c + b * c = 4$, and $a + b + c = -3$, find the value of the expression $(a + b) * (b + c) * (c + a)$. The final answer is $23$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7026788592338562,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b c r s t :: real\nassumes h0 : \"a + b + c = -3\"\nand h1 : \"a * b + a * c + b * c = 4\"\nand h2 : \"a * b * c = 11\"\nand h3 : \"a + b = -(b + c) - (c + a)\"\nand h4 : \"r = -3\"\nand h5 : \"s = 4\"\nand h6 : \"t = -(a * (b + c)) - (b * (a + c)) - (c * (a + b))\"\nshows  \"t = 23\"",
+        "formal solution": "(* ### Problem\n Suppose that the [[root]]s of $x^3+3x^2+4x-11=0$ are $a$, $b$, and $c$, and that the roots of $x^3+rx^2+sx+t=0$ are $a+b$, $b+c$, and $c+a$. Find $t$. The final Answer is $23$\n ### Proof\n By [[Vieta's formulas]] on the polynomial $P(x) = x^3+3x^2+4x-11 = (x-a)(x-b)(x-c) = 0$, we have $a + b + c = s = -3$, $ab + bc + ca = 4$, and $abc = 11$. Then\n<center>$t = -(a+b)(b+c)(c+a) = -(s-a)(s-b)(s-c) = -(-3-a)(-3-b)(-3-c)$</center>\nThis is just the definition for $-P(-3) = 023$.\n *)\n\ntheorem\nfixes a b c r s t :: real\nassumes h0 : \"a + b + c = -3\"\nand h1 : \"a * b + a * c + b * c = 4\"\nand h2 : \"a * b * c = 11\"\nand h3 : \"a + b = -(b + c) - (c + a)\"\nand h4 : \"r = -3\"\nand h5 : \"s = 4\"\nand h6 : \"t = -(a * (b + c)) - (b * (a + c)) - (c * (a + b))\"\nshows  \"t = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three real numbers $a, b, c$ such that their sum is $-3$, their pairwise products sum up to $4$, and their product is $11$. Find the value of $t = -(a * (b + c)) - (b * (a + c)) - (c * (a + b))$. The final answer is $23$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8444355726242065,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes a b c r s t :: real\nassumes h0 : \"a + b + c = -3\"\nand h1 : \"a * b + a * c + b * c = 4\"\nand h2 : \"a * b * c = 11\"\nand h3 : \"(a + b) + (b + c) + (c + a) = r\"\nand h4 : \"(a + b) * (b + c) + (a + b) * (c + a) + (b + c) * (c + a) = s\"\nand h5 : \"(a + b) * (b + c) * (c + a) = t\"\nshows  \"t = 23\"",
+        "formal solution": "(* ### Problem\n Suppose that the [[root]]s of $x^3+3x^2+4x-11=0$ are $a$, $b$, and $c$, and that the roots of $x^3+rx^2+sx+t=0$ are $a+b$, $b+c$, and $c+a$. Find $t$. The final Answer is $23$\n ### Proof\n By [[Vieta's formulas]] on the polynomial $P(x) = x^3+3x^2+4x-11 = (x-a)(x-b)(x-c) = 0$, we have $a + b + c = s = -3$, $ab + bc + ca = 4$, and $abc = 11$. Then\n<center>$t = -(a+b)(b+c)(c+a) = -(s-a)(s-b)(s-c) = -(-3-a)(-3-b)(-3-c)$</center>\nThis is just the definition for $-P(-3) = 023$.\n *)\n\ntheorem\nfixes a b c r s t :: real\nassumes h0 : \"a + b + c = -3\"\nand h1 : \"a * b + a * c + b * c = 4\"\nand h2 : \"a * b * c = 11\"\nand h3 : \"(a + b) + (b + c) + (c + a) = r\"\nand h4 : \"(a + b) * (b + c) + (a + b) * (c + a) + (b + c) * (c + a) = s\"\nand h5 : \"(a + b) * (b + c) * (c + a) = t\"\nshows  \"t = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three real numbers $a$, $b$, and $c$ such that $a+b+c=-3$, $ab+ac+bc=4$, and $abc=11$, find the value of $(a+b)(b+c)(c+a)$. The final answer is $23$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6086284518241882,
+        "symbolic_score": 0.2
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b c r s t :: real\nassumes h0 : \"a + b + c = -3\"\nand h1 : \"a * b + a * c + b * c = 4\"\nand h2 : \"a * b * c = 11\"\nand h3 : \"a + b + c + a * b * c = r\"\nand h4 : \"a * b + a * c + b * c - r * (a * b * c) = s\"\nand h5 : \"(a + b) * (b + c) * (c + a) = t\"\nshows  \"t = 23\"",
+        "formal solution": "(* ### Problem\n Suppose that the [[root]]s of $x^3+3x^2+4x-11=0$ are $a$, $b$, and $c$, and that the roots of $x^3+rx^2+sx+t=0$ are $a+b$, $b+c$, and $c+a$. Find $t$. The final Answer is $23$\n ### Proof\n By [[Vieta's formulas]] on the polynomial $P(x) = x^3+3x^2+4x-11 = (x-a)(x-b)(x-c) = 0$, we have $a + b + c = s = -3$, $ab + bc + ca = 4$, and $abc = 11$. Then\n<center>$t = -(a+b)(b+c)(c+a) = -(s-a)(s-b)(s-c) = -(-3-a)(-3-b)(-3-c)$</center>\nThis is just the definition for $-P(-3) = 023$.\n *)\n\ntheorem\nfixes a b c r s t :: real\nassumes h0 : \"a + b + c = -3\"\nand h1 : \"a * b + a * c + b * c = 4\"\nand h2 : \"a * b * c = 11\"\nand h3 : \"a + b + c + a * b * c = r\"\nand h4 : \"a * b + a * c + b * c - r * (a * b * c) = s\"\nand h5 : \"(a + b) * (b + c) * (c + a) = t\"\nshows  \"t = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a + b + c = -3$, $ab + ac + bc = 4$, and $abc = 11$, find the value of $(a+b)(b+c)(c+a)$, denoted as $t$. Express your answer as a whole number. The final answer is $23$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9161253571510315,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a b c r s t :: real and p q :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. p x = x powr 3 + 3 * x powr 2 + 4 * x - 11\"\nand h1 : \"p a = 0\"\nand h2 : \"p b = 0\"\nand h3 : \"p c = 0\"\nand h4 : \"\\<forall> x. q x = x powr 3 + r * x powr 2 + s * x + t\"\nand h5 : \"q (a + b) = 0\"\nand h6 : \"q (b + c) = 0\"\nand h7 : \"q (c + a) = 0\"\nshows  \"t = 23\"",
+        "formal solution": "(* ### Problem\n Suppose that the [[root]]s of $x^3+3x^2+4x-11=0$ are $a$, $b$, and $c$, and that the roots of $x^3+rx^2+sx+t=0$ are $a+b$, $b+c$, and $c+a$. Find $t$. The final Answer is $23$\n ### Proof\n By [[Vieta's formulas]] on the polynomial $P(x) = x^3+3x^2+4x-11 = (x-a)(x-b)(x-c) = 0$, we have $a + b + c = s = -3$, $ab + bc + ca = 4$, and $abc = 11$. Then\n<center>$t = -(a+b)(b+c)(c+a) = -(s-a)(s-b)(s-c) = -(-3-a)(-3-b)(-3-c)$</center>\nThis is just the definition for $-P(-3) = 023$.\n *)\n\ntheorem\nfixes a b c r s t :: real and p q :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. p x = x powr 3 + 3 * x powr 2 + 4 * x - 11\"\nand h1 : \"p a = 0\"\nand h2 : \"p b = 0\"\nand h3 : \"p c = 0\"\nand h4 : \"\\<forall> x. q x = x powr 3 + r * x powr 2 + s * x + t\"\nand h5 : \"q (a + b) = 0\"\nand h6 : \"q (b + c) = 0\"\nand h7 : \"q (c + a) = 0\"\nshows  \"t = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a polynomial function $p(x) = x^3 + 3x^2 + 4x - 11$ with roots $a, b, c$, find the constant term $t$ of another polynomial function $q(x) = x^3 + rx^2 + sx + t$ such that $q(a + b) = 0$, $q(b + c) = 0$, and $q(c + a) = 0$. The final answer is $t = 23$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8639327883720398,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a b c r s t :: real\nassumes h0 : \"poly ([:(-11), 4, 3, 1:]::real poly) a = 0\"\nand h1 : \"poly ([:(-11), 4, 3, 1:]::real poly) b = 0\"\nand h2 : \"poly ([:(-11), 4, 3, 1:]::real poly) c = 0\"\nand h3 : \"poly ([:t, s, r, 1:]::real poly) (a + b) = 0\"\nand h4 : \"poly ([:t, s, r, 1:]::real poly) (b + c) = 0\"\nand h5 : \"poly ([:t, s, r, 1:]::real poly) (c + a) = 0\"\nshows  \"t = 23\"",
+        "formal solution": "(* ### Problem\n Suppose that the [[root]]s of $x^3+3x^2+4x-11=0$ are $a$, $b$, and $c$, and that the roots of $x^3+rx^2+sx+t=0$ are $a+b$, $b+c$, and $c+a$. Find $t$. The final Answer is $23$\n ### Proof\n By [[Vieta's formulas]] on the polynomial $P(x) = x^3+3x^2+4x-11 = (x-a)(x-b)(x-c) = 0$, we have $a + b + c = s = -3$, $ab + bc + ca = 4$, and $abc = 11$. Then\n<center>$t = -(a+b)(b+c)(c+a) = -(s-a)(s-b)(s-c) = -(-3-a)(-3-b)(-3-c)$</center>\nThis is just the definition for $-P(-3) = 023$.\n *)\n\ntheorem\nfixes a b c r s t :: real\nassumes h0 : \"poly ([:(-11), 4, 3, 1:]::real poly) a = 0\"\nand h1 : \"poly ([:(-11), 4, 3, 1:]::real poly) b = 0\"\nand h2 : \"poly ([:(-11), 4, 3, 1:]::real poly) c = 0\"\nand h3 : \"poly ([:t, s, r, 1:]::real poly) (a + b) = 0\"\nand h4 : \"poly ([:t, s, r, 1:]::real poly) (b + c) = 0\"\nand h5 : \"poly ([:t, s, r, 1:]::real poly) (c + a) = 0\"\nshows  \"t = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose the polynomial $p(x) = x^3 + 3x^2 + 4x - 11$ has three real roots $a$, $b$, and $c$. Let $q(x) = x^3 + rx^2 + sx + t$. If $q(a + b) = q(b + c) = q(c + a) = 0$, find the value of $t$. The final answer is $23$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9794086217880249,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a b c r s t :: real\nassumes h0 : \"poly ([: -11, 4, 3, 1:] :: real poly) a = 0\"\nand h1 : \"poly ([: -11, 4, 3, 1:] :: real poly) b = 0\"\nand h2 : \"poly ([: -11, 4, 3, 1:] :: real poly) c = 0\"\nand h3 : \"poly ([: t, s, r, 1:] :: real poly) (a + b) = 0\"\nand h4 : \"poly ([: t, s, r, 1:] :: real poly) (b + c) = 0\"\nand h5 : \"poly ([: t, s, r, 1:] :: real poly) (c + a) = 0\"\nshows  \"t = 23\"",
+        "formal solution": "(* ### Problem\n Suppose that the [[root]]s of $x^3+3x^2+4x-11=0$ are $a$, $b$, and $c$, and that the roots of $x^3+rx^2+sx+t=0$ are $a+b$, $b+c$, and $c+a$. Find $t$. The final Answer is $23$\n ### Proof\n By [[Vieta's formulas]] on the polynomial $P(x) = x^3+3x^2+4x-11 = (x-a)(x-b)(x-c) = 0$, we have $a + b + c = s = -3$, $ab + bc + ca = 4$, and $abc = 11$. Then\n<center>$t = -(a+b)(b+c)(c+a) = -(s-a)(s-b)(s-c) = -(-3-a)(-3-b)(-3-c)$</center>\nThis is just the definition for $-P(-3) = 023$.\n *)\n\ntheorem\nfixes a b c r s t :: real\nassumes h0 : \"poly ([: -11, 4, 3, 1:] :: real poly) a = 0\"\nand h1 : \"poly ([: -11, 4, 3, 1:] :: real poly) b = 0\"\nand h2 : \"poly ([: -11, 4, 3, 1:] :: real poly) c = 0\"\nand h3 : \"poly ([: t, s, r, 1:] :: real poly) (a + b) = 0\"\nand h4 : \"poly ([: t, s, r, 1:] :: real poly) (b + c) = 0\"\nand h5 : \"poly ([: t, s, r, 1:] :: real poly) (c + a) = 0\"\nshows  \"t = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $a$, $b$, and $c$ be the roots of the cubic polynomial $x^3 + 3x^2 + 4x - 11$. If the polynomial $x^3 + rx^2 + sx + t$ has roots $a+b$, $b+c$, and $c+a$, find the value of $t$. The final answer is $23$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9520434141159058,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes a b c r s t :: real\nand f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<And>x. f x = x^3 + 3 * x^2 + 4*x -11\"\nand h1 : \"\\<And>x. g x = x^3 + r * x^2 + s*x + t\"\nand h2 : \"f a = 0\"\nand h3 : \"f b = 0\"\nand h4 : \"f c = 0\"\nand h5 : \"g (a+b) = 0\"\nand h6 : \"g (b+c) = 0\"\nand h7 : \"g (c+a) = 0\"\nand h8 : \"a \\<noteq> b\"\nand h9 : \"a \\<noteq> c\"\nand h10 : \"b \\<noteq> c\"\nshows \"t=23\"",
+    "prediction": {
+        "0": [
+            0,
+            5
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    }
+}

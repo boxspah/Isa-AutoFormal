@@ -1,0 +1,145 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a \\<in> {1..<100}\"\nand h1 : \"b \\<in> {1..<100}\"\nand h2 : \"a \\<noteq> b\"\nshows  \"card {(a, b) | a b. a * b mod 3 = 0} = 82 * card {(a, b) | a b. a \\<noteq> b \\<and> a \\<in> {1..<100} \\<and> b \\<in> {1..<100}} div 147\"",
+        "formal solution": "(* ### Problem\n Two different positive integers less than 100 are randomly chosen and multiplied together. What is the probability that the resulting product is a multiple of 3? The final Answer is \\frac{82}{147}\n ### Proof\n We can choose two numbers in $\\binom{99}{2}=4851$ ways. Two numbers will have a product which is a multiple of 3 if at least one of them is a multiple of 3.\n We can more easily count the number of ways for the product to not be a multiple of 3: this happens when neither of the numbers is a multiple of 3. There are $\\frac{99}{3}=33$ multiples of 3 less than 100, and $99-33=66$ numbers which aren't multiples of 3.\n The number of ways to choose two of these numbers is $\\binom{66}{2}=2145$, so the number of way to choose two numbers where at least one is a multiple of 3 is $4851-2145=2706$. The final probability is $\\frac{2706}{4851}=\\boxed{\\frac{82}{147}}$.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a \\<in> {1..<100}\"\nand h1 : \"b \\<in> {1..<100}\"\nand h2 : \"a \\<noteq> b\"\nshows  \"card {(a, b) | a b. a * b mod 3 = 0} = 82 * card {(a, b) | a b. a \\<noteq> b \\<and> a \\<in> {1..<100} \\<and> b \\<in> {1..<100}} div 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $a$ and $b$ be distinct natural numbers in the range from 1 to 99 (inclusive). How many pairs $(a, b)$ satisfy the condition that the product $ab$ is divisible by 3? Express your answer as a fraction of the total number of possible pairs $(a, b)$. The final answer is $\\frac{82}{147}$.",
+        "label": 1,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8354302644729614,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes p :: real\nassumes h0 : \"p = (card {(a, b). a \\<in> {1..<100} \\<and> b \\<in> {1..<100} \\<and> a \\<noteq> b \\<and> (a * b) mod 3 = 0}) / (card {(a, b). a \\<in> {1..<100} \\<and> b \\<in> {1..<100} \\<and> a \\<noteq> b})\"\nshows  \"p = 82 / 147\"",
+        "formal solution": "(* ### Problem\n Two different positive integers less than 100 are randomly chosen and multiplied together. What is the probability that the resulting product is a multiple of 3? The final Answer is \\frac{82}{147}\n ### Proof\n We can choose two numbers in $\\binom{99}{2}=4851$ ways. Two numbers will have a product which is a multiple of 3 if at least one of them is a multiple of 3.\n We can more easily count the number of ways for the product to not be a multiple of 3: this happens when neither of the numbers is a multiple of 3. There are $\\frac{99}{3}=33$ multiples of 3 less than 100, and $99-33=66$ numbers which aren't multiples of 3.\n The number of ways to choose two of these numbers is $\\binom{66}{2}=2145$, so the number of way to choose two numbers where at least one is a multiple of 3 is $4851-2145=2706$. The final probability is $\\frac{2706}{4851}=\\boxed{\\frac{82}{147}}$.\n *)\n\ntheorem\nfixes p :: real\nassumes h0 : \"p = (card {(a, b). a \\<in> {1..<100} \\<and> b \\<in> {1..<100} \\<and> a \\<noteq> b \\<and> (a * b) mod 3 = 0}) / (card {(a, b). a \\<in> {1..<100} \\<and> b \\<in> {1..<100} \\<and> a \\<noteq> b})\"\nshows  \"p = 82 / 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a 99 by 99 grid, where each cell contains a pair of distinct numbers $(a, b)$ such that $1 \\leq a, b \\leq 99$, find the probability $p$ that the product of the two numbers in a cell is divisible by 3. The final answer is $\\frac{82}{147}$.",
+        "label": 1,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9396775364875793,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes A :: \"int set\" and B :: \"int set\"\nassumes h0 : \"A = {x. x \\<in> {1..99} \\<and> x mod 3 = 0}\"\nand h1 : \"B = {x. x \\<in> {1..99} \\<and> x mod 3 \\<noteq> 0}\"\nand h2 : \"card A = 33\"\nand h3 : \"card B = 66\"\nshows  \"real (card (A <*> B)) / real (card ({1..99} <*> {1..99})) = 82 / 147\"",
+        "formal solution": "(* ### Problem\n Two different positive integers less than 100 are randomly chosen and multiplied together. What is the probability that the resulting product is a multiple of 3? The final Answer is \\frac{82}{147}\n ### Proof\n We can choose two numbers in $\\binom{99}{2}=4851$ ways. Two numbers will have a product which is a multiple of 3 if at least one of them is a multiple of 3.\n We can more easily count the number of ways for the product to not be a multiple of 3: this happens when neither of the numbers is a multiple of 3. There are $\\frac{99}{3}=33$ multiples of 3 less than 100, and $99-33=66$ numbers which aren't multiples of 3.\n The number of ways to choose two of these numbers is $\\binom{66}{2}=2145$, so the number of way to choose two numbers where at least one is a multiple of 3 is $4851-2145=2706$. The final probability is $\\frac{2706}{4851}=\\boxed{\\frac{82}{147}}$.\n *)\n\ntheorem\nfixes A :: \"int set\" and B :: \"int set\"\nassumes h0 : \"A = {x. x \\<in> {1..99} \\<and> x mod 3 = 0}\"\nand h1 : \"B = {x. x \\<in> {1..99} \\<and> x mod 3 \\<noteq> 0}\"\nand h2 : \"card A = 33\"\nand h3 : \"card B = 66\"\nshows  \"real (card (A <*> B)) / real (card ({1..99} <*> {1..99})) = 82 / 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a set of integers from 1 to 99, let A be the set of numbers divisible by 3 and B be the set of numbers not divisible by 3. If there are 33 numbers in set A and 66 numbers in set B, find the probability that a randomly chosen pair of numbers, one from each set, has a product that is divisible by 3. The final answer is $\\frac{82}{147}$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9668877124786377,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes A B :: \"int set\" and P :: \"real\"\nassumes h0 : \"A = {a. 1 \\<le> a \\<and> a \\<le> 99}\"\nand h1 : \"B = {b. 1 \\<le> b \\<and> b \\<le> 99}\"\nand h2 : \"P = card {(a, b) \\<in> A \\<times> B. (a * b) mod 3 = 0} / (real (card A * card B))\"\nshows  \"P = 82 / 147\"",
+        "formal solution": "(* ### Problem\n Two different positive integers less than 100 are randomly chosen and multiplied together. What is the probability that the resulting product is a multiple of 3? The final Answer is \\frac{82}{147}\n ### Proof\n We can choose two numbers in $\\binom{99}{2}=4851$ ways. Two numbers will have a product which is a multiple of 3 if at least one of them is a multiple of 3.\n We can more easily count the number of ways for the product to not be a multiple of 3: this happens when neither of the numbers is a multiple of 3. There are $\\frac{99}{3}=33$ multiples of 3 less than 100, and $99-33=66$ numbers which aren't multiples of 3.\n The number of ways to choose two of these numbers is $\\binom{66}{2}=2145$, so the number of way to choose two numbers where at least one is a multiple of 3 is $4851-2145=2706$. The final probability is $\\frac{2706}{4851}=\\boxed{\\frac{82}{147}}$.\n *)\n\ntheorem\nfixes A B :: \"int set\" and P :: \"real\"\nassumes h0 : \"A = {a. 1 \\<le> a \\<and> a \\<le> 99}\"\nand h1 : \"B = {b. 1 \\<le> b \\<and> b \\<le> 99}\"\nand h2 : \"P = card {(a, b) \\<in> A \\<times> B. (a * b) mod 3 = 0} / (real (card A * card B))\"\nshows  \"P = 82 / 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a 99 x 99 grid, where rows are labeled from 1 to 99 and columns are labeled from 1 to 99, what is the probability that the product of the row number and the column number is divisible by 3? The final answer is $\\frac{82}{147}$.",
+        "label": 1,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9277697801589966,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0 \\<and> n < 100\"\nand h1 : \"card {x. x > 0 \\<and> x < 100 \\<and> x mod 3 = 0} = 32\"\nand h2 : \"card {x. x > 0 \\<and> x < 100 \\<and> x mod 3 \\<noteq> 0} = 66\"\nand h3 : \"card {x. x > 0 \\<and> x < 100} = 99\"\nand h4 : \"card {(x,y). x > 0 \\<and> x < 100 \\<and> y > 0 \\<and> y < 100 \\<and> x \\<noteq> y \\<and> (x * y) mod 3 = 0} = 82\"\nand h5 : \"card {(x,y). x > 0 \\<and> x < 100 \\<and> y > 0 \\<and> y < 100 \\<and> x \\<noteq> y} = 147\"\nshows  \"P({(x,y). x > 0 \\<and> x < 100 \\<and> y > 0 \\<and> y < 100 \\<and> x \\<noteq> y \\<and> (x * y) mod 3 = 0}) = 82 / 147\"",
+        "formal solution": "(* ### Problem\n Two different positive integers less than 100 are randomly chosen and multiplied together. What is the probability that the resulting product is a multiple of 3? The final Answer is \\frac{82}{147}\n ### Proof\n We can choose two numbers in $\\binom{99}{2}=4851$ ways. Two numbers will have a product which is a multiple of 3 if at least one of them is a multiple of 3.\n We can more easily count the number of ways for the product to not be a multiple of 3: this happens when neither of the numbers is a multiple of 3. There are $\\frac{99}{3}=33$ multiples of 3 less than 100, and $99-33=66$ numbers which aren't multiples of 3.\n The number of ways to choose two of these numbers is $\\binom{66}{2}=2145$, so the number of way to choose two numbers where at least one is a multiple of 3 is $4851-2145=2706$. The final probability is $\\frac{2706}{4851}=\\boxed{\\frac{82}{147}}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0 \\<and> n < 100\"\nand h1 : \"card {x. x > 0 \\<and> x < 100 \\<and> x mod 3 = 0} = 32\"\nand h2 : \"card {x. x > 0 \\<and> x < 100 \\<and> x mod 3 \\<noteq> 0} = 66\"\nand h3 : \"card {x. x > 0 \\<and> x < 100} = 99\"\nand h4 : \"card {(x,y). x > 0 \\<and> x < 100 \\<and> y > 0 \\<and> y < 100 \\<and> x \\<noteq> y \\<and> (x * y) mod 3 = 0} = 82\"\nand h5 : \"card {(x,y). x > 0 \\<and> x < 100 \\<and> y > 0 \\<and> y < 100 \\<and> x \\<noteq> y} = 147\"\nshows  \"P({(x,y). x > 0 \\<and> x < 100 \\<and> y > 0 \\<and> y < 100 \\<and> x \\<noteq> y \\<and> (x * y) mod 3 = 0}) = 82 / 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider all pairs of distinct positive integers $(x, y)$ with $x, y < 100$. Determine the probability that the product $xy$ is divisible by 3. The final answer is $\\frac{82}{147}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8926392793655396,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes p :: real\nassumes h0 : \"p = (\\<Sum>x\\<in>{x::nat. 1 \\<le> x \\<and> x < 100 \\<and> x mod 3 = 0}. \\<Sum>y\\<in>{y::nat. 1 \\<le> y \\<and> y < 100 \\<and> y \\<noteq> x}. 1) / (\\<Sum>x\\<in>{x::nat. 1 \\<le> x \\<and> x < 100}. \\<Sum>y\\<in>{y::nat. 1 \\<le> y \\<and> y < 100 \\<and> y \\<noteq> x}. 1)\"\nshows  \"p = 82 / 147\"",
+        "formal solution": "(* ### Problem\n Two different positive integers less than 100 are randomly chosen and multiplied together. What is the probability that the resulting product is a multiple of 3? The final Answer is \\frac{82}{147}\n ### Proof\n We can choose two numbers in $\\binom{99}{2}=4851$ ways. Two numbers will have a product which is a multiple of 3 if at least one of them is a multiple of 3.\n We can more easily count the number of ways for the product to not be a multiple of 3: this happens when neither of the numbers is a multiple of 3. There are $\\frac{99}{3}=33$ multiples of 3 less than 100, and $99-33=66$ numbers which aren't multiples of 3.\n The number of ways to choose two of these numbers is $\\binom{66}{2}=2145$, so the number of way to choose two numbers where at least one is a multiple of 3 is $4851-2145=2706$. The final probability is $\\frac{2706}{4851}=\\boxed{\\frac{82}{147}}$.\n *)\n\ntheorem\nfixes p :: real\nassumes h0 : \"p = (\\<Sum>x\\<in>{x::nat. 1 \\<le> x \\<and> x < 100 \\<and> x mod 3 = 0}. \\<Sum>y\\<in>{y::nat. 1 \\<le> y \\<and> y < 100 \\<and> y \\<noteq> x}. 1) / (\\<Sum>x\\<in>{x::nat. 1 \\<le> x \\<and> x < 100}. \\<Sum>y\\<in>{y::nat. 1 \\<le> y \\<and> y < 100 \\<and> y \\<noteq> x}. 1)\"\nshows  \"p = 82 / 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the probability $p$ that two randomly chosen distinct numbers from 1 to 99 both have a remainder of 3 when divided by 3. The final answer is $\\frac{82}{147}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.554196298122406,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a > 0\"\nand h1 : \"a < 100\"\nand h2 : \"b > 0\"\nand h3 : \"b < 100\"\nand h4 : \"a \\<noteq> b\"\nshows  \"P { (a, b). (a * b) mod 3 = 0 } = 82 / 147\"",
+        "formal solution": "(* ### Problem\n Two different positive integers less than 100 are randomly chosen and multiplied together. What is the probability that the resulting product is a multiple of 3? The final Answer is \\frac{82}{147}\n ### Proof\n We can choose two numbers in $\\binom{99}{2}=4851$ ways. Two numbers will have a product which is a multiple of 3 if at least one of them is a multiple of 3.\n We can more easily count the number of ways for the product to not be a multiple of 3: this happens when neither of the numbers is a multiple of 3. There are $\\frac{99}{3}=33$ multiples of 3 less than 100, and $99-33=66$ numbers which aren't multiples of 3.\n The number of ways to choose two of these numbers is $\\binom{66}{2}=2145$, so the number of way to choose two numbers where at least one is a multiple of 3 is $4851-2145=2706$. The final probability is $\\frac{2706}{4851}=\\boxed{\\frac{82}{147}}$.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a > 0\"\nand h1 : \"a < 100\"\nand h2 : \"b > 0\"\nand h3 : \"b < 100\"\nand h4 : \"a \\<noteq> b\"\nshows  \"P { (a, b). (a * b) mod 3 = 0 } = 82 / 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the probability that the product of two distinct positive integers $a$ and $b$, each less than 100, is divisible by 3. The final answer is $\\frac{82}{147}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5648661255836487,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a b :: nat and P :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"1 \\<le> a\"\nand h1 : \"a < 100\"\nand h2 : \"1 \\<le> b\"\nand h3 : \"b < 100\"\nand h4 : \"a \\<noteq> b\"\nand h5 : \"P x = (x mod 3 = 0)\"\nshows  \"prob P (a * b) = 82 / 147\"",
+        "formal solution": "(* ### Problem\n Two different positive integers less than 100 are randomly chosen and multiplied together. What is the probability that the resulting product is a multiple of 3? The final Answer is \\frac{82}{147}\n ### Proof\n We can choose two numbers in $\\binom{99}{2}=4851$ ways. Two numbers will have a product which is a multiple of 3 if at least one of them is a multiple of 3.\n We can more easily count the number of ways for the product to not be a multiple of 3: this happens when neither of the numbers is a multiple of 3. There are $\\frac{99}{3}=33$ multiples of 3 less than 100, and $99-33=66$ numbers which aren't multiples of 3.\n The number of ways to choose two of these numbers is $\\binom{66}{2}=2145$, so the number of way to choose two numbers where at least one is a multiple of 3 is $4851-2145=2706$. The final probability is $\\frac{2706}{4851}=\\boxed{\\frac{82}{147}}$.\n *)\n\ntheorem\nfixes a b :: nat and P :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"1 \\<le> a\"\nand h1 : \"a < 100\"\nand h2 : \"1 \\<le> b\"\nand h3 : \"b < 100\"\nand h4 : \"a \\<noteq> b\"\nand h5 : \"P x = (x mod 3 = 0)\"\nshows  \"prob P (a * b) = 82 / 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two natural numbers $a$ and $b$ such that $1 \\leq a, b < 100$ and $a \\neq b$, let $P(x)$ be a property that holds true if $x$ is divisible by 3. Find the probability that $P(a * b)$ is true. The final answer is $\\frac{82}{147}$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9579108357429504,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes prob :: \"real\"\nassumes h0 : \"prob = (card {(a, b) | a b. a < 100 \\<and> b < 100 \\<and> a > 0 \\<and> b > 0 \\<and> a \\<noteq> b \\<and> (a * b) mod 3 = 0}) / (card {(a, b) | a b. a < 100 \\<and> b < 100 \\<and> a > 0 \\<and> b > 0 \\<and> a \\<noteq> b})\"\nshows  \"prob = 82 / 147\"",
+        "formal solution": "(* ### Problem\n Two different positive integers less than 100 are randomly chosen and multiplied together. What is the probability that the resulting product is a multiple of 3? The final Answer is \\frac{82}{147}\n ### Proof\n We can choose two numbers in $\\binom{99}{2}=4851$ ways. Two numbers will have a product which is a multiple of 3 if at least one of them is a multiple of 3.\n We can more easily count the number of ways for the product to not be a multiple of 3: this happens when neither of the numbers is a multiple of 3. There are $\\frac{99}{3}=33$ multiples of 3 less than 100, and $99-33=66$ numbers which aren't multiples of 3.\n The number of ways to choose two of these numbers is $\\binom{66}{2}=2145$, so the number of way to choose two numbers where at least one is a multiple of 3 is $4851-2145=2706$. The final probability is $\\frac{2706}{4851}=\\boxed{\\frac{82}{147}}$.\n *)\n\ntheorem\nfixes prob :: \"real\"\nassumes h0 : \"prob = (card {(a, b) | a b. a < 100 \\<and> b < 100 \\<and> a > 0 \\<and> b > 0 \\<and> a \\<noteq> b \\<and> (a * b) mod 3 = 0}) / (card {(a, b) | a b. a < 100 \\<and> b < 100 \\<and> a > 0 \\<and> b > 0 \\<and> a \\<noteq> b})\"\nshows  \"prob = 82 / 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the probability that two distinct positive integers less than 100, when multiplied together, have a product that is divisible by 3. The final answer is $\\frac{82}{147}$.",
+        "label": 1,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.66159987449646,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes positive_integers :: \"nat set\"\nassumes h0 : \"positive_integers = {1..99}\"\nand h1 : \"card {n \\<in> positive_integers. n mod 3 = 0} = 33\"\nand h2 : \"card {n \\<in> positive_integers. n mod 3 = 1} = 33\"\nand h3 : \"card {n \\<in> positive_integers. n mod 3 = 2} = 33\"\nand h4 : \"\\<forall> m n. m \\<in> positive_integers \\<and> n \\<in> positive_integers \\<and> m \\<noteq> n \\<longrightarrow> m * n mod 3 = 0 \\<or> m * n mod 3 = 1 \\<or> m * n mod 3 = 2\"\nshows  \"Prob {m * n | m \\<in> positive_integers \\<and> n \\<in> positive_integers \\<and> m \\<noteq> n}. m * n mod 3 = 0 = 82 / 147\"",
+        "formal solution": "(* ### Problem\n Two different positive integers less than 100 are randomly chosen and multiplied together. What is the probability that the resulting product is a multiple of 3? The final Answer is \\frac{82}{147}\n ### Proof\n We can choose two numbers in $\\binom{99}{2}=4851$ ways. Two numbers will have a product which is a multiple of 3 if at least one of them is a multiple of 3.\n We can more easily count the number of ways for the product to not be a multiple of 3: this happens when neither of the numbers is a multiple of 3. There are $\\frac{99}{3}=33$ multiples of 3 less than 100, and $99-33=66$ numbers which aren't multiples of 3.\n The number of ways to choose two of these numbers is $\\binom{66}{2}=2145$, so the number of way to choose two numbers where at least one is a multiple of 3 is $4851-2145=2706$. The final probability is $\\frac{2706}{4851}=\\boxed{\\frac{82}{147}}$.\n *)\n\ntheorem\nfixes positive_integers :: \"nat set\"\nassumes h0 : \"positive_integers = {1..99}\"\nand h1 : \"card {n \\<in> positive_integers. n mod 3 = 0} = 33\"\nand h2 : \"card {n \\<in> positive_integers. n mod 3 = 1} = 33\"\nand h3 : \"card {n \\<in> positive_integers. n mod 3 = 2} = 33\"\nand h4 : \"\\<forall> m n. m \\<in> positive_integers \\<and> n \\<in> positive_integers \\<and> m \\<noteq> n \\<longrightarrow> m * n mod 3 = 0 \\<or> m * n mod 3 = 1 \\<or> m * n mod 3 = 2\"\nshows  \"Prob {m * n | m \\<in> positive_integers \\<and> n \\<in> positive_integers \\<and> m \\<noteq> n}. m * n mod 3 = 0 = 82 / 147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider the set of positive integers from 1 to 99. There are 33 numbers divisible by 3, 33 numbers that have a remainder of 1 when divided by 3, and 33 numbers that have a remainder of 2 when divided by 3. If you randomly choose two distinct numbers from this set and multiply them, what is the probability that their product is divisible by 3? The final answer is $\\frac{82}{147}$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7778165340423584,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "\\frac{82}{147}",
+    "natural problem": "Two different positive integers less than 100 are randomly chosen and multiplied together. What is the probability that the resulting product is a multiple of 3?",
+    "natural solution": [
+        "We can choose two numbers in $\\binom{99}{2}=4851$ ways. Two numbers will have a product which is a multiple of 3 if at least one of them is a multiple of 3.",
+        "We can more easily count the number of ways for the product to not be a multiple of 3: this happens when neither of the numbers is a multiple of 3. There are $\\frac{99}{3}=33$ multiples of 3 less than 100, and $99-33=66$ numbers which aren't multiples of 3.",
+        "The number of ways to choose two of these numbers is $\\binom{66}{2}=2145$, so the number of way to choose two numbers where at least one is a multiple of 3 is $4851-2145=2706$. The final probability is $\\frac{2706}{4851}=\\boxed{\\frac{82}{147}}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 5",
+    "type": "Counting & Probability"
+}

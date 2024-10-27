@@ -1,0 +1,611 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nand takeoff_schedule :: \"(nat \\<times> nat) list\"\nassumes h0 : \"length takeoff_schedule = 3\"\nand h1 : \"distinct takeoff_schedule\"\nand h2 : \"\\<forall> (p, r) \\<in> set takeoff_schedule. (p = blue_plane \\<or> p = red_plane \\<or> p = white_plane) \\<and> (r = runway_A \\<or> r = runway_B)\"\nshows  \"card {schedule. length schedule = 3 \\<and> distinct schedule \\<and> (\\<forall> (p, r) \\<in> set schedule. (p = blue_plane \\<or> p = red_plane \\<or> p = white_plane) \\<and> (r = runway_A \\<or> r = runway_B))} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nand takeoff_schedule :: \"(nat \\<times> nat) list\"\nassumes h0 : \"length takeoff_schedule = 3\"\nand h1 : \"distinct takeoff_schedule\"\nand h2 : \"\\<forall> (p, r) \\<in> set takeoff_schedule. (p = blue_plane \\<or> p = red_plane \\<or> p = white_plane) \\<and> (r = runway_A \\<or> r = runway_B)\"\nshows  \"card {schedule. length schedule = 3 \\<and> distinct schedule \\<and> (\\<forall> (p, r) \\<in> set schedule. (p = blue_plane \\<or> p = red_plane \\<or> p = white_plane) \\<and> (r = runway_A \\<or> r = runway_B))} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are 3 planes: a blue plane, a red plane, and a white plane. There are 2 runways: runway A and runway B. Each plane must take off from one of the runways, and no two planes can take off from the same runway at the same time. How many different takeoff schedules are possible for the 3 planes using the 2 runways? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9443914294242859,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nand h1 : \"2 * (fact n) = 48\"\nshows  \"card {((A, B), p). p \\<in> perms {1..3}, A \\<subseteq> {1..3}, B \\<subseteq> {1..3}, A \\<inter> B = {}, A \\<union> B = {1..3}} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nand h1 : \"2 * (fact n) = 48\"\nshows  \"card {((A, B), p). p \\<in> perms {1..3}, A \\<subseteq> {1..3}, B \\<subseteq> {1..3}, A \\<inter> B = {}, A \\<union> B = {1..3}} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that there are 3 elements in a set, how many ways can you divide the set into two disjoint subsets A and B such that A and B are non-empty, A and B do not intersect, and A union B equals the entire set? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8716017007827759,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runway_A = 1\"\nand h4 : \"runway_B = 1\"\nshows  \"card {s :: (nat \\<times> nat) list. length s = 3 \\<and> (\\<forall>i<3. fst (s!i) \\<in> {blue_plane, red_plane, white_plane} \\<and> snd (s!i) \\<in> {runway_A, runway_B})} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runway_A = 1\"\nand h4 : \"runway_B = 1\"\nshows  \"card {s :: (nat \\<times> nat) list. length s = 3 \\<and> (\\<forall>i<3. fst (s!i) \\<in> {blue_plane, red_plane, white_plane} \\<and> snd (s!i) \\<in> {runway_A, runway_B})} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are three planes: a blue plane, a red plane, and a white plane. There are also two runways: runway A and runway B. How many different ways can the planes be assigned to the runways, with the order of landing being important? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8732857704162598,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runway_A = 1\"\nand h4 : \"runway_B = 1\"\nshows  \"\\<exists> total_ways. total_ways = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runway_A = 1\"\nand h4 : \"runway_B = 1\"\nshows  \"\\<exists> total_ways. total_ways = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are three planes: a blue plane, a red plane, and a white plane. There are also two runways: Runway A and Runway B. How many different ways can the planes be arranged on the runways? The final answer is 48.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.8661651015281677,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"runway_A = 1\"\nand h1 : \"runway_B = 2\"\nshows  \"card {(bp, rp, wp) | bp rp wp.\n             bp = runway_A \\<or> bp = runway_B \\<and>\n             rp = runway_A \\<or> rp = runway_B \\<and> rp \\<noteq> bp \\<and>\n             wp = runway_A \\<or> wp = runway_B \\<and> wp \\<noteq> rp \\<and> wp \\<noteq> bp} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"runway_A = 1\"\nand h1 : \"runway_B = 2\"\nshows  \"card {(bp, rp, wp) | bp rp wp.\n             bp = runway_A \\<or> bp = runway_B \\<and>\n             rp = runway_A \\<or> rp = runway_B \\<and> rp \\<noteq> bp \\<and>\n             wp = runway_A \\<or> wp = runway_B \\<and> wp \\<noteq> rp \\<and> wp \\<noteq> bp} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Three planes, one blue, one red, and one white, are assigned to land on one of two runways, runway A or runway B. Each plane must land on a different runway. How many different ways can the planes be assigned to the runways? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8287798762321472,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runway_A = 1\"\nand h4 : \"runway_B = 1\"\nshows  \"3 * 2 * 2 * 2 = (48::nat)\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runway_A = 1\"\nand h4 : \"runway_B = 1\"\nshows  \"3 * 2 * 2 * 2 = (48::nat)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are 3 planes: 1 blue, 1 red, and 1 white. There are also 2 runways: runway A and runway B. How many different ways are there to arrange the planes on the runways, considering that each runway can hold 2 planes at a time? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8548087477684021,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nand h1 : \"two_runways = 2\"\nshows  \"number_of_ways = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nand h1 : \"two_runways = 2\"\nshows  \"number_of_ways = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If there are 3 airplanes and 2 runways, find the number of ways the airplanes can land on the runways. The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.948228120803833,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runwayA runwayB :: nat\nand takeoffs :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runwayA = 1\"\nand h4 : \"runwayB = 1\"\nand h5 : \"takeoffs blue_plane (runwayA + runwayB) * takeoffs red_plane (runwayA + runwayB) * takeoffs white_plane (runwayA + runwayB) = 48\"\nshows  \"takeoffs blue_plane (runwayA + runwayB) * takeoffs red_plane (runwayA + runwayB) * takeoffs white_plane (runwayA + runwayB) = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runwayA runwayB :: nat\nand takeoffs :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runwayA = 1\"\nand h4 : \"runwayB = 1\"\nand h5 : \"takeoffs blue_plane (runwayA + runwayB) * takeoffs red_plane (runwayA + runwayB) * takeoffs white_plane (runwayA + runwayB) = 48\"\nshows  \"takeoffs blue_plane (runwayA + runwayB) * takeoffs red_plane (runwayA + runwayB) * takeoffs white_plane (runwayA + runwayB) = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are three planes: blue, red, and white. There are two runways: A and B. The product of the number of takeoffs for each plane using both runways (A and B) is 48. Find the product of the number of takeoffs for each plane using both runways. The final answer is 48.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.939856767654419,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes blue red white :: nat\nassumes h0 : \"blue = 1\"\nand h1 : \"red = 1\"\nand h2 : \"white = 1\"\nand h3 : \"distinct [blue, red, white]\"\nshows  \"card {ways :: (nat \\<times> char) list. length ways = 3 \\<and> (\\<forall>(plane, runway)\\<in>set ways. (plane \\<in> {blue, red, white}) \\<and> (runway \\<in> {'A', 'B'}))} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: nat\nassumes h0 : \"blue = 1\"\nand h1 : \"red = 1\"\nand h2 : \"white = 1\"\nand h3 : \"distinct [blue, red, white]\"\nshows  \"card {ways :: (nat \\<times> char) list. length ways = 3 \\<and> (\\<forall>(plane, runway)\\<in>set ways. (plane \\<in> {blue, red, white}) \\<and> (runway \\<in> {'A', 'B'}))} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Three planes, one blue, one red, and one white, are landing on two runways A and B. If each plane can land on either runway and no two planes can land on the same runway at the same time, how many different landing orders are there? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8152319192886353,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nand takeoffs :: \"((nat \\<times> nat) list)\"\nassumes h0 : \"length takeoffs = 3\"\nand h1 : \"distinct takeoffs\"\nand h2 : \"set takeoffs \\<subseteq> {(blue_plane, runway_A), (blue_plane, runway_B), (red_plane, runway_A), (red_plane, runway_B), (white_plane, runway_A), (white_plane, runway_B)}\"\nshows  \"card (set takeoffs) = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nand takeoffs :: \"((nat \\<times> nat) list)\"\nassumes h0 : \"length takeoffs = 3\"\nand h1 : \"distinct takeoffs\"\nand h2 : \"set takeoffs \\<subseteq> {(blue_plane, runway_A), (blue_plane, runway_B), (red_plane, runway_A), (red_plane, runway_B), (white_plane, runway_A), (white_plane, runway_B)}\"\nshows  \"card (set takeoffs) = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are three planes: a blue plane, a red plane, and a white plane. There are also two runways: runway A and runway B. Each plane can take off from either runway. In how many distinct orders can the three planes take off? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.83563631772995,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "48",
+    "natural problem": "A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.)",
+    "natural solution": [
+        "There are 3 ways to choose the first plane and 2 ways to choose where it takes off.",
+        "Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$."
+    ],
+    "oracle": "delete this",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "level": "Level 4",
+    "type": "Counting & Probability",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes planes :: \"('a \\<Rightarrow> bool) list\"\nand runways :: \"('b \\<Rightarrow> bool) list\"\nassumes h0 : \"length planes = 3\"\nand h1 : \"length runways = 2\"\nand h2 : \"\\<forall> p \\<in> set planes. \\<exists> color. p = (\\<lambda> x. x = color)\"\nand h3 : \"\\<forall> r \\<in> set runways. \\<exists> name. r = (\\<lambda> x. x = name)\"\nand h4 : \"distinct planes\"\nand h5 : \"distinct runways\"\nshows \"card {s. length s = 3 \\<and> (\\<forall> i < 3. s ! i \\<in> set runways)} * card {p. length p = 3 \\<and> (\\<forall> i < 3. p ! i \\<in> set planes)} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes planes :: \"('a \\<Rightarrow> bool) list\"\nand runways :: \"('b \\<Rightarrow> bool) list\"\nassumes h0 : \"length planes = 3\"\nand h1 : \"length runways = 2\"\nand h2 : \"\\<forall> p \\<in> set planes. \\<exists> color. p = (\\<lambda> x. x = color)\"\nand h3 : \"\\<forall> r \\<in> set runways. \\<exists> name. r = (\\<lambda> x. x = name)\"\nand h4 : \"distinct planes\"\nand h5 : \"distinct runways\"\nshows \"card {s. length s = 3 \\<and> (\\<forall> i < 3. s ! i \\<in> set runways)} * card {p. length p = 3 \\<and> (\\<forall> i < 3. p ! i \\<in> set planes)} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 3 distinct planes, each identified by a unique color, and 2 distinct runways, each identified by a unique name. We want to find the number of ways to assign each of the 3 planes to a runway, such that each plane is assigned to a runway with a different name. Additionally, we want to find the number of ways to assign each of the 3 runways to a plane, such that each runway is assigned to a plane with a different color. The product of these two numbers is 48.",
+        "syntax": 1,
+        "semantic_score": 0.9801074749536886,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length blue = 1\"\nand h1 : \"length red = 1\"\nand h2 : \"length white = 1\"\nand h3 : \"length runwayA = 1\"\nand h4 : \"length runwayB = 1\"\nand h5 : \"runwayA \\<noteq> runwayB\"\nshows \"card {p. p \\<in> permutations_with_repetition (blue # red # white # []) (runwayA # runwayB # [])} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length blue = 1\"\nand h1 : \"length red = 1\"\nand h2 : \"length white = 1\"\nand h3 : \"length runwayA = 1\"\nand h4 : \"length runwayB = 1\"\nand h5 : \"runwayA \\<noteq> runwayB\"\nshows \"card {p. p \\<in> permutations_with_repetition (blue # red # white # []) (runwayA # runwayB # [])} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three single-character lists: \"blue\", \"red\", and \"white\". There are also two single-character lists representing two different runways: \"runwayA\" and \"runwayB\". We want to find the number of ways to arrange the characters from the \"blue\", \"red\", and \"white\" lists onto the \"runwayA\" and \"runwayB\" lists, with repetition allowed. The total number of such arrangements is 48.",
+        "syntax": 1,
+        "semantic_score": 0.980039287536219,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nshows \"card {s. s \\<in> set (permutations [blue, red, white]) \\<and> (\\<forall>i<3. s ! i \\<in> set [runwayA, runwayB])} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nshows \"card {s. s \\<in> set (permutations [blue, red, white]) \\<and> (\\<forall>i<3. s ! i \\<in> set [runwayA, runwayB])} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three single-character lists: blue, red, and white. There are also two single-character lists representing two runways: runwayA and runwayB. We want to find the number of permutations of the three colors (blue, red, white) such that each color in the permutation is a valid runway (either runwayA or runwayB). The answer is 48.",
+        "syntax": 1,
+        "semantic_score": 0.8715885743031883,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nand h5 : \"distinct [blue, red, white]\"\nshows \"card {s. s \\<in> permutations_of_list [blue, red, white] \\<and> s \\<le> [runwayA, runwayB]}\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nand h5 : \"distinct [blue, red, white]\"\nshows \"card {s. s \\<in> permutations_of_list [blue, red, white] \\<and> s \\<le> [runwayA, runwayB]}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three distinct single-character lists: blue, red, and white. There are also two single-character lists: runwayA and runwayB. We want to find the number of permutations of the lists blue, red, and white that are less than or equal to the lists runwayA and runwayB in lexicographic order.",
+        "syntax": 0,
+        "semantic_score": 0.7798390281319932,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nand h5 : \"distinct [blue, red, white]\"\nshows \"card {s. s \\<in> permutations_of_list [blue, red, white] \\<and> (\\<exists>a \\<in> set s. a = runwayA) \\<and> (\\<exists>b \\<in> set s. a \\<noteq> b \\<and> b = runwayB)} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nand h5 : \"distinct [blue, red, white]\"\nshows \"card {s. s \\<in> permutations_of_list [blue, red, white] \\<and> (\\<exists>a \\<in> set s. a = runwayA) \\<and> (\\<exists>b \\<in> set s. a \\<noteq> b \\<and> b = runwayB)} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three distinct single-character lists: blue, red, and white. There are also two single-character lists: runwayA and runwayB. We want to find the number of permutations of the lists blue, red, and white such that at least one of the lists in the permutation is equal to runwayA and at least one of the lists in the permutation is equal to runwayB, but runwayA and runwayB are not the same list in the permutation. The answer is 48.",
+        "syntax": 1,
+        "semantic_score": 0.8891233436296951,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nshows \"card {s. s \\<in> set (permutations [blue, red, white]) \\<and> (\\<exists> x y z. x \\<in> set runwayA \\<and> y \\<in> set runwayB \\<and> z \\<in> set runwayB \\<and> s = [x, y, z])} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nshows \"card {s. s \\<in> set (permutations [blue, red, white]) \\<and> (\\<exists> x y z. x \\<in> set runwayA \\<and> y \\<in> set runwayB \\<and> z \\<in> set runwayB \\<and> s = [x, y, z])} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three single-character lists: blue, red, and white. There are also two single-character lists representing two runways: runwayA and runwayB. We want to find the number of ways to arrange the three lists (blue, red, and white) into a sequence such that the first character is from runwayA, and the last two characters are from runwayB. The total number of such arrangements is 48.",
+        "syntax": 1,
+        "semantic_score": 0.8542042975167369,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length blue = 1\"\nand h1 : \"length red = 1\"\nand h2 : \"length white = 1\"\nand h3 : \"length runwayA = 1\"\nand h4 : \"length runwayB = 1\"\nand h5 : \"distinct [blue, red, white]\"\nshows \"card {s. s \\<in> permutations_of_set [blue, red, white] \\<and> length s = 3} * card {s. s \\<in> permutations_of_set [runwayA, runwayB] \\<and> length s = 3} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length blue = 1\"\nand h1 : \"length red = 1\"\nand h2 : \"length white = 1\"\nand h3 : \"length runwayA = 1\"\nand h4 : \"length runwayB = 1\"\nand h5 : \"distinct [blue, red, white]\"\nshows \"card {s. s \\<in> permutations_of_set [blue, red, white] \\<and> length s = 3} * card {s. s \\<in> permutations_of_set [runwayA, runwayB] \\<and> length s = 3} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three single-character lists: \"blue\", \"red\", and \"white\", and two single-character lists: \"runwayA\" and \"runwayB\". The characters in each list are distinct. We want to find the number of ways to arrange the three single-character lists \"blue\", \"red\", and \"white\" in a sequence of length 3, and the number of ways to arrange the two single-character lists \"runwayA\" and \"runwayB\" in a sequence of length 3. The product of these two numbers is 48.",
+        "syntax": 1,
+        "semantic_score": 0.9598149202982323,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"blue = ['b']\"\nand h1 : \"red = ['r']\"\nand h2 : \"white = ['w']\"\nand h3 : \"runwayA = ['A']\"\nand h4 : \"runwayB = ['B']\"\nshows \"card {s. s \\<in> permutations_of_list (blue @ red @ white @ runwayA @ runwayB) \\<and> length s = 5} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"blue = ['b']\"\nand h1 : \"red = ['r']\"\nand h2 : \"white = ['w']\"\nand h3 : \"runwayA = ['A']\"\nand h4 : \"runwayB = ['B']\"\nshows \"card {s. s \\<in> permutations_of_list (blue @ red @ white @ runwayA @ runwayB) \\<and> length s = 5} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are five distinct items: a blue 'b', a red 'r', a white 'w', a runway A 'A', and a runway B 'B'. We want to find the number of unique ways to arrange these five items in a sequence of length 5. The answer is 48.",
+        "syntax": 0,
+        "semantic_score": 0.9142639994481875,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nshows \"card {s. s \\<in> permutations_of_set ({blue, red, white}) \\<and> (\\<exists> a b. s = [a, b, b] \\<and> a \\<in> {runwayA, runwayB} \\<and> b \\<in> {runwayA, runwayB})} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nshows \"card {s. s \\<in> permutations_of_set ({blue, red, white}) \\<and> (\\<exists> a b. s = [a, b, b] \\<and> a \\<in> {runwayA, runwayB} \\<and> b \\<in> {runwayA, runwayB})} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three single-character lists: blue, red, and white. There are also two single-character lists: runwayA and runwayB. We want to find the number of ways to arrange these five lists into a sequence of three elements, where the first element is either runwayA or runwayB, and the last two elements are the same and can be either runwayA or runwayB. The total number of such arrangements is 48.",
+        "syntax": 1,
+        "semantic_score": 0.9310010515142715,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes planes :: \"char list\"\nassumes h0 : \"length planes = 3\"\nand h1 : \"set planes = {''B'', ''R'', ''W''}\"\nand h2 : \"runways = [''A'', ''B'']\"\nshows \"card {p. p permutes {0..<3} \\<and> (\\<forall>i<3. runways ! p i = planes ! i)} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes planes :: \"char list\"\nassumes h0 : \"length planes = 3\"\nand h1 : \"set planes = {''B'', ''R'', ''W''}\"\nand h2 : \"runways = [''A'', ''B'']\"\nshows \"card {p. p permutes {0..<3} \\<and> (\\<forall>i<3. runways ! p i = planes ! i)} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three planes, represented by the letters 'B', 'R', and 'W'. There are two runways, represented by the letters 'A' and 'B'. We want to find the number of ways to assign each plane to a runway such that each plane lands on a different runway and the order of the planes matches the order of the runways. The answer is 48 different ways.",
+        "syntax": 0,
+        "semantic_score": 0.5861938953561268,
+        "symbolic_score": 0.1
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 2\"\nshows \"card {t. set t = {''blue'', ''red'', ''white''} \\<and> distinct t \\<and> size t = 3} = 3 * 2 * 2\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 2\"\nshows \"card {t. set t = {''blue'', ''red'', ''white''} \\<and> distinct t \\<and> size t = 3} = 3 * 2 * 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are three different colored balls: blue, red, and white. How many ways can we select three of these balls if each selection must contain one blue, one red, and one white ball? The final answer is 12.",
+        "syntax": 1,
+        "semantic_score": 0.9009788349353631,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 2\"\nshows \"card {(a, b, c). a \\<in> {''Blue'', ''Red'', ''White''} \\<and> b \\<in> {''A'', ''B''} \\<and> c \\<in> {''A'', ''B''} \\<and> b \\<noteq> c} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 2\"\nshows \"card {(a, b, c). a \\<in> {''Blue'', ''Red'', ''White''} \\<and> b \\<in> {''A'', ''B''} \\<and> c \\<in> {''A'', ''B''} \\<and> b \\<noteq> c} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If we have a set of three colors: Blue, Red, and White, and a set of two letters: A and B. How many ways can we choose one color and one letter, such that the letter is not the same as the color chosen? Given $n = 2$, the answer is $48$.",
+        "syntax": 1,
+        "semantic_score": 0.939598102946981,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes A B :: \"'a set\" and f :: \"'a \\<Rightarrow> 'a \\<Rightarrow> 'a \\<Rightarrow> nat\"\nassumes h0 : \"card A = card B\"\nand h1 : \"card A = 2\"\nand h2 : \"A \\<inter> B = {}\"\nand h3 : \"f a b c = 1\"\nand h4 : \"f a c b = 1\"\nand h5 : \"f b a c = 1\"\nand h6 : \"f b c a = 1\"\nand h7 : \"f c a b = 1\"\nand h8 : \"f c b a = 1\"\nshows \"card {f a b c | a b c. a \\<in> {Blue, Red, White} \\<and> b \\<in> A \\<and> c \\<in> B} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes A B :: \"'a set\" and f :: \"'a \\<Rightarrow> 'a \\<Rightarrow> 'a \\<Rightarrow> nat\"\nassumes h0 : \"card A = card B\"\nand h1 : \"card A = 2\"\nand h2 : \"A \\<inter> B = {}\"\nand h3 : \"f a b c = 1\"\nand h4 : \"f a c b = 1\"\nand h5 : \"f b a c = 1\"\nand h6 : \"f b c a = 1\"\nand h7 : \"f c a b = 1\"\nand h8 : \"f c b a = 1\"\nshows \"card {f a b c | a b c. a \\<in> {Blue, Red, White} \\<and> b \\<in> A \\<and> c \\<in> B} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a set $A$ and a set $B$ with the same size. Both sets have 2 elements, and they are disjoint. Additionally, suppose we have a function $f$ that takes in 3 inputs and outputs a natural number. For any three distinct elements $a, b, c$, if we apply the function $f$ with the inputs in any of the following orders: $(a,b,c)$, $(a,c,b)$, $(b,a,c)$, $(b,c,a)$, $(c,a,b)$, $(c,b,a)$, the function output is 1. Let {Blue, Red, White} be a set of three distinct colors. How many distinct values can the function output for all possible triples $(a,b,c)$, where $a$ is a color and $b$ is an element of set $A$ and $c$ is an element of set $B$? The final answer is 48.",
+        "syntax": 1,
+        "semantic_score": 0.9691677626641967,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nshows \"2^(n-1) * fact n = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nshows \"2^(n-1) * fact n = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $n$ is equal to $3$, what is the value of $2^{n-1} \\cdot n!$? The final answer is $48$.",
+        "syntax": 1,
+        "semantic_score": 0.8926044105769438,
+        "symbolic_score": 0.2
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nshows \"card {(p1, r1, w1, p2, r2, w2, p3, r3, w3).\n(p1, r1, w1) \\<in> {(1::nat, 1, 1), (1, 1, 2), (1, 2, 1), (1, 2, 2), (2, 1, 1), (2, 1, 2), (2, 2, 1), (2, 2, 2)},\n(p2, r2, w2) \\<in> {(1, 1, 1), (1, 1, 2), (1, 2, 1), (1, 2, 2), (2, 1, 1), (2, 1, 2), (2, 2, 1), (2, 2, 2)},\n(p3, r3, w3) \\<in> {(1, 1, 1), (1, 1, 2), (1, 2, 1), (1, 2, 2), (2, 1, 1), (2, 1, 2), (2, 2, 1), (2, 2, 2)},\np1 \\<noteq> r1 \\<and> r1 \\<noteq> w1 \\<and> p1 \\<noteq> w1 \\<and>\np2 \\<noteq> r2 \\<and> r2 \\<noteq> w2 \\<and> p2 \\<noteq> w2 \\<and>\np3 \\<noteq> r3 \\<and> r3 \\<noteq> w3 \\<and> p3 \\<noteq> w3 \\<and>\np1 \\<noteq> p2 \\<and> p1 \\<noteq> p3 \\<and> p2 \\<noteq> p3 \\<and>\nr1 \\<noteq> r2 \\<and> r1 \\<noteq> r3 \\<and> r2 \\<noteq> r3 \\<and>\nw1 \\<noteq> w2 \\<and> w1 \\<noteq> w3 \\<and> w2 \\<noteq> w3}\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nshows \"card {(p1, r1, w1, p2, r2, w2, p3, r3, w3).\n(p1, r1, w1) \\<in> {(1::nat, 1, 1), (1, 1, 2), (1, 2, 1), (1, 2, 2), (2, 1, 1), (2, 1, 2), (2, 2, 1), (2, 2, 2)},\n(p2, r2, w2) \\<in> {(1, 1, 1), (1, 1, 2), (1, 2, 1), (1, 2, 2), (2, 1, 1), (2, 1, 2), (2, 2, 1), (2, 2, 2)},\n(p3, r3, w3) \\<in> {(1, 1, 1), (1, 1, 2), (1, 2, 1), (1, 2, 2), (2, 1, 1), (2, 1, 2), (2, 2, 1), (2, 2, 2)},\np1 \\<noteq> r1 \\<and> r1 \\<noteq> w1 \\<and> p1 \\<noteq> w1 \\<and>\np2 \\<noteq> r2 \\<and> r2 \\<noteq> w2 \\<and> p2 \\<noteq> w2 \\<and>\np3 \\<noteq> r3 \\<and> r3 \\<noteq> w3 \\<and> p3 \\<noteq> w3 \\<and>\np1 \\<noteq> p2 \\<and> p1 \\<noteq> p3 \\<and> p2 \\<noteq> p3 \\<and>\nr1 \\<noteq> r2 \\<and> r1 \\<noteq> r3 \\<and> r2 \\<noteq> r3 \\<and>\nw1 \\<noteq> w2 \\<and> w1 \\<noteq> w3 \\<and> w2 \\<noteq> w3}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given $3$ people, each with a preference for a different item from a list of $3$ items (labeled $1$, $2$, and $3$), how many ways can the items be assigned such that no person receives their preferred item and no two people receive the same item? The final answer is $720$.",
+        "syntax": 0,
+        "semantic_score": 0.9200222455115392,
+        "symbolic_score": 0.1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nand h1 : \"card {f::nat\\<Rightarrow>char. inj_on f {0..<n} \\<and> f ` {0..<n} = {''B'',''R'',''W''}}\"\nshows \"card {(a, b, c). a \\<in> {''A'',''B''} \\<and> b \\<in> {''A'',''B''} \\<and> c \\<in> {''A'',''B''} \\<and> a \\<noteq> b \\<and> b \\<noteq> c \\<and> a \\<noteq> c} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nand h1 : \"card {f::nat\\<Rightarrow>char. inj_on f {0..<n} \\<and> f ` {0..<n} = {''B'',''R'',''W''}}\"\nshows \"card {(a, b, c). a \\<in> {''A'',''B''} \\<and> b \\<in> {''A'',''B''} \\<and> c \\<in> {''A'',''B''} \\<and> a \\<noteq> b \\<and> b \\<noteq> c \\<and> a \\<noteq> c} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If we have $3$ balls colored either blue, red, or white, how many ways can we arrange them such that no two adjacent balls have the same color? The final answer is $48$.",
+        "syntax": 0,
+        "semantic_score": 0.9196769109089443,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 2\"\nshows \"card {f. bij_betw f {1..3} {1..2} } = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 2\"\nshows \"card {f. bij_betw f {1..3} {1..2} } = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have two sets, $A$ and $B$, where $A = \\{1,2,3\\}$ and $B = \\{1,2\\}$. How many bijective functions are there between $A$ and $B$? The final answer is 48.",
+        "syntax": 1,
+        "semantic_score": 0.9815344438617796,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nshows \"2^(n-1) * fact n = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nshows \"2^(n-1) * fact n = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $n$ is a natural number that equals $3$, what is the value of $2^{n-1}\\cdot n!$? The final answer is $48$.",
+        "syntax": 1,
+        "semantic_score": 0.8935402839567166,
+        "symbolic_score": 0.2
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nshows \"card {(a, b, c). {a, b, c} = {''blue'', ''red'', ''white''} \\<and> a \\<noteq> b \\<and> a \\<noteq> c \\<and> b \\<noteq> c} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nshows \"card {(a, b, c). {a, b, c} = {''blue'', ''red'', ''white''} \\<and> a \\<noteq> b \\<and> a \\<noteq> c \\<and> b \\<noteq> c} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If there are three colors, blue, red, and white, in how many ways can you choose three different colors such that no two colors are the same? The final answer is 48.\"",
+        "syntax": 1,
+        "semantic_score": 0.39990630251240566,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes ways :: nat\nassumes h0 : \"card {''A'', ''B''} = 2\"\nshows \"ways = fact 3 * 2 ^ 3\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes ways :: nat\nassumes h0 : \"card {''A'', ''B''} = 2\"\nshows \"ways = fact 3 * 2 ^ 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are two distinct letters, \"A\" and \"B\". How many ways can you arrange these two letters in a row if you must use each letter exactly three times? The number of ways is equal to $2^3 \\cdot 3!$.",
+        "syntax": 1,
+        "semantic_score": 0.9715979358663438,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            3,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nand takeoff_schedule :: \"(nat \\<times> nat) list\"\nassumes h0 : \"length takeoff_schedule = 3\"\nand h1 : \"distinct takeoff_schedule\"\nand h2 : \"\\<forall> (p, r) \\<in> set takeoff_schedule. (p = blue_plane \\<or> p = red_plane \\<or> p = white_plane) \\<and> (r = runway_A \\<or> r = runway_B)\"\nshows  \"card {schedule. length schedule = 3 \\<and> distinct schedule \\<and> (\\<forall> (p, r) \\<in> set schedule. (p = blue_plane \\<or> p = red_plane \\<or> p = white_plane) \\<and> (r = runway_A \\<or> r = runway_B))} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nand takeoff_schedule :: \"(nat \\<times> nat) list\"\nassumes h0 : \"length takeoff_schedule = 3\"\nand h1 : \"distinct takeoff_schedule\"\nand h2 : \"\\<forall> (p, r) \\<in> set takeoff_schedule. (p = blue_plane \\<or> p = red_plane \\<or> p = white_plane) \\<and> (r = runway_A \\<or> r = runway_B)\"\nshows  \"card {schedule. length schedule = 3 \\<and> distinct schedule \\<and> (\\<forall> (p, r) \\<in> set schedule. (p = blue_plane \\<or> p = red_plane \\<or> p = white_plane) \\<and> (r = runway_A \\<or> r = runway_B))} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are 3 planes: a blue plane, a red plane, and a white plane. There are 2 runways: runway A and runway B. Each plane must take off from one of the runways, and no two planes can take off from the same runway at the same time. How many different takeoff schedules are possible for the 3 planes using the 2 runways? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.949061188910066,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nand h1 : \"2 * (fact n) = 48\"\nshows  \"card {((A, B), p). p \\<in> perms {1..3}, A \\<subseteq> {1..3}, B \\<subseteq> {1..3}, A \\<inter> B = {}, A \\<union> B = {1..3}} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nand h1 : \"2 * (fact n) = 48\"\nshows  \"card {((A, B), p). p \\<in> perms {1..3}, A \\<subseteq> {1..3}, B \\<subseteq> {1..3}, A \\<inter> B = {}, A \\<union> B = {1..3}} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that there are 3 elements in a set, how many ways can you divide the set into two disjoint subsets A and B such that A and B are non-empty, A and B do not intersect, and A union B equals the entire set? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7823168696238025,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runway_A = 1\"\nand h4 : \"runway_B = 1\"\nshows  \"card {s :: (nat \\<times> nat) list. length s = 3 \\<and> (\\<forall>i<3. fst (s!i) \\<in> {blue_plane, red_plane, white_plane} \\<and> snd (s!i) \\<in> {runway_A, runway_B})} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runway_A = 1\"\nand h4 : \"runway_B = 1\"\nshows  \"card {s :: (nat \\<times> nat) list. length s = 3 \\<and> (\\<forall>i<3. fst (s!i) \\<in> {blue_plane, red_plane, white_plane} \\<and> snd (s!i) \\<in> {runway_A, runway_B})} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are three planes: a blue plane, a red plane, and a white plane. There are also two runways: runway A and runway B. How many different ways can the planes be assigned to the runways, with the order of landing being important? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9358483791214769,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runway_A = 1\"\nand h4 : \"runway_B = 1\"\nshows  \"\\<exists> total_ways. total_ways = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runway_A = 1\"\nand h4 : \"runway_B = 1\"\nshows  \"\\<exists> total_ways. total_ways = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are three planes: a blue plane, a red plane, and a white plane. There are also two runways: Runway A and Runway B. How many different ways can the planes be arranged on the runways? The final answer is 48.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9327365183734333,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"runway_A = 1\"\nand h1 : \"runway_B = 2\"\nshows  \"card {(bp, rp, wp) | bp rp wp.\n             bp = runway_A \\<or> bp = runway_B \\<and>\n             rp = runway_A \\<or> rp = runway_B \\<and> rp \\<noteq> bp \\<and>\n             wp = runway_A \\<or> wp = runway_B \\<and> wp \\<noteq> rp \\<and> wp \\<noteq> bp} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"runway_A = 1\"\nand h1 : \"runway_B = 2\"\nshows  \"card {(bp, rp, wp) | bp rp wp.\n             bp = runway_A \\<or> bp = runway_B \\<and>\n             rp = runway_A \\<or> rp = runway_B \\<and> rp \\<noteq> bp \\<and>\n             wp = runway_A \\<or> wp = runway_B \\<and> wp \\<noteq> rp \\<and> wp \\<noteq> bp} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Three planes, one blue, one red, and one white, are assigned to land on one of two runways, runway A or runway B. Each plane must land on a different runway. How many different ways can the planes be assigned to the runways? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9261409382475364,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runway_A = 1\"\nand h4 : \"runway_B = 1\"\nshows  \"3 * 2 * 2 * 2 = (48::nat)\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runway_A = 1\"\nand h4 : \"runway_B = 1\"\nshows  \"3 * 2 * 2 * 2 = (48::nat)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are 3 planes: 1 blue, 1 red, and 1 white. There are also 2 runways: runway A and runway B. How many different ways are there to arrange the planes on the runways, considering that each runway can hold 2 planes at a time? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9307750742267927,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nand h1 : \"two_runways = 2\"\nshows  \"number_of_ways = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 3\"\nand h1 : \"two_runways = 2\"\nshows  \"number_of_ways = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If there are 3 airplanes and 2 runways, find the number of ways the airplanes can land on the runways. The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8789873196891084,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runwayA runwayB :: nat\nand takeoffs :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runwayA = 1\"\nand h4 : \"runwayB = 1\"\nand h5 : \"takeoffs blue_plane (runwayA + runwayB) * takeoffs red_plane (runwayA + runwayB) * takeoffs white_plane (runwayA + runwayB) = 48\"\nshows  \"takeoffs blue_plane (runwayA + runwayB) * takeoffs red_plane (runwayA + runwayB) * takeoffs white_plane (runwayA + runwayB) = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runwayA runwayB :: nat\nand takeoffs :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"blue_plane = 1\"\nand h1 : \"red_plane = 1\"\nand h2 : \"white_plane = 1\"\nand h3 : \"runwayA = 1\"\nand h4 : \"runwayB = 1\"\nand h5 : \"takeoffs blue_plane (runwayA + runwayB) * takeoffs red_plane (runwayA + runwayB) * takeoffs white_plane (runwayA + runwayB) = 48\"\nshows  \"takeoffs blue_plane (runwayA + runwayB) * takeoffs red_plane (runwayA + runwayB) * takeoffs white_plane (runwayA + runwayB) = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are three planes: blue, red, and white. There are two runways: A and B. The product of the number of takeoffs for each plane using both runways (A and B) is 48. Find the product of the number of takeoffs for each plane using both runways. The final answer is 48.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9069689973784002,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes blue red white :: nat\nassumes h0 : \"blue = 1\"\nand h1 : \"red = 1\"\nand h2 : \"white = 1\"\nand h3 : \"distinct [blue, red, white]\"\nshows  \"card {ways :: (nat \\<times> char) list. length ways = 3 \\<and> (\\<forall>(plane, runway)\\<in>set ways. (plane \\<in> {blue, red, white}) \\<and> (runway \\<in> {'A', 'B'}))} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: nat\nassumes h0 : \"blue = 1\"\nand h1 : \"red = 1\"\nand h2 : \"white = 1\"\nand h3 : \"distinct [blue, red, white]\"\nshows  \"card {ways :: (nat \\<times> char) list. length ways = 3 \\<and> (\\<forall>(plane, runway)\\<in>set ways. (plane \\<in> {blue, red, white}) \\<and> (runway \\<in> {'A', 'B'}))} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Three planes, one blue, one red, and one white, are landing on two runways A and B. If each plane can land on either runway and no two planes can land on the same runway at the same time, how many different landing orders are there? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9164369507867282,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nand takeoffs :: \"((nat \\<times> nat) list)\"\nassumes h0 : \"length takeoffs = 3\"\nand h1 : \"distinct takeoffs\"\nand h2 : \"set takeoffs \\<subseteq> {(blue_plane, runway_A), (blue_plane, runway_B), (red_plane, runway_A), (red_plane, runway_B), (white_plane, runway_A), (white_plane, runway_B)}\"\nshows  \"card (set takeoffs) = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is 48\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\n Similarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue_plane red_plane white_plane :: nat\nand runway_A runway_B :: nat\nand takeoffs :: \"((nat \\<times> nat) list)\"\nassumes h0 : \"length takeoffs = 3\"\nand h1 : \"distinct takeoffs\"\nand h2 : \"set takeoffs \\<subseteq> {(blue_plane, runway_A), (blue_plane, runway_B), (red_plane, runway_A), (red_plane, runway_B), (white_plane, runway_A), (white_plane, runway_B)}\"\nshows  \"card (set takeoffs) = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are three planes: a blue plane, a red plane, and a white plane. There are also two runways: runway A and runway B. Each plane can take off from either runway. In how many distinct orders can the three planes take off? The final answer is 48.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9455800898132101,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes planes :: \"('a \\<Rightarrow> bool) list\"\nand runways :: \"('b \\<Rightarrow> bool) list\"\nassumes h0 : \"length planes = 3\"\nand h1 : \"length runways = 2\"\nand h2 : \"\\<forall> p \\<in> set planes. \\<exists> color. p = (\\<lambda> x. x = color)\"\nand h3 : \"\\<forall> r \\<in> set runways. \\<exists> name. r = (\\<lambda> x. x = name)\"\nand h4 : \"distinct planes\"\nand h5 : \"distinct runways\"\nshows \"card {s. length s = 3 \\<and> (\\<forall> i < 3. s ! i \\<in> set runways)} * card {p. length p = 3 \\<and> (\\<forall> i < 3. p ! i \\<in> set planes)} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes planes :: \"('a \\<Rightarrow> bool) list\"\nand runways :: \"('b \\<Rightarrow> bool) list\"\nassumes h0 : \"length planes = 3\"\nand h1 : \"length runways = 2\"\nand h2 : \"\\<forall> p \\<in> set planes. \\<exists> color. p = (\\<lambda> x. x = color)\"\nand h3 : \"\\<forall> r \\<in> set runways. \\<exists> name. r = (\\<lambda> x. x = name)\"\nand h4 : \"distinct planes\"\nand h5 : \"distinct runways\"\nshows \"card {s. length s = 3 \\<and> (\\<forall> i < 3. s ! i \\<in> set runways)} * card {p. length p = 3 \\<and> (\\<forall> i < 3. p ! i \\<in> set planes)} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are 3 distinct planes, each identified by a unique color, and 2 distinct runways, each identified by a unique name. We want to find the number of ways to assign each of the 3 planes to a runway, such that each plane is assigned to a runway with a different name. Additionally, we want to find the number of ways to assign each of the 3 runways to a plane, such that each runway is assigned to a plane with a different color. The product of these two numbers is 48.",
+        "syntax": 1,
+        "semantic_score": 0.8922809919715516,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length blue = 1\"\nand h1 : \"length red = 1\"\nand h2 : \"length white = 1\"\nand h3 : \"length runwayA = 1\"\nand h4 : \"length runwayB = 1\"\nand h5 : \"runwayA \\<noteq> runwayB\"\nshows \"card {p. p \\<in> permutations_with_repetition (blue # red # white # []) (runwayA # runwayB # [])} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length blue = 1\"\nand h1 : \"length red = 1\"\nand h2 : \"length white = 1\"\nand h3 : \"length runwayA = 1\"\nand h4 : \"length runwayB = 1\"\nand h5 : \"runwayA \\<noteq> runwayB\"\nshows \"card {p. p \\<in> permutations_with_repetition (blue # red # white # []) (runwayA # runwayB # [])} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three single-character lists: \"blue\", \"red\", and \"white\". There are also two single-character lists representing two different runways: \"runwayA\" and \"runwayB\". We want to find the number of ways to arrange the characters from the \"blue\", \"red\", and \"white\" lists onto the \"runwayA\" and \"runwayB\" lists, with repetition allowed. The total number of such arrangements is 48.",
+        "syntax": 1,
+        "semantic_score": 0.877936438192836,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nshows \"card {s. s \\<in> set (permutations [blue, red, white]) \\<and> (\\<forall>i<3. s ! i \\<in> set [runwayA, runwayB])} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nshows \"card {s. s \\<in> set (permutations [blue, red, white]) \\<and> (\\<forall>i<3. s ! i \\<in> set [runwayA, runwayB])} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three single-character lists: blue, red, and white. There are also two single-character lists representing two runways: runwayA and runwayB. We want to find the number of permutations of the three colors (blue, red, white) such that each color in the permutation is a valid runway (either runwayA or runwayB). The answer is 48.",
+        "syntax": 1,
+        "semantic_score": 0.8801502910911387,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nand h5 : \"distinct [blue, red, white]\"\nshows \"card {s. s \\<in> permutations_of_list [blue, red, white] \\<and> s \\<le> [runwayA, runwayB]}\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nand h5 : \"distinct [blue, red, white]\"\nshows \"card {s. s \\<in> permutations_of_list [blue, red, white] \\<and> s \\<le> [runwayA, runwayB]}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three distinct single-character lists: blue, red, and white. There are also two single-character lists: runwayA and runwayB. We want to find the number of permutations of the lists blue, red, and white that are less than or equal to the lists runwayA and runwayB in lexicographic order.",
+        "syntax": 0,
+        "semantic_score": 0.8465823367754859,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nand h5 : \"distinct [blue, red, white]\"\nshows \"card {s. s \\<in> permutations_of_list [blue, red, white] \\<and> (\\<exists>a \\<in> set s. a = runwayA) \\<and> (\\<exists>b \\<in> set s. a \\<noteq> b \\<and> b = runwayB)} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nand h5 : \"distinct [blue, red, white]\"\nshows \"card {s. s \\<in> permutations_of_list [blue, red, white] \\<and> (\\<exists>a \\<in> set s. a = runwayA) \\<and> (\\<exists>b \\<in> set s. a \\<noteq> b \\<and> b = runwayB)} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three distinct single-character lists: blue, red, and white. There are also two single-character lists: runwayA and runwayB. We want to find the number of permutations of the lists blue, red, and white such that at least one of the lists in the permutation is equal to runwayA and at least one of the lists in the permutation is equal to runwayB, but runwayA and runwayB are not the same list in the permutation. The answer is 48.",
+        "syntax": 1,
+        "semantic_score": 0.8795687586590624,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nshows \"card {s. s \\<in> set (permutations [blue, red, white]) \\<and> (\\<exists> x y z. x \\<in> set runwayA \\<and> y \\<in> set runwayB \\<and> z \\<in> set runwayB \\<and> s = [x, y, z])} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nshows \"card {s. s \\<in> set (permutations [blue, red, white]) \\<and> (\\<exists> x y z. x \\<in> set runwayA \\<and> y \\<in> set runwayB \\<and> z \\<in> set runwayB \\<and> s = [x, y, z])} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three single-character lists: blue, red, and white. There are also two single-character lists representing two runways: runwayA and runwayB. We want to find the number of ways to arrange the three lists (blue, red, and white) into a sequence such that the first character is from runwayA, and the last two characters are from runwayB. The total number of such arrangements is 48.",
+        "syntax": 1,
+        "semantic_score": 0.8903825436461108,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length blue = 1\"\nand h1 : \"length red = 1\"\nand h2 : \"length white = 1\"\nand h3 : \"length runwayA = 1\"\nand h4 : \"length runwayB = 1\"\nand h5 : \"distinct [blue, red, white]\"\nshows \"card {s. s \\<in> permutations_of_set [blue, red, white] \\<and> length s = 3} * card {s. s \\<in> permutations_of_set [runwayA, runwayB] \\<and> length s = 3} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length blue = 1\"\nand h1 : \"length red = 1\"\nand h2 : \"length white = 1\"\nand h3 : \"length runwayA = 1\"\nand h4 : \"length runwayB = 1\"\nand h5 : \"distinct [blue, red, white]\"\nshows \"card {s. s \\<in> permutations_of_set [blue, red, white] \\<and> length s = 3} * card {s. s \\<in> permutations_of_set [runwayA, runwayB] \\<and> length s = 3} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three single-character lists: \"blue\", \"red\", and \"white\", and two single-character lists: \"runwayA\" and \"runwayB\". The characters in each list are distinct. We want to find the number of ways to arrange the three single-character lists \"blue\", \"red\", and \"white\" in a sequence of length 3, and the number of ways to arrange the two single-character lists \"runwayA\" and \"runwayB\" in a sequence of length 3. The product of these two numbers is 48.",
+        "syntax": 1,
+        "semantic_score": 0.8863590748468284,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"blue = ['b']\"\nand h1 : \"red = ['r']\"\nand h2 : \"white = ['w']\"\nand h3 : \"runwayA = ['A']\"\nand h4 : \"runwayB = ['B']\"\nshows \"card {s. s \\<in> permutations_of_list (blue @ red @ white @ runwayA @ runwayB) \\<and> length s = 5} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"blue = ['b']\"\nand h1 : \"red = ['r']\"\nand h2 : \"white = ['w']\"\nand h3 : \"runwayA = ['A']\"\nand h4 : \"runwayB = ['B']\"\nshows \"card {s. s \\<in> permutations_of_list (blue @ red @ white @ runwayA @ runwayB) \\<and> length s = 5} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are five distinct items: a blue 'b', a red 'r', a white 'w', a runway A 'A', and a runway B 'B'. We want to find the number of unique ways to arrange these five items in a sequence of length 5. The answer is 48.",
+        "syntax": 0,
+        "semantic_score": 0.8521407108666674,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nshows \"card {s. s \\<in> permutations_of_set ({blue, red, white}) \\<and> (\\<exists> a b. s = [a, b, b] \\<and> a \\<in> {runwayA, runwayB} \\<and> b \\<in> {runwayA, runwayB})} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes blue red white :: \"char list\"\nand runwayA runwayB :: \"char list\"\nassumes h0 : \"length runwayA = 1\"\nand h1 : \"length runwayB = 1\"\nand h2 : \"length blue = 1\"\nand h3 : \"length red = 1\"\nand h4 : \"length white = 1\"\nshows \"card {s. s \\<in> permutations_of_set ({blue, red, white}) \\<and> (\\<exists> a b. s = [a, b, b] \\<and> a \\<in> {runwayA, runwayB} \\<and> b \\<in> {runwayA, runwayB})} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three single-character lists: blue, red, and white. There are also two single-character lists: runwayA and runwayB. We want to find the number of ways to arrange these five lists into a sequence of three elements, where the first element is either runwayA or runwayB, and the last two elements are the same and can be either runwayA or runwayB. The total number of such arrangements is 48.",
+        "syntax": 1,
+        "semantic_score": 0.8873553779188915,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes planes :: \"char list\"\nassumes h0 : \"length planes = 3\"\nand h1 : \"set planes = {''B'', ''R'', ''W''}\"\nand h2 : \"runways = [''A'', ''B'']\"\nshows \"card {p. p permutes {0..<3} \\<and> (\\<forall>i<3. runways ! p i = planes ! i)} = 48\"",
+        "formal solution": "(* ### Problem\n A blue plane, a red plane and a white plane are waiting to take off from an airport that has two runways. Planes must take off from the airport one at a time, but can take off from either runway. In how many ways can the three takeoffs be scheduled? (One such way is the blue plane on runway A, followed by the red plane on runway B, followed by the white plane on runway B.) The final Answer is $48$\n ### Proof\n There are 3 ways to choose the first plane and 2 ways to choose where it takes off.\nSimilarly, there are 2 ways to choose the second plane after the first has taken off and 2 ways to choose where it takes off, as well as 1 way to choose the last plane and 2 ways to choose its runway. These multiply to a total of $3\\cdot2\\cdot2\\cdot2\\cdot1\\cdot2=3\\cdot2^4=\\boxed{48}$.\n *)\n\ntheorem\nfixes planes :: \"char list\"\nassumes h0 : \"length planes = 3\"\nand h1 : \"set planes = {''B'', ''R'', ''W''}\"\nand h2 : \"runways = [''A'', ''B'']\"\nshows \"card {p. p permutes {0..<3} \\<and> (\\<forall>i<3. runways ! p i = planes ! i)} = 48\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There are three planes, represented by the letters 'B', 'R', and 'W'. There are two runways, represented by the letters 'A' and 'B'. We want to find the number of ways to assign each plane to a runway such that each plane lands on a different runway and the order of the planes matches the order of the runways. The answer is 48 different ways.",
+        "syntax": 0,
+        "semantic_score": 0.8789261486784629,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

@@ -1,0 +1,612 @@
+{
+    "problem_name": "imo_1993_p5",
+    "informal_statement": "Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.",
+    "informal_proof": "Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics",
+    "a_0": {
+        "formal problem": "definition\nstrictly_increasing :: \"(nat \\<Rightarrow> nat) \\<Rightarrow> bool\" where\n\"strictly_increasing f = (\\<forall>n. f(n + 1) > f n)\"\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nand h2 : \"strictly_increasing f\"\nshows  \"\\<exists>f. strictly_increasing f\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ndefinition\nstrictly_increasing :: \"(nat \\<Rightarrow> nat) \\<Rightarrow> bool\" where\n\"strictly_increasing f = (\\<forall>n. f(n + 1) > f n)\"\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nand h2 : \"strictly_increasing f\"\nshows  \"\\<exists>f. strictly_increasing f\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ that is strictly increasing if $f(n + 1) > f(n)$ for all natural numbers $n$. Given that $f(1) = 2$ and $f(f(n)) = f(n) + n$ for all $n$, prove that there exists a strictly increasing function $f$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9935240149497986,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "\ntheorem exists_function: \"\\<exists> f. f 1 = 2 \\<and> (\\<forall>n. f(f n) = f n + n) \\<and> strict_mono f\"\nproof\n  show \"f 1 = 2 \\<and> (\\<forall>n. f(f n) = f n + n) \\<and> strict_mono f\" using h0 h1 h2 by auto\nqed\nend\n",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n\ntheorem exists_function: \"\\<exists> f. f 1 = 2 \\<and> (\\<forall>n. f(f n) = f n + n) \\<and> strict_mono f\"\nproof\n  show \"f 1 = 2 \\<and> (\\<forall>n. f(f n) = f n + n) \\<and> strict_mono f\" using h0 h1 h2 by auto\nqed\nend\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a function $f$ that satisfies the following three conditions: \n\n1) $f(1) = 2$ \n2) For all $n$, $f(f(n)) = f(n) + n$\n3) The function $f$ is strictly increasing.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.949007511138916,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. f (f n) = f n + n\"\nand h2 : \"\\<forall> n m. n < m \\<longrightarrow> f n < f m\"\nshows  \"\\<exists> f. True\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. f (f n) = f n + n\"\nand h2 : \"\\<forall> n m. n < m \\<longrightarrow> f n < f m\"\nshows  \"\\<exists> f. True\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function f that is defined for natural numbers. This function has three properties:\n\n1. The value of the function at 1 is 2: f(1) = 2.\n2. For all natural numbers n, the value of the function at f(n) is equal to f(n) + n: for all n, f(f(n)) = f(n) + n.\n3. For any two natural numbers n and m where n is less than m, the value of the function at n is less than the value of the function at m: for all n and m, if n < m then f(n) < f(m).\n\nDoes such a function f exist?",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9240232110023499,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "The statement would be translated into the Isabelle language as follows:\n\ndefinition \"f :: nat \\<Rightarrow> nat\"\nwhere\n\"f n = (if n = 1 then 2 else f (f (n-1)) + (n-1))\"\n\nlemma\nassumes h0 : \"\\<forall>n. f (f n) = f n + n\"\nand h1 : \"f 1 = 2\"\nshows  \"\\<exists> f. \\<forall>n. f (f n) = f n + n \\<and> f 1 = 2\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\nThe statement would be translated into the Isabelle language as follows:\n\ndefinition \"f :: nat \\<Rightarrow> nat\"\nwhere\n\"f n = (if n = 1 then 2 else f (f (n-1)) + (n-1))\"\n\nlemma\nassumes h0 : \"\\<forall>n. f (f n) = f n + n\"\nand h1 : \"f 1 = 2\"\nshows  \"\\<exists> f. \\<forall>n. f (f n) = f n + n \\<and> f 1 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(n)$ such that $f(1) = 2$ and for $n > 1$, $f(n) = f(f(n-1)) + (n-1)$. Show that there exists a function $f$ such that $f(f(n)) = f(n) + n$ for all $n$ and $f(1) = 2$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9840965867042542,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "locale function_properties =\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes f1: \"f 1 = 2\"\nand ffn: \"\\<forall> n. f(f(n)) = f(n) + n\"\nand increase: \"\\<forall> n. n < f(n)\"\n\ntheorem (in function_properties)\nexists_function: \"True\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\nlocale function_properties =\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes f1: \"f 1 = 2\"\nand ffn: \"\\<forall> n. f(f(n)) = f(n) + n\"\nand increase: \"\\<forall> n. n < f(n)\"\n\ntheorem (in function_properties)\nexists_function: \"True\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f$ that maps natural numbers to natural numbers and satisfies the following properties: \n\n1. $f(1) = 2$, \n2. for all natural numbers $n$, $f(f(n)) = f(n) + n$,\n3. for all natural numbers $n$, $n$ is less than $f(n)$.\n\nProve that such a function exists.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9955155849456787,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "Theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. f (f n) = f n + n\"\nand h2 : \"\\<forall> n m. n < m \\<longrightarrow> f n < f m\"\nshows  \"\\<exists> f. f satisfies the above conditions\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\nTheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. f (f n) = f n + n\"\nand h2 : \"\\<forall> n m. n < m \\<longrightarrow> f n < f m\"\nshows  \"\\<exists> f. f satisfies the above conditions\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a function $f$ that satisfies the following conditions:\n\n1. $f(1) = 2$\n2. For all natural numbers $n$, $f(f(n)) = f(n) + n$ \n3. For all natural numbers $n$ and $m$, if $n < m$, then $f(n) < f(m)$.\n\nDoes such a function exist?",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.735628604888916,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nand h2 : \"\\<forall>m n. m < n \\<longrightarrow> f m < f n\"\nshows  \"\\<exists>f. \\<forall>n. f n \\<in> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nand h2 : \"\\<forall>m n. m < n \\<longrightarrow> f m < f n\"\nshows  \"\\<exists>f. \\<forall>n. f n \\<in> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose there is a function $f$ on the natural numbers such that $f(1) = 2$, $f(f(n)) = f(n) + n$ for all natural numbers $n$, and $f(m) < f(n)$ for all natural numbers $m$ and $n$ with $m < n$. Is there such a function $f$ that for every natural number $n$, $f(n)$ is a natural number greater than or equal to 1?",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6208851933479309,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "\n\ntheorem exists_function: \"\\<exists> f. f 1 = 2 \\<and> (\\<forall>n. f (f n) = f n + n) \\<and> (\\<forall>x y. x < y \\<longrightarrow> f x < f y)\"\nusing f1 f2 strict_increasing by auto\n\nend",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n\n\ntheorem exists_function: \"\\<exists> f. f 1 = 2 \\<and> (\\<forall>n. f (f n) = f n + n) \\<and> (\\<forall>x y. x < y \\<longrightarrow> f x < f y)\"\nusing f1 f2 strict_increasing by auto\n\nend\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a function $f$ such that $f(1) = 2$, $f(f(n)) = f(n) + n$ for all $n$, and $f(x) < f(y)$ whenever $x < y$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9894416928291321,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "definition\n  \"f (n::nat) = (if n = 1 then 2 else if even n then n div 2 else 3 * n + 1)\"\n\ntheorem\n  assumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nshows  \"strict_mono f\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ndefinition\n  \"f (n::nat) = (if n = 1 then 2 else if even n then n div 2 else 3 * n + 1)\"\n\ntheorem\n  assumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nshows  \"strict_mono f\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(n)$ for natural numbers $n$ such that $f(1)=2$, $f(n)=n/2$ if $n$ is even, and $f(n)=3n+1$ if $n$ is odd. Assuming that $f(f(n)) = f(n) + n$ for all $n$, prove that $f$ is strictly increasing.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.94073086977005,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "definition f :: \"nat \\<Rightarrow> nat\"\nwhere \"f n = (if n = 1 then 2 else f(f(n-1)) + (n-1))\"\n\ntheorem\nassumes h0 : \"\\<forall>n. n > 1 \\<longrightarrow> f n = f(f(n-1)) + (n-1)\"\nand h1 : \"f 1 = 2\"\nshows  \"\\<exists>f. strictly_increasing f \\<and> f ` UNIV = UNIV\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ndefinition f :: \"nat \\<Rightarrow> nat\"\nwhere \"f n = (if n = 1 then 2 else f(f(n-1)) + (n-1))\"\n\ntheorem\nassumes h0 : \"\\<forall>n. n > 1 \\<longrightarrow> f n = f(f(n-1)) + (n-1)\"\nand h1 : \"f 1 = 2\"\nshows  \"\\<exists>f. strictly_increasing f \\<and> f ` UNIV = UNIV\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f(n)$ is defined as follows: $f(1) = 2$ and for $n > 1$, $f(n) = f(f(n-1)) + (n-1)$. Is there a strictly increasing function $f$ such that its image is the set of all natural numbers?",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7358794808387756,
+        "symbolic_score": 0.1
+    },
+    "oracle": "(*\n  Authors: Wenda Li\n*)\n\ntheory imo_1993_p5 \n  imports Complex_Main \"HOL-Computational_Algebra.Computational_Algebra\"\nbegin\n\ntheorem imo_1993_p5:\n  \"\\<exists> f :: nat \\<Rightarrow> nat. \n    (\\<forall> a b. (a < b) \\<longleftrightarrow> f a < f b) \n      \\<and> f 1 = 2 \\<and> (\\<forall> n. f (f n) = f n + n)\"\n  sorry\n\nend   ",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\n  (* Let \\<nat> denote the natural numbers *)\n  fixes f :: \"\\<nat> \\<Rightarrow> \\<nat>\"\n  assumes h0 : \"f 1 = 2\"\nshows  \"\\<not>(\\<exists>f. strict_mono f \\<and> f 1 = 2 \\<and> (\\<forall>n. f (f n) = f n + n))\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\n  (* Let \\<nat> denote the natural numbers *)\n  fixes f :: \"\\<nat> \\<Rightarrow> \\<nat>\"\n  assumes h0 : \"f 1 = 2\"\nshows  \"\\<not>(\\<exists>f. strict_mono f \\<and> f 1 = 2 \\<and> (\\<forall>n. f (f n) = f n + n))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a function $f$ on the natural numbers such that $f(1) = 2$. Show that there does not exist a strictly increasing function $f$ that satisfies $f(1) = 2$ and $f(f(n)) = f(n) + n$ for all natural numbers $n$.",
+        "semantic_score": 0.9915749432787551,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\n(* Let N be the set of natural numbers *)\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nand h2 : \"\\<forall>m n. m < n \\<longrightarrow> f m < f n\"\nshows  False",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\n(* Let N be the set of natural numbers *)\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nand h2 : \"\\<forall>m n. m < n \\<longrightarrow> f m < f n\"\nshows  False\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There does not exist a function $f$ from the set of natural numbers to itself such that $f(1) = 2$, $f(f(n)) = f(n) + n$ for all natural numbers $n$, and $f$ is strictly increasing.",
+        "semantic_score": 0.6991676598472034,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfun_increasing: \"\\<exists> f :: nat \\<Rightarrow> nat. strict_mono f \\<and> f 1 = 2 \\<and> (\\<forall> n \\<in> UNIV. f (f n) = f n + n)\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfun_increasing: \"\\<exists> f :: nat \\<Rightarrow> nat. strict_mono f \\<and> f 1 = 2 \\<and> (\\<forall> n \\<in> UNIV. f (f n) = f n + n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Is there a strictly increasing function $f$ from the natural numbers to themselves such that $f(1) = 2$ and for all $n$, $f(f(n)) = f(n) + n$?",
+        "semantic_score": 0.7469276283178428,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfun f :: \"nat \\<Rightarrow> nat\" where\n(* The function f is strictly increasing *)\n(* f of 1 is 2 *)\n(* f of f of n is equal to f of n plus n *)\n  \"f 0 = 0\" |\n  \"f (Suc 0) = 2\" |\n  \"f (Suc (Suc n)) = (LEAST m. f n < m \\<and> f (Suc n) + n = m)\"\n\ndefinition increasing :: \"(nat \\<Rightarrow> nat) \\<Rightarrow> bool\" where\n\"increasing f \\<equiv> (\\<forall>n m. n < m \\<longrightarrow> f n < f m)\"\n\nlemma\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nshows  \"increasing f\" and \"(\\<nexists>f. increasing f \\<and> f 1 = 2 \\<and> (\\<forall>n. f (f n) = f n + n))\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfun f :: \"nat \\<Rightarrow> nat\" where\n(* The function f is strictly increasing *)\n(* f of 1 is 2 *)\n(* f of f of n is equal to f of n plus n *)\n  \"f 0 = 0\" |\n  \"f (Suc 0) = 2\" |\n  \"f (Suc (Suc n)) = (LEAST m. f n < m \\<and> f (Suc n) + n = m)\"\n\ndefinition increasing :: \"(nat \\<Rightarrow> nat) \\<Rightarrow> bool\" where\n\"increasing f \\<equiv> (\\<forall>n m. n < m \\<longrightarrow> f n < f m)\"\n\nlemma\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nshows  \"increasing f\" and \"(\\<nexists>f. increasing f \\<and> f 1 = 2 \\<and> (\\<forall>n. f (f n) = f n + n))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ that takes a non-negative integer $n$ and satisfies the following conditions:\n- $f$ is strictly increasing.\n- $f(1) = 2$.\n- $f(f(n)) = f(n) + n$ for all non-negative integers $n$.\n\nProve that $f$ is increasing and that there does not exist a function $f$ that satisfies the above conditions.",
+        "semantic_score": 0.9913366860267955,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\n  (*Defining the domain and codomain of the function f*)\n  fixes f :: \"nat \\<Rightarrow> nat\"\n  \n  (*Assumptions*)\n  assumes h0 : \"f 1 = 2\"\nshows  \"\\<not> surj f\"  (*There does not exist a strictly increasing function f: N \\<Rightarrow> N*)",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\n  (*Defining the domain and codomain of the function f*)\n  fixes f :: \"nat \\<Rightarrow> nat\"\n  \n  (*Assumptions*)\n  assumes h0 : \"f 1 = 2\"\nshows  \"\\<not> surj f\"  (*There does not exist a strictly increasing function f: N \\<Rightarrow> N*)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a function $f$ maps natural numbers to natural numbers such that $f(1) = 2$, prove that there does not exist a strictly increasing function $f: \\mathbb{N} \\rightarrow \\mathbb{N}$.",
+        "semantic_score": 0.9471168269000453,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\n  \\<comment> \\<open>Let \\<open>N\\<close> denote the set of positive integers.\\<close>\n  fixes f :: \"nat \\<Rightarrow> nat\"\n  assumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nand h2 : \"\\<forall>m n. m < n \\<longrightarrow> f m < f n\"\nshows  False",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\n  \\<comment> \\<open>Let \\<open>N\\<close> denote the set of positive integers.\\<close>\n  fixes f :: \"nat \\<Rightarrow> nat\"\n  assumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nand h2 : \"\\<forall>m n. m < n \\<longrightarrow> f m < f n\"\nshows  False\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $N$ denote the set of positive integers. Define a function $f$ from $N$ to $N$ such that $f(1) = 2$, $f(f(n)) = f(n) + n$, and $f$ is strictly increasing. Prove that this leads to a contradiction.",
+        "semantic_score": 0.9856998072174491,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\n  (*Let N be the set of natural numbers*)\n  fixes N :: \"nat set\"\n  (*Let f be a strictly increasing function from N to N*)\n  and f :: \"nat \\<Rightarrow> nat\"\n  (*such that f(1) = 2*)\n  assumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n \\<in> N. f (f n) = f n + n\"\nshows  \"\\<exists> f. strict_mono f\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\n  (*Let N be the set of natural numbers*)\n  fixes N :: \"nat set\"\n  (*Let f be a strictly increasing function from N to N*)\n  and f :: \"nat \\<Rightarrow> nat\"\n  (*such that f(1) = 2*)\n  assumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n \\<in> N. f (f n) = f n + n\"\nshows  \"\\<exists> f. strict_mono f\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"There exists a strictly increasing function $f$ from the set of natural numbers to itself such that $f(1) = 2$ and for all $n$ in the set of natural numbers, $f(f(n)) = f(n) + n$.\"",
+        "semantic_score": -0.0684816899400702,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "\n\ndefinition \"N = {1::nat..}\"\n\ndefinition\n  strict_inc :: \"(nat \\<Rightarrow> nat) \\<Rightarrow> bool\" where\n  \"strict_inc f \\<equiv> \\<forall>n m. n < m \\<longrightarrow> f n < f m\"\n\ndefinition\n  f :: \"nat \\<Rightarrow> nat\" where\n  \"f n = (if n = 1 then 2 else (if n = 2 then 3 else n - 1))\"\n\nlemma f_inc: \"strict_inc f\"\n  unfolding strict_inc_def f_def by auto\n\nlemma f_prop: \"f (f n) = n + f n\"\n  by (simp add: f_def)\n\nend",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n\n\ndefinition \"N = {1::nat..}\"\n\ndefinition\n  strict_inc :: \"(nat \\<Rightarrow> nat) \\<Rightarrow> bool\" where\n  \"strict_inc f \\<equiv> \\<forall>n m. n < m \\<longrightarrow> f n < f m\"\n\ndefinition\n  f :: \"nat \\<Rightarrow> nat\" where\n  \"f n = (if n = 1 then 2 else (if n = 2 then 3 else n - 1))\"\n\nlemma f_inc: \"strict_inc f\"\n  unfolding strict_inc_def f_def by auto\n\nlemma f_prop: \"f (f n) = n + f n\"\n  by (simp add: f_def)\n\nend\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define $f$ on the set of natural numbers $\\{1,2,3,\\ldots\\}$ by $f(1)=2$, $f(2)=3$, and $f(n)=n-1$ for all $n\\geq 3$. Show that $f$ is strictly increasing and that $f(f(n))=n+f(n)$ for all $n\\in \\{1,2,3,\\ldots\\}.$",
+        "semantic_score": 0.25416993474403204,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfun_increasing: \"\\<exists>f :: nat \\<Rightarrow> nat. f 1 = 2 \\<and> (\\<forall>n. f (f n) = f n + n \\<and> f n < f (Suc n))\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfun_increasing: \"\\<exists>f :: nat \\<Rightarrow> nat. f 1 = 2 \\<and> (\\<forall>n. f (f n) = f n + n \\<and> f n < f (Suc n))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There is a function $f$ defined on the natural numbers such that $f(1) = 2$, for all $n$, $f(f(n)) = f(n) + n$, and $f(n) < f(n+1)$.",
+        "semantic_score": 0.8429118183407724,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\n  (* Let N be the set of positive integers *)\n  fixes N :: \"nat set\"\n  (* Define a strictly increasing function f from N to N *)\n  and f :: \"nat \\<Rightarrow> nat\"\n  assumes h0 : \"1 \\<in> N\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall>n. n \\<in> N \\<longrightarrow> f (f n) = f n + n\"\nand h3 : \"\\<forall>n m. n \\<in> N \\<and> m \\<in> N \\<and> n < m \\<longrightarrow> f n < f m\"\nshows  False",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\n  (* Let N be the set of positive integers *)\n  fixes N :: \"nat set\"\n  (* Define a strictly increasing function f from N to N *)\n  and f :: \"nat \\<Rightarrow> nat\"\n  assumes h0 : \"1 \\<in> N\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall>n. n \\<in> N \\<longrightarrow> f (f n) = f n + n\"\nand h3 : \"\\<forall>n m. n \\<in> N \\<and> m \\<in> N \\<and> n < m \\<longrightarrow> f n < f m\"\nshows  False\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a set $N$ of positive integers and a function $f$ that maps $N$ to $N$. Assume that $f$ is strictly increasing, $f(1)=2$, $f(f(n)) = f(n) + n$, and $f(n) < f(m)$ whenever $n$ and $m$ are distinct elements of $N$ and $n$ is less than $m$. Prove that the assumption leads to a contradiction.",
+        "semantic_score": 0.9889495657837394,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            1,
+            5
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"f(1) = 2\"\nand h1 : \"\\<forall>n. n \\<in> nat \\<longrightarrow> f(f n) = f n + n\"\nshows  \"\\<exists> f. (h0 \\/(\\<forall>n. n \\<in> nat \\<longrightarrow> h1))\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"f(1) = 2\"\nand h1 : \"\\<forall>n. n \\<in> nat \\<longrightarrow> f(f n) = f n + n\"\nshows  \"\\<exists> f. (h0 \\/(\\<forall>n. n \\<in> nat \\<longrightarrow> h1))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"There exists a function $f$ such that $f(1) = 2$, and for all natural numbers $n$, $f(fn) = fn + n$.\n\nIn other words, given that $f(1) = 2$, what is the value of $f$ for any natural number $n$ such that $fn$ is equal to $fn+n$?\n\nThe final answer is that for all natural numbers $n$, $f(n) = 2n+n = 3n$."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"\\<forall> n. f(0) = 2\"\nand h1 : \"\\<forall> n m. n < m \\<Longrightarrow> f n < f m\"\nand h2 : \"\\<forall> n. f(f n) = f n + n\"\nshows  \"? (\\<exists> f. (\\<forall> n. i n \\<And> inc n \\<And> p n))\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"\\<forall> n. f(0) = 2\"\nand h1 : \"\\<forall> n m. n < m \\<Longrightarrow> f n < f m\"\nand h2 : \"\\<forall> n. f(f n) = f n + n\"\nshows  \"? (\\<exists> f. (\\<forall> n. i n \\<And> inc n \\<And> p n))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a function $f(n)$ such that for all natural numbers $n$:\n\n1. $f(0) = 2$\n2. For all $n$ and $m$ where $n < m$, $f(n) < f(m)$.\n3. For all natural numbers $n$, $f(f(n)) = f(n) + n$.\n\nThe final answer is the function $f$. This function is known as the Fibonacci sequence."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"f 0 = 2\"\nand h1 : \"\\<forall> n. n \\<ne> 0 \\<longrightarrow> f (f n) = f n + n\"\nshows  \"(\\<exists> m. \\<forall> n. f n = m n) \\<or> (\\<exists> n. \\<forall> m. f m = n m)\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"f 0 = 2\"\nand h1 : \"\\<forall> n. n \\<ne> 0 \\<longrightarrow> f (f n) = f n + n\"\nshows  \"(\\<exists> m. \\<forall> n. f n = m n) \\<or> (\\<exists> n. \\<forall> m. f m = n m)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find either a number $m$ such that $f(n) = m$ for all $n$, or a number $n$ such that $f(m) = n$ for all $m$. In other words, find two numbers $m$ and $n$ (if they exist) such that $f(m) = m$ and $f(n) = n$ or $f(m) = n$ and $f(n) = m$.\n\nIn English, we are looking for two numbers $m$ and $n$ such that $f(m) = m$ and $f(n) = n$, or $f(m) = n$ and $f(n) = m$. If such numbers exist, we call them fixed points of $f$."
+    },
+    "a_3_mistral": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"f(1) = 2\"\nand h1 : \"\\<forall>n. n \\<in> nat \\<longrightarrow> f(f n) = f n + n\"\nshows  \"\\<exists> g. (\\<forall>n. g n = f n) \\<and> (\\<forall>n. g(g n) = g n + n)\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"f(1) = 2\"\nand h1 : \"\\<forall>n. n \\<in> nat \\<longrightarrow> f(f n) = f n + n\"\nshows  \"\\<exists> g. (\\<forall>n. g n = f n) \\<and> (\\<forall>n. g(g n) = g n + n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a function $g$ such that for all natural numbers $n$, $g(n) = f(n)$ and $g(g(n)) = g(n) + n$. In other words, $g$ is the same as $f$ and follows the recursive property $g(n) = g(n) + n$.\n\nIn the original Isabelle code, $f$ satisfies the base case $f(1) = 2$ and the recursive property $f(n) = f(n)+n$. The theorem states that there exists a function $g$ that also satisfies both of these conditions. This can be interpreted as asking for a function $g$ that behaves exactly like $f$ does."
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. n \\<in> nat \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists>f. (\\<forall>n. n \\<in> nat \\<longrightarrow> i \\<and> inc)\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. n \\<in> nat \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists>f. (\\<forall>n. n \\<in> nat \\<longrightarrow> i \\<and> inc)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Find a function $f(n)$ such that $f(1) = 2$ and for all natural numbers $n$, $f(fn) = f(n) + n$. The solution is a function that satisfies both conditions.\"\n\nIn other words, \"Find a function $f$ such that $f(1) = 2$ and for every natural number $n$, $f(fn) = f(n) + n$. What is this function?\""
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. 1 \\<leq> n \\<imp> f 1 = 2\"\nand h1 : \"\\<forall> n. n \\<in> nat \\<imp> f (f n) = f n + n\"\nshows  \"(\\<exists> g. \\<forall> n. g n = f n) \\<or> (\\<exists> h. \\<forall> n. g n = h n \\<and> (i \\<imp> g 1 = 2) \\<and> (\\<forall> n. n \\<in> nat \\<imp> g (g n) = g n + n))\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. 1 \\<leq> n \\<imp> f 1 = 2\"\nand h1 : \"\\<forall> n. n \\<in> nat \\<imp> f (f n) = f n + n\"\nshows  \"(\\<exists> g. \\<forall> n. g n = f n) \\<or> (\\<exists> h. \\<forall> n. g n = h n \\<and> (i \\<imp> g 1 = 2) \\<and> (\\<forall> n. n \\<in> nat \\<imp> g (g n) = g n + n))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Either there exists a function $g$ such that for all $n$, $g(n) = f(n)$, or there exists a function $h$ such that for all $n$, $g(n) = h(n)$, $g(1) = 2$, and for all $n$, $g(g(n)) = g(n) + n$. In other words, either $f$ is equal to some function $g$, or there exists a function $g$ and $h$ such that $g(n) = h(n)$ for all $n$, $g(1) = 2$, and $g(g(n)) = g(n) + n$."
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"\\<forall> m. m = 1 \\<Longrightarrow> f m = 2\"\nand h1 : \"\\<forall> n. n \\<in> nat \\<Longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. (\\<forall> n. i n \\<And> ii n)\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\" and n :: nat\nassumes h0 : \"\\<forall> m. m = 1 \\<Longrightarrow> f m = 2\"\nand h1 : \"\\<forall> n. n \\<in> nat \\<Longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. (\\<forall> n. i n \\<And> ii n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ from natural numbers to natural numbers, if $f(1) = 2$ and $f(n) = f(n-1) + n$ for all $n$, find an example of such a function. The final answer is an existence statement."
+    },
+    "a_7_mistral": {
+        "formal problem": "theorem\nfun f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(0) = 1\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> f(n) = f(pred n) + n\"\nshows  \"\\<exists> f. (h0) \\<and> (h1)\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfun f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(0) = 1\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> f(n) = f(pred n) + n\"\nshows  \"\\<exists> f. (h0) \\<and> (h1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a recursive function $f(n)$ where $f(0) = 1$ and for all $n > 0$, $f(n) = f(n-1) + n$.\n\nIn natural language:\nFind a recursive function $f(n)$ that equals $1$ when $n = 0$, and for all $n > 0$, $f(n)$ equals $f(n-1) + n$."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(1) = 2\"\nand h1 : \"\\<forall> n. f(f n) = f n + n\"\nshows  \"\\<or> \\<top> \\<or> (\\<exists> m. n = m \\<and> f m = f n + m)\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(1) = 2\"\nand h1 : \"\\<forall> n. f(f n) = f n + n\"\nshows  \"\\<or> \\<top> \\<or> (\\<exists> m. n = m \\<and> f m = f n + m)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ such that $f(1) = 2$, if $f$ of a number is equal to the sum of $f$ of that number and the number itself, then either $n$ is equal to some number $m$ or the statement is true for all $n$. (In other words, this function exhibits a \"fixed point\" or a \"self-repeating cycle\" behavior.)"
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. 1 = n \\<Longrightarrow> f n = 2\"\nand h1 : \"\\<forall> n. n \\<in> nat \\<Longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. (\\<forall> n. i n /\\ ii n)\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. 1 = n \\<Longrightarrow> f n = 2\"\nand h1 : \"\\<forall> n. n \\<in> nat \\<Longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. (\\<forall> n. i n /\\ ii n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$, if $1 = n$ implies $f(n) = 2$, and $n$ is a natural number implies $f(f(n)) = f(n) + n$, find such a function $f$.\n\nIn simpler terms:\n\nGiven a function $f$, if $1$ is mapped to $2$, and for every natural number $n$, $f$ applied to $f(n)$ results in $f(n)+n$, find the function $f$."
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall>n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists>f. \\<forall>n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall>n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists>f. \\<forall>n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps natural numbers to natural numbers, such that:\n\n1. The function f is injective (each input has a unique output).\n2. The value of f at 1 is 2.\n3. For all natural numbers n greater than or equal to 1, applying the function f to the result of f(n) is equivalent to adding n to the result of f(n).\n4. For all natural numbers n greater than or equal to 1, the output of the function f(n) is also a natural number greater than or equal to 1."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. \\<forall> n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. \\<forall> n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps natural numbers to natural numbers, such that:\n\n1. The function f is injective (each input has a unique output).\n2. The value of f at 1 is 2.\n3. For all natural numbers n greater than or equal to 1, applying the function f to the result of f(n) is equivalent to adding n to the result of f(n).\n4. For all natural numbers n greater than or equal to 1, the output of the function f(n) is also a natural number greater than or equal to 1."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. f \\<in> {1..} \\<Rightarrow> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. f \\<in> {1..} \\<Rightarrow> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps from the set of natural numbers greater than or equal to 1 to the set of natural numbers greater than or equal to 1. This function is injective, meaning that each element in the domain maps to a unique element in the codomain. The function f has the property that f(1) = 2 and for all natural numbers n greater than or equal to 1, f(f(n)) = f(n) + n."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"EXISTS f. f : {1..} \\<Rightarrow> {1..} \\<and> (ALL n. n \\<in> {1..} \\<longrightarrow> f n < f (Suc n))\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"EXISTS f. f : {1..} \\<Rightarrow> {1..} \\<and> (ALL n. n \\<in> {1..} \\<longrightarrow> f n < f (Suc n))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps from the set of natural numbers greater than or equal to 1 to the set of natural numbers greater than or equal to 1, such that for all n in the set of natural numbers greater than or equal to 1, the value of f at n is less than the value of f at the successor of n. Additionally, the function f is injective, with f(1) = 2, and for all n in the set of natural numbers greater than or equal to 1, f applied to the result of applying f to n is equal to f(n) plus n."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"False\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"False\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. It is given that f is an injective function (meaning it maps distinct elements to distinct elements) and that f(1) = 2. Additionally, for any natural number n greater than or equal to 1, it is true that f(f(n)) = f(n) + n. Based on these conditions, we can conclude that the statement is false."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. f \\<in> {1..} \\<rightarrow> {1..} \\<and> inj f \\<and> f 1 = 2 \\<and> (\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n)\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. f \\<in> {1..} \\<rightarrow> {1..} \\<and> inj f \\<and> f 1 = 2 \\<and> (\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps from the set of natural numbers greater than or equal to 1 to itself, such that f is injective (i.e., each element in the domain has a unique image in the codomain), f(1) = 2, and for all natural numbers n greater than or equal to 1, f(f(n)) = f(n) + n."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> n. f n < f (Suc n)\"\nand h2 : \"f 1 = 2\"\nand h3 : \"\\<forall> n. f (f n) = f n + n\"\nshows  \"False\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> n. f n < f (Suc n)\"\nand h2 : \"f 1 = 2\"\nand h3 : \"\\<forall> n. f (f n) = f n + n\"\nshows  \"False\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. The function f is injective (each value in the domain maps to a unique value in the range). For any natural number n, the value of f at n is less than the value of f at the next natural number (n+1). The value of f at 1 is 2. Additionally, for any natural number n, the value of f at the value of f at n is equal to the value of f at n plus n. Prove that this leads to a contradiction."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. \\<forall> n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. \\<forall> n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps natural numbers to natural numbers, such that:\n\n1. The function f is injective (each input has a unique output).\n2. The value of f at 1 is 2.\n3. For all natural numbers n greater than or equal to 1, applying the function f to the result of applying f to n results in the same value as applying f to n plus n itself (i.e., f(f(n)) = f(n) + n).\n\nProve that for all natural numbers n greater than or equal to 1, the value of f(n) is also a natural number greater than or equal to 1."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. \\<forall> n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. \\<forall> n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps natural numbers to natural numbers, with the following properties:\n\n1. The function f is injective (each input has a unique output).\n2. The value of f at 1 is 2.\n3. For all natural numbers n greater than or equal to 1, applying the function f to the result of f(n) is the same as adding n to f(n).\n4. For all natural numbers n greater than or equal to 1, the output of the function f(n) is also a natural number greater than or equal to 1."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall>n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists>f. \\<forall>n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall>n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists>f. \\<forall>n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps natural numbers to natural numbers, such that:\n\n1. The function f is injective (each input has a unique output).\n2. The value of f at 1 is 2.\n3. For all natural numbers n greater than or equal to 1, applying the function f to the result of f(n) is equivalent to adding n to the result of f(n).\n4. For all natural numbers n greater than or equal to 1, the value of f(n) is also a natural number greater than or equal to 1."
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            1,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            2
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "definition\nstrictly_increasing :: \"(nat \\<Rightarrow> nat) \\<Rightarrow> bool\" where\n\"strictly_increasing f = (\\<forall>n. f(n + 1) > f n)\"\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nand h2 : \"strictly_increasing f\"\nshows  \"\\<exists>f. strictly_increasing f\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ndefinition\nstrictly_increasing :: \"(nat \\<Rightarrow> nat) \\<Rightarrow> bool\" where\n\"strictly_increasing f = (\\<forall>n. f(n + 1) > f n)\"\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nand h2 : \"strictly_increasing f\"\nshows  \"\\<exists>f. strictly_increasing f\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ that is strictly increasing if $f(n + 1) > f(n)$ for all natural numbers $n$. Given that $f(1) = 2$ and $f(f(n)) = f(n) + n$ for all $n$, prove that there exists a strictly increasing function $f$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9177359716574596,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "\ntheorem exists_function: \"\\<exists> f. f 1 = 2 \\<and> (\\<forall>n. f(f n) = f n + n) \\<and> strict_mono f\"\nproof\n  show \"f 1 = 2 \\<and> (\\<forall>n. f(f n) = f n + n) \\<and> strict_mono f\" using h0 h1 h2 by auto\nqed\nend\n",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n\ntheorem exists_function: \"\\<exists> f. f 1 = 2 \\<and> (\\<forall>n. f(f n) = f n + n) \\<and> strict_mono f\"\nproof\n  show \"f 1 = 2 \\<and> (\\<forall>n. f(f n) = f n + n) \\<and> strict_mono f\" using h0 h1 h2 by auto\nqed\nend\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a function $f$ that satisfies the following three conditions: \n\n1) $f(1) = 2$ \n2) For all $n$, $f(f(n)) = f(n) + n$\n3) The function $f$ is strictly increasing.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9411776509440892,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. f (f n) = f n + n\"\nand h2 : \"\\<forall> n m. n < m \\<longrightarrow> f n < f m\"\nshows  \"\\<exists> f. True\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. f (f n) = f n + n\"\nand h2 : \"\\<forall> n m. n < m \\<longrightarrow> f n < f m\"\nshows  \"\\<exists> f. True\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function f that is defined for natural numbers. This function has three properties:\n\n1. The value of the function at 1 is 2: f(1) = 2.\n2. For all natural numbers n, the value of the function at f(n) is equal to f(n) + n: for all n, f(f(n)) = f(n) + n.\n3. For any two natural numbers n and m where n is less than m, the value of the function at n is less than the value of the function at m: for all n and m, if n < m then f(n) < f(m).\n\nDoes such a function f exist?",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9032324382906792,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "The statement would be translated into the Isabelle language as follows:\n\ndefinition \"f :: nat \\<Rightarrow> nat\"\nwhere\n\"f n = (if n = 1 then 2 else f (f (n-1)) + (n-1))\"\n\nlemma\nassumes h0 : \"\\<forall>n. f (f n) = f n + n\"\nand h1 : \"f 1 = 2\"\nshows  \"\\<exists> f. \\<forall>n. f (f n) = f n + n \\<and> f 1 = 2\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\nThe statement would be translated into the Isabelle language as follows:\n\ndefinition \"f :: nat \\<Rightarrow> nat\"\nwhere\n\"f n = (if n = 1 then 2 else f (f (n-1)) + (n-1))\"\n\nlemma\nassumes h0 : \"\\<forall>n. f (f n) = f n + n\"\nand h1 : \"f 1 = 2\"\nshows  \"\\<exists> f. \\<forall>n. f (f n) = f n + n \\<and> f 1 = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(n)$ such that $f(1) = 2$ and for $n > 1$, $f(n) = f(f(n-1)) + (n-1)$. Show that there exists a function $f$ such that $f(f(n)) = f(n) + n$ for all $n$ and $f(1) = 2$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8989449662504657,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "locale function_properties =\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes f1: \"f 1 = 2\"\nand ffn: \"\\<forall> n. f(f(n)) = f(n) + n\"\nand increase: \"\\<forall> n. n < f(n)\"\n\ntheorem (in function_properties)\nexists_function: \"True\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\nlocale function_properties =\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes f1: \"f 1 = 2\"\nand ffn: \"\\<forall> n. f(f(n)) = f(n) + n\"\nand increase: \"\\<forall> n. n < f(n)\"\n\ntheorem (in function_properties)\nexists_function: \"True\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f$ that maps natural numbers to natural numbers and satisfies the following properties: \n\n1. $f(1) = 2$, \n2. for all natural numbers $n$, $f(f(n)) = f(n) + n$,\n3. for all natural numbers $n$, $n$ is less than $f(n)$.\n\nProve that such a function exists.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9022557008014909,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "Theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. f (f n) = f n + n\"\nand h2 : \"\\<forall> n m. n < m \\<longrightarrow> f n < f m\"\nshows  \"\\<exists> f. f satisfies the above conditions\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\nTheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. f (f n) = f n + n\"\nand h2 : \"\\<forall> n m. n < m \\<longrightarrow> f n < f m\"\nshows  \"\\<exists> f. f satisfies the above conditions\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a function $f$ that satisfies the following conditions:\n\n1. $f(1) = 2$\n2. For all natural numbers $n$, $f(f(n)) = f(n) + n$ \n3. For all natural numbers $n$ and $m$, if $n < m$, then $f(n) < f(m)$.\n\nDoes such a function exist?",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9270339844285977,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nand h2 : \"\\<forall>m n. m < n \\<longrightarrow> f m < f n\"\nshows  \"\\<exists>f. \\<forall>n. f n \\<in> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nand h2 : \"\\<forall>m n. m < n \\<longrightarrow> f m < f n\"\nshows  \"\\<exists>f. \\<forall>n. f n \\<in> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose there is a function $f$ on the natural numbers such that $f(1) = 2$, $f(f(n)) = f(n) + n$ for all natural numbers $n$, and $f(m) < f(n)$ for all natural numbers $m$ and $n$ with $m < n$. Is there such a function $f$ that for every natural number $n$, $f(n)$ is a natural number greater than or equal to 1?",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9157963138095282,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "\n\ntheorem exists_function: \"\\<exists> f. f 1 = 2 \\<and> (\\<forall>n. f (f n) = f n + n) \\<and> (\\<forall>x y. x < y \\<longrightarrow> f x < f y)\"\nusing f1 f2 strict_increasing by auto\n\nend",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n\n\ntheorem exists_function: \"\\<exists> f. f 1 = 2 \\<and> (\\<forall>n. f (f n) = f n + n) \\<and> (\\<forall>x y. x < y \\<longrightarrow> f x < f y)\"\nusing f1 f2 strict_increasing by auto\n\nend\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a function $f$ such that $f(1) = 2$, $f(f(n)) = f(n) + n$ for all $n$, and $f(x) < f(y)$ whenever $x < y$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9052357257670777,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "definition\n  \"f (n::nat) = (if n = 1 then 2 else if even n then n div 2 else 3 * n + 1)\"\n\ntheorem\n  assumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nshows  \"strict_mono f\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ndefinition\n  \"f (n::nat) = (if n = 1 then 2 else if even n then n div 2 else 3 * n + 1)\"\n\ntheorem\n  assumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. f (f n) = f n + n\"\nshows  \"strict_mono f\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(n)$ for natural numbers $n$ such that $f(1)=2$, $f(n)=n/2$ if $n$ is even, and $f(n)=3n+1$ if $n$ is odd. Assuming that $f(f(n)) = f(n) + n$ for all $n$, prove that $f$ is strictly increasing.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.906563499113679,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "definition f :: \"nat \\<Rightarrow> nat\"\nwhere \"f n = (if n = 1 then 2 else f(f(n-1)) + (n-1))\"\n\ntheorem\nassumes h0 : \"\\<forall>n. n > 1 \\<longrightarrow> f n = f(f(n-1)) + (n-1)\"\nand h1 : \"f 1 = 2\"\nshows  \"\\<exists>f. strictly_increasing f \\<and> f ` UNIV = UNIV\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\ndefinition f :: \"nat \\<Rightarrow> nat\"\nwhere \"f n = (if n = 1 then 2 else f(f(n-1)) + (n-1))\"\n\ntheorem\nassumes h0 : \"\\<forall>n. n > 1 \\<longrightarrow> f n = f(f(n-1)) + (n-1)\"\nand h1 : \"f 1 = 2\"\nshows  \"\\<exists>f. strictly_increasing f \\<and> f ` UNIV = UNIV\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f(n)$ is defined as follows: $f(1) = 2$ and for $n > 1$, $f(n) = f(f(n-1)) + (n-1)$. Is there a strictly increasing function $f$ such that its image is the set of all natural numbers?",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9393947695400181,
+        "symbolic_score": 0.1
+    },
+    "equivalence_oracle_solve_direct": [],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall>n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists>f. \\<forall>n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall>n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists>f. \\<forall>n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps natural numbers to natural numbers, such that:\n\n1. The function f is injective (each input has a unique output).\n2. The value of f at 1 is 2.\n3. For all natural numbers n greater than or equal to 1, applying the function f to the result of f(n) is equivalent to adding n to the result of f(n).\n4. For all natural numbers n greater than or equal to 1, the output of the function f(n) is also a natural number greater than or equal to 1.",
+        "semantic_score": 0.8776233333171742,
+        "symbolic_score": 0.5
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. \\<forall> n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. \\<forall> n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps natural numbers to natural numbers, such that:\n\n1. The function f is injective (each input has a unique output).\n2. The value of f at 1 is 2.\n3. For all natural numbers n greater than or equal to 1, applying the function f to the result of f(n) is equivalent to adding n to the result of f(n).\n4. For all natural numbers n greater than or equal to 1, the output of the function f(n) is also a natural number greater than or equal to 1.",
+        "semantic_score": 0.8776233333171742,
+        "symbolic_score": 0.5
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. f \\<in> {1..} \\<Rightarrow> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. f \\<in> {1..} \\<Rightarrow> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps from the set of natural numbers greater than or equal to 1 to the set of natural numbers greater than or equal to 1. This function is injective, meaning that each element in the domain maps to a unique element in the codomain. The function f has the property that f(1) = 2 and for all natural numbers n greater than or equal to 1, f(f(n)) = f(n) + n.",
+        "semantic_score": 0.875799357431615,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"EXISTS f. f : {1..} \\<Rightarrow> {1..} \\<and> (ALL n. n \\<in> {1..} \\<longrightarrow> f n < f (Suc n))\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"EXISTS f. f : {1..} \\<Rightarrow> {1..} \\<and> (ALL n. n \\<in> {1..} \\<longrightarrow> f n < f (Suc n))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps from the set of natural numbers greater than or equal to 1 to the set of natural numbers greater than or equal to 1, such that for all n in the set of natural numbers greater than or equal to 1, the value of f at n is less than the value of f at the successor of n. Additionally, the function f is injective, with f(1) = 2, and for all n in the set of natural numbers greater than or equal to 1, f applied to the result of applying f to n is equal to f(n) plus n.",
+        "semantic_score": 0.8523394122165656,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"False\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"False\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. It is given that f is an injective function (meaning it maps distinct elements to distinct elements) and that f(1) = 2. Additionally, for any natural number n greater than or equal to 1, it is true that f(f(n)) = f(n) + n. Based on these conditions, we can conclude that the statement is false.",
+        "semantic_score": 0.7959811596460831,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. f \\<in> {1..} \\<rightarrow> {1..} \\<and> inj f \\<and> f 1 = 2 \\<and> (\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n)\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. f \\<in> {1..} \\<rightarrow> {1..} \\<and> inj f \\<and> f 1 = 2 \\<and> (\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps from the set of natural numbers greater than or equal to 1 to itself, such that f is injective (i.e., each element in the domain has a unique image in the codomain), f(1) = 2, and for all natural numbers n greater than or equal to 1, f(f(n)) = f(n) + n.",
+        "semantic_score": 0.8762478770452093,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> n. f n < f (Suc n)\"\nand h2 : \"f 1 = 2\"\nand h3 : \"\\<forall> n. f (f n) = f n + n\"\nshows  \"False\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"\\<forall> n. f n < f (Suc n)\"\nand h2 : \"f 1 = 2\"\nand h3 : \"\\<forall> n. f (f n) = f n + n\"\nshows  \"False\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. The function f is injective (each value in the domain maps to a unique value in the range). For any natural number n, the value of f at n is less than the value of f at the next natural number (n+1). The value of f at 1 is 2. Additionally, for any natural number n, the value of f at the value of f at n is equal to the value of f at n plus n. Prove that this leads to a contradiction.",
+        "semantic_score": 0.8554786387268793,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. \\<forall> n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. \\<forall> n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps natural numbers to natural numbers, such that:\n\n1. The function f is injective (each input has a unique output).\n2. The value of f at 1 is 2.\n3. For all natural numbers n greater than or equal to 1, applying the function f to the result of applying f to n results in the same value as applying f to n plus n itself (i.e., f(f(n)) = f(n) + n).\n\nProve that for all natural numbers n greater than or equal to 1, the value of f(n) is also a natural number greater than or equal to 1.",
+        "semantic_score": 0.88033894014995,
+        "symbolic_score": 0.5
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. \\<forall> n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall> n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists> f. \\<forall> n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps natural numbers to natural numbers, with the following properties:\n\n1. The function f is injective (each input has a unique output).\n2. The value of f at 1 is 2.\n3. For all natural numbers n greater than or equal to 1, applying the function f to the result of f(n) is the same as adding n to f(n).\n4. For all natural numbers n greater than or equal to 1, the output of the function f(n) is also a natural number greater than or equal to 1.",
+        "semantic_score": 0.8833006078765698,
+        "symbolic_score": 0.5
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall>n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists>f. \\<forall>n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"",
+        "formal solution": "(* ### Problem\n Let $\\mathbb{N} = \\{1,2,3, \\ldots\\}$. Determine if there exists a strictly increasing function $f: \\mathbb{N} \\mapsto \\mathbb{N}$ with the following properties:\n\n(i) $f(1) = 2$;\n\n(ii) $f(f(n)) = f(n) + n, (n \\in \\mathbb{N})$.\n ### Proof\n Here is my Solution https://artofproblemsolving.com/community/q2h62193p16226748\n\nFind as \u2248 Ftheftics\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"inj f\"\nand h1 : \"f 1 = 2\"\nand h2 : \"\\<forall>n. n \\<in> {1..} \\<longrightarrow> f (f n) = f n + n\"\nshows  \"\\<exists>f. \\<forall>n. n \\<in> {1..} \\<longrightarrow> f n \\<in> {1..}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a function f that maps natural numbers to natural numbers, such that:\n\n1. The function f is injective (each input has a unique output).\n2. The value of f at 1 is 2.\n3. For all natural numbers n greater than or equal to 1, applying the function f to the result of f(n) is equivalent to adding n to the result of f(n).\n4. For all natural numbers n greater than or equal to 1, the value of f(n) is also a natural number greater than or equal to 1.",
+        "semantic_score": 0.8786939200344388,
+        "symbolic_score": 0.5
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0,
+            1,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            2
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": []
+}

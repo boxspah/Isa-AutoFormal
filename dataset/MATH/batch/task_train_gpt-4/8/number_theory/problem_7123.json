@@ -1,0 +1,59 @@
+{
+    "natural problem": "When $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by $1000$, a remainder of $N$ is obtained. Determine the value of $N$.\n",
+    "natural solution": [
+        "By the geometric series formula, $1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{7-1} = \\frac{7^{2005}-1}{6}$. Since $\\varphi(1000) = 400$, by Fermat-Euler's Theorem, this is equivalent to finding $\\frac{7^{400 \\cdot 5 + 5} - 1}{6} \\equiv \\frac{7^5 - 1}{6} \\equiv \\boxed{801} \\pmod{1000}$."
+    ],
+    "natural answer": "801",
+    "a_0": {
+        "formal problem": "theorem\nfixes s :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. s n = (if n = 0 then 1 else s (n - 1) * 7)\"\nand h1 : \"\\<forall> n \\<le> 2004. s n mod 1000 = N\"\nshows  \"N = 801\"",
+        "formal solution": "(* ### Problem\n When $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by $1000$, a remainder of $N$ is obtained. Determine the value of $N$.\n The final Answer is 801\n ### Proof\n By the geometric series formula, $1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{7-1} = \\frac{7^{2005}-1}{6}$. Since $\\varphi(1000) = 400$, by Fermat-Euler's Theorem, this is equivalent to finding $\\frac{7^{400 \\cdot 5 + 5} - 1}{6} \\equiv \\frac{7^5 - 1}{6} \\equiv \\boxed{801} \\pmod{1000}$.\n *)\n\ntheorem\nfixes s :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. s n = (if n = 0 then 1 else s (n - 1) * 7)\"\nand h1 : \"\\<forall> n \\<le> 2004. s n mod 1000 = N\"\nshows  \"N = 801\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $s$ is defined recursively by $s(0) = 1$ and $s(n) = 7 * s(n-1)$ for all $n > 0$. If the last three digits of $s(n)$ are the same for all $n \\leq 2004$, what are those digits? The answer is 801."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes N :: int and sum_series :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. sum_series n = (\\<Sum>i=0..n. 7^i)\"\nand h1 : \"sum_series 2004 mod 1000 = N\"\nshows  \"N = 801\"",
+        "formal solution": "(* ### Problem\n When $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by $1000$, a remainder of $N$ is obtained. Determine the value of $N$.\n The final Answer is 801\n ### Proof\n By the geometric series formula, $1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{7-1} = \\frac{7^{2005}-1}{6}$. Since $\\varphi(1000) = 400$, by Fermat-Euler's Theorem, this is equivalent to finding $\\frac{7^{400 \\cdot 5 + 5} - 1}{6} \\equiv \\frac{7^5 - 1}{6} \\equiv \\boxed{801} \\pmod{1000}$.\n *)\n\ntheorem\nfixes N :: int and sum_series :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. sum_series n = (\\<Sum>i=0..n. 7^i)\"\nand h1 : \"sum_series 2004 mod 1000 = N\"\nshows  \"N = 801\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the series $7^0 + 7^1 + 7^2 + ... + 7^{2004}$, and find the remainder when this sum is divided by 1000. The final answer is 801."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes N :: int and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = sum (\\<lambda>i. 7 ^ i) {0..n}\"\nand h1 : \"f 2004 mod 1000 = N\"\nshows  \"N = 801\"",
+        "formal solution": "(* ### Problem\n When $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by $1000$, a remainder of $N$ is obtained. Determine the value of $N$.\n The final Answer is 801\n ### Proof\n By the geometric series formula, $1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{7-1} = \\frac{7^{2005}-1}{6}$. Since $\\varphi(1000) = 400$, by Fermat-Euler's Theorem, this is equivalent to finding $\\frac{7^{400 \\cdot 5 + 5} - 1}{6} \\equiv \\frac{7^5 - 1}{6} \\equiv \\boxed{801} \\pmod{1000}$.\n *)\n\ntheorem\nfixes N :: int and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = sum (\\<lambda>i. 7 ^ i) {0..n}\"\nand h1 : \"f 2004 mod 1000 = N\"\nshows  \"N = 801\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last three digits (or the remainder when divided by 1000) of the sum of the first 2004 terms of the sequence defined by $f(n) = 7^n$. The final answer is 801."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes N :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = sum (\\<lambda>i. 7 powr i) {1..2004}\"\nand h1 : \"P x mod 1000 = N\"\nshows  \"N = 801\"",
+        "formal solution": "(* ### Problem\n When $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by $1000$, a remainder of $N$ is obtained. Determine the value of $N$.\n The final Answer is 801\n ### Proof\n By the geometric series formula, $1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{7-1} = \\frac{7^{2005}-1}{6}$. Since $\\varphi(1000) = 400$, by Fermat-Euler's Theorem, this is equivalent to finding $\\frac{7^{400 \\cdot 5 + 5} - 1}{6} \\equiv \\frac{7^5 - 1}{6} \\equiv \\boxed{801} \\pmod{1000}$.\n *)\n\ntheorem\nfixes N :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = sum (\\<lambda>i. 7 powr i) {1..2004}\"\nand h1 : \"P x mod 1000 = N\"\nshows  \"N = 801\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder when the sum of the fifth powers of 7 for all integers from 1 to 2004 is divided by 1000. The final answer is 801."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes N :: real\nassumes h0 : \"\\<forall>i. i \\<le> 2004 \\<longrightarrow> 1 + 7 + 7 powr i = N mod 1000\"\nshows  \"N = 801\"",
+        "formal solution": "(* ### Problem\n When $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by $1000$, a remainder of $N$ is obtained. Determine the value of $N$.\n The final Answer is 801\n ### Proof\n By the geometric series formula, $1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{7-1} = \\frac{7^{2005}-1}{6}$. Since $\\varphi(1000) = 400$, by Fermat-Euler's Theorem, this is equivalent to finding $\\frac{7^{400 \\cdot 5 + 5} - 1}{6} \\equiv \\frac{7^5 - 1}{6} \\equiv \\boxed{801} \\pmod{1000}$.\n *)\n\ntheorem\nfixes N :: real\nassumes h0 : \"\\<forall>i. i \\<le> 2004 \\<longrightarrow> 1 + 7 + 7 powr i = N mod 1000\"\nshows  \"N = 801\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that for all $i \\leq 2004$, the sum of 1 and 7 raised to $i$ equals the remainder when $N$ is divided by 1000, find $N$. The final answer is 801."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes N :: int and s :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. s n = (\\<Sum>k = 0..n. 7^k)\"\nand h1 : \"s 2004 mod 1000 = N\"\nshows  \"N = 801\"",
+        "formal solution": "(* ### Problem\n When $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by $1000$, a remainder of $N$ is obtained. Determine the value of $N$.\n The final Answer is 801\n ### Proof\n By the geometric series formula, $1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{7-1} = \\frac{7^{2005}-1}{6}$. Since $\\varphi(1000) = 400$, by Fermat-Euler's Theorem, this is equivalent to finding $\\frac{7^{400 \\cdot 5 + 5} - 1}{6} \\equiv \\frac{7^5 - 1}{6} \\equiv \\boxed{801} \\pmod{1000}$.\n *)\n\ntheorem\nfixes N :: int and s :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. s n = (\\<Sum>k = 0..n. 7^k)\"\nand h1 : \"s 2004 mod 1000 = N\"\nshows  \"N = 801\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $s(n)$ be the sum of the first $n$ terms of the series $1 + 7 + 7^2 + 7^3 + ... + 7^n$. Find the last three digits of $s(2004)$. The final answer is $801$."
+    },
+    "a_6": {
+        "formal problem": "theorem \nfixes N :: int\nassumes h0 : \"N = (\\<Sum>i=0..2004. 7^i) mod 1000\"\nshows  \"N = 801\"",
+        "formal solution": "(* ### Problem\n When $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by $1000$, a remainder of $N$ is obtained. Determine the value of $N$.\n The final Answer is 801\n ### Proof\n By the geometric series formula, $1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{7-1} = \\frac{7^{2005}-1}{6}$. Since $\\varphi(1000) = 400$, by Fermat-Euler's Theorem, this is equivalent to finding $\\frac{7^{400 \\cdot 5 + 5} - 1}{6} \\equiv \\frac{7^5 - 1}{6} \\equiv \\boxed{801} \\pmod{1000}$.\n *)\n\ntheorem \nfixes N :: int\nassumes h0 : \"N = (\\<Sum>i=0..2004. 7^i) mod 1000\"\nshows  \"N = 801\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder when the sum of all powers of 7 from 0 to 2004 is divided by 1000. The final answer is 801."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes N :: real\nassumes h0 : \"(sum (\\<lambda>n. 7 powr n) {1..2004}) mod 1000 = N\"\nshows  \"N = 801\"",
+        "formal solution": "(* ### Problem\n When $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by $1000$, a remainder of $N$ is obtained. Determine the value of $N$.\n The final Answer is 801\n ### Proof\n By the geometric series formula, $1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{7-1} = \\frac{7^{2005}-1}{6}$. Since $\\varphi(1000) = 400$, by Fermat-Euler's Theorem, this is equivalent to finding $\\frac{7^{400 \\cdot 5 + 5} - 1}{6} \\equiv \\frac{7^5 - 1}{6} \\equiv \\boxed{801} \\pmod{1000}$.\n *)\n\ntheorem\nfixes N :: real\nassumes h0 : \"(sum (\\<lambda>n. 7 powr n) {1..2004}) mod 1000 = N\"\nshows  \"N = 801\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last three digits of the sum of the sequence $7^1, 7^2, 7^3, ..., 7^{2004}$. The final answer is 801."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes N :: int and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f n = (\\<Sum>k\\<in>{1..n}. 7^k)\"\nand h1 : \"f 2004 mod 1000 = N\"\nshows  \"N = 801\"",
+        "formal solution": "(* ### Problem\n When $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by $1000$, a remainder of $N$ is obtained. Determine the value of $N$.\n The final Answer is 801\n ### Proof\n By the geometric series formula, $1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{7-1} = \\frac{7^{2005}-1}{6}$. Since $\\varphi(1000) = 400$, by Fermat-Euler's Theorem, this is equivalent to finding $\\frac{7^{400 \\cdot 5 + 5} - 1}{6} \\equiv \\frac{7^5 - 1}{6} \\equiv \\boxed{801} \\pmod{1000}$.\n *)\n\ntheorem\nfixes N :: int and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f n = (\\<Sum>k\\<in>{1..n}. 7^k)\"\nand h1 : \"f 2004 mod 1000 = N\"\nshows  \"N = 801\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the powers of 7 from 1 to 2004, then find the remainder when dividing by 1000. The final answer is 801."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x n :: real\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<longrightarrow> (\\<Sum> i=0..2004. 7 powr i) mod 1000 = N\"\nshows  \"N = 801\"",
+        "formal solution": "(* ### Problem\n When $1 + 7 + 7^2 + \\cdots + 7^{2004}$ is divided by $1000$, a remainder of $N$ is obtained. Determine the value of $N$.\n The final Answer is 801\n ### Proof\n By the geometric series formula, $1 + 7 + 7^2 + \\cdots + 7^{2004} = \\frac{7^{2005}-1}{7-1} = \\frac{7^{2005}-1}{6}$. Since $\\varphi(1000) = 400$, by Fermat-Euler's Theorem, this is equivalent to finding $\\frac{7^{400 \\cdot 5 + 5} - 1}{6} \\equiv \\frac{7^5 - 1}{6} \\equiv \\boxed{801} \\pmod{1000}$.\n *)\n\ntheorem\nfixes x n :: real\nassumes h0 : \"\\<forall> n. n \\<ge> 0 \\<longrightarrow> (\\<Sum> i=0..2004. 7 powr i) mod 1000 = N\"\nshows  \"N = 801\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last three digits (or find the remainder when divided by 1000) of the sum of the series $7^0 + 7^1 + 7^2 + ... + 7^{2004}$. The final answer is 801."
+    },
+    "level": "Level 5",
+    "type": "Number Theory"
+}

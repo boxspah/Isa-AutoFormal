@@ -1,0 +1,132 @@
+{
+    "problem_name": "amc12a_2003_p24",
+    "informal_statement": "If $a\\geq b > 1,$ what is the largest possible value of $\\log_{a}(a/b) + \\log_{b}(b/a)?$\n\n$\n\\mathrm{(A)}\\ -2      \\qquad\n\\mathrm{(B)}\\ 0     \\qquad\n\\mathrm{(C)}\\ 2      \\qquad\n\\mathrm{(D)}\\ 3      \\qquad\n\\mathrm{(E)}\\ 4\n$ Show that it is \\textbf{B}.",
+    "informal_proof": "Using logarithmic rules, we see that\n\n$\\log_{a}a-\\log_{a}b+\\log_{b}b-\\log_{b}a = 2-(\\log_{a}b+\\log_{b}a)$\n$=2-(\\log_{a}b+\\frac {1}{\\log_{a}b})$\n\nSince $a$ and $b$ are both greater than $1$, using [[AM-GM]] gives that the term in parentheses must be at least $2$, so the largest possible values is $2-2=0 \\Rightarrow \\textbf{B}.$\n\nNote that the maximum occurs when $a=b$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes a b :: real and log_ab :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nand h2 : \"\\<forall> a b. log_ab a b = log a / log b\"\nshows  \"log_ab a (a / b) + log_ab b (b / a) = 0\"",
+        "formal solution": "(* ### Problem\n If $a\\geq b > 1,$ what is the largest possible value of $\\log_{a}(a/b) + \\log_{b}(b/a)?$\n\n$\n\\mathrm{(A)}\\ -2      \\qquad\n\\mathrm{(B)}\\ 0     \\qquad\n\\mathrm{(C)}\\ 2      \\qquad\n\\mathrm{(D)}\\ 3      \\qquad\n\\mathrm{(E)}\\ 4\n$ Show that it is \\textbf{B}.\n ### Proof\n Using logarithmic rules, we see that\n\n$\\log_{a}a-\\log_{a}b+\\log_{b}b-\\log_{b}a = 2-(\\log_{a}b+\\log_{b}a)$\n$=2-(\\log_{a}b+\\frac {1}{\\log_{a}b})$\n\nSince $a$ and $b$ are both greater than $1$, using [[AM-GM]] gives that the term in parentheses must be at least $2$, so the largest possible values is $2-2=0 \\Rightarrow \\textbf{B}.$\n\nNote that the maximum occurs when $a=b$.\n *)\n\ntheorem\nfixes a b :: real and log_ab :: \"real \\<Rightarrow> real \\<Rightarrow> real\"\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nand h2 : \"\\<forall> a b. log_ab a b = log a / log b\"\nshows  \"log_ab a (a / b) + log_ab b (b / a) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a \\ge b > 1$, and the function $log_{ab}(a, b) = \\frac{\\log{a}}{\\log{b}}$, prove that $log_{ab}(a, \\frac{a}{b}) + log_{ab}(b, \\frac{b}{a}) = 0$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.5755369663238525,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nshows  \"log (a / b) / log a + log (b / a) / log b \\<le> 0\"",
+        "formal solution": "(* ### Problem\n If $a\\geq b > 1,$ what is the largest possible value of $\\log_{a}(a/b) + \\log_{b}(b/a)?$\n\n$\n\\mathrm{(A)}\\ -2      \\qquad\n\\mathrm{(B)}\\ 0     \\qquad\n\\mathrm{(C)}\\ 2      \\qquad\n\\mathrm{(D)}\\ 3      \\qquad\n\\mathrm{(E)}\\ 4\n$ Show that it is \\textbf{B}.\n ### Proof\n Using logarithmic rules, we see that\n\n$\\log_{a}a-\\log_{a}b+\\log_{b}b-\\log_{b}a = 2-(\\log_{a}b+\\log_{b}a)$\n$=2-(\\log_{a}b+\\frac {1}{\\log_{a}b})$\n\nSince $a$ and $b$ are both greater than $1$, using [[AM-GM]] gives that the term in parentheses must be at least $2$, so the largest possible values is $2-2=0 \\Rightarrow \\textbf{B}.$\n\nNote that the maximum occurs when $a=b$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nshows  \"log (a / b) / log a + log (b / a) / log b \\<le> 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a \\geq b$ and $b > 1$, show that $\\frac{\\log(\\frac{a}{b})}{\\log(a)} + \\frac{\\log(\\frac{b}{a})}{\\log(b)} \\leq 0$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7076185941696167,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a b log_a log_b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nand h2 : \"\\<forall> x. log_a x = ln x / ln a\"\nand h3 : \"\\<forall> x. log_b x = ln x / ln b\"\nshows  \"max (log_a (a/b) + log_b (b/a)) = 0\"",
+        "formal solution": "(* ### Problem\n If $a\\geq b > 1,$ what is the largest possible value of $\\log_{a}(a/b) + \\log_{b}(b/a)?$\n\n$\n\\mathrm{(A)}\\ -2      \\qquad\n\\mathrm{(B)}\\ 0     \\qquad\n\\mathrm{(C)}\\ 2      \\qquad\n\\mathrm{(D)}\\ 3      \\qquad\n\\mathrm{(E)}\\ 4\n$ Show that it is \\textbf{B}.\n ### Proof\n Using logarithmic rules, we see that\n\n$\\log_{a}a-\\log_{a}b+\\log_{b}b-\\log_{b}a = 2-(\\log_{a}b+\\log_{b}a)$\n$=2-(\\log_{a}b+\\frac {1}{\\log_{a}b})$\n\nSince $a$ and $b$ are both greater than $1$, using [[AM-GM]] gives that the term in parentheses must be at least $2$, so the largest possible values is $2-2=0 \\Rightarrow \\textbf{B}.$\n\nNote that the maximum occurs when $a=b$.\n *)\n\ntheorem\nfixes a b log_a log_b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nand h2 : \"\\<forall> x. log_a x = ln x / ln a\"\nand h3 : \"\\<forall> x. log_b x = ln x / ln b\"\nshows  \"max (log_a (a/b) + log_b (b/a)) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a \\geq b$, $b > 1$, and the logarithms are defined as $log_a(x) = \\frac{ln(x)}{ln(a)}$ and $log_b(x) = \\frac{ln(x)}{ln(b)}$, find the maximum value of the expression $log_a(\\frac{a}{b}) + log_b(\\frac{b}{a})$. The final answer is $0$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7747107148170471,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nshows  \"log a (a / b) + log b (b / a) = (GREATEST v. \\<exists> a b. log a (a / b) + log b (b / a) = v)\"",
+        "formal solution": "(* ### Problem\n If $a\\geq b > 1,$ what is the largest possible value of $\\log_{a}(a/b) + \\log_{b}(b/a)?$\n\n$\n\\mathrm{(A)}\\ -2      \\qquad\n\\mathrm{(B)}\\ 0     \\qquad\n\\mathrm{(C)}\\ 2      \\qquad\n\\mathrm{(D)}\\ 3      \\qquad\n\\mathrm{(E)}\\ 4\n$ Show that it is \\textbf{B}.\n ### Proof\n Using logarithmic rules, we see that\n\n$\\log_{a}a-\\log_{a}b+\\log_{b}b-\\log_{b}a = 2-(\\log_{a}b+\\log_{b}a)$\n$=2-(\\log_{a}b+\\frac {1}{\\log_{a}b})$\n\nSince $a$ and $b$ are both greater than $1$, using [[AM-GM]] gives that the term in parentheses must be at least $2$, so the largest possible values is $2-2=0 \\Rightarrow \\textbf{B}.$\n\nNote that the maximum occurs when $a=b$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nshows  \"log a (a / b) + log b (b / a) = (GREATEST v. \\<exists> a b. log a (a / b) + log b (b / a) = v)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two real numbers $a$ and $b$ such that $a \\geq b$ and $b > 1$, find the largest possible value of the expression $\\log_a\\left(\\frac{a}{b}\\right) + \\log_b\\left(\\frac{b}{a}\\right)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6656876802444458,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nand h2 : \"a > 1\"\nshows  \"log a (a / b) + log b (b / a) = 0\"",
+        "formal solution": "(* ### Problem\n If $a\\geq b > 1,$ what is the largest possible value of $\\log_{a}(a/b) + \\log_{b}(b/a)?$\n\n$\n\\mathrm{(A)}\\ -2      \\qquad\n\\mathrm{(B)}\\ 0     \\qquad\n\\mathrm{(C)}\\ 2      \\qquad\n\\mathrm{(D)}\\ 3      \\qquad\n\\mathrm{(E)}\\ 4\n$ Show that it is \\textbf{B}.\n ### Proof\n Using logarithmic rules, we see that\n\n$\\log_{a}a-\\log_{a}b+\\log_{b}b-\\log_{b}a = 2-(\\log_{a}b+\\log_{b}a)$\n$=2-(\\log_{a}b+\\frac {1}{\\log_{a}b})$\n\nSince $a$ and $b$ are both greater than $1$, using [[AM-GM]] gives that the term in parentheses must be at least $2$, so the largest possible values is $2-2=0 \\Rightarrow \\textbf{B}.$\n\nNote that the maximum occurs when $a=b$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nand h2 : \"a > 1\"\nshows  \"log a (a / b) + log b (b / a) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a \\geq b > 1$ and $a > 1$, show that $\\log_a\\left(\\frac{a}{b}\\right) + \\log_b\\left(\\frac{b}{a}\\right) = 0$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6586307883262634,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes a b :: real and log_a :: \"real \\<Rightarrow> real\" and log_b :: \"real \\<Rightarrow> real\"\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nand h2 : \"\\<forall> x. log_a x = ln x / ln a\"\nand h3 : \"\\<forall> x. log_b x = ln x / ln b\"\nshows  \"(GREATEST z. \\<exists> a b. log_a (a / b) + log_b (b / a) = z) = 0\"",
+        "formal solution": "(* ### Problem\n If $a\\geq b > 1,$ what is the largest possible value of $\\log_{a}(a/b) + \\log_{b}(b/a)?$\n\n$\n\\mathrm{(A)}\\ -2      \\qquad\n\\mathrm{(B)}\\ 0     \\qquad\n\\mathrm{(C)}\\ 2      \\qquad\n\\mathrm{(D)}\\ 3      \\qquad\n\\mathrm{(E)}\\ 4\n$ Show that it is \\textbf{B}.\n ### Proof\n Using logarithmic rules, we see that\n\n$\\log_{a}a-\\log_{a}b+\\log_{b}b-\\log_{b}a = 2-(\\log_{a}b+\\log_{b}a)$\n$=2-(\\log_{a}b+\\frac {1}{\\log_{a}b})$\n\nSince $a$ and $b$ are both greater than $1$, using [[AM-GM]] gives that the term in parentheses must be at least $2$, so the largest possible values is $2-2=0 \\Rightarrow \\textbf{B}.$\n\nNote that the maximum occurs when $a=b$.\n *)\n\ntheorem\nfixes a b :: real and log_a :: \"real \\<Rightarrow> real\" and log_b :: \"real \\<Rightarrow> real\"\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nand h2 : \"\\<forall> x. log_a x = ln x / ln a\"\nand h3 : \"\\<forall> x. log_b x = ln x / ln b\"\nshows  \"(GREATEST z. \\<exists> a b. log_a (a / b) + log_b (b / a) = z) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive real numbers $a$ and $b$ such that $a \\geq b > 1$, let $log_a(x) = \\frac{\\ln x}{\\ln a}$ and $log_b(x) = \\frac{\\ln x}{\\ln b}$. Find the largest possible value of $log_a(\\frac{a}{b}) + log_b(\\frac{b}{a})$. The final answer is $0$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9596527814865112,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nshows  \"log a (a / b) + log b (b / a) = 0\"",
+        "formal solution": "(* ### Problem\n If $a\\geq b > 1,$ what is the largest possible value of $\\log_{a}(a/b) + \\log_{b}(b/a)?$\n\n$\n\\mathrm{(A)}\\ -2      \\qquad\n\\mathrm{(B)}\\ 0     \\qquad\n\\mathrm{(C)}\\ 2      \\qquad\n\\mathrm{(D)}\\ 3      \\qquad\n\\mathrm{(E)}\\ 4\n$ Show that it is \\textbf{B}.\n ### Proof\n Using logarithmic rules, we see that\n\n$\\log_{a}a-\\log_{a}b+\\log_{b}b-\\log_{b}a = 2-(\\log_{a}b+\\log_{b}a)$\n$=2-(\\log_{a}b+\\frac {1}{\\log_{a}b})$\n\nSince $a$ and $b$ are both greater than $1$, using [[AM-GM]] gives that the term in parentheses must be at least $2$, so the largest possible values is $2-2=0 \\Rightarrow \\textbf{B}.$\n\nNote that the maximum occurs when $a=b$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nshows  \"log a (a / b) + log b (b / a) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a \\geq b$ and $b > 1$, show that $\\log_a(\\frac{a}{b}) + \\log_b(\\frac{b}{a}) = 0$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6732354164123535,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nshows  \"log a (a / b) + log b (b / a) = (GREATEST v. \\<exists> a b. log a (a / b) + log b (b / a) = v)\"\nand \"isCont (\\<lambda>(a,b). log a (a / b) + log b (b / a)) (a,b)\"\nand \"log a (a / b) + log b (b / a) = 0\"",
+        "formal solution": "(* ### Problem\n If $a\\geq b > 1,$ what is the largest possible value of $\\log_{a}(a/b) + \\log_{b}(b/a)?$\n\n$\n\\mathrm{(A)}\\ -2      \\qquad\n\\mathrm{(B)}\\ 0     \\qquad\n\\mathrm{(C)}\\ 2      \\qquad\n\\mathrm{(D)}\\ 3      \\qquad\n\\mathrm{(E)}\\ 4\n$ Show that it is \\textbf{B}.\n ### Proof\n Using logarithmic rules, we see that\n\n$\\log_{a}a-\\log_{a}b+\\log_{b}b-\\log_{b}a = 2-(\\log_{a}b+\\log_{b}a)$\n$=2-(\\log_{a}b+\\frac {1}{\\log_{a}b})$\n\nSince $a$ and $b$ are both greater than $1$, using [[AM-GM]] gives that the term in parentheses must be at least $2$, so the largest possible values is $2-2=0 \\Rightarrow \\textbf{B}.$\n\nNote that the maximum occurs when $a=b$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nshows  \"log a (a / b) + log b (b / a) = (GREATEST v. \\<exists> a b. log a (a / b) + log b (b / a) = v)\"\nand \"isCont (\\<lambda>(a,b). log a (a / b) + log b (b / a)) (a,b)\"\nand \"log a (a / b) + log b (b / a) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider two real numbers $a$ and $b$ such that $a \\geq b$ and $b > 1$. Find the greatest possible value of the sum $log_a \\left(\\frac{a}{b}\\right) + log_b \\left(\\frac{b}{a}\\right)$, and show that the function $f(a, b) = log_a \\left(\\frac{a}{b}\\right) + log_b \\left(\\frac{b}{a}\\right)$ is continuous. Moreover, show that the sum $log_a \\left(\\frac{a}{b}\\right) + log_b \\left(\\frac{b}{a}\\right) = 0$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8301069736480713,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nand h2 : \"\\<forall> x y. log x (x / y) + log y (y / x)\"\nshows  \"log a (a / b) + log b (b / a) = 0\"",
+        "formal solution": "(* ### Problem\n If $a\\geq b > 1,$ what is the largest possible value of $\\log_{a}(a/b) + \\log_{b}(b/a)?$\n\n$\n\\mathrm{(A)}\\ -2      \\qquad\n\\mathrm{(B)}\\ 0     \\qquad\n\\mathrm{(C)}\\ 2      \\qquad\n\\mathrm{(D)}\\ 3      \\qquad\n\\mathrm{(E)}\\ 4\n$ Show that it is \\textbf{B}.\n ### Proof\n Using logarithmic rules, we see that\n\n$\\log_{a}a-\\log_{a}b+\\log_{b}b-\\log_{b}a = 2-(\\log_{a}b+\\log_{b}a)$\n$=2-(\\log_{a}b+\\frac {1}{\\log_{a}b})$\n\nSince $a$ and $b$ are both greater than $1$, using [[AM-GM]] gives that the term in parentheses must be at least $2$, so the largest possible values is $2-2=0 \\Rightarrow \\textbf{B}.$\n\nNote that the maximum occurs when $a=b$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nand h2 : \"\\<forall> x y. log x (x / y) + log y (y / x)\"\nshows  \"log a (a / b) + log b (b / a) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a \\geq b$ and $b > 1$, find the values of $a$ and $b$ for which the following equation holds: $\\log_a{\\frac{a}{b}} + \\log_b{\\frac{b}{a}} = 0$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8214479684829712,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nand h2 : \"is_log a (a/b) + is_log b (b/a)\"\nshows  \"h2 = 0\" and \"h2 is the maximum value\"",
+        "formal solution": "(* ### Problem\n If $a\\geq b > 1,$ what is the largest possible value of $\\log_{a}(a/b) + \\log_{b}(b/a)?$\n\n$\n\\mathrm{(A)}\\ -2      \\qquad\n\\mathrm{(B)}\\ 0     \\qquad\n\\mathrm{(C)}\\ 2      \\qquad\n\\mathrm{(D)}\\ 3      \\qquad\n\\mathrm{(E)}\\ 4\n$ Show that it is \\textbf{B}.\n ### Proof\n Using logarithmic rules, we see that\n\n$\\log_{a}a-\\log_{a}b+\\log_{b}b-\\log_{b}a = 2-(\\log_{a}b+\\log_{b}a)$\n$=2-(\\log_{a}b+\\frac {1}{\\log_{a}b})$\n\nSince $a$ and $b$ are both greater than $1$, using [[AM-GM]] gives that the term in parentheses must be at least $2$, so the largest possible values is $2-2=0 \\Rightarrow \\textbf{B}.$\n\nNote that the maximum occurs when $a=b$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a \\<ge> b\"\nand h1 : \"b > 1\"\nand h2 : \"is_log a (a/b) + is_log b (b/a)\"\nshows  \"h2 = 0\" and \"h2 is the maximum value\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a \\geq b > 1$, find the maximum value of $h2$ when $h2 = \\log_a\\left(\\frac{a}{b}\\right) + \\log_b\\left(\\frac{b}{a}\\right)$. The final answer is $h2 = 0$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.987585186958313,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes a b::real\nassumes \"b\\<le>a\"\nand \"1<b\"\nshows \"ln (a/b) / ln a + ln (b/a) / ln b \\<le>0\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "equivalence_oracle": [
+        6,
+        7
+    ]
+}

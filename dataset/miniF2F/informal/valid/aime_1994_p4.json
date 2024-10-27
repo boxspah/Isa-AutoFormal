@@ -1,0 +1,123 @@
+{
+    "problem_name": "aime_1994_p4",
+    "informal_statement": "Find the positive integer $n\\,$ for which\n$\n\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor=1994\n$\n(For real $x\\,$, $\\lfloor x\\rfloor\\,$ is the greatest integer $\\le x.\\,$) Show that it is 312.",
+    "informal_proof": "Note that if $2^x \\le a<2^{x+1}$ for some $x\\in\\mathbb{Z}$, then $\\lfloor\\log_2{a}\\rfloor=\\log_2{2^{x}}=x$. \n\nThus, there are $2^{x+1}-2^{x}=2^{x}$ integers $a$ such that $\\lfloor\\log_2{a}\\rfloor=x$. So the sum of $\\lfloor\\log_2{a}\\rfloor$ for all such $a$ is $x\\cdot2^x$. \n\nLet $k$ be the integer such that $2^k \\le n<2^{k+1}$. So for each integer $j<k$, there are $2^j$ integers $a\\le n$ such that $\\lfloor\\log_2{a}\\rfloor=j$, and there are $n-2^k+1$ such integers such that $\\lfloor\\log_2{a}\\rfloor=k$. \n\nTherefore, $\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor= \\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1994$. \n\nThrough computation: $\\sum_{j=0}^{7}(j\\cdot2^j)=1538<1994$ and $\\sum_{j=0}^{8}(j\\cdot2^j)=3586>1994$. Thus, $k=8$. \n\nSo, $\\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1538+8(n-2^8+1)=1994 \\Rightarrow n = 312$.\n\nAlternatively, one could notice this is an [[arithmetico-geometric series]] and avoid a lot of computation.",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat and log_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. log_sum n = (\\<Sum>k\\<in>{1..n}. nat (floor (log 2 (real k))))\"\nand h1 : \"log_sum n = 1994\"\nshows  \"n = 312\"",
+        "formal solution": "(* ### Problem\n Find the positive integer $n\\,$ for which\n$\n\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor=1994\n$\n(For real $x\\,$, $\\lfloor x\\rfloor\\,$ is the greatest integer $\\le x.\\,$) Show that it is 312.\n ### Proof\n Note that if $2^x \\le a<2^{x+1}$ for some $x\\in\\mathbb{Z}$, then $\\lfloor\\log_2{a}\\rfloor=\\log_2{2^{x}}=x$. \n\nThus, there are $2^{x+1}-2^{x}=2^{x}$ integers $a$ such that $\\lfloor\\log_2{a}\\rfloor=x$. So the sum of $\\lfloor\\log_2{a}\\rfloor$ for all such $a$ is $x\\cdot2^x$. \n\nLet $k$ be the integer such that $2^k \\le n<2^{k+1}$. So for each integer $j<k$, there are $2^j$ integers $a\\le n$ such that $\\lfloor\\log_2{a}\\rfloor=j$, and there are $n-2^k+1$ such integers such that $\\lfloor\\log_2{a}\\rfloor=k$. \n\nTherefore, $\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor= \\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1994$. \n\nThrough computation: $\\sum_{j=0}^{7}(j\\cdot2^j)=1538<1994$ and $\\sum_{j=0}^{8}(j\\cdot2^j)=3586>1994$. Thus, $k=8$. \n\nSo, $\\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1538+8(n-2^8+1)=1994 \\Rightarrow n = 312$.\n\nAlternatively, one could notice this is an [[arithmetico-geometric series]] and avoid a lot of computation.\n *)\n\ntheorem\nfixes n :: nat and log_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. log_sum n = (\\<Sum>k\\<in>{1..n}. nat (floor (log 2 (real k))))\"\nand h1 : \"log_sum n = 1994\"\nshows  \"n = 312\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $n$ such that the sum of the floor of the logarithm base 2 of each integer from 1 to $n$ is equal to 1994. The final answer is $n = 312$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9560977816581726,
+        "symbolic_score": 0.9
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and log_floor :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. x > 0 \\<longrightarrow> log_floor x = floor (log 2 x)\"\nand h1 : \"sum log_floor {1..n} = 1994\"\nshows  \"n = 312\"",
+        "formal solution": "(* ### Problem\n Find the positive integer $n\\,$ for which\n$\n\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor=1994\n$\n(For real $x\\,$, $\\lfloor x\\rfloor\\,$ is the greatest integer $\\le x.\\,$) Show that it is 312.\n ### Proof\n Note that if $2^x \\le a<2^{x+1}$ for some $x\\in\\mathbb{Z}$, then $\\lfloor\\log_2{a}\\rfloor=\\log_2{2^{x}}=x$. \n\nThus, there are $2^{x+1}-2^{x}=2^{x}$ integers $a$ such that $\\lfloor\\log_2{a}\\rfloor=x$. So the sum of $\\lfloor\\log_2{a}\\rfloor$ for all such $a$ is $x\\cdot2^x$. \n\nLet $k$ be the integer such that $2^k \\le n<2^{k+1}$. So for each integer $j<k$, there are $2^j$ integers $a\\le n$ such that $\\lfloor\\log_2{a}\\rfloor=j$, and there are $n-2^k+1$ such integers such that $\\lfloor\\log_2{a}\\rfloor=k$. \n\nTherefore, $\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor= \\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1994$. \n\nThrough computation: $\\sum_{j=0}^{7}(j\\cdot2^j)=1538<1994$ and $\\sum_{j=0}^{8}(j\\cdot2^j)=3586>1994$. Thus, $k=8$. \n\nSo, $\\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1538+8(n-2^8+1)=1994 \\Rightarrow n = 312$.\n\nAlternatively, one could notice this is an [[arithmetico-geometric series]] and avoid a lot of computation.\n *)\n\ntheorem\nfixes n :: nat and log_floor :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. x > 0 \\<longrightarrow> log_floor x = floor (log 2 x)\"\nand h1 : \"sum log_floor {1..n} = 1994\"\nshows  \"n = 312\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a function called \"log_floor\" that returns the largest integer less than or equal to the base-2 logarithm of a positive integer, i.e., log_floor(x) = floor(log_2(x)) for x > 0. If the sum of log_floor for all the integers from 1 to n is equal to 1994, find the value of n. The final answer is 312.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5810820460319519,
+        "symbolic_score": 0.9
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat and log_floor_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. log_floor_sum n = (\\<Sum>i\\<in>{1..n}. nat (floor (log 2 i)))\"\nand h1 : \"log_floor_sum n = 1994\"\nshows  \"n = 312\"",
+        "formal solution": "(* ### Problem\n Find the positive integer $n\\,$ for which\n$\n\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor=1994\n$\n(For real $x\\,$, $\\lfloor x\\rfloor\\,$ is the greatest integer $\\le x.\\,$) Show that it is 312.\n ### Proof\n Note that if $2^x \\le a<2^{x+1}$ for some $x\\in\\mathbb{Z}$, then $\\lfloor\\log_2{a}\\rfloor=\\log_2{2^{x}}=x$. \n\nThus, there are $2^{x+1}-2^{x}=2^{x}$ integers $a$ such that $\\lfloor\\log_2{a}\\rfloor=x$. So the sum of $\\lfloor\\log_2{a}\\rfloor$ for all such $a$ is $x\\cdot2^x$. \n\nLet $k$ be the integer such that $2^k \\le n<2^{k+1}$. So for each integer $j<k$, there are $2^j$ integers $a\\le n$ such that $\\lfloor\\log_2{a}\\rfloor=j$, and there are $n-2^k+1$ such integers such that $\\lfloor\\log_2{a}\\rfloor=k$. \n\nTherefore, $\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor= \\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1994$. \n\nThrough computation: $\\sum_{j=0}^{7}(j\\cdot2^j)=1538<1994$ and $\\sum_{j=0}^{8}(j\\cdot2^j)=3586>1994$. Thus, $k=8$. \n\nSo, $\\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1538+8(n-2^8+1)=1994 \\Rightarrow n = 312$.\n\nAlternatively, one could notice this is an [[arithmetico-geometric series]] and avoid a lot of computation.\n *)\n\ntheorem\nfixes n :: nat and log_floor_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. log_floor_sum n = (\\<Sum>i\\<in>{1..n}. nat (floor (log 2 i)))\"\nand h1 : \"log_floor_sum n = 1994\"\nshows  \"n = 312\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $n$ such that the sum of the largest integer less than or equal to the base-2 logarithm of each integer from 1 to $n$ equals 1994. The final answer is $n = 312$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9560113549232483,
+        "symbolic_score": 0.9
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat and log_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"log_sum = (\\<lambda>n. \\<Sum>k \\<in> {1..n}. floor (log 2 k))\"\nand h1 : \"log_sum n = 1994\"\nshows  \"n = 312\"",
+        "formal solution": "(* ### Problem\n Find the positive integer $n\\,$ for which\n$\n\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor=1994\n$\n(For real $x\\,$, $\\lfloor x\\rfloor\\,$ is the greatest integer $\\le x.\\,$) Show that it is 312.\n ### Proof\n Note that if $2^x \\le a<2^{x+1}$ for some $x\\in\\mathbb{Z}$, then $\\lfloor\\log_2{a}\\rfloor=\\log_2{2^{x}}=x$. \n\nThus, there are $2^{x+1}-2^{x}=2^{x}$ integers $a$ such that $\\lfloor\\log_2{a}\\rfloor=x$. So the sum of $\\lfloor\\log_2{a}\\rfloor$ for all such $a$ is $x\\cdot2^x$. \n\nLet $k$ be the integer such that $2^k \\le n<2^{k+1}$. So for each integer $j<k$, there are $2^j$ integers $a\\le n$ such that $\\lfloor\\log_2{a}\\rfloor=j$, and there are $n-2^k+1$ such integers such that $\\lfloor\\log_2{a}\\rfloor=k$. \n\nTherefore, $\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor= \\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1994$. \n\nThrough computation: $\\sum_{j=0}^{7}(j\\cdot2^j)=1538<1994$ and $\\sum_{j=0}^{8}(j\\cdot2^j)=3586>1994$. Thus, $k=8$. \n\nSo, $\\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1538+8(n-2^8+1)=1994 \\Rightarrow n = 312$.\n\nAlternatively, one could notice this is an [[arithmetico-geometric series]] and avoid a lot of computation.\n *)\n\ntheorem\nfixes n :: nat and log_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"log_sum = (\\<lambda>n. \\<Sum>k \\<in> {1..n}. floor (log 2 k))\"\nand h1 : \"log_sum n = 1994\"\nshows  \"n = 312\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ for which the sum of the largest powers of 2 that divide each integer from 1 to $n$ is equal to 1994. The final answer is 312.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9083898663520813,
+        "symbolic_score": 0.9
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat and floor_log2_sum :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. floor_log2_sum k = (\\<Sum> i \\<in> {1..k}. floor (log 2 i))\"\nand h1 : \"floor_log2_sum n = 1994\"\nshows  \"n = 312\"",
+        "formal solution": "(* ### Problem\n Find the positive integer $n\\,$ for which\n$\n\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor=1994\n$\n(For real $x\\,$, $\\lfloor x\\rfloor\\,$ is the greatest integer $\\le x.\\,$) Show that it is 312.\n ### Proof\n Note that if $2^x \\le a<2^{x+1}$ for some $x\\in\\mathbb{Z}$, then $\\lfloor\\log_2{a}\\rfloor=\\log_2{2^{x}}=x$. \n\nThus, there are $2^{x+1}-2^{x}=2^{x}$ integers $a$ such that $\\lfloor\\log_2{a}\\rfloor=x$. So the sum of $\\lfloor\\log_2{a}\\rfloor$ for all such $a$ is $x\\cdot2^x$. \n\nLet $k$ be the integer such that $2^k \\le n<2^{k+1}$. So for each integer $j<k$, there are $2^j$ integers $a\\le n$ such that $\\lfloor\\log_2{a}\\rfloor=j$, and there are $n-2^k+1$ such integers such that $\\lfloor\\log_2{a}\\rfloor=k$. \n\nTherefore, $\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor= \\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1994$. \n\nThrough computation: $\\sum_{j=0}^{7}(j\\cdot2^j)=1538<1994$ and $\\sum_{j=0}^{8}(j\\cdot2^j)=3586>1994$. Thus, $k=8$. \n\nSo, $\\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1538+8(n-2^8+1)=1994 \\Rightarrow n = 312$.\n\nAlternatively, one could notice this is an [[arithmetico-geometric series]] and avoid a lot of computation.\n *)\n\ntheorem\nfixes n :: nat and floor_log2_sum :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. floor_log2_sum k = (\\<Sum> i \\<in> {1..k}. floor (log 2 i))\"\nand h1 : \"floor_log2_sum n = 1994\"\nshows  \"n = 312\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $n$ such that the sum of the floor of the base-2 logarithm of each integer from 1 to $n$ is equal to 1994. The final answer is 312.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9781354069709778,
+        "symbolic_score": 0.9
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat and sum_log :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_log = (\\<lambda>n. \\<Sum>i\\<le>n. nat \\<lfloor>log 2 i\\<rfloor>)\"\nand h1 : \"sum_log n = 1994\"\nshows  \"n = 312\"",
+        "formal solution": "(* ### Problem\n Find the positive integer $n\\,$ for which\n$\n\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor=1994\n$\n(For real $x\\,$, $\\lfloor x\\rfloor\\,$ is the greatest integer $\\le x.\\,$) Show that it is 312.\n ### Proof\n Note that if $2^x \\le a<2^{x+1}$ for some $x\\in\\mathbb{Z}$, then $\\lfloor\\log_2{a}\\rfloor=\\log_2{2^{x}}=x$. \n\nThus, there are $2^{x+1}-2^{x}=2^{x}$ integers $a$ such that $\\lfloor\\log_2{a}\\rfloor=x$. So the sum of $\\lfloor\\log_2{a}\\rfloor$ for all such $a$ is $x\\cdot2^x$. \n\nLet $k$ be the integer such that $2^k \\le n<2^{k+1}$. So for each integer $j<k$, there are $2^j$ integers $a\\le n$ such that $\\lfloor\\log_2{a}\\rfloor=j$, and there are $n-2^k+1$ such integers such that $\\lfloor\\log_2{a}\\rfloor=k$. \n\nTherefore, $\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor= \\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1994$. \n\nThrough computation: $\\sum_{j=0}^{7}(j\\cdot2^j)=1538<1994$ and $\\sum_{j=0}^{8}(j\\cdot2^j)=3586>1994$. Thus, $k=8$. \n\nSo, $\\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1538+8(n-2^8+1)=1994 \\Rightarrow n = 312$.\n\nAlternatively, one could notice this is an [[arithmetico-geometric series]] and avoid a lot of computation.\n *)\n\ntheorem\nfixes n :: nat and sum_log :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_log = (\\<lambda>n. \\<Sum>i\\<le>n. nat \\<lfloor>log 2 i\\<rfloor>)\"\nand h1 : \"sum_log n = 1994\"\nshows  \"n = 312\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $n$ such that the sum of the integer parts of the logarithm base 2 of all natural numbers from 1 to $n$ is equal to 1994. The final answer is 312.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9886319041252136,
+        "symbolic_score": 0.9
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes log2_floor_sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"log2_floor_sum n = (\\<Sum>k = 1..n. floor (log 2 k))\"\nand h1 : \"log2_floor_sum n = 1994\"\nshows  \"n = 312\"",
+        "formal solution": "(* ### Problem\n Find the positive integer $n\\,$ for which\n$\n\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor=1994\n$\n(For real $x\\,$, $\\lfloor x\\rfloor\\,$ is the greatest integer $\\le x.\\,$) Show that it is 312.\n ### Proof\n Note that if $2^x \\le a<2^{x+1}$ for some $x\\in\\mathbb{Z}$, then $\\lfloor\\log_2{a}\\rfloor=\\log_2{2^{x}}=x$. \n\nThus, there are $2^{x+1}-2^{x}=2^{x}$ integers $a$ such that $\\lfloor\\log_2{a}\\rfloor=x$. So the sum of $\\lfloor\\log_2{a}\\rfloor$ for all such $a$ is $x\\cdot2^x$. \n\nLet $k$ be the integer such that $2^k \\le n<2^{k+1}$. So for each integer $j<k$, there are $2^j$ integers $a\\le n$ such that $\\lfloor\\log_2{a}\\rfloor=j$, and there are $n-2^k+1$ such integers such that $\\lfloor\\log_2{a}\\rfloor=k$. \n\nTherefore, $\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor= \\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1994$. \n\nThrough computation: $\\sum_{j=0}^{7}(j\\cdot2^j)=1538<1994$ and $\\sum_{j=0}^{8}(j\\cdot2^j)=3586>1994$. Thus, $k=8$. \n\nSo, $\\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1538+8(n-2^8+1)=1994 \\Rightarrow n = 312$.\n\nAlternatively, one could notice this is an [[arithmetico-geometric series]] and avoid a lot of computation.\n *)\n\ntheorem\nfixes log2_floor_sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"log2_floor_sum n = (\\<Sum>k = 1..n. floor (log 2 k))\"\nand h1 : \"log2_floor_sum n = 1994\"\nshows  \"n = 312\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $n$ such that the sum of the floor of the base-2 logarithm of each integer from $1$ to $n$ is equal to $1994$. The final answer is $n = 312$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9318853616714478,
+        "symbolic_score": 0.9
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and log_floor_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> k. log_floor_sum k = (\\<Sum> i = 1..k. floor (log 2 i))\"\nand h1 : \"log_floor_sum n = 1994\"\nshows  \"n = 312\"",
+        "formal solution": "(* ### Problem\n Find the positive integer $n\\,$ for which\n$\n\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor=1994\n$\n(For real $x\\,$, $\\lfloor x\\rfloor\\,$ is the greatest integer $\\le x.\\,$) Show that it is 312.\n ### Proof\n Note that if $2^x \\le a<2^{x+1}$ for some $x\\in\\mathbb{Z}$, then $\\lfloor\\log_2{a}\\rfloor=\\log_2{2^{x}}=x$. \n\nThus, there are $2^{x+1}-2^{x}=2^{x}$ integers $a$ such that $\\lfloor\\log_2{a}\\rfloor=x$. So the sum of $\\lfloor\\log_2{a}\\rfloor$ for all such $a$ is $x\\cdot2^x$. \n\nLet $k$ be the integer such that $2^k \\le n<2^{k+1}$. So for each integer $j<k$, there are $2^j$ integers $a\\le n$ such that $\\lfloor\\log_2{a}\\rfloor=j$, and there are $n-2^k+1$ such integers such that $\\lfloor\\log_2{a}\\rfloor=k$. \n\nTherefore, $\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor= \\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1994$. \n\nThrough computation: $\\sum_{j=0}^{7}(j\\cdot2^j)=1538<1994$ and $\\sum_{j=0}^{8}(j\\cdot2^j)=3586>1994$. Thus, $k=8$. \n\nSo, $\\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1538+8(n-2^8+1)=1994 \\Rightarrow n = 312$.\n\nAlternatively, one could notice this is an [[arithmetico-geometric series]] and avoid a lot of computation.\n *)\n\ntheorem\nfixes n :: nat and log_floor_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> k. log_floor_sum k = (\\<Sum> i = 1..k. floor (log 2 i))\"\nand h1 : \"log_floor_sum n = 1994\"\nshows  \"n = 312\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $n$ such that the sum of the floor of the logarithm base 2 of each number from 1 to $n$ is equal to 1994, i.e., $\\sum_{i=1}^n \\lfloor \\log_2{i} \\rfloor = 1994$. The final answer is $n = 312$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9927614331245422,
+        "symbolic_score": 0.9
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat and log_floor_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"log_floor_sum n = (\\<Sum>k\\<in>{1..n}. nat(floor(log 2 k)))\"\nand h1 : \"log_floor_sum n = 1994\"\nshows  \"n = 312\"",
+        "formal solution": "(* ### Problem\n Find the positive integer $n\\,$ for which\n$\n\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor=1994\n$\n(For real $x\\,$, $\\lfloor x\\rfloor\\,$ is the greatest integer $\\le x.\\,$) Show that it is 312.\n ### Proof\n Note that if $2^x \\le a<2^{x+1}$ for some $x\\in\\mathbb{Z}$, then $\\lfloor\\log_2{a}\\rfloor=\\log_2{2^{x}}=x$. \n\nThus, there are $2^{x+1}-2^{x}=2^{x}$ integers $a$ such that $\\lfloor\\log_2{a}\\rfloor=x$. So the sum of $\\lfloor\\log_2{a}\\rfloor$ for all such $a$ is $x\\cdot2^x$. \n\nLet $k$ be the integer such that $2^k \\le n<2^{k+1}$. So for each integer $j<k$, there are $2^j$ integers $a\\le n$ such that $\\lfloor\\log_2{a}\\rfloor=j$, and there are $n-2^k+1$ such integers such that $\\lfloor\\log_2{a}\\rfloor=k$. \n\nTherefore, $\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor= \\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1994$. \n\nThrough computation: $\\sum_{j=0}^{7}(j\\cdot2^j)=1538<1994$ and $\\sum_{j=0}^{8}(j\\cdot2^j)=3586>1994$. Thus, $k=8$. \n\nSo, $\\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1538+8(n-2^8+1)=1994 \\Rightarrow n = 312$.\n\nAlternatively, one could notice this is an [[arithmetico-geometric series]] and avoid a lot of computation.\n *)\n\ntheorem\nfixes n :: nat and log_floor_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"log_floor_sum n = (\\<Sum>k\\<in>{1..n}. nat(floor(log 2 k)))\"\nand h1 : \"log_floor_sum n = 1994\"\nshows  \"n = 312\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $n$ such that the sum of the largest integer less than or equal to the base-2 logarithm of each integer in the range $1$ to $n$ is equal to $1994$. The final answer is $n = 312$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9473410248756409,
+        "symbolic_score": 0.9
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat and sum_log2_floor :: \"nat \\<Rightarrow> nat\"\ndefines sum_log2_floor_def: \"sum_log2_floor n \\<equiv> (\\<Sum>k\\<in>{1..n}. nat (floor (log 2 (real k))))\"\nassumes h0 : \"sum_log2_floor n = 1994\"\nshows  \"n = 312\"",
+        "formal solution": "(* ### Problem\n Find the positive integer $n\\,$ for which\n$\n\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor=1994\n$\n(For real $x\\,$, $\\lfloor x\\rfloor\\,$ is the greatest integer $\\le x.\\,$) Show that it is 312.\n ### Proof\n Note that if $2^x \\le a<2^{x+1}$ for some $x\\in\\mathbb{Z}$, then $\\lfloor\\log_2{a}\\rfloor=\\log_2{2^{x}}=x$. \n\nThus, there are $2^{x+1}-2^{x}=2^{x}$ integers $a$ such that $\\lfloor\\log_2{a}\\rfloor=x$. So the sum of $\\lfloor\\log_2{a}\\rfloor$ for all such $a$ is $x\\cdot2^x$. \n\nLet $k$ be the integer such that $2^k \\le n<2^{k+1}$. So for each integer $j<k$, there are $2^j$ integers $a\\le n$ such that $\\lfloor\\log_2{a}\\rfloor=j$, and there are $n-2^k+1$ such integers such that $\\lfloor\\log_2{a}\\rfloor=k$. \n\nTherefore, $\\lfloor\\log_2{1}\\rfloor+\\lfloor\\log_2{2}\\rfloor+\\lfloor\\log_2{3}\\rfloor+\\cdots+\\lfloor\\log_2{n}\\rfloor= \\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1994$. \n\nThrough computation: $\\sum_{j=0}^{7}(j\\cdot2^j)=1538<1994$ and $\\sum_{j=0}^{8}(j\\cdot2^j)=3586>1994$. Thus, $k=8$. \n\nSo, $\\sum_{j=0}^{k-1}(j\\cdot2^j) + k(n-2^k+1) = 1538+8(n-2^8+1)=1994 \\Rightarrow n = 312$.\n\nAlternatively, one could notice this is an [[arithmetico-geometric series]] and avoid a lot of computation.\n *)\n\ntheorem\nfixes n :: nat and sum_log2_floor :: \"nat \\<Rightarrow> nat\"\ndefines sum_log2_floor_def: \"sum_log2_floor n \\<equiv> (\\<Sum>k\\<in>{1..n}. nat (floor (log 2 (real k))))\"\nassumes h0 : \"sum_log2_floor n = 1994\"\nshows  \"n = 312\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $n$ for which the sum of the floor of the logarithm base 2 of each integer from 1 to $n$ is equal to 1994. The final answer is $n = 312$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9699467420578003,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes n :: nat\nassumes \"0 < n\"\nand \"(\\<Sum> k \\<in> {1..<n+1}. floor (ln k / ln 2)) = 1994\"\nshows \"n = 312\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+        ],
+        "1": [
+            9
+        ]
+    },
+    "equivalence_oracle": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+    ]
+}

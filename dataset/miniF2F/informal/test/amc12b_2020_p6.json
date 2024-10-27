@@ -1,0 +1,124 @@
+{
+    "problem_name": "amc12b_2020_p6",
+    "informal_statement": "For all integers $n \\geq 9,$ the value of\n$\\frac{(n+2)!-(n+1)!}{n!}$is always which of the following?\n\n$\\textbf{(A) } \\text{a multiple of 4} \\qquad \\textbf{(B) } \\text{a multiple of 10} \\qquad \\textbf{(C) } \\text{a prime number} \\qquad \\textbf{(D) } \\text{a perfect square} \\qquad \\textbf{(E) } \\text{a perfect cube}$ Show that it is \\textbf{(D) } \\text{a perfect square}.",
+    "informal_proof": "We first expand the expression:\n$\\frac{(n+2)!-(n+1)!}{n!} = \\frac{(n+2)(n+1)n!-(n+1)n!}{n!}.$\nWe can now divide out a common factor of $n!$ from each term of the numerator:\n$(n+2)(n+1)-(n+1).$\nFactoring out $(n+1),$ we get $[(n+2)-1](n+1) = (n+1)^2,$\nwhich proves that the answer is $\\textbf{(D) } \\text{a perfect square}.$",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 9\"\nshows  \"\\<exists> k :: int. ((fact (n+2) - fact (n+1)) div fact n) = k * k\"",
+        "formal solution": "(* ### Problem\n For all integers $n \\geq 9,$ the value of\n$\\frac{(n+2)!-(n+1)!}{n!}$is always which of the following?\n\n$\\textbf{(A) } \\text{a multiple of 4} \\qquad \\textbf{(B) } \\text{a multiple of 10} \\qquad \\textbf{(C) } \\text{a prime number} \\qquad \\textbf{(D) } \\text{a perfect square} \\qquad \\textbf{(E) } \\text{a perfect cube}$ Show that it is \\textbf{(D) } \\text{a perfect square}.\n ### Proof\n We first expand the expression:\n$\\frac{(n+2)!-(n+1)!}{n!} = \\frac{(n+2)(n+1)n!-(n+1)n!}{n!}.$\nWe can now divide out a common factor of $n!$ from each term of the numerator:\n$(n+2)(n+1)-(n+1).$\nFactoring out $(n+1),$ we get $[(n+2)-1](n+1) = (n+1)^2,$\nwhich proves that the answer is $\\textbf{(D) } \\text{a perfect square}.$\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 9\"\nshows  \"\\<exists> k :: int. ((fact (n+2) - fact (n+1)) div fact n) = k * k\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For an integer $n \\geq 9$, find an integer $k$ such that $\\frac{(n+2)! - (n+1)!}{n!} = k^2$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.5565988421440125,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2) - fact (n + 1)) div fact n) \\<in> {m^2 |m. m \\<in> (UNIV :: nat set)}\"",
+        "formal solution": "(* ### Problem\n For all integers $n \\geq 9,$ the value of\n$\\frac{(n+2)!-(n+1)!}{n!}$is always which of the following?\n\n$\\textbf{(A) } \\text{a multiple of 4} \\qquad \\textbf{(B) } \\text{a multiple of 10} \\qquad \\textbf{(C) } \\text{a prime number} \\qquad \\textbf{(D) } \\text{a perfect square} \\qquad \\textbf{(E) } \\text{a perfect cube}$ Show that it is \\textbf{(D) } \\text{a perfect square}.\n ### Proof\n We first expand the expression:\n$\\frac{(n+2)!-(n+1)!}{n!} = \\frac{(n+2)(n+1)n!-(n+1)n!}{n!}.$\nWe can now divide out a common factor of $n!$ from each term of the numerator:\n$(n+2)(n+1)-(n+1).$\nFactoring out $(n+1),$ we get $[(n+2)-1](n+1) = (n+1)^2,$\nwhich proves that the answer is $\\textbf{(D) } \\text{a perfect square}.$\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2) - fact (n + 1)) div fact n) \\<in> {m^2 |m. m \\<in> (UNIV :: nat set)}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For all natural numbers $n \\geq 9$, show that the expression $\\frac{(n+2)! - (n+1)!}{n!}$ is a perfect square of some natural number $m$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.4709647595882416,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2)) - (fact (n + 1))) div (fact n) = (n + 1)^2\"",
+        "formal solution": "(* ### Problem\n For all integers $n \\geq 9,$ the value of\n$\\frac{(n+2)!-(n+1)!}{n!}$is always which of the following?\n\n$\\textbf{(A) } \\text{a multiple of 4} \\qquad \\textbf{(B) } \\text{a multiple of 10} \\qquad \\textbf{(C) } \\text{a prime number} \\qquad \\textbf{(D) } \\text{a perfect square} \\qquad \\textbf{(E) } \\text{a perfect cube}$ Show that it is \\textbf{(D) } \\text{a perfect square}.\n ### Proof\n We first expand the expression:\n$\\frac{(n+2)!-(n+1)!}{n!} = \\frac{(n+2)(n+1)n!-(n+1)n!}{n!}.$\nWe can now divide out a common factor of $n!$ from each term of the numerator:\n$(n+2)(n+1)-(n+1).$\nFactoring out $(n+1),$ we get $[(n+2)-1](n+1) = (n+1)^2,$\nwhich proves that the answer is $\\textbf{(D) } \\text{a perfect square}.$\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2)) - (fact (n + 1))) div (fact n) = (n + 1)^2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For any integer $n \\geq 9$, find the value of $\\frac{(n+2)! - (n+1)!}{n!}$. The final answer is $(n+1)^2$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9766870737075806,
+        "symbolic_score": 0.4
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2)) - (fact (n + 1))) div (fact n) = (n + 1) * (n + 1)\"",
+        "formal solution": "(* ### Problem\n For all integers $n \\geq 9,$ the value of\n$\\frac{(n+2)!-(n+1)!}{n!}$is always which of the following?\n\n$\\textbf{(A) } \\text{a multiple of 4} \\qquad \\textbf{(B) } \\text{a multiple of 10} \\qquad \\textbf{(C) } \\text{a prime number} \\qquad \\textbf{(D) } \\text{a perfect square} \\qquad \\textbf{(E) } \\text{a perfect cube}$ Show that it is \\textbf{(D) } \\text{a perfect square}.\n ### Proof\n We first expand the expression:\n$\\frac{(n+2)!-(n+1)!}{n!} = \\frac{(n+2)(n+1)n!-(n+1)n!}{n!}.$\nWe can now divide out a common factor of $n!$ from each term of the numerator:\n$(n+2)(n+1)-(n+1).$\nFactoring out $(n+1),$ we get $[(n+2)-1](n+1) = (n+1)^2,$\nwhich proves that the answer is $\\textbf{(D) } \\text{a perfect square}.$\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2)) - (fact (n + 1))) div (fact n) = (n + 1) * (n + 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $n$ is a natural number greater than or equal to 9, show that $\\frac{(n+2)! - (n+1)!}{n!} = (n+1)^2$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.6474255919456482,
+        "symbolic_score": 0.4
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2)) - (fact (n + 1))) div (fact n) = (n + 1)^2\"",
+        "formal solution": "(* ### Problem\n For all integers $n \\geq 9,$ the value of\n$\\frac{(n+2)!-(n+1)!}{n!}$is always which of the following?\n\n$\\textbf{(A) } \\text{a multiple of 4} \\qquad \\textbf{(B) } \\text{a multiple of 10} \\qquad \\textbf{(C) } \\text{a prime number} \\qquad \\textbf{(D) } \\text{a perfect square} \\qquad \\textbf{(E) } \\text{a perfect cube}$ Show that it is \\textbf{(D) } \\text{a perfect square}.\n ### Proof\n We first expand the expression:\n$\\frac{(n+2)!-(n+1)!}{n!} = \\frac{(n+2)(n+1)n!-(n+1)n!}{n!}.$\nWe can now divide out a common factor of $n!$ from each term of the numerator:\n$(n+2)(n+1)-(n+1).$\nFactoring out $(n+1),$ we get $[(n+2)-1](n+1) = (n+1)^2,$\nwhich proves that the answer is $\\textbf{(D) } \\text{a perfect square}.$\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2)) - (fact (n + 1))) div (fact n) = (n + 1)^2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For any natural number $n \\geq 9$, find the value of $\\frac{(n+2)! - (n+1)!}{n!}$. The final answer is $(n + 1)^2$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9635130167007446,
+        "symbolic_score": 0.4
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2) - fact (n + 1)) div fact n) = (n + 1) powr 2\"",
+        "formal solution": "(* ### Problem\n For all integers $n \\geq 9,$ the value of\n$\\frac{(n+2)!-(n+1)!}{n!}$is always which of the following?\n\n$\\textbf{(A) } \\text{a multiple of 4} \\qquad \\textbf{(B) } \\text{a multiple of 10} \\qquad \\textbf{(C) } \\text{a prime number} \\qquad \\textbf{(D) } \\text{a perfect square} \\qquad \\textbf{(E) } \\text{a perfect cube}$ Show that it is \\textbf{(D) } \\text{a perfect square}.\n ### Proof\n We first expand the expression:\n$\\frac{(n+2)!-(n+1)!}{n!} = \\frac{(n+2)(n+1)n!-(n+1)n!}{n!}.$\nWe can now divide out a common factor of $n!$ from each term of the numerator:\n$(n+2)(n+1)-(n+1).$\nFactoring out $(n+1),$ we get $[(n+2)-1](n+1) = (n+1)^2,$\nwhich proves that the answer is $\\textbf{(D) } \\text{a perfect square}.$\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2) - fact (n + 1)) div fact n) = (n + 1) powr 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For any natural number $n \\geq 9$, find the value of $\\frac{(n+2)! - (n+1)!}{n!}$, where \"!\" denotes the factorial function. The final answer is $(n+1)^2$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8623982667922974,
+        "symbolic_score": 0.2
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n+2)) - (fact (n+1))) / (fact n) = (n + 2) * (n + 1) - (n + 1)\"\nand \"is_perfect_square (((fact (n+2)) - (fact (n+1))) / (fact n))\"",
+        "formal solution": "(* ### Problem\n For all integers $n \\geq 9,$ the value of\n$\\frac{(n+2)!-(n+1)!}{n!}$is always which of the following?\n\n$\\textbf{(A) } \\text{a multiple of 4} \\qquad \\textbf{(B) } \\text{a multiple of 10} \\qquad \\textbf{(C) } \\text{a prime number} \\qquad \\textbf{(D) } \\text{a perfect square} \\qquad \\textbf{(E) } \\text{a perfect cube}$ Show that it is \\textbf{(D) } \\text{a perfect square}.\n ### Proof\n We first expand the expression:\n$\\frac{(n+2)!-(n+1)!}{n!} = \\frac{(n+2)(n+1)n!-(n+1)n!}{n!}.$\nWe can now divide out a common factor of $n!$ from each term of the numerator:\n$(n+2)(n+1)-(n+1).$\nFactoring out $(n+1),$ we get $[(n+2)-1](n+1) = (n+1)^2,$\nwhich proves that the answer is $\\textbf{(D) } \\text{a perfect square}.$\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n+2)) - (fact (n+1))) / (fact n) = (n + 2) * (n + 1) - (n + 1)\"\nand \"is_perfect_square (((fact (n+2)) - (fact (n+1))) / (fact n))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $n$ be an integer greater than or equal to 9. Show that $\\frac{(n+2)! - (n+1)!}{n!} = (n + 2)(n + 1) - (n + 1)$ and that the expression is a perfect square.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.5348967909812927,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 9\"\nshows  \"\\<exists> k. (factorial (n+2) - factorial (n+1)) / factorial n = k powr 2\"",
+        "formal solution": "(* ### Problem\n For all integers $n \\geq 9,$ the value of\n$\\frac{(n+2)!-(n+1)!}{n!}$is always which of the following?\n\n$\\textbf{(A) } \\text{a multiple of 4} \\qquad \\textbf{(B) } \\text{a multiple of 10} \\qquad \\textbf{(C) } \\text{a prime number} \\qquad \\textbf{(D) } \\text{a perfect square} \\qquad \\textbf{(E) } \\text{a perfect cube}$ Show that it is \\textbf{(D) } \\text{a perfect square}.\n ### Proof\n We first expand the expression:\n$\\frac{(n+2)!-(n+1)!}{n!} = \\frac{(n+2)(n+1)n!-(n+1)n!}{n!}.$\nWe can now divide out a common factor of $n!$ from each term of the numerator:\n$(n+2)(n+1)-(n+1).$\nFactoring out $(n+1),$ we get $[(n+2)-1](n+1) = (n+1)^2,$\nwhich proves that the answer is $\\textbf{(D) } \\text{a perfect square}.$\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n \\<ge> 9\"\nshows  \"\\<exists> k. (factorial (n+2) - factorial (n+1)) / factorial n = k powr 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For any integer $n \\geq 9$, show that there exists an integer $k$ such that $\\frac{(n+2)! - (n+1)!}{n!} = k^2$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6082494258880615,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2) - fact (n + 1)) div fact n) = (n + 1) * (n + 1)\"",
+        "formal solution": "(* ### Problem\n For all integers $n \\geq 9,$ the value of\n$\\frac{(n+2)!-(n+1)!}{n!}$is always which of the following?\n\n$\\textbf{(A) } \\text{a multiple of 4} \\qquad \\textbf{(B) } \\text{a multiple of 10} \\qquad \\textbf{(C) } \\text{a prime number} \\qquad \\textbf{(D) } \\text{a perfect square} \\qquad \\textbf{(E) } \\text{a perfect cube}$ Show that it is \\textbf{(D) } \\text{a perfect square}.\n ### Proof\n We first expand the expression:\n$\\frac{(n+2)!-(n+1)!}{n!} = \\frac{(n+2)(n+1)n!-(n+1)n!}{n!}.$\nWe can now divide out a common factor of $n!$ from each term of the numerator:\n$(n+2)(n+1)-(n+1).$\nFactoring out $(n+1),$ we get $[(n+2)-1](n+1) = (n+1)^2,$\nwhich proves that the answer is $\\textbf{(D) } \\text{a perfect square}.$\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2) - fact (n + 1)) div fact n) = (n + 1) * (n + 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For any natural number $n \\geq 9$, show that $\\frac{(n+2)! - (n+1)!}{n!} = (n+1)^2$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.638598620891571,
+        "symbolic_score": 0.4
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2) - fact (n + 1)) div fact n) = (n + 1) powr 2\"",
+        "formal solution": "(* ### Problem\n For all integers $n \\geq 9,$ the value of\n$\\frac{(n+2)!-(n+1)!}{n!}$is always which of the following?\n\n$\\textbf{(A) } \\text{a multiple of 4} \\qquad \\textbf{(B) } \\text{a multiple of 10} \\qquad \\textbf{(C) } \\text{a prime number} \\qquad \\textbf{(D) } \\text{a perfect square} \\qquad \\textbf{(E) } \\text{a perfect cube}$ Show that it is \\textbf{(D) } \\text{a perfect square}.\n ### Proof\n We first expand the expression:\n$\\frac{(n+2)!-(n+1)!}{n!} = \\frac{(n+2)(n+1)n!-(n+1)n!}{n!}.$\nWe can now divide out a common factor of $n!$ from each term of the numerator:\n$(n+2)(n+1)-(n+1).$\nFactoring out $(n+1),$ we get $[(n+2)-1](n+1) = (n+1)^2,$\nwhich proves that the answer is $\\textbf{(D) } \\text{a perfect square}.$\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 9\"\nshows  \"((fact (n + 2) - fact (n + 1)) div fact n) = (n + 1) powr 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a natural number $n \\geq 9$, show that $\\frac{(n+2)! - (n+1)!}{n!} = (n+1)^2$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6406610012054443,
+        "symbolic_score": 0.2
+    },
+    "oracle": "theorem\nfixes n :: nat\nassumes h0: \"9 \\<le> n\"\nshows \"\\<exists>x::nat. (real_of_nat x)^2 = (fact (n + 2)\n- fact (n + 1)) / fact n\"",
+    "prediction": {
+        "0": [
+            8,
+            2,
+            3,
+            4
+        ],
+        "1": [
+            9,
+            5
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            1
+        ],
+        "4": [
+            6
+        ],
+        "5": [
+            7
+        ]
+    },
+    "equivalence_oracle": [
+        5,
+        9
+    ]
+}

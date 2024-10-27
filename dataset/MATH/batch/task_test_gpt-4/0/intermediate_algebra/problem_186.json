@@ -1,0 +1,597 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S > 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"sum id S / card S = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S > 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"sum id S / card S = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set of integers $S$ with more than 0 elements, where the smallest element is 0 and the largest element is 2015, find the average of the elements in the set. The answer is 62.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8948719501495361,
+        "symbolic_score": 0.2
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall>x y. x \\<in> S \\<and> y \\<in> S \\<and> x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nshows  \"sum id S div card S \\<ge> 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall>x y. x \\<in> S \\<and> y \\<in> S \\<and> x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nshows  \"sum id S div card S \\<ge> 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set S of integers that contains 0 and 2015, and no two different elements in S are the same. What is the least possible average value (rounded down to the nearest integer) of the numbers in S? The final answer is 62.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.941835880279541,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes S :: \"int set\" and avg :: real\nassumes h0 : \"finite S\"\nand h1 : \"S \\<noteq> {}\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nand h4 : \"avg = (\\<Sum> s \\<in> S. s) / (card S)\"\nshows  \"avg \\<ge> 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\" and avg :: real\nassumes h0 : \"finite S\"\nand h1 : \"S \\<noteq> {}\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nand h4 : \"avg = (\\<Sum> s \\<in> S. s) / (card S)\"\nshows  \"avg \\<ge> 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite and non-empty set of integers $S$ with a minimum value of 0 and a maximum value of 2015. If the average (mean) value of the set $S$ is represented by $\\frac{\\sum_{s \\in S} s}{|S|}$, show that the average value is greater than or equal to 62.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8742388486862183,
+        "symbolic_score": 0.2
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"min S = 0\"\nand h2 : \"max S = 2015\"\nand h3 : \"\\<forall>x y. x \\<in> S \\<and> y \\<in> S \\<longrightarrow> x \\<noteq> y\"\nshows  \"average S = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"min S = 0\"\nand h2 : \"max S = 2015\"\nand h3 : \"\\<forall>x y. x \\<in> S \\<and> y \\<in> S \\<longrightarrow> x \\<noteq> y\"\nshows  \"average S = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set of integers S with distinct elements, where the smallest element is 0 and the largest is 2015, find the average of the elements in S. The final answer is 62.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9735722541809082,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S > 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"sum id S / card S = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S > 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"sum id S / card S = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set of integers S with more than 0 elements, the smallest element is 0 and the largest element is 2015. What is the average of the elements in S if the average is 62?",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9837824702262878,
+        "symbolic_score": 0.2
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S \\<noteq> 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"sum id S div (card S) = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S \\<noteq> 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"sum id S div (card S) = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite, non-empty set of integers $S$ where the smallest element is $0$ and the largest element is $2015$, the average (or mean) of all elements in the set is $62$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7586144208908081,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes S :: \"int set\" and avg :: real\nassumes h0 : \"finite S\"\nand h1 : \"S \\<noteq> {}\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nand h4 : \"avg = sum id S / card S\"\nshows  \"avg \\<ge> 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\" and avg :: real\nassumes h0 : \"finite S\"\nand h1 : \"S \\<noteq> {}\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nand h4 : \"avg = sum id S / card S\"\nshows  \"avg \\<ge> 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite and non-empty set of integers $S$ where the smallest element is 0 and the largest element is 2015. If the average of the elements in the set is given by the sum of the elements divided by the number of elements in the set, show that the average is at least 62.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6987111568450928,
+        "symbolic_score": 0.2
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"\\<forall>x y. x \\<in> S \\<and> y \\<in> S \\<and> x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"average S = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"\\<forall>x y. x \\<in> S \\<and> y \\<in> S \\<and> x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"average S = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set of distinct integers $S$ with the smallest element being $0$ and the largest element being $2015$, find the average of the set. The final answer is $62$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9866853952407837,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"min S = 0\"\nand h2 : \"max S = 2015\"\nshows  \"average S = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"min S = 0\"\nand h2 : \"max S = 2015\"\nshows  \"average S = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set of integers $S$ with minimum value 0 and maximum value 2015, prove that the average of the set is 62.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.6918092966079712,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"min S = 0\"\nand h2 : \"max S = 2015\"\nshows  \"average S \\<ge> 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"min S = 0\"\nand h2 : \"max S = 2015\"\nshows  \"average S \\<ge> 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set of integers S with a minimum value of 0 and a maximum value of 2015, show that the average of the set S is at least 62.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7231314182281494,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "62",
+    "natural problem": "Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$",
+    "natural solution": [
+        "It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\",
+        "&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$",
+        "For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average."
+    ],
+    "oracle": "TODO",
+    "prediction": {
+        "0": [
+            0,
+            4
+        ],
+        "1": [
+            2,
+            6
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            7
+        ],
+        "6": [
+            8
+        ],
+        "7": [
+            9
+        ]
+    },
+    "str_pred": "[[0, 4], [2, 6], [1], [3], [5], [7], [8], [9]]",
+    "level": "Level 5",
+    "type": "Intermediate Algebra",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"Min (setsum S / int (card S)) = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"Min (setsum S / int (card S)) = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a finite set S of integers that includes 0 and 2015, and all elements in S are distinct, find the minimum value of the average of the elements in S. The minimum value is 62.",
+        "syntax": 0,
+        "semantic_score": 0.9788881563198985,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y\"\nshows \"Min (setsum S / int (card S)) = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y\"\nshows \"Min (setsum S / int (card S)) = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Theorem: Given a finite set S of integers that contains the numbers 0 and 2015, and where all elements in the set are distinct (no two elements are the same), the minimum value of the average of the elements in the set (calculated by summing all elements and dividing by the number of elements) is 62.",
+        "syntax": 0,
+        "semantic_score": 0.9654243614037035,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a finite set S of integers that contains the numbers 0 and 2015, and all its elements are distinct (no duplicates). Prove that the smallest possible average of the elements in the set, calculated as the sum of all elements divided by the number of elements, is 62.",
+        "syntax": 0,
+        "semantic_score": 0.8633247776561471,
+        "symbolic_score": 0.4
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There is a finite set S of integers that includes the numbers 0 and 2015, and all the elements in the set are distinct (i.e., no two elements are the same). The average of all the numbers in the set S is 62. We want to show that 62 is the smallest possible average that can be achieved for any set S that satisfies these conditions (i.e., finite, contains 0 and 2015, and has distinct elements).",
+        "syntax": 0,
+        "semantic_score": 0.8667210629536808,
+        "symbolic_score": 0.4
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a finite set S of integers that contains the numbers 0 and 2015, and all the elements in the set are distinct (i.e., no two elements are the same). If we take the sum of all the elements in the set and divide it by the number of elements in the set (the cardinality of S), we get an average value. Among all such sets S, what is the smallest possible average value that can be obtained? The answer is 62.",
+        "syntax": 0,
+        "semantic_score": 0.9378871150180641,
+        "symbolic_score": 0.4
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y\"\nshows \"Min {real i / real (card S) | i. i \\<in> S} = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y\"\nshows \"Min {real i / real (card S) | i. i \\<in> S} = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a finite set S of integers that includes 0 and 2015, and where all elements in S are distinct (no two elements are the same), find the smallest value of the set formed by taking each element i in S and dividing it by the number of elements in S (card S). The result is 62.",
+        "syntax": 1,
+        "semantic_score": 0.9877014245683376,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y\"\nshows \"Min {real (sum S) / real (card S) | S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> (\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y)} = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y\"\nshows \"Min {real (sum S) / real (card S) | S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> (\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y)} = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a finite set S of integers that contains the numbers 0 and 2015, and all other elements in S are distinct (i.e., no two elements in S are the same). What is the minimum possible average of the elements in S, given that the average is calculated as the sum of the elements divided by the number of elements in S? The minimum average is 62.",
+        "syntax": 0,
+        "semantic_score": 0.9578508164288966,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a finite set S of integers that contains the numbers 0 and 2015, and all the elements in S are distinct (i.e., no two elements are the same). The average of all the elements in S is defined as the sum of the elements divided by the number of elements in the set. What is the smallest possible average value that can be achieved for such a set S? The answer is 62.",
+        "syntax": 0,
+        "semantic_score": 0.8124821202116728,
+        "symbolic_score": 0.4
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nshows \"Min (setsum S / int (card S)) = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nshows \"Min (setsum S / int (card S)) = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a finite set S of integers that includes 0 and 2015, and for any two distinct elements x and y in S, x is not equal to y. Prove that the minimum value of the average of the elements in S (calculated as the sum of the elements divided by the number of elements) is 62.",
+        "syntax": 0,
+        "semantic_score": 0.763980902241981,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nshows \"Min {sum S / real (card S) | S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> (\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x \\<noteq> y)} = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nshows \"Min {sum S / real (card S) | S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> (\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x \\<noteq> y)} = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a finite set S of integers that includes the numbers 0 and 2015, and every pair of distinct elements in S are indeed different from each other. What is the smallest possible average of the elements in S? The answer is 62.",
+        "syntax": 0,
+        "semantic_score": 0.9777729338762997,
+        "symbolic_score": 0.1
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S = 2016\"\nand h2 : \"S \\<subseteq> {0..2015}\"\nand h3 : \"\\<forall> s \\<in> S. \\<forall> t \\<in> S. s \\<noteq> t \\<longrightarrow> s \\<noteq> t\"\nshows \"sum S / card S = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S = 2016\"\nand h2 : \"S \\<subseteq> {0..2015}\"\nand h3 : \"\\<forall> s \\<in> S. \\<forall> t \\<in> S. s \\<noteq> t \\<longrightarrow> s \\<noteq> t\"\nshows \"sum S / card S = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a finite set $S$ of integers. The set $S$ contains $2016$ elements, and each element of $S$ is a non-negative integer less than or equal to $2015$. Also, no two distinct elements in $S$ are equal. What is the average value of the elements in $S$? The final answer is $62$.",
+        "syntax": 0,
+        "semantic_score": 0.8549743789022591,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"S \\<noteq> {}\"\nand h2 : \"0 \\<in> S\"\nand h3 : \"2015 \\<in> S\"\nand h4 : \"\\<forall>s\\<in>S. \\<forall>t\\<in>S. s \\<noteq> t \\<longrightarrow> s > 0 \\<and> t > 0\"\nshows \"62 \\<le> real (\\<Sum>x\\<in>S. x) / card S\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"S \\<noteq> {}\"\nand h2 : \"0 \\<in> S\"\nand h3 : \"2015 \\<in> S\"\nand h4 : \"\\<forall>s\\<in>S. \\<forall>t\\<in>S. s \\<noteq> t \\<longrightarrow> s > 0 \\<and> t > 0\"\nshows \"62 \\<le> real (\\<Sum>x\\<in>S. x) / card S\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a set $S$ of integers that is finite and nonempty and contains both $0$ and $2015$. Furthermore, suppose that for any distinct $s,t \\in S$, both $s$ and $t$ are positive. Prove that the average of the numbers in $S$ is at least $62$.",
+        "syntax": 0,
+        "semantic_score": 0.7504028863418182,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"card S = 2016\"\nshows \"62 \\<le> (set_sum id S) div 2016 \\<and> (set_sum id S) div 2016 \\<le> 63\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"card S = 2016\"\nshows \"62 \\<le> (set_sum id S) div 2016 \\<and> (set_sum id S) div 2016 \\<le> 63\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $S$ is a finite set of integers such that $0$ and $2015$ are both elements of $S$, and $S$ has $2016$ distinct elements. Find the integer value of $\\frac{1}{2016} \\sum_{x \\in S} x$ and show that it is between $62$ and $63$.",
+        "syntax": 1,
+        "semantic_score": 0.6230294197115026,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S \\<ge> 2\"\nand h2 : \"0 \\<in> S\"\nand h3 : \"2015 \\<in> S\"\nshows \"(SUM x:S. x) div (card S) = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S \\<ge> 2\"\nand h2 : \"0 \\<in> S\"\nand h3 : \"2015 \\<in> S\"\nshows \"(SUM x:S. x) div (card S) = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If a set $S$ is finite and has at least two elements, and if $0$ and $2015$ are both elements of $S$, then the average value of the elements in $S$ is $62$.\"",
+        "syntax": 1,
+        "semantic_score": 0.44975495385660524,
+        "symbolic_score": 0.1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"card S \\<ge> 2\"\nshows \"62 \\<le> (\\<Sum>x\\<in>S. real_of_int x) / card S\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"card S \\<ge> 2\"\nshows \"62 \\<le> (\\<Sum>x\\<in>S. real_of_int x) / card S\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $S$ is a finite set of integers, such that $0$ and $2015$ belong to $S$, and $S$ has at least two elements. Prove that the average of the elements in $S$ is at least $62$.",
+        "syntax": 1,
+        "semantic_score": 0.6452524875352942,
+        "symbolic_score": 0.1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S = 2016\"\nand h2 : \"0 \\<in> S\"\nand h3 : \"2015 \\<in> S\"\nshows \"(SUM x : S. real x) / 2016 \\<ge> 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S = 2016\"\nand h2 : \"0 \\<in> S\"\nand h3 : \"2015 \\<in> S\"\nshows \"(SUM x : S. real x) / 2016 \\<ge> 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a set of integers $S$ contains $2016$ elements, including $0$ and $2015$, what is the smallest possible average of the elements in $S$? The final answer is that the average is greater than or equal to $62$.",
+        "syntax": 0,
+        "semantic_score": 0.9167029401070306,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S = 2016\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows \"(\\<Sum>x\\<in>S. x) / card S = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S = 2016\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows \"(\\<Sum>x\\<in>S. x) / card S = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $S$ is a finite set of integers. If $S$ has $2016$ elements, and the smallest element is $0$ while the largest element is $2015$, what is the average value (arithmetic mean) of the elements of $S$? The final answer is $62$.",
+        "syntax": 1,
+        "semantic_score": 0.9768525162319156,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"S \\<noteq> {}\"\nand h2 : \"0 \\<in> S\"\nand h3 : \"2015 \\<in> S\"\nand h4 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x < y\"\nshows \"62 \\<le> (setsum int S) div (card S)\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"S \\<noteq> {}\"\nand h2 : \"0 \\<in> S\"\nand h3 : \"2015 \\<in> S\"\nand h4 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x < y\"\nshows \"62 \\<le> (setsum int S) div (card S)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $S$ is a finite set of integers that is non-empty and contains both $0$ and $2015$. Furthermore, suppose that for any two distinct elements $x$ and $y$ in $S$, $x$ is less than $y$. Prove that the average of the integers in $S$ is at least $62$.",
+        "syntax": 1,
+        "semantic_score": 0.7134368763975408,
+        "symbolic_score": 0.1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"\\<forall>x \\<in> S. x \\<in> {0..2015}\"\nand h1 : \"distinct S\"\nand h2 : \"card S > 0\"\nshows \"sum S / card S \\<ge> 62 \\<and> (\\<exists>T. T \\<subseteq> S \\<and> card T = 62 \\<and> sum T = 3844)\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"\\<forall>x \\<in> S. x \\<in> {0..2015}\"\nand h1 : \"distinct S\"\nand h2 : \"card S > 0\"\nshows \"sum S / card S \\<ge> 62 \\<and> (\\<exists>T. T \\<subseteq> S \\<and> card T = 62 \\<and> sum T = 3844)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a set $S$ of integers, where every element of $S$ is between $0$ and $2015$ (inclusive), $S$ has at least one element, and all elements of $S$ are distinct. If we take the average of the elements of $S$, it is greater than or equal to $62$. Furthermore, there exists a subset $T$ of $S$ with $62$ elements whose sum is $3844$.",
+        "syntax": 0,
+        "semantic_score": 0.9038149329185559,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S \\<noteq> 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows \"62 \\<le> \\<bar>setsum (\\<lambda> x. x) S\\<bar> div card S\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S \\<noteq> 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows \"62 \\<le> \\<bar>setsum (\\<lambda> x. x) S\\<bar> div card S\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $S$ is a finite set of integers such that $S$ is not empty, $0$ is the smallest element of $S$, and $2015$ is the largest element of $S$. What is the smallest possible value of $\\frac{\\left|\\sum_{x\\in S} x\\right|}{|S|}$? The answer must be at least $62$.",
+        "syntax": 1,
+        "semantic_score": 0.9797460085510346,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek": {
+        "0": [
+            2,
+            3,
+            4,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            5
+        ],
+        "4": [
+            6
+        ],
+        "5": [
+            8
+        ],
+        "6": [
+            9
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0,
+            4
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S > 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"sum id S / card S = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S > 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"sum id S / card S = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set of integers $S$ with more than 0 elements, where the smallest element is 0 and the largest element is 2015, find the average of the elements in the set. The answer is 62.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9270352336078727,
+        "symbolic_score": 0.2
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall>x y. x \\<in> S \\<and> y \\<in> S \\<and> x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nshows  \"sum id S div card S \\<ge> 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall>x y. x \\<in> S \\<and> y \\<in> S \\<and> x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nshows  \"sum id S div card S \\<ge> 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set S of integers that contains 0 and 2015, and no two different elements in S are the same. What is the least possible average value (rounded down to the nearest integer) of the numbers in S? The final answer is 62.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9347480799205284,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\" and avg :: real\nassumes h0 : \"finite S\"\nand h1 : \"S \\<noteq> {}\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nand h4 : \"avg = (\\<Sum> s \\<in> S. s) / (card S)\"\nshows  \"avg \\<ge> 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\" and avg :: real\nassumes h0 : \"finite S\"\nand h1 : \"S \\<noteq> {}\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nand h4 : \"avg = (\\<Sum> s \\<in> S. s) / (card S)\"\nshows  \"avg \\<ge> 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite and non-empty set of integers $S$ with a minimum value of 0 and a maximum value of 2015. If the average (mean) value of the set $S$ is represented by $\\frac{\\sum_{s \\in S} s}{|S|}$, show that the average value is greater than or equal to 62.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8954967109242261,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"min S = 0\"\nand h2 : \"max S = 2015\"\nand h3 : \"\\<forall>x y. x \\<in> S \\<and> y \\<in> S \\<longrightarrow> x \\<noteq> y\"\nshows  \"average S = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"min S = 0\"\nand h2 : \"max S = 2015\"\nand h3 : \"\\<forall>x y. x \\<in> S \\<and> y \\<in> S \\<longrightarrow> x \\<noteq> y\"\nshows  \"average S = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set of integers S with distinct elements, where the smallest element is 0 and the largest is 2015, find the average of the elements in S. The final answer is 62.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9348970374472833,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S > 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"sum id S / card S = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S > 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"sum id S / card S = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set of integers S with more than 0 elements, the smallest element is 0 and the largest element is 2015. What is the average of the elements in S if the average is 62?",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9395679882725921,
+        "symbolic_score": 0.2
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S \\<noteq> 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"sum id S div (card S) = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"card S \\<noteq> 0\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"sum id S div (card S) = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite, non-empty set of integers $S$ where the smallest element is $0$ and the largest element is $2015$, the average (or mean) of all elements in the set is $62$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9004188961800028,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\" and avg :: real\nassumes h0 : \"finite S\"\nand h1 : \"S \\<noteq> {}\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nand h4 : \"avg = sum id S / card S\"\nshows  \"avg \\<ge> 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\" and avg :: real\nassumes h0 : \"finite S\"\nand h1 : \"S \\<noteq> {}\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nand h4 : \"avg = sum id S / card S\"\nshows  \"avg \\<ge> 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite and non-empty set of integers $S$ where the smallest element is 0 and the largest element is 2015. If the average of the elements in the set is given by the sum of the elements divided by the number of elements in the set, show that the average is at least 62.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9177730901133269,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"\\<forall>x y. x \\<in> S \\<and> y \\<in> S \\<and> x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"average S = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"\\<forall>x y. x \\<in> S \\<and> y \\<in> S \\<and> x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nand h2 : \"Min S = 0\"\nand h3 : \"Max S = 2015\"\nshows  \"average S = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set of distinct integers $S$ with the smallest element being $0$ and the largest element being $2015$, find the average of the set. The final answer is $62$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.942545656876804,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"min S = 0\"\nand h2 : \"max S = 2015\"\nshows  \"average S = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"min S = 0\"\nand h2 : \"max S = 2015\"\nshows  \"average S = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set of integers $S$ with minimum value 0 and maximum value 2015, prove that the average of the set is 62.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8955022832867074,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"min S = 0\"\nand h2 : \"max S = 2015\"\nshows  \"average S \\<ge> 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is 62\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n &= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\n For both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"min S = 0\"\nand h2 : \"max S = 2015\"\nshows  \"average S \\<ge> 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a finite set of integers S with a minimum value of 0 and a maximum value of 2015, show that the average of the set S is at least 62.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8964511094240051,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"Min (setsum S / int (card S)) = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"Min (setsum S / int (card S)) = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a finite set S of integers that includes 0 and 2015, and all elements in S are distinct, find the minimum value of the average of the elements in S. The minimum value is 62.",
+        "syntax": 0,
+        "semantic_score": 0.9306575310318467,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y\"\nshows \"Min (setsum S / int (card S)) = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y\"\nshows \"Min (setsum S / int (card S)) = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Theorem: Given a finite set S of integers that contains the numbers 0 and 2015, and where all elements in the set are distinct (no two elements are the same), the minimum value of the average of the elements in the set (calculated by summing all elements and dividing by the number of elements) is 62.",
+        "syntax": 0,
+        "semantic_score": 0.8877163426294679,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a finite set S of integers that contains the numbers 0 and 2015, and all its elements are distinct (no duplicates). Prove that the smallest possible average of the elements in the set, calculated as the sum of all elements divided by the number of elements, is 62.",
+        "syntax": 0,
+        "semantic_score": 0.9089293955446475,
+        "symbolic_score": 0.4
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There is a finite set S of integers that includes the numbers 0 and 2015, and all the elements in the set are distinct (i.e., no two elements are the same). The average of all the numbers in the set S is 62. We want to show that 62 is the smallest possible average that can be achieved for any set S that satisfies these conditions (i.e., finite, contains 0 and 2015, and has distinct elements).",
+        "syntax": 0,
+        "semantic_score": 0.8997313480002364,
+        "symbolic_score": 0.4
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a finite set S of integers that contains the numbers 0 and 2015, and all the elements in the set are distinct (i.e., no two elements are the same). If we take the sum of all the elements in the set and divide it by the number of elements in the set (the cardinality of S), we get an average value. Among all such sets S, what is the smallest possible average value that can be obtained? The answer is 62.",
+        "syntax": 0,
+        "semantic_score": 0.9053638721572889,
+        "symbolic_score": 0.4
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y\"\nshows \"Min {real i / real (card S) | i. i \\<in> S} = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y\"\nshows \"Min {real i / real (card S) | i. i \\<in> S} = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a finite set S of integers that includes 0 and 2015, and where all elements in S are distinct (no two elements are the same), find the smallest value of the set formed by taking each element i in S and dividing it by the number of elements in S (card S). The result is 62.",
+        "syntax": 1,
+        "semantic_score": 0.897886915733876,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y\"\nshows \"Min {real (sum S) / real (card S) | S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> (\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y)} = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y\"\nshows \"Min {real (sum S) / real (card S) | S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> (\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y)} = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a finite set S of integers that contains the numbers 0 and 2015, and all other elements in S are distinct (i.e., no two elements in S are the same). What is the minimum possible average of the elements in S, given that the average is calculated as the sum of the elements divided by the number of elements in S? The minimum average is 62.",
+        "syntax": 0,
+        "semantic_score": 0.9248593437388433,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"distinct S\"\nshows \"62 = (LEAST a. \\<exists> S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> distinct S \\<and> (\\<Sum>x\\<in>S. x) / int (card S) = a)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a finite set S of integers that contains the numbers 0 and 2015, and all the elements in S are distinct (i.e., no two elements are the same). The average of all the elements in S is defined as the sum of the elements divided by the number of elements in the set. What is the smallest possible average value that can be achieved for such a set S? The answer is 62.",
+        "syntax": 0,
+        "semantic_score": 0.914672124273779,
+        "symbolic_score": 0.4
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nshows \"Min (setsum S / int (card S)) = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nshows \"Min (setsum S / int (card S)) = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a finite set S of integers that includes 0 and 2015, and for any two distinct elements x and y in S, x is not equal to y. Prove that the minimum value of the average of the elements in S (calculated as the sum of the elements divided by the number of elements) is 62.",
+        "syntax": 0,
+        "semantic_score": 0.8954171940610552,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nshows \"Min {sum S / real (card S) | S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> (\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x \\<noteq> y)} = 62\"",
+        "formal solution": "(* ### Problem\n Let $S$ be a set containing distinct integers such that the smallest element is 0 and the largest element is 2015.  Find the smallest possible average of the elements in $S.$ The final Answer is $62$\n ### Proof\n It is clear that to get the smallest positive average, the set should be of the form $S = \\{0, 1, 2, \\dots, n, 2015\\}$ for some nonnegative integer $n.$  For this set, the average is \\begin{align} \\frac{\\frac{n(n + 1)}{2} + 2015}{n + 2} &= \\frac{n^2 + n + 4032}{2(n + 2)} \\\\\n&= \\frac{1}{2} \\left( n - 1 + \\frac{4032}{n + 2} \\right) \\\\ &= \\frac{1}{2} \\left( n + 2 + \\frac{4032}{n + 2} \\right) - \\frac{3}{2}. \\end{align}By AM-GM, \\[\\frac{4032}{n + 2} + n + 2 \\ge 2 \\sqrt{4032}.\\]However, equality cannot occur, since $n + 2 = \\sqrt{4032}$ does not lead to an integer, so we look for integers close to $\\sqrt{4032} - 2 \\approx 61.5.$\nFor both $n = 61$ and $n = 62,$ the average works out to $\\boxed{62},$ so this is the smallest possible average.\n *)\n\ntheorem\nfixes S :: \"int set\"\nassumes h0 : \"finite S\"\nand h1 : \"0 \\<in> S\"\nand h2 : \"2015 \\<in> S\"\nand h3 : \"\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x \\<noteq> y\"\nshows \"Min {sum S / real (card S) | S. finite S \\<and> 0 \\<in> S \\<and> 2015 \\<in> S \\<and> (\\<forall> x \\<in> S. \\<forall> y \\<in> S. x \\<noteq> y \\<longrightarrow> x \\<noteq> y)} = 62\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a finite set S of integers that includes the numbers 0 and 2015, and every pair of distinct elements in S are indeed different from each other. What is the smallest possible average of the elements in S? The answer is 62.",
+        "syntax": 0,
+        "semantic_score": 0.9445368687387474,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            2,
+            3,
+            4,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            5
+        ],
+        "4": [
+            6
+        ],
+        "5": [
+            8
+        ],
+        "6": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

@@ -1,0 +1,130 @@
+{
+    "problem_name": "amc12b_2020_p13",
+    "informal_statement": "Which of the following is the value of $\\sqrt{\\log_2{6}+\\log_3{6}}?$\n\n$\\textbf{(A) } 1 \\qquad\\textbf{(B) } \\sqrt{\\log_5{6}} \\qquad\\textbf{(C) } 2 \\qquad\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}} \\qquad\\textbf{(E) } \\sqrt{\\log_2{6}}+\\sqrt{\\log_3{6}}$ Show that it is \\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.",
+    "informal_proof": "Recall that:\n<ol style=\"margin-left: 1.5em;\">\n  <li>$\\log_b{(uv)}=\\log_b u + \\log_b v.$</li><p>\n  <li>$\\log_b u\\cdot\\log_u b=1.$</li><p>\n</ol>\nWe use these properties of logarithms to rewrite the original expression:\n$\\begin{align*}\n\\sqrt{\\log_2{6}+\\log_3{6}}&=\\sqrt{(\\log_2{2}+\\log_2{3})+(\\log_3{2}+\\log_3{3})} \\\\\n&=\\sqrt{2+\\log_2{3}+\\log_3{2}} \\\\\n&=\\sqrt{\\left(\\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}\\right)^2} \\\\\n&=\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n\\end{align*}$",
+    "a_0": {
+        "formal problem": "theorem\nfixes log2 log3 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"log2 6 = log 6 / log 2\"\nand h1 : \"log3 6 = log 6 / log 3\"\nand h2 : \"\\<forall>x y. x > 0 \\<and> y > 0 \\<longrightarrow> log x + log y = log (x * y)\"\nshows  \"sqrt (log2 6 + log3 6) = sqrt (log 3 / log 2) + sqrt (log 2 / log 3)\"",
+        "formal solution": "(* ### Problem\n Which of the following is the value of $\\sqrt{\\log_2{6}+\\log_3{6}}?$\n\n$\\textbf{(A) } 1 \\qquad\\textbf{(B) } \\sqrt{\\log_5{6}} \\qquad\\textbf{(C) } 2 \\qquad\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}} \\qquad\\textbf{(E) } \\sqrt{\\log_2{6}}+\\sqrt{\\log_3{6}}$ Show that it is \\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n ### Proof\n Recall that:\n<ol style=\"margin-left: 1.5em;\">\n  <li>$\\log_b{(uv)}=\\log_b u + \\log_b v.$</li><p>\n  <li>$\\log_b u\\cdot\\log_u b=1.$</li><p>\n</ol>\nWe use these properties of logarithms to rewrite the original expression:\n$\\begin{align*}\n\\sqrt{\\log_2{6}+\\log_3{6}}&=\\sqrt{(\\log_2{2}+\\log_2{3})+(\\log_3{2}+\\log_3{3})} \\\\\n&=\\sqrt{2+\\log_2{3}+\\log_3{2}} \\\\\n&=\\sqrt{\\left(\\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}\\right)^2} \\\\\n&=\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n\\end{align*}$\n *)\n\ntheorem\nfixes log2 log3 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"log2 6 = log 6 / log 2\"\nand h1 : \"log3 6 = log 6 / log 3\"\nand h2 : \"\\<forall>x y. x > 0 \\<and> y > 0 \\<longrightarrow> log x + log y = log (x * y)\"\nshows  \"sqrt (log2 6 + log3 6) = sqrt (log 3 / log 2) + sqrt (log 2 / log 3)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $\\log_2 6 = \\frac{\\log 6}{\\log 2}$ and $\\log_3 6 = \\frac{\\log 6}{\\log 3}$, prove that $\\sqrt{\\log_2 6 + \\log_3 6} = \\sqrt{\\frac{\\log 3}{\\log 2}} + \\sqrt{\\frac{\\log 2}{\\log 3}}$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7932788729667664,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b c d e :: real\nassumes h0 : \"a = 1\"\nand h1 : \"b = sqrt (log 6 / log 5)\"\nand h2 : \"c = 2\"\nand h3 : \"d = sqrt (log 6 / log 2) + sqrt (log 6 / log 3)\"\nand h4 : \"e = sqrt (log 6 / log 2) + sqrt (log 6 / log 3)\"\nand h5 : \"sqrt (log 6 / log 2 + log 6 / log 3) = sqrt (log 6 / log 2) + sqrt (log 6 / log 3)\"\nshows  \"d = sqrt (log 6 / log 2) + sqrt (log 6 / log 3)\"",
+        "formal solution": "(* ### Problem\n Which of the following is the value of $\\sqrt{\\log_2{6}+\\log_3{6}}?$\n\n$\\textbf{(A) } 1 \\qquad\\textbf{(B) } \\sqrt{\\log_5{6}} \\qquad\\textbf{(C) } 2 \\qquad\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}} \\qquad\\textbf{(E) } \\sqrt{\\log_2{6}}+\\sqrt{\\log_3{6}}$ Show that it is \\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n ### Proof\n Recall that:\n<ol style=\"margin-left: 1.5em;\">\n  <li>$\\log_b{(uv)}=\\log_b u + \\log_b v.$</li><p>\n  <li>$\\log_b u\\cdot\\log_u b=1.$</li><p>\n</ol>\nWe use these properties of logarithms to rewrite the original expression:\n$\\begin{align*}\n\\sqrt{\\log_2{6}+\\log_3{6}}&=\\sqrt{(\\log_2{2}+\\log_2{3})+(\\log_3{2}+\\log_3{3})} \\\\\n&=\\sqrt{2+\\log_2{3}+\\log_3{2}} \\\\\n&=\\sqrt{\\left(\\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}\\right)^2} \\\\\n&=\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n\\end{align*}$\n *)\n\ntheorem\nfixes a b c d e :: real\nassumes h0 : \"a = 1\"\nand h1 : \"b = sqrt (log 6 / log 5)\"\nand h2 : \"c = 2\"\nand h3 : \"d = sqrt (log 6 / log 2) + sqrt (log 6 / log 3)\"\nand h4 : \"e = sqrt (log 6 / log 2) + sqrt (log 6 / log 3)\"\nand h5 : \"sqrt (log 6 / log 2 + log 6 / log 3) = sqrt (log 6 / log 2) + sqrt (log 6 / log 3)\"\nshows  \"d = sqrt (log 6 / log 2) + sqrt (log 6 / log 3)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a = 1$, $b = \\sqrt{\\frac{\\log 6}{\\log 5}}$, $c = 2$, $d = \\sqrt{\\frac{\\log 6}{\\log 2}} + \\sqrt{\\frac{\\log 6}{\\log 3}}$, and $e = \\sqrt{\\frac{\\log 6}{\\log 2}} + \\sqrt{\\frac{\\log 6}{\\log 3}}$, show that $\\sqrt{\\frac{\\log 6}{\\log 2} + \\frac{\\log 6}{\\log 3}} = \\sqrt{\\frac{\\log 6}{\\log 2}} + \\sqrt{\\frac{\\log 6}{\\log 3}}$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7579402327537537,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes log2 log3 log5 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"log2 2 = 1\"\nand h1 : \"log3 3 = 1\"\nand h2 : \"log5 5 = 1\"\nand h3 : \"log2 (6 * 3 powr (-log3 2)) = log3 (6 * 2 powr (-log2 3))\"\nand h4 : \"log5 6 = log2 6 + log3 6\"\nshows  \"sqrt (log2 6 + log3 6) = sqrt (log2 3) + sqrt (log3 2)\"",
+        "formal solution": "(* ### Problem\n Which of the following is the value of $\\sqrt{\\log_2{6}+\\log_3{6}}?$\n\n$\\textbf{(A) } 1 \\qquad\\textbf{(B) } \\sqrt{\\log_5{6}} \\qquad\\textbf{(C) } 2 \\qquad\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}} \\qquad\\textbf{(E) } \\sqrt{\\log_2{6}}+\\sqrt{\\log_3{6}}$ Show that it is \\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n ### Proof\n Recall that:\n<ol style=\"margin-left: 1.5em;\">\n  <li>$\\log_b{(uv)}=\\log_b u + \\log_b v.$</li><p>\n  <li>$\\log_b u\\cdot\\log_u b=1.$</li><p>\n</ol>\nWe use these properties of logarithms to rewrite the original expression:\n$\\begin{align*}\n\\sqrt{\\log_2{6}+\\log_3{6}}&=\\sqrt{(\\log_2{2}+\\log_2{3})+(\\log_3{2}+\\log_3{3})} \\\\\n&=\\sqrt{2+\\log_2{3}+\\log_3{2}} \\\\\n&=\\sqrt{\\left(\\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}\\right)^2} \\\\\n&=\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n\\end{align*}$\n *)\n\ntheorem\nfixes log2 log3 log5 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"log2 2 = 1\"\nand h1 : \"log3 3 = 1\"\nand h2 : \"log5 5 = 1\"\nand h3 : \"log2 (6 * 3 powr (-log3 2)) = log3 (6 * 2 powr (-log2 3))\"\nand h4 : \"log5 6 = log2 6 + log3 6\"\nshows  \"sqrt (log2 6 + log3 6) = sqrt (log2 3) + sqrt (log3 2)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the following logarithm properties:\n\n1. $\\log_2(2) = 1$\n2. $\\log_3(3) = 1$\n3. $\\log_5(5) = 1$\n4. $\\log_2(6 \\cdot 3^{-\\log_3(2)}) = \\log_3(6 \\cdot 2^{-\\log_2(3)})$\n5. $\\log_5(6) = \\log_2(6) + \\log_3(6)$\n\nProve that $\\sqrt{\\log_2(6) + \\log_3(6)} = \\sqrt{\\log_2(3)} + \\sqrt{\\log_3(2)}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7369140982627869,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes log2 log3 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. log2 x = log 2 x\"\nand h1 : \"\\<forall> x. log3 x = log 3 x\"\nshows  \"sqrt (log2 6 + log3 6) = sqrt (log2 3) + sqrt (log3 2)\"",
+        "formal solution": "(* ### Problem\n Which of the following is the value of $\\sqrt{\\log_2{6}+\\log_3{6}}?$\n\n$\\textbf{(A) } 1 \\qquad\\textbf{(B) } \\sqrt{\\log_5{6}} \\qquad\\textbf{(C) } 2 \\qquad\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}} \\qquad\\textbf{(E) } \\sqrt{\\log_2{6}}+\\sqrt{\\log_3{6}}$ Show that it is \\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n ### Proof\n Recall that:\n<ol style=\"margin-left: 1.5em;\">\n  <li>$\\log_b{(uv)}=\\log_b u + \\log_b v.$</li><p>\n  <li>$\\log_b u\\cdot\\log_u b=1.$</li><p>\n</ol>\nWe use these properties of logarithms to rewrite the original expression:\n$\\begin{align*}\n\\sqrt{\\log_2{6}+\\log_3{6}}&=\\sqrt{(\\log_2{2}+\\log_2{3})+(\\log_3{2}+\\log_3{3})} \\\\\n&=\\sqrt{2+\\log_2{3}+\\log_3{2}} \\\\\n&=\\sqrt{\\left(\\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}\\right)^2} \\\\\n&=\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n\\end{align*}$\n *)\n\ntheorem\nfixes log2 log3 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. log2 x = log 2 x\"\nand h1 : \"\\<forall> x. log3 x = log 3 x\"\nshows  \"sqrt (log2 6 + log3 6) = sqrt (log2 3) + sqrt (log3 2)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Prove that $\\sqrt{\\log_2 6 + \\log_3 6} = \\sqrt{\\log_2 3} + \\sqrt{\\log_3 2}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7028579115867615,
+        "symbolic_score": 0.2
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes log2_6 log3_6 log2_3 log3_2 log5_6 sqrt_log2_6 sqrt_log3_6 sqrt_log2_3 sqrt_log3_2 sqrt_log5_6 :: real\nassumes h0 : \"sqrt (log2_6 + log3_6) = sqrt_log2_3 + sqrt_log3_2\"\nand h1 : \"sqrt (log2_6 + log3_6) \\<noteq> 1\"\nand h2 : \"sqrt (log2_6 + log3_6) \\<noteq> sqrt_log5_6\"\nand h3 : \"sqrt (log2_6 + log3_6) \\<noteq> 2\"\nand h4 : \"sqrt (log2_6 + log3_6) \\<noteq> sqrt_log2_6 + sqrt_log3_6\"\nshows  \"sqrt (log2_6 + log3_6) = sqrt_log2_3 + sqrt_log3_2\"",
+        "formal solution": "(* ### Problem\n Which of the following is the value of $\\sqrt{\\log_2{6}+\\log_3{6}}?$\n\n$\\textbf{(A) } 1 \\qquad\\textbf{(B) } \\sqrt{\\log_5{6}} \\qquad\\textbf{(C) } 2 \\qquad\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}} \\qquad\\textbf{(E) } \\sqrt{\\log_2{6}}+\\sqrt{\\log_3{6}}$ Show that it is \\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n ### Proof\n Recall that:\n<ol style=\"margin-left: 1.5em;\">\n  <li>$\\log_b{(uv)}=\\log_b u + \\log_b v.$</li><p>\n  <li>$\\log_b u\\cdot\\log_u b=1.$</li><p>\n</ol>\nWe use these properties of logarithms to rewrite the original expression:\n$\\begin{align*}\n\\sqrt{\\log_2{6}+\\log_3{6}}&=\\sqrt{(\\log_2{2}+\\log_2{3})+(\\log_3{2}+\\log_3{3})} \\\\\n&=\\sqrt{2+\\log_2{3}+\\log_3{2}} \\\\\n&=\\sqrt{\\left(\\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}\\right)^2} \\\\\n&=\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n\\end{align*}$\n *)\n\ntheorem\nfixes log2_6 log3_6 log2_3 log3_2 log5_6 sqrt_log2_6 sqrt_log3_6 sqrt_log2_3 sqrt_log3_2 sqrt_log5_6 :: real\nassumes h0 : \"sqrt (log2_6 + log3_6) = sqrt_log2_3 + sqrt_log3_2\"\nand h1 : \"sqrt (log2_6 + log3_6) \\<noteq> 1\"\nand h2 : \"sqrt (log2_6 + log3_6) \\<noteq> sqrt_log5_6\"\nand h3 : \"sqrt (log2_6 + log3_6) \\<noteq> 2\"\nand h4 : \"sqrt (log2_6 + log3_6) \\<noteq> sqrt_log2_6 + sqrt_log3_6\"\nshows  \"sqrt (log2_6 + log3_6) = sqrt_log2_3 + sqrt_log3_2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\sqrt{\\log_2{6} + \\log_3{6}}$ such that it is not equal to $1$, $\\sqrt{\\log_5{6}}$, $2$, or $\\sqrt{\\log_2{6}} + \\sqrt{\\log_3{6}}$. The final answer is $\\sqrt{\\log_2{3}} + \\sqrt{\\log_3{2}}$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.966288149356842,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes log2 log3 sqrt :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. log2 x = ln x / ln 2\"\nand h1 : \"\\<forall> x. log3 x = ln x / ln 3\"\nand h2 : \"\\<forall> x. sqrt x * sqrt x = x\"\nand h3 : \"sqrt (log2 6 + log3 6) = sqrt (log2 3) + sqrt (log3 2)\"\nshows  \"sqrt (log2 3) + sqrt (log3 2) = sqrt (log2 6 + log3 6)\"",
+        "formal solution": "(* ### Problem\n Which of the following is the value of $\\sqrt{\\log_2{6}+\\log_3{6}}?$\n\n$\\textbf{(A) } 1 \\qquad\\textbf{(B) } \\sqrt{\\log_5{6}} \\qquad\\textbf{(C) } 2 \\qquad\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}} \\qquad\\textbf{(E) } \\sqrt{\\log_2{6}}+\\sqrt{\\log_3{6}}$ Show that it is \\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n ### Proof\n Recall that:\n<ol style=\"margin-left: 1.5em;\">\n  <li>$\\log_b{(uv)}=\\log_b u + \\log_b v.$</li><p>\n  <li>$\\log_b u\\cdot\\log_u b=1.$</li><p>\n</ol>\nWe use these properties of logarithms to rewrite the original expression:\n$\\begin{align*}\n\\sqrt{\\log_2{6}+\\log_3{6}}&=\\sqrt{(\\log_2{2}+\\log_2{3})+(\\log_3{2}+\\log_3{3})} \\\\\n&=\\sqrt{2+\\log_2{3}+\\log_3{2}} \\\\\n&=\\sqrt{\\left(\\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}\\right)^2} \\\\\n&=\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n\\end{align*}$\n *)\n\ntheorem\nfixes log2 log3 sqrt :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. log2 x = ln x / ln 2\"\nand h1 : \"\\<forall> x. log3 x = ln x / ln 3\"\nand h2 : \"\\<forall> x. sqrt x * sqrt x = x\"\nand h3 : \"sqrt (log2 6 + log3 6) = sqrt (log2 3) + sqrt (log3 2)\"\nshows  \"sqrt (log2 3) + sqrt (log3 2) = sqrt (log2 6 + log3 6)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Show that the square root of the sum of the base-2 logarithm of 6 and the base-3 logarithm of 6 is equal to the sum of the square root of the base-2 logarithm of 3 and the square root of the base-3 logarithm of 2. In other words, prove that $\\sqrt{\\log_2{6} + \\log_3{6}} = \\sqrt{\\log_2{3}} + \\sqrt{\\log_3{2}}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8355767726898193,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes sqrt_log_sum :: real\nassumes h0 : \"sqrt_log_sum = sqrt (log 6 / log 2 + log 6 / log 3)\"\nshows  \"sqrt_log_sum = sqrt (log 3 / log 2) + sqrt (log 2 / log 3)\"",
+        "formal solution": "(* ### Problem\n Which of the following is the value of $\\sqrt{\\log_2{6}+\\log_3{6}}?$\n\n$\\textbf{(A) } 1 \\qquad\\textbf{(B) } \\sqrt{\\log_5{6}} \\qquad\\textbf{(C) } 2 \\qquad\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}} \\qquad\\textbf{(E) } \\sqrt{\\log_2{6}}+\\sqrt{\\log_3{6}}$ Show that it is \\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n ### Proof\n Recall that:\n<ol style=\"margin-left: 1.5em;\">\n  <li>$\\log_b{(uv)}=\\log_b u + \\log_b v.$</li><p>\n  <li>$\\log_b u\\cdot\\log_u b=1.$</li><p>\n</ol>\nWe use these properties of logarithms to rewrite the original expression:\n$\\begin{align*}\n\\sqrt{\\log_2{6}+\\log_3{6}}&=\\sqrt{(\\log_2{2}+\\log_2{3})+(\\log_3{2}+\\log_3{3})} \\\\\n&=\\sqrt{2+\\log_2{3}+\\log_3{2}} \\\\\n&=\\sqrt{\\left(\\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}\\right)^2} \\\\\n&=\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n\\end{align*}$\n *)\n\ntheorem\nfixes sqrt_log_sum :: real\nassumes h0 : \"sqrt_log_sum = sqrt (log 6 / log 2 + log 6 / log 3)\"\nshows  \"sqrt_log_sum = sqrt (log 3 / log 2) + sqrt (log 2 / log 3)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Simplify the expression $\\sqrt{\\frac{\\log 6}{\\log 2} + \\frac{\\log 6}{\\log 3}}$. The final answer is $\\sqrt{\\frac{\\log 3}{\\log 2}} + \\sqrt{\\frac{\\log 2}{\\log 3}}$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9595310688018799,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes log_2_6 log_3_6 sqrt_sum :: real\nassumes h0 : \"sqrt_sum = sqrt (log_2_6) + sqrt (log_3_6)\"\nand h1 : \"log_2_6 = log 6 / log 2\"\nand h2 : \"log_3_6 = log 6 / log 3\"\nshows  \"sqrt_sum = sqrt (log 3 / log 2) + sqrt (log 2 / log 3)\"",
+        "formal solution": "(* ### Problem\n Which of the following is the value of $\\sqrt{\\log_2{6}+\\log_3{6}}?$\n\n$\\textbf{(A) } 1 \\qquad\\textbf{(B) } \\sqrt{\\log_5{6}} \\qquad\\textbf{(C) } 2 \\qquad\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}} \\qquad\\textbf{(E) } \\sqrt{\\log_2{6}}+\\sqrt{\\log_3{6}}$ Show that it is \\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n ### Proof\n Recall that:\n<ol style=\"margin-left: 1.5em;\">\n  <li>$\\log_b{(uv)}=\\log_b u + \\log_b v.$</li><p>\n  <li>$\\log_b u\\cdot\\log_u b=1.$</li><p>\n</ol>\nWe use these properties of logarithms to rewrite the original expression:\n$\\begin{align*}\n\\sqrt{\\log_2{6}+\\log_3{6}}&=\\sqrt{(\\log_2{2}+\\log_2{3})+(\\log_3{2}+\\log_3{3})} \\\\\n&=\\sqrt{2+\\log_2{3}+\\log_3{2}} \\\\\n&=\\sqrt{\\left(\\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}\\right)^2} \\\\\n&=\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n\\end{align*}$\n *)\n\ntheorem\nfixes log_2_6 log_3_6 sqrt_sum :: real\nassumes h0 : \"sqrt_sum = sqrt (log_2_6) + sqrt (log_3_6)\"\nand h1 : \"log_2_6 = log 6 / log 2\"\nand h2 : \"log_3_6 = log 6 / log 3\"\nshows  \"sqrt_sum = sqrt (log 3 / log 2) + sqrt (log 2 / log 3)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the square roots of $\\frac{\\log 6}{\\log 2}$ and $\\frac{\\log 6}{\\log 3}$. The final answer is $\\sqrt{\\frac{\\log 3}{\\log 2}} + \\sqrt{\\frac{\\log 2}{\\log 3}}$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.980013906955719,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = sqrt (log 2 6 + log 3 6)\"\nshows  \"x = sqrt (log 2 3) + sqrt (log 3 2)\"",
+        "formal solution": "(* ### Problem\n Which of the following is the value of $\\sqrt{\\log_2{6}+\\log_3{6}}?$\n\n$\\textbf{(A) } 1 \\qquad\\textbf{(B) } \\sqrt{\\log_5{6}} \\qquad\\textbf{(C) } 2 \\qquad\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}} \\qquad\\textbf{(E) } \\sqrt{\\log_2{6}}+\\sqrt{\\log_3{6}}$ Show that it is \\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n ### Proof\n Recall that:\n<ol style=\"margin-left: 1.5em;\">\n  <li>$\\log_b{(uv)}=\\log_b u + \\log_b v.$</li><p>\n  <li>$\\log_b u\\cdot\\log_u b=1.$</li><p>\n</ol>\nWe use these properties of logarithms to rewrite the original expression:\n$\\begin{align*}\n\\sqrt{\\log_2{6}+\\log_3{6}}&=\\sqrt{(\\log_2{2}+\\log_2{3})+(\\log_3{2}+\\log_3{3})} \\\\\n&=\\sqrt{2+\\log_2{3}+\\log_3{2}} \\\\\n&=\\sqrt{\\left(\\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}\\right)^2} \\\\\n&=\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n\\end{align*}$\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = sqrt (log 2 6 + log 3 6)\"\nshows  \"x = sqrt (log 2 3) + sqrt (log 3 2)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $x = \\sqrt{\\log_2 6 + \\log_3 6}$, prove that $x = \\sqrt{\\log_2 3} + \\sqrt{\\log_3 2}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7564907073974609,
+        "symbolic_score": 0.2
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes log2 log3 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"log2 6 + log3 6 = (sqrt (log2 3) + sqrt (log3 2)) powr 2\"\nshows  \"sqrt (log2 6 + log3 6) = sqrt (log2 3) + sqrt (log3 2)\"",
+        "formal solution": "(* ### Problem\n Which of the following is the value of $\\sqrt{\\log_2{6}+\\log_3{6}}?$\n\n$\\textbf{(A) } 1 \\qquad\\textbf{(B) } \\sqrt{\\log_5{6}} \\qquad\\textbf{(C) } 2 \\qquad\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}} \\qquad\\textbf{(E) } \\sqrt{\\log_2{6}}+\\sqrt{\\log_3{6}}$ Show that it is \\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n ### Proof\n Recall that:\n<ol style=\"margin-left: 1.5em;\">\n  <li>$\\log_b{(uv)}=\\log_b u + \\log_b v.$</li><p>\n  <li>$\\log_b u\\cdot\\log_u b=1.$</li><p>\n</ol>\nWe use these properties of logarithms to rewrite the original expression:\n$\\begin{align*}\n\\sqrt{\\log_2{6}+\\log_3{6}}&=\\sqrt{(\\log_2{2}+\\log_2{3})+(\\log_3{2}+\\log_3{3})} \\\\\n&=\\sqrt{2+\\log_2{3}+\\log_3{2}} \\\\\n&=\\sqrt{\\left(\\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}\\right)^2} \\\\\n&=\\textbf{(D) } \\sqrt{\\log_2{3}}+\\sqrt{\\log_3{2}}.\n\\end{align*}$\n *)\n\ntheorem\nfixes log2 log3 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"log2 6 + log3 6 = (sqrt (log2 3) + sqrt (log3 2)) powr 2\"\nshows  \"sqrt (log2 6 + log3 6) = sqrt (log2 3) + sqrt (log3 2)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $\\log_2 6 + \\log_3 6 = (\\sqrt{\\log_2 3} + \\sqrt{\\log_3 2})^2$, show that $\\sqrt{\\log_2 6 + \\log_3 6} = \\sqrt{\\log_2 3} + \\sqrt{\\log_3 2}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7944502830505371,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nshows \"sqrt (ln 6 / ln 2 + ln 6 / ln 3)\n= sqrt (ln 3 / ln 2) + sqrt (ln 2 / ln 3)\"",
+    "prediction": {
+        "0": [
+            8,
+            3
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            9
+        ]
+    },
+    "equivalence_oracle": [
+        3,
+        8
+    ]
+}

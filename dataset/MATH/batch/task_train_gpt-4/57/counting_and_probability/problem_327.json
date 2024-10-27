@@ -1,0 +1,60 @@
+{
+    "natural problem": "We flip a fair coin 10 times.  What is the probability that we get heads in at least 8 of the 10 flips?",
+    "natural solution": [
+        "There are $2^{10} = 1024$ possible outcomes of the 10 coin flips. The number of ways to get 8, 9, or 10 heads is $\\binom{10}{8}+\\binom{10}{9}+\\binom{10}{10}=45+10+1=56$.",
+        "So the probability is $\\dfrac{56}{1024}=\\boxed{\\dfrac{7}{128}}$."
+    ],
+    "natural answer": "\\dfrac{7}{128}",
+    "a_0": {
+        "formal problem": "theorem\nfixes p_heads p_tails :: real and flips :: nat\nassumes h0 : \"p_heads = 1 / 2\"\nand h1 : \"p_tails = 1 / 2\"\nand h2 : \"flips = 10\"\nshows  \"binomial_probability flips (at_least 8) p_heads p_tails = 7 / 128\"",
+        "formal solution": "(* ### Problem\n We flip a fair coin 10 times.  What is the probability that we get heads in at least 8 of the 10 flips? The final Answer is \\dfrac{7}{128}\n ### Proof\n There are $2^{10} = 1024$ possible outcomes of the 10 coin flips. The number of ways to get 8, 9, or 10 heads is $\\binom{10}{8}+\\binom{10}{9}+\\binom{10}{10}=45+10+1=56$.\n So the probability is $\\dfrac{56}{1024}=\\boxed{\\dfrac{7}{128}}$.\n *)\n\ntheorem\nfixes p_heads p_tails :: real and flips :: nat\nassumes h0 : \"p_heads = 1 / 2\"\nand h1 : \"p_tails = 1 / 2\"\nand h2 : \"flips = 10\"\nshows  \"binomial_probability flips (at_least 8) p_heads p_tails = 7 / 128\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the probability of getting at least 8 heads in 10 fair coin tosses, where the probability of heads is $\\frac{1}{2}$ and the probability of tails is $\\frac{1}{2}$? The final answer is $\\frac{7}{128}$."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes p :: real\nassumes h0 : \"p = (\\<Sum>k = 8..10. (nCr 10 k) * (1/2)^k * (1/2)^(10 - k))\"\nshows  \"p = 7 / 128\"",
+        "formal solution": "(* ### Problem\n We flip a fair coin 10 times.  What is the probability that we get heads in at least 8 of the 10 flips? The final Answer is \\dfrac{7}{128}\n ### Proof\n There are $2^{10} = 1024$ possible outcomes of the 10 coin flips. The number of ways to get 8, 9, or 10 heads is $\\binom{10}{8}+\\binom{10}{9}+\\binom{10}{10}=45+10+1=56$.\n So the probability is $\\dfrac{56}{1024}=\\boxed{\\dfrac{7}{128}}$.\n *)\n\ntheorem\nfixes p :: real\nassumes h0 : \"p = (\\<Sum>k = 8..10. (nCr 10 k) * (1/2)^k * (1/2)^(10 - k))\"\nshows  \"p = 7 / 128\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the probability of getting at least 8 heads in 10 coin tosses, assuming the coin is fair? The final answer is $\\frac{7}{128}$."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes p_heads :: real\nassumes h0 : \"p_heads = 0.5\"\nshows  \"prob_at_least_8_heads_in_10_flips = 7 / 128\"",
+        "formal solution": "(* ### Problem\n We flip a fair coin 10 times.  What is the probability that we get heads in at least 8 of the 10 flips? The final Answer is \\dfrac{7}{128}\n ### Proof\n There are $2^{10} = 1024$ possible outcomes of the 10 coin flips. The number of ways to get 8, 9, or 10 heads is $\\binom{10}{8}+\\binom{10}{9}+\\binom{10}{10}=45+10+1=56$.\n So the probability is $\\dfrac{56}{1024}=\\boxed{\\dfrac{7}{128}}$.\n *)\n\ntheorem\nfixes p_heads :: real\nassumes h0 : \"p_heads = 0.5\"\nshows  \"prob_at_least_8_heads_in_10_flips = 7 / 128\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the probability of getting at least 8 heads in 10 flips of a fair coin? The final answer is $\\frac{7}{128}$."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes p_heads p_tails :: real\nassumes h0 : \"p_heads = 1 / 2\"\nand h1 : \"p_tails = 1 / 2\"\nand h2 : \"fair_coin n p_heads p_tails\"\nshows  \"P(at_least_8_heads_in_10_flips) = 7 / 128\"",
+        "formal solution": "(* ### Problem\n We flip a fair coin 10 times.  What is the probability that we get heads in at least 8 of the 10 flips? The final Answer is \\dfrac{7}{128}\n ### Proof\n There are $2^{10} = 1024$ possible outcomes of the 10 coin flips. The number of ways to get 8, 9, or 10 heads is $\\binom{10}{8}+\\binom{10}{9}+\\binom{10}{10}=45+10+1=56$.\n So the probability is $\\dfrac{56}{1024}=\\boxed{\\dfrac{7}{128}}$.\n *)\n\ntheorem\nfixes p_heads p_tails :: real\nassumes h0 : \"p_heads = 1 / 2\"\nand h1 : \"p_tails = 1 / 2\"\nand h2 : \"fair_coin n p_heads p_tails\"\nshows  \"P(at_least_8_heads_in_10_flips) = 7 / 128\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A fair coin is flipped 10 times. What is the probability of getting at least 8 heads? The final answer is $\\frac{7}{128}$."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes P_heads P_at_least_8_heads :: real\nassumes h0 : \"P_heads = 1 / 2\"\nand h1 : \"P_at_least_8_heads = (\\<Sum>k=8..10. (real (n_choose_k 10 k) * (P_heads ^ k) * ((1 - P_heads) ^ (10 - k))))\"\nshows  \"P_at_least_8_heads = 7 / 128\"",
+        "formal solution": "(* ### Problem\n We flip a fair coin 10 times.  What is the probability that we get heads in at least 8 of the 10 flips? The final Answer is \\dfrac{7}{128}\n ### Proof\n There are $2^{10} = 1024$ possible outcomes of the 10 coin flips. The number of ways to get 8, 9, or 10 heads is $\\binom{10}{8}+\\binom{10}{9}+\\binom{10}{10}=45+10+1=56$.\n So the probability is $\\dfrac{56}{1024}=\\boxed{\\dfrac{7}{128}}$.\n *)\n\ntheorem\nfixes P_heads P_at_least_8_heads :: real\nassumes h0 : \"P_heads = 1 / 2\"\nand h1 : \"P_at_least_8_heads = (\\<Sum>k=8..10. (real (n_choose_k 10 k) * (P_heads ^ k) * ((1 - P_heads) ^ (10 - k))))\"\nshows  \"P_at_least_8_heads = 7 / 128\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a series of 10 coin flips, where the probability of getting heads is $\\frac{1}{2}$, find the probability of getting at least 8 heads. The final answer is $\\frac{7}{128}$."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes p_heads p_tails :: real and n :: nat\nassumes h0 : \"p_heads = 1 / 2\"\nand h1 : \"p_tails = 1 / 2\"\nand h2 : \"n = 10\"\nshows  \"prob {s. n_events s (H, 8)} = 7 / 128\"",
+        "formal solution": "(* ### Problem\n We flip a fair coin 10 times.  What is the probability that we get heads in at least 8 of the 10 flips? The final Answer is \\dfrac{7}{128}\n ### Proof\n There are $2^{10} = 1024$ possible outcomes of the 10 coin flips. The number of ways to get 8, 9, or 10 heads is $\\binom{10}{8}+\\binom{10}{9}+\\binom{10}{10}=45+10+1=56$.\n So the probability is $\\dfrac{56}{1024}=\\boxed{\\dfrac{7}{128}}$.\n *)\n\ntheorem\nfixes p_heads p_tails :: real and n :: nat\nassumes h0 : \"p_heads = 1 / 2\"\nand h1 : \"p_tails = 1 / 2\"\nand h2 : \"n = 10\"\nshows  \"prob {s. n_events s (H, 8)} = 7 / 128\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A coin is flipped 10 times. What is the probability that there are exactly 8 heads? The final answer is $\\frac{7}{128}$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes p :: real\nassumes h0 : \"p = 1/2\"\nand h1 : \"10 * p powr 8 * (1 - p) powr 2 + 10 * p powr 9 * (1 - p) + p powr 10 = 7/128\"\nshows  \"p = 1/2\"",
+        "formal solution": "(* ### Problem\n We flip a fair coin 10 times.  What is the probability that we get heads in at least 8 of the 10 flips? The final Answer is \\dfrac{7}{128}\n ### Proof\n There are $2^{10} = 1024$ possible outcomes of the 10 coin flips. The number of ways to get 8, 9, or 10 heads is $\\binom{10}{8}+\\binom{10}{9}+\\binom{10}{10}=45+10+1=56$.\n So the probability is $\\dfrac{56}{1024}=\\boxed{\\dfrac{7}{128}}$.\n *)\n\ntheorem\nfixes p :: real\nassumes h0 : \"p = 1/2\"\nand h1 : \"10 * p powr 8 * (1 - p) powr 2 + 10 * p powr 9 * (1 - p) + p powr 10 = 7/128\"\nshows  \"p = 1/2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a probability $p = \\frac{1}{2}$, find the value of $p$ that satisfies the equation $10p^8(1-p)^2 + 10p^9(1-p) + p^{10} = \\frac{7}{128}$. The final answer is $p = \\frac{1}{2}$."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes flips heads :: nat and p :: real\nassumes h0 : \"flips = 10\"\nand h1 : \"heads \\<ge> 8\"\nand h2 : \"p = (binomial_coefficient flips heads) * (1/2)^flips\"\nshows  \"p = 7 / 128\"",
+        "formal solution": "(* ### Problem\n We flip a fair coin 10 times.  What is the probability that we get heads in at least 8 of the 10 flips? The final Answer is \\dfrac{7}{128}\n ### Proof\n There are $2^{10} = 1024$ possible outcomes of the 10 coin flips. The number of ways to get 8, 9, or 10 heads is $\\binom{10}{8}+\\binom{10}{9}+\\binom{10}{10}=45+10+1=56$.\n So the probability is $\\dfrac{56}{1024}=\\boxed{\\dfrac{7}{128}}$.\n *)\n\ntheorem\nfixes flips heads :: nat and p :: real\nassumes h0 : \"flips = 10\"\nand h1 : \"heads \\<ge> 8\"\nand h2 : \"p = (binomial_coefficient flips heads) * (1/2)^flips\"\nshows  \"p = 7 / 128\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the probability of getting at least 8 heads when flipping a fair coin 10 times? The final answer is $\\frac{7}{128}$."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n k :: nat and p :: real\nassumes h0 : \"n = 10\"\nand h1 : \"k = 8\"\nand h2 : \"p = 1 / 2\"\nshows  \"binomial_probability n k p = 7 / 128\"",
+        "formal solution": "(* ### Problem\n We flip a fair coin 10 times.  What is the probability that we get heads in at least 8 of the 10 flips? The final Answer is \\dfrac{7}{128}\n ### Proof\n There are $2^{10} = 1024$ possible outcomes of the 10 coin flips. The number of ways to get 8, 9, or 10 heads is $\\binom{10}{8}+\\binom{10}{9}+\\binom{10}{10}=45+10+1=56$.\n So the probability is $\\dfrac{56}{1024}=\\boxed{\\dfrac{7}{128}}$.\n *)\n\ntheorem\nfixes n k :: nat and p :: real\nassumes h0 : \"n = 10\"\nand h1 : \"k = 8\"\nand h2 : \"p = 1 / 2\"\nshows  \"binomial_probability n k p = 7 / 128\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the number of trials is $10$, the number of successful trials is $8$, and the probability of success in each trial is $\\frac{1}{2}$, find the binomial probability. The final answer is $\\frac{7}{128}$."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes p :: real\nassumes h0 : \"p = (\\<Sum>k\\<in>{8,9,10}. binomial 10 k * (1 / 2) powr k * (1 / 2) powr (10 - k))\"\nshows  \"p = 7 / 128\"",
+        "formal solution": "(* ### Problem\n We flip a fair coin 10 times.  What is the probability that we get heads in at least 8 of the 10 flips? The final Answer is \\dfrac{7}{128}\n ### Proof\n There are $2^{10} = 1024$ possible outcomes of the 10 coin flips. The number of ways to get 8, 9, or 10 heads is $\\binom{10}{8}+\\binom{10}{9}+\\binom{10}{10}=45+10+1=56$.\n So the probability is $\\dfrac{56}{1024}=\\boxed{\\dfrac{7}{128}}$.\n *)\n\ntheorem\nfixes p :: real\nassumes h0 : \"p = (\\<Sum>k\\<in>{8,9,10}. binomial 10 k * (1 / 2) powr k * (1 / 2) powr (10 - k))\"\nshows  \"p = 7 / 128\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the probability of getting exactly 8, 9, or 10 heads in 10 flips of a fair coin. The final answer is $\\frac{7}{128}$."
+    },
+    "level": "Level 4",
+    "type": "Counting & Probability"
+}

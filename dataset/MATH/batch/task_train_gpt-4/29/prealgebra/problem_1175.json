@@ -1,0 +1,59 @@
+{
+    "natural problem": "How many three-digit positive integers exist, all of whose digits are 2's and/or 5's?",
+    "natural solution": [
+        "Since any of the digits may be a 2 or a 5, this leaves us 2 choices for each digit. There are then $2^3 =\\boxed{8}$ 3-digit integers composed of only 2s and/or 5s."
+    ],
+    "natural answer": "8",
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>x. f x = (if x = 222 \u2228 x = 225 \u2228 x = 252 \u2228 x = 255 \u2228 x = 522 \u2228 x = 525 \u2228 x = 552 \u2228 x = 555 then 1 else 0)\"\nshows  \"sum f {i. 100 \u2264 i \u2227 i \u2264 999} = 8\"",
+        "formal solution": "(* ### Problem\n How many three-digit positive integers exist, all of whose digits are 2's and/or 5's? The final Answer is 8\n ### Proof\n Since any of the digits may be a 2 or a 5, this leaves us 2 choices for each digit. There are then $2^3 =\\boxed{8}$ 3-digit integers composed of only 2s and/or 5s.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>x. f x = (if x = 222 \u2228 x = 225 \u2228 x = 252 \u2228 x = 255 \u2228 x = 522 \u2228 x = 525 \u2228 x = 552 \u2228 x = 555 then 1 else 0)\"\nshows  \"sum f {i. 100 \u2264 i \u2227 i \u2264 999} = 8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(x)$ be a function defined such that $f(x) = 1$ if $x$ is one of the following numbers: $222$, $225$, $252$, $255$, $522$, $525$, $552$, $555$, and $f(x) = 0$ otherwise. Find the sum of $f(x)$ for all $x$ between $100$ and $999$. The final answer is $8$."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes three_digit_number :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> x. three_digit_number x = (100 \\<le> x \\<and> x < 1000 \\<and> (\\<forall> digit \\<in> set (digits x). digit = 2 \\<or> digit = 5))\"\nshows  \"card {x. three_digit_number x} = 8\"",
+        "formal solution": "(* ### Problem\n How many three-digit positive integers exist, all of whose digits are 2's and/or 5's? The final Answer is 8\n ### Proof\n Since any of the digits may be a 2 or a 5, this leaves us 2 choices for each digit. There are then $2^3 =\\boxed{8}$ 3-digit integers composed of only 2s and/or 5s.\n *)\n\ntheorem\nfixes three_digit_number :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> x. three_digit_number x = (100 \\<le> x \\<and> x < 1000 \\<and> (\\<forall> digit \\<in> set (digits x). digit = 2 \\<or> digit = 5))\"\nshows  \"card {x. three_digit_number x} = 8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many three-digit numbers only contain the digits 2 and 5? The final answer is 8."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"100 \\<le> n\"\nand h1 : \"n \\<le> 999\"\nand h2 : \"digits n = {2, 5}\"\nshows  \"card {n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> digits n = {2, 5}} = 8\"",
+        "formal solution": "(* ### Problem\n How many three-digit positive integers exist, all of whose digits are 2's and/or 5's? The final Answer is 8\n ### Proof\n Since any of the digits may be a 2 or a 5, this leaves us 2 choices for each digit. There are then $2^3 =\\boxed{8}$ 3-digit integers composed of only 2s and/or 5s.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"100 \\<le> n\"\nand h1 : \"n \\<le> 999\"\nand h2 : \"digits n = {2, 5}\"\nshows  \"card {n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> digits n = {2, 5}} = 8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of three-digit natural numbers, where all digits are either 2 or 5. The final answer is 8."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"100 \\<le> n \\<and> n \\<le> 999\"\nand h1 : \"\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> d = 2 \\<or> d = 5\"\nshows  \"card {n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> (\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> d = 2 \\<or> d = 5)} = 8\"",
+        "formal solution": "(* ### Problem\n How many three-digit positive integers exist, all of whose digits are 2's and/or 5's? The final Answer is 8\n ### Proof\n Since any of the digits may be a 2 or a 5, this leaves us 2 choices for each digit. There are then $2^3 =\\boxed{8}$ 3-digit integers composed of only 2s and/or 5s.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"100 \\<le> n \\<and> n \\<le> 999\"\nand h1 : \"\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> d = 2 \\<or> d = 5\"\nshows  \"card {n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> (\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> d = 2 \\<or> d = 5)} = 8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many three-digit numbers only contain the digits 2 and 5? The final answer is 8."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 100\"\nand h1 : \"n \\<le> 999\"\nand h2 : \"\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> d = 2 \\<or> d = 5\"\nshows  \"card {n. n \\<ge> 100 \\<and> n \\<le> 999 \\<and> (\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> d = 2 \\<or> d = 5)} = 8\"",
+        "formal solution": "(* ### Problem\n How many three-digit positive integers exist, all of whose digits are 2's and/or 5's? The final Answer is 8\n ### Proof\n Since any of the digits may be a 2 or a 5, this leaves us 2 choices for each digit. There are then $2^3 =\\boxed{8}$ 3-digit integers composed of only 2s and/or 5s.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 100\"\nand h1 : \"n \\<le> 999\"\nand h2 : \"\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> d = 2 \\<or> d = 5\"\nshows  \"card {n. n \\<ge> 100 \\<and> n \\<le> 999 \\<and> (\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> d = 2 \\<or> d = 5)} = 8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many three-digit numbers only use the digits 2 and 5? The final answer is 8."
+    },
+    "a_5": {
+        "formal problem": "theorem \nfixes f :: \"int => int\"\nassumes h0 : \"\\<forall>n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> (\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> (d = 2 \\<or> d = 5)) \\<longrightarrow> f n = 1\"\nand h1 : \"\\<forall>n. \\<not>(100 \\<le> n \\<and> n \\<le> 999 \\<and> (\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> (d = 2 \\<or> d = 5))) \\<longrightarrow> f n = 0\"\nshows  \"(\\<Sum>n=100..999. f n) = 8\"",
+        "formal solution": "(* ### Problem\n How many three-digit positive integers exist, all of whose digits are 2's and/or 5's? The final Answer is 8\n ### Proof\n Since any of the digits may be a 2 or a 5, this leaves us 2 choices for each digit. There are then $2^3 =\\boxed{8}$ 3-digit integers composed of only 2s and/or 5s.\n *)\n\ntheorem \nfixes f :: \"int => int\"\nassumes h0 : \"\\<forall>n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> (\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> (d = 2 \\<or> d = 5)) \\<longrightarrow> f n = 1\"\nand h1 : \"\\<forall>n. \\<not>(100 \\<le> n \\<and> n \\<le> 999 \\<and> (\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> (d = 2 \\<or> d = 5))) \\<longrightarrow> f n = 0\"\nshows  \"(\\<Sum>n=100..999. f n) = 8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Count the number of three-digit integers (from 100 to 999 inclusive) where all the digits are either 2 or 5. The total number of such integers is 8."
+    },
+    "a_6": {
+        "formal problem": "\n\ndefinition all_numbers :: \"nat set\" where\n\"all_numbers = {n. n \\<ge> 100 \\<and> n \\<le> 999 \\<and> (\\<forall>d \\<in> set (digits n). d = 2 \\<or> d = 5)}\"\n\ntheorem\nshows  \"card all_numbers = 8\"\n\nend\n",
+        "formal solution": "(* ### Problem\n How many three-digit positive integers exist, all of whose digits are 2's and/or 5's? The final Answer is 8\n ### Proof\n Since any of the digits may be a 2 or a 5, this leaves us 2 choices for each digit. There are then $2^3 =\\boxed{8}$ 3-digit integers composed of only 2s and/or 5s.\n *)\n\n\n\ndefinition all_numbers :: \"nat set\" where\n\"all_numbers = {n. n \\<ge> 100 \\<and> n \\<le> 999 \\<and> (\\<forall>d \\<in> set (digits n). d = 2 \\<or> d = 5)}\"\n\ntheorem\nshows  \"card all_numbers = 8\"\n\nend\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many three-digit numbers are there such that all their digits are either 2 or 5? The final answer is 8."
+    },
+    "a_7": {
+        "formal problem": "theorem\nshows  \"card {n. 100 \\<le> n \\<and> n < 1000 \\<and> (\\<forall>d \\<in> set (digits n). d = 2 \\<or> d = 5)} = 8\"",
+        "formal solution": "(* ### Problem\n How many three-digit positive integers exist, all of whose digits are 2's and/or 5's? The final Answer is 8\n ### Proof\n Since any of the digits may be a 2 or a 5, this leaves us 2 choices for each digit. There are then $2^3 =\\boxed{8}$ 3-digit integers composed of only 2s and/or 5s.\n *)\n\ntheorem\nshows  \"card {n. 100 \\<le> n \\<and> n < 1000 \\<and> (\\<forall>d \\<in> set (digits n). d = 2 \\<or> d = 5)} = 8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many three-digit numbers only use the digits 2 and 5? The final answer is 8."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 100 \\<and> n \\<le> 999 \\<longrightarrow> (f n = 2 \\<or> f n = 5)\"\nshows  \"card {n. n \\<ge> 100 \\<and> n \\<le> 999 \\<and> (f n = 2 \\<or> f n = 5)} = 8\"",
+        "formal solution": "(* ### Problem\n How many three-digit positive integers exist, all of whose digits are 2's and/or 5's? The final Answer is 8\n ### Proof\n Since any of the digits may be a 2 or a 5, this leaves us 2 choices for each digit. There are then $2^3 =\\boxed{8}$ 3-digit integers composed of only 2s and/or 5s.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. n \\<ge> 100 \\<and> n \\<le> 999 \\<longrightarrow> (f n = 2 \\<or> f n = 5)\"\nshows  \"card {n. n \\<ge> 100 \\<and> n \\<le> 999 \\<and> (f n = 2 \\<or> f n = 5)} = 8\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined for all natural numbers such that for any number $n$ between 100 and 999 inclusive, $f(n)$ equals either 2 or 5. How many such numbers $n$ exist? The final answer is 8."
+    },
+    "a_9": {
+        "formal problem": "theorem \nshows  \"{n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> (\\<forall>d \\<in> set (digits n). d = 2 \\<or> d = 5)} = {222, 225, 252, 255, 522, 525, 552, 555}\"\nusing assms by blast",
+        "formal solution": "(* ### Problem\n How many three-digit positive integers exist, all of whose digits are 2's and/or 5's? The final Answer is 8\n ### Proof\n Since any of the digits may be a 2 or a 5, this leaves us 2 choices for each digit. There are then $2^3 =\\boxed{8}$ 3-digit integers composed of only 2s and/or 5s.\n *)\n\ntheorem \nshows  \"{n. 100 \\<le> n \\<and> n \\<le> 999 \\<and> (\\<forall>d \\<in> set (digits n). d = 2 \\<or> d = 5)} = {222, 225, 252, 255, 522, 525, 552, 555}\"\nusing assms by blast\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find all three-digit numbers such that each of their digits is either 2 or 5. The final set of numbers are {222, 225, 252, 255, 522, 525, 552, 555}."
+    },
+    "level": "Level 4",
+    "type": "Prealgebra"
+}

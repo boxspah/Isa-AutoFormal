@@ -1,0 +1,59 @@
+{
+    "natural problem": "What is the sum of the prime numbers between 10 and 20?",
+    "natural solution": [
+        "The primes between 10 and 20 are 11, 13, 17, and 19. Their sum is $\\boxed{60}$."
+    ],
+    "natural answer": "60",
+    "a_0": {
+        "formal problem": "theorem\nfixes prime_sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"prime_sum x = (if prime x then x else 0)\"\nand h1 : \"sum prime_sum {10..20} = 60\"\nshows  \"sum prime_sum {10..20} = 60\"",
+        "formal solution": "(* ### Problem\n What is the sum of the prime numbers between 10 and 20? The final Answer is 60\n ### Proof\n The primes between 10 and 20 are 11, 13, 17, and 19. Their sum is $\\boxed{60}$.\n *)\n\ntheorem\nfixes prime_sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"prime_sum x = (if prime x then x else 0)\"\nand h1 : \"sum prime_sum {10..20} = 60\"\nshows  \"sum prime_sum {10..20} = 60\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function `prime_sum` that gives the value of an integer `x` if `x` is prime and 0 otherwise. If the sum of `prime_sum` for all integers from 10 to 20 inclusive is 60, confirm that this sum is indeed 60."
+    },
+    "a_1": {
+        "formal problem": "theorem\nassumes h0 : \"\\<forall>p. is_prime p \\<and> p > 10 \\<and> p < 20 \\<longrightarrow> p \\<in> {11, 13, 17, 19}\"\nshows  \"sum id {11, 13, 17, 19} = 60\"",
+        "formal solution": "(* ### Problem\n What is the sum of the prime numbers between 10 and 20? The final Answer is 60\n ### Proof\n The primes between 10 and 20 are 11, 13, 17, and 19. Their sum is $\\boxed{60}$.\n *)\n\ntheorem\nassumes h0 : \"\\<forall>p. is_prime p \\<and> p > 10 \\<and> p < 20 \\<longrightarrow> p \\<in> {11, 13, 17, 19}\"\nshows  \"sum id {11, 13, 17, 19} = 60\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The set of all prime numbers greater than 10 but less than 20 is {11, 13, 17, 19}. What is the sum of these numbers? The final answer is 60."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes sum_primes :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> a b. sum_primes a b = sum id {p. prime p \\<and> a < p \\<and> p < b}\"\nshows  \"sum_primes 10 20 = 60\"",
+        "formal solution": "(* ### Problem\n What is the sum of the prime numbers between 10 and 20? The final Answer is 60\n ### Proof\n The primes between 10 and 20 are 11, 13, 17, and 19. Their sum is $\\boxed{60}$.\n *)\n\ntheorem\nfixes sum_primes :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> a b. sum_primes a b = sum id {p. prime p \\<and> a < p \\<and> p < b}\"\nshows  \"sum_primes 10 20 = 60\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of all prime numbers between 10 and 20. The final answer is 60."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes prime_sum :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> a b. prime_sum a b = (\\<Sum> i in {a..b}. if prime i then i else 0)\"\nshows  \"prime_sum 10 20 = 60\"",
+        "formal solution": "(* ### Problem\n What is the sum of the prime numbers between 10 and 20? The final Answer is 60\n ### Proof\n The primes between 10 and 20 are 11, 13, 17, and 19. Their sum is $\\boxed{60}$.\n *)\n\ntheorem\nfixes prime_sum :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> a b. prime_sum a b = (\\<Sum> i in {a..b}. if prime i then i else 0)\"\nshows  \"prime_sum 10 20 = 60\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Sum all prime numbers between 10 and 20. The final answer is 60."
+    },
+    "a_4": {
+        "formal problem": "theorem\nassumes h0 : \"prime_set = {p. prime p \\<and> p > 10 \\<and> p < 20}\"\nshows  \"sum id prime_set = 60\"",
+        "formal solution": "(* ### Problem\n What is the sum of the prime numbers between 10 and 20? The final Answer is 60\n ### Proof\n The primes between 10 and 20 are 11, 13, 17, and 19. Their sum is $\\boxed{60}$.\n *)\n\ntheorem\nassumes h0 : \"prime_set = {p. prime p \\<and> p > 10 \\<and> p < 20}\"\nshows  \"sum id prime_set = 60\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all prime numbers that are greater than 10 and less than 20. The final answer is 60."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes prime :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. prime n = (1 < n \\<and> (\\<forall>m. m \\<ge> 2 \\<and> m < n \\<longrightarrow> n mod m \\<noteq> 0))\"\nshows  \"prime 11 + prime 13 + prime 17 + prime 19 = 60\"",
+        "formal solution": "(* ### Problem\n What is the sum of the prime numbers between 10 and 20? The final Answer is 60\n ### Proof\n The primes between 10 and 20 are 11, 13, 17, and 19. Their sum is $\\boxed{60}$.\n *)\n\ntheorem\nfixes prime :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. prime n = (1 < n \\<and> (\\<forall>m. m \\<ge> 2 \\<and> m < n \\<longrightarrow> n mod m \\<noteq> 0))\"\nshows  \"prime 11 + prime 13 + prime 17 + prime 19 = 60\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a prime number is defined as an integer greater than 1 that has no positive integer divisors other than 1 and itself, what is the sum of the numbers 11, 13, 17, and 19 if they are all primes? The final answer is 60."
+    },
+    "a_6": {
+        "formal problem": "theorem\nshows  \"sum next_prime {10..20} = 60\"",
+        "formal solution": "(* ### Problem\n What is the sum of the prime numbers between 10 and 20? The final Answer is 60\n ### Proof\n The primes between 10 and 20 are 11, 13, 17, and 19. Their sum is $\\boxed{60}$.\n *)\n\ntheorem\nshows  \"sum next_prime {10..20} = 60\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the next prime numbers for each number in the set from 10 to 20. The final answer is 60."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes primes :: \"nat set\"\nassumes h0 : \"primes = {p. prime p \\<and> p > 10 \\<and> p < 20}\"\nshows  \"sum id primes = 60\"",
+        "formal solution": "(* ### Problem\n What is the sum of the prime numbers between 10 and 20? The final Answer is 60\n ### Proof\n The primes between 10 and 20 are 11, 13, 17, and 19. Their sum is $\\boxed{60}$.\n *)\n\ntheorem\nfixes primes :: \"nat set\"\nassumes h0 : \"primes = {p. prime p \\<and> p > 10 \\<and> p < 20}\"\nshows  \"sum id primes = 60\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all prime numbers greater than 10 and less than 20. The final answer is 60."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes prime_sum :: \"int \\<Rightarrow> int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> a b. prime_sum a b = sum_list (filter prime [a..<b])\"\nshows  \"prime_sum 10 20 = 60\"",
+        "formal solution": "(* ### Problem\n What is the sum of the prime numbers between 10 and 20? The final Answer is 60\n ### Proof\n The primes between 10 and 20 are 11, 13, 17, and 19. Their sum is $\\boxed{60}$.\n *)\n\ntheorem\nfixes prime_sum :: \"int \\<Rightarrow> int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> a b. prime_sum a b = sum_list (filter prime [a..<b])\"\nshows  \"prime_sum 10 20 = 60\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all prime numbers between 10 and 20. The final answer is 60."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes prime_sum :: int\nassumes h0 : \"prime_sum = sum_list (primes_upto 20) - sum_list (primes_upto 10)\"\nshows  \"prime_sum = 60\"",
+        "formal solution": "(* ### Problem\n What is the sum of the prime numbers between 10 and 20? The final Answer is 60\n ### Proof\n The primes between 10 and 20 are 11, 13, 17, and 19. Their sum is $\\boxed{60}$.\n *)\n\ntheorem\nfixes prime_sum :: int\nassumes h0 : \"prime_sum = sum_list (primes_upto 20) - sum_list (primes_upto 10)\"\nshows  \"prime_sum = 60\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the difference between the sum of prime numbers up to 20 and the sum of prime numbers up to 10. The final answer is 60."
+    },
+    "level": "Level 1",
+    "type": "Prealgebra"
+}

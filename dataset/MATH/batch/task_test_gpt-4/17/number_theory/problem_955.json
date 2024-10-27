@@ -1,0 +1,144 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes n1 n2 :: nat\nassumes h0 : \"n1 = nat_of_nibbles (Nibble1, Nibble2, Nibble3, Nibble4)\"\nand h1 : \"n2 = nat_of_nibbles (Nibble2, Nibble3, Nibble4, Nibble1)\"\nshows  \"n1 + n2 = nat_of_nibbles (Nibble4, Nibble1, Nibble3, Nibble0)\"\nNote: In this theorem, nat_of_nibbles is a function that converts a 4-tuple of nibbles (4-bit numbers) into a natural number, assuming that the nibbles are digits of a number in base 16. Therefore, in the assumptions, n1 is defined to be the number 1234 in base 5, and n2 is defined to be the number 2341 in base 5. The theorem then states that the sum of n1 and n2 is the number 4130 in base 5.",
+        "formal solution": "(* ### Problem\n Evaluate $1234_5+2341_5$. Express your answer in base 5. The final Answer is 4130_5\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 1 & 2 & 3 & 4_{5}\\\\ +& & 2& 3 & 4 & 1_{5}\\\\ \\cline{1-6}&& 4 & 1 & 3 & 0 _{5}\\\\ \\end{array}$\n So, the final answer is $\\boxed{4130_5}$.\n *)\n\ntheorem\nfixes n1 n2 :: nat\nassumes h0 : \"n1 = nat_of_nibbles (Nibble1, Nibble2, Nibble3, Nibble4)\"\nand h1 : \"n2 = nat_of_nibbles (Nibble2, Nibble3, Nibble4, Nibble1)\"\nshows  \"n1 + n2 = nat_of_nibbles (Nibble4, Nibble1, Nibble3, Nibble0)\"\nNote: In this theorem, nat_of_nibbles is a function that converts a 4-tuple of nibbles (4-bit numbers) into a natural number, assuming that the nibbles are digits of a number in base 16. Therefore, in the assumptions, n1 is defined to be the number 1234 in base 5, and n2 is defined to be the number 2341 in base 5. The theorem then states that the sum of n1 and n2 is the number 4130 in base 5.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two numbers, $n1$ and $n2$, which are represented in base 16 by the nibble sequences (Nibble1, Nibble2, Nibble3, Nibble4) and (Nibble2, Nibble3, Nibble4, Nibble1) respectively, find their sum. The sum of $n1$ and $n2$ is represented in base 16 by the nibble sequence (Nibble4, Nibble1, Nibble3, Nibble0).",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.6736586689949036,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x y :: nat\nassumes h0 : \"x = (of_string \"\nand h1 : \") BASE 5\"\nand h2 : \"y = (of_string \"\nand h3 : \") BASE 5\"\nshows  \"(x + y) = (of_string \"4130\") BASE 5\"",
+        "formal solution": "(* ### Problem\n Evaluate $1234_5+2341_5$. Express your answer in base 5. The final Answer is 4130_5\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 1 & 2 & 3 & 4_{5}\\\\ +& & 2& 3 & 4 & 1_{5}\\\\ \\cline{1-6}&& 4 & 1 & 3 & 0 _{5}\\\\ \\end{array}$\n So, the final answer is $\\boxed{4130_5}$.\n *)\n\ntheorem\nfixes x y :: nat\nassumes h0 : \"x = (of_string \"\nand h1 : \") BASE 5\"\nand h2 : \"y = (of_string \"\nand h3 : \") BASE 5\"\nshows  \"(x + y) = (of_string \"4130\") BASE 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Convert the given numbers from base 5 to a natural number and then find their sum. The final answer is the number 4130 in base 5.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9601169228553772,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a = nat (int_of_string_base 5 \"\nand h1 : \")\"\nand h2 : \"b = nat (int_of_string_base 5 \"\nand h3 : \")\"\nshows  \"nat (int_of_string_base 5 \"4130\") = a + b\"",
+        "formal solution": "(* ### Problem\n Evaluate $1234_5+2341_5$. Express your answer in base 5. The final Answer is 4130_5\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 1 & 2 & 3 & 4_{5}\\\\ +& & 2& 3 & 4 & 1_{5}\\\\ \\cline{1-6}&& 4 & 1 & 3 & 0 _{5}\\\\ \\end{array}$\n So, the final answer is $\\boxed{4130_5}$.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a = nat (int_of_string_base 5 \"\nand h1 : \")\"\nand h2 : \"b = nat (int_of_string_base 5 \"\nand h3 : \")\"\nshows  \"nat (int_of_string_base 5 \"4130\") = a + b\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two natural numbers (in base 5) that add up to 4130 (also in base 5).",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.5046272873878479,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a b :: \"nat\"\nassumes h0 : \"a = nat_of_digit5_list [1,2,3,4]\"\nand h1 : \"b = nat_of_digit5_list [2,3,4,1]\"\nshows  \"digit5_list_of_nat (a + b) = [4,1,3,0]\"",
+        "formal solution": "(* ### Problem\n Evaluate $1234_5+2341_5$. Express your answer in base 5. The final Answer is 4130_5\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 1 & 2 & 3 & 4_{5}\\\\ +& & 2& 3 & 4 & 1_{5}\\\\ \\cline{1-6}&& 4 & 1 & 3 & 0 _{5}\\\\ \\end{array}$\n So, the final answer is $\\boxed{4130_5}$.\n *)\n\ntheorem\nfixes a b :: \"nat\"\nassumes h0 : \"a = nat_of_digit5_list [1,2,3,4]\"\nand h1 : \"b = nat_of_digit5_list [2,3,4,1]\"\nshows  \"digit5_list_of_nat (a + b) = [4,1,3,0]\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Add the five-digit numbers represented by the list [1,2,3,4] and [2,3,4,1]. The resulting list should be [4,1,3,0].",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9883699417114258,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a = nat_of_digit5 1234\"\nand h1 : \"b = nat_of_digit5 2341\"\nshows  \"digit5_of_nat (a + b) = 4130\"",
+        "formal solution": "(* ### Problem\n Evaluate $1234_5+2341_5$. Express your answer in base 5. The final Answer is 4130_5\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 1 & 2 & 3 & 4_{5}\\\\ +& & 2& 3 & 4 & 1_{5}\\\\ \\cline{1-6}&& 4 & 1 & 3 & 0 _{5}\\\\ \\end{array}$\n So, the final answer is $\\boxed{4130_5}$.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a = nat_of_digit5 1234\"\nand h1 : \"b = nat_of_digit5 2341\"\nshows  \"digit5_of_nat (a + b) = 4130\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the numbers 1234 and 2341, represented in base 5. The final answer is 4130 in base 5.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.6306673288345337,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem \nfixes n m :: nat\nassumes h0 : \"n = numeral (num_of_string \"\nand h1 : \")\"\nand h2 : \"m = numeral (num_of_string \"\nand h3 : \")\"\nshows  \"n + m = numeral (num_of_string \"4130\")\"",
+        "formal solution": "(* ### Problem\n Evaluate $1234_5+2341_5$. Express your answer in base 5. The final Answer is 4130_5\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 1 & 2 & 3 & 4_{5}\\\\ +& & 2& 3 & 4 & 1_{5}\\\\ \\cline{1-6}&& 4 & 1 & 3 & 0 _{5}\\\\ \\end{array}$\n So, the final answer is $\\boxed{4130_5}$.\n *)\n\ntheorem \nfixes n m :: nat\nassumes h0 : \"n = numeral (num_of_string \"\nand h1 : \")\"\nand h2 : \"m = numeral (num_of_string \"\nand h3 : \")\"\nshows  \"n + m = numeral (num_of_string \"4130\")\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two natural numbers $n$ and $m$, where $n$ is given by the numeral equivalent of a certain string and $m$ is given by the numeral equivalent of another string. If the sum of $n$ and $m$ is $4130$, what are $n$ and $m$?",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.984894335269928,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a = nat_of_base (digit_encode [1,2,3,4] 5)\"\nand h1 : \"b = nat_of_base (digit_encode [2,3,4,1] 5)\"\nshows  \"digit_decode 5 (base_of_nat (a + b)) = [4,1,3,0]\"",
+        "formal solution": "(* ### Problem\n Evaluate $1234_5+2341_5$. Express your answer in base 5. The final Answer is 4130_5\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 1 & 2 & 3 & 4_{5}\\\\ +& & 2& 3 & 4 & 1_{5}\\\\ \\cline{1-6}&& 4 & 1 & 3 & 0 _{5}\\\\ \\end{array}$\n So, the final answer is $\\boxed{4130_5}$.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a = nat_of_base (digit_encode [1,2,3,4] 5)\"\nand h1 : \"b = nat_of_base (digit_encode [2,3,4,1] 5)\"\nshows  \"digit_decode 5 (base_of_nat (a + b)) = [4,1,3,0]\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two numbers, the first is formed by encoding the digits [1,2,3,4] in base 5 and the second is formed by encoding the digits [2,3,4,1] in base 5. Compute the sum of these two numbers and then decode the result into base 5. The final answer should be the list of digits [4,1,3,0].",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9863207340240479,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x y :: nat\nassumes h0 : \"x = nat_of_nibble (0x1234)\"\nand h1 : \"y = nat_of_nibble (0x2341)\"\nshows  \"x + y = nat_of_nibble (0x4130)\"",
+        "formal solution": "(* ### Problem\n Evaluate $1234_5+2341_5$. Express your answer in base 5. The final Answer is 4130_5\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 1 & 2 & 3 & 4_{5}\\\\ +& & 2& 3 & 4 & 1_{5}\\\\ \\cline{1-6}&& 4 & 1 & 3 & 0 _{5}\\\\ \\end{array}$\n So, the final answer is $\\boxed{4130_5}$.\n *)\n\ntheorem\nfixes x y :: nat\nassumes h0 : \"x = nat_of_nibble (0x1234)\"\nand h1 : \"y = nat_of_nibble (0x2341)\"\nshows  \"x + y = nat_of_nibble (0x4130)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two natural numbers $x$ and $y$ such that $x$ is the natural number representation of the hexadecimal number 0x1234 and $y$ is the natural number representation of the hexadecimal number 0x2341. Find the sum of $x$ and $y$. The result should be equal to the natural number representation of the hexadecimal number 0x4130.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9739905595779419,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a b c :: nat\nassumes h0 : \"a = nat_of_digit5_list [1,2,3,4]\"\nand h1 : \"b = nat_of_digit5_list [2,3,4,1]\"\nand h2 : \"c = a + b\"\nshows  \"c = nat_of_digit5_list [4,1,3,0]\"",
+        "formal solution": "(* ### Problem\n Evaluate $1234_5+2341_5$. Express your answer in base 5. The final Answer is 4130_5\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 1 & 2 & 3 & 4_{5}\\\\ +& & 2& 3 & 4 & 1_{5}\\\\ \\cline{1-6}&& 4 & 1 & 3 & 0 _{5}\\\\ \\end{array}$\n So, the final answer is $\\boxed{4130_5}$.\n *)\n\ntheorem\nfixes a b c :: nat\nassumes h0 : \"a = nat_of_digit5_list [1,2,3,4]\"\nand h1 : \"b = nat_of_digit5_list [2,3,4,1]\"\nand h2 : \"c = a + b\"\nshows  \"c = nat_of_digit5_list [4,1,3,0]\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider two numbers, where the first number is 1234 when represented in base 5 and the second number is 2341 when represented in base 5. Find the sum of these two numbers and express the result in base 5. The result should be 4130 when represented in base 5.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.6667857766151428,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a = nat (int_of_string \"\nand h1 : \")\"\nand h2 : \"b = nat (int_of_string \"\nand h3 : \")\"\nshows  \"string_of_nat (a + b) = '4130'\"",
+        "formal solution": "(* ### Problem\n Evaluate $1234_5+2341_5$. Express your answer in base 5. The final Answer is 4130_5\n ### Proof\n We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 1 & 2 & 3 & 4_{5}\\\\ +& & 2& 3 & 4 & 1_{5}\\\\ \\cline{1-6}&& 4 & 1 & 3 & 0 _{5}\\\\ \\end{array}$\n So, the final answer is $\\boxed{4130_5}$.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a = nat (int_of_string \"\nand h1 : \")\"\nand h2 : \"b = nat (int_of_string \"\nand h3 : \")\"\nshows  \"string_of_nat (a + b) = '4130'\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of two natural numbers a and b. The result of the sum should be 4130.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.6440762877464294,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "4130_5",
+    "natural problem": "Evaluate $1234_5+2341_5$. Express your answer in base 5.",
+    "natural solution": [
+        "We have $\\begin{array}{@{}c@{\\;}c@{}c@{}c@{}c@{}c}& & 1 & 2 & 3 & 4_{5}\\\\ +& & 2& 3 & 4 & 1_{5}\\\\ \\cline{1-6}&& 4 & 1 & 3 & 0 _{5}\\\\ \\end{array}$",
+        "So, the final answer is $\\boxed{4130_5}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 4",
+    "type": "Number Theory"
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <title>Autoformalization</title>  
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>  
+    <title>LaTeX Display</title>  
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>  
+    <script>  
+        window.MathJax = {  
+            tex: {  
+                inlineMath: [['$', '$'], ['\\(', '\\)']]  
+            },  
+            svg: {  
+                fontCache: 'global'  
+            }  
+        };  
+    </script>  
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>     
+    <style>  
+        .checkbox-item input[type="checkbox"] {  
+            transform: scale(1.5);  
+        }  
+        .checkbox-item {  
+            border: 1px solid black;  
+            margin: 5px;  
+            padding: 2px;  
+            display: flex;  
+            flex-direction: column;  
+            width: calc(46% - 1px); /* subtract the margins */  
+            box-sizing: border-box; /* include padding and border in element's total width and height */  
+            font-family: 'Consolas', 'Courier New', monospace;
+        }  
+        .checkbox-grid {  
+            display: flex;  
+            flex-wrap: wrap;  
+            width: 2000px; /* adjust this to change the width of the grid */  
+        }  
+        .button-container {  
+            display: flex;  
+            justify-content: center; /* align horizontally center */  
+            align-items: center; /* align vertically center */  
+            height: 100px; /* you can change this to move the buttons down */  
+            margin-top: 20px; /* move the buttons down */  
+        }  
+        .button-container button {  
+            font-size: 20px; /* make the buttons bigger */  
+            margin: 0 10px; /* space between the buttons */  
+        }       
+        #message {  
+            color: red;   
+            text-align: center;   
+            font-size: 'Consolas', 'Courier New', monospace;
+            width: 100%;  
+        }  
+        #Text {  
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 15px;   
+            border-color: rgba(66, 7, 7, 0.808); 
+            border-width: 2px;
+            padding: 2px;  
+        }  
+        .center-div {  
+            display: flex;  
+            justify-content: center;  
+        }  
+        .flex-container {  
+            display: flex;  
+            justify-content: space-between;  
+            align-items: center;  
+        }  
+      
+        .flex-item {  
+            flex-basis: 45%; /* 这将使每个项目占据约45%的空间，留下约10%的空间作为间距 */  
+        }  
+    </style> 
+</head>  
+<body>  
+    <h2 id="prob-content"></h2>  
+    <img id="Image" src="" alt="Image"> 
+    <!-- <h1 id="reference-answer">Loading...</h1>   -->
+    <div id="checkboxes"></div>  
+    <div class="flex-container">  
+        <div class="flex-item">  
+            <div class="center-div">  
+                <textarea id="Text" name="Text" rows="10" cols="80">Insert oracle here...</textarea>     
+            </div>    
+        </div> 
+        <div class="flex-item">  
+            <div class="center-div">  
+                <label for="jump-input">Jump to index: </label>  
+                <input type="number" id="jump-input" min="0">  
+                <button id="jump-button">Jump</button>  
+            </div>  
+            <div class="button-container">  
+                <button id="prev-button">Previous</button>    
+                <button id="next-button">Next</button>    
+                <button id="save-button">Save</button>    
+            </div>
+            <div id="message"></div>  
+        </div>   
+    </div>  
+    <script>  
+    var data;  
+  
+    function loadData() {  
+        $.getJSON('/data', function(response) {  
+            data = response['data']; 
+            console.log(data);
+            idx = response['idx']; 
+            var content = data['natural problem'];  
+            var asyPattern = /\[asy\]([\s\S]*?)\[\/asy\]/; 
+            var match = content.match(asyPattern); 
+            var asyCode = null;  
+            if (match) {  
+              asyCode = match[1]; 
+              console.log(asyCode)
+              content = content.replace(asyCode, "")
+              fetch('/asy_endpoint', {  
+                method: 'POST',  
+                headers: {  
+                  'Content-Type': 'application/json',  
+                },  
+                body: JSON.stringify({asy_code: asyCode}),  
+              })  
+              .then((response) => response.json())  
+              .then((data) => {  
+                document.getElementById('Image').src = "data:image/png;base64," + data.image; 
+                document.getElementById('Image').style.display = ""; 
+              })  
+              .catch((error) => {  
+                console.error('Error:', error);  
+              });                
+            }  
+            else{
+                document.getElementById('Image').style.display = "none"; 
+            }
+            content = content.replace(/\\begin{tabular}/g, "\\begin{array}");  
+            content = content.replace(/\\end{tabular}/g, "\\end{array}");              
+            var probContent = document.getElementById('prob-content');
+            probContent.innerHTML = idx.toString() + '. ' + content 
+                                    + " The answer is " + data['natural answer'] + ". "
+                                    + "<br>" // 使用 <br> 来换行
+                                    + "<span style='color: blue;'> #### The prediction is " + data['str_pred'] + "</span>"; // 使用 <span> 标签来设置颜色
+
+            MathJax.typesetPromise();  
+            $('#checkboxes').empty();    
+            var checkboxGrid = $('<div>').addClass('checkbox-grid');  
+            for (var i = 0; i < 10; i++) {    
+                var tmp = 'a_' + (i);    
+                var checkbox = $('<input type="checkbox">'); 
+                console.log(data[tmp]['label'])  
+                if (!data[tmp]['label']){
+                    data[tmp]['label'] = 0
+                }
+                else{
+                    checkbox.prop('checked', data[tmp]['label']);
+                }
+                checkbox.change((function(tmp) {    
+                    return function() {    
+                        data[tmp]['label'] = this.checked ? 1 : 0;    
+                    };    
+                })(tmp));  
+                var checkboxItem = $('<div>').addClass('checkbox-item');   
+                var str = data[tmp]['formal problem'];  
+                str = str.replace(/</g, "&lt;");  
+                str = str.replace(/>/g, "&gt;");  
+                str = str.replace(/"/g, "&quot;");  
+                str = str.replace(/'/g, "&apos;");  
+                str = str.replace(/&(?![a-zA-Z0-9#]{1,7};)/g, "&amp;");  
+                checkboxItem.append(str.replace(/\n/g, '<br>'));                  
+                checkboxGrid.append(checkboxItem);
+                checkboxItem.append('<br>')  
+                checkboxItem.append(checkbox);  
+            }  
+            $('#checkboxes').append(checkboxGrid);   
+            if (data['oracle']){
+                document.getElementById('Text').value = data['oracle'];
+            }
+            else{
+                document.getElementById('Text').value = 'Insert oracle here...';
+            }
+        });  
+    }  
+
+    $(document).ready(function() {  
+        loadData();  
+        $('#prev-button').click(function() {  
+            $.getJSON('/previous', function(newData) {  
+                data = newData;  
+                loadData();  
+                document.getElementById('message').textContent = '';
+            });  
+        });  
+        $('#next-button').click(function() {  
+            var inputValue = $('#Text').val();
+            data['oracle'] = inputValue;
+            $.ajax({  
+                url: '/data',  
+                method: 'POST',  
+                contentType: 'application/json',  
+                data: JSON.stringify(data),  
+                dataType: 'json',  
+                success: function(response) {  
+                    if (response.status == 'success') {  
+                        document.getElementById('message').textContent = 'Previous Problem saved successfully'; 
+                    }  
+                }  
+            });   
+            $.getJSON('/next', function(newData) {  
+                data = newData;  
+                loadData();  
+                <!-- document.getElementById('message').textContent = ''; -->
+            });  
+        });  
+        $('#save-button').click(function() {  
+            var inputValue = $('#Text').val();
+            data['oracle'] = inputValue;
+            $.ajax({  
+                url: '/data',  
+                method: 'POST',  
+                contentType: 'application/json',  
+                data: JSON.stringify(data),  
+                dataType: 'json',  
+                success: function(response) {  
+                    if (response.status == 'success') {  
+                        document.getElementById('message').textContent = 'Problem saved successfully'; 
+                    }  
+                }  
+            });              
+        });
+        $('#jump-button').click(function() {    
+            var jumpIndex = $('#jump-input').val();    
+            $.getJSON('/jump/' + jumpIndex, function(newData) {    
+                data = newData;    
+                loadData();    
+                document.getElementById('message').textContent = '';  
+            });    
+        });    
+    });  
+    </script>  
+</body>  
+</html>  
+

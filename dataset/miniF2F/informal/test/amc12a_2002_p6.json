@@ -1,0 +1,124 @@
+{
+    "problem_name": "amc12a_2002_p6",
+    "informal_statement": "For how many positive integers $m$ does there exist at least one positive integer n such that $m \\cdot n \\le m + n$?\n\n$ \\textbf{(A) } 4\\qquad \\textbf{(B) } 6\\qquad \\textbf{(C) } 9\\qquad \\textbf{(D) } 12\\qquad \\textbf{(E) } \\text{infinitely many} $ Show that it is \\textbf{(E) } \\text{infinitely many}.",
+    "informal_proof": "For any $m$ we can pick $n=1$, we get $m \\cdot 1 \\le m + 1$,\ntherefore the answer is $\\textbf{(E) } \\text{infinitely many}$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes m n :: nat\nshows  \"\\<exists> m. \\<forall> n. m * n \\<le> m + n\"\nproof\n  have \"\\<forall> n. 2 * n \\<le> 2 + n\"\n  proof\n    fix n :: nat\n    show \"2 * n \\<le> 2 + n\"\n    proof (induct n)\n      case 0\n      then show ?case by simp\n    next\n      case (Suc n)\n      then show ?case by simp\n    qed\n  qed\n  thus \"\\<exists> m. \\<forall> n. m * n \\<le> m + n\" by auto\nqed",
+        "formal solution": "(* ### Problem\n For how many positive integers $m$ does there exist at least one positive integer n such that $m \\cdot n \\le m + n$?\n\n$ \\textbf{(A) } 4\\qquad \\textbf{(B) } 6\\qquad \\textbf{(C) } 9\\qquad \\textbf{(D) } 12\\qquad \\textbf{(E) } \\text{infinitely many} $ Show that it is \\textbf{(E) } \\text{infinitely many}.\n ### Proof\n For any $m$ we can pick $n=1$, we get $m \\cdot 1 \\le m + 1$,\ntherefore the answer is $\\textbf{(E) } \\text{infinitely many}$.\n *)\n\ntheorem\nfixes m n :: nat\nshows  \"\\<exists> m. \\<forall> n. m * n \\<le> m + n\"\nproof\n  have \"\\<forall> n. 2 * n \\<le> 2 + n\"\n  proof\n    fix n :: nat\n    show \"2 * n \\<le> 2 + n\"\n    proof (induct n)\n      case 0\n      then show ?case by simp\n    next\n      case (Suc n)\n      then show ?case by simp\n    qed\n  qed\n  thus \"\\<exists> m. \\<forall> n. m * n \\<le> m + n\" by auto\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a natural number $m$ such that for all natural numbers $n$, the inequality $mn \\leq m + n$ holds.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7445234656333923,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem infinitely_many_m:\nfixes m n :: nat\nshows  \"\\<exists> m. \\<forall> n. m * n \\<le> m + n\"\nproof\n  have \"\\<forall> m. m * 1 \\<le> m + 1\"\n    by simp\n  thus \"\\<exists> m. \\<forall> n. m * n \\<le> m + n\"\n    by blast\nqed",
+        "formal solution": "(* ### Problem\n For how many positive integers $m$ does there exist at least one positive integer n such that $m \\cdot n \\le m + n$?\n\n$ \\textbf{(A) } 4\\qquad \\textbf{(B) } 6\\qquad \\textbf{(C) } 9\\qquad \\textbf{(D) } 12\\qquad \\textbf{(E) } \\text{infinitely many} $ Show that it is \\textbf{(E) } \\text{infinitely many}.\n ### Proof\n For any $m$ we can pick $n=1$, we get $m \\cdot 1 \\le m + 1$,\ntherefore the answer is $\\textbf{(E) } \\text{infinitely many}$.\n *)\n\ntheorem infinitely_many_m:\nfixes m n :: nat\nshows  \"\\<exists> m. \\<forall> n. m * n \\<le> m + n\"\nproof\n  have \"\\<forall> m. m * 1 \\<le> m + 1\"\n    by simp\n  thus \"\\<exists> m. \\<forall> n. m * n \\<le> m + n\"\n    by blast\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Is there an infinitely large number of natural numbers m such that for every natural number n, the product of m and n is less than or equal to the sum of m and n?",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9223009347915649,
+        "symbolic_score": 0.3
+    },
+    "a_2": {
+        "formal problem": "theorem \nfixes m n :: nat\nassumes h0 : \"\\<forall>m::nat. m > 0 \\<longrightarrow> (\\<exists>n::nat. n > 0 \\<and> m * n \\<le> m + n)\"\nshows  \"(E) infinitely_many\"",
+        "formal solution": "(* ### Problem\n For how many positive integers $m$ does there exist at least one positive integer n such that $m \\cdot n \\le m + n$?\n\n$ \\textbf{(A) } 4\\qquad \\textbf{(B) } 6\\qquad \\textbf{(C) } 9\\qquad \\textbf{(D) } 12\\qquad \\textbf{(E) } \\text{infinitely many} $ Show that it is \\textbf{(E) } \\text{infinitely many}.\n ### Proof\n For any $m$ we can pick $n=1$, we get $m \\cdot 1 \\le m + 1$,\ntherefore the answer is $\\textbf{(E) } \\text{infinitely many}$.\n *)\n\ntheorem \nfixes m n :: nat\nassumes h0 : \"\\<forall>m::nat. m > 0 \\<longrightarrow> (\\<exists>n::nat. n > 0 \\<and> m * n \\<le> m + n)\"\nshows  \"(E) infinitely_many\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For any positive integer $m$, show that there exists an infinite number of positive integers $n$ such that $mn \\leq m + n$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8313543200492859,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem infinitely_many_m_satisfy_condition:\n  fixes m n :: nat\n  shows  \"\\<exists> f :: nat \\<Rightarrow> nat. \\<forall> m. m > 0 \\<longrightarrow> (\\<exists> n. n > 0 \\<and> m * n \\<le> m + n)\"\nproof\n  define f where \"f m = m - 1\" for m :: nat\n  have \"\\<forall> m. m > 0 \\<longrightarrow> (\\<exists> n. n > 0 \\<and> m * n \\<le> m + n)\"\n  proof\n    fix m :: nat\n    assume \"m > 0\"\n    let ?n = \"f m\"\n    from `m > 0` have \"f m = m - 1\" by (simp add: f_def)\n    then have \"?n > 0\" using `m > 0` by simp\n    moreover have \"m * ?n \\<le> m + ?n\" using `m > 0`\n      by (simp add: f_def)\n    ultimately show \"\\<exists> n. n > 0 \\<and> m * n \\<le> m + n\" by auto\n  qed\n  thus \"\\<exists> f :: nat \\<Rightarrow> nat. \\<forall> m. m > 0 \\<longrightarrow> (\\<exists> n. n > 0 \\<and> m * n \\<le> m + n)\" by auto\nqed",
+        "formal solution": "(* ### Problem\n For how many positive integers $m$ does there exist at least one positive integer n such that $m \\cdot n \\le m + n$?\n\n$ \\textbf{(A) } 4\\qquad \\textbf{(B) } 6\\qquad \\textbf{(C) } 9\\qquad \\textbf{(D) } 12\\qquad \\textbf{(E) } \\text{infinitely many} $ Show that it is \\textbf{(E) } \\text{infinitely many}.\n ### Proof\n For any $m$ we can pick $n=1$, we get $m \\cdot 1 \\le m + 1$,\ntherefore the answer is $\\textbf{(E) } \\text{infinitely many}$.\n *)\n\ntheorem infinitely_many_m_satisfy_condition:\n  fixes m n :: nat\n  shows  \"\\<exists> f :: nat \\<Rightarrow> nat. \\<forall> m. m > 0 \\<longrightarrow> (\\<exists> n. n > 0 \\<and> m * n \\<le> m + n)\"\nproof\n  define f where \"f m = m - 1\" for m :: nat\n  have \"\\<forall> m. m > 0 \\<longrightarrow> (\\<exists> n. n > 0 \\<and> m * n \\<le> m + n)\"\n  proof\n    fix m :: nat\n    assume \"m > 0\"\n    let ?n = \"f m\"\n    from `m > 0` have \"f m = m - 1\" by (simp add: f_def)\n    then have \"?n > 0\" using `m > 0` by simp\n    moreover have \"m * ?n \\<le> m + ?n\" using `m > 0`\n      by (simp add: f_def)\n    ultimately show \"\\<exists> n. n > 0 \\<and> m * n \\<le> m + n\" by auto\n  qed\n  thus \"\\<exists> f :: nat \\<Rightarrow> nat. \\<forall> m. m > 0 \\<longrightarrow> (\\<exists> n. n > 0 \\<and> m * n \\<le> m + n)\" by auto\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Show that there exists a function $f: \\mathbb{N} \\rightarrow \\mathbb{N}$ such that for every natural number $m > 0$, there exists a natural number $n > 0$ with the property that $m * n \\leq m + n$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.724018931388855,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem infinitely_many_m_satisfy_condition:\n  fixes m n :: nat\n  assumes h0 : \"\\<forall> m n :: nat. m * n \\<le> m + n\"\nshows  \"infinite {m :: nat. \\<exists>n :: nat. m * n \\<le> m + n}\"\nproof\n  show \"inj (Suc :: nat \\<Rightarrow> nat)\"\n    by (auto intro!: injI)\n  have \"\\<forall>m n :: nat. m * n \\<le> m + n\" by fact\n  then have \"\\<forall>m :: nat. m * Suc m \\<le> m + Suc m\" by simp\n  then have \"\\<forall>m :: nat. m * (m + 1) \\<le> m + (m + 1)\" by simp\n  then have \"\\<forall>m :: nat. m * (m + 1) \\<le> (m + 1) * 2\" by simp\n  then have \"\\<exists>n :: nat. m * n \\<le> (m + 1) * 2\" by auto\n  then have \"{m :: nat. \\<exists>n :: nat. m * n \\<le> m + n} = UNIV\" by auto\n  then show \"infinite {m :: nat. \\<exists>n :: nat. m * n \\<le> m + n}\"\n    by (simp add: infinite_UNIV_nat)\nqed",
+        "formal solution": "(* ### Problem\n For how many positive integers $m$ does there exist at least one positive integer n such that $m \\cdot n \\le m + n$?\n\n$ \\textbf{(A) } 4\\qquad \\textbf{(B) } 6\\qquad \\textbf{(C) } 9\\qquad \\textbf{(D) } 12\\qquad \\textbf{(E) } \\text{infinitely many} $ Show that it is \\textbf{(E) } \\text{infinitely many}.\n ### Proof\n For any $m$ we can pick $n=1$, we get $m \\cdot 1 \\le m + 1$,\ntherefore the answer is $\\textbf{(E) } \\text{infinitely many}$.\n *)\n\ntheorem infinitely_many_m_satisfy_condition:\n  fixes m n :: nat\n  assumes h0 : \"\\<forall> m n :: nat. m * n \\<le> m + n\"\nshows  \"infinite {m :: nat. \\<exists>n :: nat. m * n \\<le> m + n}\"\nproof\n  show \"inj (Suc :: nat \\<Rightarrow> nat)\"\n    by (auto intro!: injI)\n  have \"\\<forall>m n :: nat. m * n \\<le> m + n\" by fact\n  then have \"\\<forall>m :: nat. m * Suc m \\<le> m + Suc m\" by simp\n  then have \"\\<forall>m :: nat. m * (m + 1) \\<le> m + (m + 1)\" by simp\n  then have \"\\<forall>m :: nat. m * (m + 1) \\<le> (m + 1) * 2\" by simp\n  then have \"\\<exists>n :: nat. m * n \\<le> (m + 1) * 2\" by auto\n  then have \"{m :: nat. \\<exists>n :: nat. m * n \\<le> m + n} = UNIV\" by auto\n  then show \"infinite {m :: nat. \\<exists>n :: nat. m * n \\<le> m + n}\"\n    by (simp add: infinite_UNIV_nat)\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Show that there are infinitely many positive integers $m$ such that there exists a positive integer $n$ for which $mn \\leq m + n$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8615979552268982,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem infinitely_many_solutions:\nfixes m n :: nat\nshows  \"\\<exists> f :: nat \\<Rightarrow> nat. \\<forall> m. \\<exists> n. m * f m \\<le> m + f m\"\nproof\n  have \"\\<forall> m. m * (m + 1) \\<le> m + (m + 1)\" by simp\n  then show ?thesis by auto\nqed",
+        "formal solution": "(* ### Problem\n For how many positive integers $m$ does there exist at least one positive integer n such that $m \\cdot n \\le m + n$?\n\n$ \\textbf{(A) } 4\\qquad \\textbf{(B) } 6\\qquad \\textbf{(C) } 9\\qquad \\textbf{(D) } 12\\qquad \\textbf{(E) } \\text{infinitely many} $ Show that it is \\textbf{(E) } \\text{infinitely many}.\n ### Proof\n For any $m$ we can pick $n=1$, we get $m \\cdot 1 \\le m + 1$,\ntherefore the answer is $\\textbf{(E) } \\text{infinitely many}$.\n *)\n\ntheorem infinitely_many_solutions:\nfixes m n :: nat\nshows  \"\\<exists> f :: nat \\<Rightarrow> nat. \\<forall> m. \\<exists> n. m * f m \\<le> m + f m\"\nproof\n  have \"\\<forall> m. m * (m + 1) \\<le> m + (m + 1)\" by simp\n  then show ?thesis by auto\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Show that there exists a function $f$ such that for every natural number $m$, there exists a natural number $n$ such that $m * f(m) \\leq m + f(m)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7427406907081604,
+        "symbolic_score": 0.3
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes m n :: nat\nshows  \"(\\<exists>f. (\\<forall>m. m > 0 \\<longrightarrow> (\\<exists>n > 0. m * n \\<le> m + n \\<and> f m = n)) \\<and> infinite (range f))\"",
+        "formal solution": "(* ### Problem\n For how many positive integers $m$ does there exist at least one positive integer n such that $m \\cdot n \\le m + n$?\n\n$ \\textbf{(A) } 4\\qquad \\textbf{(B) } 6\\qquad \\textbf{(C) } 9\\qquad \\textbf{(D) } 12\\qquad \\textbf{(E) } \\text{infinitely many} $ Show that it is \\textbf{(E) } \\text{infinitely many}.\n ### Proof\n For any $m$ we can pick $n=1$, we get $m \\cdot 1 \\le m + 1$,\ntherefore the answer is $\\textbf{(E) } \\text{infinitely many}$.\n *)\n\ntheorem\nfixes m n :: nat\nshows  \"(\\<exists>f. (\\<forall>m. m > 0 \\<longrightarrow> (\\<exists>n > 0. m * n \\<le> m + n \\<and> f m = n)) \\<and> infinite (range f))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find an infinite function $f$ such that for every positive natural number $m$, there exists a positive natural number $n$ with the property that $m * n \\le m + n$ and $f(m) = n$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6795497536659241,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes m n :: nat\nshows  \"\\<exists> infinite_set. infinite_set = {m | m. \\<exists> n > 0. m * n \\<le> m + n}\"",
+        "formal solution": "(* ### Problem\n For how many positive integers $m$ does there exist at least one positive integer n such that $m \\cdot n \\le m + n$?\n\n$ \\textbf{(A) } 4\\qquad \\textbf{(B) } 6\\qquad \\textbf{(C) } 9\\qquad \\textbf{(D) } 12\\qquad \\textbf{(E) } \\text{infinitely many} $ Show that it is \\textbf{(E) } \\text{infinitely many}.\n ### Proof\n For any $m$ we can pick $n=1$, we get $m \\cdot 1 \\le m + 1$,\ntherefore the answer is $\\textbf{(E) } \\text{infinitely many}$.\n *)\n\ntheorem\nfixes m n :: nat\nshows  \"\\<exists> infinite_set. infinite_set = {m | m. \\<exists> n > 0. m * n \\<le> m + n}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find an infinite set of natural numbers $m$ such that there exists a positive integer $n$ for which $mn \\le m + n$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8066463470458984,
+        "symbolic_score": 0.3
+    },
+    "a_8": {
+        "formal problem": "theorem infinitely_many_m_satisfy_condition:\nfixes m n :: nat\nshows  \"\\<exists> m. \\<forall> n. m * n \\<le> m + n \\<Longrightarrow> infinite {m :: nat}\"\nproof\n  have \"\\<forall> m. m \\<ge> 2 \\<longrightarrow> m * 1 \\<le> m + 1\"\n    by simp\n  hence \"\\<forall> m. m \\<ge> 2 \\<longrightarrow> (\\<exists> n. m * n \\<le> m + n)\"\n    by blast\n  thus ?thesis\n    by (rule_tac x=\"2\" in exI, auto)\nqed",
+        "formal solution": "(* ### Problem\n For how many positive integers $m$ does there exist at least one positive integer n such that $m \\cdot n \\le m + n$?\n\n$ \\textbf{(A) } 4\\qquad \\textbf{(B) } 6\\qquad \\textbf{(C) } 9\\qquad \\textbf{(D) } 12\\qquad \\textbf{(E) } \\text{infinitely many} $ Show that it is \\textbf{(E) } \\text{infinitely many}.\n ### Proof\n For any $m$ we can pick $n=1$, we get $m \\cdot 1 \\le m + 1$,\ntherefore the answer is $\\textbf{(E) } \\text{infinitely many}$.\n *)\n\ntheorem infinitely_many_m_satisfy_condition:\nfixes m n :: nat\nshows  \"\\<exists> m. \\<forall> n. m * n \\<le> m + n \\<Longrightarrow> infinite {m :: nat}\"\nproof\n  have \"\\<forall> m. m \\<ge> 2 \\<longrightarrow> m * 1 \\<le> m + 1\"\n    by simp\n  hence \"\\<forall> m. m \\<ge> 2 \\<longrightarrow> (\\<exists> n. m * n \\<le> m + n)\"\n    by blast\n  thus ?thesis\n    by (rule_tac x=\"2\" in exI, auto)\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Show that there are infinitely many positive integers $m$ such that for any positive integer $n$, the inequality $mn \\le m + n$ holds.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7478183507919312,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes m n :: nat\nshows  \"\\<exists> infinitely_many_m. (\\<exists> n > 0. m * n \\<le> m + n)\"",
+        "formal solution": "(* ### Problem\n For how many positive integers $m$ does there exist at least one positive integer n such that $m \\cdot n \\le m + n$?\n\n$ \\textbf{(A) } 4\\qquad \\textbf{(B) } 6\\qquad \\textbf{(C) } 9\\qquad \\textbf{(D) } 12\\qquad \\textbf{(E) } \\text{infinitely many} $ Show that it is \\textbf{(E) } \\text{infinitely many}.\n ### Proof\n For any $m$ we can pick $n=1$, we get $m \\cdot 1 \\le m + 1$,\ntherefore the answer is $\\textbf{(E) } \\text{infinitely many}$.\n *)\n\ntheorem\nfixes m n :: nat\nshows  \"\\<exists> infinitely_many_m. (\\<exists> n > 0. m * n \\<le> m + n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Are there infinitely many positive integers $m$ such that there exists a positive integer $n$ satisfying $mn \\le m + n$?",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9767724275588989,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes m ::nat\nassumes \"m>0\"\nshows \"\\<exists> n. (n>0) \\<and>  m * n \\<le> m + n\"",
+    "prediction": {
+        "0": [
+            1,
+            5,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            8
+        ],
+        "7": [
+            9
+        ]
+    }
+}

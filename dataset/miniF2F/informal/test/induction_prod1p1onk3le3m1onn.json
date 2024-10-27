@@ -1,0 +1,582 @@
+{
+    "problem_name": "induction_prod1p1onk3le3m1onn",
+    "informal_statement": "Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.",
+    "informal_proof": "We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"(\\<Prod>k = 1..n. (1 + 1 / (k powr 3))) \\<le> 3 - 1 / (n::real)\"\nshows  \"\\<forall>n. n > 0 \\<longrightarrow> (\\<Prod>k = 1..n. (1 + 1 / (k powr 3))) \\<le> 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"(\\<Prod>k = 1..n. (1 + 1 / (k powr 3))) \\<le> 3 - 1 / (n::real)\"\nshows  \"\\<forall>n. n > 0 \\<longrightarrow> (\\<Prod>k = 1..n. (1 + 1 / (k powr 3))) \\<le> 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For all positive integers $n$, consider the product $\\prod_{k=1}^n \\left(1 + \\frac{1}{k^3}\\right)$. Show that this product is always less than or equal to $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9746622443199158,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and prod :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k \\<in> {1..n}. prod k = (1 + 1 / (k^3))\"\nshows  \"prod n \\<le> 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat and prod :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k \\<in> {1..n}. prod k = (1 + 1 / (k^3))\"\nshows  \"prod n \\<le> 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a product function $prod(n)$ such that $prod(k) = 1 + \\frac{1}{k^3}$ for all natural numbers $k$ in the range $1$ to $n$, show that $prod(n) \\leq 3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9889229536056519,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k\\<in>{1..n}. (1 + 1/(k^3))) \\<le> 3 - 1/n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k\\<in>{1..n}. (1 + 1/(k^3))) \\<le> 3 - 1/n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a positive integer $n > 0$, show that the product of the terms $(1 + \\frac{1}{k^3})$ for $k$ in the range from $1$ to $n$ is less than or equal to $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9883508086204529,
+        "symbolic_score": 0.5
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / (real k ^ 3))) \\<le> 3 - 1 / (real n)\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / (real k ^ 3))) \\<le> 3 - 1 / (real n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a positive integer $n$, show that the product of the terms $\\left(1 + \\frac{1}{k^3}\\right)$ for $k = 1$ to $n$ is less than or equal to $3 - \\frac{1}{n}$, i.e.,\n\n$\\prod_{k=1}^n \\left(1 + \\frac{1}{k^3}\\right) \\leq 3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8639172315597534,
+        "symbolic_score": 0.5
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k\\<in>{1..n}. (1 + 1 / (real k) ^ 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k\\<in>{1..n}. (1 + 1 / (real k) ^ 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a positive integer $n$, show that the product $\\prod_{k=1}^{n} \\left(1 + \\frac{1}{k^3}\\right) \\leq 3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8594101071357727,
+        "symbolic_score": 0.5
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n k :: nat and prod :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>k \\<in> {1..n}. prod k = (1 + 1 / (real k) powr 3)\"\nand h1 : \"n > 0\"\nshows  \"(\\<Prod>k \\<in> {1..n}. prod k) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n k :: nat and prod :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>k \\<in> {1..n}. prod k = (1 + 1 / (real k) powr 3)\"\nand h1 : \"n > 0\"\nshows  \"(\\<Prod>k \\<in> {1..n}. prod k) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sequence of $n$ positive numbers, where the $k$-th term is defined as $1 + \\frac{1}{k^3}$ for $k = 1, 2, \\dots, n$, and $n > 0$, find the upper bound for the product of all the terms in the sequence. The final answer is $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5532001256942749,
+        "symbolic_score": 0.2
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k \\<in> {1..n}. (1 + 1 / k ^ 3)) \\<le> 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k \\<in> {1..n}. (1 + 1 / k ^ 3)) \\<le> 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a positive natural number $n$, show that the product of the terms $(1 + \\frac{1}{k^3})$ for $k = 1$ to $n$ is less than or equal to $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9947837591171265,
+        "symbolic_score": 0.5
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n k :: nat and P :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. k \\<ge> 1 \\<and> k \\<le> n \\<longrightarrow> P k = 1 + 1 / (real k)^3\"\nand h1 : \"n > 0\"\nshows  \"(\\<Prod> k = 1..n. P k) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n k :: nat and P :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. k \\<ge> 1 \\<and> k \\<le> n \\<longrightarrow> P k = 1 + 1 / (real k)^3\"\nand h1 : \"n > 0\"\nshows  \"(\\<Prod> k = 1..n. P k) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sequence of numbers $P(k) = 1 + \\frac{1}{k^3}$ for $1 \\leq k \\leq n$ and $n > 0$, find the upper bound for the product of the first $n$ terms of the sequence. The final answer is $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7781240940093994,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem prod_inequality:\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k \\<in> {1..n}. (1 + 1 / (k^3 :: real))) \\<le> 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem prod_inequality:\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k \\<in> {1..n}. (1 + 1 / (k^3 :: real))) \\<le> 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a positive integer $n$, prove that the product of the terms $\\left(1 + \\frac{1}{k^3}\\right)$ for $k$ in the range $1$ to $n$ is less than or equal to $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9766692519187927,
+        "symbolic_score": 0.5
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat and prod :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"n > 0\"\nand h1 : \"\\<forall> k \\<in> {1..n}. prod k = 1 + 1 / (k ^ 3)\"\nshows  \"(\\<Prod> k \\<in> {1..n}. prod k) \\<le> 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat and prod :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"n > 0\"\nand h1 : \"\\<forall> k \\<in> {1..n}. prod k = 1 + 1 / (k ^ 3)\"\nshows  \"(\\<Prod> k \\<in> {1..n}. prod k) \\<le> 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a positive integer $n$ and a product function $prod(k) = 1 + \\frac{1}{k^3}$ for all $k$ in the range $1$ to $n$. Find an upper bound for the product of the function values: $\\prod_{k=1}^n prod(k)$. The upper bound is $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9196173548698425,
+        "symbolic_score": 0.2
+    },
+    "oracle": "theorem\nfixes n :: nat\nassumes \"0 < n\"\nshows \"(\\<Prod> k \\<in> {1..<n+1}. (1 + 1 / k^3)) \\<le> 3 - 1 / n\"",
+    "prediction": {
+        "0": [
+            2,
+            3,
+            4,
+            6,
+            8
+        ],
+        "1": [
+            9,
+            5
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            1
+        ],
+        "4": [
+            7
+        ]
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. 1 + 1 / real (k^3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. 1 + 1 / real (k^3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For any positive integer $n$, the product $1+\\frac{1}{1^3}\\times 1+\\frac{1}{2^3}\\times 1+\\frac{1}{3^3}\\times \\cdots \\times 1+\\frac{1}{n^3}$ is at most $3-\\frac{1}{n}$.",
+        "semantic_score": 0.8395907946178373,
+        "symbolic_score": 0.9,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $n$ is a positive integer, then the product $(1 + \\frac{1}{1^3})(1 + \\frac{1}{2^3})\\cdots(1 + \\frac{1}{n^3})$ is less than or equal to $3 - \\frac{1}{n}$.",
+        "semantic_score": 0.6654017313201288,
+        "symbolic_score": 0.9,
+        "naive_label": 0
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. 1 + 1/k^3) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. 1 + 1/k^3) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The product of $(1 + \\frac{1}{1^3})(1 + \\frac{1}{2^3})\\cdots(1 + \\frac{1}{n^3})$ is less than or equal to $3 - \\frac{1}{n}$.",
+        "semantic_score": 0.9092859831822471,
+        "symbolic_score": 0.9,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / k^3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / k^3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a positive integer $n$, what is the maximum value of $\\prod_{k=1}^n \\left(1+\\frac{1}{k^3}\\right)$? The answer is $3-\\frac{1}{n}$.",
+        "semantic_score": 0.46216980247381456,
+        "symbolic_score": 0.9,
+        "naive_label": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. 1 + 1 / k ^ 3) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. 1 + 1 / k ^ 3) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the upper bound of the product of $(1 + \\frac{1}{k^3})$ for $k$ from $1$ to $n$ if $n$ is a positive integer? The upper bound should be $3 - \\frac{1}{n}$.",
+        "semantic_score": 0.5216367600002546,
+        "symbolic_score": 0.9,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. 1 + 1 / (k ^ 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. 1 + 1 / (k ^ 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The product of $(1 + \\frac{1}{k^3})$ from $k=1$ to $k=n$ is less than or equal to $3 - \\frac{1}{n}$. Here, $n$ is a positive integer.",
+        "semantic_score": 0.9319394603259129,
+        "symbolic_score": 0.9,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / k^3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / k^3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $n$ is a positive integer, then the product $(1+ \\frac{1}{1^3})\\cdot(1+\\frac{1}{2^3})\\cdot(1+\\frac{1}{3^3}) \\cdots \\cdot (1+\\frac{1}{n^3})$ is less than or equal to $3-\\frac{1}{n}$.\"",
+        "semantic_score": -0.03696564065706798,
+        "symbolic_score": 0.9,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / real k powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / real k powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For any positive integer $n$, the product $(1+\\frac{1}{1^3})(1+\\frac{1}{2^3})\\cdots(1+\\frac{1}{n^3})$ is at most $3-\\frac{1}{n}$.",
+        "semantic_score": 0.7083693465156087,
+        "symbolic_score": 0.9,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. 1 + 1 / k^3) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. 1 + 1 / k^3) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a natural number $n > 0$, what is the largest possible value of $\\prod_{k=1}^{n}(1+\\frac{1}{k^3})$? The answer is $3 - \\frac{1}{n}$.",
+        "semantic_score": 0.43674289403977506,
+        "symbolic_score": 0.9,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod> k = 1 .. n. 1 + 1 / real (k powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod> k = 1 .. n. 1 + 1 / real (k powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $n$ is a positive integer, what is the largest possible value of the expression $(1 + 1/1^3)(1 + 1/2^3)(1 + 1/3^3)\\cdots(1 + 1/n^3)$? The answer is less than or equal to $3 - \\frac{1}{n}$.",
+        "semantic_score": 0.4119944883934177,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+        ],
+        "1": [
+            9
+        ]
+    },
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes n :: nat and P :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. 1 <= k -> 1 + 1 / (k powr 3) > 0\"\nand h1 : \"\\<forall> n. 1 <= n -> prod (k = 1..n) (1 + 1 / (k powr 3)) <= 3 - 1 / n\"\nshows  \"h1 n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat and P :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. 1 <= k -> 1 + 1 / (k powr 3) > 0\"\nand h1 : \"\\<forall> n. 1 <= n -> prod (k = 1..n) (1 + 1 / (k powr 3)) <= 3 - 1 / n\"\nshows  \"h1 n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For each natural number $n$, prove the following inequality:\n$$\\prod\\_{k=1}^n \\frac{1+1}{k^3} \\le 3 - \\frac{1}{n}$$\n\nThe base cases for the inequalities in assumptions $h0$ and $h1$ are $1$."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem\nfixes n :: nat and P :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. 1 \\<le> k \\<longrightarrow> 1 + 1 / (k powr 3) > 0\"\nand h1 : \"\\<forall> n. 0 < n \\<longrightarrow> \\<forall> k. 1 \\<le> k \\<longrightarrow> P k = 1 + 1 / (k powr 3)\"\nand h2 : \"\\<forall> n. 0 < n \\<longrightarrow> \\<forall> i j. i \\<ge> j \\<longrightarrow> i in [1..n] \\<longrightarrow> j in [1..n] \\<longrightarrow> P i * P j <= 3 - 1 / n\"\nshows  \"\\<forall> n. 0 < n \\<longrightarrow> (\\<prod> k. P k) <= 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat and P :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. 1 \\<le> k \\<longrightarrow> 1 + 1 / (k powr 3) > 0\"\nand h1 : \"\\<forall> n. 0 < n \\<longrightarrow> \\<forall> k. 1 \\<le> k \\<longrightarrow> P k = 1 + 1 / (k powr 3)\"\nand h2 : \"\\<forall> n. 0 < n \\<longrightarrow> \\<forall> i j. i \\<ge> j \\<longrightarrow> i in [1..n] \\<longrightarrow> j in [1..n] \\<longrightarrow> P i * P j <= 3 - 1 / n\"\nshows  \"\\<forall> n. 0 < n \\<longrightarrow> (\\<prod> k. P k) <= 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For all natural numbers $n$, if $1 +1/(k^3)>0$ for all $1\\leq k$, and $P(k)=1+1/(k^3)$ for all $k$, and $P(i) \\cdot P(j) \\leq 3-1/n$ for all $i,j$ with $i\\geq j$ and $i,j\\in \\{1,2,\\ldots,n\\}$, then $\\prod\\_{k=1}^{n}P(k) \\leq 3-1/n$. In other words, for a given natural number $n$, the product of $1+1/(k^3)$ for all $k$ between $1$ and $n$ is less than or equal to $3-\\frac{1}{n}$."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\" and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. 1 <= k \\<Longrightarrow> P k = 1 + 1 / (k powr 3)\"\nand h1 : \"\\<forall> n. 1 <= n \\<Longrightarrow> 0 < (prod (in_range (1 :: nat) n) P)\"\nand h2 : \"\\<forall> n. 1 <= n \\<Longrightarrow> 3 - 1 / n > prod (in_range (1 :: nat) n) P\"\nshows  \"true\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: \"nat\" and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. 1 <= k \\<Longrightarrow> P k = 1 + 1 / (k powr 3)\"\nand h1 : \"\\<forall> n. 1 <= n \\<Longrightarrow> 0 < (prod (in_range (1 :: nat) n) P)\"\nand h2 : \"\\<forall> n. 1 <= n \\<Longrightarrow> 3 - 1 / n > prod (in_range (1 :: nat) n) P\"\nshows  \"true\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For each natural number $k$ greater than or equal to 1, $P(k)$ equals $1 + \\frac{1}{k^3}$. For each natural number $n$ greater than or equal to 1, the product of $P$ applied to all numbers from 1 to $n$ is positive. For each natural number $n$ greater than or equal to 1, $\\frac{3 - 1}{n}$ is greater than the product of $P$ applied to all numbers from 1 to $n$. Prove that the statement is true.\n\nIn simpler terms:\n\nGiven that $P(k) = 1 + \\frac{1}{k^3}$ for all natural numbers $k > 1$ and the product of $P(1), P(2), ..., P(n)$ is positive for all natural numbers $n > 1$. Also, $\\frac{3 - 1}{n}$ is greater than the product of $P(1), P(2), ..., P(n)$ for all natural numbers $n > 1$. Prove that the statement is true."
+    },
+    "a_3_mistral": {
+        "formal problem": "theorem\nfixes n :: nat and P :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. 1 \\<le> k \\<longrightarrow> 1 + 1 / (k powr 3) > 0\"\nand h1 : \"\\<forall> n. 0 < n \\<longrightarrow> \\<open>prod>k=1\\<close>n. P k < 3 - 1 / n\"\nshows  \"\\<open>prod>k=1\\<close>n. P k <= 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat and P :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. 1 \\<le> k \\<longrightarrow> 1 + 1 / (k powr 3) > 0\"\nand h1 : \"\\<forall> n. 0 < n \\<longrightarrow> \\<open>prod>k=1\\<close>n. P k < 3 - 1 / n\"\nshows  \"\\<open>prod>k=1\\<close>n. P k <= 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For any natural number $n$, if $1+\\frac{1}{k^3}>0$ for all $1\\leq k\\leq n$, then $\\prod\\_{k=1}^n P(k)$ is less than or equal to $\\frac{3-1}{n}$.\n\nIn other words, if $1+\\frac{1}{k^3}>0$ for all $1\\leq k\\leq n$, then $\\prod\\_{k=1}^n P(k)$ is smaller than $\\frac{3}{n}$."
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"1 < n\"\nshows  \"prod (seq 1 (Suc n) (\\<lambda> k. 1 + 1/(k powr 3))) <= 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"1 < n\"\nshows  \"prod (seq 1 (Suc n) (\\<lambda> k. 1 + 1/(k powr 3))) <= 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Find a bound on the value of the product of 1 plus the reciprocal of each cube of the natural numbers from 1 to n+1. The final answer is less than or equal to 3 - 1/n.\""
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"1 < n\"\nshows  \"(\\<Product i=1:n> (1 + 1 / (i powr 3))) \\<= 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"1 < n\"\nshows  \"(\\<Product i=1:n> (1 + 1 / (i powr 3))) \\<= 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"What is the value of the product $\\left(1 + \\frac{1}{1^3}\\right) \\times \\left(1 + \\frac{1}{2^3}\\right) \\times \\cdots \\times \\left(1 + \\frac{1}{n^3}\\right)$ for any positive integer $n$? Is this value less than or equal to $\\frac{3-1}{n}$?\""
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\" and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. 1 <= k => P k = 1 + 1 / (k powr 3)\"\nand h1 : \"n > 0\"\nshows  \"\\<prod>k=1:n. P k <= 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: \"nat\" and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. 1 <= k => P k = 1 + 1 / (k powr 3)\"\nand h1 : \"n > 0\"\nshows  \"\\<prod>k=1:n. P k <= 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the product $\\prod\\_{k=1}^n \\frac{1}{k^3+1}$, given that $\\frac{1}{k^3+1} = 1+\\frac{1}{k^3}$ for all positive integers $k$. The final answer is a number less than or equal to $\\frac{3-1}{n}$."
+    },
+    "a_7_mistral": {
+        "formal problem": "theorem\nfixes n :: nat and p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. 1 \\<le> k \\<longrightarrow> 1 + 1 / k powr 3 > 0\"\nand h1 : \"\\<forall> n. 1 \\<le> n \\<longrightarrow> \\<exists> p. prod (map (fn i => 1 + 1 / (i powr 3)) (enumFromTo 1 n)) = p\"\nand h2 : \"\\<forall> n. 1 \\<le> n \\<longrightarrow> p (succ n) * (1 + 1 / n powr 3) <= 3 - 1 / n\"\nshows  \"\\<forall> n. 1 \\<le> n \\<longrightarrow> prod (map (fn i => 1 + 1 / (i powr 3)) (enumFromTo 1 n)) <= 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat and p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. 1 \\<le> k \\<longrightarrow> 1 + 1 / k powr 3 > 0\"\nand h1 : \"\\<forall> n. 1 \\<le> n \\<longrightarrow> \\<exists> p. prod (map (fn i => 1 + 1 / (i powr 3)) (enumFromTo 1 n)) = p\"\nand h2 : \"\\<forall> n. 1 \\<le> n \\<longrightarrow> p (succ n) * (1 + 1 / n powr 3) <= 3 - 1 / n\"\nshows  \"\\<forall> n. 1 \\<le> n \\<longrightarrow> prod (map (fn i => 1 + 1 / (i powr 3)) (enumFromTo 1 n)) <= 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For all natural numbers $n$, if $1+\\frac{1}{k^3}$ is positive for all $k$ between $1$ and $n$, then the product of $1+\\frac{1}{i^3}$ for all $i$ between $1$ and $n$ is less than or equal to $\\frac{3}{1+n}$."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes n :: nat and p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < n\"\nand h1 : \"\\<forall> k. 1 <= k <= n \\<Longrightarrow> p k = 1 + 1 / (k powr 3)\"\nshows  \"\\<forall> n. prod (map p [1..n]) <= 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat and p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"0 < n\"\nand h1 : \"\\<forall> k. 1 <= k <= n \\<Longrightarrow> p k = 1 + 1 / (k powr 3)\"\nshows  \"\\<forall> n. prod (map p [1..n]) <= 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a given positive integer $n$, if $p_k = 1 + \\frac{1}{k^3}$ for all $1 \\leq k \\leq n$, what can be said about the product of the first $n$ terms of the sequence $p_1, p_2, \\dots, p_n$? The final answer is that it is less than or equal to $\\frac{3 - 1}{n}$."
+    },
+    "a_9_mistral": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"1 < n\"\nassumes h1 : \"\\<forall> k. 1 <= k <= n => k in nat\"\nassumes h2 : \"\\<forall> k. 1 <= k <= n => 1 + 1 / (k powr 3) >= 1\"\nassumes h3 : \"\\<forall> k. 1 <= k <= n => 1 + 1 / (k powr 3) <= 3 - 1 / n\"\nshow \"\\<forall> n. 1 < n => \\<prod>k=1:n. 1 + 1 / (k powr 3) <= 3 - 1 / n\"\nproof (induct n)\n  case 1\n  show \"\\<prod>k=1:1. 1 + 1 / (k powr 3) <= 3 - 1 / 1\" by simp\n  then show \"\\<prod>k=1:1. 1 + 1 / (k powr 3) <= 3\" by simp\n  next\n  assume (H : \"\\<prod>k=1:(n-1). 1 + 1 / (k powr 3) <= 3 - 1 / (n-1)\")\n  have IH : \"3 - 1 / n <= 3 - 1 / (n-1)\" by simp\n  have h4 : \"1 + 1 / n^3 <= 3 - 1 / n\" by (apply lt_sub (1+1/(n*n*n)) (3-(1/(n-1)))) using [h2, h3, IH]\n  show \"\\<prod>k=1:n. 1 + 1 / (k powr 3) <= 3 - 1 / n\" by (apply le_prod (1+1/(n*n*n)) (h4) H)\nqed\n\n(* Note that this proof uses the \"simp\" and \"lt\\_sub\" tactics, which may require additional imports and definitions. *)",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"1 < n\"\nassumes h1 : \"\\<forall> k. 1 <= k <= n => k in nat\"\nassumes h2 : \"\\<forall> k. 1 <= k <= n => 1 + 1 / (k powr 3) >= 1\"\nassumes h3 : \"\\<forall> k. 1 <= k <= n => 1 + 1 / (k powr 3) <= 3 - 1 / n\"\nshow \"\\<forall> n. 1 < n => \\<prod>k=1:n. 1 + 1 / (k powr 3) <= 3 - 1 / n\"\nproof (induct n)\n  case 1\n  show \"\\<prod>k=1:1. 1 + 1 / (k powr 3) <= 3 - 1 / 1\" by simp\n  then show \"\\<prod>k=1:1. 1 + 1 / (k powr 3) <= 3\" by simp\n  next\n  assume (H : \"\\<prod>k=1:(n-1). 1 + 1 / (k powr 3) <= 3 - 1 / (n-1)\")\n  have IH : \"3 - 1 / n <= 3 - 1 / (n-1)\" by simp\n  have h4 : \"1 + 1 / n^3 <= 3 - 1 / n\" by (apply lt_sub (1+1/(n*n*n)) (3-(1/(n-1)))) using [h2, h3, IH]\n  show \"\\<prod>k=1:n. 1 + 1 / (k powr 3) <= 3 - 1 / n\" by (apply le_prod (1+1/(n*n*n)) (h4) H)\nqed\n\n(* Note that this proof uses the \"simp\" and \"lt\\_sub\" tactics, which may require additional imports and definitions. *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For any natural number $n$, where $n > 1$: The product of $\\frac{1}{k^3}+1$ for all integers $k$ from $1$ to $n$ is less than or equal to $3-\\frac{1}{n}$.\n\nProof by induction:\n\nBase case: When $n=1$, the product of $1$ term is $1+1/(1^3)=1$, which is less than or equal to $3-\\frac{1}{1}=3$.\n\nInductive step: Assume that the statement holds for $n-1$. We need to show that the statement also holds for $n$:\n\nSince $\\frac{1}{k^3}+1$ is less than or equal to $3-\\frac{1}{n-1}$ for all $k$ from $1$ to $n-1$, we have:\n\n\\[\\prod_{k=1}^{n-1} (\\frac{1}{k^3}+1) \\leq 3-\\frac{1}{n-1}\\]\n\nNow, we need to show that $\\frac{1}{n^3}+1$ is less than or equal to $3-\\frac{1}{n}$:\n\n\\[\\frac{1}{n^3}+1 \\leq 3-\\frac{1}{n}\\]\n\nUsing the inequality $\\frac{1}{x} < x-1$, we have:\n\n\\[\\frac{1}{n} < n-1 \\rightarrow \\frac{1}{n^3} < (n-1)^3\\]\n\nMultiplying both sides by $\\frac{1}{n^3}$, we get:\n\n\\[\\frac{1}{n} < n-1 \\rightarrow \\frac{1}{n^3} < \\left(n-1\\right)^3\\]\n\nNow, we can use the inequality $\\frac{1}{x} < x-1$ again to show:\n\n\\[\\frac{1}{n^3} < \\left(n-1\\right)^3 \\rightarrow \\frac{1}{n^3}+1 < 3-\\frac{1}{n}\\]\n\nSince the base case and the inductive step have been proven, the statement holds for all natural numbers $n$ where $n > 1$."
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n greater than 0. Calculate the product of the expression (1 + 1 / k^3) for all k from 1 to n. Prove that this product is always less than or equal to 3 - 1 / n."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n that is greater than 0. We want to find the product of the terms from k=1 to k=n, where each term is given by (1 + 1 / (real k) powr 3). Prove that this product is always less than or equal to 3 - 1 / real n."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n greater than 0. We want to find the product of the terms from k=1 to k=n, where each term is given by (1 + 1 / (real k) powr 3). Prove that this product is always less than or equal to 3 - 1 / real n."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n greater than 0. We want to find the product of the terms from k=1 to k=n, where each term is given by (1 + 1 / (real k) powr 3). Prove that this product is always less than or equal to 3 - 1 / real n."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n greater than 0. We want to find the product of the expression (1 + 1 / k^3) for all values of k from 1 to n. Prove that this product is always less than or equal to the expression 3 - 1 / n."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem prod_ineq:\n  fixes n :: nat\n  shows  \"(\\<Prod>k=1..n. (1 + 1 / k^3)) \\<le> 3 - 1 / real n\"\nproof (induct n)\n  case 0\n  then show ?case by simp\nnext\n  case (Suc n)\n  have \"(\\<Prod>k=1..Suc n. (1 + 1 / k^3)) = (\\<Prod>k=1..n. (1 + 1 / k^3)) * (1 + 1 / (Suc n)^3)\"\n    by (simp add: prod.atLeast1_atMost_Suc_shift)\n  also have \"\\<dots> \\<le> (3 - 1 / real n) * (1 + 1 / (Suc n)^3)\"\n    using Suc by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1 / real (Suc n)\"\n    by (simp add: algebra_simps)\n  finally show ?case .\nqed",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem prod_ineq:\n  fixes n :: nat\n  shows  \"(\\<Prod>k=1..n. (1 + 1 / k^3)) \\<le> 3 - 1 / real n\"\nproof (induct n)\n  case 0\n  then show ?case by simp\nnext\n  case (Suc n)\n  have \"(\\<Prod>k=1..Suc n. (1 + 1 / k^3)) = (\\<Prod>k=1..n. (1 + 1 / k^3)) * (1 + 1 / (Suc n)^3)\"\n    by (simp add: prod.atLeast1_atMost_Suc_shift)\n  also have \"\\<dots> \\<le> (3 - 1 / real n) * (1 + 1 / (Suc n)^3)\"\n    using Suc by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1 / real (Suc n)\"\n    by (simp add: algebra_simps)\n  finally show ?case .\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The theorem states that for any natural number n, the product of the terms (1 + 1/k^3) from k=1 to k=n is less than or equal to 3 - 1/n. We prove this by induction.\n\nFor the base case, when n=0, the product is 1, which is less than or equal to 3 - 1/0, so the statement holds.\n\nFor the inductive step, assume the statement holds for n. We want to show it holds for n+1. The product from k=1 to k=n+1 is the product from k=1 to k=n times (1 + 1/(n+1)^3). By the inductive hypothesis, the product from k=1 to k=n is less than or equal to 3 - 1/n. Multiplying this by (1 + 1/(n+1)^3) gives 3 - 1/(n+1), which is the desired result for n+1.\n\nTherefore, by induction, the statement holds for all natural numbers n."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"\nusing assms\nproof (induction n)\n  case 0\n  then show ?case by simp\nnext\n  case (Suc n)\n  have \"(\\<Prod>k=1..Suc n. (1 + 1 / k powr 3)) = (\\<Prod>k=1..n. (1 + 1 / k powr 3)) * (1 + 1 / (Suc n) powr 3)\"\n    by (simp add: prod.atLeast1_atMost_eq)\n  also have \"\\<dots> \\<le> (3 - 1 / real n) * (1 + 1 / (Suc n) powr 3)\"\n    using Suc.IH by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1 / real (Suc n)\"\n    by (simp add: algebra_simps)\n  finally show ?case .\nqed",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"\nusing assms\nproof (induction n)\n  case 0\n  then show ?case by simp\nnext\n  case (Suc n)\n  have \"(\\<Prod>k=1..Suc n. (1 + 1 / k powr 3)) = (\\<Prod>k=1..n. (1 + 1 / k powr 3)) * (1 + 1 / (Suc n) powr 3)\"\n    by (simp add: prod.atLeast1_atMost_eq)\n  also have \"\\<dots> \\<le> (3 - 1 / real n) * (1 + 1 / (Suc n) powr 3)\"\n    using Suc.IH by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1 / real (Suc n)\"\n    by (simp add: algebra_simps)\n  finally show ?case .\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " For any positive natural number n, the product of the terms (1 + 1/k^3) from k=1 to n is less than or equal to 3 - 1/n. We can prove this by induction. For the base case, when n=0, the statement is trivially true. Now, let's assume the statement is true for n. We need to show that it's also true for n+1. The product from k=1 to n+1 is equal to the product from k=1 to n multiplied by (1 + 1/(n+1)^3). By our assumption, the product from k=1 to n is less than or equal to 3 - 1/n. So, the product from k=1 to n+1 is less than or equal to (3 - 1/n) * (1 + 1/(n+1)^3), which simplifies to 3 - 1/(n+1). Therefore, the statement is true for n+1, and by induction, it's true for all positive natural numbers n."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n greater than 0. Calculate the product of the terms from k=1 to k=n, where each term is (1 + 1 / (real k)\u00b3). Prove that this product is always less than or equal to 3 - 1 / real n."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem prod_ineq:\n  fixes n :: nat\n  shows  \"(\\<Prod>k=1..n. (1 + 1/real k^3)) \\<le> 3 - 1/real n\"\nproof (induct n)\n  case 0\n  show ?case by simp\nnext\n  case (Suc n)\n  have \"(\\<Prod>k=1..Suc n. (1 + 1/real k^3)) = (\\<Prod>k=1..n. (1 + 1/real k^3)) * (1 + 1/real (Suc n)^3)\"\n    by (simp add: prod.atLeast1_atMost_eq)\n  also have \"\\<dots> \\<le> (3 - 1/real n) * (1 + 1/real (Suc n)^3)\"\n    using Suc by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1/real n + (3 - 1/real n) * (1/real (Suc n)^3)\"\n    by (simp add: algebra_simps)\n  also have \"\\<dots> \\<le> 3 - 1/real n + 1/real (Suc n)^3\"\n    by (simp add: mult_left_mono)\n  also have \"\\<dots> = 3 - (1/real n - 1/real (Suc n)^3)\"\n    by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1/real (Suc n)\"\n    by (simp add: field_simps)\n  finally show ?case .\nqed",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem prod_ineq:\n  fixes n :: nat\n  shows  \"(\\<Prod>k=1..n. (1 + 1/real k^3)) \\<le> 3 - 1/real n\"\nproof (induct n)\n  case 0\n  show ?case by simp\nnext\n  case (Suc n)\n  have \"(\\<Prod>k=1..Suc n. (1 + 1/real k^3)) = (\\<Prod>k=1..n. (1 + 1/real k^3)) * (1 + 1/real (Suc n)^3)\"\n    by (simp add: prod.atLeast1_atMost_eq)\n  also have \"\\<dots> \\<le> (3 - 1/real n) * (1 + 1/real (Suc n)^3)\"\n    using Suc by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1/real n + (3 - 1/real n) * (1/real (Suc n)^3)\"\n    by (simp add: algebra_simps)\n  also have \"\\<dots> \\<le> 3 - 1/real n + 1/real (Suc n)^3\"\n    by (simp add: mult_left_mono)\n  also have \"\\<dots> = 3 - (1/real n - 1/real (Suc n)^3)\"\n    by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1/real (Suc n)\"\n    by (simp add: field_simps)\n  finally show ?case .\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The mathematical problem formulated in Isabelle can be translated to the following natural language problem:\n\nProve that for any natural number n, the product of the sequence (1 + 1/k^3) from k=1 to k=n is less than or equal to 3 - 1/n. \n\nTo prove this, we will use mathematical induction. \n\nFor the base case, when n=0, the product is 1, which is less than or equal to 3 - 1/0, so the base case holds.\n\nFor the induction step, assume that the statement holds for n, i.e., the product of the sequence (1 + 1/k^3) from k=1 to k=n is less than or equal to 3 - 1/n. \n\nWe need to show that the statement also holds for n+1. \n\nThe product of the sequence (1 + 1/k^3) from k=1 to k=n+1 is equal to the product from k=1 to k=n times (1 + 1/(n+1)^3). \n\nBy the induction hypothesis, the product from k=1 to k=n is less than or equal to 3 - 1/n. \n\nSo, the product from k=1 to k=n+1 is less than or equal to (3 - 1/n) * (1 + 1/(n+1)^3). \n\nThis simplifies to 3 - 1/n + (3 - 1/n) * (1/(n+1)^3), which is less than or equal to 3 - 1/n + 1/(n+1)^3. \n\nThis further simplifies to 3 - (1/n - 1/(n+1)^3), which is equal to 3 - 1/(n+1). \n\nSo, the product from k=1 to k=n+1 is less than or equal to 3 - 1/(n+1), which completes the induction step. \n\nTherefore, by mathematical induction, the statement holds for all natural numbers n."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a positive integer n. For each natural number k from 1 to n, we form the product of the terms (1 + 1 / (real k) ^ 3). Prove that this product is always less than or equal to 3 - 1 / n."
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            7,
+            9
+        ],
+        "1": [
+            5
+        ],
+        "2": [
+            6
+        ],
+        "3": [
+            8
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"(\\<Prod>k = 1..n. (1 + 1 / (k powr 3))) \\<le> 3 - 1 / (n::real)\"\nshows  \"\\<forall>n. n > 0 \\<longrightarrow> (\\<Prod>k = 1..n. (1 + 1 / (k powr 3))) \\<le> 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"(\\<Prod>k = 1..n. (1 + 1 / (k powr 3))) \\<le> 3 - 1 / (n::real)\"\nshows  \"\\<forall>n. n > 0 \\<longrightarrow> (\\<Prod>k = 1..n. (1 + 1 / (k powr 3))) \\<le> 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For all positive integers $n$, consider the product $\\prod_{k=1}^n \\left(1 + \\frac{1}{k^3}\\right)$. Show that this product is always less than or equal to $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9380665112129515,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and prod :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k \\<in> {1..n}. prod k = (1 + 1 / (k^3))\"\nshows  \"prod n \\<le> 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat and prod :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k \\<in> {1..n}. prod k = (1 + 1 / (k^3))\"\nshows  \"prod n \\<le> 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a product function $prod(n)$ such that $prod(k) = 1 + \\frac{1}{k^3}$ for all natural numbers $k$ in the range $1$ to $n$, show that $prod(n) \\leq 3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9221542946624296,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k\\<in>{1..n}. (1 + 1/(k^3))) \\<le> 3 - 1/n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k\\<in>{1..n}. (1 + 1/(k^3))) \\<le> 3 - 1/n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a positive integer $n > 0$, show that the product of the terms $(1 + \\frac{1}{k^3})$ for $k$ in the range from $1$ to $n$ is less than or equal to $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9518869546448812,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / (real k ^ 3))) \\<le> 3 - 1 / (real n)\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / (real k ^ 3))) \\<le> 3 - 1 / (real n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a positive integer $n$, show that the product of the terms $\\left(1 + \\frac{1}{k^3}\\right)$ for $k = 1$ to $n$ is less than or equal to $3 - \\frac{1}{n}$, i.e.,\n\n$\\prod_{k=1}^n \\left(1 + \\frac{1}{k^3}\\right) \\leq 3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9537642712527207,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k\\<in>{1..n}. (1 + 1 / (real k) ^ 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k\\<in>{1..n}. (1 + 1 / (real k) ^ 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a positive integer $n$, show that the product $\\prod_{k=1}^{n} \\left(1 + \\frac{1}{k^3}\\right) \\leq 3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9666533910877539,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes n k :: nat and prod :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>k \\<in> {1..n}. prod k = (1 + 1 / (real k) powr 3)\"\nand h1 : \"n > 0\"\nshows  \"(\\<Prod>k \\<in> {1..n}. prod k) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n k :: nat and prod :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>k \\<in> {1..n}. prod k = (1 + 1 / (real k) powr 3)\"\nand h1 : \"n > 0\"\nshows  \"(\\<Prod>k \\<in> {1..n}. prod k) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sequence of $n$ positive numbers, where the $k$-th term is defined as $1 + \\frac{1}{k^3}$ for $k = 1, 2, \\dots, n$, and $n > 0$, find the upper bound for the product of all the terms in the sequence. The final answer is $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8622761458886476,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k \\<in> {1..n}. (1 + 1 / k ^ 3)) \\<le> 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k \\<in> {1..n}. (1 + 1 / k ^ 3)) \\<le> 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a positive natural number $n$, show that the product of the terms $(1 + \\frac{1}{k^3})$ for $k = 1$ to $n$ is less than or equal to $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9472568404819504,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes n k :: nat and P :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. k \\<ge> 1 \\<and> k \\<le> n \\<longrightarrow> P k = 1 + 1 / (real k)^3\"\nand h1 : \"n > 0\"\nshows  \"(\\<Prod> k = 1..n. P k) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n k :: nat and P :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> k. k \\<ge> 1 \\<and> k \\<le> n \\<longrightarrow> P k = 1 + 1 / (real k)^3\"\nand h1 : \"n > 0\"\nshows  \"(\\<Prod> k = 1..n. P k) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sequence of numbers $P(k) = 1 + \\frac{1}{k^3}$ for $1 \\leq k \\leq n$ and $n > 0$, find the upper bound for the product of the first $n$ terms of the sequence. The final answer is $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8817731407757277,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem prod_inequality:\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k \\<in> {1..n}. (1 + 1 / (k^3 :: real))) \\<le> 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem prod_inequality:\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k \\<in> {1..n}. (1 + 1 / (k^3 :: real))) \\<le> 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a positive integer $n$, prove that the product of the terms $\\left(1 + \\frac{1}{k^3}\\right)$ for $k$ in the range $1$ to $n$ is less than or equal to $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9474413310363184,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and prod :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"n > 0\"\nand h1 : \"\\<forall> k \\<in> {1..n}. prod k = 1 + 1 / (k ^ 3)\"\nshows  \"(\\<Prod> k \\<in> {1..n}. prod k) \\<le> 3 - 1 / n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\ntheorem\nfixes n :: nat and prod :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"n > 0\"\nand h1 : \"\\<forall> k \\<in> {1..n}. prod k = 1 + 1 / (k ^ 3)\"\nshows  \"(\\<Prod> k \\<in> {1..n}. prod k) \\<le> 3 - 1 / n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a positive integer $n$ and a product function $prod(k) = 1 + \\frac{1}{k^3}$ for all $k$ in the range $1$ to $n$. Find an upper bound for the product of the function values: $\\prod_{k=1}^n prod(k)$. The upper bound is $3 - \\frac{1}{n}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8796315713378168,
+        "symbolic_score": 0.1
+    },
+    "equivalence_oracle_solve_direct": [],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n greater than 0. Calculate the product of the expression (1 + 1 / k^3) for all k from 1 to n. Prove that this product is always less than or equal to 3 - 1 / n.",
+        "semantic_score": 0.9017464100187611,
+        "symbolic_score": 0.2
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n that is greater than 0. We want to find the product of the terms from k=1 to k=n, where each term is given by (1 + 1 / (real k) powr 3). Prove that this product is always less than or equal to 3 - 1 / real n.",
+        "semantic_score": 0.8773363636428805,
+        "symbolic_score": 0.5
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n greater than 0. We want to find the product of the terms from k=1 to k=n, where each term is given by (1 + 1 / (real k) powr 3). Prove that this product is always less than or equal to 3 - 1 / real n.",
+        "semantic_score": 0.8782883201943009,
+        "symbolic_score": 0.5
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n greater than 0. We want to find the product of the terms from k=1 to k=n, where each term is given by (1 + 1 / (real k) powr 3). Prove that this product is always less than or equal to 3 - 1 / real n.",
+        "semantic_score": 0.8782883201943009,
+        "symbolic_score": 0.5
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n greater than 0. We want to find the product of the expression (1 + 1 / k^3) for all values of k from 1 to n. Prove that this product is always less than or equal to the expression 3 - 1 / n.",
+        "semantic_score": 0.8989337992728756,
+        "symbolic_score": 0.2
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem prod_ineq:\n  fixes n :: nat\n  shows  \"(\\<Prod>k=1..n. (1 + 1 / k^3)) \\<le> 3 - 1 / real n\"\nproof (induct n)\n  case 0\n  then show ?case by simp\nnext\n  case (Suc n)\n  have \"(\\<Prod>k=1..Suc n. (1 + 1 / k^3)) = (\\<Prod>k=1..n. (1 + 1 / k^3)) * (1 + 1 / (Suc n)^3)\"\n    by (simp add: prod.atLeast1_atMost_Suc_shift)\n  also have \"\\<dots> \\<le> (3 - 1 / real n) * (1 + 1 / (Suc n)^3)\"\n    using Suc by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1 / real (Suc n)\"\n    by (simp add: algebra_simps)\n  finally show ?case .\nqed",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem prod_ineq:\n  fixes n :: nat\n  shows  \"(\\<Prod>k=1..n. (1 + 1 / k^3)) \\<le> 3 - 1 / real n\"\nproof (induct n)\n  case 0\n  then show ?case by simp\nnext\n  case (Suc n)\n  have \"(\\<Prod>k=1..Suc n. (1 + 1 / k^3)) = (\\<Prod>k=1..n. (1 + 1 / k^3)) * (1 + 1 / (Suc n)^3)\"\n    by (simp add: prod.atLeast1_atMost_Suc_shift)\n  also have \"\\<dots> \\<le> (3 - 1 / real n) * (1 + 1 / (Suc n)^3)\"\n    using Suc by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1 / real (Suc n)\"\n    by (simp add: algebra_simps)\n  finally show ?case .\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The theorem states that for any natural number n, the product of the terms (1 + 1/k^3) from k=1 to k=n is less than or equal to 3 - 1/n. We prove this by induction.\n\nFor the base case, when n=0, the product is 1, which is less than or equal to 3 - 1/0, so the statement holds.\n\nFor the inductive step, assume the statement holds for n. We want to show it holds for n+1. The product from k=1 to k=n+1 is the product from k=1 to k=n times (1 + 1/(n+1)^3). By the inductive hypothesis, the product from k=1 to k=n is less than or equal to 3 - 1/n. Multiplying this by (1 + 1/(n+1)^3) gives 3 - 1/(n+1), which is the desired result for n+1.\n\nTherefore, by induction, the statement holds for all natural numbers n.",
+        "semantic_score": 0.8850043252801917,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"\nusing assms\nproof (induction n)\n  case 0\n  then show ?case by simp\nnext\n  case (Suc n)\n  have \"(\\<Prod>k=1..Suc n. (1 + 1 / k powr 3)) = (\\<Prod>k=1..n. (1 + 1 / k powr 3)) * (1 + 1 / (Suc n) powr 3)\"\n    by (simp add: prod.atLeast1_atMost_eq)\n  also have \"\\<dots> \\<le> (3 - 1 / real n) * (1 + 1 / (Suc n) powr 3)\"\n    using Suc.IH by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1 / real (Suc n)\"\n    by (simp add: algebra_simps)\n  finally show ?case .\nqed",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / k powr 3)) \\<le> 3 - 1 / real n\"\nusing assms\nproof (induction n)\n  case 0\n  then show ?case by simp\nnext\n  case (Suc n)\n  have \"(\\<Prod>k=1..Suc n. (1 + 1 / k powr 3)) = (\\<Prod>k=1..n. (1 + 1 / k powr 3)) * (1 + 1 / (Suc n) powr 3)\"\n    by (simp add: prod.atLeast1_atMost_eq)\n  also have \"\\<dots> \\<le> (3 - 1 / real n) * (1 + 1 / (Suc n) powr 3)\"\n    using Suc.IH by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1 / real (Suc n)\"\n    by (simp add: algebra_simps)\n  finally show ?case .\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " For any positive natural number n, the product of the terms (1 + 1/k^3) from k=1 to n is less than or equal to 3 - 1/n. We can prove this by induction. For the base case, when n=0, the statement is trivially true. Now, let's assume the statement is true for n. We need to show that it's also true for n+1. The product from k=1 to n+1 is equal to the product from k=1 to n multiplied by (1 + 1/(n+1)^3). By our assumption, the product from k=1 to n is less than or equal to 3 - 1/n. So, the product from k=1 to n+1 is less than or equal to (3 - 1/n) * (1 + 1/(n+1)^3), which simplifies to 3 - 1/(n+1). Therefore, the statement is true for n+1, and by induction, it's true for all positive natural numbers n.",
+        "semantic_score": 0.9140775682438028,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k=1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number n greater than 0. Calculate the product of the terms from k=1 to k=n, where each term is (1 + 1 / (real k)\u00b3). Prove that this product is always less than or equal to 3 - 1 / real n.",
+        "semantic_score": 0.8848524926636829,
+        "symbolic_score": 0.5
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem prod_ineq:\n  fixes n :: nat\n  shows  \"(\\<Prod>k=1..n. (1 + 1/real k^3)) \\<le> 3 - 1/real n\"\nproof (induct n)\n  case 0\n  show ?case by simp\nnext\n  case (Suc n)\n  have \"(\\<Prod>k=1..Suc n. (1 + 1/real k^3)) = (\\<Prod>k=1..n. (1 + 1/real k^3)) * (1 + 1/real (Suc n)^3)\"\n    by (simp add: prod.atLeast1_atMost_eq)\n  also have \"\\<dots> \\<le> (3 - 1/real n) * (1 + 1/real (Suc n)^3)\"\n    using Suc by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1/real n + (3 - 1/real n) * (1/real (Suc n)^3)\"\n    by (simp add: algebra_simps)\n  also have \"\\<dots> \\<le> 3 - 1/real n + 1/real (Suc n)^3\"\n    by (simp add: mult_left_mono)\n  also have \"\\<dots> = 3 - (1/real n - 1/real (Suc n)^3)\"\n    by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1/real (Suc n)\"\n    by (simp add: field_simps)\n  finally show ?case .\nqed",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem prod_ineq:\n  fixes n :: nat\n  shows  \"(\\<Prod>k=1..n. (1 + 1/real k^3)) \\<le> 3 - 1/real n\"\nproof (induct n)\n  case 0\n  show ?case by simp\nnext\n  case (Suc n)\n  have \"(\\<Prod>k=1..Suc n. (1 + 1/real k^3)) = (\\<Prod>k=1..n. (1 + 1/real k^3)) * (1 + 1/real (Suc n)^3)\"\n    by (simp add: prod.atLeast1_atMost_eq)\n  also have \"\\<dots> \\<le> (3 - 1/real n) * (1 + 1/real (Suc n)^3)\"\n    using Suc by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1/real n + (3 - 1/real n) * (1/real (Suc n)^3)\"\n    by (simp add: algebra_simps)\n  also have \"\\<dots> \\<le> 3 - 1/real n + 1/real (Suc n)^3\"\n    by (simp add: mult_left_mono)\n  also have \"\\<dots> = 3 - (1/real n - 1/real (Suc n)^3)\"\n    by (simp add: algebra_simps)\n  also have \"\\<dots> = 3 - 1/real (Suc n)\"\n    by (simp add: field_simps)\n  finally show ?case .\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The mathematical problem formulated in Isabelle can be translated to the following natural language problem:\n\nProve that for any natural number n, the product of the sequence (1 + 1/k^3) from k=1 to k=n is less than or equal to 3 - 1/n. \n\nTo prove this, we will use mathematical induction. \n\nFor the base case, when n=0, the product is 1, which is less than or equal to 3 - 1/0, so the base case holds.\n\nFor the induction step, assume that the statement holds for n, i.e., the product of the sequence (1 + 1/k^3) from k=1 to k=n is less than or equal to 3 - 1/n. \n\nWe need to show that the statement also holds for n+1. \n\nThe product of the sequence (1 + 1/k^3) from k=1 to k=n+1 is equal to the product from k=1 to k=n times (1 + 1/(n+1)^3). \n\nBy the induction hypothesis, the product from k=1 to k=n is less than or equal to 3 - 1/n. \n\nSo, the product from k=1 to k=n+1 is less than or equal to (3 - 1/n) * (1 + 1/(n+1)^3). \n\nThis simplifies to 3 - 1/n + (3 - 1/n) * (1/(n+1)^3), which is less than or equal to 3 - 1/n + 1/(n+1)^3. \n\nThis further simplifies to 3 - (1/n - 1/(n+1)^3), which is equal to 3 - 1/(n+1). \n\nSo, the product from k=1 to k=n+1 is less than or equal to 3 - 1/(n+1), which completes the induction step. \n\nTherefore, by mathematical induction, the statement holds for all natural numbers n.",
+        "semantic_score": 0.8230310924395643,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"",
+        "formal solution": "(* ### Problem\n Show that for any positive integer $n$, we have $\\prod_{k=1}^n (1 + 1/k^3) \\leq 3 - 1/n$.\n ### Proof\n We can prove this by induction on n. For the base case, $n=1$, the statement is trivial.\nFor the inductive case, we assume $\\prod_{k=1}^{n_0} (1 + 1/k^3) \\leq 3 - 1/n_0$.\nTherefore, we have $\\prod_{k=1}^{n_0+1} (1 + 1/k^3) \\leq (3-1/n_0) (1 + 1/(n_0+1)^3) = 3 + \\frac{3}{(n_0+1)^3}-\\frac{1}{n_0}-\\frac{1}{n_0 (n_0+1)^3}$.\nIt hence suffices to show that $\\frac{3}{(n_0+1)^3}+\\frac{1}{n_0+1} \\leq \\frac{1}{n_0} + \\frac{1}{n_0 (n_0+1)^3}$, which is equivalent to\n$3n_0 + n_0 (n_0+1)^2 \\leq (n_0+1)^3 + 1$. Simplifying, we get\n$n_0^2 - n_0 + 2 \\geq 0$. This is obviously true for $n\\geq 1$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nshows  \"(\\<Prod>k = 1..n. (1 + 1 / (real k) powr 3)) \\<le> 3 - 1 / real n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a positive integer n. For each natural number k from 1 to n, we form the product of the terms (1 + 1 / (real k) ^ 3). Prove that this product is always less than or equal to 3 - 1 / n.",
+        "semantic_score": 0.9206920066695523,
+        "symbolic_score": 0.5
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            1,
+            2,
+            3,
+            7,
+            9
+        ],
+        "1": [
+            0,
+            4
+        ],
+        "2": [
+            5
+        ],
+        "3": [
+            6
+        ],
+        "4": [
+            8
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": []
+}

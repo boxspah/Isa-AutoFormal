@@ -1,0 +1,135 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x = 0 \\<and> y = 0\"\nand h1 : \"x = 1 - x\"\nand h2 : \"y = 2 - y\"\nshows  \"x = 2 \\<and> y = 4\"",
+        "formal solution": "(* ### Problem\n The point $(0,0)$ is reflected across the vertical line $x = 1$. Its image is then reflected across the line $y=2$. What are the coordinates of the resulting point? The final Answer is (2,4)\n ### Proof\n When the point $(0,0)$ is reflected across the line $x=1$, it is reflected to point $(2,0)$ since the horizontal distance between the original point and the line is $1$. If we reflect the new point $(2,0)$ across the line $y=2$, the vertical distance between the point and the line is $2$, so the coordinates of the resulting point are $\\boxed{(2,4)}$.\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x = 0 \\<and> y = 0\"\nand h1 : \"x = 1 - x\"\nand h2 : \"y = 2 - y\"\nshows  \"x = 2 \\<and> y = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If we start with $x=0$ and $y=0$, and then redefine $x$ to be $1-x$ and $y$ to be $2-y$, what are the final values of $x$ and $y$? The final answer is $x=2$ and $y=4$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9883714914321899,
+        "symbolic_score": 0.5
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x = 0\"\nand h1 : \"y = 0\"\nand h2 : \"x = 1 - x\"\nand h3 : \"y = 2 - y\"\nshows  \"x = 2\" and \"y = 4\"",
+        "formal solution": "(* ### Problem\n The point $(0,0)$ is reflected across the vertical line $x = 1$. Its image is then reflected across the line $y=2$. What are the coordinates of the resulting point? The final Answer is (2,4)\n ### Proof\n When the point $(0,0)$ is reflected across the line $x=1$, it is reflected to point $(2,0)$ since the horizontal distance between the original point and the line is $1$. If we reflect the new point $(2,0)$ across the line $y=2$, the vertical distance between the point and the line is $2$, so the coordinates of the resulting point are $\\boxed{(2,4)}$.\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x = 0\"\nand h1 : \"y = 0\"\nand h2 : \"x = 1 - x\"\nand h3 : \"y = 2 - y\"\nshows  \"x = 2\" and \"y = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x$ and $y$ are initially zero, and that $x$ is updated to be $1 - x$ and $y$ is updated to be $2 - y$, find the final values of $x$ and $y$. The final answer is $x = 2$ and $y = 4$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8127247095108032,
+        "symbolic_score": 0.5
+    },
+    "a_2": {
+        "formal problem": "\n\ntypedef point = \"{(x::real, y::real). True}\"\n\ndefinition reflect_x :: \"real \\<Rightarrow> point \\<Rightarrow> point\" where\n\"reflect_x a p = (2*a - fst p, snd p)\"\n\ndefinition reflect_y :: \"real \\<Rightarrow> point \\<Rightarrow> point\" where\n\"reflect_y a p = (fst p, 2*a - snd p)\"\n\ntheorem\nfixes p :: point\nassumes h0 : \"p = (0, 0)\"\nshows  \"(reflect_y 2 (reflect_x 1 p)) = (2, 4)\"\nusing assms reflect_x_def reflect_y_def by simp\n\nend\n",
+        "formal solution": "(* ### Problem\n The point $(0,0)$ is reflected across the vertical line $x = 1$. Its image is then reflected across the line $y=2$. What are the coordinates of the resulting point? The final Answer is (2,4)\n ### Proof\n When the point $(0,0)$ is reflected across the line $x=1$, it is reflected to point $(2,0)$ since the horizontal distance between the original point and the line is $1$. If we reflect the new point $(2,0)$ across the line $y=2$, the vertical distance between the point and the line is $2$, so the coordinates of the resulting point are $\\boxed{(2,4)}$.\n *)\n\n\n\ntypedef point = \"{(x::real, y::real). True}\"\n\ndefinition reflect_x :: \"real \\<Rightarrow> point \\<Rightarrow> point\" where\n\"reflect_x a p = (2*a - fst p, snd p)\"\n\ndefinition reflect_y :: \"real \\<Rightarrow> point \\<Rightarrow> point\" where\n\"reflect_y a p = (fst p, 2*a - snd p)\"\n\ntheorem\nfixes p :: point\nassumes h0 : \"p = (0, 0)\"\nshows  \"(reflect_y 2 (reflect_x 1 p)) = (2, 4)\"\nusing assms reflect_x_def reflect_y_def by simp\n\nend\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a point $p = (0, 0)$, the function `reflect_x` reflects point $p$ across the vertical line $x=a$ and the function `reflect_y` reflects point $p$ across the horizontal line $y=a$. If we first reflect point $p$ across the line $x=1$ and then reflect the result across the line $y=2$, what is the final position of the point $p$? The final answer is $(2,4)$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8081051111221313,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"(x, y) = (0, 0)\"\nand h1 : \"x = 1\"\nand h2 : \"y = 2\"\nshows  \"(x, y) = (2, 4)\"",
+        "formal solution": "(* ### Problem\n The point $(0,0)$ is reflected across the vertical line $x = 1$. Its image is then reflected across the line $y=2$. What are the coordinates of the resulting point? The final Answer is (2,4)\n ### Proof\n When the point $(0,0)$ is reflected across the line $x=1$, it is reflected to point $(2,0)$ since the horizontal distance between the original point and the line is $1$. If we reflect the new point $(2,0)$ across the line $y=2$, the vertical distance between the point and the line is $2$, so the coordinates of the resulting point are $\\boxed{(2,4)}$.\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"(x, y) = (0, 0)\"\nand h1 : \"x = 1\"\nand h2 : \"y = 2\"\nshows  \"(x, y) = (2, 4)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The problem appears to be inconsistent. It starts with the assertion that both x and y are zero, but then goes on to claim that x is 1 and y is 2. Therefore, it would not be possible to translate this into a coherent natural language problem. However, ignoring the inconsistency, the problem could be interpreted as: \"If initially x and y are both zero, but then x becomes 1 and y becomes 2, prove that the pair (x, y) is equal to (2, 4).\"",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8249719738960266,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes p :: \"real * real\" and reflect_x :: \"real \\<Rightarrow> real * real \\<Rightarrow> real * real\" and reflect_y :: \"real \\<Rightarrow> real * real \\<Rightarrow> real * real\"\nassumes h0 : \"p = (0, 0)\"\nand h1 : \"\\<forall> x p. reflect_x x p = (2 * x - fst p, snd p)\"\nand h2 : \"\\<forall> y p. reflect_y y p = (fst p, 2 * y - snd p)\"\nshows  \"reflect_y 2 (reflect_x 1 p) = (2, 4)\"",
+        "formal solution": "(* ### Problem\n The point $(0,0)$ is reflected across the vertical line $x = 1$. Its image is then reflected across the line $y=2$. What are the coordinates of the resulting point? The final Answer is (2,4)\n ### Proof\n When the point $(0,0)$ is reflected across the line $x=1$, it is reflected to point $(2,0)$ since the horizontal distance between the original point and the line is $1$. If we reflect the new point $(2,0)$ across the line $y=2$, the vertical distance between the point and the line is $2$, so the coordinates of the resulting point are $\\boxed{(2,4)}$.\n *)\n\ntheorem\nfixes p :: \"real * real\" and reflect_x :: \"real \\<Rightarrow> real * real \\<Rightarrow> real * real\" and reflect_y :: \"real \\<Rightarrow> real * real \\<Rightarrow> real * real\"\nassumes h0 : \"p = (0, 0)\"\nand h1 : \"\\<forall> x p. reflect_x x p = (2 * x - fst p, snd p)\"\nand h2 : \"\\<forall> y p. reflect_y y p = (fst p, 2 * y - snd p)\"\nshows  \"reflect_y 2 (reflect_x 1 p) = (2, 4)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a point $p=(0,0)$, a reflection across the line $x=1$ is defined by the function $reflect_x(x, p) = (2x - p_x, p_y)$, and a reflection across the line $y=2$ is defined by the function $reflect_y(y, p) = (p_x, 2y - p_y)$. Find the final coordinates of point $p$ after it is first reflected across the line $x=1$ and then reflected across the line $y=2$. The final answer is $(2, 4)$.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9569332599639893,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"(x, y) = (0, 0)\"\nand h1 : \"(x, y) = (2*(1-x) + x, y)\"\nand h2 : \"(x, y) = (x, 2*(2-y) + y)\"\nshows  \"(x, y) = (2, 4)\"",
+        "formal solution": "(* ### Problem\n The point $(0,0)$ is reflected across the vertical line $x = 1$. Its image is then reflected across the line $y=2$. What are the coordinates of the resulting point? The final Answer is (2,4)\n ### Proof\n When the point $(0,0)$ is reflected across the line $x=1$, it is reflected to point $(2,0)$ since the horizontal distance between the original point and the line is $1$. If we reflect the new point $(2,0)$ across the line $y=2$, the vertical distance between the point and the line is $2$, so the coordinates of the resulting point are $\\boxed{(2,4)}$.\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"(x, y) = (0, 0)\"\nand h1 : \"(x, y) = (2*(1-x) + x, y)\"\nand h2 : \"(x, y) = (x, 2*(2-y) + y)\"\nshows  \"(x, y) = (2, 4)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the point (x, y) initially at the origin (0, 0), the point moves to a new position (2*(1-x) + x, y) and then moves again to the position (x, 2*(2-y) + y). Find the final position of the point (x, y). The final answer is (2, 4).",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.91814786195755,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"(x, y) = (0, 0)\"\nand h1 : \"(x, y) = (2 * 1 - x, y)\"\nand h2 : \"(x, y) = (x, 2 * 2 - y)\"\nshows  \"(x, y) = (2, 4)\"",
+        "formal solution": "(* ### Problem\n The point $(0,0)$ is reflected across the vertical line $x = 1$. Its image is then reflected across the line $y=2$. What are the coordinates of the resulting point? The final Answer is (2,4)\n ### Proof\n When the point $(0,0)$ is reflected across the line $x=1$, it is reflected to point $(2,0)$ since the horizontal distance between the original point and the line is $1$. If we reflect the new point $(2,0)$ across the line $y=2$, the vertical distance between the point and the line is $2$, so the coordinates of the resulting point are $\\boxed{(2,4)}$.\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"(x, y) = (0, 0)\"\nand h1 : \"(x, y) = (2 * 1 - x, y)\"\nand h2 : \"(x, y) = (x, 2 * 2 - y)\"\nshows  \"(x, y) = (2, 4)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let's consider two real numbers $x$ and $y$. If it's given that initially $x$ and $y$ are both $0$, then $x$ is updated to be $2 * 1 - x$ and $y$ is updated to be $2 * 2 - y$. What are the final values of $x$ and $y$? The answer is $x = 2$ and $y = 4$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9243357181549072,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"(x, y) = (0, 0)\"\nand h1 : \"x = 1 - x\"\nand h2 : \"y = 2 - y\"\nshows  \"(x, y) = (2, 4)\"",
+        "formal solution": "(* ### Problem\n The point $(0,0)$ is reflected across the vertical line $x = 1$. Its image is then reflected across the line $y=2$. What are the coordinates of the resulting point? The final Answer is (2,4)\n ### Proof\n When the point $(0,0)$ is reflected across the line $x=1$, it is reflected to point $(2,0)$ since the horizontal distance between the original point and the line is $1$. If we reflect the new point $(2,0)$ across the line $y=2$, the vertical distance between the point and the line is $2$, so the coordinates of the resulting point are $\\boxed{(2,4)}$.\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"(x, y) = (0, 0)\"\nand h1 : \"x = 1 - x\"\nand h2 : \"y = 2 - y\"\nshows  \"(x, y) = (2, 4)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x$ and $y$ both start at 0, and that $x$ is updated to be $1 - x$ and $y$ is updated to be $2 - y$, find the new values of $x$ and $y$. The final answer is $(2, 4)$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8782006502151489,
+        "symbolic_score": 0.5
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x = 0\"\nand h1 : \"y = 0\"\nand h2 : \"x = 1 - x\"\nand h3 : \"y = 2 - y\"\nshows  \"x = 2\" and \"y = 4\"",
+        "formal solution": "(* ### Problem\n The point $(0,0)$ is reflected across the vertical line $x = 1$. Its image is then reflected across the line $y=2$. What are the coordinates of the resulting point? The final Answer is (2,4)\n ### Proof\n When the point $(0,0)$ is reflected across the line $x=1$, it is reflected to point $(2,0)$ since the horizontal distance between the original point and the line is $1$. If we reflect the new point $(2,0)$ across the line $y=2$, the vertical distance between the point and the line is $2$, so the coordinates of the resulting point are $\\boxed{(2,4)}$.\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x = 0\"\nand h1 : \"y = 0\"\nand h2 : \"x = 1 - x\"\nand h3 : \"y = 2 - y\"\nshows  \"x = 2\" and \"y = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the values of $x$ and $y$ given the following equations:\n1. $x = 0$\n2. $y = 0$\n3. $x = 1 - x$\n4. $y = 2 - y$\n\nThe final answer is $x = 2$ and $y = 4$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9265286922454834,
+        "symbolic_score": 0.5
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"(x, y) = (0, 0)\"\nand h1 : \"x = 1 - x\"\nand h2 : \"y = 2 - y\"\nshows  \"(x, y) = (2, 4)\"",
+        "formal solution": "(* ### Problem\n The point $(0,0)$ is reflected across the vertical line $x = 1$. Its image is then reflected across the line $y=2$. What are the coordinates of the resulting point? The final Answer is (2,4)\n ### Proof\n When the point $(0,0)$ is reflected across the line $x=1$, it is reflected to point $(2,0)$ since the horizontal distance between the original point and the line is $1$. If we reflect the new point $(2,0)$ across the line $y=2$, the vertical distance between the point and the line is $2$, so the coordinates of the resulting point are $\\boxed{(2,4)}$.\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"(x, y) = (0, 0)\"\nand h1 : \"x = 1 - x\"\nand h2 : \"y = 2 - y\"\nshows  \"(x, y) = (2, 4)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the point (x, y) starts at the origin (0,0) and undergoes transformations defined by x = 1 - x and y = 2 - y, find the new coordinates of the point (x, y). The final answer is (2, 4).",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9440940618515015,
+        "symbolic_score": 0.5
+    },
+    "natural answer": "(2,4)",
+    "natural problem": "The point $(0,0)$ is reflected across the vertical line $x = 1$. Its image is then reflected across the line $y=2$. What are the coordinates of the resulting point?",
+    "natural solution": [
+        "When the point $(0,0)$ is reflected across the line $x=1$, it is reflected to point $(2,0)$ since the horizontal distance between the original point and the line is $1$. If we reflect the new point $(2,0)$ across the line $y=2$, the vertical distance between the point and the line is $2$, so the coordinates of the resulting point are $\\boxed{(2,4)}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            2
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ]
+    },
+    "str_pred": "[[0, 1, 7, 8, 9], [2], [3], [4], [5], [6]]",
+    "level": "Level 2",
+    "type": "Geometry"
+}

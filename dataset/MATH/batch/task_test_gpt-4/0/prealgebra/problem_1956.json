@@ -1,0 +1,143 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes red_light :: \"int \\<Rightarrow> bool\" and yellow_light :: \"int \\<Rightarrow> bool\" and blue_light :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>t. t \\<ge> 0 \\<longrightarrow> red_light t = (t mod 2 = 0)\"\nand h1 : \"\\<forall>t. t \\<ge> 0 \\<longrightarrow> yellow_light t = (t mod 3 = 0)\"\nand h2 : \"\\<forall>t. t \\<ge> 0 \\<longrightarrow> blue_light t = (t mod 5 = 0)\"\nshows  \"card {t. t \\<in> {0..420} \\<and> red_light t \\<and> yellow_light t \\<and> blue_light t} = 15\"",
+        "formal solution": "(* ### Problem\n Joe was in charge of lights for a dance. The red light blinks every two seconds, the yellow light every three seconds, and the blue light every five seconds. If we include the very beginning and very end of the dance, how many times during a seven minute dance will all the lights come on at the same time? (Assume that all three lights blink simultaneously at the very beginning of the dance.) The final Answer is 15\n ### Proof\n The three lights blink simultaneously $t$ seconds after the start of the dance if and only if $t$ is a common multiple of 2, 3, and 5. Recall the common multiples of a set of integers are precisely the multiples of the least common multiple.\n Since 2, 3, and 5 are relatively prime, their least common multiple is $2\\cdot 3\\cdot 5 = 30$.\n Thus the light blinks $t$ seconds after the beginning of the song for $t=0,1,2,\\ldots,14$, and after 14 thirty-second periods, the song ends.\n Thus the lights blink in unison a total of $\\boxed{15}$ times.\n *)\n\ntheorem\nfixes red_light :: \"int \\<Rightarrow> bool\" and yellow_light :: \"int \\<Rightarrow> bool\" and blue_light :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>t. t \\<ge> 0 \\<longrightarrow> red_light t = (t mod 2 = 0)\"\nand h1 : \"\\<forall>t. t \\<ge> 0 \\<longrightarrow> yellow_light t = (t mod 3 = 0)\"\nand h2 : \"\\<forall>t. t \\<ge> 0 \\<longrightarrow> blue_light t = (t mod 5 = 0)\"\nshows  \"card {t. t \\<in> {0..420} \\<and> red_light t \\<and> yellow_light t \\<and> blue_light t} = 15\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider three lights: a red light, a yellow light, and a blue light. The red light turns on every 2 seconds, the yellow light turns on every 3 seconds, and the blue light turns on every 5 seconds. If we start observing at time zero and continue observing until time 420, how many times do all three lights turn on simultaneously? The answer is 15 times.",
+        "label": 1,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9602034687995911,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes red_light yellow_light blue_light :: nat and t :: real\nassumes h0 : \"red_light = 2\"\nand h1 : \"yellow_light = 3\"\nand h2 : \"blue_light = 5\"\nand h3 : \"t = 7 * 60\"\nand h4 : \"red_light dvd t\"\nand h5 : \"yellow_light dvd t\"\nand h6 : \"blue_light dvd t\"\nshows  \"natfloor(t / lcm (lcm red_light yellow_light) blue_light) + 1 = 15\"",
+        "formal solution": "(* ### Problem\n Joe was in charge of lights for a dance. The red light blinks every two seconds, the yellow light every three seconds, and the blue light every five seconds. If we include the very beginning and very end of the dance, how many times during a seven minute dance will all the lights come on at the same time? (Assume that all three lights blink simultaneously at the very beginning of the dance.) The final Answer is 15\n ### Proof\n The three lights blink simultaneously $t$ seconds after the start of the dance if and only if $t$ is a common multiple of 2, 3, and 5. Recall the common multiples of a set of integers are precisely the multiples of the least common multiple.\n Since 2, 3, and 5 are relatively prime, their least common multiple is $2\\cdot 3\\cdot 5 = 30$.\n Thus the light blinks $t$ seconds after the beginning of the song for $t=0,1,2,\\ldots,14$, and after 14 thirty-second periods, the song ends.\n Thus the lights blink in unison a total of $\\boxed{15}$ times.\n *)\n\ntheorem\nfixes red_light yellow_light blue_light :: nat and t :: real\nassumes h0 : \"red_light = 2\"\nand h1 : \"yellow_light = 3\"\nand h2 : \"blue_light = 5\"\nand h3 : \"t = 7 * 60\"\nand h4 : \"red_light dvd t\"\nand h5 : \"yellow_light dvd t\"\nand h6 : \"blue_light dvd t\"\nshows  \"natfloor(t / lcm (lcm red_light yellow_light) blue_light) + 1 = 15\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A red light flashes every 2 seconds, a yellow light flashes every 3 seconds, and a blue light flashes every 5 seconds. If these lights have been flashing for 7 minutes, how many times have all three lights flashed together? The final answer is 15 times.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9579633474349976,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem \nfixes dance_minutes :: nat and red_light :: nat and yellow_light :: nat and blue_light :: nat\nassumes h0 : \"dance_minutes = 7\"\nand h1 : \"red_light = 2\"\nand h2 : \"yellow_light = 3\"\nand h3 : \"blue_light = 5\"\nshows  \"lcm (lcm red_light yellow_light) blue_light * dance_minutes = 15\"",
+        "formal solution": "(* ### Problem\n Joe was in charge of lights for a dance. The red light blinks every two seconds, the yellow light every three seconds, and the blue light every five seconds. If we include the very beginning and very end of the dance, how many times during a seven minute dance will all the lights come on at the same time? (Assume that all three lights blink simultaneously at the very beginning of the dance.) The final Answer is 15\n ### Proof\n The three lights blink simultaneously $t$ seconds after the start of the dance if and only if $t$ is a common multiple of 2, 3, and 5. Recall the common multiples of a set of integers are precisely the multiples of the least common multiple.\n Since 2, 3, and 5 are relatively prime, their least common multiple is $2\\cdot 3\\cdot 5 = 30$.\n Thus the light blinks $t$ seconds after the beginning of the song for $t=0,1,2,\\ldots,14$, and after 14 thirty-second periods, the song ends.\n Thus the lights blink in unison a total of $\\boxed{15}$ times.\n *)\n\ntheorem \nfixes dance_minutes :: nat and red_light :: nat and yellow_light :: nat and blue_light :: nat\nassumes h0 : \"dance_minutes = 7\"\nand h1 : \"red_light = 2\"\nand h2 : \"yellow_light = 3\"\nand h3 : \"blue_light = 5\"\nshows  \"lcm (lcm red_light yellow_light) blue_light * dance_minutes = 15\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There is a dance that lasts for 7 minutes. The red light flashes every 2 minutes, the yellow light flashes every 3 minutes, and the blue light flashes every 5 minutes. What is the time in minutes for all lights to flash together multiplied by the length of the dance? The final answer is 15 minutes.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8431395888328552,
+        "symbolic_score": 0.2
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes red :: nat and yellow :: nat and blue :: nat and time :: nat\nassumes h0 : \"red = 2\"\nand h1 : \"yellow = 3\"\nand h2 : \"blue = 5\"\nand h3 : \"time = 7 * 60\"\nand h4 : \"\\<forall> t. t <= time \\<longrightarrow> (t mod red = 0 \\<and> t mod yellow = 0 \\<and> t mod blue = 0)\"\nshows  \"card {t. t <= time \\<and> t mod red = 0 \\<and> t mod yellow = 0 \\<and> t mod blue = 0} = 15\"",
+        "formal solution": "(* ### Problem\n Joe was in charge of lights for a dance. The red light blinks every two seconds, the yellow light every three seconds, and the blue light every five seconds. If we include the very beginning and very end of the dance, how many times during a seven minute dance will all the lights come on at the same time? (Assume that all three lights blink simultaneously at the very beginning of the dance.) The final Answer is 15\n ### Proof\n The three lights blink simultaneously $t$ seconds after the start of the dance if and only if $t$ is a common multiple of 2, 3, and 5. Recall the common multiples of a set of integers are precisely the multiples of the least common multiple.\n Since 2, 3, and 5 are relatively prime, their least common multiple is $2\\cdot 3\\cdot 5 = 30$.\n Thus the light blinks $t$ seconds after the beginning of the song for $t=0,1,2,\\ldots,14$, and after 14 thirty-second periods, the song ends.\n Thus the lights blink in unison a total of $\\boxed{15}$ times.\n *)\n\ntheorem\nfixes red :: nat and yellow :: nat and blue :: nat and time :: nat\nassumes h0 : \"red = 2\"\nand h1 : \"yellow = 3\"\nand h2 : \"blue = 5\"\nand h3 : \"time = 7 * 60\"\nand h4 : \"\\<forall> t. t <= time \\<longrightarrow> (t mod red = 0 \\<and> t mod yellow = 0 \\<and> t mod blue = 0)\"\nshows  \"card {t. t <= time \\<and> t mod red = 0 \\<and> t mod yellow = 0 \\<and> t mod blue = 0} = 15\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are three types of intervals: red intervals last 2 minutes, yellow intervals last 3 minutes, and blue intervals last 5 minutes. If the time is exactly divisible by the length of an interval, that interval will end exactly on time. Over a period of 7 hours (420 minutes), how many intervals of each type end exactly on time? The final answer is 15 intervals.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9231860041618347,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "The problem is not a typical one for mathematical formalization in Isabelle, as it involves scheduling and timing rather than mathematical equations. However, a simplified representation might be:\n\ndatatype Light = Red | Yellow | Blue\n\nfun blink :: \"Light => int => int\" where\n\"blink Red t = t div 2\" |\n\"blink Yellow t = t div 3\" |\n\"blink Blue t = t div 5\"\n\ntheorem\nfixes t :: int\nshows  \"blink Red t = blink Yellow t \\<and> blink Yellow t = blink Blue t \\<Longrightarrow> t \\<le> 420 \\<Longrightarrow> card {t. blink Red t = blink Yellow t \\<and> blink Yellow t = blink Blue t} = 15\"\n\nPlease note that this is a simplified model and might not accurately capture all aspects of the problem.",
+        "formal solution": "(* ### Problem\n Joe was in charge of lights for a dance. The red light blinks every two seconds, the yellow light every three seconds, and the blue light every five seconds. If we include the very beginning and very end of the dance, how many times during a seven minute dance will all the lights come on at the same time? (Assume that all three lights blink simultaneously at the very beginning of the dance.) The final Answer is 15\n ### Proof\n The three lights blink simultaneously $t$ seconds after the start of the dance if and only if $t$ is a common multiple of 2, 3, and 5. Recall the common multiples of a set of integers are precisely the multiples of the least common multiple.\n Since 2, 3, and 5 are relatively prime, their least common multiple is $2\\cdot 3\\cdot 5 = 30$.\n Thus the light blinks $t$ seconds after the beginning of the song for $t=0,1,2,\\ldots,14$, and after 14 thirty-second periods, the song ends.\n Thus the lights blink in unison a total of $\\boxed{15}$ times.\n *)\n\nThe problem is not a typical one for mathematical formalization in Isabelle, as it involves scheduling and timing rather than mathematical equations. However, a simplified representation might be:\n\ndatatype Light = Red | Yellow | Blue\n\nfun blink :: \"Light => int => int\" where\n\"blink Red t = t div 2\" |\n\"blink Yellow t = t div 3\" |\n\"blink Blue t = t div 5\"\n\ntheorem\nfixes t :: int\nshows  \"blink Red t = blink Yellow t \\<and> blink Yellow t = blink Blue t \\<Longrightarrow> t \\<le> 420 \\<Longrightarrow> card {t. blink Red t = blink Yellow t \\<and> blink Yellow t = blink Blue t} = 15\"\n\nPlease note that this is a simplified model and might not accurately capture all aspects of the problem.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are three lights: Red, Yellow, and Blue. They blink at different rates. The Red light blinks once every 2 seconds, the Yellow light blinks once every 3 seconds, and the Blue light blinks once every 5 seconds. \n\nAssuming that when the lights are synchronized (they blink at the same time), find all the time points within 420 seconds where all three lights blink at the same time. How many such time points are there? The final answer is 15.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7878409624099731,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes red_light yellow_light blue_light :: int\nassumes h0 : \"red_light = 2\"\nand h1 : \"yellow_light = 3\"\nand h2 : \"blue_light = 5\"\nand h3 : \"lcm (lcm red_light yellow_light) blue_light = 30\"\nshows  \"7 * 60 div 30 = 14\"",
+        "formal solution": "(* ### Problem\n Joe was in charge of lights for a dance. The red light blinks every two seconds, the yellow light every three seconds, and the blue light every five seconds. If we include the very beginning and very end of the dance, how many times during a seven minute dance will all the lights come on at the same time? (Assume that all three lights blink simultaneously at the very beginning of the dance.) The final Answer is 15\n ### Proof\n The three lights blink simultaneously $t$ seconds after the start of the dance if and only if $t$ is a common multiple of 2, 3, and 5. Recall the common multiples of a set of integers are precisely the multiples of the least common multiple.\n Since 2, 3, and 5 are relatively prime, their least common multiple is $2\\cdot 3\\cdot 5 = 30$.\n Thus the light blinks $t$ seconds after the beginning of the song for $t=0,1,2,\\ldots,14$, and after 14 thirty-second periods, the song ends.\n Thus the lights blink in unison a total of $\\boxed{15}$ times.\n *)\n\ntheorem\nfixes red_light yellow_light blue_light :: int\nassumes h0 : \"red_light = 2\"\nand h1 : \"yellow_light = 3\"\nand h2 : \"blue_light = 5\"\nand h3 : \"lcm (lcm red_light yellow_light) blue_light = 30\"\nshows  \"7 * 60 div 30 = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that a red light flashes every 2 seconds, a yellow light flashes every 3 seconds, and a blue light flashes every 5 seconds. If these lights are synchronized and start flashing at the same time, how many times will they flash together in 7 minutes? The final answer is 14 times.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9144681692123413,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes red yellow blue :: nat\nassumes h0 : \"red mod 2 = 0\"\nand h1 : \"yellow mod 3 = 0\"\nand h2 : \"blue mod 5 = 0\"\nand h3 : \"red = yellow\"\nand h4 : \"yellow = blue\"\nand h5 : \"blue = 420\"\nshows  \"red div 2 = 15\"",
+        "formal solution": "(* ### Problem\n Joe was in charge of lights for a dance. The red light blinks every two seconds, the yellow light every three seconds, and the blue light every five seconds. If we include the very beginning and very end of the dance, how many times during a seven minute dance will all the lights come on at the same time? (Assume that all three lights blink simultaneously at the very beginning of the dance.) The final Answer is 15\n ### Proof\n The three lights blink simultaneously $t$ seconds after the start of the dance if and only if $t$ is a common multiple of 2, 3, and 5. Recall the common multiples of a set of integers are precisely the multiples of the least common multiple.\n Since 2, 3, and 5 are relatively prime, their least common multiple is $2\\cdot 3\\cdot 5 = 30$.\n Thus the light blinks $t$ seconds after the beginning of the song for $t=0,1,2,\\ldots,14$, and after 14 thirty-second periods, the song ends.\n Thus the lights blink in unison a total of $\\boxed{15}$ times.\n *)\n\ntheorem\nfixes red yellow blue :: nat\nassumes h0 : \"red mod 2 = 0\"\nand h1 : \"yellow mod 3 = 0\"\nand h2 : \"blue mod 5 = 0\"\nand h3 : \"red = yellow\"\nand h4 : \"yellow = blue\"\nand h5 : \"blue = 420\"\nshows  \"red div 2 = 15\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If the number of red, yellow, and blue items is the same and equal to 420, and the number of red items is divisible by 2, the number of yellow items is divisible by 3, and the number of blue items is divisible by 5, what is the result when you divide the number of red items by 2? The final answer is 15.\"",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.4654626250267029,
+        "symbolic_score": 0.2
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes red yellow blue :: nat\nassumes h0 : \"red = 2\"\nand h1 : \"yellow = 3\"\nand h2 : \"blue = 5\"\nand h3 : \"\\<forall> t. t \\<in> {0..420} \\<longrightarrow> (t mod red = 0 \\<and> t mod yellow = 0 \\<and> t mod blue = 0)\"\nshows  \"card {t. t \\<in> {0..420} \\<and> t mod red = 0 \\<and> t mod yellow = 0 \\<and> t mod blue = 0} = 15\"",
+        "formal solution": "(* ### Problem\n Joe was in charge of lights for a dance. The red light blinks every two seconds, the yellow light every three seconds, and the blue light every five seconds. If we include the very beginning and very end of the dance, how many times during a seven minute dance will all the lights come on at the same time? (Assume that all three lights blink simultaneously at the very beginning of the dance.) The final Answer is 15\n ### Proof\n The three lights blink simultaneously $t$ seconds after the start of the dance if and only if $t$ is a common multiple of 2, 3, and 5. Recall the common multiples of a set of integers are precisely the multiples of the least common multiple.\n Since 2, 3, and 5 are relatively prime, their least common multiple is $2\\cdot 3\\cdot 5 = 30$.\n Thus the light blinks $t$ seconds after the beginning of the song for $t=0,1,2,\\ldots,14$, and after 14 thirty-second periods, the song ends.\n Thus the lights blink in unison a total of $\\boxed{15}$ times.\n *)\n\ntheorem\nfixes red yellow blue :: nat\nassumes h0 : \"red = 2\"\nand h1 : \"yellow = 3\"\nand h2 : \"blue = 5\"\nand h3 : \"\\<forall> t. t \\<in> {0..420} \\<longrightarrow> (t mod red = 0 \\<and> t mod yellow = 0 \\<and> t mod blue = 0)\"\nshows  \"card {t. t \\<in> {0..420} \\<and> t mod red = 0 \\<and> t mod yellow = 0 \\<and> t mod blue = 0} = 15\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Determine the total number of integers in the range from 0 to 420 (inclusive) that are divisible by 2 (red), 3 (yellow), and 5 (blue). The final answer is 15.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.909453809261322,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes red_light :: \"int \\<Rightarrow> bool\"\nand yellow_light :: \"int \\<Rightarrow> bool\"\nand blue_light :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>t. red_light t = (t mod 2 = 0)\"\nand h1 : \"\\<forall>t. yellow_light t = (t mod 3 = 0)\"\nand h2 : \"\\<forall>t. blue_light t = (t mod 5 = 0)\"\nshows  \"card {t. t \\<in> {0..420} \\<and> red_light t \\<and> yellow_light t \\<and> blue_light t} = 15\"",
+        "formal solution": "(* ### Problem\n Joe was in charge of lights for a dance. The red light blinks every two seconds, the yellow light every three seconds, and the blue light every five seconds. If we include the very beginning and very end of the dance, how many times during a seven minute dance will all the lights come on at the same time? (Assume that all three lights blink simultaneously at the very beginning of the dance.) The final Answer is 15\n ### Proof\n The three lights blink simultaneously $t$ seconds after the start of the dance if and only if $t$ is a common multiple of 2, 3, and 5. Recall the common multiples of a set of integers are precisely the multiples of the least common multiple.\n Since 2, 3, and 5 are relatively prime, their least common multiple is $2\\cdot 3\\cdot 5 = 30$.\n Thus the light blinks $t$ seconds after the beginning of the song for $t=0,1,2,\\ldots,14$, and after 14 thirty-second periods, the song ends.\n Thus the lights blink in unison a total of $\\boxed{15}$ times.\n *)\n\ntheorem\nfixes red_light :: \"int \\<Rightarrow> bool\"\nand yellow_light :: \"int \\<Rightarrow> bool\"\nand blue_light :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>t. red_light t = (t mod 2 = 0)\"\nand h1 : \"\\<forall>t. yellow_light t = (t mod 3 = 0)\"\nand h2 : \"\\<forall>t. blue_light t = (t mod 5 = 0)\"\nshows  \"card {t. t \\<in> {0..420} \\<and> red_light t \\<and> yellow_light t \\<and> blue_light t} = 15\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many times do red, yellow, and blue lights all come on together in a sequence from 0 to 420, if the red light comes on every 2 seconds, the yellow light comes on every 3 seconds, and the blue light comes on every 5 seconds? The final answer is 15 times.",
+        "label": 1,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9752671122550964,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes red_light :: int and yellow_light :: int and blue_light :: int\nassumes h0 : \"red_light = 2\"\nand h1 : \"yellow_light = 3\"\nand h2 : \"blue_light = 5\"\nshows  \"lcm (lcm red_light yellow_light) blue_light * (7 * 60) = 15\"",
+        "formal solution": "(* ### Problem\n Joe was in charge of lights for a dance. The red light blinks every two seconds, the yellow light every three seconds, and the blue light every five seconds. If we include the very beginning and very end of the dance, how many times during a seven minute dance will all the lights come on at the same time? (Assume that all three lights blink simultaneously at the very beginning of the dance.) The final Answer is 15\n ### Proof\n The three lights blink simultaneously $t$ seconds after the start of the dance if and only if $t$ is a common multiple of 2, 3, and 5. Recall the common multiples of a set of integers are precisely the multiples of the least common multiple.\n Since 2, 3, and 5 are relatively prime, their least common multiple is $2\\cdot 3\\cdot 5 = 30$.\n Thus the light blinks $t$ seconds after the beginning of the song for $t=0,1,2,\\ldots,14$, and after 14 thirty-second periods, the song ends.\n Thus the lights blink in unison a total of $\\boxed{15}$ times.\n *)\n\ntheorem\nfixes red_light :: int and yellow_light :: int and blue_light :: int\nassumes h0 : \"red_light = 2\"\nand h1 : \"yellow_light = 3\"\nand h2 : \"blue_light = 5\"\nshows  \"lcm (lcm red_light yellow_light) blue_light * (7 * 60) = 15\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The red light changes every 2 minutes, the yellow light changes every 3 minutes and the blue light changes every 5 minutes. How many times will all lights change in 7 hours, if they all start at the same time? The final answer is 15 times.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8445985913276672,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "15",
+    "natural problem": "Joe was in charge of lights for a dance. The red light blinks every two seconds, the yellow light every three seconds, and the blue light every five seconds. If we include the very beginning and very end of the dance, how many times during a seven minute dance will all the lights come on at the same time? (Assume that all three lights blink simultaneously at the very beginning of the dance.)",
+    "natural solution": [
+        "The three lights blink simultaneously $t$ seconds after the start of the dance if and only if $t$ is a common multiple of 2, 3, and 5. Recall the common multiples of a set of integers are precisely the multiples of the least common multiple.",
+        "Since 2, 3, and 5 are relatively prime, their least common multiple is $2\\cdot 3\\cdot 5 = 30$.",
+        "Thus the light blinks $t$ seconds after the beginning of the song for $t=0,1,2,\\ldots,14$, and after 14 thirty-second periods, the song ends.",
+        "Thus the lights blink in unison a total of $\\boxed{15}$ times."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            2,
+            6
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "level": "Level 5",
+    "type": "Prealgebra"
+}

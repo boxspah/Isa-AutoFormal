@@ -1,0 +1,122 @@
+{
+    "problem_name": "amc12a_2017_p7",
+    "informal_statement": "Define a function on the positive integers recursively by $f(1) = 2$, $f(n) = f(n-1) + 1$ if $n$ is even, and $f(n) = f(n-2) + 2$ if $n$ is odd and greater than $1$. What is $f(2017)$?\n\n$ \\textbf{(A)}\\ 2017 \\qquad\\textbf{(B)}\\ 2018 \\qquad\\textbf{(C)}\\ 4034 \\qquad\\textbf{(D)}\\ 4035 \\qquad\\textbf{(E)}\\ 4036 $ Show that it is \\textbf{(B)}.",
+    "informal_proof": "This is a recursive function, which means the function refers back to itself to calculate subsequent terms. To solve this, we must identify the base case, $f(1)=2$. We also know that when $n$ is odd, $f(n)=f(n-2)+2$. Thus we know that $f(2017)=f(2015)+2$. Thus we know that n will always be odd in the recursion of $f(2017)$, and we add $2$ each recursive cycle, which there are $1008$ of. Thus the answer is $1008*2+2=2018$, which is answer\n$\\textbf{(B)}$.\nNote that when you write out a few numbers, you find that $f(n)=n+1$ for any $n$, so $f(2017)=2018$",
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f(1) = 2\"\nand h1 : \"\\<forall>n. n > 1 \\<and> n mod 2 = 0 \\<longrightarrow> f n = f (n - 1) + 1\"\nand h2 : \"\\<forall>n. n > 1 \\<and> n mod 2 = 1 \\<longrightarrow> f n = f (n - 2) + 2\"\nshows  \"f 2017 = 2018\"",
+        "formal solution": "(* ### Problem\n Define a function on the positive integers recursively by $f(1) = 2$, $f(n) = f(n-1) + 1$ if $n$ is even, and $f(n) = f(n-2) + 2$ if $n$ is odd and greater than $1$. What is $f(2017)$?\n\n$ \\textbf{(A)}\\ 2017 \\qquad\\textbf{(B)}\\ 2018 \\qquad\\textbf{(C)}\\ 4034 \\qquad\\textbf{(D)}\\ 4035 \\qquad\\textbf{(E)}\\ 4036 $ Show that it is \\textbf{(B)}.\n ### Proof\n This is a recursive function, which means the function refers back to itself to calculate subsequent terms. To solve this, we must identify the base case, $f(1)=2$. We also know that when $n$ is odd, $f(n)=f(n-2)+2$. Thus we know that $f(2017)=f(2015)+2$. Thus we know that n will always be odd in the recursion of $f(2017)$, and we add $2$ each recursive cycle, which there are $1008$ of. Thus the answer is $1008*2+2=2018$, which is answer\n$\\textbf{(B)}$.\nNote that when you write out a few numbers, you find that $f(n)=n+1$ for any $n$, so $f(2017)=2018$\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f(1) = 2\"\nand h1 : \"\\<forall>n. n > 1 \\<and> n mod 2 = 0 \\<longrightarrow> f n = f (n - 1) + 1\"\nand h2 : \"\\<forall>n. n > 1 \\<and> n mod 2 = 1 \\<longrightarrow> f n = f (n - 2) + 2\"\nshows  \"f 2017 = 2018\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively as follows: $f(1) = 2$, for even integers $n > 1$, $f(n) = f(n - 1) + 1$, and for odd integers $n > 1$, $f(n) = f(n - 2) + 2$. What is the value of $f(2017)$? The final answer is $2018$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.6537871360778809,
+        "symbolic_score": 1.0
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. n > 0 \\<and> even n \\<longrightarrow> f n = f (n - 1) + 1\"\nand h2 : \"\\<forall> n. n > 1 \\<and> odd n \\<longrightarrow> f n = f (n - 2) + 2\"\nshows  \"f 2017 = 2018\"",
+        "formal solution": "(* ### Problem\n Define a function on the positive integers recursively by $f(1) = 2$, $f(n) = f(n-1) + 1$ if $n$ is even, and $f(n) = f(n-2) + 2$ if $n$ is odd and greater than $1$. What is $f(2017)$?\n\n$ \\textbf{(A)}\\ 2017 \\qquad\\textbf{(B)}\\ 2018 \\qquad\\textbf{(C)}\\ 4034 \\qquad\\textbf{(D)}\\ 4035 \\qquad\\textbf{(E)}\\ 4036 $ Show that it is \\textbf{(B)}.\n ### Proof\n This is a recursive function, which means the function refers back to itself to calculate subsequent terms. To solve this, we must identify the base case, $f(1)=2$. We also know that when $n$ is odd, $f(n)=f(n-2)+2$. Thus we know that $f(2017)=f(2015)+2$. Thus we know that n will always be odd in the recursion of $f(2017)$, and we add $2$ each recursive cycle, which there are $1008$ of. Thus the answer is $1008*2+2=2018$, which is answer\n$\\textbf{(B)}$.\nNote that when you write out a few numbers, you find that $f(n)=n+1$ for any $n$, so $f(2017)=2018$\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. n > 0 \\<and> even n \\<longrightarrow> f n = f (n - 1) + 1\"\nand h2 : \"\\<forall> n. n > 1 \\<and> odd n \\<longrightarrow> f n = f (n - 2) + 2\"\nshows  \"f 2017 = 2018\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively for natural numbers as follows: $f(1) = 2$, $f(n) = f(n-1) + 1$ if $n > 0$ and $n$ is even, and $f(n) = f(n-2) + 2$ if $n > 1$ and $n$ is odd. What is the value of $f(2017)$? The final answer is 2018.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.4694584310054779,
+        "symbolic_score": 1.0
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. n > 1 \\<and> even n \\<longrightarrow> f n = f (n - 1) + 1\"\nand h2 : \"\\<forall> n. n > 1 \\<and> odd n \\<longrightarrow> f n = f (n - 2) + 2\"\nshows  \"f 2017 = 2018\"",
+        "formal solution": "(* ### Problem\n Define a function on the positive integers recursively by $f(1) = 2$, $f(n) = f(n-1) + 1$ if $n$ is even, and $f(n) = f(n-2) + 2$ if $n$ is odd and greater than $1$. What is $f(2017)$?\n\n$ \\textbf{(A)}\\ 2017 \\qquad\\textbf{(B)}\\ 2018 \\qquad\\textbf{(C)}\\ 4034 \\qquad\\textbf{(D)}\\ 4035 \\qquad\\textbf{(E)}\\ 4036 $ Show that it is \\textbf{(B)}.\n ### Proof\n This is a recursive function, which means the function refers back to itself to calculate subsequent terms. To solve this, we must identify the base case, $f(1)=2$. We also know that when $n$ is odd, $f(n)=f(n-2)+2$. Thus we know that $f(2017)=f(2015)+2$. Thus we know that n will always be odd in the recursion of $f(2017)$, and we add $2$ each recursive cycle, which there are $1008$ of. Thus the answer is $1008*2+2=2018$, which is answer\n$\\textbf{(B)}$.\nNote that when you write out a few numbers, you find that $f(n)=n+1$ for any $n$, so $f(2017)=2018$\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. n > 1 \\<and> even n \\<longrightarrow> f n = f (n - 1) + 1\"\nand h2 : \"\\<forall> n. n > 1 \\<and> odd n \\<longrightarrow> f n = f (n - 2) + 2\"\nshows  \"f 2017 = 2018\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively for natural numbers as follows: $f(1)=2$, for even $n > 1$, $f(n)=f(n-1)+1$, and for odd $n > 1$, $f(n)=f(n-2)+2$. What is the value of $f(2017)$? The final answer is $2018$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.6604061722755432,
+        "symbolic_score": 1.0
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. even n \\<longrightarrow> f n = f (n - 1) + 1\"\nand h2 : \"\\<forall> n. odd n \\<and> n > 1 \\<longrightarrow> f n = f (n - 2) + 2\"\nshows  \"f 2017 = 2018\"",
+        "formal solution": "(* ### Problem\n Define a function on the positive integers recursively by $f(1) = 2$, $f(n) = f(n-1) + 1$ if $n$ is even, and $f(n) = f(n-2) + 2$ if $n$ is odd and greater than $1$. What is $f(2017)$?\n\n$ \\textbf{(A)}\\ 2017 \\qquad\\textbf{(B)}\\ 2018 \\qquad\\textbf{(C)}\\ 4034 \\qquad\\textbf{(D)}\\ 4035 \\qquad\\textbf{(E)}\\ 4036 $ Show that it is \\textbf{(B)}.\n ### Proof\n This is a recursive function, which means the function refers back to itself to calculate subsequent terms. To solve this, we must identify the base case, $f(1)=2$. We also know that when $n$ is odd, $f(n)=f(n-2)+2$. Thus we know that $f(2017)=f(2015)+2$. Thus we know that n will always be odd in the recursion of $f(2017)$, and we add $2$ each recursive cycle, which there are $1008$ of. Thus the answer is $1008*2+2=2018$, which is answer\n$\\textbf{(B)}$.\nNote that when you write out a few numbers, you find that $f(n)=n+1$ for any $n$, so $f(2017)=2018$\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. even n \\<longrightarrow> f n = f (n - 1) + 1\"\nand h2 : \"\\<forall> n. odd n \\<and> n > 1 \\<longrightarrow> f n = f (n - 2) + 2\"\nshows  \"f 2017 = 2018\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively for natural numbers as follows: $f(1) = 2$, for even $n$, $f(n) = f(n - 1) + 1$, and for odd $n > 1$, $f(n) = f(n - 2) + 2$. What is the value of $f(2017)$? The final answer is $2018$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6629937887191772,
+        "symbolic_score": 1.0
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. even n \\<longrightarrow> f n = f (n - 1) + 1\"\nand h2 : \"\\<forall> n. odd n \\<and> n > 1 \\<longrightarrow> f n = f (n - 2) + 2\"\nshows  \"f 2017 = 2018\"",
+        "formal solution": "(* ### Problem\n Define a function on the positive integers recursively by $f(1) = 2$, $f(n) = f(n-1) + 1$ if $n$ is even, and $f(n) = f(n-2) + 2$ if $n$ is odd and greater than $1$. What is $f(2017)$?\n\n$ \\textbf{(A)}\\ 2017 \\qquad\\textbf{(B)}\\ 2018 \\qquad\\textbf{(C)}\\ 4034 \\qquad\\textbf{(D)}\\ 4035 \\qquad\\textbf{(E)}\\ 4036 $ Show that it is \\textbf{(B)}.\n ### Proof\n This is a recursive function, which means the function refers back to itself to calculate subsequent terms. To solve this, we must identify the base case, $f(1)=2$. We also know that when $n$ is odd, $f(n)=f(n-2)+2$. Thus we know that $f(2017)=f(2015)+2$. Thus we know that n will always be odd in the recursion of $f(2017)$, and we add $2$ each recursive cycle, which there are $1008$ of. Thus the answer is $1008*2+2=2018$, which is answer\n$\\textbf{(B)}$.\nNote that when you write out a few numbers, you find that $f(n)=n+1$ for any $n$, so $f(2017)=2018$\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. even n \\<longrightarrow> f n = f (n - 1) + 1\"\nand h2 : \"\\<forall> n. odd n \\<and> n > 1 \\<longrightarrow> f n = f (n - 2) + 2\"\nshows  \"f 2017 = 2018\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively for natural numbers as follows: $f(1) = 2$, $f(n) = f(n-1) + 1$ for even $n$, and $f(n) = f(n-2) + 2$ for odd $n > 1$. Find the value of $f(2017)$. The final answer is 2018.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.553752064704895,
+        "symbolic_score": 1.0
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> (even n \\<longrightarrow> f n = f (n - 1) + 1) \\<and> (odd n \\<and> n > 1 \\<longrightarrow> f n = f (n - 2) + 2)\"\nshows  \"f 2017 = 2018\"",
+        "formal solution": "(* ### Problem\n Define a function on the positive integers recursively by $f(1) = 2$, $f(n) = f(n-1) + 1$ if $n$ is even, and $f(n) = f(n-2) + 2$ if $n$ is odd and greater than $1$. What is $f(2017)$?\n\n$ \\textbf{(A)}\\ 2017 \\qquad\\textbf{(B)}\\ 2018 \\qquad\\textbf{(C)}\\ 4034 \\qquad\\textbf{(D)}\\ 4035 \\qquad\\textbf{(E)}\\ 4036 $ Show that it is \\textbf{(B)}.\n ### Proof\n This is a recursive function, which means the function refers back to itself to calculate subsequent terms. To solve this, we must identify the base case, $f(1)=2$. We also know that when $n$ is odd, $f(n)=f(n-2)+2$. Thus we know that $f(2017)=f(2015)+2$. Thus we know that n will always be odd in the recursion of $f(2017)$, and we add $2$ each recursive cycle, which there are $1008$ of. Thus the answer is $1008*2+2=2018$, which is answer\n$\\textbf{(B)}$.\nNote that when you write out a few numbers, you find that $f(n)=n+1$ for any $n$, so $f(2017)=2018$\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. n > 0 \\<longrightarrow> (even n \\<longrightarrow> f n = f (n - 1) + 1) \\<and> (odd n \\<and> n > 1 \\<longrightarrow> f n = f (n - 2) + 2)\"\nshows  \"f 2017 = 2018\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively for natural numbers as follows: $f(1) = 2$, and for $n > 0$, if $n$ is even, then $f(n) = f(n - 1) + 1$, and if $n$ is odd and $n > 1$, then $f(n) = f(n - 2) + 2$. What is $f(2017)$? The final answer is $2018$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.5950120687484741,
+        "symbolic_score": 1.0
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(1) = 2\"\nand h1 : \"\\<forall>n. even n \\<longrightarrow> f(n) = f(n - 1) + 1\"\nand h2 : \"\\<forall>n. odd n \\<and> n > 1 \\<longrightarrow> f(n) = f(n - 2) + 2\"\nshows  \"f 2017 = 2018\"",
+        "formal solution": "(* ### Problem\n Define a function on the positive integers recursively by $f(1) = 2$, $f(n) = f(n-1) + 1$ if $n$ is even, and $f(n) = f(n-2) + 2$ if $n$ is odd and greater than $1$. What is $f(2017)$?\n\n$ \\textbf{(A)}\\ 2017 \\qquad\\textbf{(B)}\\ 2018 \\qquad\\textbf{(C)}\\ 4034 \\qquad\\textbf{(D)}\\ 4035 \\qquad\\textbf{(E)}\\ 4036 $ Show that it is \\textbf{(B)}.\n ### Proof\n This is a recursive function, which means the function refers back to itself to calculate subsequent terms. To solve this, we must identify the base case, $f(1)=2$. We also know that when $n$ is odd, $f(n)=f(n-2)+2$. Thus we know that $f(2017)=f(2015)+2$. Thus we know that n will always be odd in the recursion of $f(2017)$, and we add $2$ each recursive cycle, which there are $1008$ of. Thus the answer is $1008*2+2=2018$, which is answer\n$\\textbf{(B)}$.\nNote that when you write out a few numbers, you find that $f(n)=n+1$ for any $n$, so $f(2017)=2018$\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(1) = 2\"\nand h1 : \"\\<forall>n. even n \\<longrightarrow> f(n) = f(n - 1) + 1\"\nand h2 : \"\\<forall>n. odd n \\<and> n > 1 \\<longrightarrow> f(n) = f(n - 2) + 2\"\nshows  \"f 2017 = 2018\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively for natural numbers as follows: $f(1) = 2$, for even numbers $n$, $f(n) = f(n - 1) + 1$, and for odd numbers $n > 1$, $f(n) = f(n - 2) + 2$. What is the value of $f(2017)$? The final answer is 2018.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5283932685852051,
+        "symbolic_score": 1.0
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. n > 0 \\<and> n mod 2 = 0 \\<longrightarrow> f n = f (n - 1) + 1\"\nand h2 : \"\\<forall>n. n > 1 \\<and> n mod 2 = 1 \\<longrightarrow> f n = f (n - 2) + 2\"\nshows  \"f 2017 = 2018\"",
+        "formal solution": "(* ### Problem\n Define a function on the positive integers recursively by $f(1) = 2$, $f(n) = f(n-1) + 1$ if $n$ is even, and $f(n) = f(n-2) + 2$ if $n$ is odd and greater than $1$. What is $f(2017)$?\n\n$ \\textbf{(A)}\\ 2017 \\qquad\\textbf{(B)}\\ 2018 \\qquad\\textbf{(C)}\\ 4034 \\qquad\\textbf{(D)}\\ 4035 \\qquad\\textbf{(E)}\\ 4036 $ Show that it is \\textbf{(B)}.\n ### Proof\n This is a recursive function, which means the function refers back to itself to calculate subsequent terms. To solve this, we must identify the base case, $f(1)=2$. We also know that when $n$ is odd, $f(n)=f(n-2)+2$. Thus we know that $f(2017)=f(2015)+2$. Thus we know that n will always be odd in the recursion of $f(2017)$, and we add $2$ each recursive cycle, which there are $1008$ of. Thus the answer is $1008*2+2=2018$, which is answer\n$\\textbf{(B)}$.\nNote that when you write out a few numbers, you find that $f(n)=n+1$ for any $n$, so $f(2017)=2018$\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. n > 0 \\<and> n mod 2 = 0 \\<longrightarrow> f n = f (n - 1) + 1\"\nand h2 : \"\\<forall>n. n > 1 \\<and> n mod 2 = 1 \\<longrightarrow> f n = f (n - 2) + 2\"\nshows  \"f 2017 = 2018\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively by $f(1) = 2$, $f(n) = f(n - 1) + 1$ for all even positive integers $n$, and $f(n) = f(n - 2) + 2$ for all odd positive integers $n > 1$. What is $f(2017)$? The final answer is $2018$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.6174639463424683,
+        "symbolic_score": 1.0
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. n > 0 \\<longrightarrow> (n mod 2 = 0 \\<longrightarrow> f n = f (n - 1) + 1) \\<and> (n mod 2 \\<noteq> 0 \\<and> n > 1 \\<longrightarrow> f n = f (n - 2) + 2)\"\nshows  \"f 2017 = 2018\"",
+        "formal solution": "(* ### Problem\n Define a function on the positive integers recursively by $f(1) = 2$, $f(n) = f(n-1) + 1$ if $n$ is even, and $f(n) = f(n-2) + 2$ if $n$ is odd and greater than $1$. What is $f(2017)$?\n\n$ \\textbf{(A)}\\ 2017 \\qquad\\textbf{(B)}\\ 2018 \\qquad\\textbf{(C)}\\ 4034 \\qquad\\textbf{(D)}\\ 4035 \\qquad\\textbf{(E)}\\ 4036 $ Show that it is \\textbf{(B)}.\n ### Proof\n This is a recursive function, which means the function refers back to itself to calculate subsequent terms. To solve this, we must identify the base case, $f(1)=2$. We also know that when $n$ is odd, $f(n)=f(n-2)+2$. Thus we know that $f(2017)=f(2015)+2$. Thus we know that n will always be odd in the recursion of $f(2017)$, and we add $2$ each recursive cycle, which there are $1008$ of. Thus the answer is $1008*2+2=2018$, which is answer\n$\\textbf{(B)}$.\nNote that when you write out a few numbers, you find that $f(n)=n+1$ for any $n$, so $f(2017)=2018$\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall>n. n > 0 \\<longrightarrow> (n mod 2 = 0 \\<longrightarrow> f n = f (n - 1) + 1) \\<and> (n mod 2 \\<noteq> 0 \\<and> n > 1 \\<longrightarrow> f n = f (n - 2) + 2)\"\nshows  \"f 2017 = 2018\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined for natural numbers as follows: $f(1) = 2$, and for $n > 0$, $f(n) = f(n - 1) + 1$ if $n$ is even and $f(n) = f(n - 2) + 2$ if $n$ is odd and greater than 1. What is the value of $f(2017)$? The final answer is 2018.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.4830893576145172,
+        "symbolic_score": 1.0
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. n > 0 \\<and> even n \\<longrightarrow> f n = f (n-1) + 1\"\nand h2 : \"\\<forall> n. n > 1 \\<and> odd n \\<longrightarrow> f n = f (n-2) + 2\"\nshows  \"f 2017 = 2018\"",
+        "formal solution": "(* ### Problem\n Define a function on the positive integers recursively by $f(1) = 2$, $f(n) = f(n-1) + 1$ if $n$ is even, and $f(n) = f(n-2) + 2$ if $n$ is odd and greater than $1$. What is $f(2017)$?\n\n$ \\textbf{(A)}\\ 2017 \\qquad\\textbf{(B)}\\ 2018 \\qquad\\textbf{(C)}\\ 4034 \\qquad\\textbf{(D)}\\ 4035 \\qquad\\textbf{(E)}\\ 4036 $ Show that it is \\textbf{(B)}.\n ### Proof\n This is a recursive function, which means the function refers back to itself to calculate subsequent terms. To solve this, we must identify the base case, $f(1)=2$. We also know that when $n$ is odd, $f(n)=f(n-2)+2$. Thus we know that $f(2017)=f(2015)+2$. Thus we know that n will always be odd in the recursion of $f(2017)$, and we add $2$ each recursive cycle, which there are $1008$ of. Thus the answer is $1008*2+2=2018$, which is answer\n$\\textbf{(B)}$.\nNote that when you write out a few numbers, you find that $f(n)=n+1$ for any $n$, so $f(2017)=2018$\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<forall> n. n > 0 \\<and> even n \\<longrightarrow> f n = f (n-1) + 1\"\nand h2 : \"\\<forall> n. n > 1 \\<and> odd n \\<longrightarrow> f n = f (n-2) + 2\"\nshows  \"f 2017 = 2018\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively for natural numbers as follows: $f(1) = 2$, $f(n) = f(n-1) + 1$ for even $n > 0$, and $f(n) = f(n-2) + 2$ for odd $n > 1$. What is the value of $f(2017)$? The final answer is $2018$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.6731197834014893,
+        "symbolic_score": 1.0
+    },
+    "oracle": "theorem\nfixes f :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"f 1 = 2\"\nand h1 : \"\\<And>n. (1 < n \\<and> even n) \\<Longrightarrow> f n = f (n - 1) + 1\"\nand h2 : \"\\<And>n. (1 < n \\<and> odd n) \\<Longrightarrow> f n = f (n - 2) + 2\"\nshows \"f 2017 = 2018\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ]
+    },
+    "equivalence_oracle": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+    ]
+}

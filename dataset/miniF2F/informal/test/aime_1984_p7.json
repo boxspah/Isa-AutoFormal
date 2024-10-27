@@ -1,0 +1,122 @@
+{
+    "problem_name": "aime_1984_p7",
+    "informal_statement": "The [[function]] f is defined on the [[set]] of [[integer]]s and satisfies $f(n)=\\begin{cases}\nn-3&\\mbox{if}\\ n\\ge 1000\\\\\nf(f(n+5))&\\mbox{if}\\ n<1000\\end{cases}$\n\nFind $f(84)$. Show that it is 997.",
+    "informal_proof": "Define $f^{h} = f(f(\\cdots f(f(x))\\cdots))$, where the function $f$ is performed $h$ times. We find that $ f(84) = f(f(89)) = f^2(89) = f^3(94) = \\ldots f^{y}(1004)$. $1004 = 84 + 5(y - 1) \\Longrightarrow y = 185$. So we now need to reduce $f^{185}(1004)$.\n\nLet\u2019s write out a couple more iterations of this function:\n$\\begin{align*}f^{185}(1004)&=f^{184}(1001)=f^{183}(998)=f^{184}(1003)=f^{183}(1000)\\\\\n&=f^{182}(997)=f^{183}(1002)=f^{182}(999)=f^{183}(1004)\\end{align*}$\nSo this function reiterates with a period of 2 for $x$. It might be tempting at first to assume that $f(1004) = 1001$ is the answer; however, that is not true since the solution occurs slightly before that. Start at $f^3(1004)$:\n$f^{3}(1004)=f^{2}(1001)=f(998)=f^{2}(1003)=f(1000)=997$\n\nNote that we should also be suspicious if our answer is $1001$- it is a $4$-digit number, and we were not asked to, say, divide our number by $13$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall> n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"",
+        "formal solution": "(* ### Problem\n The [[function]] f is defined on the [[set]] of [[integer]]s and satisfies $f(n)=\\begin{cases}\nn-3&\\mbox{if}\\ n\\ge 1000\\\\\nf(f(n+5))&\\mbox{if}\\ n<1000\\end{cases}$\n\nFind $f(84)$. Show that it is 997.\n ### Proof\n Define $f^{h} = f(f(\\cdots f(f(x))\\cdots))$, where the function $f$ is performed $h$ times. We find that $ f(84) = f(f(89)) = f^2(89) = f^3(94) = \\ldots f^{y}(1004)$. $1004 = 84 + 5(y - 1) \\Longrightarrow y = 185$. So we now need to reduce $f^{185}(1004)$.\n\nLet\u2019s write out a couple more iterations of this function:\n$\\begin{align*}f^{185}(1004)&=f^{184}(1001)=f^{183}(998)=f^{184}(1003)=f^{183}(1000)\\\\\n&=f^{182}(997)=f^{183}(1002)=f^{182}(999)=f^{183}(1004)\\end{align*}$\nSo this function reiterates with a period of 2 for $x$. It might be tempting at first to assume that $f(1004) = 1001$ is the answer; however, that is not true since the solution occurs slightly before that. Start at $f^3(1004)$:\n$f^{3}(1004)=f^{2}(1001)=f(998)=f^{2}(1003)=f(1000)=997$\n\nNote that we should also be suspicious if our answer is $1001$- it is a $4$-digit number, and we were not asked to, say, divide our number by $13$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall> n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined as follows: for any integer $n \\geq 1000$, $f(n) = n - 3$, and for any integer $n < 1000$, $f(n) = f(f(n + 5))$. What is the value of $f(84)$? The final answer is $997$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.5445863008499146,
+        "symbolic_score": 1.0
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall> n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"",
+        "formal solution": "(* ### Problem\n The [[function]] f is defined on the [[set]] of [[integer]]s and satisfies $f(n)=\\begin{cases}\nn-3&\\mbox{if}\\ n\\ge 1000\\\\\nf(f(n+5))&\\mbox{if}\\ n<1000\\end{cases}$\n\nFind $f(84)$. Show that it is 997.\n ### Proof\n Define $f^{h} = f(f(\\cdots f(f(x))\\cdots))$, where the function $f$ is performed $h$ times. We find that $ f(84) = f(f(89)) = f^2(89) = f^3(94) = \\ldots f^{y}(1004)$. $1004 = 84 + 5(y - 1) \\Longrightarrow y = 185$. So we now need to reduce $f^{185}(1004)$.\n\nLet\u2019s write out a couple more iterations of this function:\n$\\begin{align*}f^{185}(1004)&=f^{184}(1001)=f^{183}(998)=f^{184}(1003)=f^{183}(1000)\\\\\n&=f^{182}(997)=f^{183}(1002)=f^{182}(999)=f^{183}(1004)\\end{align*}$\nSo this function reiterates with a period of 2 for $x$. It might be tempting at first to assume that $f(1004) = 1001$ is the answer; however, that is not true since the solution occurs slightly before that. Start at $f^3(1004)$:\n$f^{3}(1004)=f^{2}(1001)=f(998)=f^{2}(1003)=f(1000)=997$\n\nNote that we should also be suspicious if our answer is $1001$- it is a $4$-digit number, and we were not asked to, say, divide our number by $13$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall> n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined as follows: for any integer $n \\geq 1000$, $f(n) = n - 3$. For any integer $n < 1000$, $f(n) = f(f(n + 5))$. Find the value of $f(84)$. The final answer is $997$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.5636553764343262,
+        "symbolic_score": 1.0
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall> n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"",
+        "formal solution": "(* ### Problem\n The [[function]] f is defined on the [[set]] of [[integer]]s and satisfies $f(n)=\\begin{cases}\nn-3&\\mbox{if}\\ n\\ge 1000\\\\\nf(f(n+5))&\\mbox{if}\\ n<1000\\end{cases}$\n\nFind $f(84)$. Show that it is 997.\n ### Proof\n Define $f^{h} = f(f(\\cdots f(f(x))\\cdots))$, where the function $f$ is performed $h$ times. We find that $ f(84) = f(f(89)) = f^2(89) = f^3(94) = \\ldots f^{y}(1004)$. $1004 = 84 + 5(y - 1) \\Longrightarrow y = 185$. So we now need to reduce $f^{185}(1004)$.\n\nLet\u2019s write out a couple more iterations of this function:\n$\\begin{align*}f^{185}(1004)&=f^{184}(1001)=f^{183}(998)=f^{184}(1003)=f^{183}(1000)\\\\\n&=f^{182}(997)=f^{183}(1002)=f^{182}(999)=f^{183}(1004)\\end{align*}$\nSo this function reiterates with a period of 2 for $x$. It might be tempting at first to assume that $f(1004) = 1001$ is the answer; however, that is not true since the solution occurs slightly before that. Start at $f^3(1004)$:\n$f^{3}(1004)=f^{2}(1001)=f(998)=f^{2}(1003)=f(1000)=997$\n\nNote that we should also be suspicious if our answer is $1001$- it is a $4$-digit number, and we were not asked to, say, divide our number by $13$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall> n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined such that for all integers $n \\geq 1000$, $f(n) = n - 3$, and for all integers $n < 1000$, $f(n) = f(f(n + 5))$. What is the value of $f(84)$? The final answer is $997$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.5179651379585266,
+        "symbolic_score": 1.0
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"\\<forall> n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall> n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"",
+        "formal solution": "(* ### Problem\n The [[function]] f is defined on the [[set]] of [[integer]]s and satisfies $f(n)=\\begin{cases}\nn-3&\\mbox{if}\\ n\\ge 1000\\\\\nf(f(n+5))&\\mbox{if}\\ n<1000\\end{cases}$\n\nFind $f(84)$. Show that it is 997.\n ### Proof\n Define $f^{h} = f(f(\\cdots f(f(x))\\cdots))$, where the function $f$ is performed $h$ times. We find that $ f(84) = f(f(89)) = f^2(89) = f^3(94) = \\ldots f^{y}(1004)$. $1004 = 84 + 5(y - 1) \\Longrightarrow y = 185$. So we now need to reduce $f^{185}(1004)$.\n\nLet\u2019s write out a couple more iterations of this function:\n$\\begin{align*}f^{185}(1004)&=f^{184}(1001)=f^{183}(998)=f^{184}(1003)=f^{183}(1000)\\\\\n&=f^{182}(997)=f^{183}(1002)=f^{182}(999)=f^{183}(1004)\\end{align*}$\nSo this function reiterates with a period of 2 for $x$. It might be tempting at first to assume that $f(1004) = 1001$ is the answer; however, that is not true since the solution occurs slightly before that. Start at $f^3(1004)$:\n$f^{3}(1004)=f^{2}(1001)=f(998)=f^{2}(1003)=f(1000)=997$\n\nNote that we should also be suspicious if our answer is $1001$- it is a $4$-digit number, and we were not asked to, say, divide our number by $13$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"\\<forall> n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall> n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined as follows: for any integer $n \\geq 1000$, $f(n) = n - 3$, and for any integer $n < 1000$, $f(n) = f(f(n + 5))$. Find the value of $f(84)$. The final answer is 997.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.5208820700645447,
+        "symbolic_score": 1.0
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall>n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"",
+        "formal solution": "(* ### Problem\n The [[function]] f is defined on the [[set]] of [[integer]]s and satisfies $f(n)=\\begin{cases}\nn-3&\\mbox{if}\\ n\\ge 1000\\\\\nf(f(n+5))&\\mbox{if}\\ n<1000\\end{cases}$\n\nFind $f(84)$. Show that it is 997.\n ### Proof\n Define $f^{h} = f(f(\\cdots f(f(x))\\cdots))$, where the function $f$ is performed $h$ times. We find that $ f(84) = f(f(89)) = f^2(89) = f^3(94) = \\ldots f^{y}(1004)$. $1004 = 84 + 5(y - 1) \\Longrightarrow y = 185$. So we now need to reduce $f^{185}(1004)$.\n\nLet\u2019s write out a couple more iterations of this function:\n$\\begin{align*}f^{185}(1004)&=f^{184}(1001)=f^{183}(998)=f^{184}(1003)=f^{183}(1000)\\\\\n&=f^{182}(997)=f^{183}(1002)=f^{182}(999)=f^{183}(1004)\\end{align*}$\nSo this function reiterates with a period of 2 for $x$. It might be tempting at first to assume that $f(1004) = 1001$ is the answer; however, that is not true since the solution occurs slightly before that. Start at $f^3(1004)$:\n$f^{3}(1004)=f^{2}(1001)=f(998)=f^{2}(1003)=f(1000)=997$\n\nNote that we should also be suspicious if our answer is $1001$- it is a $4$-digit number, and we were not asked to, say, divide our number by $13$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall>n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined as follows: for any integer $n$, if $n \\geq 1000$, then $f(n) = n - 3$. If $n < 1000$, then $f(n) = f(f(n + 5))$. What is the value of $f(84)$? The final answer is 997.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.5610674023628235,
+        "symbolic_score": 1.0
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall>n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"",
+        "formal solution": "(* ### Problem\n The [[function]] f is defined on the [[set]] of [[integer]]s and satisfies $f(n)=\\begin{cases}\nn-3&\\mbox{if}\\ n\\ge 1000\\\\\nf(f(n+5))&\\mbox{if}\\ n<1000\\end{cases}$\n\nFind $f(84)$. Show that it is 997.\n ### Proof\n Define $f^{h} = f(f(\\cdots f(f(x))\\cdots))$, where the function $f$ is performed $h$ times. We find that $ f(84) = f(f(89)) = f^2(89) = f^3(94) = \\ldots f^{y}(1004)$. $1004 = 84 + 5(y - 1) \\Longrightarrow y = 185$. So we now need to reduce $f^{185}(1004)$.\n\nLet\u2019s write out a couple more iterations of this function:\n$\\begin{align*}f^{185}(1004)&=f^{184}(1001)=f^{183}(998)=f^{184}(1003)=f^{183}(1000)\\\\\n&=f^{182}(997)=f^{183}(1002)=f^{182}(999)=f^{183}(1004)\\end{align*}$\nSo this function reiterates with a period of 2 for $x$. It might be tempting at first to assume that $f(1004) = 1001$ is the answer; however, that is not true since the solution occurs slightly before that. Start at $f^3(1004)$:\n$f^{3}(1004)=f^{2}(1001)=f(998)=f^{2}(1003)=f(1000)=997$\n\nNote that we should also be suspicious if our answer is $1001$- it is a $4$-digit number, and we were not asked to, say, divide our number by $13$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall>n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f$ defined on integers, such that for any integer $n$, if $n \\geq 1000$, then $f(n) = n - 3$. If $n < 1000$, then $f(n) = f(f(n + 5))$. Find the value of $f(84)$. The final answer is 997.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.6339835524559021,
+        "symbolic_score": 1.0
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall>n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"",
+        "formal solution": "(* ### Problem\n The [[function]] f is defined on the [[set]] of [[integer]]s and satisfies $f(n)=\\begin{cases}\nn-3&\\mbox{if}\\ n\\ge 1000\\\\\nf(f(n+5))&\\mbox{if}\\ n<1000\\end{cases}$\n\nFind $f(84)$. Show that it is 997.\n ### Proof\n Define $f^{h} = f(f(\\cdots f(f(x))\\cdots))$, where the function $f$ is performed $h$ times. We find that $ f(84) = f(f(89)) = f^2(89) = f^3(94) = \\ldots f^{y}(1004)$. $1004 = 84 + 5(y - 1) \\Longrightarrow y = 185$. So we now need to reduce $f^{185}(1004)$.\n\nLet\u2019s write out a couple more iterations of this function:\n$\\begin{align*}f^{185}(1004)&=f^{184}(1001)=f^{183}(998)=f^{184}(1003)=f^{183}(1000)\\\\\n&=f^{182}(997)=f^{183}(1002)=f^{182}(999)=f^{183}(1004)\\end{align*}$\nSo this function reiterates with a period of 2 for $x$. It might be tempting at first to assume that $f(1004) = 1001$ is the answer; however, that is not true since the solution occurs slightly before that. Start at $f^3(1004)$:\n$f^{3}(1004)=f^{2}(1001)=f(998)=f^{2}(1003)=f(1000)=997$\n\nNote that we should also be suspicious if our answer is $1001$- it is a $4$-digit number, and we were not asked to, say, divide our number by $13$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall>n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ as follows: for any integer $n$, if $n \\geq 1000$, then $f(n) = n - 3$. If $n < 1000$, then $f(n) = f(f(n + 5))$. Find the value of $f(84)$. The final answer is $997$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.6451389789581299,
+        "symbolic_score": 1.0
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall>n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"",
+        "formal solution": "(* ### Problem\n The [[function]] f is defined on the [[set]] of [[integer]]s and satisfies $f(n)=\\begin{cases}\nn-3&\\mbox{if}\\ n\\ge 1000\\\\\nf(f(n+5))&\\mbox{if}\\ n<1000\\end{cases}$\n\nFind $f(84)$. Show that it is 997.\n ### Proof\n Define $f^{h} = f(f(\\cdots f(f(x))\\cdots))$, where the function $f$ is performed $h$ times. We find that $ f(84) = f(f(89)) = f^2(89) = f^3(94) = \\ldots f^{y}(1004)$. $1004 = 84 + 5(y - 1) \\Longrightarrow y = 185$. So we now need to reduce $f^{185}(1004)$.\n\nLet\u2019s write out a couple more iterations of this function:\n$\\begin{align*}f^{185}(1004)&=f^{184}(1001)=f^{183}(998)=f^{184}(1003)=f^{183}(1000)\\\\\n&=f^{182}(997)=f^{183}(1002)=f^{182}(999)=f^{183}(1004)\\end{align*}$\nSo this function reiterates with a period of 2 for $x$. It might be tempting at first to assume that $f(1004) = 1001$ is the answer; however, that is not true since the solution occurs slightly before that. Start at $f^3(1004)$:\n$f^{3}(1004)=f^{2}(1001)=f(998)=f^{2}(1003)=f(1000)=997$\n\nNote that we should also be suspicious if our answer is $1001$- it is a $4$-digit number, and we were not asked to, say, divide our number by $13$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall>n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ such that for all integers $n \\geq 1000$, $f(n) = n - 3$, and for all integers $n < 1000$, $f(n) = f(f(n + 5))$. Find the value of $f(84)$. The final answer is $997$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.7587540149688721,
+        "symbolic_score": 1.0
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall>n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"",
+        "formal solution": "(* ### Problem\n The [[function]] f is defined on the [[set]] of [[integer]]s and satisfies $f(n)=\\begin{cases}\nn-3&\\mbox{if}\\ n\\ge 1000\\\\\nf(f(n+5))&\\mbox{if}\\ n<1000\\end{cases}$\n\nFind $f(84)$. Show that it is 997.\n ### Proof\n Define $f^{h} = f(f(\\cdots f(f(x))\\cdots))$, where the function $f$ is performed $h$ times. We find that $ f(84) = f(f(89)) = f^2(89) = f^3(94) = \\ldots f^{y}(1004)$. $1004 = 84 + 5(y - 1) \\Longrightarrow y = 185$. So we now need to reduce $f^{185}(1004)$.\n\nLet\u2019s write out a couple more iterations of this function:\n$\\begin{align*}f^{185}(1004)&=f^{184}(1001)=f^{183}(998)=f^{184}(1003)=f^{183}(1000)\\\\\n&=f^{182}(997)=f^{183}(1002)=f^{182}(999)=f^{183}(1004)\\end{align*}$\nSo this function reiterates with a period of 2 for $x$. It might be tempting at first to assume that $f(1004) = 1001$ is the answer; however, that is not true since the solution occurs slightly before that. Start at $f^3(1004)$:\n$f^{3}(1004)=f^{2}(1001)=f(998)=f^{2}(1003)=f(1000)=997$\n\nNote that we should also be suspicious if our answer is $1001$- it is a $4$-digit number, and we were not asked to, say, divide our number by $13$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall>n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined as follows: for all integers $n \\geq 1000$, $f(n) = n - 3$, and for all integers $n < 1000$, $f(n) = f(f(n + 5))$. What is the value of $f(84)$? The final answer is $997$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.5545083284378052,
+        "symbolic_score": 1.0
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall>n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"",
+        "formal solution": "(* ### Problem\n The [[function]] f is defined on the [[set]] of [[integer]]s and satisfies $f(n)=\\begin{cases}\nn-3&\\mbox{if}\\ n\\ge 1000\\\\\nf(f(n+5))&\\mbox{if}\\ n<1000\\end{cases}$\n\nFind $f(84)$. Show that it is 997.\n ### Proof\n Define $f^{h} = f(f(\\cdots f(f(x))\\cdots))$, where the function $f$ is performed $h$ times. We find that $ f(84) = f(f(89)) = f^2(89) = f^3(94) = \\ldots f^{y}(1004)$. $1004 = 84 + 5(y - 1) \\Longrightarrow y = 185$. So we now need to reduce $f^{185}(1004)$.\n\nLet\u2019s write out a couple more iterations of this function:\n$\\begin{align*}f^{185}(1004)&=f^{184}(1001)=f^{183}(998)=f^{184}(1003)=f^{183}(1000)\\\\\n&=f^{182}(997)=f^{183}(1002)=f^{182}(999)=f^{183}(1004)\\end{align*}$\nSo this function reiterates with a period of 2 for $x$. It might be tempting at first to assume that $f(1004) = 1001$ is the answer; however, that is not true since the solution occurs slightly before that. Start at $f^3(1004)$:\n$f^{3}(1004)=f^{2}(1001)=f(998)=f^{2}(1003)=f(1000)=997$\n\nNote that we should also be suspicious if our answer is $1001$- it is a $4$-digit number, and we were not asked to, say, divide our number by $13$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1000 \\<longrightarrow> f n = n - 3\"\nand h1 : \"\\<forall>n. n < 1000 \\<longrightarrow> f n = f (f (n + 5))\"\nshows  \"f 84 = 997\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(n)$ defined as follows: for all $n \\ge 1000$, $f(n) = n - 3$. For all $n < 1000$, $f(n) = f(f(n + 5))$. Find the value of $f(84)$. The final answer is $997$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.6211172938346863,
+        "symbolic_score": 1.0
+    },
+    "oracle": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0: \"\\<forall> n\\<ge>1000.  f n = n - 3\"\nand h1: \"\\<forall> n < 1000. f n = f (f (n + 5))\"\nshows \"f 84 = 997\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ]
+    },
+    "equivalence_oracle": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+    ]
+}

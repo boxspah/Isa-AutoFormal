@@ -1,0 +1,124 @@
+{
+    "problem_name": "amc12_2000_p6",
+    "informal_statement": "Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?\n\n$\\textbf{(A)}\\ 22 \\qquad\\textbf{(B)}\\ 60 \\qquad\\textbf{(C)}\\ 119 \\qquad\\textbf{(D)}\\ 180 \\qquad\\textbf{(E)}\\ 231$ Show that it is \\textbf{(C) }119.",
+    "informal_proof": "Any two prime numbers between 4 and 18 have an odd product and an even sum. Any odd number minus an even number is an odd number, so we can eliminate A, B, and D. Since the highest two prime numbers we can pick are 13 and 17, the highest number we can make is $(13)(17)-(13+17) = 221 - 30 = 191$. Thus, we can eliminate E. So, the answer must be $\\textbf{(C) }119$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes p q :: nat and res :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"4 < p\"\nand h3 : \"p < 18\"\nand h4 : \"4 < q\"\nand h5 : \"q < 18\"\nand h6 : \"p \\<noteq> q\"\nand h7 : \"res = p * q - (p + q)\"\nshows  \"res = 119\"",
+        "formal solution": "(* ### Problem\n Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?\n\n$\\textbf{(A)}\\ 22 \\qquad\\textbf{(B)}\\ 60 \\qquad\\textbf{(C)}\\ 119 \\qquad\\textbf{(D)}\\ 180 \\qquad\\textbf{(E)}\\ 231$ Show that it is \\textbf{(C) }119.\n ### Proof\n Any two prime numbers between 4 and 18 have an odd product and an even sum. Any odd number minus an even number is an odd number, so we can eliminate A, B, and D. Since the highest two prime numbers we can pick are 13 and 17, the highest number we can make is $(13)(17)-(13+17) = 221 - 30 = 191$. Thus, we can eliminate E. So, the answer must be $\\textbf{(C) }119$.\n *)\n\ntheorem\nfixes p q :: nat and res :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"4 < p\"\nand h3 : \"p < 18\"\nand h4 : \"4 < q\"\nand h5 : \"q < 18\"\nand h6 : \"p \\<noteq> q\"\nand h7 : \"res = p * q - (p + q)\"\nshows  \"res = 119\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the expression $pq - (p + q)$, where $p$ and $q$ are distinct prime numbers greater than 4 and less than 18. The final answer is 119.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6932679414749146,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes p1 p2 :: nat\nassumes h0 : \"prime p1\"\nand h1 : \"prime p2\"\nand h2 : \"p1 \\<noteq> p2\"\nand h3 : \"4 < p1\"\nand h4 : \"p1 < 18\"\nand h5 : \"4 < p2\"\nand h6 : \"p2 < 18\"\nshows  \"(p1 * p2 - (p1 + p2)) = (119::nat)\"",
+        "formal solution": "(* ### Problem\n Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?\n\n$\\textbf{(A)}\\ 22 \\qquad\\textbf{(B)}\\ 60 \\qquad\\textbf{(C)}\\ 119 \\qquad\\textbf{(D)}\\ 180 \\qquad\\textbf{(E)}\\ 231$ Show that it is \\textbf{(C) }119.\n ### Proof\n Any two prime numbers between 4 and 18 have an odd product and an even sum. Any odd number minus an even number is an odd number, so we can eliminate A, B, and D. Since the highest two prime numbers we can pick are 13 and 17, the highest number we can make is $(13)(17)-(13+17) = 221 - 30 = 191$. Thus, we can eliminate E. So, the answer must be $\\textbf{(C) }119$.\n *)\n\ntheorem\nfixes p1 p2 :: nat\nassumes h0 : \"prime p1\"\nand h1 : \"prime p2\"\nand h2 : \"p1 \\<noteq> p2\"\nand h3 : \"4 < p1\"\nand h4 : \"p1 < 18\"\nand h5 : \"4 < p2\"\nand h6 : \"p2 < 18\"\nshows  \"(p1 * p2 - (p1 + p2)) = (119::nat)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two distinct prime numbers, $p_1$ and $p_2$, such that both are greater than 4 and less than 18. Calculate the value of $(p_1 * p_2) - (p_1 + p_2)$. The final answer is 119.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9240450263023376,
+        "symbolic_score": 0.3
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes p q :: nat and S :: \"nat set\"\nassumes h0 : \"S = {5, 7, 11, 13, 17}\"\nand h1 : \"prime p\"\nand h2 : \"prime q\"\nand h3 : \"p \\<in> S\"\nand h4 : \"q \\<in> S\"\nand h5 : \"p \\<noteq> q\"\nshows  \"\\<exists>p q. p * q - (p + q) = 119\"",
+        "formal solution": "(* ### Problem\n Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?\n\n$\\textbf{(A)}\\ 22 \\qquad\\textbf{(B)}\\ 60 \\qquad\\textbf{(C)}\\ 119 \\qquad\\textbf{(D)}\\ 180 \\qquad\\textbf{(E)}\\ 231$ Show that it is \\textbf{(C) }119.\n ### Proof\n Any two prime numbers between 4 and 18 have an odd product and an even sum. Any odd number minus an even number is an odd number, so we can eliminate A, B, and D. Since the highest two prime numbers we can pick are 13 and 17, the highest number we can make is $(13)(17)-(13+17) = 221 - 30 = 191$. Thus, we can eliminate E. So, the answer must be $\\textbf{(C) }119$.\n *)\n\ntheorem\nfixes p q :: nat and S :: \"nat set\"\nassumes h0 : \"S = {5, 7, 11, 13, 17}\"\nand h1 : \"prime p\"\nand h2 : \"prime q\"\nand h3 : \"p \\<in> S\"\nand h4 : \"q \\<in> S\"\nand h5 : \"p \\<noteq> q\"\nshows  \"\\<exists>p q. p * q - (p + q) = 119\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two distinct prime numbers $p$ and $q$ from the set $\\{5, 7, 11, 13, 17\\}$ such that $p \\times q - (p + q) = 119$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.3884507715702057,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes p1 p2 :: nat and result :: int\nassumes h0 : \"prime p1\"\nand h1 : \"prime p2\"\nand h2 : \"p1 \\<noteq> p2\"\nand h3 : \"4 < p1\"\nand h4 : \"p1 < 18\"\nand h5 : \"4 < p2\"\nand h6 : \"p2 < 18\"\nand h7 : \"result = int (p1 * p2) - int (p1 + p2)\"\nshows  \"result = 119\"",
+        "formal solution": "(* ### Problem\n Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?\n\n$\\textbf{(A)}\\ 22 \\qquad\\textbf{(B)}\\ 60 \\qquad\\textbf{(C)}\\ 119 \\qquad\\textbf{(D)}\\ 180 \\qquad\\textbf{(E)}\\ 231$ Show that it is \\textbf{(C) }119.\n ### Proof\n Any two prime numbers between 4 and 18 have an odd product and an even sum. Any odd number minus an even number is an odd number, so we can eliminate A, B, and D. Since the highest two prime numbers we can pick are 13 and 17, the highest number we can make is $(13)(17)-(13+17) = 221 - 30 = 191$. Thus, we can eliminate E. So, the answer must be $\\textbf{(C) }119$.\n *)\n\ntheorem\nfixes p1 p2 :: nat and result :: int\nassumes h0 : \"prime p1\"\nand h1 : \"prime p2\"\nand h2 : \"p1 \\<noteq> p2\"\nand h3 : \"4 < p1\"\nand h4 : \"p1 < 18\"\nand h5 : \"4 < p2\"\nand h6 : \"p2 < 18\"\nand h7 : \"result = int (p1 * p2) - int (p1 + p2)\"\nshows  \"result = 119\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Two different prime numbers, $p_1$ and $p_2$, are both greater than 4 and less than 18. Find the value of $p_1 \\times p_2 - (p_1 + p_2)$. The final answer is 119.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9873867630958557,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"4 < a\"\nand h1 : \"a < 18\"\nand h2 : \"prime a\"\nand h3 : \"4 < b\"\nand h4 : \"b < 18\"\nand h5 : \"prime b\"\nand h6 : \"a \\<noteq> b\"\nshows  \"a * b - (a + b) = (119::nat)\"",
+        "formal solution": "(* ### Problem\n Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?\n\n$\\textbf{(A)}\\ 22 \\qquad\\textbf{(B)}\\ 60 \\qquad\\textbf{(C)}\\ 119 \\qquad\\textbf{(D)}\\ 180 \\qquad\\textbf{(E)}\\ 231$ Show that it is \\textbf{(C) }119.\n ### Proof\n Any two prime numbers between 4 and 18 have an odd product and an even sum. Any odd number minus an even number is an odd number, so we can eliminate A, B, and D. Since the highest two prime numbers we can pick are 13 and 17, the highest number we can make is $(13)(17)-(13+17) = 221 - 30 = 191$. Thus, we can eliminate E. So, the answer must be $\\textbf{(C) }119$.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"4 < a\"\nand h1 : \"a < 18\"\nand h2 : \"prime a\"\nand h3 : \"4 < b\"\nand h4 : \"b < 18\"\nand h5 : \"prime b\"\nand h6 : \"a \\<noteq> b\"\nshows  \"a * b - (a + b) = (119::nat)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two distinct prime numbers $a$ and $b$ between 4 and 18 such that their product minus their sum equals 119.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.3880091607570648,
+        "symbolic_score": 0.3
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes p q :: int\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"4 < p \\<and> p < 18\"\nand h3 : \"4 < q \\<and> q < 18\"\nand h4 : \"p \\<noteq> q\"\nand h5 : \"p * q - (p + q) = 22 \\<or> p * q - (p + q) = 60 \\<or> p * q - (p + q) = 119 \\<or> p * q - (p + q) = 180 \\<or> p * q - (p + q) = 231\"\nshows  \"p * q - (p + q) = 119\"",
+        "formal solution": "(* ### Problem\n Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?\n\n$\\textbf{(A)}\\ 22 \\qquad\\textbf{(B)}\\ 60 \\qquad\\textbf{(C)}\\ 119 \\qquad\\textbf{(D)}\\ 180 \\qquad\\textbf{(E)}\\ 231$ Show that it is \\textbf{(C) }119.\n ### Proof\n Any two prime numbers between 4 and 18 have an odd product and an even sum. Any odd number minus an even number is an odd number, so we can eliminate A, B, and D. Since the highest two prime numbers we can pick are 13 and 17, the highest number we can make is $(13)(17)-(13+17) = 221 - 30 = 191$. Thus, we can eliminate E. So, the answer must be $\\textbf{(C) }119$.\n *)\n\ntheorem\nfixes p q :: int\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"4 < p \\<and> p < 18\"\nand h3 : \"4 < q \\<and> q < 18\"\nand h4 : \"p \\<noteq> q\"\nand h5 : \"p * q - (p + q) = 22 \\<or> p * q - (p + q) = 60 \\<or> p * q - (p + q) = 119 \\<or> p * q - (p + q) = 180 \\<or> p * q - (p + q) = 231\"\nshows  \"p * q - (p + q) = 119\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Two distinct prime numbers, $p$ and $q$, are between 4 and 18. Calculate the value of $p \\times q - (p + q)$, given that it can be either 22, 60, 119, 180, or 231. The correct value is 119.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9905808568000793,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes p q :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"4 < p\"\nand h3 : \"p < 18\"\nand h4 : \"4 < q\"\nand h5 : \"q < 18\"\nand h6 : \"p \\<noteq> q\"\nshows  \"p * q - (p + q) = (119::nat)\"",
+        "formal solution": "(* ### Problem\n Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?\n\n$\\textbf{(A)}\\ 22 \\qquad\\textbf{(B)}\\ 60 \\qquad\\textbf{(C)}\\ 119 \\qquad\\textbf{(D)}\\ 180 \\qquad\\textbf{(E)}\\ 231$ Show that it is \\textbf{(C) }119.\n ### Proof\n Any two prime numbers between 4 and 18 have an odd product and an even sum. Any odd number minus an even number is an odd number, so we can eliminate A, B, and D. Since the highest two prime numbers we can pick are 13 and 17, the highest number we can make is $(13)(17)-(13+17) = 221 - 30 = 191$. Thus, we can eliminate E. So, the answer must be $\\textbf{(C) }119$.\n *)\n\ntheorem\nfixes p q :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"4 < p\"\nand h3 : \"p < 18\"\nand h4 : \"4 < q\"\nand h5 : \"q < 18\"\nand h6 : \"p \\<noteq> q\"\nshows  \"p * q - (p + q) = (119::nat)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two distinct prime numbers $p$ and $q$ such that both are greater than 4, less than 18, and their product minus their sum equals 119.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.4344741404056549,
+        "symbolic_score": 0.3
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes p q :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"4 < p\"\nand h3 : \"p < 18\"\nand h4 : \"4 < q\"\nand h5 : \"q < 18\"\nand h6 : \"p \\<noteq> q\"\nshows  \"\\<exists> p q. (p * q) - (p + q) = (119::nat)\"",
+        "formal solution": "(* ### Problem\n Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?\n\n$\\textbf{(A)}\\ 22 \\qquad\\textbf{(B)}\\ 60 \\qquad\\textbf{(C)}\\ 119 \\qquad\\textbf{(D)}\\ 180 \\qquad\\textbf{(E)}\\ 231$ Show that it is \\textbf{(C) }119.\n ### Proof\n Any two prime numbers between 4 and 18 have an odd product and an even sum. Any odd number minus an even number is an odd number, so we can eliminate A, B, and D. Since the highest two prime numbers we can pick are 13 and 17, the highest number we can make is $(13)(17)-(13+17) = 221 - 30 = 191$. Thus, we can eliminate E. So, the answer must be $\\textbf{(C) }119$.\n *)\n\ntheorem\nfixes p q :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"4 < p\"\nand h3 : \"p < 18\"\nand h4 : \"4 < q\"\nand h5 : \"q < 18\"\nand h6 : \"p \\<noteq> q\"\nshows  \"\\<exists> p q. (p * q) - (p + q) = (119::nat)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two distinct prime numbers, $p$ and $q$, both greater than 4 and less than 18, such that $(p * q) - (p + q) = 119$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.3376392424106598,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes p q r :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"p \\<noteq> q\"\nand h3 : \"4 < p \\<and> p < 18\"\nand h4 : \"4 < q \\<and> q < 18\"\nand h5 : \"r = (p * q) - (p + q)\"\nshows  \"r = 119\"",
+        "formal solution": "(* ### Problem\n Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?\n\n$\\textbf{(A)}\\ 22 \\qquad\\textbf{(B)}\\ 60 \\qquad\\textbf{(C)}\\ 119 \\qquad\\textbf{(D)}\\ 180 \\qquad\\textbf{(E)}\\ 231$ Show that it is \\textbf{(C) }119.\n ### Proof\n Any two prime numbers between 4 and 18 have an odd product and an even sum. Any odd number minus an even number is an odd number, so we can eliminate A, B, and D. Since the highest two prime numbers we can pick are 13 and 17, the highest number we can make is $(13)(17)-(13+17) = 221 - 30 = 191$. Thus, we can eliminate E. So, the answer must be $\\textbf{(C) }119$.\n *)\n\ntheorem\nfixes p q r :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"p \\<noteq> q\"\nand h3 : \"4 < p \\<and> p < 18\"\nand h4 : \"4 < q \\<and> q < 18\"\nand h5 : \"r = (p * q) - (p + q)\"\nshows  \"r = 119\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $p$ and $q$ be distinct prime numbers between 4 and 18. If $r = pq - (p + q)$, find the value of $r$. The final answer is $119$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8241365551948547,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes p q result :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"4 < p\"\nand h3 : \"p < 18\"\nand h4 : \"4 < q\"\nand h5 : \"q < 18\"\nand h6 : \"p \u2260 q\"\nand h7 : \"result = p * q - (p + q)\"\nshows  \"result = 119\"",
+        "formal solution": "(* ### Problem\n Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?\n\n$\\textbf{(A)}\\ 22 \\qquad\\textbf{(B)}\\ 60 \\qquad\\textbf{(C)}\\ 119 \\qquad\\textbf{(D)}\\ 180 \\qquad\\textbf{(E)}\\ 231$ Show that it is \\textbf{(C) }119.\n ### Proof\n Any two prime numbers between 4 and 18 have an odd product and an even sum. Any odd number minus an even number is an odd number, so we can eliminate A, B, and D. Since the highest two prime numbers we can pick are 13 and 17, the highest number we can make is $(13)(17)-(13+17) = 221 - 30 = 191$. Thus, we can eliminate E. So, the answer must be $\\textbf{(C) }119$.\n *)\n\ntheorem\nfixes p q result :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"4 < p\"\nand h3 : \"p < 18\"\nand h4 : \"4 < q\"\nand h5 : \"q < 18\"\nand h6 : \"p \u2260 q\"\nand h7 : \"result = p * q - (p + q)\"\nshows  \"result = 119\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two distinct prime numbers $p$ and $q$ such that $4 < p < 18$ and $4 < q < 18$. Calculate the result as $result = pq - (p + q)$. The final answer is 119.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8293267488479614,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes p q ::nat\nassumes h0: \"prime p \\<and> prime q\"\nand h1: \"4 \\<le> p \\<and> p \\<le> 18\"\nand h2: \"4 \\<le> q \\<and> q \\<le> 18\"\nshows \"((p *  q)::int) - (p + q) \\<noteq> 194\"",
+    "prediction": {
+        "0": [
+            1,
+            4,
+            6
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            7
+        ],
+        "6": [
+            8
+        ],
+        "7": [
+            9
+        ]
+    }
+}

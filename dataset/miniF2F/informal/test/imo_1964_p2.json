@@ -1,0 +1,122 @@
+{
+    "problem_name": "imo_1964_p2",
+    "informal_statement": "Suppose $a, b, c$ are the sides of a triangle. Prove that \n\n$a^2(b+c-a)+b^2(c+a-b)+c^2(a+b-c)\\le{3abc}.$",
+    "informal_proof": "We can use the substitution $a=x+y$, $b=x+z$, and $c=y+z$ to get\n\n$2z(x+y)^2+2y(x+z)^2+2x(y+z)^2\\leq 3(x+y)(x+z)(y+z)$\n\n$2zx^2+2zy^2+2yx^2+2yz^2+2xy^2+2xz^2+12xyz\\leq 3x^2y+3x^2z+3y^2x+3y^2z+3z^2x+3z^2y+6xyz$\n\n$x^2y+x^2z+y^2x+y^2z+z^2x+z^2y\\geq 6xyz$\n\n$\\frac{x^2y+x^2z+y^2x+y^2z+z^2x+z^2y}{6}\\geq xyz=\\sqrt[6]{x^2yx^2zy^2xy^2zz^2xz^2y}$\n\nThis is true by AM-GM. We can work backwards to get that the original inequality is true.",
+    "a_0": {
+        "formal problem": "theorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0 \\<and> b > 0 \\<and> c > 0\"\nand h1 : \"a + b > c \\<and> a + c > b \\<and> b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"",
+        "formal solution": "(* ### Problem\n Suppose $a, b, c$ are the sides of a triangle. Prove that \n\n$a^2(b+c-a)+b^2(c+a-b)+c^2(a+b-c)\\le{3abc}.$\n ### Proof\n We can use the substitution $a=x+y$, $b=x+z$, and $c=y+z$ to get\n\n$2z(x+y)^2+2y(x+z)^2+2x(y+z)^2\\leq 3(x+y)(x+z)(y+z)$\n\n$2zx^2+2zy^2+2yx^2+2yz^2+2xy^2+2xz^2+12xyz\\leq 3x^2y+3x^2z+3y^2x+3y^2z+3z^2x+3z^2y+6xyz$\n\n$x^2y+x^2z+y^2x+y^2z+z^2x+z^2y\\geq 6xyz$\n\n$\\frac{x^2y+x^2z+y^2x+y^2z+z^2x+z^2y}{6}\\geq xyz=\\sqrt[6]{x^2yx^2zy^2xy^2zz^2xz^2y}$\n\nThis is true by AM-GM. We can work backwards to get that the original inequality is true.\n *)\n\ntheorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0 \\<and> b > 0 \\<and> c > 0\"\nand h1 : \"a + b > c \\<and> a + c > b \\<and> b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle with positive side lengths $a$, $b$, and $c$, such that $a + b > c$, $a + c > b$, and $b + c > a$, show that $a^2(b + c - a) + b^2(c + a - b) + c^2(a + b - c) \\leq 3abc$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.46037837862968445,
+        "symbolic_score": 0.8
+    },
+    "a_1": {
+        "formal problem": "theorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"c > 0\"\nand h3 : \"a + b > c\"\nand h4 : \"a + c > b\"\nand h5 : \"b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"",
+        "formal solution": "(* ### Problem\n Suppose $a, b, c$ are the sides of a triangle. Prove that \n\n$a^2(b+c-a)+b^2(c+a-b)+c^2(a+b-c)\\le{3abc}.$\n ### Proof\n We can use the substitution $a=x+y$, $b=x+z$, and $c=y+z$ to get\n\n$2z(x+y)^2+2y(x+z)^2+2x(y+z)^2\\leq 3(x+y)(x+z)(y+z)$\n\n$2zx^2+2zy^2+2yx^2+2yz^2+2xy^2+2xz^2+12xyz\\leq 3x^2y+3x^2z+3y^2x+3y^2z+3z^2x+3z^2y+6xyz$\n\n$x^2y+x^2z+y^2x+y^2z+z^2x+z^2y\\geq 6xyz$\n\n$\\frac{x^2y+x^2z+y^2x+y^2z+z^2x+z^2y}{6}\\geq xyz=\\sqrt[6]{x^2yx^2zy^2xy^2zz^2xz^2y}$\n\nThis is true by AM-GM. We can work backwards to get that the original inequality is true.\n *)\n\ntheorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"c > 0\"\nand h3 : \"a + b > c\"\nand h4 : \"a + c > b\"\nand h5 : \"b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle with positive side lengths $a$, $b$, and $c$ that satisfy the triangle inequality ($a + b > c$, $a + c > b$, and $b + c > a$), prove that $a^2 (b + c - a) + b^2 (c + a - b) + c^2 (a + b - c) \\leq 3abc$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.4602137506008148,
+        "symbolic_score": 0.8
+    },
+    "a_2": {
+        "formal problem": "theorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0 \\<and> b > 0 \\<and> c > 0\"\nand h1 : \"a + b > c\"\nand h2 : \"b + c > a\"\nand h3 : \"c + a > b\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"",
+        "formal solution": "(* ### Problem\n Suppose $a, b, c$ are the sides of a triangle. Prove that \n\n$a^2(b+c-a)+b^2(c+a-b)+c^2(a+b-c)\\le{3abc}.$\n ### Proof\n We can use the substitution $a=x+y$, $b=x+z$, and $c=y+z$ to get\n\n$2z(x+y)^2+2y(x+z)^2+2x(y+z)^2\\leq 3(x+y)(x+z)(y+z)$\n\n$2zx^2+2zy^2+2yx^2+2yz^2+2xy^2+2xz^2+12xyz\\leq 3x^2y+3x^2z+3y^2x+3y^2z+3z^2x+3z^2y+6xyz$\n\n$x^2y+x^2z+y^2x+y^2z+z^2x+z^2y\\geq 6xyz$\n\n$\\frac{x^2y+x^2z+y^2x+y^2z+z^2x+z^2y}{6}\\geq xyz=\\sqrt[6]{x^2yx^2zy^2xy^2zz^2xz^2y}$\n\nThis is true by AM-GM. We can work backwards to get that the original inequality is true.\n *)\n\ntheorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0 \\<and> b > 0 \\<and> c > 0\"\nand h1 : \"a + b > c\"\nand h2 : \"b + c > a\"\nand h3 : \"c + a > b\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle with positive side lengths $a$, $b$, and $c$ that satisfy the triangle inequality ($a + b > c$, $b + c > a$, and $c + a > b$), show that $a^2(b + c - a) + b^2(c + a - b) + c^2(a + b - c) \\leq 3abc$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.4519008696079254,
+        "symbolic_score": 0.2
+    },
+    "a_3": {
+        "formal problem": "theorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a + b > c \\<and> a + c > b \\<and> b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"",
+        "formal solution": "(* ### Problem\n Suppose $a, b, c$ are the sides of a triangle. Prove that \n\n$a^2(b+c-a)+b^2(c+a-b)+c^2(a+b-c)\\le{3abc}.$\n ### Proof\n We can use the substitution $a=x+y$, $b=x+z$, and $c=y+z$ to get\n\n$2z(x+y)^2+2y(x+z)^2+2x(y+z)^2\\leq 3(x+y)(x+z)(y+z)$\n\n$2zx^2+2zy^2+2yx^2+2yz^2+2xy^2+2xz^2+12xyz\\leq 3x^2y+3x^2z+3y^2x+3y^2z+3z^2x+3z^2y+6xyz$\n\n$x^2y+x^2z+y^2x+y^2z+z^2x+z^2y\\geq 6xyz$\n\n$\\frac{x^2y+x^2z+y^2x+y^2z+z^2x+z^2y}{6}\\geq xyz=\\sqrt[6]{x^2yx^2zy^2xy^2zz^2xz^2y}$\n\nThis is true by AM-GM. We can work backwards to get that the original inequality is true.\n *)\n\ntheorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a + b > c \\<and> a + c > b \\<and> b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle with side lengths $a$, $b$, and $c$ such that $a + b > c$, $a + c > b$, and $b + c > a$, show that $a^2 (b + c - a) + b^2 (c + a - b) + c^2 (a + b - c) \\leq 3abc$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.43691638112068176,
+        "symbolic_score": 0.8
+    },
+    "a_4": {
+        "formal problem": "theorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"c > 0\"\nand h3 : \"a + b > c\"\nand h4 : \"a + c > b\"\nand h5 : \"b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"",
+        "formal solution": "(* ### Problem\n Suppose $a, b, c$ are the sides of a triangle. Prove that \n\n$a^2(b+c-a)+b^2(c+a-b)+c^2(a+b-c)\\le{3abc}.$\n ### Proof\n We can use the substitution $a=x+y$, $b=x+z$, and $c=y+z$ to get\n\n$2z(x+y)^2+2y(x+z)^2+2x(y+z)^2\\leq 3(x+y)(x+z)(y+z)$\n\n$2zx^2+2zy^2+2yx^2+2yz^2+2xy^2+2xz^2+12xyz\\leq 3x^2y+3x^2z+3y^2x+3y^2z+3z^2x+3z^2y+6xyz$\n\n$x^2y+x^2z+y^2x+y^2z+z^2x+z^2y\\geq 6xyz$\n\n$\\frac{x^2y+x^2z+y^2x+y^2z+z^2x+z^2y}{6}\\geq xyz=\\sqrt[6]{x^2yx^2zy^2xy^2zz^2xz^2y}$\n\nThis is true by AM-GM. We can work backwards to get that the original inequality is true.\n *)\n\ntheorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"c > 0\"\nand h3 : \"a + b > c\"\nand h4 : \"a + c > b\"\nand h5 : \"b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle with positive side lengths $a$, $b$, and $c$ that satisfy the triangle inequality ($a + b > c$, $a + c > b$, and $b + c > a$), show that $a^2(b + c - a) + b^2(c + a - b) + c^2(a + b - c) \\leq 3abc$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.45601382851600647,
+        "symbolic_score": 0.8
+    },
+    "a_5": {
+        "formal problem": "theorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a + b > c \\<and> a + c > b \\<and> b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"",
+        "formal solution": "(* ### Problem\n Suppose $a, b, c$ are the sides of a triangle. Prove that \n\n$a^2(b+c-a)+b^2(c+a-b)+c^2(a+b-c)\\le{3abc}.$\n ### Proof\n We can use the substitution $a=x+y$, $b=x+z$, and $c=y+z$ to get\n\n$2z(x+y)^2+2y(x+z)^2+2x(y+z)^2\\leq 3(x+y)(x+z)(y+z)$\n\n$2zx^2+2zy^2+2yx^2+2yz^2+2xy^2+2xz^2+12xyz\\leq 3x^2y+3x^2z+3y^2x+3y^2z+3z^2x+3z^2y+6xyz$\n\n$x^2y+x^2z+y^2x+y^2z+z^2x+z^2y\\geq 6xyz$\n\n$\\frac{x^2y+x^2z+y^2x+y^2z+z^2x+z^2y}{6}\\geq xyz=\\sqrt[6]{x^2yx^2zy^2xy^2zz^2xz^2y}$\n\nThis is true by AM-GM. We can work backwards to get that the original inequality is true.\n *)\n\ntheorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a + b > c \\<and> a + c > b \\<and> b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle with sides of length $a$, $b$, and $c$ such that $a + b > c$, $a + c > b$, and $b + c > a$, prove that the inequality $a^2(b + c - a) + b^2(c + a - b) + c^2(a + b - c) \\le 3abc$ holds.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.37730538845062256,
+        "symbolic_score": 0.8
+    },
+    "a_6": {
+        "formal problem": "theorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0 \\<and> b > 0 \\<and> c > 0 \\<and> a + b > c \\<and> a + c > b \\<and> b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"",
+        "formal solution": "(* ### Problem\n Suppose $a, b, c$ are the sides of a triangle. Prove that \n\n$a^2(b+c-a)+b^2(c+a-b)+c^2(a+b-c)\\le{3abc}.$\n ### Proof\n We can use the substitution $a=x+y$, $b=x+z$, and $c=y+z$ to get\n\n$2z(x+y)^2+2y(x+z)^2+2x(y+z)^2\\leq 3(x+y)(x+z)(y+z)$\n\n$2zx^2+2zy^2+2yx^2+2yz^2+2xy^2+2xz^2+12xyz\\leq 3x^2y+3x^2z+3y^2x+3y^2z+3z^2x+3z^2y+6xyz$\n\n$x^2y+x^2z+y^2x+y^2z+z^2x+z^2y\\geq 6xyz$\n\n$\\frac{x^2y+x^2z+y^2x+y^2z+z^2x+z^2y}{6}\\geq xyz=\\sqrt[6]{x^2yx^2zy^2xy^2zz^2xz^2y}$\n\nThis is true by AM-GM. We can work backwards to get that the original inequality is true.\n *)\n\ntheorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0 \\<and> b > 0 \\<and> c > 0 \\<and> a + b > c \\<and> a + c > b \\<and> b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle with sides of positive length a, b, and c, where a + b > c, a + c > b, and b + c > a, prove that $a^2(b+c-a) + b^2(c+a-b) + c^2(a+b-c) \\leq 3abc$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5019648671150208,
+        "symbolic_score": 0.8
+    },
+    "a_7": {
+        "formal problem": "theorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"c > 0\"\nand h3 : \"a + b > c\"\nand h4 : \"a + c > b\"\nand h5 : \"b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"",
+        "formal solution": "(* ### Problem\n Suppose $a, b, c$ are the sides of a triangle. Prove that \n\n$a^2(b+c-a)+b^2(c+a-b)+c^2(a+b-c)\\le{3abc}.$\n ### Proof\n We can use the substitution $a=x+y$, $b=x+z$, and $c=y+z$ to get\n\n$2z(x+y)^2+2y(x+z)^2+2x(y+z)^2\\leq 3(x+y)(x+z)(y+z)$\n\n$2zx^2+2zy^2+2yx^2+2yz^2+2xy^2+2xz^2+12xyz\\leq 3x^2y+3x^2z+3y^2x+3y^2z+3z^2x+3z^2y+6xyz$\n\n$x^2y+x^2z+y^2x+y^2z+z^2x+z^2y\\geq 6xyz$\n\n$\\frac{x^2y+x^2z+y^2x+y^2z+z^2x+z^2y}{6}\\geq xyz=\\sqrt[6]{x^2yx^2zy^2xy^2zz^2xz^2y}$\n\nThis is true by AM-GM. We can work backwards to get that the original inequality is true.\n *)\n\ntheorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"c > 0\"\nand h3 : \"a + b > c\"\nand h4 : \"a + c > b\"\nand h5 : \"b + c > a\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle with side lengths $a$, $b$, and $c$ where $a > 0$, $b > 0$, and $c > 0$, and the triangle satisfies the triangle inequality: $a + b > c$, $a + c > b$, and $b + c > a$. Prove that $a^2 (b + c - a) + b^2 (c + a - b) + c^2 (a + b - c) \\leq 3abc$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.3951464891433716,
+        "symbolic_score": 0.8
+    },
+    "a_8": {
+        "formal problem": "theorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"c > 0\"\nand h3 : \"a + b > c\"\nand h4 : \"b + c > a\"\nand h5 : \"c + a > b\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"",
+        "formal solution": "(* ### Problem\n Suppose $a, b, c$ are the sides of a triangle. Prove that \n\n$a^2(b+c-a)+b^2(c+a-b)+c^2(a+b-c)\\le{3abc}.$\n ### Proof\n We can use the substitution $a=x+y$, $b=x+z$, and $c=y+z$ to get\n\n$2z(x+y)^2+2y(x+z)^2+2x(y+z)^2\\leq 3(x+y)(x+z)(y+z)$\n\n$2zx^2+2zy^2+2yx^2+2yz^2+2xy^2+2xz^2+12xyz\\leq 3x^2y+3x^2z+3y^2x+3y^2z+3z^2x+3z^2y+6xyz$\n\n$x^2y+x^2z+y^2x+y^2z+z^2x+z^2y\\geq 6xyz$\n\n$\\frac{x^2y+x^2z+y^2x+y^2z+z^2x+z^2y}{6}\\geq xyz=\\sqrt[6]{x^2yx^2zy^2xy^2zz^2xz^2y}$\n\nThis is true by AM-GM. We can work backwards to get that the original inequality is true.\n *)\n\ntheorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"c > 0\"\nand h3 : \"a + b > c\"\nand h4 : \"b + c > a\"\nand h5 : \"c + a > b\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle with positive side lengths $a$, $b$, and $c$ such that $a+b>c$, $b+c>a$, and $c+a>b$, prove that the inequality $a^2(b+c-a)+b^2(c+a-b)+c^2(a+b-c) \\leq 3abc$ holds.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.3781459331512451,
+        "symbolic_score": 0.2
+    },
+    "a_9": {
+        "formal problem": "theorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"c > 0\"\nand h3 : \"a < b + c\"\nand h4 : \"b < a + c\"\nand h5 : \"c < a + b\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"",
+        "formal solution": "(* ### Problem\n Suppose $a, b, c$ are the sides of a triangle. Prove that \n\n$a^2(b+c-a)+b^2(c+a-b)+c^2(a+b-c)\\le{3abc}.$\n ### Proof\n We can use the substitution $a=x+y$, $b=x+z$, and $c=y+z$ to get\n\n$2z(x+y)^2+2y(x+z)^2+2x(y+z)^2\\leq 3(x+y)(x+z)(y+z)$\n\n$2zx^2+2zy^2+2yx^2+2yz^2+2xy^2+2xz^2+12xyz\\leq 3x^2y+3x^2z+3y^2x+3y^2z+3z^2x+3z^2y+6xyz$\n\n$x^2y+x^2z+y^2x+y^2z+z^2x+z^2y\\geq 6xyz$\n\n$\\frac{x^2y+x^2z+y^2x+y^2z+z^2x+z^2y}{6}\\geq xyz=\\sqrt[6]{x^2yx^2zy^2xy^2zz^2xz^2y}$\n\nThis is true by AM-GM. We can work backwards to get that the original inequality is true.\n *)\n\ntheorem triangle_inequality:\nfixes a b c :: real\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"c > 0\"\nand h3 : \"a < b + c\"\nand h4 : \"b < a + c\"\nand h5 : \"c < a + b\"\nshows  \"a powr 2 * (b + c - a) + b powr 2 * (c + a - b) + c powr 2 * (a + b - c) \\<le> 3 * a * b * c\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle with positive side lengths $a, b, c$ satisfying the triangle inequality ($a < b + c$, $b < a + c$, and $c < a + b$), show that $a^2(b+c-a) + b^2(c+a-b) + c^2(a+b-c) \\leq 3abc$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.4448121190071106,
+        "symbolic_score": 0.8
+    },
+    "oracle": "theorem\nfixes a b c :: real\nassumes \"0 < a \\<and> 0 < b \\<and> 0 < c\"\nand \"c < a + b\"\nand \"b < a + c\"\nand \"a < b + c\"\nshows \"a^2 * (b + c - a) + b^2 * (c + a - b)\n+ c^2 * (a + b - c) \\<le> 3 * a * b * c\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9
+        ],
+        "1": [
+            8,
+            2
+        ]
+    },
+    "equivalence_oracle": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6,
+        7,
+        9
+    ]
+}

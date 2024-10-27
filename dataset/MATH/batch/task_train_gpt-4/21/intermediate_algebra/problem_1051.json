@@ -1,0 +1,59 @@
+{
+    "natural problem": "What is the value of the sum $-1 + 2 - 3 + 4 - 5 + 6 - 7 +\\dots+ 10,\\!000$?",
+    "natural solution": [
+        "Each pair of adjacent terms sums to 1 and there are $10,\\!000$ terms, so the sum is $10,\\!000/2=\\boxed{5000}$."
+    ],
+    "natural answer": "5000",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: int\nshows  \"sum (\\<lambda>i. if even i then i else -i) {1..10000} = 5000\"",
+        "formal solution": "(* ### Problem\n What is the value of the sum $-1 + 2 - 3 + 4 - 5 + 6 - 7 +\\dots+ 10,\\!000$? The final Answer is 5000\n ### Proof\n Each pair of adjacent terms sums to 1 and there are $10,\\!000$ terms, so the sum is $10,\\!000/2=\\boxed{5000}$.\n *)\n\ntheorem\nfixes n :: int\nshows  \"sum (\\<lambda>i. if even i then i else -i) {1..10000} = 5000\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the numbers from 1 to 10000, but replace each odd number with its negative. The final answer is 5000."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f 1 = -1\"\nand h1 : \"\\<forall> n. n > 1 \\<longrightarrow> f n = (-1)^(n+1) * n\"\nshows  \"(\\<Sum> n = 1..10000. f n) = 5000\"",
+        "formal solution": "(* ### Problem\n What is the value of the sum $-1 + 2 - 3 + 4 - 5 + 6 - 7 +\\dots+ 10,\\!000$? The final Answer is 5000\n ### Proof\n Each pair of adjacent terms sums to 1 and there are $10,\\!000$ terms, so the sum is $10,\\!000/2=\\boxed{5000}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f 1 = -1\"\nand h1 : \"\\<forall> n. n > 1 \\<longrightarrow> f n = (-1)^(n+1) * n\"\nshows  \"(\\<Sum> n = 1..10000. f n) = 5000\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function f is defined such that f(1) equals -1 and for all integers n greater than 1, f(n) equals n times -1 raised to the power of n+1. What is the sum of f(n) for n from 1 to 10000? The final answer is 5000."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat and sum :: int\nassumes h0 : \"sum = (\\<Sum> i \\<in> {1..10000}. (-1) ^ i * i)\"\nshows  \"sum = 5000\"",
+        "formal solution": "(* ### Problem\n What is the value of the sum $-1 + 2 - 3 + 4 - 5 + 6 - 7 +\\dots+ 10,\\!000$? The final Answer is 5000\n ### Proof\n Each pair of adjacent terms sums to 1 and there are $10,\\!000$ terms, so the sum is $10,\\!000/2=\\boxed{5000}$.\n *)\n\ntheorem\nfixes n :: nat and sum :: int\nassumes h0 : \"sum = (\\<Sum> i \\<in> {1..10000}. (-1) ^ i * i)\"\nshows  \"sum = 5000\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the series where each term is the product of $(-1)^i$ and $i$, for $i$ ranging from 1 to 10000. The final answer is 5000."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. even n \\<longrightarrow> f n = n\"\nand h1 : \"\\<forall>n. odd n \\<longrightarrow> f n = -n\"\nand h2 : \"f 0 = 0\"\nshows  \"(\\<Sum>n \\<leftarrow> [0..10000]. f n) = 5000\"",
+        "formal solution": "(* ### Problem\n What is the value of the sum $-1 + 2 - 3 + 4 - 5 + 6 - 7 +\\dots+ 10,\\!000$? The final Answer is 5000\n ### Proof\n Each pair of adjacent terms sums to 1 and there are $10,\\!000$ terms, so the sum is $10,\\!000/2=\\boxed{5000}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. even n \\<longrightarrow> f n = n\"\nand h1 : \"\\<forall>n. odd n \\<longrightarrow> f n = -n\"\nand h2 : \"f 0 = 0\"\nshows  \"(\\<Sum>n \\<leftarrow> [0..10000]. f n) = 5000\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined such that for any integer $n$, if $n$ is even then $f(n) = n$, and if $n$ is odd then $f(n) = -n$. The function $f(0)$ is defined to be $0$. What is the sum of $f(n)$ for $n$ ranging from $0$ to $10000$? The final answer is $5000$."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> f n = (-1)^(n+1) * n\"\nand h1 : \"sum f {1..10000} = 5000\"\nshows  \"sum f {1..10000} = 5000\"",
+        "formal solution": "(* ### Problem\n What is the value of the sum $-1 + 2 - 3 + 4 - 5 + 6 - 7 +\\dots+ 10,\\!000$? The final Answer is 5000\n ### Proof\n Each pair of adjacent terms sums to 1 and there are $10,\\!000$ terms, so the sum is $10,\\!000/2=\\boxed{5000}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> f n = (-1)^(n+1) * n\"\nand h1 : \"sum f {1..10000} = 5000\"\nshows  \"sum f {1..10000} = 5000\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(n)$ defined for all integers $n \\geq 1$ such that $f(n) = (-1)^{n+1} * n$. If the sum of $f(n)$ from $n=1$ to $n=10000$ equals $5000$, prove that this sum is indeed $5000$."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum> i = 1..10000. (-1) ^ i * i)\"\nshows  \"sum = 5000\"",
+        "formal solution": "(* ### Problem\n What is the value of the sum $-1 + 2 - 3 + 4 - 5 + 6 - 7 +\\dots+ 10,\\!000$? The final Answer is 5000\n ### Proof\n Each pair of adjacent terms sums to 1 and there are $10,\\!000$ terms, so the sum is $10,\\!000/2=\\boxed{5000}$.\n *)\n\ntheorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum> i = 1..10000. (-1) ^ i * i)\"\nshows  \"sum = 5000\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the series in which the $i^{th}$ term is $(-1)^i * i$ for $i$ from 1 to 10000. The final sum is 5000."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"\\<forall> n \\<ge> 0. (\\<Sum> i \\<in> {1..n}. (-1)^(i+1) * i) = n div 2\"\nshows  \"(\\<Sum> i \\<in> {1..10000}. (-1)^(i+1) * i) = 5000\"",
+        "formal solution": "(* ### Problem\n What is the value of the sum $-1 + 2 - 3 + 4 - 5 + 6 - 7 +\\dots+ 10,\\!000$? The final Answer is 5000\n ### Proof\n Each pair of adjacent terms sums to 1 and there are $10,\\!000$ terms, so the sum is $10,\\!000/2=\\boxed{5000}$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"\\<forall> n \\<ge> 0. (\\<Sum> i \\<in> {1..n}. (-1)^(i+1) * i) = n div 2\"\nshows  \"(\\<Sum> i \\<in> {1..10000}. (-1)^(i+1) * i) = 5000\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the series where each term is $(-1)^{i+1}$ times $i$, for $i$ in the range $1$ to $10000$. The final answer is $5000$."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes s :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> s n = s (n - 1) + (-1) powr (n+1) * n\"\nand h1 : \"s 0 = 0\"\nshows  \"s 10000 = 5000\"",
+        "formal solution": "(* ### Problem\n What is the value of the sum $-1 + 2 - 3 + 4 - 5 + 6 - 7 +\\dots+ 10,\\!000$? The final Answer is 5000\n ### Proof\n Each pair of adjacent terms sums to 1 and there are $10,\\!000$ terms, so the sum is $10,\\!000/2=\\boxed{5000}$.\n *)\n\ntheorem\nfixes s :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> s n = s (n - 1) + (-1) powr (n+1) * n\"\nand h1 : \"s 0 = 0\"\nshows  \"s 10000 = 5000\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $s$ is defined recursively for all positive integers $n$ by $s(n) = s(n - 1) + (-1)^{n+1} \\cdot n$ with the initial condition $s(0) = 0$. What is the value of $s(10000)$? The final answer is 5000."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"sum (\\<lambda>i. (-1)^i * i) {1..n} = 5000\"",
+        "formal solution": "(* ### Problem\n What is the value of the sum $-1 + 2 - 3 + 4 - 5 + 6 - 7 +\\dots+ 10,\\!000$? The final Answer is 5000\n ### Proof\n Each pair of adjacent terms sums to 1 and there are $10,\\!000$ terms, so the sum is $10,\\!000/2=\\boxed{5000}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 10000\"\nshows  \"sum (\\<lambda>i. (-1)^i * i) {1..n} = 5000\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the series $1 - 2 + 3 - 4 + 5 - 6 + \\dots + 9999 - 10000$. The final answer is 5000."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. sum n = (if even n then n else -n)\"\nshows  \"sum 10000 = 5000\"",
+        "formal solution": "(* ### Problem\n What is the value of the sum $-1 + 2 - 3 + 4 - 5 + 6 - 7 +\\dots+ 10,\\!000$? The final Answer is 5000\n ### Proof\n Each pair of adjacent terms sums to 1 and there are $10,\\!000$ terms, so the sum is $10,\\!000/2=\\boxed{5000}$.\n *)\n\ntheorem\nfixes sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. sum n = (if even n then n else -n)\"\nshows  \"sum 10000 = 5000\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function that takes an integer and returns the integer if it is even, otherwise it returns the negative of the integer. What is the value of this function when the input is 10000? The final answer is 5000."
+    },
+    "level": "Level 1",
+    "type": "Intermediate Algebra"
+}

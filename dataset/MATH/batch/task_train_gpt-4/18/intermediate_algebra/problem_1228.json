@@ -1,0 +1,59 @@
+{
+    "natural problem": "Let $f(x) = |g(x^3)|$. If $g$ is an odd function, is $f$ odd, even, or neither?\n\nEnter \"odd\", \"even\", or \"neither\".",
+    "natural solution": [
+        "$$f(-x) = |g((-x)^3)| = |g(-x^3)|$$Since $g$ is odd, $g(-x) = -g(x)$. Then, $$f(-x) = |-g(x^3)| = |g(x^3)| = f(x).$$Hence, $f$ is $\\boxed{\\text{even}}$."
+    ],
+    "natural answer": "\\text{even}",
+    "a_0": {
+        "formal problem": "definition \n  odd_function :: \"('a::group_add \\<Rightarrow> 'a) \\<Rightarrow> bool\"\nwhere \n  \"odd_function f \\<equiv> \\<forall>x. f (-x) = - f x\"\n\ndefinition \n  even_function :: \"('a::group_add \\<Rightarrow> 'a) \\<Rightarrow> bool\"\nwhere \n  \"even_function f \\<equiv> \\<forall>x. f (-x) = f x\"\n\ntheorem\nfixes g f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"odd_function g\"\nand h1 : \"f x \\<equiv> abs (g (x powr 3))\"\nshows  \"even_function f\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = |g(x^3)|$. If $g$ is an odd function, is $f$ odd, even, or neither?\n\nEnter \"odd\", \"even\", or \"neither\". The final Answer is \\text{even}\n ### Proof\n $$f(-x) = |g((-x)^3)| = |g(-x^3)|$$Since $g$ is odd, $g(-x) = -g(x)$. Then, $$f(-x) = |-g(x^3)| = |g(x^3)| = f(x).$$Hence, $f$ is $\\boxed{\\text{even}}$.\n *)\n\ndefinition \n  odd_function :: \"('a::group_add \\<Rightarrow> 'a) \\<Rightarrow> bool\"\nwhere \n  \"odd_function f \\<equiv> \\<forall>x. f (-x) = - f x\"\n\ndefinition \n  even_function :: \"('a::group_add \\<Rightarrow> 'a) \\<Rightarrow> bool\"\nwhere \n  \"even_function f \\<equiv> \\<forall>x. f (-x) = f x\"\n\ntheorem\nfixes g f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"odd_function g\"\nand h1 : \"f x \\<equiv> abs (g (x powr 3))\"\nshows  \"even_function f\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $g$ is an odd function (meaning that $g(-x) = -g(x)$ for all $x$), and $f(x)$ is defined as the absolute value of $g(x^3)$, prove that $f$ is an even function (meaning that $f(-x) = f(x)$ for all $x$)."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g x = - g (-x)\"\nand h1 : \"\\<forall> x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall> x. f x = f (-x)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = |g(x^3)|$. If $g$ is an odd function, is $f$ odd, even, or neither?\n\nEnter \"odd\", \"even\", or \"neither\". The final Answer is \\text{even}\n ### Proof\n $$f(-x) = |g((-x)^3)| = |g(-x^3)|$$Since $g$ is odd, $g(-x) = -g(x)$. Then, $$f(-x) = |-g(x^3)| = |g(x^3)| = f(x).$$Hence, $f$ is $\\boxed{\\text{even}}$.\n *)\n\ntheorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g x = - g (-x)\"\nand h1 : \"\\<forall> x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall> x. f x = f (-x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two functions $f$ and $g$ defined by $g(x) = -g(-x)$ and $f(x) = |g(x^3)|$, for every real number $x$, prove that $f(x) = f(-x)$."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g (-x) = - g x\"\nand h1 : \"\\<forall> x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall> x. f (-x) = f x\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = |g(x^3)|$. If $g$ is an odd function, is $f$ odd, even, or neither?\n\nEnter \"odd\", \"even\", or \"neither\". The final Answer is \\text{even}\n ### Proof\n $$f(-x) = |g((-x)^3)| = |g(-x^3)|$$Since $g$ is odd, $g(-x) = -g(x)$. Then, $$f(-x) = |-g(x^3)| = |g(x^3)| = f(x).$$Hence, $f$ is $\\boxed{\\text{even}}$.\n *)\n\ntheorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g (-x) = - g x\"\nand h1 : \"\\<forall> x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall> x. f (-x) = f x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For all real numbers $x$, if $g$ is an odd function (i.e., $g(-x) = -g(x)$ for all $x$), and $f(x) = |g(x^3)|$, then $f$ is an even function (i.e., $f(-x) = f(x)$ for all $x$)."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g (-x) = - g x\"\nand h1 : \"\\<forall> x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall> x. f (-x) = f x\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = |g(x^3)|$. If $g$ is an odd function, is $f$ odd, even, or neither?\n\nEnter \"odd\", \"even\", or \"neither\". The final Answer is \\text{even}\n ### Proof\n $$f(-x) = |g((-x)^3)| = |g(-x^3)|$$Since $g$ is odd, $g(-x) = -g(x)$. Then, $$f(-x) = |-g(x^3)| = |g(x^3)| = f(x).$$Hence, $f$ is $\\boxed{\\text{even}}$.\n *)\n\ntheorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g (-x) = - g x\"\nand h1 : \"\\<forall> x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall> x. f (-x) = f x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two functions $f$ and $g$ such that $g(-x) = -g(x)$ and $f(x) = |g(x^3)|$ for all real numbers $x$, show that $f$ is an even function, i.e., $f(-x) = f(x)$ for all $x$."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g(-x) = -g(x)\"\nand h1 : \"\\<forall> x. f(x) = abs(g(x powr 3))\"\nshows  \"\\<forall> x. f(-x) = f(x)\" (*f is an even function*)",
+        "formal solution": "(* ### Problem\n Let $f(x) = |g(x^3)|$. If $g$ is an odd function, is $f$ odd, even, or neither?\n\nEnter \"odd\", \"even\", or \"neither\". The final Answer is \\text{even}\n ### Proof\n $$f(-x) = |g((-x)^3)| = |g(-x^3)|$$Since $g$ is odd, $g(-x) = -g(x)$. Then, $$f(-x) = |-g(x^3)| = |g(x^3)| = f(x).$$Hence, $f$ is $\\boxed{\\text{even}}$.\n *)\n\ntheorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g(-x) = -g(x)\"\nand h1 : \"\\<forall> x. f(x) = abs(g(x powr 3))\"\nshows  \"\\<forall> x. f(-x) = f(x)\" (*f is an even function*)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $g$ is an odd function, such that $g(-x) = -g(x)$ for all $x$, and a function $f$ is defined as $f(x) = |g(x^3)|$, then $f$ is an even function, meaning that $f(-x) = f(x)$ for all $x$."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g (-x) = - g x\"\nand h1 : \"\\<forall> x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall> x. f (-x) = f x\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = |g(x^3)|$. If $g$ is an odd function, is $f$ odd, even, or neither?\n\nEnter \"odd\", \"even\", or \"neither\". The final Answer is \\text{even}\n ### Proof\n $$f(-x) = |g((-x)^3)| = |g(-x^3)|$$Since $g$ is odd, $g(-x) = -g(x)$. Then, $$f(-x) = |-g(x^3)| = |g(x^3)| = f(x).$$Hence, $f$ is $\\boxed{\\text{even}}$.\n *)\n\ntheorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g (-x) = - g x\"\nand h1 : \"\\<forall> x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall> x. f (-x) = f x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume a function $g(x)$ has the property that $g(-x) = -g(x)$ for all $x$. Now let's define another function $f(x) = |g(x^3)|$. Prove that $f(x) = f(-x)$ for all $x$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. g (-x) = - g x\"\nand h1 : \"\\<forall>x. f x = abs (g (x powr 3))\"\nshows  \"f (-x) = f x\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = |g(x^3)|$. If $g$ is an odd function, is $f$ odd, even, or neither?\n\nEnter \"odd\", \"even\", or \"neither\". The final Answer is \\text{even}\n ### Proof\n $$f(-x) = |g((-x)^3)| = |g(-x^3)|$$Since $g$ is odd, $g(-x) = -g(x)$. Then, $$f(-x) = |-g(x^3)| = |g(x^3)| = f(x).$$Hence, $f$ is $\\boxed{\\text{even}}$.\n *)\n\ntheorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. g (-x) = - g x\"\nand h1 : \"\\<forall>x. f x = abs (g (x powr 3))\"\nshows  \"f (-x) = f x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the function $g(x)$ is odd (meaning $g(-x) = -g(x)$ for all $x$), and the function $f(x)$ is defined as the absolute value of $g(x^3)$, prove that $f(-x) = f(x)$ for all $x$."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g (-x) = - g x\"\nand h1 : \"\\<forall> x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall> x. f (-x) = f x\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = |g(x^3)|$. If $g$ is an odd function, is $f$ odd, even, or neither?\n\nEnter \"odd\", \"even\", or \"neither\". The final Answer is \\text{even}\n ### Proof\n $$f(-x) = |g((-x)^3)| = |g(-x^3)|$$Since $g$ is odd, $g(-x) = -g(x)$. Then, $$f(-x) = |-g(x^3)| = |g(x^3)| = f(x).$$Hence, $f$ is $\\boxed{\\text{even}}$.\n *)\n\ntheorem\nfixes x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g (-x) = - g x\"\nand h1 : \"\\<forall> x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall> x. f (-x) = f x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If function $g$ is an odd function, i.e., $g(-x) = -g(x)$, and function $f$ is defined as the absolute value of $g$ evaluated at $x^3$, i.e., $f(x) = |g(x^3)|$, then prove that $f$ is an even function, i.e., $f(-x) = f(x)$ for all $x$."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g x = -g (-x)\"\nand h1 : \"\\<forall> x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall> x. f x = f (-x)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = |g(x^3)|$. If $g$ is an odd function, is $f$ odd, even, or neither?\n\nEnter \"odd\", \"even\", or \"neither\". The final Answer is \\text{even}\n ### Proof\n $$f(-x) = |g((-x)^3)| = |g(-x^3)|$$Since $g$ is odd, $g(-x) = -g(x)$. Then, $$f(-x) = |-g(x^3)| = |g(x^3)| = f(x).$$Hence, $f$ is $\\boxed{\\text{even}}$.\n *)\n\ntheorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. g x = -g (-x)\"\nand h1 : \"\\<forall> x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall> x. f x = f (-x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two functions $f$ and $g$ such that $g(x) = -g(-x)$ for all $x$, and $f(x) = |g(x^3)|$ for all $x$. Show that $f(x) = f(-x)$ for all $x$."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. g (-x) = - g x\"\nand h1 : \"\\<forall>x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall>x. f (-x) = f x\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = |g(x^3)|$. If $g$ is an odd function, is $f$ odd, even, or neither?\n\nEnter \"odd\", \"even\", or \"neither\". The final Answer is \\text{even}\n ### Proof\n $$f(-x) = |g((-x)^3)| = |g(-x^3)|$$Since $g$ is odd, $g(-x) = -g(x)$. Then, $$f(-x) = |-g(x^3)| = |g(x^3)| = f(x).$$Hence, $f$ is $\\boxed{\\text{even}}$.\n *)\n\ntheorem\nfixes f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. g (-x) = - g x\"\nand h1 : \"\\<forall>x. f x = abs (g (x powr 3))\"\nshows  \"\\<forall>x. f (-x) = f x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two functions $f$ and $g$ such that for all $x$, $g(-x) = -g(x)$ and $f(x) = |g(x^3)|$, prove that $f(-x) = f(x)$ for all $x$."
+    },
+    "level": "Level 2",
+    "type": "Intermediate Algebra"
+}

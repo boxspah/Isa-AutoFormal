@@ -1,0 +1,136 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes x :: real and p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> a b c. a \\<in> \\<int> \\<and> b \\<in> \\<int> \\<and> c \\<in> \\<int> \\<and> (\\<forall> x. p x = a * x powr 2 + b * x + c)\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"",
+        "formal solution": "(* ### Problem\n Let $p(x)$ be a quadratic polynomial with integer coefficients which has $3+\\sqrt{7}$ as a root. Compute $\\frac{p(2)}{p(3)}.$ The final Answer is \\frac{6}{7}\n ### Proof\n Because $p(x)$ has integer coefficients (in particular, because it has rational coefficients), the other root of $p(x)$ must be the radical conjugate of $3+\\sqrt{7},$ which is $3-\\sqrt{7}.$ Then, $p(x)$ must take the form \\[p(x) = A(x-(3+\\sqrt{7}))(x-(3-\\sqrt{7}))\\]for some nonzero constant $A$.\n This means that \\[p(2) = A(-1+\\sqrt{7})(-1-\\sqrt{7}) = -6A\\]and \\[p(3) = A(\\sqrt{7})(-\\sqrt{7}) = -7A,\\]so \\[\\frac{p(2)}{p(3)} = \\frac{-6A}{-7A} = \\boxed{\\frac{6}{7}}.\\]Alternatively, the roots are $3 + \\sqrt{7}$ and $3 - \\sqrt{7},$ so the sum of the roots is 6 and the product of the roots is $(3 + \\sqrt{7})(3 - \\sqrt{7}) = 9 - 7 = 2,$ so\n \\[p(x) = A(x^2 - 6x + 2)\\]for some nonzero real number $A.$  Then \\[\\frac{p(2)}{p(3)} = \\frac{A(-6)}{A(-7)} = \\boxed{\\frac{6}{7}}.\\]\n *)\n\ntheorem\nfixes x :: real and p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> a b c. a \\<in> \\<int> \\<and> b \\<in> \\<int> \\<and> c \\<in> \\<int> \\<and> (\\<forall> x. p x = a * x powr 2 + b * x + c)\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $p$ be a polynomial function of the form $p(x) = ax^2 + bx + c$, where $a$, $b$, and $c$ are integers. If $p(3 + \\sqrt{7}) = 0$, find the ratio $p(2)/p(3)$. The final answer is $\\frac{6}{7}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9805399179458618,
+        "symbolic_score": 0.3
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes p :: \"real \\<Rightarrow> real\" \nassumes h0 : \"\\<exists> a b c. \\<forall> x. p x = a * x powr 2 + b * x + c\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"(p 2) / (p 3) = 6 / 7\"",
+        "formal solution": "(* ### Problem\n Let $p(x)$ be a quadratic polynomial with integer coefficients which has $3+\\sqrt{7}$ as a root. Compute $\\frac{p(2)}{p(3)}.$ The final Answer is \\frac{6}{7}\n ### Proof\n Because $p(x)$ has integer coefficients (in particular, because it has rational coefficients), the other root of $p(x)$ must be the radical conjugate of $3+\\sqrt{7},$ which is $3-\\sqrt{7}.$ Then, $p(x)$ must take the form \\[p(x) = A(x-(3+\\sqrt{7}))(x-(3-\\sqrt{7}))\\]for some nonzero constant $A$.\n This means that \\[p(2) = A(-1+\\sqrt{7})(-1-\\sqrt{7}) = -6A\\]and \\[p(3) = A(\\sqrt{7})(-\\sqrt{7}) = -7A,\\]so \\[\\frac{p(2)}{p(3)} = \\frac{-6A}{-7A} = \\boxed{\\frac{6}{7}}.\\]Alternatively, the roots are $3 + \\sqrt{7}$ and $3 - \\sqrt{7},$ so the sum of the roots is 6 and the product of the roots is $(3 + \\sqrt{7})(3 - \\sqrt{7}) = 9 - 7 = 2,$ so\n \\[p(x) = A(x^2 - 6x + 2)\\]for some nonzero real number $A.$  Then \\[\\frac{p(2)}{p(3)} = \\frac{A(-6)}{A(-7)} = \\boxed{\\frac{6}{7}}.\\]\n *)\n\ntheorem\nfixes p :: \"real \\<Rightarrow> real\" \nassumes h0 : \"\\<exists> a b c. \\<forall> x. p x = a * x powr 2 + b * x + c\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"(p 2) / (p 3) = 6 / 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume there exist real numbers a, b, and c such that for all real numbers x, we have p(x) = ax\u00b2 + bx + c. If p(3 + sqrt(7)) = 0, find the value of the ratio p(2) / p(3). The final answer is 6/7.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.954735517501831,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> a b c. a \\<in> \\<int> \\<and> b \\<in> \\<int> \\<and> c \\<in> \\<int> \\<and> (\\<forall> x. p x = a * x powr 2 + b * x + c)\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"",
+        "formal solution": "(* ### Problem\n Let $p(x)$ be a quadratic polynomial with integer coefficients which has $3+\\sqrt{7}$ as a root. Compute $\\frac{p(2)}{p(3)}.$ The final Answer is \\frac{6}{7}\n ### Proof\n Because $p(x)$ has integer coefficients (in particular, because it has rational coefficients), the other root of $p(x)$ must be the radical conjugate of $3+\\sqrt{7},$ which is $3-\\sqrt{7}.$ Then, $p(x)$ must take the form \\[p(x) = A(x-(3+\\sqrt{7}))(x-(3-\\sqrt{7}))\\]for some nonzero constant $A$.\n This means that \\[p(2) = A(-1+\\sqrt{7})(-1-\\sqrt{7}) = -6A\\]and \\[p(3) = A(\\sqrt{7})(-\\sqrt{7}) = -7A,\\]so \\[\\frac{p(2)}{p(3)} = \\frac{-6A}{-7A} = \\boxed{\\frac{6}{7}}.\\]Alternatively, the roots are $3 + \\sqrt{7}$ and $3 - \\sqrt{7},$ so the sum of the roots is 6 and the product of the roots is $(3 + \\sqrt{7})(3 - \\sqrt{7}) = 9 - 7 = 2,$ so\n \\[p(x) = A(x^2 - 6x + 2)\\]for some nonzero real number $A.$  Then \\[\\frac{p(2)}{p(3)} = \\frac{A(-6)}{A(-7)} = \\boxed{\\frac{6}{7}}.\\]\n *)\n\ntheorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> a b c. a \\<in> \\<int> \\<and> b \\<in> \\<int> \\<and> c \\<in> \\<int> \\<and> (\\<forall> x. p x = a * x powr 2 + b * x + c)\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A polynomial function $p(x)$ with integer coefficients is given such that $p(3 + \\sqrt{7}) = 0$. What is the ratio of $p(2)$ to $p(3)$? The final answer is $\\frac{6}{7}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9794005155563354,
+        "symbolic_score": 0.3
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"poly p (3 + sqrt 7) = 0\"\nand h1 : \"\\<forall> x. p x = a * x powr 2 + b * x + c\"\nand h2 : \"a \\<in> \\<int>\"\nand h3 : \"b \\<in> \\<int>\"\nand h4 : \"c \\<in> \\<int>\"\nshows  \"p 2 / p 3 = 6 / 7\"",
+        "formal solution": "(* ### Problem\n Let $p(x)$ be a quadratic polynomial with integer coefficients which has $3+\\sqrt{7}$ as a root. Compute $\\frac{p(2)}{p(3)}.$ The final Answer is \\frac{6}{7}\n ### Proof\n Because $p(x)$ has integer coefficients (in particular, because it has rational coefficients), the other root of $p(x)$ must be the radical conjugate of $3+\\sqrt{7},$ which is $3-\\sqrt{7}.$ Then, $p(x)$ must take the form \\[p(x) = A(x-(3+\\sqrt{7}))(x-(3-\\sqrt{7}))\\]for some nonzero constant $A$.\n This means that \\[p(2) = A(-1+\\sqrt{7})(-1-\\sqrt{7}) = -6A\\]and \\[p(3) = A(\\sqrt{7})(-\\sqrt{7}) = -7A,\\]so \\[\\frac{p(2)}{p(3)} = \\frac{-6A}{-7A} = \\boxed{\\frac{6}{7}}.\\]Alternatively, the roots are $3 + \\sqrt{7}$ and $3 - \\sqrt{7},$ so the sum of the roots is 6 and the product of the roots is $(3 + \\sqrt{7})(3 - \\sqrt{7}) = 9 - 7 = 2,$ so\n \\[p(x) = A(x^2 - 6x + 2)\\]for some nonzero real number $A.$  Then \\[\\frac{p(2)}{p(3)} = \\frac{A(-6)}{A(-7)} = \\boxed{\\frac{6}{7}}.\\]\n *)\n\ntheorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"poly p (3 + sqrt 7) = 0\"\nand h1 : \"\\<forall> x. p x = a * x powr 2 + b * x + c\"\nand h2 : \"a \\<in> \\<int>\"\nand h3 : \"b \\<in> \\<int>\"\nand h4 : \"c \\<in> \\<int>\"\nshows  \"p 2 / p 3 = 6 / 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $p(x)$ be a polynomial function $ax^2 + bx + c$, where $a$, $b$, and $c$ are integers. Given that $p(3 + \\sqrt{7}) = 0$, find the ratio of $p(2)$ to $p(3)$. The final answer is $\\frac{6}{7}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9940552115440369,
+        "symbolic_score": 0.2
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> a b c. a \\<in> \\<int> \\<and> b \\<in> \\<int> \\<and> c \\<in> \\<int> \\<and> (\\<forall>x. p x = a*x^2 + b*x + c)\"\nand h1 : \"\\<exists> a b c. p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"",
+        "formal solution": "(* ### Problem\n Let $p(x)$ be a quadratic polynomial with integer coefficients which has $3+\\sqrt{7}$ as a root. Compute $\\frac{p(2)}{p(3)}.$ The final Answer is \\frac{6}{7}\n ### Proof\n Because $p(x)$ has integer coefficients (in particular, because it has rational coefficients), the other root of $p(x)$ must be the radical conjugate of $3+\\sqrt{7},$ which is $3-\\sqrt{7}.$ Then, $p(x)$ must take the form \\[p(x) = A(x-(3+\\sqrt{7}))(x-(3-\\sqrt{7}))\\]for some nonzero constant $A$.\n This means that \\[p(2) = A(-1+\\sqrt{7})(-1-\\sqrt{7}) = -6A\\]and \\[p(3) = A(\\sqrt{7})(-\\sqrt{7}) = -7A,\\]so \\[\\frac{p(2)}{p(3)} = \\frac{-6A}{-7A} = \\boxed{\\frac{6}{7}}.\\]Alternatively, the roots are $3 + \\sqrt{7}$ and $3 - \\sqrt{7},$ so the sum of the roots is 6 and the product of the roots is $(3 + \\sqrt{7})(3 - \\sqrt{7}) = 9 - 7 = 2,$ so\n \\[p(x) = A(x^2 - 6x + 2)\\]for some nonzero real number $A.$  Then \\[\\frac{p(2)}{p(3)} = \\frac{A(-6)}{A(-7)} = \\boxed{\\frac{6}{7}}.\\]\n *)\n\ntheorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> a b c. a \\<in> \\<int> \\<and> b \\<in> \\<int> \\<and> c \\<in> \\<int> \\<and> (\\<forall>x. p x = a*x^2 + b*x + c)\"\nand h1 : \"\\<exists> a b c. p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There exists a polynomial $p(x)$ with integer coefficients $a$, $b$, and $c$ such that $p(x) = ax^2 + bx + c$. If $p(3 + \\sqrt{7}) = 0$, find the value of $\\frac{p(2)}{p(3)}$. The final answer is $\\frac{6}{7}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9284100532531738,
+        "symbolic_score": 0.2
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> a b c. a \\<in> \\<int> \\<and> b \\<in> \\<int> \\<and> c \\<in> \\<int> \\<and> (\\<forall> x. p x = a * x powr 2 + b * x + c)\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"",
+        "formal solution": "(* ### Problem\n Let $p(x)$ be a quadratic polynomial with integer coefficients which has $3+\\sqrt{7}$ as a root. Compute $\\frac{p(2)}{p(3)}.$ The final Answer is \\frac{6}{7}\n ### Proof\n Because $p(x)$ has integer coefficients (in particular, because it has rational coefficients), the other root of $p(x)$ must be the radical conjugate of $3+\\sqrt{7},$ which is $3-\\sqrt{7}.$ Then, $p(x)$ must take the form \\[p(x) = A(x-(3+\\sqrt{7}))(x-(3-\\sqrt{7}))\\]for some nonzero constant $A$.\n This means that \\[p(2) = A(-1+\\sqrt{7})(-1-\\sqrt{7}) = -6A\\]and \\[p(3) = A(\\sqrt{7})(-\\sqrt{7}) = -7A,\\]so \\[\\frac{p(2)}{p(3)} = \\frac{-6A}{-7A} = \\boxed{\\frac{6}{7}}.\\]Alternatively, the roots are $3 + \\sqrt{7}$ and $3 - \\sqrt{7},$ so the sum of the roots is 6 and the product of the roots is $(3 + \\sqrt{7})(3 - \\sqrt{7}) = 9 - 7 = 2,$ so\n \\[p(x) = A(x^2 - 6x + 2)\\]for some nonzero real number $A.$  Then \\[\\frac{p(2)}{p(3)} = \\frac{A(-6)}{A(-7)} = \\boxed{\\frac{6}{7}}.\\]\n *)\n\ntheorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> a b c. a \\<in> \\<int> \\<and> b \\<in> \\<int> \\<and> c \\<in> \\<int> \\<and> (\\<forall> x. p x = a * x powr 2 + b * x + c)\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $p(x)$ be a quadratic polynomial with integer coefficients, i.e., $p(x) = ax^2 + bx + c$ for some integers $a$, $b$, and $c$. Given that $p(3 + \\sqrt{7}) = 0$, find the ratio $p(2) / p(3)$. The final answer is $6/7$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9835860729217529,
+        "symbolic_score": 0.3
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> a b c. a \\<in> \\<int> \\<and> b \\<in> \\<int> \\<and> c \\<in> \\<int> \\<and> (\\<forall> x. p x = a * x\\<^sup>2 + b * x + c)\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"",
+        "formal solution": "(* ### Problem\n Let $p(x)$ be a quadratic polynomial with integer coefficients which has $3+\\sqrt{7}$ as a root. Compute $\\frac{p(2)}{p(3)}.$ The final Answer is \\frac{6}{7}\n ### Proof\n Because $p(x)$ has integer coefficients (in particular, because it has rational coefficients), the other root of $p(x)$ must be the radical conjugate of $3+\\sqrt{7},$ which is $3-\\sqrt{7}.$ Then, $p(x)$ must take the form \\[p(x) = A(x-(3+\\sqrt{7}))(x-(3-\\sqrt{7}))\\]for some nonzero constant $A$.\n This means that \\[p(2) = A(-1+\\sqrt{7})(-1-\\sqrt{7}) = -6A\\]and \\[p(3) = A(\\sqrt{7})(-\\sqrt{7}) = -7A,\\]so \\[\\frac{p(2)}{p(3)} = \\frac{-6A}{-7A} = \\boxed{\\frac{6}{7}}.\\]Alternatively, the roots are $3 + \\sqrt{7}$ and $3 - \\sqrt{7},$ so the sum of the roots is 6 and the product of the roots is $(3 + \\sqrt{7})(3 - \\sqrt{7}) = 9 - 7 = 2,$ so\n \\[p(x) = A(x^2 - 6x + 2)\\]for some nonzero real number $A.$  Then \\[\\frac{p(2)}{p(3)} = \\frac{A(-6)}{A(-7)} = \\boxed{\\frac{6}{7}}.\\]\n *)\n\ntheorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> a b c. a \\<in> \\<int> \\<and> b \\<in> \\<int> \\<and> c \\<in> \\<int> \\<and> (\\<forall> x. p x = a * x\\<^sup>2 + b * x + c)\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose there are integers $a$, $b$, and $c$ such that a quadratic polynomial $p(x) = ax^2 + bx + c$ is defined. If $p(3 + \\sqrt{7}) = 0$, find the value of $\\frac{p(2)}{p(3)}$. The final answer is $\\frac{6}{7}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9756107330322266,
+        "symbolic_score": 0.2
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes p :: \"real \\<Rightarrow> real\" and x :: real\nassumes h0 : \"poly p (3 + sqrt 7) = 0\"\nand h1 : \"\\<forall> x. is_rat (p x)\"\nshows  \"p 2 / p 3 = 6 / 7\"",
+        "formal solution": "(* ### Problem\n Let $p(x)$ be a quadratic polynomial with integer coefficients which has $3+\\sqrt{7}$ as a root. Compute $\\frac{p(2)}{p(3)}.$ The final Answer is \\frac{6}{7}\n ### Proof\n Because $p(x)$ has integer coefficients (in particular, because it has rational coefficients), the other root of $p(x)$ must be the radical conjugate of $3+\\sqrt{7},$ which is $3-\\sqrt{7}.$ Then, $p(x)$ must take the form \\[p(x) = A(x-(3+\\sqrt{7}))(x-(3-\\sqrt{7}))\\]for some nonzero constant $A$.\n This means that \\[p(2) = A(-1+\\sqrt{7})(-1-\\sqrt{7}) = -6A\\]and \\[p(3) = A(\\sqrt{7})(-\\sqrt{7}) = -7A,\\]so \\[\\frac{p(2)}{p(3)} = \\frac{-6A}{-7A} = \\boxed{\\frac{6}{7}}.\\]Alternatively, the roots are $3 + \\sqrt{7}$ and $3 - \\sqrt{7},$ so the sum of the roots is 6 and the product of the roots is $(3 + \\sqrt{7})(3 - \\sqrt{7}) = 9 - 7 = 2,$ so\n \\[p(x) = A(x^2 - 6x + 2)\\]for some nonzero real number $A.$  Then \\[\\frac{p(2)}{p(3)} = \\frac{A(-6)}{A(-7)} = \\boxed{\\frac{6}{7}}.\\]\n *)\n\ntheorem\nfixes p :: \"real \\<Rightarrow> real\" and x :: real\nassumes h0 : \"poly p (3 + sqrt 7) = 0\"\nand h1 : \"\\<forall> x. is_rat (p x)\"\nshows  \"p 2 / p 3 = 6 / 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The polynomial $p(x)$ is such that the root of $p(x)$ is $3 + \\sqrt{7}$. All coefficients of $p(x)$ are rational numbers. Find the ratio $\\frac{p(2)}{p(3)}$. The final answer is $\\frac{6}{7}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9842731952667236,
+        "symbolic_score": 0.2
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. \\<exists> a b c. a \\<in> \\<int> \\<and> b \\<in> \\<int> \\<and> c \\<in> \\<int> \\<and> p x = a * x * x + b * x + c\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"",
+        "formal solution": "(* ### Problem\n Let $p(x)$ be a quadratic polynomial with integer coefficients which has $3+\\sqrt{7}$ as a root. Compute $\\frac{p(2)}{p(3)}.$ The final Answer is \\frac{6}{7}\n ### Proof\n Because $p(x)$ has integer coefficients (in particular, because it has rational coefficients), the other root of $p(x)$ must be the radical conjugate of $3+\\sqrt{7},$ which is $3-\\sqrt{7}.$ Then, $p(x)$ must take the form \\[p(x) = A(x-(3+\\sqrt{7}))(x-(3-\\sqrt{7}))\\]for some nonzero constant $A$.\n This means that \\[p(2) = A(-1+\\sqrt{7})(-1-\\sqrt{7}) = -6A\\]and \\[p(3) = A(\\sqrt{7})(-\\sqrt{7}) = -7A,\\]so \\[\\frac{p(2)}{p(3)} = \\frac{-6A}{-7A} = \\boxed{\\frac{6}{7}}.\\]Alternatively, the roots are $3 + \\sqrt{7}$ and $3 - \\sqrt{7},$ so the sum of the roots is 6 and the product of the roots is $(3 + \\sqrt{7})(3 - \\sqrt{7}) = 9 - 7 = 2,$ so\n \\[p(x) = A(x^2 - 6x + 2)\\]for some nonzero real number $A.$  Then \\[\\frac{p(2)}{p(3)} = \\frac{A(-6)}{A(-7)} = \\boxed{\\frac{6}{7}}.\\]\n *)\n\ntheorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. \\<exists> a b c. a \\<in> \\<int> \\<and> b \\<in> \\<int> \\<and> c \\<in> \\<int> \\<and> p x = a * x * x + b * x + c\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The function p(x) is a quadratic function where the coefficients are integers. If p(3 + sqrt(7)) equals 0, what is the ratio of p(2) to p(3)? The final answer is 6/7.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9826380014419556,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> a b c :: int. p x = a * x powr 2 + b * x + c\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"",
+        "formal solution": "(* ### Problem\n Let $p(x)$ be a quadratic polynomial with integer coefficients which has $3+\\sqrt{7}$ as a root. Compute $\\frac{p(2)}{p(3)}.$ The final Answer is \\frac{6}{7}\n ### Proof\n Because $p(x)$ has integer coefficients (in particular, because it has rational coefficients), the other root of $p(x)$ must be the radical conjugate of $3+\\sqrt{7},$ which is $3-\\sqrt{7}.$ Then, $p(x)$ must take the form \\[p(x) = A(x-(3+\\sqrt{7}))(x-(3-\\sqrt{7}))\\]for some nonzero constant $A$.\n This means that \\[p(2) = A(-1+\\sqrt{7})(-1-\\sqrt{7}) = -6A\\]and \\[p(3) = A(\\sqrt{7})(-\\sqrt{7}) = -7A,\\]so \\[\\frac{p(2)}{p(3)} = \\frac{-6A}{-7A} = \\boxed{\\frac{6}{7}}.\\]Alternatively, the roots are $3 + \\sqrt{7}$ and $3 - \\sqrt{7},$ so the sum of the roots is 6 and the product of the roots is $(3 + \\sqrt{7})(3 - \\sqrt{7}) = 9 - 7 = 2,$ so\n \\[p(x) = A(x^2 - 6x + 2)\\]for some nonzero real number $A.$  Then \\[\\frac{p(2)}{p(3)} = \\frac{A(-6)}{A(-7)} = \\boxed{\\frac{6}{7}}.\\]\n *)\n\ntheorem\nfixes p :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<exists> a b c :: int. p x = a * x powr 2 + b * x + c\"\nand h1 : \"p (3 + sqrt 7) = 0\"\nshows  \"p 2 / p 3 = 6 / 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There exists a quadratic polynomial $p(x)$ such that $p(x) = ax^2 + bx + c$, where $a$, $b$, and $c$ are integers. Given that $p(3 + \\sqrt{7}) = 0$, find the value of $\\frac{p(2)}{p(3)}$. The final answer is $\\frac{6}{7}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9518441557884216,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "\\frac{6}{7}",
+    "natural problem": "Let $p(x)$ be a quadratic polynomial with integer coefficients which has $3+\\sqrt{7}$ as a root. Compute $\\frac{p(2)}{p(3)}.$",
+    "natural solution": [
+        "Because $p(x)$ has integer coefficients (in particular, because it has rational coefficients), the other root of $p(x)$ must be the radical conjugate of $3+\\sqrt{7},$ which is $3-\\sqrt{7}.$ Then, $p(x)$ must take the form \\[p(x) = A(x-(3+\\sqrt{7}))(x-(3-\\sqrt{7}))\\]for some nonzero constant $A$.",
+        "This means that \\[p(2) = A(-1+\\sqrt{7})(-1-\\sqrt{7}) = -6A\\]and \\[p(3) = A(\\sqrt{7})(-\\sqrt{7}) = -7A,\\]so \\[\\frac{p(2)}{p(3)} = \\frac{-6A}{-7A} = \\boxed{\\frac{6}{7}}.\\]Alternatively, the roots are $3 + \\sqrt{7}$ and $3 - \\sqrt{7},$ so the sum of the roots is 6 and the product of the roots is $(3 + \\sqrt{7})(3 - \\sqrt{7}) = 9 - 7 = 2,$ so",
+        "\\[p(x) = A(x^2 - 6x + 2)\\]for some nonzero real number $A.$  Then \\[\\frac{p(2)}{p(3)} = \\frac{A(-6)}{A(-7)} = \\boxed{\\frac{6}{7}}.\\]"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0,
+            2,
+            5
+        ],
+        "1": [
+            3,
+            7
+        ],
+        "2": [
+            4,
+            6
+        ],
+        "3": [
+            1
+        ],
+        "4": [
+            8
+        ],
+        "5": [
+            9
+        ]
+    },
+    "level": "Level 3",
+    "type": "Intermediate Algebra"
+}

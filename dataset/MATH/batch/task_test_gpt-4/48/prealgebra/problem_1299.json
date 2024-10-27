@@ -1,0 +1,608 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes time1 time2 :: int\nassumes h0 : \"time1 = 12\"\nand h1 : \"time2 = 16\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> (n * time1 mod 60 = n * time2 mod 60)\"\nshows  \"n * time1 mod 12 = 1\" and \"n * time1 mod 60 = 3\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes time1 time2 :: int\nassumes h0 : \"time1 = 12\"\nand h1 : \"time2 = 16\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> (n * time1 mod 60 = n * time2 mod 60)\"\nshows  \"n * time1 mod 12 = 1\" and \"n * time1 mod 60 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two specific times, 12 and 16. For all integers n greater than or equal to 1, it is true that the remainder when n times the first time is divided by 60 equals the remainder when n times the second time is divided by 60. What are the remainders when n times the first time is divided by 12 and by 60? The final answers are 1 and 3, respectively.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.5055498480796814,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes start_time :: real\nassumes h0 : \"start_time = 12.25\"\nand h1 : \"cyclist_1_lap_time = 12\"\nand h2 : \"cyclist_2_lap_time = 16\"\nand h3 : \"lcm cyclist_1_lap_time cyclist_2_lap_time = 48\"\nshows  \"start_time + (48/60) = 13.05\" (* 1:03 PM in decimal form *)",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes start_time :: real\nassumes h0 : \"start_time = 12.25\"\nand h1 : \"cyclist_1_lap_time = 12\"\nand h2 : \"cyclist_2_lap_time = 16\"\nand h3 : \"lcm cyclist_1_lap_time cyclist_2_lap_time = 48\"\nshows  \"start_time + (48/60) = 13.05\" (* 1:03 PM in decimal form *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Two cyclists start riding at 12:25 PM. The first cyclist completes a lap in 12 minutes and the second cyclist completes a lap in 16 minutes. They both finish their laps at the same time, which is the least common multiple of their individual lap times. What time is it when they both finish their laps? The final answer is 1:03 PM.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.8720706105232239,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes t1 t2 T :: real\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"T = lcm t1 t2\"\nshows  \"T = 48\"  (* The time in minutes when they will cross the starting line together again. *)\n\n(* The theorem does not translate the time into the format h:m1m2 or translate it into PM time. This would require additional assumptions and functions to handle time format conversions, which are not typically part of Isabelle's standard libraries. *)",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t1 t2 T :: real\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"T = lcm t1 t2\"\nshows  \"T = 48\"  (* The time in minutes when they will cross the starting line together again. *)\n\n(* The theorem does not translate the time into the format h:m1m2 or translate it into PM time. This would require additional assumptions and functions to handle time format conversions, which are not typically part of Isabelle's standard libraries. *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Two runners start running on a circular track at the same time. One completes a lap every 12 minutes, and the other completes a lap every 16 minutes. How many minutes will it take until they both cross the starting line together again? The final answer is 48 minutes. Note that we're not converting this time into hours and minutes or PM time.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8758941888809204,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes start_time :: nat\nand cyclist1 :: nat\nand cyclist2 :: nat\nassumes h0 : \"start_time = 1215\"\nand h1 : \"cyclist1 = 12\"\nand h2 : \"cyclist2 = 16\"\nshows  \"\\<exists> end_time. end_time > start_time \\<and> (end_time - start_time) mod cyclist1 = 0 \\<and> (end_time - start_time) mod cyclist2 = 0 \\<and> end_time = 1303\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes start_time :: nat\nand cyclist1 :: nat\nand cyclist2 :: nat\nassumes h0 : \"start_time = 1215\"\nand h1 : \"cyclist1 = 12\"\nand h2 : \"cyclist2 = 16\"\nshows  \"\\<exists> end_time. end_time > start_time \\<and> (end_time - start_time) mod cyclist1 = 0 \\<and> (end_time - start_time) mod cyclist2 = 0 \\<and> end_time = 1303\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Two cyclists start at 12:15. The first cyclist completes a lap every 12 minutes and the second cyclist completes a lap every 16 minutes. At what time will both cyclists finish a lap at the exact same time for the first time after they start? The answer is 13:03.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.3894716501235962,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes time1 time2 :: real\nassumes h0 : \"time1 = 12\"\nand h1 : \"time2 = 16\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> time1 * n = time2 * m\"\nshows  \"n = 4\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes time1 time2 :: real\nassumes h0 : \"time1 = 12\"\nand h1 : \"time2 = 16\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> time1 * n = time2 * m\"\nshows  \"n = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that a certain process takes 12 hours to complete for one unit and another process takes 16 hours to complete for 'm' units, find the value of 'm' such that the time taken is the same for both processes when working on 'n' units. The final answer is 'm' equals 4.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8077771067619324,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes time1 time2 :: real\nassumes h0 : \"time1 = 12\"\nand h1 : \"time2 = 16\"\nand h2 : \"lcm time1 time2 = 48\"\nshows  \"next_crossing_time = (12::15 + 48) mod 60 = 1::03\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes time1 time2 :: real\nassumes h0 : \"time1 = 12\"\nand h1 : \"time2 = 16\"\nand h2 : \"lcm time1 time2 = 48\"\nshows  \"next_crossing_time = (12::15 + 48) mod 60 = 1::03\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that there are two events, one which happens every 12 minutes and another that happens every 16 minutes. The least common multiple of these two times is 48 minutes. If both events occur at the same time at minute 12:15, find the time when both events will next occur simultaneously. The answer should be in a 24-hour clock format. The final answer is 1:03.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9648976922035217,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes t :: real\nassumes h0 : \"t = lcm (12, 16) + (12 * 15)\"\nshows  \"t / 60 = 1.05\" (* 1.05 hours or 1:03 PM *)",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: real\nassumes h0 : \"t = lcm (12, 16) + (12 * 15)\"\nshows  \"t / 60 = 1.05\" (* 1.05 hours or 1:03 PM *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the time, in hours, when it is equal to the least common multiple of 12 and 16, plus 12 times 15. The result is divided by 60. The final answer is 1.05 hours.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7619697451591492,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes h1 m1 h2 m2 :: real\nassumes h0 : \"h1 = 12.25\"\nand h1 : \"m1 = 12 / 60\"\nand h2 : \"m2 = 16 / 60\"\nand h3 : \"lcm m1 m2 = 48 / 60\"\nshows  \"h1 + h3 = 13.05\" (* Time when they meet again *)",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes h1 m1 h2 m2 :: real\nassumes h0 : \"h1 = 12.25\"\nand h1 : \"m1 = 12 / 60\"\nand h2 : \"m2 = 16 / 60\"\nand h3 : \"lcm m1 m2 = 48 / 60\"\nshows  \"h1 + h3 = 13.05\" (* Time when they meet again *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a clock's hour hand is at 12:25 and two minutes hands are moving at speeds of 12/60 and 16/60, find the time when all hands meet again. The final answer is 13:05.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9193738698959351,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes cyclist1 cyclist2 :: real\nassumes h0 : \"cyclist1 = 12\"\nand h1 : \"cyclist2 = 16\"\nshows  \"lcm(cyclist1, cyclist2) + 12:15 = 1:03\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes cyclist1 cyclist2 :: real\nassumes h0 : \"cyclist1 = 12\"\nand h1 : \"cyclist2 = 16\"\nshows  \"lcm(cyclist1, cyclist2) + 12:15 = 1:03\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the least common multiple of the speeds of two cyclists, one cycling at 12 mph and the other at 16 mph. Then, add that number to the time 12:15. The final time should be 1:03.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9011190533638,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes start_time :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nand lap_time1 :: nat\nand lap_time2 :: nat\nand next_time :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"start_time 12 15 = 0\"\nand h1 : \"lap_time1 = 12\"\nand h2 : \"lap_time2 = 16\"\nand h3 : \"\\<forall>t1 t2. next_time t1 t2 = (t1 + t2) mod 60\"\nshows  \"next_time lap_time1 lap_time2 = start_time 1 3\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes start_time :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nand lap_time1 :: nat\nand lap_time2 :: nat\nand next_time :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"start_time 12 15 = 0\"\nand h1 : \"lap_time1 = 12\"\nand h2 : \"lap_time2 = 16\"\nand h3 : \"\\<forall>t1 t2. next_time t1 t2 = (t1 + t2) mod 60\"\nshows  \"next_time lap_time1 lap_time2 = start_time 1 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A race starts at 12:15. The first lap is completed in 12 minutes and the second lap in 16 minutes. If the time is calculated in minutes past the hour (0-59), what is the time when the second lap is completed? The answer is 1:03.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.5912936329841614,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "\\text{1:03 PM}",
+    "natural problem": "Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45.",
+    "natural solution": [
+        "We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$."
+    ],
+    "oracle": "delete this",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "level": "Level 4",
+    "type": "Prealgebra",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes t :: int\nassumes h0 : \"t = lcm 12 16\"\nshows \"t div 60 = 1\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: int\nassumes h0 : \"t = lcm 12 16\"\nshows \"t div 60 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the least common multiple (LCM) of 12 and 16, and then divide that result by 60. The final answer should be 1.",
+        "syntax": 1,
+        "semantic_score": 0.8919385335155033,
+        "symbolic_score": 0.2
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes t1 t2 :: nat\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"gcd t1 t2 = 48\"\nshows \"next_time = 13:03\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t1 t2 :: nat\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"gcd t1 t2 = 48\"\nshows \"next_time = 13:03\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that $t1 = 12$ and $t2 = 16$, and the greatest common divisor (gcd) of $t1$ and $t2$ is $48$, find the next time that is a multiple of the gcd. The answer is \"13:03\".",
+        "syntax": 0,
+        "semantic_score": 0.4884998528962813,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes t :: int\nassumes h0 : \"t = LCM (12::int) (16::int)\"\nshows \"t div 60 = 1\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: int\nassumes h0 : \"t = LCM (12::int) (16::int)\"\nshows \"t div 60 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the least common multiple (LCM) of 12 and 16, and then divide that result by 60. The final answer should be 1.",
+        "syntax": 0,
+        "semantic_score": 0.8919385335155033,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes t1 t2 :: int\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"t1 * x = t2 * y\"\nand h3 : \"x > 0\"\nand h4 : \"y > 0\"\nand h5 : \"x < y\"\nshows \"((y - x) div (t1 * t2 div gcd t1 t2)) * (t1 * t2 div gcd t1 t2) + x = y\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t1 t2 :: int\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"t1 * x = t2 * y\"\nand h3 : \"x > 0\"\nand h4 : \"y > 0\"\nand h5 : \"x < y\"\nshows \"((y - x) div (t1 * t2 div gcd t1 t2)) * (t1 * t2 div gcd t1 t2) + x = y\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two integers $t1$ and $t2$ such that $t1 = 12$ and $t2 = 16$, and two positive integers $x$ and $y$ where $x < y$ and $t1 * x = t2 * y$. Prove that $((y - x) \\text{ div } (t1 * t2 \\text{ div } \\text{gcd}(t1, t2))) * (t1 * t2 \\text{ div } \\text{gcd}(t1, t2)) + x = y$.",
+        "syntax": 1,
+        "semantic_score": 0.24089866397737492,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes t :: int\nassumes h0 : \"t = lcm (12, 16)\"\nshows \"t div 60 = 1\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: int\nassumes h0 : \"t = lcm (12, 16)\"\nshows \"t div 60 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The least common multiple (LCM) of 12 and 16 is equal to a variable t. Determine if the quotient of t divided by 60 is equal to 1.",
+        "syntax": 0,
+        "semantic_score": 0.4220328961700951,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes t :: int\nassumes h0 : \"t = lcm 12 16\"\nshows \"t div 60 = 1\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: int\nassumes h0 : \"t = lcm 12 16\"\nshows \"t div 60 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is an integer `t` which is equal to the least common multiple (LCM) of 12 and 16. We are asked to find the value of `t` divided by 60, and the result should be 1.",
+        "syntax": 1,
+        "semantic_score": 0.38101082567934275,
+        "symbolic_score": 0.2
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes t1 t2 :: nat\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"t1 * t2 = gcd t1 t2 * lcm t1 t2\"\nand h3 : \"lcm t1 t2 = 48\"\nshows \"1 + (48 div 60) : (48 mod 60) = 1:3\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t1 t2 :: nat\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"t1 * t2 = gcd t1 t2 * lcm t1 t2\"\nand h3 : \"lcm t1 t2 = 48\"\nshows \"1 + (48 div 60) : (48 mod 60) = 1:3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that $t_1 = 12$ and $t_2 = 16$, and the least common multiple (lcm) of $t_1$ and $t_2$ is $48$, we know that the product of $t_1$ and $t_2$ is equal to the greatest common divisor (gcd) of $t_1$ and $t_2$ multiplied by the lcm of $t_1$ and $t_2$. We are asked to find the value of the expression $1 + \\frac{48}{60}$ in the form of $a:b$, where $a$ and $b$ are the numerator and denominator of the fraction, respectively. The final answer is $1:3$.",
+        "syntax": 0,
+        "semantic_score": 0.8019744575438912,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes t :: nat\nassumes h0 : \"t = lcm 12 16\"\nshows \"t div 60 = 1\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: nat\nassumes h0 : \"t = lcm 12 16\"\nshows \"t div 60 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the least common multiple (LCM) of 12 and 16, and then divide that result by 60. The final answer should be 1.",
+        "syntax": 1,
+        "semantic_score": 0.8919385335155033,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes t :: int\nassumes h0 : \"t = LCM (12, 16)\"\nshows \"t div 60 = 1 \\<and> t mod 60 = 3\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: int\nassumes h0 : \"t = LCM (12, 16)\"\nshows \"t div 60 = 1 \\<and> t mod 60 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the least common multiple (LCM) of 12 and 16, and then divide that result by 60. The quotient should be 1, and the remainder should be 3.",
+        "syntax": 0,
+        "semantic_score": 0.7469546623370439,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes t :: int\nassumes h0 : \"t = (LCM 12 16) div 60\"\nshows \"t = 1\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: int\nassumes h0 : \"t = (LCM 12 16) div 60\"\nshows \"t = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The theorem states that if we take the least common multiple (LCM) of 12 and 16, divide it by 60, the result will be 1. In other words, find the smallest number that both 12 and 16 can divide evenly, and then divide that number by 60. The result should be 1.",
+        "syntax": 0,
+        "semantic_score": 0.7742525103896178,
+        "symbolic_score": 0.1
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes t :: \"real\"\nassumes h0 : \"t > 0\"\nand h1 : \"\\<forall> n. (n * 12) mod 60 = 0\"\nand h2 : \"\\<forall> n. (n * 16) mod 60 = 0\"\nand h3 : \"real_of_int \\<lfloor>t / 720\\<rfloor> * 12 + (t mod 720) / 60 = real_of_int \\<lfloor>t / 960\\<rfloor> * 16 + (t mod 960) / 60\"\nshows \"t = 7830\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: \"real\"\nassumes h0 : \"t > 0\"\nand h1 : \"\\<forall> n. (n * 12) mod 60 = 0\"\nand h2 : \"\\<forall> n. (n * 16) mod 60 = 0\"\nand h3 : \"real_of_int \\<lfloor>t / 720\\<rfloor> * 12 + (t mod 720) / 60 = real_of_int \\<lfloor>t / 960\\<rfloor> * 16 + (t mod 960) / 60\"\nshows \"t = 7830\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If every integer multiple of 12 minutes and every integer multiple of 16 minutes lands on the hour, and a certain time $t$ can be expressed in hours and minutes by both $12$-minute and $16$-minute intervals, find $t$. The final answer is $7830$ minutes.",
+        "syntax": 0,
+        "semantic_score": 0.873540532549177,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes time :: \"real\"\nassumes h0 : \"time > 0\"\nand h1 : \"12 dvd time\"\nand h2 : \"16 dvd time\"\nshows \"(12 / 60) * time + 15 / 60 = (16 / 60) * time\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes time :: \"real\"\nassumes h0 : \"time > 0\"\nand h1 : \"12 dvd time\"\nand h2 : \"16 dvd time\"\nshows \"(12 / 60) * time + 15 / 60 = (16 / 60) * time\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a time interval, given in minutes, is divisible by both 12 and 16, then what is the time interval in minutes plus 15 minutes, expressed as a fraction of an hour, that is equivalent to the original time interval in minutes plus 12 minutes, expressed as a fraction of an hour?",
+        "syntax": 1,
+        "semantic_score": 0.7989936854212626,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes t1 t2 :: nat\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"coprime t1 t2\"\nshows \"Suc(12 * (t1 * t2)) div 60 = 1 \\<and> (Suc(12 * (t1 * t2))) mod 60 = 3\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t1 t2 :: nat\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"coprime t1 t2\"\nshows \"Suc(12 * (t1 * t2)) div 60 = 1 \\<and> (Suc(12 * (t1 * t2))) mod 60 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If two tasks take 12 and 16 minutes to complete, respectively, and they can be done simultaneously, such that no time is wasted waiting, how long will it take to complete both tasks? The answer is 1 hour and 3 minutes.",
+        "syntax": 1,
+        "semantic_score": 0.9431584735787103,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes lap1 lap2 :: real\nassumes h0 : \"lap1 > 0\"\nand h1 : \"lap2 > 0\"\nand h2 : \"60 mod lap1 = 0\"\nand h3 : \"60 mod lap2 = 0\"\nshows \"card {t. \\<exists> n::nat. t = 12 * real_of_nat n} = card {t. \\<exists> n::nat. t = 16 * real_of_nat n}\n\\<and> (LEAST t. t \\<in> {t. \\<exists> n::nat. t = 12 * real_of_nat n} \\<inter> {t. \\<exists> n::nat. t = 16 * real_of_nat n} \\<and> t \\<ge> 735) = 783\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes lap1 lap2 :: real\nassumes h0 : \"lap1 > 0\"\nand h1 : \"lap2 > 0\"\nand h2 : \"60 mod lap1 = 0\"\nand h3 : \"60 mod lap2 = 0\"\nshows \"card {t. \\<exists> n::nat. t = 12 * real_of_nat n} = card {t. \\<exists> n::nat. t = 16 * real_of_nat n}\n\\<and> (LEAST t. t \\<in> {t. \\<exists> n::nat. t = 12 * real_of_nat n} \\<inter> {t. \\<exists> n::nat. t = 16 * real_of_nat n} \\<and> t \\<ge> 735) = 783\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have two runners, Lap1 and Lap2, who run around a circular track of length 60 meters. Lap1 and Lap2 both run with positive constant speeds, and they complete one lap in Lap1 seconds and Lap2 seconds, respectively. Assume Lap1 and Lap2 are both factors of 60 seconds (i.e., 60 is divisible by Lap1 and Lap2). \n\nWe define two sets of times: the set of times when Lap1 finishes a lap, and the set of times when Lap2 finishes a lap. We want to prove that these two sets have the same number of elements, and that their smallest common element that is greater than or equal to 735 is 783.",
+        "syntax": 0,
+        "semantic_score": 0.8172807016021408,
+        "symbolic_score": 0.1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes h m :: nat\nassumes h0 : \"h = 12\"\nand h1 : \"m = 15\"\nand h2 : \"\\<forall> n. n > 0 \\<longrightarrow> (60/12)*n mod 60 \\<noteq> (60/16)*n mod 60\"\nand h3 : \"60 * h + m + (60/12) * (LEAST n. (60/12)*n mod 60 = (60/16)*n mod 60) = (60 * 1 + 3)\"\nshows \"h = 1 \\<and> m = 3\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes h m :: nat\nassumes h0 : \"h = 12\"\nand h1 : \"m = 15\"\nand h2 : \"\\<forall> n. n > 0 \\<longrightarrow> (60/12)*n mod 60 \\<noteq> (60/16)*n mod 60\"\nand h3 : \"60 * h + m + (60/12) * (LEAST n. (60/12)*n mod 60 = (60/16)*n mod 60) = (60 * 1 + 3)\"\nshows \"h = 1 \\<and> m = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a clock has a standard 12-hour dial, and at 12:15 the minute hand and hour hand overlap exactly, then the next time this happens will be at 1:03. Find the time difference between these two occurrences of the overlapping. The final answer is that the first occurrence is at 12:15 and the second occurrence is at 1:03.",
+        "syntax": 0,
+        "semantic_score": 0.8961808261925404,
+        "symbolic_score": 0.1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes t1 t2 :: real\nassumes h0 : \"t1 \\<ge> 0\"\nand h1 : \"t2 \\<ge> 0\"\nand h2 : \"\\<forall>t. t \\<ge> t1 \\<longrightarrow> \\<not> 12 dvd (t - t1)\"\nand h3 : \"\\<forall>t. t \\<ge> t2 \\<longrightarrow> \\<not> 16 dvd (t - t2)\"\nand h4 : \"t1 + 12 = t2 + 16\"\nshows \"t1 = 1 \\<and> t2 = 3 \\<and> 0 \\<le> 3 \\<and> 3 < 60 \\<and> 0 \\<le> 3\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t1 t2 :: real\nassumes h0 : \"t1 \\<ge> 0\"\nand h1 : \"t2 \\<ge> 0\"\nand h2 : \"\\<forall>t. t \\<ge> t1 \\<longrightarrow> \\<not> 12 dvd (t - t1)\"\nand h3 : \"\\<forall>t. t \\<ge> t2 \\<longrightarrow> \\<not> 16 dvd (t - t2)\"\nand h4 : \"t1 + 12 = t2 + 16\"\nshows \"t1 = 1 \\<and> t2 = 3 \\<and> 0 \\<le> 3 \\<and> 3 < 60 \\<and> 0 \\<le> 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have two non-negative real numbers $t_1$ and $t_2$. We know that for any time $t$ greater than or equal to $t_1$, $t-t_1$ is not divisible by $12$, and for any time $t$ greater than or equal to $t_2$, $t-t_2$ is not divisible by $16$. Additionally, $t_1+12=t_2+16$. Find the values of $t_1$ and $t_2$ such that $t_1=1$, $t_2=3$, $0 \\leq t_2 < 60$, and $0 \\leq t_2$.",
+        "syntax": 1,
+        "semantic_score": 0.3139518136503533,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes time :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"time 1 12 = 1\"\nand h1 : \"time 1 16 = 1\"\nand h2 : \"\\<forall> n. time (Suc n) 12 = (time n 12 + 12) mod 60\"\nand h3 : \"\\<forall> n. time (Suc n) 16 = (time n 16 + 16) mod 60\"\nand h4 : \"\\<exists> n m. time n 12 = time m 16 \\<and> n > 0 \\<and> m > 0\"\nshows \"(time (LEAST n. \\<exists> m. time n 12 = time m 16 \\<and> n > 0 \\<and> m > 0) 12 div 60) mod 12 = 1 \\<and> time (LEAST n. \\<exists> m. time n 12 = time m 16 \\<and> n > 0 \\<and> m > 0) 12 mod 60 = 3\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes time :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"time 1 12 = 1\"\nand h1 : \"time 1 16 = 1\"\nand h2 : \"\\<forall> n. time (Suc n) 12 = (time n 12 + 12) mod 60\"\nand h3 : \"\\<forall> n. time (Suc n) 16 = (time n 16 + 16) mod 60\"\nand h4 : \"\\<exists> n m. time n 12 = time m 16 \\<and> n > 0 \\<and> m > 0\"\nshows \"(time (LEAST n. \\<exists> m. time n 12 = time m 16 \\<and> n > 0 \\<and> m > 0) 12 div 60) mod 12 = 1 \\<and> time (LEAST n. \\<exists> m. time n 12 = time m 16 \\<and> n > 0 \\<and> m > 0) 12 mod 60 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have two clocks, one that gains 12 minutes every hour and one that gains 16 minutes every hour. Assume both clocks start at 12:00 AM and that they are both accurate at that time. If we let $time(n, x)$ represent the number of minutes past 12:00 AM according to the clock that gains $x$ minutes per hour after $n$ hours have passed, then what is the first time after 12:00 AM at which the two clocks show the same time? Express your answer in the form of $h:mm$ where $h$ is an integer from $1$ to $12$ and $mm$ is a two-digit integer.",
+        "syntax": 1,
+        "semantic_score": 0.2650955203891574,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes start_time :: real\nassumes h0 : \"start_time = 12 + 15/60\"\nand h1 : \"speed1 = 1/12\"\nand h2 : \"speed2 = 1/16\"\nshows \"((\\<exists>n::nat. (n > 0) \\<and> frac(start_time + n * speed1) = frac(start_time + n * speed2)) = True)\n\\<and> (THE n::nat. (n > 0) \\<and> frac(start_time + n * speed1) = frac(start_time + n * speed2)) = 63/100\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes start_time :: real\nassumes h0 : \"start_time = 12 + 15/60\"\nand h1 : \"speed1 = 1/12\"\nand h2 : \"speed2 = 1/16\"\nshows \"((\\<exists>n::nat. (n > 0) \\<and> frac(start_time + n * speed1) = frac(start_time + n * speed2)) = True)\n\\<and> (THE n::nat. (n > 0) \\<and> frac(start_time + n * speed1) = frac(start_time + n * speed2)) = 63/100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A person starts running at 12:15 PM with a speed of 1/12 miles per minute, while another person starts running at the same time but with a speed of 1/16 miles per minute. Is there a time (in minutes) when the two people are at the same distance from their starting point, and if so, what is the smallest such time (in minutes)? The answer is that the two people meet 63/100 minutes after they start running.",
+        "syntax": 1,
+        "semantic_score": 0.8183290477119497,
+        "symbolic_score": 0.1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes time :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"time 1 12 = 1\"\nand h1 : \"time 1 16 = 1\"\nand h2 : \"\\<forall> n. time (Suc n) 12 = (time n 12 + 12) mod 60\"\nand h3 : \"\\<forall> n. time (Suc n) 16 = (time n 16 + 16) mod 60\"\nand h4 : \"\\<exists> n. time n 12 mod 60 = 15 \\<and> time n 16 mod 60 = 15\"\nand h5 : \"\\<exists> n. time n 12 mod 60 = 0 \\<and> time n 16 mod 60 = 0\"\nand h6 : \"LEAST n. time n 12 mod 60 = 15 \\<and> time n 16 mod 60 = 15 <\nLEAST n. time n 12 mod 60 = 0 \\<and> time n 16 mod 60 = 0\"\nshows \"time h m1 m2 = 63\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes time :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"time 1 12 = 1\"\nand h1 : \"time 1 16 = 1\"\nand h2 : \"\\<forall> n. time (Suc n) 12 = (time n 12 + 12) mod 60\"\nand h3 : \"\\<forall> n. time (Suc n) 16 = (time n 16 + 16) mod 60\"\nand h4 : \"\\<exists> n. time n 12 mod 60 = 15 \\<and> time n 16 mod 60 = 15\"\nand h5 : \"\\<exists> n. time n 12 mod 60 = 0 \\<and> time n 16 mod 60 = 0\"\nand h6 : \"LEAST n. time n 12 mod 60 = 15 \\<and> time n 16 mod 60 = 15 <\nLEAST n. time n 12 mod 60 = 0 \\<and> time n 16 mod 60 = 0\"\nshows \"time h m1 m2 = 63\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose there is a clock that can display time in hours, minutes, and seconds. Let $time(n, m)$ represent the number of seconds that have elapsed since midnight of the $n^{th}$ day, when the time on the clock is $m$ hours. We know that the time is displayed as $1:12$ and $1:16$ at some point, and that the clock adds $12$ minutes when the hour is $12$ and $16$ minutes when the hour is $16$. Furthermore, we know that there exists a time where the clock displays $15$ minutes past the hour and another time where the clock displays exactly on the hour. The least time when the clock displays $15$ minutes past the hour occurs before the least time when the clock displays exactly on the hour. Find the time on the clock when it reads $63$ minutes past some hour.",
+        "syntax": 0,
+        "semantic_score": 0.4135429377047062,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes t :: real\nassumes h0 : \"t \\<ge> 0\"\nand h1 : \"t \\<le> 60\"\nand h2 : \"\\<forall> t. 0 \\<le> t \\<longrightarrow> t \\<le> 60 \\<longrightarrow> floor (t / 12) * 12 + 15 + 12 / 5 = t + 60 / 5\"\nand h3 : \"\\<forall> t. 0 \\<le> t \\<longrightarrow> t \\<le> 60 \\<longrightarrow> floor (t / 16) * 16 + 15 + 16 / 5 = t + 60 / 5\"\nshows \"floor (t / 48) * 48 + 63 / 5 = t + 60 / 5\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: real\nassumes h0 : \"t \\<ge> 0\"\nand h1 : \"t \\<le> 60\"\nand h2 : \"\\<forall> t. 0 \\<le> t \\<longrightarrow> t \\<le> 60 \\<longrightarrow> floor (t / 12) * 12 + 15 + 12 / 5 = t + 60 / 5\"\nand h3 : \"\\<forall> t. 0 \\<le> t \\<longrightarrow> t \\<le> 60 \\<longrightarrow> floor (t / 16) * 16 + 15 + 16 / 5 = t + 60 / 5\"\nshows \"floor (t / 48) * 48 + 63 / 5 = t + 60 / 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a time duration $t$ between 0 and 60 minutes. For any $t$ in this range, the following two statements are true: \n\n- If we divide $t$ by 12 and round down to the nearest integer, and then add 15 and 12/5, we get the same value as if we just added 60/5 to $t$.\n\n- If we divide $t$ by 16 and round down to the nearest integer, and then add 15 and 16/5, we get the same value as if we just added 60/5 to $t$.\n\nWhat is the smallest multiple of 48 that is greater than or equal to $t$, rounded up to the nearest integer, plus 63/5?",
+        "syntax": 1,
+        "semantic_score": 0.9715681399153667,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            5
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes time1 time2 :: int\nassumes h0 : \"time1 = 12\"\nand h1 : \"time2 = 16\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> (n * time1 mod 60 = n * time2 mod 60)\"\nshows  \"n * time1 mod 12 = 1\" and \"n * time1 mod 60 = 3\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes time1 time2 :: int\nassumes h0 : \"time1 = 12\"\nand h1 : \"time2 = 16\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> (n * time1 mod 60 = n * time2 mod 60)\"\nshows  \"n * time1 mod 12 = 1\" and \"n * time1 mod 60 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two specific times, 12 and 16. For all integers n greater than or equal to 1, it is true that the remainder when n times the first time is divided by 60 equals the remainder when n times the second time is divided by 60. What are the remainders when n times the first time is divided by 12 and by 60? The final answers are 1 and 3, respectively.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7908497026463734,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes start_time :: real\nassumes h0 : \"start_time = 12.25\"\nand h1 : \"cyclist_1_lap_time = 12\"\nand h2 : \"cyclist_2_lap_time = 16\"\nand h3 : \"lcm cyclist_1_lap_time cyclist_2_lap_time = 48\"\nshows  \"start_time + (48/60) = 13.05\" (* 1:03 PM in decimal form *)",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes start_time :: real\nassumes h0 : \"start_time = 12.25\"\nand h1 : \"cyclist_1_lap_time = 12\"\nand h2 : \"cyclist_2_lap_time = 16\"\nand h3 : \"lcm cyclist_1_lap_time cyclist_2_lap_time = 48\"\nshows  \"start_time + (48/60) = 13.05\" (* 1:03 PM in decimal form *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Two cyclists start riding at 12:25 PM. The first cyclist completes a lap in 12 minutes and the second cyclist completes a lap in 16 minutes. They both finish their laps at the same time, which is the least common multiple of their individual lap times. What time is it when they both finish their laps? The final answer is 1:03 PM.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9101497493546269,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes t1 t2 T :: real\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"T = lcm t1 t2\"\nshows  \"T = 48\"  (* The time in minutes when they will cross the starting line together again. *)\n\n(* The theorem does not translate the time into the format h:m1m2 or translate it into PM time. This would require additional assumptions and functions to handle time format conversions, which are not typically part of Isabelle's standard libraries. *)",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t1 t2 T :: real\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"T = lcm t1 t2\"\nshows  \"T = 48\"  (* The time in minutes when they will cross the starting line together again. *)\n\n(* The theorem does not translate the time into the format h:m1m2 or translate it into PM time. This would require additional assumptions and functions to handle time format conversions, which are not typically part of Isabelle's standard libraries. *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Two runners start running on a circular track at the same time. One completes a lap every 12 minutes, and the other completes a lap every 16 minutes. How many minutes will it take until they both cross the starting line together again? The final answer is 48 minutes. Note that we're not converting this time into hours and minutes or PM time.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9093790072334587,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes start_time :: nat\nand cyclist1 :: nat\nand cyclist2 :: nat\nassumes h0 : \"start_time = 1215\"\nand h1 : \"cyclist1 = 12\"\nand h2 : \"cyclist2 = 16\"\nshows  \"\\<exists> end_time. end_time > start_time \\<and> (end_time - start_time) mod cyclist1 = 0 \\<and> (end_time - start_time) mod cyclist2 = 0 \\<and> end_time = 1303\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes start_time :: nat\nand cyclist1 :: nat\nand cyclist2 :: nat\nassumes h0 : \"start_time = 1215\"\nand h1 : \"cyclist1 = 12\"\nand h2 : \"cyclist2 = 16\"\nshows  \"\\<exists> end_time. end_time > start_time \\<and> (end_time - start_time) mod cyclist1 = 0 \\<and> (end_time - start_time) mod cyclist2 = 0 \\<and> end_time = 1303\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Two cyclists start at 12:15. The first cyclist completes a lap every 12 minutes and the second cyclist completes a lap every 16 minutes. At what time will both cyclists finish a lap at the exact same time for the first time after they start? The answer is 13:03.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9197998116707458,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes time1 time2 :: real\nassumes h0 : \"time1 = 12\"\nand h1 : \"time2 = 16\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> time1 * n = time2 * m\"\nshows  \"n = 4\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes time1 time2 :: real\nassumes h0 : \"time1 = 12\"\nand h1 : \"time2 = 16\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> time1 * n = time2 * m\"\nshows  \"n = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that a certain process takes 12 hours to complete for one unit and another process takes 16 hours to complete for 'm' units, find the value of 'm' such that the time taken is the same for both processes when working on 'n' units. The final answer is 'm' equals 4.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7734088578849346,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes time1 time2 :: real\nassumes h0 : \"time1 = 12\"\nand h1 : \"time2 = 16\"\nand h2 : \"lcm time1 time2 = 48\"\nshows  \"next_crossing_time = (12::15 + 48) mod 60 = 1::03\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes time1 time2 :: real\nassumes h0 : \"time1 = 12\"\nand h1 : \"time2 = 16\"\nand h2 : \"lcm time1 time2 = 48\"\nshows  \"next_crossing_time = (12::15 + 48) mod 60 = 1::03\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that there are two events, one which happens every 12 minutes and another that happens every 16 minutes. The least common multiple of these two times is 48 minutes. If both events occur at the same time at minute 12:15, find the time when both events will next occur simultaneously. The answer should be in a 24-hour clock format. The final answer is 1:03.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8514065558324972,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes t :: real\nassumes h0 : \"t = lcm (12, 16) + (12 * 15)\"\nshows  \"t / 60 = 1.05\" (* 1.05 hours or 1:03 PM *)",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: real\nassumes h0 : \"t = lcm (12, 16) + (12 * 15)\"\nshows  \"t / 60 = 1.05\" (* 1.05 hours or 1:03 PM *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the time, in hours, when it is equal to the least common multiple of 12 and 16, plus 12 times 15. The result is divided by 60. The final answer is 1.05 hours.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8087494229976866,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes h1 m1 h2 m2 :: real\nassumes h0 : \"h1 = 12.25\"\nand h1 : \"m1 = 12 / 60\"\nand h2 : \"m2 = 16 / 60\"\nand h3 : \"lcm m1 m2 = 48 / 60\"\nshows  \"h1 + h3 = 13.05\" (* Time when they meet again *)",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes h1 m1 h2 m2 :: real\nassumes h0 : \"h1 = 12.25\"\nand h1 : \"m1 = 12 / 60\"\nand h2 : \"m2 = 16 / 60\"\nand h3 : \"lcm m1 m2 = 48 / 60\"\nshows  \"h1 + h3 = 13.05\" (* Time when they meet again *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a clock's hour hand is at 12:25 and two minutes hands are moving at speeds of 12/60 and 16/60, find the time when all hands meet again. The final answer is 13:05.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8261997901325573,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes cyclist1 cyclist2 :: real\nassumes h0 : \"cyclist1 = 12\"\nand h1 : \"cyclist2 = 16\"\nshows  \"lcm(cyclist1, cyclist2) + 12:15 = 1:03\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes cyclist1 cyclist2 :: real\nassumes h0 : \"cyclist1 = 12\"\nand h1 : \"cyclist2 = 16\"\nshows  \"lcm(cyclist1, cyclist2) + 12:15 = 1:03\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the least common multiple of the speeds of two cyclists, one cycling at 12 mph and the other at 16 mph. Then, add that number to the time 12:15. The final time should be 1:03.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8619120128260628,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes start_time :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nand lap_time1 :: nat\nand lap_time2 :: nat\nand next_time :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"start_time 12 15 = 0\"\nand h1 : \"lap_time1 = 12\"\nand h2 : \"lap_time2 = 16\"\nand h3 : \"\\<forall>t1 t2. next_time t1 t2 = (t1 + t2) mod 60\"\nshows  \"next_time lap_time1 lap_time2 = start_time 1 3\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is \\text{1:03 PM}\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes start_time :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nand lap_time1 :: nat\nand lap_time2 :: nat\nand next_time :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"start_time 12 15 = 0\"\nand h1 : \"lap_time1 = 12\"\nand h2 : \"lap_time2 = 16\"\nand h3 : \"\\<forall>t1 t2. next_time t1 t2 = (t1 + t2) mod 60\"\nshows  \"next_time lap_time1 lap_time2 = start_time 1 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A race starts at 12:15. The first lap is completed in 12 minutes and the second lap in 16 minutes. If the time is calculated in minutes past the hour (0-59), what is the time when the second lap is completed? The answer is 1:03.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8671201934247398,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes t :: int\nassumes h0 : \"t = lcm 12 16\"\nshows \"t div 60 = 1\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: int\nassumes h0 : \"t = lcm 12 16\"\nshows \"t div 60 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the least common multiple (LCM) of 12 and 16, and then divide that result by 60. The final answer should be 1.",
+        "syntax": 1,
+        "semantic_score": 0.7831216804644427,
+        "symbolic_score": 0.2
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes t1 t2 :: nat\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"gcd t1 t2 = 48\"\nshows \"next_time = 13:03\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t1 t2 :: nat\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"gcd t1 t2 = 48\"\nshows \"next_time = 13:03\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that $t1 = 12$ and $t2 = 16$, and the greatest common divisor (gcd) of $t1$ and $t2$ is $48$, find the next time that is a multiple of the gcd. The answer is \"13:03\".",
+        "syntax": 0,
+        "semantic_score": 0.8162637343296146,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes t :: int\nassumes h0 : \"t = LCM (12::int) (16::int)\"\nshows \"t div 60 = 1\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: int\nassumes h0 : \"t = LCM (12::int) (16::int)\"\nshows \"t div 60 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the least common multiple (LCM) of 12 and 16, and then divide that result by 60. The final answer should be 1.",
+        "syntax": 0,
+        "semantic_score": 0.7831216804644427,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes t1 t2 :: int\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"t1 * x = t2 * y\"\nand h3 : \"x > 0\"\nand h4 : \"y > 0\"\nand h5 : \"x < y\"\nshows \"((y - x) div (t1 * t2 div gcd t1 t2)) * (t1 * t2 div gcd t1 t2) + x = y\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t1 t2 :: int\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"t1 * x = t2 * y\"\nand h3 : \"x > 0\"\nand h4 : \"y > 0\"\nand h5 : \"x < y\"\nshows \"((y - x) div (t1 * t2 div gcd t1 t2)) * (t1 * t2 div gcd t1 t2) + x = y\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two integers $t1$ and $t2$ such that $t1 = 12$ and $t2 = 16$, and two positive integers $x$ and $y$ where $x < y$ and $t1 * x = t2 * y$. Prove that $((y - x) \\text{ div } (t1 * t2 \\text{ div } \\text{gcd}(t1, t2))) * (t1 * t2 \\text{ div } \\text{gcd}(t1, t2)) + x = y$.",
+        "syntax": 1,
+        "semantic_score": 0.7033638511924222,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes t :: int\nassumes h0 : \"t = lcm (12, 16)\"\nshows \"t div 60 = 1\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: int\nassumes h0 : \"t = lcm (12, 16)\"\nshows \"t div 60 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The least common multiple (LCM) of 12 and 16 is equal to a variable t. Determine if the quotient of t divided by 60 is equal to 1.",
+        "syntax": 0,
+        "semantic_score": 0.7565327685338773,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes t :: int\nassumes h0 : \"t = lcm 12 16\"\nshows \"t div 60 = 1\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: int\nassumes h0 : \"t = lcm 12 16\"\nshows \"t div 60 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is an integer `t` which is equal to the least common multiple (LCM) of 12 and 16. We are asked to find the value of `t` divided by 60, and the result should be 1.",
+        "syntax": 1,
+        "semantic_score": 0.7562623739374911,
+        "symbolic_score": 0.2
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes t1 t2 :: nat\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"t1 * t2 = gcd t1 t2 * lcm t1 t2\"\nand h3 : \"lcm t1 t2 = 48\"\nshows \"1 + (48 div 60) : (48 mod 60) = 1:3\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t1 t2 :: nat\nassumes h0 : \"t1 = 12\"\nand h1 : \"t2 = 16\"\nand h2 : \"t1 * t2 = gcd t1 t2 * lcm t1 t2\"\nand h3 : \"lcm t1 t2 = 48\"\nshows \"1 + (48 div 60) : (48 mod 60) = 1:3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that $t_1 = 12$ and $t_2 = 16$, and the least common multiple (lcm) of $t_1$ and $t_2$ is $48$, we know that the product of $t_1$ and $t_2$ is equal to the greatest common divisor (gcd) of $t_1$ and $t_2$ multiplied by the lcm of $t_1$ and $t_2$. We are asked to find the value of the expression $1 + \\frac{48}{60}$ in the form of $a:b$, where $a$ and $b$ are the numerator and denominator of the fraction, respectively. The final answer is $1:3$.",
+        "syntax": 0,
+        "semantic_score": 0.768548789067709,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes t :: nat\nassumes h0 : \"t = lcm 12 16\"\nshows \"t div 60 = 1\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: nat\nassumes h0 : \"t = lcm 12 16\"\nshows \"t div 60 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the least common multiple (LCM) of 12 and 16, and then divide that result by 60. The final answer should be 1.",
+        "syntax": 1,
+        "semantic_score": 0.7831216804644427,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes t :: int\nassumes h0 : \"t = LCM (12, 16)\"\nshows \"t div 60 = 1 \\<and> t mod 60 = 3\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: int\nassumes h0 : \"t = LCM (12, 16)\"\nshows \"t div 60 = 1 \\<and> t mod 60 = 3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the least common multiple (LCM) of 12 and 16, and then divide that result by 60. The quotient should be 1, and the remainder should be 3.",
+        "syntax": 0,
+        "semantic_score": 0.7810975416930465,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes t :: int\nassumes h0 : \"t = (LCM 12 16) div 60\"\nshows \"t = 1\"",
+        "formal solution": "(* ### Problem\n Two bicycle racers cross the starting line on a circular track at 12:15 PM. One cyclist takes $12$ minutes per lap, while the other completes a lap every $16$ minutes. Assuming their speeds remain constant, what is the next time they cross the starting line together?  Your answer should be in the form $h:m_1m_2,$ like 3:45. The final Answer is $\\text{1:03 PM}$\n ### Proof\n We seek the least common multiple of $12$ minutes and $16$ minutes. This gives the amount of time that transpires until the two again cross the starting line together. $12=2^2\\cdot 3$ and $16=2^4$, so taking the highest power of each yields $LCM(12,16)=2^4\\cdot 3=48$ minutes, so that the desired time is $48$ minutes past $\\text{12:15 PM}$, or $\\boxed{\\text{1:03 PM}}$.\n *)\n\ntheorem\nfixes t :: int\nassumes h0 : \"t = (LCM 12 16) div 60\"\nshows \"t = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The theorem states that if we take the least common multiple (LCM) of 12 and 16, divide it by 60, the result will be 1. In other words, find the smallest number that both 12 and 16 can divide evenly, and then divide that number by 60. The result should be 1.",
+        "syntax": 0,
+        "semantic_score": 0.7598203995717698,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0,
+            5
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

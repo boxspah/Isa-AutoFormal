@@ -1,0 +1,128 @@
+{
+    "problem_name": "amc12b_2002_p4",
+    "informal_statement": "Let $n$ be a positive [[integer]] such that $\\frac 12 + \\frac 13 + \\frac 17 + \\frac 1n$ is an integer. Which of the following statements is '''not ''' true:\n\n$\\mathrm{(A)}\\ 2\\ \\text{divides\\ }n\n\\qquad\\mathrm{(B)}\\ 3\\ \\text{divides\\ }n\n\\qquad\\mathrm{(C)}$ $\\ 6\\ \\text{divides\\ }n \n\\qquad\\mathrm{(D)}\\ 7\\ \\text{divides\\ }n\n\\qquad\\mathrm{(E)}\\ n > 84$ Show that it is \\mathrm{(E)}\\ n>84.",
+    "informal_proof": "Since $\\frac 12 + \\frac 13 + \\frac 17  = \\frac {41}{42}$, $0 < \\lim_{n \\rightarrow \\infty} \\left(\\frac{41}{42} + \\frac{1}{n}\\right) < \\frac {41}{42} + \\frac 1n < \\frac{41}{42} + \\frac 11 < 2$\n\nFrom which it follows that $\\frac{41}{42} + \\frac 1n = 1$ and $n = 42$. The only answer choice that is not true is $\\mathrm{(E)}\\ n>84$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1 / 2 + 1 / 3 + 1 / 7 + 1 / n \\<in> {x :: real. x = round x}\"\nshows  \"\u00ac(2 dvd n \\<and> 3 dvd n \\<and> 6 dvd n \\<and> 7 dvd n \\<and> n > 84)\"",
+        "formal solution": "(* ### Problem\n Let $n$ be a positive [[integer]] such that $\\frac 12 + \\frac 13 + \\frac 17 + \\frac 1n$ is an integer. Which of the following statements is '''not ''' true:\n\n$\\mathrm{(A)}\\ 2\\ \\text{divides\\ }n\n\\qquad\\mathrm{(B)}\\ 3\\ \\text{divides\\ }n\n\\qquad\\mathrm{(C)}$ $\\ 6\\ \\text{divides\\ }n \n\\qquad\\mathrm{(D)}\\ 7\\ \\text{divides\\ }n\n\\qquad\\mathrm{(E)}\\ n > 84$ Show that it is \\mathrm{(E)}\\ n>84.\n ### Proof\n Since $\\frac 12 + \\frac 13 + \\frac 17  = \\frac {41}{42}$, $0 < \\lim_{n \\rightarrow \\infty} \\left(\\frac{41}{42} + \\frac{1}{n}\\right) < \\frac {41}{42} + \\frac 1n < \\frac{41}{42} + \\frac 11 < 2$\n\nFrom which it follows that $\\frac{41}{42} + \\frac 1n = 1$ and $n = 42$. The only answer choice that is not true is $\\mathrm{(E)}\\ n>84$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1 / 2 + 1 / 3 + 1 / 7 + 1 / n \\<in> {x :: real. x = round x}\"\nshows  \"\u00ac(2 dvd n \\<and> 3 dvd n \\<and> 6 dvd n \\<and> 7 dvd n \\<and> n > 84)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a positive integer $n$, if $\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{7} + \\frac{1}{n}$ is an integer, prove that $n$ cannot be divisible by 2, 3, 6, and 7, and greater than 84 at the same time.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8163068294525146,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/n \\<in> (\\<nat>::nat set)\"\nshows  \"\\<not> (n > 84)\"",
+        "formal solution": "(* ### Problem\n Let $n$ be a positive [[integer]] such that $\\frac 12 + \\frac 13 + \\frac 17 + \\frac 1n$ is an integer. Which of the following statements is '''not ''' true:\n\n$\\mathrm{(A)}\\ 2\\ \\text{divides\\ }n\n\\qquad\\mathrm{(B)}\\ 3\\ \\text{divides\\ }n\n\\qquad\\mathrm{(C)}$ $\\ 6\\ \\text{divides\\ }n \n\\qquad\\mathrm{(D)}\\ 7\\ \\text{divides\\ }n\n\\qquad\\mathrm{(E)}\\ n > 84$ Show that it is \\mathrm{(E)}\\ n>84.\n ### Proof\n Since $\\frac 12 + \\frac 13 + \\frac 17  = \\frac {41}{42}$, $0 < \\lim_{n \\rightarrow \\infty} \\left(\\frac{41}{42} + \\frac{1}{n}\\right) < \\frac {41}{42} + \\frac 1n < \\frac{41}{42} + \\frac 11 < 2$\n\nFrom which it follows that $\\frac{41}{42} + \\frac 1n = 1$ and $n = 42$. The only answer choice that is not true is $\\mathrm{(E)}\\ n>84$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/n \\<in> (\\<nat>::nat set)\"\nshows  \"\\<not> (n > 84)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the sum of the fractions $\\frac{1}{2}$, $\\frac{1}{3}$, $\\frac{1}{7}$, and $\\frac{1}{n}$ is a natural number, and $n > 0$, prove that $n$ cannot be greater than 84.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9421825408935547,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/n = (n * 42 + 1) div (6 * n)\"\nshows  \"\\<not>(n > 84)\"",
+        "formal solution": "(* ### Problem\n Let $n$ be a positive [[integer]] such that $\\frac 12 + \\frac 13 + \\frac 17 + \\frac 1n$ is an integer. Which of the following statements is '''not ''' true:\n\n$\\mathrm{(A)}\\ 2\\ \\text{divides\\ }n\n\\qquad\\mathrm{(B)}\\ 3\\ \\text{divides\\ }n\n\\qquad\\mathrm{(C)}$ $\\ 6\\ \\text{divides\\ }n \n\\qquad\\mathrm{(D)}\\ 7\\ \\text{divides\\ }n\n\\qquad\\mathrm{(E)}\\ n > 84$ Show that it is \\mathrm{(E)}\\ n>84.\n ### Proof\n Since $\\frac 12 + \\frac 13 + \\frac 17  = \\frac {41}{42}$, $0 < \\lim_{n \\rightarrow \\infty} \\left(\\frac{41}{42} + \\frac{1}{n}\\right) < \\frac {41}{42} + \\frac 1n < \\frac{41}{42} + \\frac 11 < 2$\n\nFrom which it follows that $\\frac{41}{42} + \\frac 1n = 1$ and $n = 42$. The only answer choice that is not true is $\\mathrm{(E)}\\ n>84$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/n = (n * 42 + 1) div (6 * n)\"\nshows  \"\\<not>(n > 84)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{7} + \\frac{1}{n} = \\frac{n \\cdot 42 + 1}{6n}$ for a positive integer $n > 0$, show that $n$ cannot be greater than 84.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9678813815116882,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/n \u2208 \u2124\"\nshows  \"\u00ac(2 dvd n \\<and> 3 dvd n \\<and> 6 dvd n \\<and> 7 dvd n \\<and> n > 84)\"",
+        "formal solution": "(* ### Problem\n Let $n$ be a positive [[integer]] such that $\\frac 12 + \\frac 13 + \\frac 17 + \\frac 1n$ is an integer. Which of the following statements is '''not ''' true:\n\n$\\mathrm{(A)}\\ 2\\ \\text{divides\\ }n\n\\qquad\\mathrm{(B)}\\ 3\\ \\text{divides\\ }n\n\\qquad\\mathrm{(C)}$ $\\ 6\\ \\text{divides\\ }n \n\\qquad\\mathrm{(D)}\\ 7\\ \\text{divides\\ }n\n\\qquad\\mathrm{(E)}\\ n > 84$ Show that it is \\mathrm{(E)}\\ n>84.\n ### Proof\n Since $\\frac 12 + \\frac 13 + \\frac 17  = \\frac {41}{42}$, $0 < \\lim_{n \\rightarrow \\infty} \\left(\\frac{41}{42} + \\frac{1}{n}\\right) < \\frac {41}{42} + \\frac 1n < \\frac{41}{42} + \\frac 11 < 2$\n\nFrom which it follows that $\\frac{41}{42} + \\frac 1n = 1$ and $n = 42$. The only answer choice that is not true is $\\mathrm{(E)}\\ n>84$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/n \u2208 \u2124\"\nshows  \"\u00ac(2 dvd n \\<and> 3 dvd n \\<and> 6 dvd n \\<and> 7 dvd n \\<and> n > 84)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $n$ is a positive integer and the sum $\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{7} + \\frac{1}{n}$ is an integer. Prove that it is not possible for $n$ to be divisible by 2, 3, 6, 7, and greater than 84 at the same time.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8443005681037903,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/n = (n * 42 - 1) div (42 * n)\"\nshows  \"(\\<not> (2 dvd n) \\<or> \\<not> (3 dvd n) \\<or> \\<not> (6 dvd n) \\<or> \\<not> (7 dvd n) \\<or> n \\<le> 84)\"",
+        "formal solution": "(* ### Problem\n Let $n$ be a positive [[integer]] such that $\\frac 12 + \\frac 13 + \\frac 17 + \\frac 1n$ is an integer. Which of the following statements is '''not ''' true:\n\n$\\mathrm{(A)}\\ 2\\ \\text{divides\\ }n\n\\qquad\\mathrm{(B)}\\ 3\\ \\text{divides\\ }n\n\\qquad\\mathrm{(C)}$ $\\ 6\\ \\text{divides\\ }n \n\\qquad\\mathrm{(D)}\\ 7\\ \\text{divides\\ }n\n\\qquad\\mathrm{(E)}\\ n > 84$ Show that it is \\mathrm{(E)}\\ n>84.\n ### Proof\n Since $\\frac 12 + \\frac 13 + \\frac 17  = \\frac {41}{42}$, $0 < \\lim_{n \\rightarrow \\infty} \\left(\\frac{41}{42} + \\frac{1}{n}\\right) < \\frac {41}{42} + \\frac 1n < \\frac{41}{42} + \\frac 11 < 2$\n\nFrom which it follows that $\\frac{41}{42} + \\frac 1n = 1$ and $n = 42$. The only answer choice that is not true is $\\mathrm{(E)}\\ n>84$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/n = (n * 42 - 1) div (42 * n)\"\nshows  \"(\\<not> (2 dvd n) \\<or> \\<not> (3 dvd n) \\<or> \\<not> (6 dvd n) \\<or> \\<not> (7 dvd n) \\<or> n \\<le> 84)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose there is a positive integer $n$ such that $\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{7} + \\frac{1}{n} = \\frac{n \\times 42 - 1}{42n}$. Show that at least one of the following conditions must be true: $n$ is not divisible by 2, $n$ is not divisible by 3, $n$ is not divisible by 6, $n$ is not divisible by 7, or $n \\leq 84$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7693990468978882,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/n = (1::nat)\"\nshows  \"n dvd 2 \\<and> n dvd 3 \\<and> n dvd 6 \\<and> n dvd 7 \\<and> n \\<le> 84\"",
+        "formal solution": "(* ### Problem\n Let $n$ be a positive [[integer]] such that $\\frac 12 + \\frac 13 + \\frac 17 + \\frac 1n$ is an integer. Which of the following statements is '''not ''' true:\n\n$\\mathrm{(A)}\\ 2\\ \\text{divides\\ }n\n\\qquad\\mathrm{(B)}\\ 3\\ \\text{divides\\ }n\n\\qquad\\mathrm{(C)}$ $\\ 6\\ \\text{divides\\ }n \n\\qquad\\mathrm{(D)}\\ 7\\ \\text{divides\\ }n\n\\qquad\\mathrm{(E)}\\ n > 84$ Show that it is \\mathrm{(E)}\\ n>84.\n ### Proof\n Since $\\frac 12 + \\frac 13 + \\frac 17  = \\frac {41}{42}$, $0 < \\lim_{n \\rightarrow \\infty} \\left(\\frac{41}{42} + \\frac{1}{n}\\right) < \\frac {41}{42} + \\frac 1n < \\frac{41}{42} + \\frac 11 < 2$\n\nFrom which it follows that $\\frac{41}{42} + \\frac 1n = 1$ and $n = 42$. The only answer choice that is not true is $\\mathrm{(E)}\\ n>84$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/n = (1::nat)\"\nshows  \"n dvd 2 \\<and> n dvd 3 \\<and> n dvd 6 \\<and> n dvd 7 \\<and> n \\<le> 84\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $n > 0$ and $\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{7} + \\frac{1}{n} = 1$, find the value of $n$ that is divisible by 2, 3, 6, and 7, and is less than or equal to 84.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9900882244110107,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1 / 2 + 1 / 3 + 1 / 7 + 1 / real n = real (nat (ceiling (1 / 2 + 1 / 3 + 1 / 7 + 1 / real n)))\"\nshows  \"2 dvd n\" \nand \"3 dvd n\"\nand \"6 dvd n\"\nand \"7 dvd n\"\nand \"\\<not> (n > 84)\"",
+        "formal solution": "(* ### Problem\n Let $n$ be a positive [[integer]] such that $\\frac 12 + \\frac 13 + \\frac 17 + \\frac 1n$ is an integer. Which of the following statements is '''not ''' true:\n\n$\\mathrm{(A)}\\ 2\\ \\text{divides\\ }n\n\\qquad\\mathrm{(B)}\\ 3\\ \\text{divides\\ }n\n\\qquad\\mathrm{(C)}$ $\\ 6\\ \\text{divides\\ }n \n\\qquad\\mathrm{(D)}\\ 7\\ \\text{divides\\ }n\n\\qquad\\mathrm{(E)}\\ n > 84$ Show that it is \\mathrm{(E)}\\ n>84.\n ### Proof\n Since $\\frac 12 + \\frac 13 + \\frac 17  = \\frac {41}{42}$, $0 < \\lim_{n \\rightarrow \\infty} \\left(\\frac{41}{42} + \\frac{1}{n}\\right) < \\frac {41}{42} + \\frac 1n < \\frac{41}{42} + \\frac 11 < 2$\n\nFrom which it follows that $\\frac{41}{42} + \\frac 1n = 1$ and $n = 42$. The only answer choice that is not true is $\\mathrm{(E)}\\ n>84$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1 / 2 + 1 / 3 + 1 / 7 + 1 / real n = real (nat (ceiling (1 / 2 + 1 / 3 + 1 / 7 + 1 / real n)))\"\nshows  \"2 dvd n\" \nand \"3 dvd n\"\nand \"6 dvd n\"\nand \"7 dvd n\"\nand \"\\<not> (n > 84)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a positive integer $n$ such that the sum of the fractions $\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{7} + \\frac{1}{n}$ is equal to an integer. The integer must have the following properties:\n\n1. It is divisible by 2.\n2. It is divisible by 3.\n3. It is divisible by 6.\n4. It is divisible by 7.\n5. It is not greater than 84.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9039923548698425,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/n \\<in> \\<int>\"\nshows  \"\\<not> (n > 84)\"",
+        "formal solution": "(* ### Problem\n Let $n$ be a positive [[integer]] such that $\\frac 12 + \\frac 13 + \\frac 17 + \\frac 1n$ is an integer. Which of the following statements is '''not ''' true:\n\n$\\mathrm{(A)}\\ 2\\ \\text{divides\\ }n\n\\qquad\\mathrm{(B)}\\ 3\\ \\text{divides\\ }n\n\\qquad\\mathrm{(C)}$ $\\ 6\\ \\text{divides\\ }n \n\\qquad\\mathrm{(D)}\\ 7\\ \\text{divides\\ }n\n\\qquad\\mathrm{(E)}\\ n > 84$ Show that it is \\mathrm{(E)}\\ n>84.\n ### Proof\n Since $\\frac 12 + \\frac 13 + \\frac 17  = \\frac {41}{42}$, $0 < \\lim_{n \\rightarrow \\infty} \\left(\\frac{41}{42} + \\frac{1}{n}\\right) < \\frac {41}{42} + \\frac 1n < \\frac{41}{42} + \\frac 11 < 2$\n\nFrom which it follows that $\\frac{41}{42} + \\frac 1n = 1$ and $n = 42$. The only answer choice that is not true is $\\mathrm{(E)}\\ n>84$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/n \\<in> \\<int>\"\nshows  \"\\<not> (n > 84)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the sum of $\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{7} + \\frac{1}{n}$ is an integer, and $n > 0$, prove that $n$ cannot be greater than 84.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9406631588935852,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/(real n) = (real (nat (ceiling (1/2 + 1/3 + 1/7 + 1/(real n)))))\"\nshows  \"\\<not> (n > 84)\"",
+        "formal solution": "(* ### Problem\n Let $n$ be a positive [[integer]] such that $\\frac 12 + \\frac 13 + \\frac 17 + \\frac 1n$ is an integer. Which of the following statements is '''not ''' true:\n\n$\\mathrm{(A)}\\ 2\\ \\text{divides\\ }n\n\\qquad\\mathrm{(B)}\\ 3\\ \\text{divides\\ }n\n\\qquad\\mathrm{(C)}$ $\\ 6\\ \\text{divides\\ }n \n\\qquad\\mathrm{(D)}\\ 7\\ \\text{divides\\ }n\n\\qquad\\mathrm{(E)}\\ n > 84$ Show that it is \\mathrm{(E)}\\ n>84.\n ### Proof\n Since $\\frac 12 + \\frac 13 + \\frac 17  = \\frac {41}{42}$, $0 < \\lim_{n \\rightarrow \\infty} \\left(\\frac{41}{42} + \\frac{1}{n}\\right) < \\frac {41}{42} + \\frac 1n < \\frac{41}{42} + \\frac 11 < 2$\n\nFrom which it follows that $\\frac{41}{42} + \\frac 1n = 1$ and $n = 42$. The only answer choice that is not true is $\\mathrm{(E)}\\ n>84$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/(real n) = (real (nat (ceiling (1/2 + 1/3 + 1/7 + 1/(real n)))))\"\nshows  \"\\<not> (n > 84)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a positive integer $n$, if the sum of the fractions $\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{7} + \\frac{1}{n}$ is equal to the smallest integer greater than or equal to the sum, prove that $n$ cannot be greater than 84.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9929438829421997,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/(real n) = (\\<lceil> 1/2 + 1/3 + 1/7 + 1/(real n) \\<rceil>)\"\nshows  \"n \\<le> 84\"",
+        "formal solution": "(* ### Problem\n Let $n$ be a positive [[integer]] such that $\\frac 12 + \\frac 13 + \\frac 17 + \\frac 1n$ is an integer. Which of the following statements is '''not ''' true:\n\n$\\mathrm{(A)}\\ 2\\ \\text{divides\\ }n\n\\qquad\\mathrm{(B)}\\ 3\\ \\text{divides\\ }n\n\\qquad\\mathrm{(C)}$ $\\ 6\\ \\text{divides\\ }n \n\\qquad\\mathrm{(D)}\\ 7\\ \\text{divides\\ }n\n\\qquad\\mathrm{(E)}\\ n > 84$ Show that it is \\mathrm{(E)}\\ n>84.\n ### Proof\n Since $\\frac 12 + \\frac 13 + \\frac 17  = \\frac {41}{42}$, $0 < \\lim_{n \\rightarrow \\infty} \\left(\\frac{41}{42} + \\frac{1}{n}\\right) < \\frac {41}{42} + \\frac 1n < \\frac{41}{42} + \\frac 11 < 2$\n\nFrom which it follows that $\\frac{41}{42} + \\frac 1n = 1$ and $n = 42$. The only answer choice that is not true is $\\mathrm{(E)}\\ n>84$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"1/2 + 1/3 + 1/7 + 1/(real n) = (\\<lceil> 1/2 + 1/3 + 1/7 + 1/(real n) \\<rceil>)\"\nshows  \"n \\<le> 84\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a positive integer $n$, if the sum of the fractions $\\frac{1}{2} + \\frac{1}{3} + \\frac{1}{7} + \\frac{1}{n}$ is equal to the smallest integer greater than or equal to the sum, what is the largest possible value of $n$? The final answer is $84$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8130192756652832,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes n :: nat\nassumes h0 : \"fst (quotient_of (1 / 2 + 1 / 3 + 1 / 7\n+ 1 /(rat_of_nat n))) = 1\"\nshows \"n = 42\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    }
+}

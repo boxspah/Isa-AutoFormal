@@ -1,0 +1,138 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes win lose nothing :: real\nassumes h0 : \"win = 1\"\nand h1 : \"lose = -1\"\nand h2 : \"nothing = 0\"\nand h3 : \"win_probability = 3 / 6\"\nand h4 : \"lose_probability = 2 / 6\"\nand h5 : \"nothing_probability = 1 / 6\"\nshows  \"expected_value = win_probability * win + lose_probability * lose + nothing_probability * nothing\"",
+        "formal solution": "(* ### Problem\n Beth rolls a fair six-sided die. If she rolls a prime number, she wins 1 dollar, but if she rolls a composite number, she loses 1 dollar. If she rolls 1 nothing happens. What is the expected value of the amount of money Beth will win if she rolls the die once? Express your answer as a common fraction. The final Answer is \\frac{1}{6}\n ### Proof\n There are 3 possible prime numbers which can be rolled (2, 3, and 5), and two possible composite numbers which can be rolled (4 and 6). Each number has a $\\dfrac{1}{6}$ chance of being rolled.\n So, the expected value of Beth's winnings is $$\\frac{3}{6}(1)+\\frac{2}{6}(-1)+\\frac{1}{6}(0)=\\boxed{\\frac{1}{6}}$$\n *)\n\ntheorem\nfixes win lose nothing :: real\nassumes h0 : \"win = 1\"\nand h1 : \"lose = -1\"\nand h2 : \"nothing = 0\"\nand h3 : \"win_probability = 3 / 6\"\nand h4 : \"lose_probability = 2 / 6\"\nand h5 : \"nothing_probability = 1 / 6\"\nshows  \"expected_value = win_probability * win + lose_probability * lose + nothing_probability * nothing\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a game, you have a probability of winning, losing, or getting nothing. The probability of winning is $\\frac{1}{2}$, the probability of losing is $\\frac{1}{3}$, and the probability of getting nothing is $\\frac{1}{6}$. If you win, you get 1 point; if you lose, you lose 1 point; and if you get nothing, your score doesn't change. What is the expected value of your score for this game?",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9830211997032166,
+        "symbolic_score": 0.2
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes probability_prime probability_composite probability_one :: real\nassumes h0 : \"probability_prime = 1 / 2\"\nand h1 : \"probability_composite = 1 / 3\"\nand h2 : \"probability_one = 1 / 6\"\nand h3 : \"probability_prime + probability_composite + probability_one = 1\"\nshows  \"expected_value = 1 / 6\"",
+        "formal solution": "(* ### Problem\n Beth rolls a fair six-sided die. If she rolls a prime number, she wins 1 dollar, but if she rolls a composite number, she loses 1 dollar. If she rolls 1 nothing happens. What is the expected value of the amount of money Beth will win if she rolls the die once? Express your answer as a common fraction. The final Answer is \\frac{1}{6}\n ### Proof\n There are 3 possible prime numbers which can be rolled (2, 3, and 5), and two possible composite numbers which can be rolled (4 and 6). Each number has a $\\dfrac{1}{6}$ chance of being rolled.\n So, the expected value of Beth's winnings is $$\\frac{3}{6}(1)+\\frac{2}{6}(-1)+\\frac{1}{6}(0)=\\boxed{\\frac{1}{6}}$$\n *)\n\ntheorem\nfixes probability_prime probability_composite probability_one :: real\nassumes h0 : \"probability_prime = 1 / 2\"\nand h1 : \"probability_composite = 1 / 3\"\nand h2 : \"probability_one = 1 / 6\"\nand h3 : \"probability_prime + probability_composite + probability_one = 1\"\nshows  \"expected_value = 1 / 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose the probability of drawing a prime number is $\\frac{1}{2}$, the probability of drawing a composite number is $\\frac{1}{3}$, and the probability of drawing the number one is $\\frac{1}{6}$. If the sum of these probabilities is equal to 1, what is the expected value of the number drawn? The final answer is $\\frac{1}{6}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.930452823638916,
+        "symbolic_score": 0.3
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes prime_win composite_loss :: real\nassumes h0 : \"prime_win = 1\"\nand h1 : \"composite_loss = -1\"\nshows  \"expected_value = (1 / 6) * (prime_win * 3 + composite_loss * 2)\"",
+        "formal solution": "(* ### Problem\n Beth rolls a fair six-sided die. If she rolls a prime number, she wins 1 dollar, but if she rolls a composite number, she loses 1 dollar. If she rolls 1 nothing happens. What is the expected value of the amount of money Beth will win if she rolls the die once? Express your answer as a common fraction. The final Answer is \\frac{1}{6}\n ### Proof\n There are 3 possible prime numbers which can be rolled (2, 3, and 5), and two possible composite numbers which can be rolled (4 and 6). Each number has a $\\dfrac{1}{6}$ chance of being rolled.\n So, the expected value of Beth's winnings is $$\\frac{3}{6}(1)+\\frac{2}{6}(-1)+\\frac{1}{6}(0)=\\boxed{\\frac{1}{6}}$$\n *)\n\ntheorem\nfixes prime_win composite_loss :: real\nassumes h0 : \"prime_win = 1\"\nand h1 : \"composite_loss = -1\"\nshows  \"expected_value = (1 / 6) * (prime_win * 3 + composite_loss * 2)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a game, you win if you roll a prime number on a 6-sided die and lose if you roll a composite number. A win awards you 1 point and a loss deducts 1 point. What is the expected value of your points after a single roll? The final answer is $\\frac{1}{6} \\times (1 \\cdot 3 + (-1) \\cdot 2)$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9620709419250488,
+        "symbolic_score": 0.3
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes die_roll :: real\nassumes h0 : \"die_roll \\<ge> 1\"\nand h1 : \"die_roll \\<le> 6\"\nand h2 : \"die_roll = 2 \\<or> die_roll = 3 \\<or> die_roll = 5\"\nand h3 : \"die_roll = 4 \\<or> die_roll = 6\"\nshows  \"1/6 * (\\<Sum>x \\<in> {2,3,5}. 1) - 1/6 * (\\<Sum>x \\<in> {4,6}. 1) = 1/6\"",
+        "formal solution": "(* ### Problem\n Beth rolls a fair six-sided die. If she rolls a prime number, she wins 1 dollar, but if she rolls a composite number, she loses 1 dollar. If she rolls 1 nothing happens. What is the expected value of the amount of money Beth will win if she rolls the die once? Express your answer as a common fraction. The final Answer is \\frac{1}{6}\n ### Proof\n There are 3 possible prime numbers which can be rolled (2, 3, and 5), and two possible composite numbers which can be rolled (4 and 6). Each number has a $\\dfrac{1}{6}$ chance of being rolled.\n So, the expected value of Beth's winnings is $$\\frac{3}{6}(1)+\\frac{2}{6}(-1)+\\frac{1}{6}(0)=\\boxed{\\frac{1}{6}}$$\n *)\n\ntheorem\nfixes die_roll :: real\nassumes h0 : \"die_roll \\<ge> 1\"\nand h1 : \"die_roll \\<le> 6\"\nand h2 : \"die_roll = 2 \\<or> die_roll = 3 \\<or> die_roll = 5\"\nand h3 : \"die_roll = 4 \\<or> die_roll = 6\"\nshows  \"1/6 * (\\<Sum>x \\<in> {2,3,5}. 1) - 1/6 * (\\<Sum>x \\<in> {4,6}. 1) = 1/6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose you roll a fair six-sided die. The possible outcomes are 1, 2, 3, 4, 5, and 6. If the probability of rolling a 2, 3, or 5 is added together, and the probability of rolling a 4 or 6 is subtracted from the sum, what is the final probability? Express your answer as a fraction. The final answer is $\\frac{1}{6}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8789870738983154,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes prime_composite :: \"int \\<Rightarrow> int\"\nassumes h0 : \"prime_composite 2 = 1\"\nand h1 : \"prime_composite 3 = 1\"\nand h2 : \"prime_composite 4 = -1\"\nand h3 : \"prime_composite 5 = 1\"\nand h4 : \"prime_composite 6 = -1\"\nand h5 : \"prime_composite 1 = 0\"\nshows  \"sum prime_composite {1..6} / 6 = 1 / 6\"",
+        "formal solution": "(* ### Problem\n Beth rolls a fair six-sided die. If she rolls a prime number, she wins 1 dollar, but if she rolls a composite number, she loses 1 dollar. If she rolls 1 nothing happens. What is the expected value of the amount of money Beth will win if she rolls the die once? Express your answer as a common fraction. The final Answer is \\frac{1}{6}\n ### Proof\n There are 3 possible prime numbers which can be rolled (2, 3, and 5), and two possible composite numbers which can be rolled (4 and 6). Each number has a $\\dfrac{1}{6}$ chance of being rolled.\n So, the expected value of Beth's winnings is $$\\frac{3}{6}(1)+\\frac{2}{6}(-1)+\\frac{1}{6}(0)=\\boxed{\\frac{1}{6}}$$\n *)\n\ntheorem\nfixes prime_composite :: \"int \\<Rightarrow> int\"\nassumes h0 : \"prime_composite 2 = 1\"\nand h1 : \"prime_composite 3 = 1\"\nand h2 : \"prime_composite 4 = -1\"\nand h3 : \"prime_composite 5 = 1\"\nand h4 : \"prime_composite 6 = -1\"\nand h5 : \"prime_composite 1 = 0\"\nshows  \"sum prime_composite {1..6} / 6 = 1 / 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function `prime_composite` that takes an integer as its input and returns 1 if the input is a prime number, -1 if it is a composite number, and 0 if it is 1. Calculate the average value of the function for the integers from 1 to 6. The final answer is $\\frac{1}{6}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8115989565849304,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes prime_win composite_loss :: real\nassumes h0 : \"prime_win = 1\"\nand h1 : \"composite_loss = -1\"\nand h2 : \"Prob (die = 1) = 1 / 6\"\nand h3 : \"Prob (die = 2) = Prob (die = 3) = Prob (die = 5) = 1 / 6\"\nand h4 : \"Prob (die = 4) = Prob (die = 6) = 1 / 6\"\nand h5 : \"expected_value = (\\<Sum>die=1..6. Prob (die = die) * (if prime die then prime_win else if die = 1 then 0 else composite_loss))\"\nshows  \"expected_value = 1 / 6\"",
+        "formal solution": "(* ### Problem\n Beth rolls a fair six-sided die. If she rolls a prime number, she wins 1 dollar, but if she rolls a composite number, she loses 1 dollar. If she rolls 1 nothing happens. What is the expected value of the amount of money Beth will win if she rolls the die once? Express your answer as a common fraction. The final Answer is \\frac{1}{6}\n ### Proof\n There are 3 possible prime numbers which can be rolled (2, 3, and 5), and two possible composite numbers which can be rolled (4 and 6). Each number has a $\\dfrac{1}{6}$ chance of being rolled.\n So, the expected value of Beth's winnings is $$\\frac{3}{6}(1)+\\frac{2}{6}(-1)+\\frac{1}{6}(0)=\\boxed{\\frac{1}{6}}$$\n *)\n\ntheorem\nfixes prime_win composite_loss :: real\nassumes h0 : \"prime_win = 1\"\nand h1 : \"composite_loss = -1\"\nand h2 : \"Prob (die = 1) = 1 / 6\"\nand h3 : \"Prob (die = 2) = Prob (die = 3) = Prob (die = 5) = 1 / 6\"\nand h4 : \"Prob (die = 4) = Prob (die = 6) = 1 / 6\"\nand h5 : \"expected_value = (\\<Sum>die=1..6. Prob (die = die) * (if prime die then prime_win else if die = 1 then 0 else composite_loss))\"\nshows  \"expected_value = 1 / 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a game, you roll a fair 6-sided die. If you roll a prime number, you win 1 point. If you roll a composite number, you lose 1 point. If you roll a 1, there is no change in points. What is the expected value of a single roll in this game? The final answer is $\\frac{1}{6}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9794381856918335,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes prime_rolls composite_rolls one_roll :: real\nassumes h0 : \"prime_rolls = 3/6\"\nand h1 : \"composite_rolls = 2/6\"\nand h2 : \"one_roll = 1/6\"\nshows  \"expected_value = (prime_rolls * 1) - (composite_rolls * 1) + (one_roll * 0) = 1/6\"",
+        "formal solution": "(* ### Problem\n Beth rolls a fair six-sided die. If she rolls a prime number, she wins 1 dollar, but if she rolls a composite number, she loses 1 dollar. If she rolls 1 nothing happens. What is the expected value of the amount of money Beth will win if she rolls the die once? Express your answer as a common fraction. The final Answer is \\frac{1}{6}\n ### Proof\n There are 3 possible prime numbers which can be rolled (2, 3, and 5), and two possible composite numbers which can be rolled (4 and 6). Each number has a $\\dfrac{1}{6}$ chance of being rolled.\n So, the expected value of Beth's winnings is $$\\frac{3}{6}(1)+\\frac{2}{6}(-1)+\\frac{1}{6}(0)=\\boxed{\\frac{1}{6}}$$\n *)\n\ntheorem\nfixes prime_rolls composite_rolls one_roll :: real\nassumes h0 : \"prime_rolls = 3/6\"\nand h1 : \"composite_rolls = 2/6\"\nand h2 : \"one_roll = 1/6\"\nshows  \"expected_value = (prime_rolls * 1) - (composite_rolls * 1) + (one_roll * 0) = 1/6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A die has three faces with prime numbers, two faces with composite numbers, and one face with the number 1. If you get 1 point for rolling a prime number, lose 1 point for rolling a composite number, and get 0 points for rolling a 1, what is the expected value of a single roll? The final answer is $\\frac{1}{6}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9392682313919067,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes p_win p_lose p_neutral :: rat\nassumes h0 : \"p_win = 1/2\"\nand h1 : \"p_lose = 1/3\"\nand h2 : \"p_neutral = 1/6\"\nshows  \"1 * p_win + (-1) * p_lose + 0 * p_neutral = 1 / 6\"",
+        "formal solution": "(* ### Problem\n Beth rolls a fair six-sided die. If she rolls a prime number, she wins 1 dollar, but if she rolls a composite number, she loses 1 dollar. If she rolls 1 nothing happens. What is the expected value of the amount of money Beth will win if she rolls the die once? Express your answer as a common fraction. The final Answer is \\frac{1}{6}\n ### Proof\n There are 3 possible prime numbers which can be rolled (2, 3, and 5), and two possible composite numbers which can be rolled (4 and 6). Each number has a $\\dfrac{1}{6}$ chance of being rolled.\n So, the expected value of Beth's winnings is $$\\frac{3}{6}(1)+\\frac{2}{6}(-1)+\\frac{1}{6}(0)=\\boxed{\\frac{1}{6}}$$\n *)\n\ntheorem\nfixes p_win p_lose p_neutral :: rat\nassumes h0 : \"p_win = 1/2\"\nand h1 : \"p_lose = 1/3\"\nand h2 : \"p_neutral = 1/6\"\nshows  \"1 * p_win + (-1) * p_lose + 0 * p_neutral = 1 / 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the probability of winning is $\\frac{1}{2}$, the probability of losing is $\\frac{1}{3}$, and the probability of a neutral outcome is $\\frac{1}{6}$, calculate the following expression: $1 \\cdot p_{win} - 1 \\cdot p_{lose} + 0 \\cdot p_{neutral}$. The final answer is $\\frac{1}{6}$.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.8617964386940002,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes p_win p_loss p_neutral :: real\nassumes h0 : \"p_win = 1 / 2\"\nand h1 : \"p_loss = 1 / 3\"\nand h2 : \"p_neutral = 1 / 6\"\nshows  \"expected_value = p_win - p_loss\"",
+        "formal solution": "(* ### Problem\n Beth rolls a fair six-sided die. If she rolls a prime number, she wins 1 dollar, but if she rolls a composite number, she loses 1 dollar. If she rolls 1 nothing happens. What is the expected value of the amount of money Beth will win if she rolls the die once? Express your answer as a common fraction. The final Answer is \\frac{1}{6}\n ### Proof\n There are 3 possible prime numbers which can be rolled (2, 3, and 5), and two possible composite numbers which can be rolled (4 and 6). Each number has a $\\dfrac{1}{6}$ chance of being rolled.\n So, the expected value of Beth's winnings is $$\\frac{3}{6}(1)+\\frac{2}{6}(-1)+\\frac{1}{6}(0)=\\boxed{\\frac{1}{6}}$$\n *)\n\ntheorem\nfixes p_win p_loss p_neutral :: real\nassumes h0 : \"p_win = 1 / 2\"\nand h1 : \"p_loss = 1 / 3\"\nand h2 : \"p_neutral = 1 / 6\"\nshows  \"expected_value = p_win - p_loss\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the probabilities of winning, losing, and having a neutral outcome, where the probability of winning is $\\frac{1}{2}$, the probability of losing is $\\frac{1}{3}$, and the probability of a neutral outcome is $\\frac{1}{6}$, find the expected value as the difference between the probability of winning and the probability of losing.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.38156068325042725,
+        "symbolic_score": 0.2
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes prime_win composite_lose :: real\nassumes h0 : \"prime_win = 1\"\nand h1 : \"composite_lose = -1\"\nand h2 : \"1 / 6 * prime_win + 1 / 6 * prime_win + 1 / 6 * prime_win + 1 / 6 * composite_lose + 1 / 6 * composite_lose + 1 / 6 * 0 = expected_value\"\nshows  \"expected_value = 1 / 6\"",
+        "formal solution": "(* ### Problem\n Beth rolls a fair six-sided die. If she rolls a prime number, she wins 1 dollar, but if she rolls a composite number, she loses 1 dollar. If she rolls 1 nothing happens. What is the expected value of the amount of money Beth will win if she rolls the die once? Express your answer as a common fraction. The final Answer is \\frac{1}{6}\n ### Proof\n There are 3 possible prime numbers which can be rolled (2, 3, and 5), and two possible composite numbers which can be rolled (4 and 6). Each number has a $\\dfrac{1}{6}$ chance of being rolled.\n So, the expected value of Beth's winnings is $$\\frac{3}{6}(1)+\\frac{2}{6}(-1)+\\frac{1}{6}(0)=\\boxed{\\frac{1}{6}}$$\n *)\n\ntheorem\nfixes prime_win composite_lose :: real\nassumes h0 : \"prime_win = 1\"\nand h1 : \"composite_lose = -1\"\nand h2 : \"1 / 6 * prime_win + 1 / 6 * prime_win + 1 / 6 * prime_win + 1 / 6 * composite_lose + 1 / 6 * composite_lose + 1 / 6 * 0 = expected_value\"\nshows  \"expected_value = 1 / 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a game, you win 1 point if you draw a prime number and lose 1 point if you draw a composite number. If you draw a 1, you neither win nor lose any points. You have an equal chance of drawing each number from 1 to 6. Find the expected value of the points you will gain or lose in this game. The final answer is $\\frac{1}{6}$.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9466155171394348,
+        "symbolic_score": 0.3
+    },
+    "natural answer": "\\frac{1}{6}",
+    "natural problem": "Beth rolls a fair six-sided die. If she rolls a prime number, she wins 1 dollar, but if she rolls a composite number, she loses 1 dollar. If she rolls 1 nothing happens. What is the expected value of the amount of money Beth will win if she rolls the die once? Express your answer as a common fraction.",
+    "natural solution": [
+        "There are 3 possible prime numbers which can be rolled (2, 3, and 5), and two possible composite numbers which can be rolled (4 and 6). Each number has a $\\dfrac{1}{6}$ chance of being rolled.",
+        "So, the expected value of Beth's winnings is $$\\frac{3}{6}(1)+\\frac{2}{6}(-1)+\\frac{1}{6}(0)=\\boxed{\\frac{1}{6}}$$"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            1,
+            2,
+            9
+        ],
+        "1": [
+            0,
+            8
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ]
+    },
+    "str_pred": "[[1, 2, 9], [0, 8], [3], [4], [5], [6], [7]]",
+    "level": "Level 3",
+    "type": "Counting & Probability"
+}

@@ -1,0 +1,59 @@
+{
+    "natural problem": "$97$ is the largest prime less than $100$. What is the largest prime factor of $97!$ (97 factorial)?  (Reminder: The number $n!$ is the product of the integers from 1 to $n$.  For example, $5!=5\\cdot 4\\cdot3\\cdot2\\cdot 1= 120$.)",
+    "natural solution": [
+        "$\\boxed{97}$ is a prime factor, and everything else that is multiplied together to make $97!$ is less than it."
+    ],
+    "natural answer": "97",
+    "a_0": {
+        "formal problem": "theorem\nfixes factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. factorial n = prod {1..n}\"\nand h1 : \"\\<forall> n. is_prime n = (1 < n \\<and> (\\<forall> m \\<in> {2..<n}. n mod m \\<noteq> 0))\"\nand h2 : \"is_prime 97\"\nand h3 : \"97 = Max {p. p \\<in> {2..97} \\<and> is_prime p}\"\nshows  \"97 = Max {p. p \\<in> {2..97} \\<and> p dvd factorial 97 \\<and> is_prime p}\"",
+        "formal solution": "(* ### Problem\n $97$ is the largest prime less than $100$. What is the largest prime factor of $97!$ (97 factorial)?  (Reminder: The number $n!$ is the product of the integers from 1 to $n$.  For example, $5!=5\\cdot 4\\cdot3\\cdot2\\cdot 1= 120$.) The final Answer is 97\n ### Proof\n $\\boxed{97}$ is a prime factor, and everything else that is multiplied together to make $97!$ is less than it.\n *)\n\ntheorem\nfixes factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. factorial n = prod {1..n}\"\nand h1 : \"\\<forall> n. is_prime n = (1 < n \\<and> (\\<forall> m \\<in> {2..<n}. n mod m \\<noteq> 0))\"\nand h2 : \"is_prime 97\"\nand h3 : \"97 = Max {p. p \\<in> {2..97} \\<and> is_prime p}\"\nshows  \"97 = Max {p. p \\<in> {2..97} \\<and> p dvd factorial 97 \\<and> is_prime p}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the largest prime number that divides 97 factorial? The final answer is 97."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"prime 97\"\nand h1 : \"\\<forall>n. fact n = prod id {1..n}\"\nand h2 : \"\\<forall>n. n > 97 \\<longrightarrow> \\<not> prime n\"\nshows  \"Max {p. prime p \\<and> p dvd fact 97} = 97\"",
+        "formal solution": "(* ### Problem\n $97$ is the largest prime less than $100$. What is the largest prime factor of $97!$ (97 factorial)?  (Reminder: The number $n!$ is the product of the integers from 1 to $n$.  For example, $5!=5\\cdot 4\\cdot3\\cdot2\\cdot 1= 120$.) The final Answer is 97\n ### Proof\n $\\boxed{97}$ is a prime factor, and everything else that is multiplied together to make $97!$ is less than it.\n *)\n\ntheorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"prime 97\"\nand h1 : \"\\<forall>n. fact n = prod id {1..n}\"\nand h2 : \"\\<forall>n. n > 97 \\<longrightarrow> \\<not> prime n\"\nshows  \"Max {p. prime p \\<and> p dvd fact 97} = 97\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the greatest prime number that divides the factorial of 97? The final answer is 97."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = fact 97\"\nshows  \"Max {p. prime p \\<and> p dvd n} = 97\"",
+        "formal solution": "(* ### Problem\n $97$ is the largest prime less than $100$. What is the largest prime factor of $97!$ (97 factorial)?  (Reminder: The number $n!$ is the product of the integers from 1 to $n$.  For example, $5!=5\\cdot 4\\cdot3\\cdot2\\cdot 1= 120$.) The final Answer is 97\n ### Proof\n $\\boxed{97}$ is a prime factor, and everything else that is multiplied together to make $97!$ is less than it.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = fact 97\"\nshows  \"Max {p. prime p \\<and> p dvd n} = 97\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest prime number that divides the factorial of 97. The final answer is 97."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 97\"\nand h1 : \"prime n\"\nand h2 : \"fact n = (\\<Prod>i\\<in>{1..n}. i)\"\nshows  \"Max {p. prime p \\<and> p dvd fact n} = 97\"",
+        "formal solution": "(* ### Problem\n $97$ is the largest prime less than $100$. What is the largest prime factor of $97!$ (97 factorial)?  (Reminder: The number $n!$ is the product of the integers from 1 to $n$.  For example, $5!=5\\cdot 4\\cdot3\\cdot2\\cdot 1= 120$.) The final Answer is 97\n ### Proof\n $\\boxed{97}$ is a prime factor, and everything else that is multiplied together to make $97!$ is less than it.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 97\"\nand h1 : \"prime n\"\nand h2 : \"fact n = (\\<Prod>i\\<in>{1..n}. i)\"\nshows  \"Max {p. prime p \\<and> p dvd fact n} = 97\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the number 97 is prime and the factorial of 97 is the product of all integers from 1 to 97, find the maximum prime number that divides 97 factorial. The final answer is 97."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat and factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n > 0. factorial n = n * factorial (n - 1)\"\nand h1 : \"n = 97\"\nand h2 : \"is_prime 97\"\nshows  \"Max {p. p dvd factorial n \\<and> is_prime p} = 97\"",
+        "formal solution": "(* ### Problem\n $97$ is the largest prime less than $100$. What is the largest prime factor of $97!$ (97 factorial)?  (Reminder: The number $n!$ is the product of the integers from 1 to $n$.  For example, $5!=5\\cdot 4\\cdot3\\cdot2\\cdot 1= 120$.) The final Answer is 97\n ### Proof\n $\\boxed{97}$ is a prime factor, and everything else that is multiplied together to make $97!$ is less than it.\n *)\n\ntheorem\nfixes n :: nat and factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n > 0. factorial n = n * factorial (n - 1)\"\nand h1 : \"n = 97\"\nand h2 : \"is_prime 97\"\nshows  \"Max {p. p dvd factorial n \\<and> is_prime p} = 97\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider the factorial of a natural number $n = 97$, which is a prime number. What is the maximum prime number $p$ that divides $n!$? The final answer is $97$."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"prime 97\"\nand h1 : \"n \\<in> prime_factors (fact 97)\"\nshows  \"n \\<le> 97\"",
+        "formal solution": "(* ### Problem\n $97$ is the largest prime less than $100$. What is the largest prime factor of $97!$ (97 factorial)?  (Reminder: The number $n!$ is the product of the integers from 1 to $n$.  For example, $5!=5\\cdot 4\\cdot3\\cdot2\\cdot 1= 120$.) The final Answer is 97\n ### Proof\n $\\boxed{97}$ is a prime factor, and everything else that is multiplied together to make $97!$ is less than it.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"prime 97\"\nand h1 : \"n \\<in> prime_factors (fact 97)\"\nshows  \"n \\<le> 97\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If 97 is a prime number, and n is one of the prime factors of the factorial of 97, find the maximum possible value of n. The final answer is 97."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"prime 97\"\nand h1 : \"fact 97 = (\\<Prod>i = 1..97. i)\"\nshows  \"Max {d. d dvd fact 97 \\<and> prime d} = 97\"",
+        "formal solution": "(* ### Problem\n $97$ is the largest prime less than $100$. What is the largest prime factor of $97!$ (97 factorial)?  (Reminder: The number $n!$ is the product of the integers from 1 to $n$.  For example, $5!=5\\cdot 4\\cdot3\\cdot2\\cdot 1= 120$.) The final Answer is 97\n ### Proof\n $\\boxed{97}$ is a prime factor, and everything else that is multiplied together to make $97!$ is less than it.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"prime 97\"\nand h1 : \"fact 97 = (\\<Prod>i = 1..97. i)\"\nshows  \"Max {d. d dvd fact 97 \\<and> prime d} = 97\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest prime number that divides the factorial of 97. The final answer is 97."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"prime 97\"\nand h1 : \"fact 97 = (\\<Prod>i\\<in>{1..97}. i)\"\nshows  \"Max {p. prime p \\<and> p dvd fact 97} = 97\"",
+        "formal solution": "(* ### Problem\n $97$ is the largest prime less than $100$. What is the largest prime factor of $97!$ (97 factorial)?  (Reminder: The number $n!$ is the product of the integers from 1 to $n$.  For example, $5!=5\\cdot 4\\cdot3\\cdot2\\cdot 1= 120$.) The final Answer is 97\n ### Proof\n $\\boxed{97}$ is a prime factor, and everything else that is multiplied together to make $97!$ is less than it.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"prime 97\"\nand h1 : \"fact 97 = (\\<Prod>i\\<in>{1..97}. i)\"\nshows  \"Max {p. prime p \\<and> p dvd fact 97} = 97\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the largest prime number that divides the factorial of 97? The final answer is 97."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n = 97\"\nand h1 : \"is_prime n\"\nand h2 : \"\\<forall> m. m > n \\<and> m \\<le> fact n \\<longrightarrow> \\<not> is_prime m\"\nshows  \"Max {m. m \\<le> n \\<and> is_prime m} = n\"",
+        "formal solution": "(* ### Problem\n $97$ is the largest prime less than $100$. What is the largest prime factor of $97!$ (97 factorial)?  (Reminder: The number $n!$ is the product of the integers from 1 to $n$.  For example, $5!=5\\cdot 4\\cdot3\\cdot2\\cdot 1= 120$.) The final Answer is 97\n ### Proof\n $\\boxed{97}$ is a prime factor, and everything else that is multiplied together to make $97!$ is less than it.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n = 97\"\nand h1 : \"is_prime n\"\nand h2 : \"\\<forall> m. m > n \\<and> m \\<le> fact n \\<longrightarrow> \\<not> is_prime m\"\nshows  \"Max {m. m \\<le> n \\<and> is_prime m} = n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If 97 is a prime number and there are no prime numbers greater than 97 but less than or equal to 97 factorial, what is the largest prime number less than or equal to 97? The final answer is 97."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = fact 97\"\nand h1 : \"prime 97\"\nshows  \"Max {p. prime p \\<and> p dvd n} = 97\"",
+        "formal solution": "(* ### Problem\n $97$ is the largest prime less than $100$. What is the largest prime factor of $97!$ (97 factorial)?  (Reminder: The number $n!$ is the product of the integers from 1 to $n$.  For example, $5!=5\\cdot 4\\cdot3\\cdot2\\cdot 1= 120$.) The final Answer is 97\n ### Proof\n $\\boxed{97}$ is a prime factor, and everything else that is multiplied together to make $97!$ is less than it.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = fact 97\"\nand h1 : \"prime 97\"\nshows  \"Max {p. prime p \\<and> p dvd n} = 97\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest prime number that divides the factorial of 97. The final answer is 97."
+    },
+    "level": "Level 3",
+    "type": "Prealgebra"
+}

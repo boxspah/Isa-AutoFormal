@@ -1,0 +1,129 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"summable (\\<lambda>n. 2 * n / 3 ^ n - 1 / 2 ^ n)\"\nshows  \"suminf (\\<lambda>n. 2 * n / 3 ^ n - 1 / 2 ^ n) = 1 / 2\"",
+        "formal solution": "(* ### Problem\n Compute $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right).$$ The final Answer is \\frac{1}{2}\n ### Proof\n We can rewrite this as two separate series $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right) = 2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n}.$$The first, $S = \\sum_{n=1}^{\\infty} \\frac{n}{3^n} = \\frac{1}{3} +  \\frac{2}{9} + \\frac{3}{27} + \\dotsb$ is an arithmetico-geometric series.\n Multipling by 3, the inverse of the common ratio, gives us $$3S = \\sum_{n=1}^{\\infty} \\frac{n}{3^{n-1}} = 1+ \\frac{2}{3} +  \\frac{3}{9} + \\frac{4}{27} + \\dotsb$$Subtracting $S$ from $3S$ gives $$\\begin{aligned} 2S &=  1+ \\frac{1}{3} +  \\frac{1}{9} + \\frac{1}{27} + \\dotsb \\\\\n &= \\frac{1}{1-\\frac{1}{3}} \\\\ &= \\frac{3}{2}. \\end{aligned}$$The second series is a geometric series so we have $$\\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{\\frac{1}{2}}{1-\\frac{1}{2}} = 1.$$Hence, $$2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{3}{2} - 1 = \\boxed{\\frac{1}{2}}.$$\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"summable (\\<lambda>n. 2 * n / 3 ^ n - 1 / 2 ^ n)\"\nshows  \"suminf (\\<lambda>n. 2 * n / 3 ^ n - 1 / 2 ^ n) = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Determine if the series $\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right)$ converges. If it does, find its sum. The final answer is $\\frac{1}{2}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9351122379302979,
+        "symbolic_score": 0.8
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: real\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"summable (\\<lambda>n. ((2*n) / (3 powr n)) - (1 / (2 powr n)))\"\nshows  \"suminf (\\<lambda>n. ((2*n) / (3 powr n)) - (1 / (2 powr n))) = 1 / 2\"",
+        "formal solution": "(* ### Problem\n Compute $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right).$$ The final Answer is \\frac{1}{2}\n ### Proof\n We can rewrite this as two separate series $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right) = 2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n}.$$The first, $S = \\sum_{n=1}^{\\infty} \\frac{n}{3^n} = \\frac{1}{3} +  \\frac{2}{9} + \\frac{3}{27} + \\dotsb$ is an arithmetico-geometric series.\n Multipling by 3, the inverse of the common ratio, gives us $$3S = \\sum_{n=1}^{\\infty} \\frac{n}{3^{n-1}} = 1+ \\frac{2}{3} +  \\frac{3}{9} + \\frac{4}{27} + \\dotsb$$Subtracting $S$ from $3S$ gives $$\\begin{aligned} 2S &=  1+ \\frac{1}{3} +  \\frac{1}{9} + \\frac{1}{27} + \\dotsb \\\\\n &= \\frac{1}{1-\\frac{1}{3}} \\\\ &= \\frac{3}{2}. \\end{aligned}$$The second series is a geometric series so we have $$\\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{\\frac{1}{2}}{1-\\frac{1}{2}} = 1.$$Hence, $$2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{3}{2} - 1 = \\boxed{\\frac{1}{2}}.$$\n *)\n\ntheorem\nfixes n :: real\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"summable (\\<lambda>n. ((2*n) / (3 powr n)) - (1 / (2 powr n)))\"\nshows  \"suminf (\\<lambda>n. ((2*n) / (3 powr n)) - (1 / (2 powr n))) = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sequence of terms where each term is defined as $(2n / 3^n) - (1 / 2^n)$ for $n \\geq 1$, if the sequence is summable, then the sum of the infinite series is $1 / 2$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.5780331492424011,
+        "symbolic_score": 0.2
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"\\<forall> n. suminf (\\<lambda>n. (2 * real n) / (3 ^ n) - (1 / (2 ^ n))) = x\"\nshows  \"x = 1 / 2\"",
+        "formal solution": "(* ### Problem\n Compute $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right).$$ The final Answer is \\frac{1}{2}\n ### Proof\n We can rewrite this as two separate series $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right) = 2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n}.$$The first, $S = \\sum_{n=1}^{\\infty} \\frac{n}{3^n} = \\frac{1}{3} +  \\frac{2}{9} + \\frac{3}{27} + \\dotsb$ is an arithmetico-geometric series.\n Multipling by 3, the inverse of the common ratio, gives us $$3S = \\sum_{n=1}^{\\infty} \\frac{n}{3^{n-1}} = 1+ \\frac{2}{3} +  \\frac{3}{9} + \\frac{4}{27} + \\dotsb$$Subtracting $S$ from $3S$ gives $$\\begin{aligned} 2S &=  1+ \\frac{1}{3} +  \\frac{1}{9} + \\frac{1}{27} + \\dotsb \\\\\n &= \\frac{1}{1-\\frac{1}{3}} \\\\ &= \\frac{3}{2}. \\end{aligned}$$The second series is a geometric series so we have $$\\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{\\frac{1}{2}}{1-\\frac{1}{2}} = 1.$$Hence, $$2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{3}{2} - 1 = \\boxed{\\frac{1}{2}}.$$\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"\\<forall> n. suminf (\\<lambda>n. (2 * real n) / (3 ^ n) - (1 / (2 ^ n))) = x\"\nshows  \"x = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the real number $x$ that is equal to the sum of the infinite series $\\sum_{n=0}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right)$. The final answer is $\\frac{1}{2}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8339133262634277,
+        "symbolic_score": 0.8
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat and sum :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. sum n = (2 * n / 3 powr n) - (1 / 2 powr n)\"\nand h1 : \"summable sum\"\nshows  \"suminf sum = 1 / 2\"",
+        "formal solution": "(* ### Problem\n Compute $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right).$$ The final Answer is \\frac{1}{2}\n ### Proof\n We can rewrite this as two separate series $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right) = 2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n}.$$The first, $S = \\sum_{n=1}^{\\infty} \\frac{n}{3^n} = \\frac{1}{3} +  \\frac{2}{9} + \\frac{3}{27} + \\dotsb$ is an arithmetico-geometric series.\n Multipling by 3, the inverse of the common ratio, gives us $$3S = \\sum_{n=1}^{\\infty} \\frac{n}{3^{n-1}} = 1+ \\frac{2}{3} +  \\frac{3}{9} + \\frac{4}{27} + \\dotsb$$Subtracting $S$ from $3S$ gives $$\\begin{aligned} 2S &=  1+ \\frac{1}{3} +  \\frac{1}{9} + \\frac{1}{27} + \\dotsb \\\\\n &= \\frac{1}{1-\\frac{1}{3}} \\\\ &= \\frac{3}{2}. \\end{aligned}$$The second series is a geometric series so we have $$\\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{\\frac{1}{2}}{1-\\frac{1}{2}} = 1.$$Hence, $$2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{3}{2} - 1 = \\boxed{\\frac{1}{2}}.$$\n *)\n\ntheorem\nfixes n :: nat and sum :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. sum n = (2 * n / 3 powr n) - (1 / 2 powr n)\"\nand h1 : \"summable sum\"\nshows  \"suminf sum = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of an infinite series is given by $sum(n) = \\frac{2n}{3^n} - \\frac{1}{2^n}$ for all natural numbers $n$. If the series is summable, what is the sum of the series? The final answer is $\\frac{1}{2}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9759950637817383,
+        "symbolic_score": 0.2
+    },
+    "a_4": {
+        "formal problem": "theorem \nfixes n :: real\nassumes h0 : \"summable (\\<lambda>n. (2 * n) / (3^n) - 1 / (2^n))\"\nshows  \"suminf (\\<lambda>n. (2 * n) / (3^n) - 1 / (2^n)) = 1 / 2\"",
+        "formal solution": "(* ### Problem\n Compute $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right).$$ The final Answer is \\frac{1}{2}\n ### Proof\n We can rewrite this as two separate series $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right) = 2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n}.$$The first, $S = \\sum_{n=1}^{\\infty} \\frac{n}{3^n} = \\frac{1}{3} +  \\frac{2}{9} + \\frac{3}{27} + \\dotsb$ is an arithmetico-geometric series.\n Multipling by 3, the inverse of the common ratio, gives us $$3S = \\sum_{n=1}^{\\infty} \\frac{n}{3^{n-1}} = 1+ \\frac{2}{3} +  \\frac{3}{9} + \\frac{4}{27} + \\dotsb$$Subtracting $S$ from $3S$ gives $$\\begin{aligned} 2S &=  1+ \\frac{1}{3} +  \\frac{1}{9} + \\frac{1}{27} + \\dotsb \\\\\n &= \\frac{1}{1-\\frac{1}{3}} \\\\ &= \\frac{3}{2}. \\end{aligned}$$The second series is a geometric series so we have $$\\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{\\frac{1}{2}}{1-\\frac{1}{2}} = 1.$$Hence, $$2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{3}{2} - 1 = \\boxed{\\frac{1}{2}}.$$\n *)\n\ntheorem \nfixes n :: real\nassumes h0 : \"summable (\\<lambda>n. (2 * n) / (3^n) - 1 / (2^n))\"\nshows  \"suminf (\\<lambda>n. (2 * n) / (3^n) - 1 / (2^n)) = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum to infinity of the series $(2n/3^n - 1/2^n)$. The final answer is $1/2$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7131720185279846,
+        "symbolic_score": 0.8
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat and s :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. s n = (2 * real n) / (3 ^ n) - 1 / (2 ^ n)\"\nand h1 : \"summable s\"\nshows  \"suminf s = 1/2\"",
+        "formal solution": "(* ### Problem\n Compute $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right).$$ The final Answer is \\frac{1}{2}\n ### Proof\n We can rewrite this as two separate series $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right) = 2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n}.$$The first, $S = \\sum_{n=1}^{\\infty} \\frac{n}{3^n} = \\frac{1}{3} +  \\frac{2}{9} + \\frac{3}{27} + \\dotsb$ is an arithmetico-geometric series.\n Multipling by 3, the inverse of the common ratio, gives us $$3S = \\sum_{n=1}^{\\infty} \\frac{n}{3^{n-1}} = 1+ \\frac{2}{3} +  \\frac{3}{9} + \\frac{4}{27} + \\dotsb$$Subtracting $S$ from $3S$ gives $$\\begin{aligned} 2S &=  1+ \\frac{1}{3} +  \\frac{1}{9} + \\frac{1}{27} + \\dotsb \\\\\n &= \\frac{1}{1-\\frac{1}{3}} \\\\ &= \\frac{3}{2}. \\end{aligned}$$The second series is a geometric series so we have $$\\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{\\frac{1}{2}}{1-\\frac{1}{2}} = 1.$$Hence, $$2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{3}{2} - 1 = \\boxed{\\frac{1}{2}}.$$\n *)\n\ntheorem\nfixes n :: nat and s :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. s n = (2 * real n) / (3 ^ n) - 1 / (2 ^ n)\"\nand h1 : \"summable s\"\nshows  \"suminf s = 1/2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence $s_n$ defined as $s_n = \\frac{2n}{3^n} - \\frac{1}{2^n}$ for all natural numbers $n$. If the series $\\sum_{n=0}^{\\infty} s_n$ is summable, what is the sum of the series? The final answer is $\\frac{1}{2}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9756465554237366,
+        "symbolic_score": 0.8
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f g :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. f n = (2 * n) / (3 ^ n)\"\nand h1 : \"\\<forall>n. g n = 1 / (2 ^ n)\"\nand h2 : \"convergent (\\<lambda> n. f n - g n)\"\nshows  \"suminf (\\<lambda> n. f n - g n) = 1 / 2\"",
+        "formal solution": "(* ### Problem\n Compute $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right).$$ The final Answer is \\frac{1}{2}\n ### Proof\n We can rewrite this as two separate series $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right) = 2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n}.$$The first, $S = \\sum_{n=1}^{\\infty} \\frac{n}{3^n} = \\frac{1}{3} +  \\frac{2}{9} + \\frac{3}{27} + \\dotsb$ is an arithmetico-geometric series.\n Multipling by 3, the inverse of the common ratio, gives us $$3S = \\sum_{n=1}^{\\infty} \\frac{n}{3^{n-1}} = 1+ \\frac{2}{3} +  \\frac{3}{9} + \\frac{4}{27} + \\dotsb$$Subtracting $S$ from $3S$ gives $$\\begin{aligned} 2S &=  1+ \\frac{1}{3} +  \\frac{1}{9} + \\frac{1}{27} + \\dotsb \\\\\n &= \\frac{1}{1-\\frac{1}{3}} \\\\ &= \\frac{3}{2}. \\end{aligned}$$The second series is a geometric series so we have $$\\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{\\frac{1}{2}}{1-\\frac{1}{2}} = 1.$$Hence, $$2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{3}{2} - 1 = \\boxed{\\frac{1}{2}}.$$\n *)\n\ntheorem\nfixes f g :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. f n = (2 * n) / (3 ^ n)\"\nand h1 : \"\\<forall>n. g n = 1 / (2 ^ n)\"\nand h2 : \"convergent (\\<lambda> n. f n - g n)\"\nshows  \"suminf (\\<lambda> n. f n - g n) = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two sequences, where the nth term of the first sequence f(n) is given by $(2n)/(3^n)$ and the nth term of the second sequence g(n) is given by $1/(2^n)$. If the sequence formed by subtracting the nth term of g from the nth term of f is convergent, find the sum of the infinite sequence formed by taking the difference between the nth term of f and the nth term of g. The final answer is $1/2$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8255378007888794,
+        "symbolic_score": 0.8
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and s :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"summable (\\<lambda>n. (2 * n / (3 ^ n)) - (1 / (2 ^ n)))\"\nand h1 : \"s = (\\<lambda>n. (2 * n / (3 ^ n)) - (1 / (2 ^ n)))\"\nshows  \"suminf s = 1 / 2\"",
+        "formal solution": "(* ### Problem\n Compute $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right).$$ The final Answer is \\frac{1}{2}\n ### Proof\n We can rewrite this as two separate series $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right) = 2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n}.$$The first, $S = \\sum_{n=1}^{\\infty} \\frac{n}{3^n} = \\frac{1}{3} +  \\frac{2}{9} + \\frac{3}{27} + \\dotsb$ is an arithmetico-geometric series.\n Multipling by 3, the inverse of the common ratio, gives us $$3S = \\sum_{n=1}^{\\infty} \\frac{n}{3^{n-1}} = 1+ \\frac{2}{3} +  \\frac{3}{9} + \\frac{4}{27} + \\dotsb$$Subtracting $S$ from $3S$ gives $$\\begin{aligned} 2S &=  1+ \\frac{1}{3} +  \\frac{1}{9} + \\frac{1}{27} + \\dotsb \\\\\n &= \\frac{1}{1-\\frac{1}{3}} \\\\ &= \\frac{3}{2}. \\end{aligned}$$The second series is a geometric series so we have $$\\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{\\frac{1}{2}}{1-\\frac{1}{2}} = 1.$$Hence, $$2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{3}{2} - 1 = \\boxed{\\frac{1}{2}}.$$\n *)\n\ntheorem\nfixes n :: nat and s :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"summable (\\<lambda>n. (2 * n / (3 ^ n)) - (1 / (2 ^ n)))\"\nand h1 : \"s = (\\<lambda>n. (2 * n / (3 ^ n)) - (1 / (2 ^ n)))\"\nshows  \"suminf s = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the sequence $s(n)$ is defined as $s(n) = \\frac{2n}{3^n} - \\frac{1}{2^n}$ for every natural number $n$, and this sequence is summable, what is the sum of the infinite sequence $s$? The final answer is $\\frac{1}{2}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9881319403648376,
+        "symbolic_score": 0.8
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"summable (\\<lambda>n. (2 * real n / (3 ^ n)) - (1 / (2 ^ n)))\"\nshows  \"suminf (\\<lambda>n. (2 * real n / (3 ^ n)) - (1 / (2 ^ n))) = 1/2\"",
+        "formal solution": "(* ### Problem\n Compute $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right).$$ The final Answer is \\frac{1}{2}\n ### Proof\n We can rewrite this as two separate series $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right) = 2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n}.$$The first, $S = \\sum_{n=1}^{\\infty} \\frac{n}{3^n} = \\frac{1}{3} +  \\frac{2}{9} + \\frac{3}{27} + \\dotsb$ is an arithmetico-geometric series.\n Multipling by 3, the inverse of the common ratio, gives us $$3S = \\sum_{n=1}^{\\infty} \\frac{n}{3^{n-1}} = 1+ \\frac{2}{3} +  \\frac{3}{9} + \\frac{4}{27} + \\dotsb$$Subtracting $S$ from $3S$ gives $$\\begin{aligned} 2S &=  1+ \\frac{1}{3} +  \\frac{1}{9} + \\frac{1}{27} + \\dotsb \\\\\n &= \\frac{1}{1-\\frac{1}{3}} \\\\ &= \\frac{3}{2}. \\end{aligned}$$The second series is a geometric series so we have $$\\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{\\frac{1}{2}}{1-\\frac{1}{2}} = 1.$$Hence, $$2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{3}{2} - 1 = \\boxed{\\frac{1}{2}}.$$\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"summable (\\<lambda>n. (2 * real n / (3 ^ n)) - (1 / (2 ^ n)))\"\nshows  \"suminf (\\<lambda>n. (2 * real n / (3 ^ n)) - (1 / (2 ^ n))) = 1/2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Determine whether the infinite series $\\sum_{n=0}^{\\infty} \\left(\\frac{2n}{3^n} - \\frac{1}{2^n}\\right)$ converges. If it does, find its sum. The final answer is $\\frac{1}{2}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9486600160598755,
+        "symbolic_score": 0.8
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"summable (\\<lambda>n. (2*n / 3^n) - (1 / 2^n))\"\nshows  \"suminf (\\<lambda>n. (2*n / 3^n) - (1 / 2^n)) = 1 / 2\"",
+        "formal solution": "(* ### Problem\n Compute $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right).$$ The final Answer is \\frac{1}{2}\n ### Proof\n We can rewrite this as two separate series $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right) = 2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n}.$$The first, $S = \\sum_{n=1}^{\\infty} \\frac{n}{3^n} = \\frac{1}{3} +  \\frac{2}{9} + \\frac{3}{27} + \\dotsb$ is an arithmetico-geometric series.\n Multipling by 3, the inverse of the common ratio, gives us $$3S = \\sum_{n=1}^{\\infty} \\frac{n}{3^{n-1}} = 1+ \\frac{2}{3} +  \\frac{3}{9} + \\frac{4}{27} + \\dotsb$$Subtracting $S$ from $3S$ gives $$\\begin{aligned} 2S &=  1+ \\frac{1}{3} +  \\frac{1}{9} + \\frac{1}{27} + \\dotsb \\\\\n &= \\frac{1}{1-\\frac{1}{3}} \\\\ &= \\frac{3}{2}. \\end{aligned}$$The second series is a geometric series so we have $$\\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{\\frac{1}{2}}{1-\\frac{1}{2}} = 1.$$Hence, $$2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{3}{2} - 1 = \\boxed{\\frac{1}{2}}.$$\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"summable (\\<lambda>n. (2*n / 3^n) - (1 / 2^n))\"\nshows  \"suminf (\\<lambda>n. (2*n / 3^n) - (1 / 2^n)) = 1 / 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Calculate the sum of the infinite series given by the formula $(2n/3^n) - (1/2^n)$. The final answer is $1/2$.\"",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.6920174360275269,
+        "symbolic_score": 0.8
+    },
+    "natural answer": "\\frac{1}{2}",
+    "natural problem": "Compute $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right).$$",
+    "natural solution": [
+        "We can rewrite this as two separate series $$\\sum_{n=1}^{\\infty} \\left( \\frac{2n}{3^n} - \\frac{1}{2^n} \\right) = 2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n}.$$The first, $S = \\sum_{n=1}^{\\infty} \\frac{n}{3^n} = \\frac{1}{3} +  \\frac{2}{9} + \\frac{3}{27} + \\dotsb$ is an arithmetico-geometric series.",
+        "Multipling by 3, the inverse of the common ratio, gives us $$3S = \\sum_{n=1}^{\\infty} \\frac{n}{3^{n-1}} = 1+ \\frac{2}{3} +  \\frac{3}{9} + \\frac{4}{27} + \\dotsb$$Subtracting $S$ from $3S$ gives $$\\begin{aligned} 2S &=  1+ \\frac{1}{3} +  \\frac{1}{9} + \\frac{1}{27} + \\dotsb \\\\",
+        "&= \\frac{1}{1-\\frac{1}{3}} \\\\ &= \\frac{3}{2}. \\end{aligned}$$The second series is a geometric series so we have $$\\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{\\frac{1}{2}}{1-\\frac{1}{2}} = 1.$$Hence, $$2\\sum_{n=1}^{\\infty} \\frac{n}{3^n} - \\sum_{n=1}^{\\infty} \\frac{1}{2^n} = \\frac{3}{2} - 1 = \\boxed{\\frac{1}{2}}.$$"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0,
+            2,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            1,
+            3
+        ]
+    },
+    "str_pred": "[[0, 2, 4, 5, 6, 7, 8, 9], [1, 3]]",
+    "level": "Level 3",
+    "type": "Intermediate Algebra"
+}

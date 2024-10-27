@@ -1,0 +1,144 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>x. f x = (\\<Sum>i\\<le>n. a i * x^i)\"\nand h1 : \"a 0 = 42\"\nand h2 : \"\\<forall>x. is_root f x \\<longrightarrow> x \\<in> \\<int>\"\nand h3 : \"\\<forall>x y. is_root f x \\<and> is_root f y \\<longrightarrow> x \\<noteq> y\"\nshows  \"card {x. is_root f x} \\<le> 5\"",
+        "formal solution": "(* ### Problem\n In a certain polynomial, all the coefficients are integers, and the constant coefficient is 42.  All the roots are integers, and distinct.  Find the largest possible number of integer roots. The final Answer is 5\n ### Proof\n By the Integer Root Theorem, any integer root must be a factor of 42. The prime factorization of 42 is $2 \\cdot 3 \\cdot 7.$  Furthermore, the product of the roots is $(-1)^n \\cdot \\frac{42}{a_0},$ where $n$ is the degree of the polynomial, and $a_0$ is the leading coefficient.\n To maximize the number of integer roots, which must be distinct, we can take the integer roots to be 2, 3, 7, 1, and $-1.$  This gives us a maximum of $\\boxed{5}$ integer roots.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>x. f x = (\\<Sum>i\\<le>n. a i * x^i)\"\nand h1 : \"a 0 = 42\"\nand h2 : \"\\<forall>x. is_root f x \\<longrightarrow> x \\<in> \\<int>\"\nand h3 : \"\\<forall>x y. is_root f x \\<and> is_root f y \\<longrightarrow> x \\<noteq> y\"\nshows  \"card {x. is_root f x} \\<le> 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(x)$ be a polynomial of the form $\\sum_{i=0}^{n} a_i x^i$, where $a_0 = 42$. Suppose that all roots of $f(x)$ are integers and that no two distinct roots of $f(x)$ are equal. What is the maximum number of roots that $f(x)$ can have? The answer is 5.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9819703698158264,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes p :: \"int poly\"\nassumes h0 : \"\\<forall>x. coeff p x \\<in> \\<int>\"\nand h1 : \"coeff p 0 = 42\"\nand h2 : \"\\<forall>x y. poly p x = 0 \\<and> poly p y = 0 \\<longrightarrow> x = y\"\nand h3 : \"\\<forall>x. poly p x = 0 \\<longrightarrow> x \\<in> \\<int>\"\nshows  \"degree p \\<le> 5\"",
+        "formal solution": "(* ### Problem\n In a certain polynomial, all the coefficients are integers, and the constant coefficient is 42.  All the roots are integers, and distinct.  Find the largest possible number of integer roots. The final Answer is 5\n ### Proof\n By the Integer Root Theorem, any integer root must be a factor of 42. The prime factorization of 42 is $2 \\cdot 3 \\cdot 7.$  Furthermore, the product of the roots is $(-1)^n \\cdot \\frac{42}{a_0},$ where $n$ is the degree of the polynomial, and $a_0$ is the leading coefficient.\n To maximize the number of integer roots, which must be distinct, we can take the integer roots to be 2, 3, 7, 1, and $-1.$  This gives us a maximum of $\\boxed{5}$ integer roots.\n *)\n\ntheorem\nfixes p :: \"int poly\"\nassumes h0 : \"\\<forall>x. coeff p x \\<in> \\<int>\"\nand h1 : \"coeff p 0 = 42\"\nand h2 : \"\\<forall>x y. poly p x = 0 \\<and> poly p y = 0 \\<longrightarrow> x = y\"\nand h3 : \"\\<forall>x. poly p x = 0 \\<longrightarrow> x \\<in> \\<int>\"\nshows  \"degree p \\<le> 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a polynomial $p(x)$ with integer coefficients. The constant term of this polynomial is 42. The polynomial has the property that each of its roots is unique and an integer. What is the highest possible degree of this polynomial? The final answer is 5.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9528192281723022,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes P :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. P x = sum (\\<lambda>i. (coeffs P) ! i * x ^ i) {0..degree P}\"\nand h1 : \"coeffs P = [_, _, _, _, _, 42]\"\nand h2 : \"\\<forall> x. P x = 0 \\<longrightarrow> x \\<in> Ints\"\nand h3 : \"\\<forall> x y. x \\<noteq> y \\<longrightarrow> P x \\<noteq> P y\"\nshows  \"card {x. P x = 0} \\<le> 5\"",
+        "formal solution": "(* ### Problem\n In a certain polynomial, all the coefficients are integers, and the constant coefficient is 42.  All the roots are integers, and distinct.  Find the largest possible number of integer roots. The final Answer is 5\n ### Proof\n By the Integer Root Theorem, any integer root must be a factor of 42. The prime factorization of 42 is $2 \\cdot 3 \\cdot 7.$  Furthermore, the product of the roots is $(-1)^n \\cdot \\frac{42}{a_0},$ where $n$ is the degree of the polynomial, and $a_0$ is the leading coefficient.\n To maximize the number of integer roots, which must be distinct, we can take the integer roots to be 2, 3, 7, 1, and $-1.$  This gives us a maximum of $\\boxed{5}$ integer roots.\n *)\n\ntheorem\nfixes P :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. P x = sum (\\<lambda>i. (coeffs P) ! i * x ^ i) {0..degree P}\"\nand h1 : \"coeffs P = [_, _, _, _, _, 42]\"\nand h2 : \"\\<forall> x. P x = 0 \\<longrightarrow> x \\<in> Ints\"\nand h3 : \"\\<forall> x y. x \\<noteq> y \\<longrightarrow> P x \\<noteq> P y\"\nshows  \"card {x. P x = 0} \\<le> 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a polynomial function $P(x)$ with integer coefficients, the highest coefficient is 42 and the degree of the polynomial is 5. The polynomial is such that it evaluates to an integer for any integer value of $x$, and different $x$ values yield different $P(x)$. What is the maximum number of integer roots that this polynomial can have? The final answer is 5.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9918060302734375,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes p :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"p 0 = 42\"\nand h1 : \"\\<forall>k. abs(k) \\<le> n \\<longrightarrow> p k = 0\"\nand h2 : \"\\<forall>k1 k2. abs(k1) \\<le> n \\<and> abs(k2) \\<le> n \\<and> k1 \\<noteq> k2 \\<longrightarrow> p k1 \\<noteq> p k2\"\nshows  \"n = 5\"",
+        "formal solution": "(* ### Problem\n In a certain polynomial, all the coefficients are integers, and the constant coefficient is 42.  All the roots are integers, and distinct.  Find the largest possible number of integer roots. The final Answer is 5\n ### Proof\n By the Integer Root Theorem, any integer root must be a factor of 42. The prime factorization of 42 is $2 \\cdot 3 \\cdot 7.$  Furthermore, the product of the roots is $(-1)^n \\cdot \\frac{42}{a_0},$ where $n$ is the degree of the polynomial, and $a_0$ is the leading coefficient.\n To maximize the number of integer roots, which must be distinct, we can take the integer roots to be 2, 3, 7, 1, and $-1.$  This gives us a maximum of $\\boxed{5}$ integer roots.\n *)\n\ntheorem\nfixes p :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"p 0 = 42\"\nand h1 : \"\\<forall>k. abs(k) \\<le> n \\<longrightarrow> p k = 0\"\nand h2 : \"\\<forall>k1 k2. abs(k1) \\<le> n \\<and> abs(k2) \\<le> n \\<and> k1 \\<noteq> k2 \\<longrightarrow> p k1 \\<noteq> p k2\"\nshows  \"n = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume that $p$ is an integer-valued function such that $p(0) = 42$. If $p(k) = 0$ for all $k$ such that $|k| \\leq n$, and $p(k1) \\neq p(k2)$ whenever $|k1|, |k2| \\leq n$ and $k1 \\neq k2$, then what is the value of $n$? The final answer is $5$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9914835691452026,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes P :: \"int poly\"\nassumes h0 : \"degree P > 0\"\nand h1 : \"coeff P 0 = 42\"\nand h2 : \"\\<forall>x. poly P x = 0 \\<longrightarrow> x \\<in> \\<int>\"\nand h3 : \"\\<forall>x y. poly P x = 0 \\<and> poly P y = 0 \\<and> x \\<noteq> y \\<longrightarrow> x \\<in> \\<int> \\<and> y \\<in> \\<int>\"\nshows  \"degree P \\<le> 5\"",
+        "formal solution": "(* ### Problem\n In a certain polynomial, all the coefficients are integers, and the constant coefficient is 42.  All the roots are integers, and distinct.  Find the largest possible number of integer roots. The final Answer is 5\n ### Proof\n By the Integer Root Theorem, any integer root must be a factor of 42. The prime factorization of 42 is $2 \\cdot 3 \\cdot 7.$  Furthermore, the product of the roots is $(-1)^n \\cdot \\frac{42}{a_0},$ where $n$ is the degree of the polynomial, and $a_0$ is the leading coefficient.\n To maximize the number of integer roots, which must be distinct, we can take the integer roots to be 2, 3, 7, 1, and $-1.$  This gives us a maximum of $\\boxed{5}$ integer roots.\n *)\n\ntheorem\nfixes P :: \"int poly\"\nassumes h0 : \"degree P > 0\"\nand h1 : \"coeff P 0 = 42\"\nand h2 : \"\\<forall>x. poly P x = 0 \\<longrightarrow> x \\<in> \\<int>\"\nand h3 : \"\\<forall>x y. poly P x = 0 \\<and> poly P y = 0 \\<and> x \\<noteq> y \\<longrightarrow> x \\<in> \\<int> \\<and> y \\<in> \\<int>\"\nshows  \"degree P \\<le> 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let P be a non-constant polynomial with integer coefficients. If the constant term of P is 42 and all of its roots are integers, prove that the degree of P is at most 5.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8503721356391907,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes p :: \"int poly\"\nassumes h0 : \"coeff p 0 = 42\"\nand h1 : \"\u2200x. poly p x = 0 \u27f6 x \u2208 \u2124\"\nand h2 : \"distinct (roots p)\"\nshows  \"length (roots p) \u2264 5\"",
+        "formal solution": "(* ### Problem\n In a certain polynomial, all the coefficients are integers, and the constant coefficient is 42.  All the roots are integers, and distinct.  Find the largest possible number of integer roots. The final Answer is 5\n ### Proof\n By the Integer Root Theorem, any integer root must be a factor of 42. The prime factorization of 42 is $2 \\cdot 3 \\cdot 7.$  Furthermore, the product of the roots is $(-1)^n \\cdot \\frac{42}{a_0},$ where $n$ is the degree of the polynomial, and $a_0$ is the leading coefficient.\n To maximize the number of integer roots, which must be distinct, we can take the integer roots to be 2, 3, 7, 1, and $-1.$  This gives us a maximum of $\\boxed{5}$ integer roots.\n *)\n\ntheorem\nfixes p :: \"int poly\"\nassumes h0 : \"coeff p 0 = 42\"\nand h1 : \"\u2200x. poly p x = 0 \u27f6 x \u2208 \u2124\"\nand h2 : \"distinct (roots p)\"\nshows  \"length (roots p) \u2264 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a given polynomial $p$ with integer coefficients, if the constant term (coefficient of $x^0$) is $42$ and all of its roots are distinct integers, what is the maximum possible number of roots? The final answer is $5$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9933502674102783,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes p :: \"int poly\"\nassumes h0 : \"degree p \\<ge> 1\"\nand h1 : \"coeff p 0 = 42\"\nand h2 : \"\\<forall>x. poly p x = 0 \\<longrightarrow> x \\<in> \\<int>\"\nand h3 : \"\\<forall>x y. poly p x = 0 \\<longrightarrow> poly p y = 0 \\<longrightarrow> x = y\"\nshows  \"card {x. poly p x = 0 \\<and> x \\<in> \\<int>} \\<le> 5\"",
+        "formal solution": "(* ### Problem\n In a certain polynomial, all the coefficients are integers, and the constant coefficient is 42.  All the roots are integers, and distinct.  Find the largest possible number of integer roots. The final Answer is 5\n ### Proof\n By the Integer Root Theorem, any integer root must be a factor of 42. The prime factorization of 42 is $2 \\cdot 3 \\cdot 7.$  Furthermore, the product of the roots is $(-1)^n \\cdot \\frac{42}{a_0},$ where $n$ is the degree of the polynomial, and $a_0$ is the leading coefficient.\n To maximize the number of integer roots, which must be distinct, we can take the integer roots to be 2, 3, 7, 1, and $-1.$  This gives us a maximum of $\\boxed{5}$ integer roots.\n *)\n\ntheorem\nfixes p :: \"int poly\"\nassumes h0 : \"degree p \\<ge> 1\"\nand h1 : \"coeff p 0 = 42\"\nand h2 : \"\\<forall>x. poly p x = 0 \\<longrightarrow> x \\<in> \\<int>\"\nand h3 : \"\\<forall>x y. poly p x = 0 \\<longrightarrow> poly p y = 0 \\<longrightarrow> x = y\"\nshows  \"card {x. poly p x = 0 \\<and> x \\<in> \\<int>} \\<le> 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a polynomial $p$ with integer coefficients. If the degree of $p$ is greater than or equal to 1 and the constant term of $p$ is 42, and if all the roots of $p$ are integers and are distinct, then the number of integer roots of $p$ is less than or equal to 5.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.6840348839759827,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes p :: \"int poly\"\nassumes h0 : \"\\<forall> x. poly p x = 0 \\<longrightarrow> x \\<in> \\<int>\"\nand h1 : \"distinct (roots p)\"\nand h2 : \"coeff p 0 = 42\"\nshows  \"length (roots p) \\<le> 5\"",
+        "formal solution": "(* ### Problem\n In a certain polynomial, all the coefficients are integers, and the constant coefficient is 42.  All the roots are integers, and distinct.  Find the largest possible number of integer roots. The final Answer is 5\n ### Proof\n By the Integer Root Theorem, any integer root must be a factor of 42. The prime factorization of 42 is $2 \\cdot 3 \\cdot 7.$  Furthermore, the product of the roots is $(-1)^n \\cdot \\frac{42}{a_0},$ where $n$ is the degree of the polynomial, and $a_0$ is the leading coefficient.\n To maximize the number of integer roots, which must be distinct, we can take the integer roots to be 2, 3, 7, 1, and $-1.$  This gives us a maximum of $\\boxed{5}$ integer roots.\n *)\n\ntheorem\nfixes p :: \"int poly\"\nassumes h0 : \"\\<forall> x. poly p x = 0 \\<longrightarrow> x \\<in> \\<int>\"\nand h1 : \"distinct (roots p)\"\nand h2 : \"coeff p 0 = 42\"\nshows  \"length (roots p) \\<le> 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a polynomial equation p, such that every root of p is an integer and all roots are distinct. If the constant term of the polynomial p is 42, what is the maximum number of distinct integer roots that p can have? The final answer is 5.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8869985342025757,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes p :: \"int \\<Rightarrow> int\"\nassumes h0 : \"p(0) = 42\"\nand h1 : \"distinct (roots p)\"\nand h2 : \"\\<forall>x. x \\<in> set (roots p) \\<longrightarrow> is_int x\"\nshows  \"length (roots p) \\<le> 5\"",
+        "formal solution": "(* ### Problem\n In a certain polynomial, all the coefficients are integers, and the constant coefficient is 42.  All the roots are integers, and distinct.  Find the largest possible number of integer roots. The final Answer is 5\n ### Proof\n By the Integer Root Theorem, any integer root must be a factor of 42. The prime factorization of 42 is $2 \\cdot 3 \\cdot 7.$  Furthermore, the product of the roots is $(-1)^n \\cdot \\frac{42}{a_0},$ where $n$ is the degree of the polynomial, and $a_0$ is the leading coefficient.\n To maximize the number of integer roots, which must be distinct, we can take the integer roots to be 2, 3, 7, 1, and $-1.$  This gives us a maximum of $\\boxed{5}$ integer roots.\n *)\n\ntheorem\nfixes p :: \"int \\<Rightarrow> int\"\nassumes h0 : \"p(0) = 42\"\nand h1 : \"distinct (roots p)\"\nand h2 : \"\\<forall>x. x \\<in> set (roots p) \\<longrightarrow> is_int x\"\nshows  \"length (roots p) \\<le> 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the roots of the polynomial $p$ are all integers and distinct, with $p(0) = 42$, what is the maximum possible number of roots that $p$ can have? The final answer is 5.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9530473947525024,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes p :: \"int poly\"\nassumes h0 : \"coeff p 0 = 42\"\nand h1 : \"\\<forall> x. poly p x = 0 \\<longrightarrow> is_int x\"\nand h2 : \"\\<forall> x y. poly p x = 0 \\<and> poly p y = 0 \\<longrightarrow> x = y\"\nshows  \"degree p \\<le> 5\"",
+        "formal solution": "(* ### Problem\n In a certain polynomial, all the coefficients are integers, and the constant coefficient is 42.  All the roots are integers, and distinct.  Find the largest possible number of integer roots. The final Answer is 5\n ### Proof\n By the Integer Root Theorem, any integer root must be a factor of 42. The prime factorization of 42 is $2 \\cdot 3 \\cdot 7.$  Furthermore, the product of the roots is $(-1)^n \\cdot \\frac{42}{a_0},$ where $n$ is the degree of the polynomial, and $a_0$ is the leading coefficient.\n To maximize the number of integer roots, which must be distinct, we can take the integer roots to be 2, 3, 7, 1, and $-1.$  This gives us a maximum of $\\boxed{5}$ integer roots.\n *)\n\ntheorem\nfixes p :: \"int poly\"\nassumes h0 : \"coeff p 0 = 42\"\nand h1 : \"\\<forall> x. poly p x = 0 \\<longrightarrow> is_int x\"\nand h2 : \"\\<forall> x y. poly p x = 0 \\<and> poly p y = 0 \\<longrightarrow> x = y\"\nshows  \"degree p \\<le> 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider an integer polynomial $p$ with a constant term of 42. If all of its roots are integers and it has no repeated roots, prove that the degree of $p$ is less than or equal to 5.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7217680215835571,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "5",
+    "natural problem": "In a certain polynomial, all the coefficients are integers, and the constant coefficient is 42.  All the roots are integers, and distinct.  Find the largest possible number of integer roots.",
+    "natural solution": [
+        "By the Integer Root Theorem, any integer root must be a factor of 42. The prime factorization of 42 is $2 \\cdot 3 \\cdot 7.$  Furthermore, the product of the roots is $(-1)^n \\cdot \\frac{42}{a_0},$ where $n$ is the degree of the polynomial, and $a_0$ is the leading coefficient.",
+        "To maximize the number of integer roots, which must be distinct, we can take the integer roots to be 2, 3, 7, 1, and $-1.$  This gives us a maximum of $\\boxed{5}$ integer roots."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 4",
+    "type": "Intermediate Algebra"
+}

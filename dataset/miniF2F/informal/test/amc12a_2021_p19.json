@@ -1,0 +1,129 @@
+{
+    "problem_name": "amc12a_2021_p19",
+    "informal_statement": "How many solutions does the equation $\\sin \\left( \\frac{\\pi}2 \\cos x\\right)=\\cos \\left( \\frac{\\pi}2 \\sin x\\right)$ have in the closed interval $[0,\\pi]$?\n\n$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }2 \\qquad \\textbf{(D) }3\\qquad \\textbf{(E) }4$ Show that it is \\textbf{(C) }2.",
+    "informal_proof": "The ranges of $\\frac{\\pi}2 \\sin x$ and $\\frac{\\pi}2 \\cos x$ are both $\\left[-\\frac{\\pi}2, \\frac{\\pi}2 \\right],$ which is included in the range of $\\arcsin,$ so we can use it with no issues.\n$\\begin{align*}\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\cos \\left( \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\sin \\left( \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x \\\\\n\\cos x &= 1 - \\sin x \\\\\n\\cos x + \\sin x &= 1.\n\\end{align*}$\nThis only happens at $x = 0, \\frac{\\pi}2$ on the interval $[0,\\pi],$ because one of $\\sin$ and $\\cos$ must be $1$ and the other $0.$ Therefore, the answer is $\\textbf{(C) }2.$",
+    "a_0": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"0 \\<le> x\"\nand h1 : \"x \\<le> pi\"\nand h2 : \"sin (pi / 2 * cos x) = cos (pi / 2 * sin x)\"\nshows  \"count_roots (0, pi) (\\<lambda> x. sin (pi / 2 * cos x) - cos (pi / 2 * sin x)) = 2\"",
+        "formal solution": "(* ### Problem\n How many solutions does the equation $\\sin \\left( \\frac{\\pi}2 \\cos x\\right)=\\cos \\left( \\frac{\\pi}2 \\sin x\\right)$ have in the closed interval $[0,\\pi]$?\n\n$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }2 \\qquad \\textbf{(D) }3\\qquad \\textbf{(E) }4$ Show that it is \\textbf{(C) }2.\n ### Proof\n The ranges of $\\frac{\\pi}2 \\sin x$ and $\\frac{\\pi}2 \\cos x$ are both $\\left[-\\frac{\\pi}2, \\frac{\\pi}2 \\right],$ which is included in the range of $\\arcsin,$ so we can use it with no issues.\n$\\begin{align*}\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\cos \\left( \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\sin \\left( \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x \\\\\n\\cos x &= 1 - \\sin x \\\\\n\\cos x + \\sin x &= 1.\n\\end{align*}$\nThis only happens at $x = 0, \\frac{\\pi}2$ on the interval $[0,\\pi],$ because one of $\\sin$ and $\\cos$ must be $1$ and the other $0.$ Therefore, the answer is $\\textbf{(C) }2.$\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"0 \\<le> x\"\nand h1 : \"x \\<le> pi\"\nand h2 : \"sin (pi / 2 * cos x) = cos (pi / 2 * sin x)\"\nshows  \"count_roots (0, pi) (\\<lambda> x. sin (pi / 2 * cos x) - cos (pi / 2 * sin x)) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of roots of the equation $\\sin(\\frac{\\pi}{2}\\cos{x}) = \\cos(\\frac{\\pi}{2}\\sin{x})$ in the interval $0 \\leq x \\leq \\pi$. The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9443134665489197,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x :: real and solutions :: nat\nassumes h0 : \"0 \\<le> x\"\nand h1 : \"x \\<le> pi\"\nand h2 : \"sin (pi / 2 * cos x) = cos (pi / 2 * sin x)\"\nshows  \"solutions = 2\"",
+        "formal solution": "(* ### Problem\n How many solutions does the equation $\\sin \\left( \\frac{\\pi}2 \\cos x\\right)=\\cos \\left( \\frac{\\pi}2 \\sin x\\right)$ have in the closed interval $[0,\\pi]$?\n\n$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }2 \\qquad \\textbf{(D) }3\\qquad \\textbf{(E) }4$ Show that it is \\textbf{(C) }2.\n ### Proof\n The ranges of $\\frac{\\pi}2 \\sin x$ and $\\frac{\\pi}2 \\cos x$ are both $\\left[-\\frac{\\pi}2, \\frac{\\pi}2 \\right],$ which is included in the range of $\\arcsin,$ so we can use it with no issues.\n$\\begin{align*}\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\cos \\left( \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\sin \\left( \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x \\\\\n\\cos x &= 1 - \\sin x \\\\\n\\cos x + \\sin x &= 1.\n\\end{align*}$\nThis only happens at $x = 0, \\frac{\\pi}2$ on the interval $[0,\\pi],$ because one of $\\sin$ and $\\cos$ must be $1$ and the other $0.$ Therefore, the answer is $\\textbf{(C) }2.$\n *)\n\ntheorem\nfixes x :: real and solutions :: nat\nassumes h0 : \"0 \\<le> x\"\nand h1 : \"x \\<le> pi\"\nand h2 : \"sin (pi / 2 * cos x) = cos (pi / 2 * sin x)\"\nshows  \"solutions = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many solutions are there for the equation $\\sin(\\frac{\\pi}{2}\\cos{x}) = \\cos(\\frac{\\pi}{2}\\sin{x})$ in the interval $0 \\leq x \\leq \\pi$? The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9389811754226685,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x :: real and sin_pi_half_cos_x cos_pi_half_sin_x :: real\nassumes h0 : \"0 \\<le> x \\<and> x \\<le> pi\"\nand h1 : \"sin_pi_half_cos_x = sin (pi / 2 * cos x)\"\nand h2 : \"cos_pi_half_sin_x = cos (pi / 2 * sin x)\"\nand h3 : \"sin_pi_half_cos_x = cos_pi_half_sin_x\"\nshows  \"card {x. 0 \\<le> x \\<and> x \\<le> pi \\<and> sin (pi / 2 * cos x) = cos (pi / 2 * sin x)} = 2\"",
+        "formal solution": "(* ### Problem\n How many solutions does the equation $\\sin \\left( \\frac{\\pi}2 \\cos x\\right)=\\cos \\left( \\frac{\\pi}2 \\sin x\\right)$ have in the closed interval $[0,\\pi]$?\n\n$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }2 \\qquad \\textbf{(D) }3\\qquad \\textbf{(E) }4$ Show that it is \\textbf{(C) }2.\n ### Proof\n The ranges of $\\frac{\\pi}2 \\sin x$ and $\\frac{\\pi}2 \\cos x$ are both $\\left[-\\frac{\\pi}2, \\frac{\\pi}2 \\right],$ which is included in the range of $\\arcsin,$ so we can use it with no issues.\n$\\begin{align*}\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\cos \\left( \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\sin \\left( \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x \\\\\n\\cos x &= 1 - \\sin x \\\\\n\\cos x + \\sin x &= 1.\n\\end{align*}$\nThis only happens at $x = 0, \\frac{\\pi}2$ on the interval $[0,\\pi],$ because one of $\\sin$ and $\\cos$ must be $1$ and the other $0.$ Therefore, the answer is $\\textbf{(C) }2.$\n *)\n\ntheorem\nfixes x :: real and sin_pi_half_cos_x cos_pi_half_sin_x :: real\nassumes h0 : \"0 \\<le> x \\<and> x \\<le> pi\"\nand h1 : \"sin_pi_half_cos_x = sin (pi / 2 * cos x)\"\nand h2 : \"cos_pi_half_sin_x = cos (pi / 2 * sin x)\"\nand h3 : \"sin_pi_half_cos_x = cos_pi_half_sin_x\"\nshows  \"card {x. 0 \\<le> x \\<and> x \\<le> pi \\<and> sin (pi / 2 * cos x) = cos (pi / 2 * sin x)} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of solutions for $x$ in the interval $[0, \\pi]$ such that $\\sin\\left(\\frac{\\pi}{2}\\cos(x)\\right) = \\cos\\left(\\frac{\\pi}{2}\\sin(x)\\right)$. The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9934431314468384,
+        "symbolic_score": 0.3
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x :: real and sin_pi_cos :: \"real \\<Rightarrow> real\" and cos_pi_sin :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. sin_pi_cos x = sin (pi / 2 * cos x)\"\nand h1 : \"\\<forall> x. cos_pi_sin x = cos (pi / 2 * sin x)\"\nshows  \"card {x. x \\<in> {0..pi} \\<and> sin_pi_cos x = cos_pi_sin x} = 2\"",
+        "formal solution": "(* ### Problem\n How many solutions does the equation $\\sin \\left( \\frac{\\pi}2 \\cos x\\right)=\\cos \\left( \\frac{\\pi}2 \\sin x\\right)$ have in the closed interval $[0,\\pi]$?\n\n$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }2 \\qquad \\textbf{(D) }3\\qquad \\textbf{(E) }4$ Show that it is \\textbf{(C) }2.\n ### Proof\n The ranges of $\\frac{\\pi}2 \\sin x$ and $\\frac{\\pi}2 \\cos x$ are both $\\left[-\\frac{\\pi}2, \\frac{\\pi}2 \\right],$ which is included in the range of $\\arcsin,$ so we can use it with no issues.\n$\\begin{align*}\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\cos \\left( \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\sin \\left( \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x \\\\\n\\cos x &= 1 - \\sin x \\\\\n\\cos x + \\sin x &= 1.\n\\end{align*}$\nThis only happens at $x = 0, \\frac{\\pi}2$ on the interval $[0,\\pi],$ because one of $\\sin$ and $\\cos$ must be $1$ and the other $0.$ Therefore, the answer is $\\textbf{(C) }2.$\n *)\n\ntheorem\nfixes x :: real and sin_pi_cos :: \"real \\<Rightarrow> real\" and cos_pi_sin :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. sin_pi_cos x = sin (pi / 2 * cos x)\"\nand h1 : \"\\<forall> x. cos_pi_sin x = cos (pi / 2 * sin x)\"\nshows  \"card {x. x \\<in> {0..pi} \\<and> sin_pi_cos x = cos_pi_sin x} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of solutions for $x$ in the interval $[0, \\pi]$ such that $\\sin\\left(\\frac{\\pi}{2}\\cos x\\right) = \\cos\\left(\\frac{\\pi}{2}\\sin x\\right)$. The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9906941056251526,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x \\<in> {0..pi}\"\nshows  \"card {x. sin (pi / 2 * cos x) = cos (pi / 2 * sin x) \\<and> x \\<in> {0..pi}} = 2\"",
+        "formal solution": "(* ### Problem\n How many solutions does the equation $\\sin \\left( \\frac{\\pi}2 \\cos x\\right)=\\cos \\left( \\frac{\\pi}2 \\sin x\\right)$ have in the closed interval $[0,\\pi]$?\n\n$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }2 \\qquad \\textbf{(D) }3\\qquad \\textbf{(E) }4$ Show that it is \\textbf{(C) }2.\n ### Proof\n The ranges of $\\frac{\\pi}2 \\sin x$ and $\\frac{\\pi}2 \\cos x$ are both $\\left[-\\frac{\\pi}2, \\frac{\\pi}2 \\right],$ which is included in the range of $\\arcsin,$ so we can use it with no issues.\n$\\begin{align*}\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\cos \\left( \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\sin \\left( \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x \\\\\n\\cos x &= 1 - \\sin x \\\\\n\\cos x + \\sin x &= 1.\n\\end{align*}$\nThis only happens at $x = 0, \\frac{\\pi}2$ on the interval $[0,\\pi],$ because one of $\\sin$ and $\\cos$ must be $1$ and the other $0.$ Therefore, the answer is $\\textbf{(C) }2.$\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x \\<in> {0..pi}\"\nshows  \"card {x. sin (pi / 2 * cos x) = cos (pi / 2 * sin x) \\<and> x \\<in> {0..pi}} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many values of $x$ satisfy the equation $\\sin(\\frac{\\pi}{2}\\cos x) = \\cos(\\frac{\\pi}{2}\\sin x)$ for $x$ in the interval $[0, \\pi]$? The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9161491990089417,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"x \\<le> pi\"\nand h2 : \"sin (pi / 2 * cos x) = cos (pi / 2 * sin x)\"\nshows  \"count_roots (\\<lambda>x. sin (pi / 2 * cos x) - cos (pi / 2 * sin x)) 0 pi = 2\"",
+        "formal solution": "(* ### Problem\n How many solutions does the equation $\\sin \\left( \\frac{\\pi}2 \\cos x\\right)=\\cos \\left( \\frac{\\pi}2 \\sin x\\right)$ have in the closed interval $[0,\\pi]$?\n\n$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }2 \\qquad \\textbf{(D) }3\\qquad \\textbf{(E) }4$ Show that it is \\textbf{(C) }2.\n ### Proof\n The ranges of $\\frac{\\pi}2 \\sin x$ and $\\frac{\\pi}2 \\cos x$ are both $\\left[-\\frac{\\pi}2, \\frac{\\pi}2 \\right],$ which is included in the range of $\\arcsin,$ so we can use it with no issues.\n$\\begin{align*}\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\cos \\left( \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\sin \\left( \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x \\\\\n\\cos x &= 1 - \\sin x \\\\\n\\cos x + \\sin x &= 1.\n\\end{align*}$\nThis only happens at $x = 0, \\frac{\\pi}2$ on the interval $[0,\\pi],$ because one of $\\sin$ and $\\cos$ must be $1$ and the other $0.$ Therefore, the answer is $\\textbf{(C) }2.$\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"x \\<le> pi\"\nand h2 : \"sin (pi / 2 * cos x) = cos (pi / 2 * sin x)\"\nshows  \"count_roots (\\<lambda>x. sin (pi / 2 * cos x) - cos (pi / 2 * sin x)) 0 pi = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of solutions for the equation $\\sin(\\frac{\\pi}{2} \\cos x) = \\cos(\\frac{\\pi}{2} \\sin x)$ in the interval $0 \\leq x \\leq \\pi$. The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9889342188835144,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x :: real and solutions :: \"real set\"\nassumes h0 : \"solutions = {x \\<in> {0..pi}. sin (pi / 2 * cos x) = cos (pi / 2 * sin x)}\"\nshows  \"card solutions = 2\"",
+        "formal solution": "(* ### Problem\n How many solutions does the equation $\\sin \\left( \\frac{\\pi}2 \\cos x\\right)=\\cos \\left( \\frac{\\pi}2 \\sin x\\right)$ have in the closed interval $[0,\\pi]$?\n\n$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }2 \\qquad \\textbf{(D) }3\\qquad \\textbf{(E) }4$ Show that it is \\textbf{(C) }2.\n ### Proof\n The ranges of $\\frac{\\pi}2 \\sin x$ and $\\frac{\\pi}2 \\cos x$ are both $\\left[-\\frac{\\pi}2, \\frac{\\pi}2 \\right],$ which is included in the range of $\\arcsin,$ so we can use it with no issues.\n$\\begin{align*}\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\cos \\left( \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\sin \\left( \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x \\\\\n\\cos x &= 1 - \\sin x \\\\\n\\cos x + \\sin x &= 1.\n\\end{align*}$\nThis only happens at $x = 0, \\frac{\\pi}2$ on the interval $[0,\\pi],$ because one of $\\sin$ and $\\cos$ must be $1$ and the other $0.$ Therefore, the answer is $\\textbf{(C) }2.$\n *)\n\ntheorem\nfixes x :: real and solutions :: \"real set\"\nassumes h0 : \"solutions = {x \\<in> {0..pi}. sin (pi / 2 * cos x) = cos (pi / 2 * sin x)}\"\nshows  \"card solutions = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many solutions for $x$ exist in the interval $[0, \\pi]$ such that $\\sin\\left(\\frac{\\pi}{2} \\cos x\\right) = \\cos\\left(\\frac{\\pi}{2} \\sin x\\right)$? The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8302244544029236,
+        "symbolic_score": 0.3
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x :: real and sin_pi_half_cos :: \"real \\<Rightarrow> real\" and cos_pi_half_sin :: \"real \\<Rightarrow> real\"\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"x \\<le> pi\"\nand h2 : \"\\<forall> x. sin_pi_half_cos x = sin (pi / 2 * cos x)\"\nand h3 : \"\\<forall> x. cos_pi_half_sin x = cos (pi / 2 * sin x)\"\nand h4 : \"sin_pi_half_cos x = cos_pi_half_sin x\"\nshows  \"card {x. sin_pi_half_cos x = cos_pi_half_sin x \\<and> x \\<ge> 0 \\<and> x \\<le> pi} = 2\"",
+        "formal solution": "(* ### Problem\n How many solutions does the equation $\\sin \\left( \\frac{\\pi}2 \\cos x\\right)=\\cos \\left( \\frac{\\pi}2 \\sin x\\right)$ have in the closed interval $[0,\\pi]$?\n\n$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }2 \\qquad \\textbf{(D) }3\\qquad \\textbf{(E) }4$ Show that it is \\textbf{(C) }2.\n ### Proof\n The ranges of $\\frac{\\pi}2 \\sin x$ and $\\frac{\\pi}2 \\cos x$ are both $\\left[-\\frac{\\pi}2, \\frac{\\pi}2 \\right],$ which is included in the range of $\\arcsin,$ so we can use it with no issues.\n$\\begin{align*}\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\cos \\left( \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\sin \\left( \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x \\\\\n\\cos x &= 1 - \\sin x \\\\\n\\cos x + \\sin x &= 1.\n\\end{align*}$\nThis only happens at $x = 0, \\frac{\\pi}2$ on the interval $[0,\\pi],$ because one of $\\sin$ and $\\cos$ must be $1$ and the other $0.$ Therefore, the answer is $\\textbf{(C) }2.$\n *)\n\ntheorem\nfixes x :: real and sin_pi_half_cos :: \"real \\<Rightarrow> real\" and cos_pi_half_sin :: \"real \\<Rightarrow> real\"\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"x \\<le> pi\"\nand h2 : \"\\<forall> x. sin_pi_half_cos x = sin (pi / 2 * cos x)\"\nand h3 : \"\\<forall> x. cos_pi_half_sin x = cos (pi / 2 * sin x)\"\nand h4 : \"sin_pi_half_cos x = cos_pi_half_sin x\"\nshows  \"card {x. sin_pi_half_cos x = cos_pi_half_sin x \\<and> x \\<ge> 0 \\<and> x \\<le> pi} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of solutions for $x$ between $0$ and $\\pi$ such that $\\sin(\\frac{\\pi}{2} \\cos x) = \\cos(\\frac{\\pi}{2} \\sin x)$. The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9743268489837646,
+        "symbolic_score": 0.3
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x :: real and sin_pi_half_cos_x cos_pi_half_sin_x :: real\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"x \\<le> pi\"\nand h2 : \"sin_pi_half_cos_x = sin (pi/2 * cos x)\"\nand h3 : \"cos_pi_half_sin_x = cos (pi/2 * sin x)\"\nshows  \"card {x. sin_pi_half_cos_x = cos_pi_half_sin_x \\<and> x \\<ge> 0 \\<and> x \\<le> pi} = 2\"",
+        "formal solution": "(* ### Problem\n How many solutions does the equation $\\sin \\left( \\frac{\\pi}2 \\cos x\\right)=\\cos \\left( \\frac{\\pi}2 \\sin x\\right)$ have in the closed interval $[0,\\pi]$?\n\n$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }2 \\qquad \\textbf{(D) }3\\qquad \\textbf{(E) }4$ Show that it is \\textbf{(C) }2.\n ### Proof\n The ranges of $\\frac{\\pi}2 \\sin x$ and $\\frac{\\pi}2 \\cos x$ are both $\\left[-\\frac{\\pi}2, \\frac{\\pi}2 \\right],$ which is included in the range of $\\arcsin,$ so we can use it with no issues.\n$\\begin{align*}\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\cos \\left( \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\sin \\left( \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x \\\\\n\\cos x &= 1 - \\sin x \\\\\n\\cos x + \\sin x &= 1.\n\\end{align*}$\nThis only happens at $x = 0, \\frac{\\pi}2$ on the interval $[0,\\pi],$ because one of $\\sin$ and $\\cos$ must be $1$ and the other $0.$ Therefore, the answer is $\\textbf{(C) }2.$\n *)\n\ntheorem\nfixes x :: real and sin_pi_half_cos_x cos_pi_half_sin_x :: real\nassumes h0 : \"x \\<ge> 0\"\nand h1 : \"x \\<le> pi\"\nand h2 : \"sin_pi_half_cos_x = sin (pi/2 * cos x)\"\nand h3 : \"cos_pi_half_sin_x = cos (pi/2 * sin x)\"\nshows  \"card {x. sin_pi_half_cos_x = cos_pi_half_sin_x \\<and> x \\<ge> 0 \\<and> x \\<le> pi} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of solutions for the equation $\\sin\\left(\\frac{\\pi}{2}\\cos x\\right) = \\cos\\left(\\frac{\\pi}{2}\\sin x\\right)$ in the interval $0 \\leq x \\leq \\pi$. The final answer is 2.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9294885396957397,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = sin (pi / 2 * cos x)\"\nand h1 : \"\\<forall> x. g x = cos (pi / 2 * sin x)\"\nand h2 : \"\\<forall> x. x \\<in> {0..pi} \\<longrightarrow> f x = g x\"\nshows  \"\\<exists>! x. x \\<in> {0..pi} \\<and> f x = g x \\<and> card {x. x \\<in> {0..pi} \\<and> f x = g x} = 2\"",
+        "formal solution": "(* ### Problem\n How many solutions does the equation $\\sin \\left( \\frac{\\pi}2 \\cos x\\right)=\\cos \\left( \\frac{\\pi}2 \\sin x\\right)$ have in the closed interval $[0,\\pi]$?\n\n$\\textbf{(A) }0 \\qquad \\textbf{(B) }1 \\qquad \\textbf{(C) }2 \\qquad \\textbf{(D) }3\\qquad \\textbf{(E) }4$ Show that it is \\textbf{(C) }2.\n ### Proof\n The ranges of $\\frac{\\pi}2 \\sin x$ and $\\frac{\\pi}2 \\cos x$ are both $\\left[-\\frac{\\pi}2, \\frac{\\pi}2 \\right],$ which is included in the range of $\\arcsin,$ so we can use it with no issues.\n$\\begin{align*}\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\cos \\left( \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\arcsin \\left( \\sin \\left( \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x\\right)\\right) \\\\\n\\frac{\\pi}2 \\cos x &= \\frac{\\pi}2 - \\frac{\\pi}2 \\sin x \\\\\n\\cos x &= 1 - \\sin x \\\\\n\\cos x + \\sin x &= 1.\n\\end{align*}$\nThis only happens at $x = 0, \\frac{\\pi}2$ on the interval $[0,\\pi],$ because one of $\\sin$ and $\\cos$ must be $1$ and the other $0.$ Therefore, the answer is $\\textbf{(C) }2.$\n *)\n\ntheorem\nfixes x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = sin (pi / 2 * cos x)\"\nand h1 : \"\\<forall> x. g x = cos (pi / 2 * sin x)\"\nand h2 : \"\\<forall> x. x \\<in> {0..pi} \\<longrightarrow> f x = g x\"\nshows  \"\\<exists>! x. x \\<in> {0..pi} \\<and> f x = g x \\<and> card {x. x \\<in> {0..pi} \\<and> f x = g x} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the functions $f(x) = \\sin(\\frac{\\pi}{2} \\cos(x))$ and $g(x) = \\cos(\\frac{\\pi}{2} \\sin(x))$, find the unique value of $x$ in the interval $[0, \\pi]$ such that $f(x) = g(x)$ and there are exactly 2 solutions in this interval.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8290885090827942,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nshows \"card {x ::real. 0 \\<le> x \\<and> x \\<le> pi \\<and> sin\n(pi / 2 * cos x) = cos (pi / 2 *\nsin x)} = 2\"",
+    "prediction": {
+        "0": [
+            2,
+            6,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            8
+        ],
+        "7": [
+            9
+        ]
+    },
+    "equivalence_oracle": [
+        2,
+        6,
+        7
+    ]
+}

@@ -1,0 +1,126 @@
+{
+    "problem_name": "imo_1966_p4",
+    "informal_statement": "Prove that for every natural number $n$, and for every real number $x \\neq \\frac{k\\pi}{2^t}$ ($t=0,1, \\dots, n$; $k$ any integer)\n$ \\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^nx}}=\\cot{x}-\\cot{2^nx}  $",
+    "informal_proof": "Assume that $\\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^{n}x}}=\\cot{x}-\\cot{2^{n}x}$ is true, then we use $n=1$ and get $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$.\n\nFirst, we prove $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$\n\nLHS=$\\frac{\\cos x}{\\sin x}-\\frac{\\cos 2x}{\\sin 2x}$\n\n$= \\frac{2\\cos^2 x}{2\\cos x \\sin x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac{2\\cos^2 x}{\\sin 2x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac {1}{\\sin 2x}$\n\nUsing the above formula, we can rewrite the original series as \n\n$\\cot x - \\cot 2x + \\cot 2x - \\cot 4x + \\cot 4x \\cdot \\cdot \\cdot + \\cot 2^{n-1} x - \\cot 2^n x $\n\nWhich gives us the desired answer of $\\cot x - \\cot 2^n x$",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat and t k :: int and x :: real\nassumes h0 : \"x \\<noteq> (real k * pi) / (2 powr t)\"\nshows  \"(\\<Sum>i\\<in>{0..n}. 1 / sin (2 powr i * x)) = cot x - cot (2 powr n * x)\"",
+        "formal solution": "(* ### Problem\n Prove that for every natural number $n$, and for every real number $x \\neq \\frac{k\\pi}{2^t}$ ($t=0,1, \\dots, n$; $k$ any integer)\n$ \\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^nx}}=\\cot{x}-\\cot{2^nx}  $\n ### Proof\n Assume that $\\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^{n}x}}=\\cot{x}-\\cot{2^{n}x}$ is true, then we use $n=1$ and get $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$.\n\nFirst, we prove $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$\n\nLHS=$\\frac{\\cos x}{\\sin x}-\\frac{\\cos 2x}{\\sin 2x}$\n\n$= \\frac{2\\cos^2 x}{2\\cos x \\sin x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac{2\\cos^2 x}{\\sin 2x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac {1}{\\sin 2x}$\n\nUsing the above formula, we can rewrite the original series as \n\n$\\cot x - \\cot 2x + \\cot 2x - \\cot 4x + \\cot 4x \\cdot \\cdot \\cdot + \\cot 2^{n-1} x - \\cot 2^n x $\n\nWhich gives us the desired answer of $\\cot x - \\cot 2^n x$\n *)\n\ntheorem\nfixes n :: nat and t k :: int and x :: real\nassumes h0 : \"x \\<noteq> (real k * pi) / (2 powr t)\"\nshows  \"(\\<Sum>i\\<in>{0..n}. 1 / sin (2 powr i * x)) = cot x - cot (2 powr n * x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the series $\\sum_{i=0}^{n} \\frac{1}{\\sin(2^i x)}$ for any $x$ that is not a multiple of $\\frac{k \\pi}{2^t}$, where $k$ and $t$ are integers. The final answer is $\\cot(x) - \\cot(2^n x)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.760930061340332,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and x :: real and k :: int and t :: nat\nassumes h0 : \"x \\<noteq> (k * pi) / (2 powr t)\"\nand h1 : \"t \\<in> {0..n}\"\nshows  \"(\\<Sum>i \\<in> {1..n}. 1 / sin (2 powr i * x)) = cot x - cot (2 powr n * x)\"",
+        "formal solution": "(* ### Problem\n Prove that for every natural number $n$, and for every real number $x \\neq \\frac{k\\pi}{2^t}$ ($t=0,1, \\dots, n$; $k$ any integer)\n$ \\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^nx}}=\\cot{x}-\\cot{2^nx}  $\n ### Proof\n Assume that $\\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^{n}x}}=\\cot{x}-\\cot{2^{n}x}$ is true, then we use $n=1$ and get $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$.\n\nFirst, we prove $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$\n\nLHS=$\\frac{\\cos x}{\\sin x}-\\frac{\\cos 2x}{\\sin 2x}$\n\n$= \\frac{2\\cos^2 x}{2\\cos x \\sin x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac{2\\cos^2 x}{\\sin 2x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac {1}{\\sin 2x}$\n\nUsing the above formula, we can rewrite the original series as \n\n$\\cot x - \\cot 2x + \\cot 2x - \\cot 4x + \\cot 4x \\cdot \\cdot \\cdot + \\cot 2^{n-1} x - \\cot 2^n x $\n\nWhich gives us the desired answer of $\\cot x - \\cot 2^n x$\n *)\n\ntheorem\nfixes n :: nat and x :: real and k :: int and t :: nat\nassumes h0 : \"x \\<noteq> (k * pi) / (2 powr t)\"\nand h1 : \"t \\<in> {0..n}\"\nshows  \"(\\<Sum>i \\<in> {1..n}. 1 / sin (2 powr i * x)) = cot x - cot (2 powr n * x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the series $S_n = \\sum_{i=1}^n \\frac{1}{\\sin(2^i x)}$ for a given value of $n$ and $x$, where $x \\neq \\frac{k\\pi}{2^t}$ for any integer $k$ and natural number $t \\in \\{0, 1, 2, ..., n\\}$. The final answer is $S_n = \\cot(x) - \\cot(2^n x)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6003457307815552,
+        "symbolic_score": 0.2
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat and x :: real and k :: int and t :: nat\nassumes h0 : \"x \\<noteq> k * pi / (2 powr t)\"\nand h1 : \"t \\<in> {0..n}\"\nshows  \"(\\<Sum>i \\<in> {0..<n}. 1 / sin (2 powr (i + 1) * x)) = cot x - cot (2 powr n * x)\"",
+        "formal solution": "(* ### Problem\n Prove that for every natural number $n$, and for every real number $x \\neq \\frac{k\\pi}{2^t}$ ($t=0,1, \\dots, n$; $k$ any integer)\n$ \\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^nx}}=\\cot{x}-\\cot{2^nx}  $\n ### Proof\n Assume that $\\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^{n}x}}=\\cot{x}-\\cot{2^{n}x}$ is true, then we use $n=1$ and get $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$.\n\nFirst, we prove $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$\n\nLHS=$\\frac{\\cos x}{\\sin x}-\\frac{\\cos 2x}{\\sin 2x}$\n\n$= \\frac{2\\cos^2 x}{2\\cos x \\sin x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac{2\\cos^2 x}{\\sin 2x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac {1}{\\sin 2x}$\n\nUsing the above formula, we can rewrite the original series as \n\n$\\cot x - \\cot 2x + \\cot 2x - \\cot 4x + \\cot 4x \\cdot \\cdot \\cdot + \\cot 2^{n-1} x - \\cot 2^n x $\n\nWhich gives us the desired answer of $\\cot x - \\cot 2^n x$\n *)\n\ntheorem\nfixes n :: nat and x :: real and k :: int and t :: nat\nassumes h0 : \"x \\<noteq> k * pi / (2 powr t)\"\nand h1 : \"t \\<in> {0..n}\"\nshows  \"(\\<Sum>i \\<in> {0..<n}. 1 / sin (2 powr (i + 1) * x)) = cot x - cot (2 powr n * x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a non-negative integer $n$, a real number $x$, an integer $k$, and a non-negative integer $t$ such that $x \\neq k\\pi / 2^t$ and $t$ is in the range from $0$ to $n$, prove that the sum of the series $\\sum_{i=0}^{n-1} \\frac{1}{\\sin(2^{i+1}x)}$ is equal to $\\cot(x) - \\cot(2^n x)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.3565613031387329,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat and x k :: real and t :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"x \\<noteq> (k * pi) / (2 powr t n)\"\nshows  \"(\\<Sum>i\\<in>{0..<n}. 1 / sin (2 powr i * x)) = cot x - cot (2 powr n * x)\"",
+        "formal solution": "(* ### Problem\n Prove that for every natural number $n$, and for every real number $x \\neq \\frac{k\\pi}{2^t}$ ($t=0,1, \\dots, n$; $k$ any integer)\n$ \\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^nx}}=\\cot{x}-\\cot{2^nx}  $\n ### Proof\n Assume that $\\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^{n}x}}=\\cot{x}-\\cot{2^{n}x}$ is true, then we use $n=1$ and get $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$.\n\nFirst, we prove $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$\n\nLHS=$\\frac{\\cos x}{\\sin x}-\\frac{\\cos 2x}{\\sin 2x}$\n\n$= \\frac{2\\cos^2 x}{2\\cos x \\sin x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac{2\\cos^2 x}{\\sin 2x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac {1}{\\sin 2x}$\n\nUsing the above formula, we can rewrite the original series as \n\n$\\cot x - \\cot 2x + \\cot 2x - \\cot 4x + \\cot 4x \\cdot \\cdot \\cdot + \\cot 2^{n-1} x - \\cot 2^n x $\n\nWhich gives us the desired answer of $\\cot x - \\cot 2^n x$\n *)\n\ntheorem\nfixes n :: nat and x k :: real and t :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"x \\<noteq> (k * pi) / (2 powr t n)\"\nshows  \"(\\<Sum>i\\<in>{0..<n}. 1 / sin (2 powr i * x)) = cot x - cot (2 powr n * x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the series $\\sum_{i=0}^{n-1} \\frac{1}{\\sin(2^i x)}$ for a given value of $x$, where $x \\neq \\frac{k \\pi}{2^n}$ for any integer $k$. The final answer is $\\cot(x) - \\cot(2^n x)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7321754097938538,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat and x :: real and k :: int and t :: nat\nassumes h0 : \"x \\<noteq> (k * pi) / (2 powr t) \\<or> t \\<in> {0..n}\"\nshows  \"(\\<Sum>i \\<in> {1..n}. 1 / sin (2 powr i * x)) = cot x - cot (2 powr n * x)\"",
+        "formal solution": "(* ### Problem\n Prove that for every natural number $n$, and for every real number $x \\neq \\frac{k\\pi}{2^t}$ ($t=0,1, \\dots, n$; $k$ any integer)\n$ \\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^nx}}=\\cot{x}-\\cot{2^nx}  $\n ### Proof\n Assume that $\\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^{n}x}}=\\cot{x}-\\cot{2^{n}x}$ is true, then we use $n=1$ and get $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$.\n\nFirst, we prove $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$\n\nLHS=$\\frac{\\cos x}{\\sin x}-\\frac{\\cos 2x}{\\sin 2x}$\n\n$= \\frac{2\\cos^2 x}{2\\cos x \\sin x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac{2\\cos^2 x}{\\sin 2x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac {1}{\\sin 2x}$\n\nUsing the above formula, we can rewrite the original series as \n\n$\\cot x - \\cot 2x + \\cot 2x - \\cot 4x + \\cot 4x \\cdot \\cdot \\cdot + \\cot 2^{n-1} x - \\cot 2^n x $\n\nWhich gives us the desired answer of $\\cot x - \\cot 2^n x$\n *)\n\ntheorem\nfixes n :: nat and x :: real and k :: int and t :: nat\nassumes h0 : \"x \\<noteq> (k * pi) / (2 powr t) \\<or> t \\<in> {0..n}\"\nshows  \"(\\<Sum>i \\<in> {1..n}. 1 / sin (2 powr i * x)) = cot x - cot (2 powr n * x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the series $S = \\frac{1}{\\sin x} + \\frac{1}{\\sin 2x} + \\frac{1}{\\sin 4x} + \\cdots + \\frac{1}{\\sin 2^n x}$, where $x \\neq \\frac{k\\pi}{2^{t}}$ or $t$ is an integer from $0$ to $n$. The final answer is $S = \\cot x - \\cot (2^n x)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6315216422080994,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat and x :: real and k :: int and t :: nat\nassumes h0 : \"x \\<noteq> k * pi / (2 powr t)\"\nand h1 : \"t \\<in> {0..n}\"\nshows  \"(\\<Sum>i \\<in> {1..n}. 1 / sin (2 powr i * x)) = cot x - cot (2 powr n * x)\"",
+        "formal solution": "(* ### Problem\n Prove that for every natural number $n$, and for every real number $x \\neq \\frac{k\\pi}{2^t}$ ($t=0,1, \\dots, n$; $k$ any integer)\n$ \\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^nx}}=\\cot{x}-\\cot{2^nx}  $\n ### Proof\n Assume that $\\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^{n}x}}=\\cot{x}-\\cot{2^{n}x}$ is true, then we use $n=1$ and get $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$.\n\nFirst, we prove $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$\n\nLHS=$\\frac{\\cos x}{\\sin x}-\\frac{\\cos 2x}{\\sin 2x}$\n\n$= \\frac{2\\cos^2 x}{2\\cos x \\sin x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac{2\\cos^2 x}{\\sin 2x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac {1}{\\sin 2x}$\n\nUsing the above formula, we can rewrite the original series as \n\n$\\cot x - \\cot 2x + \\cot 2x - \\cot 4x + \\cot 4x \\cdot \\cdot \\cdot + \\cot 2^{n-1} x - \\cot 2^n x $\n\nWhich gives us the desired answer of $\\cot x - \\cot 2^n x$\n *)\n\ntheorem\nfixes n :: nat and x :: real and k :: int and t :: nat\nassumes h0 : \"x \\<noteq> k * pi / (2 powr t)\"\nand h1 : \"t \\<in> {0..n}\"\nshows  \"(\\<Sum>i \\<in> {1..n}. 1 / sin (2 powr i * x)) = cot x - cot (2 powr n * x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $x$ be a real number such that $x \\neq k\\pi/2^t$ for any integer $k$ and natural number $t \\in \\{0, 1, \\dots, n\\}$. Show that the sum of the series $\\sum_{i=1}^n \\frac{1}{\\sin(2^i x)} = \\cot(x) - \\cot(2^n x)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6758461594581604,
+        "symbolic_score": 0.2
+    },
+    "a_6": {
+        "formal problem": "theorem sin_sum_cot_product:\n  fixes n :: nat\n    and x :: real\n    and t :: nat\n    and k :: int\n  assumes h0 : \"x \\<noteq> (k * pi) / (2 ^ t)\"\nand h1 : \"t \\<in> {0..n}\"\nshows  \"(\\<Sum>i\\<in>{1..n}. 1 / sin (2 ^ i * x)) = cot x - cot (2 ^ n * x)\"",
+        "formal solution": "(* ### Problem\n Prove that for every natural number $n$, and for every real number $x \\neq \\frac{k\\pi}{2^t}$ ($t=0,1, \\dots, n$; $k$ any integer)\n$ \\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^nx}}=\\cot{x}-\\cot{2^nx}  $\n ### Proof\n Assume that $\\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^{n}x}}=\\cot{x}-\\cot{2^{n}x}$ is true, then we use $n=1$ and get $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$.\n\nFirst, we prove $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$\n\nLHS=$\\frac{\\cos x}{\\sin x}-\\frac{\\cos 2x}{\\sin 2x}$\n\n$= \\frac{2\\cos^2 x}{2\\cos x \\sin x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac{2\\cos^2 x}{\\sin 2x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac {1}{\\sin 2x}$\n\nUsing the above formula, we can rewrite the original series as \n\n$\\cot x - \\cot 2x + \\cot 2x - \\cot 4x + \\cot 4x \\cdot \\cdot \\cdot + \\cot 2^{n-1} x - \\cot 2^n x $\n\nWhich gives us the desired answer of $\\cot x - \\cot 2^n x$\n *)\n\ntheorem sin_sum_cot_product:\n  fixes n :: nat\n    and x :: real\n    and t :: nat\n    and k :: int\n  assumes h0 : \"x \\<noteq> (k * pi) / (2 ^ t)\"\nand h1 : \"t \\<in> {0..n}\"\nshows  \"(\\<Sum>i\\<in>{1..n}. 1 / sin (2 ^ i * x)) = cot x - cot (2 ^ n * x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the series $\\sum_{i=1}^n \\frac{1}{\\sin(2^i x)}$, where $x \\neq \\frac{k\\pi}{2^t}$ for some integer $k$ and natural numbers $t \\in \\{0, 1, 2, \\dots, n\\}$. The final answer is given by $\\cot(x) - \\cot(2^n x)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5905218124389648,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and x :: real and k :: int\nassumes h0 : \"x \\<noteq> (k * pi) / (2 powr t)\"\nand h1 : \"\\<forall>t \\<le> n. t = 0 \\<or> (\\<exists>k::int. x \\<noteq> (k * pi) / (2 powr t))\"\nshows  \"(\\<Sum>t\\<le>n. 1 / sin (2 powr t * x)) = cot x - cot (2 powr n * x)\"",
+        "formal solution": "(* ### Problem\n Prove that for every natural number $n$, and for every real number $x \\neq \\frac{k\\pi}{2^t}$ ($t=0,1, \\dots, n$; $k$ any integer)\n$ \\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^nx}}=\\cot{x}-\\cot{2^nx}  $\n ### Proof\n Assume that $\\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^{n}x}}=\\cot{x}-\\cot{2^{n}x}$ is true, then we use $n=1$ and get $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$.\n\nFirst, we prove $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$\n\nLHS=$\\frac{\\cos x}{\\sin x}-\\frac{\\cos 2x}{\\sin 2x}$\n\n$= \\frac{2\\cos^2 x}{2\\cos x \\sin x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac{2\\cos^2 x}{\\sin 2x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac {1}{\\sin 2x}$\n\nUsing the above formula, we can rewrite the original series as \n\n$\\cot x - \\cot 2x + \\cot 2x - \\cot 4x + \\cot 4x \\cdot \\cdot \\cdot + \\cot 2^{n-1} x - \\cot 2^n x $\n\nWhich gives us the desired answer of $\\cot x - \\cot 2^n x$\n *)\n\ntheorem\nfixes n :: nat and x :: real and k :: int\nassumes h0 : \"x \\<noteq> (k * pi) / (2 powr t)\"\nand h1 : \"\\<forall>t \\<le> n. t = 0 \\<or> (\\<exists>k::int. x \\<noteq> (k * pi) / (2 powr t))\"\nshows  \"(\\<Sum>t\\<le>n. 1 / sin (2 powr t * x)) = cot x - cot (2 powr n * x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x \\neq \\frac{k\\pi}{2^t}$ for all integers $k$ and natural numbers $t \\leq n$, find the sum of the series $\\sum_{t=0}^{n} \\frac{1}{\\sin(2^t x)}$. The final answer is $\\cot(x) - \\cot(2^n x)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9217501878738403,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x :: real and n k t :: nat\nassumes h0 : \"x \\<noteq> (k * pi) / (2 powr t)\"\nand h1 : \"t \\<in> {0..n}\"\nand h2 : \"(\\<Sum>i \\<in> {1..n}. (1 / sin (2 powr i * x))) = cot x - cot (2 powr n * x)\"\nshows  \"\\<forall>n. \\<forall>x. (1 / sin (2 * x)) + (1 / sin (4 * x)) + ... + (1 / sin (2 powr n * x)) = cot x - cot (2 powr n * x)\"",
+        "formal solution": "(* ### Problem\n Prove that for every natural number $n$, and for every real number $x \\neq \\frac{k\\pi}{2^t}$ ($t=0,1, \\dots, n$; $k$ any integer)\n$ \\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^nx}}=\\cot{x}-\\cot{2^nx}  $\n ### Proof\n Assume that $\\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^{n}x}}=\\cot{x}-\\cot{2^{n}x}$ is true, then we use $n=1$ and get $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$.\n\nFirst, we prove $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$\n\nLHS=$\\frac{\\cos x}{\\sin x}-\\frac{\\cos 2x}{\\sin 2x}$\n\n$= \\frac{2\\cos^2 x}{2\\cos x \\sin x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac{2\\cos^2 x}{\\sin 2x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac {1}{\\sin 2x}$\n\nUsing the above formula, we can rewrite the original series as \n\n$\\cot x - \\cot 2x + \\cot 2x - \\cot 4x + \\cot 4x \\cdot \\cdot \\cdot + \\cot 2^{n-1} x - \\cot 2^n x $\n\nWhich gives us the desired answer of $\\cot x - \\cot 2^n x$\n *)\n\ntheorem\nfixes x :: real and n k t :: nat\nassumes h0 : \"x \\<noteq> (k * pi) / (2 powr t)\"\nand h1 : \"t \\<in> {0..n}\"\nand h2 : \"(\\<Sum>i \\<in> {1..n}. (1 / sin (2 powr i * x))) = cot x - cot (2 powr n * x)\"\nshows  \"\\<forall>n. \\<forall>x. (1 / sin (2 * x)) + (1 / sin (4 * x)) + ... + (1 / sin (2 powr n * x)) = cot x - cot (2 powr n * x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For any real number $x$ and any non-negative integer $n$, prove that the sum of the reciprocals of the sines of $x$ multiplied by powers of 2, from $2^1$ to $2^n$, is equal to the difference of the cotangent of $x$ and the cotangent of $x$ multiplied by $2^n$. In other words, show that:\n\n$(1 / \\sin(2x)) + (1 / \\sin(4x)) + \\cdots + (1 / \\sin(2^n x)) = \\cot(x) - \\cot(2^n x)$\n\nfor all $x \\neq (k\\pi) / (2^t)$, where $k$ and $t$ are integers and $t$ is in the range $0$ to $n$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.4652940034866333,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x :: real and n :: nat and k :: int\nassumes h0 : \"x \\<noteq> (k * pi) / (2 powr t)\"\nshows  \"(\\<Sum>i\\<in>{0..<n+1}. 1 / sin (2 powr i * x)) = cot x - cot (2 powr n * x)\"",
+        "formal solution": "(* ### Problem\n Prove that for every natural number $n$, and for every real number $x \\neq \\frac{k\\pi}{2^t}$ ($t=0,1, \\dots, n$; $k$ any integer)\n$ \\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^nx}}=\\cot{x}-\\cot{2^nx}  $\n ### Proof\n Assume that $\\frac{1}{\\sin{2x}}+\\frac{1}{\\sin{4x}}+\\dots+\\frac{1}{\\sin{2^{n}x}}=\\cot{x}-\\cot{2^{n}x}$ is true, then we use $n=1$ and get $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$.\n\nFirst, we prove $\\cot x - \\cot 2x = \\frac {1}{\\sin 2x}$\n\nLHS=$\\frac{\\cos x}{\\sin x}-\\frac{\\cos 2x}{\\sin 2x}$\n\n$= \\frac{2\\cos^2 x}{2\\cos x \\sin x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac{2\\cos^2 x}{\\sin 2x}-\\frac{2\\cos^2 x -1}{\\sin 2x}$\n\n$=\\frac {1}{\\sin 2x}$\n\nUsing the above formula, we can rewrite the original series as \n\n$\\cot x - \\cot 2x + \\cot 2x - \\cot 4x + \\cot 4x \\cdot \\cdot \\cdot + \\cot 2^{n-1} x - \\cot 2^n x $\n\nWhich gives us the desired answer of $\\cot x - \\cot 2^n x$\n *)\n\ntheorem\nfixes x :: real and n :: nat and k :: int\nassumes h0 : \"x \\<noteq> (k * pi) / (2 powr t)\"\nshows  \"(\\<Sum>i\\<in>{0..<n+1}. 1 / sin (2 powr i * x)) = cot x - cot (2 powr n * x)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x \\neq \\frac{k\\pi}{2^t}$ for some integer $k$ and natural number $t$, find the sum of the series $\\sum_{i=0}^{n} \\frac{1}{\\sin(2^i x)}$. The final answer is $\\cot(x) - \\cot(2^n x)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9415167570114136,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes n :: nat\nand x :: real\nassumes h0 : \"\\<And>(k::nat). \\<And>(m::int). k\\<noteq>0 \\<Longrightarrow> x \\<noteq> m * pi / (2^k)\"\nand h1 : \"0 < n\"\nshows \"(\\<Sum>(k::nat) =1..n.(1 / sin ((2^k) * x))) = 1 / tan x - 1 / tan ((2^n) * x)\"",
+    "prediction": {
+        "0": [
+            1,
+            5
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    }
+}

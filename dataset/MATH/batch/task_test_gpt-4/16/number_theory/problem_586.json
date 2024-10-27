@@ -1,0 +1,59 @@
+{
+    "natural problem": "What is the greatest possible product of any two distinct prime numbers less than 40?",
+    "natural solution": [
+        "We look for the two largest prime numbers less than 40 and find that they are 37 and 31. The product of these two numbers is $37\\times31=\\boxed{1147}$."
+    ],
+    "natural answer": "1147",
+    "a_0": {
+        "formal problem": "theorem\nfixes p q :: int\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"p < 40\"\nand h3 : \"q < 40\"\nand h4 : \"p \u2260 q\"\nshows  \"p * q \u2264 1147\"",
+        "formal solution": "(* ### Problem\n What is the greatest possible product of any two distinct prime numbers less than 40? The final Answer is 1147\n ### Proof\n We look for the two largest prime numbers less than 40 and find that they are 37 and 31. The product of these two numbers is $37\\times31=\\boxed{1147}$.\n *)\n\ntheorem\nfixes p q :: int\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"p < 40\"\nand h3 : \"q < 40\"\nand h4 : \"p \u2260 q\"\nshows  \"p * q \u2264 1147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two distinct prime numbers, each less than 40, whose product is less than or equal to 1147."
+    },
+    "a_1": {
+        "formal problem": "theorem\nassumes h0 : \"\\<forall> n. n < 40 \\<and> prime n \\<longrightarrow> (\\<exists> m. m < 40 \\<and> m \u2260 n \\<and> prime m \\<and> n * m \u2264 1147)\"\nshows  \"GREATEST x. \\<exists> m n. m < 40 \\<and> n < 40 \\<and> m \u2260 n \\<and> prime m \\<and> prime n \\<and> m * n = x = 1147\"",
+        "formal solution": "(* ### Problem\n What is the greatest possible product of any two distinct prime numbers less than 40? The final Answer is 1147\n ### Proof\n We look for the two largest prime numbers less than 40 and find that they are 37 and 31. The product of these two numbers is $37\\times31=\\boxed{1147}$.\n *)\n\ntheorem\nassumes h0 : \"\\<forall> n. n < 40 \\<and> prime n \\<longrightarrow> (\\<exists> m. m < 40 \\<and> m \u2260 n \\<and> prime m \\<and> n * m \u2264 1147)\"\nshows  \"GREATEST x. \\<exists> m n. m < 40 \\<and> n < 40 \\<and> m \u2260 n \\<and> prime m \\<and> prime n \\<and> m * n = x = 1147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The statement assumes that for every prime number less than 40, there exists another different prime number also less than 40 such that their product does not exceed 1147. What is the greatest product that can be obtained from two different prime numbers less than 40? The final answer is 1147."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes prime :: \"nat \\<Rightarrow> bool\"\nand max_product :: nat\nassumes h0 : \"\\<forall>p. prime p \\<longleftrightarrow> (p > 1 \\<and> (\\<forall>n. n > 1 \\<and> n < p \\<longrightarrow> p mod n \\<noteq> 0))\"\nand h1 : \"max_product = Max {p*q |p q. prime p \\<and> prime q \\<and> p < q \\<and> q < 40}\"\nshows  \"max_product = 1147\"",
+        "formal solution": "(* ### Problem\n What is the greatest possible product of any two distinct prime numbers less than 40? The final Answer is 1147\n ### Proof\n We look for the two largest prime numbers less than 40 and find that they are 37 and 31. The product of these two numbers is $37\\times31=\\boxed{1147}$.\n *)\n\ntheorem\nfixes prime :: \"nat \\<Rightarrow> bool\"\nand max_product :: nat\nassumes h0 : \"\\<forall>p. prime p \\<longleftrightarrow> (p > 1 \\<and> (\\<forall>n. n > 1 \\<and> n < p \\<longrightarrow> p mod n \\<noteq> 0))\"\nand h1 : \"max_product = Max {p*q |p q. prime p \\<and> prime q \\<and> p < q \\<and> q < 40}\"\nshows  \"max_product = 1147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the maximum product of two prime numbers where both primes are different and less than 40. The final answer is 1147."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes p q :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"p < 40\"\nand h3 : \"q < 40\"\nand h4 : \"p \u2260 q\"\nshows  \"p * q \u2264 1147\"",
+        "formal solution": "(* ### Problem\n What is the greatest possible product of any two distinct prime numbers less than 40? The final Answer is 1147\n ### Proof\n We look for the two largest prime numbers less than 40 and find that they are 37 and 31. The product of these two numbers is $37\\times31=\\boxed{1147}$.\n *)\n\ntheorem\nfixes p q :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"p < 40\"\nand h3 : \"q < 40\"\nand h4 : \"p \u2260 q\"\nshows  \"p * q \u2264 1147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $p$ and $q$ are distinct prime numbers both less than 40, show that their product is less than or equal to 1147."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes prime :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. prime n = (n > 1 \\<and> (\\<forall> m. m > 1 \\<and> m < n \\<longrightarrow> n mod m \\<noteq> 0))\"\nand h1 : \"\\<exists> a b. a \\<noteq> b \\<and> prime a \\<and> prime b \\<and> a < 40 \\<and> b < 40\"\nshows  \"\\<exists> max_product. max_product = 1147 \\<and> (\\<forall> a b. a \\<noteq> b \\<and> prime a \\<and> prime b \\<and> a < 40 \\<and> b < 40 \\<longrightarrow> a * b \\<le> max_product)\"",
+        "formal solution": "(* ### Problem\n What is the greatest possible product of any two distinct prime numbers less than 40? The final Answer is 1147\n ### Proof\n We look for the two largest prime numbers less than 40 and find that they are 37 and 31. The product of these two numbers is $37\\times31=\\boxed{1147}$.\n *)\n\ntheorem\nfixes prime :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. prime n = (n > 1 \\<and> (\\<forall> m. m > 1 \\<and> m < n \\<longrightarrow> n mod m \\<noteq> 0))\"\nand h1 : \"\\<exists> a b. a \\<noteq> b \\<and> prime a \\<and> prime b \\<and> a < 40 \\<and> b < 40\"\nshows  \"\\<exists> max_product. max_product = 1147 \\<and> (\\<forall> a b. a \\<noteq> b \\<and> prime a \\<and> prime b \\<and> a < 40 \\<and> b < 40 \\<longrightarrow> a * b \\<le> max_product)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest product of two distinct prime numbers less than 40. The final answer is 1147."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes p q :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"p < 40\"\nand h3 : \"q < 40\"\nand h4 : \"p \\<noteq> q\"\nshows  \"(GREATEST x. \\<exists> p q. p * q = x) = 1147\"",
+        "formal solution": "(* ### Problem\n What is the greatest possible product of any two distinct prime numbers less than 40? The final Answer is 1147\n ### Proof\n We look for the two largest prime numbers less than 40 and find that they are 37 and 31. The product of these two numbers is $37\\times31=\\boxed{1147}$.\n *)\n\ntheorem\nfixes p q :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"p < 40\"\nand h3 : \"q < 40\"\nand h4 : \"p \\<noteq> q\"\nshows  \"(GREATEST x. \\<exists> p q. p * q = x) = 1147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the greatest product of two distinct prime numbers less than 40. The final answer is 1147."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes prime :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>n. prime n = (1 < n \\<and> (\\<forall>m \\<in> {2..<n}. n mod m \\<noteq> 0))\"\nand h1 : \"\\<exists>p q. prime p \\<and> prime q \\<and> p \\<noteq> q \\<and> p < 40 \\<and> q < 40\"\nshows  \"(\\<exists>p q. prime p \\<and> prime q \\<and> p \\<noteq> q \\<and> p * q = 1147) \\<longrightarrow> (\\<forall>a b. prime a \\<and> prime b \\<and> a \\<noteq> b \\<and> a < 40 \\<and> b < 40 \\<longrightarrow> a * b \\<le> 1147)\"",
+        "formal solution": "(* ### Problem\n What is the greatest possible product of any two distinct prime numbers less than 40? The final Answer is 1147\n ### Proof\n We look for the two largest prime numbers less than 40 and find that they are 37 and 31. The product of these two numbers is $37\\times31=\\boxed{1147}$.\n *)\n\ntheorem\nfixes prime :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>n. prime n = (1 < n \\<and> (\\<forall>m \\<in> {2..<n}. n mod m \\<noteq> 0))\"\nand h1 : \"\\<exists>p q. prime p \\<and> prime q \\<and> p \\<noteq> q \\<and> p < 40 \\<and> q < 40\"\nshows  \"(\\<exists>p q. prime p \\<and> prime q \\<and> p \\<noteq> q \\<and> p * q = 1147) \\<longrightarrow> (\\<forall>a b. prime a \\<and> prime b \\<and> a \\<noteq> b \\<and> a < 40 \\<and> b < 40 \\<longrightarrow> a * b \\<le> 1147)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two distinct prime numbers, both less than 40, whose product is 1147. If such a pair exists, prove that the product of any two distinct prime numbers, both less than 40, is less than or equal to 1147."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes p q :: nat\nassumes h0 : \"is_prime p\"\nand h1 : \"is_prime q\"\nand h2 : \"p < 40\"\nand h3 : \"q < 40\"\nand h4 : \"p \u2260 q\"\nshows  \"p * q \\<le> 1147\"",
+        "formal solution": "(* ### Problem\n What is the greatest possible product of any two distinct prime numbers less than 40? The final Answer is 1147\n ### Proof\n We look for the two largest prime numbers less than 40 and find that they are 37 and 31. The product of these two numbers is $37\\times31=\\boxed{1147}$.\n *)\n\ntheorem\nfixes p q :: nat\nassumes h0 : \"is_prime p\"\nand h1 : \"is_prime q\"\nand h2 : \"p < 40\"\nand h3 : \"q < 40\"\nand h4 : \"p \u2260 q\"\nshows  \"p * q \\<le> 1147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $p$ and $q$ are distinct primes both less than $40$, show that their product is less than or equal to $1147$."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes p q :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"p < 40\"\nand h3 : \"q < 40\"\nand h4 : \"p \u2260 q\"\nshows  \"GREATEST x. \\<exists>p q. prime p \\<and> prime q \\<and> p < 40 \\<and> q < 40 \\<and> p \u2260 q \\<and> p * q = x = 1147\"",
+        "formal solution": "(* ### Problem\n What is the greatest possible product of any two distinct prime numbers less than 40? The final Answer is 1147\n ### Proof\n We look for the two largest prime numbers less than 40 and find that they are 37 and 31. The product of these two numbers is $37\\times31=\\boxed{1147}$.\n *)\n\ntheorem\nfixes p q :: nat\nassumes h0 : \"prime p\"\nand h1 : \"prime q\"\nand h2 : \"p < 40\"\nand h3 : \"q < 40\"\nand h4 : \"p \u2260 q\"\nshows  \"GREATEST x. \\<exists>p q. prime p \\<and> prime q \\<and> p < 40 \\<and> q < 40 \\<and> p \u2260 q \\<and> p * q = x = 1147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the greatest product of two distinct prime numbers less than 40. The final answer is 1147."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"prime a\"\nand h1 : \"prime b\"\nand h2 : \"a < 40\"\nand h3 : \"b < 40\"\nand h4 : \"a \u2260 b\"\nshows  \"a * b <= 1147\"",
+        "formal solution": "(* ### Problem\n What is the greatest possible product of any two distinct prime numbers less than 40? The final Answer is 1147\n ### Proof\n We look for the two largest prime numbers less than 40 and find that they are 37 and 31. The product of these two numbers is $37\\times31=\\boxed{1147}$.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"prime a\"\nand h1 : \"prime b\"\nand h2 : \"a < 40\"\nand h3 : \"b < 40\"\nand h4 : \"a \u2260 b\"\nshows  \"a * b <= 1147\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a$ and $b$ are distinct prime numbers less than 40, their product is less than or equal to 1147."
+    },
+    "level": "Level 1",
+    "type": "Number Theory"
+}

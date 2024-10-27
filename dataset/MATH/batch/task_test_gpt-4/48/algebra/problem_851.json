@@ -1,0 +1,138 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes x :: real and f k :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. x > 2 \\<longrightarrow> f x = k x\"\nand h1 : \"\\<forall> x. x \\<le> 2 \\<longrightarrow> f x = 2 + (x - 2) powr 2\"\nand h2 : \"f (f x) = x\"\nshows  \"\\<forall> x. x > 2 \\<longrightarrow> k x = - sqrt (x - 2) + 2\"",
+        "formal solution": "(* ### Problem\n Let  \\[f(x) =\n\\begin{cases}\nk(x) &\\text{if }x>2, \\\\\n2+(x-2)^2&\\text{if }x\\leq2.\n\\end{cases}\n\\]Find the function $k(x)$ such that $f$ is its own inverse. The final Answer is -\\sqrt{x-2}+2\n ### Proof\n We want to have that $f(f(x))=x$ for every $x.$ Since $f(f(2))=2,$ we know $f$ is its own inverse at $x=2,$ so we can restrict our attention to $x\\neq 2.$ Since $f$ applied to any number less than $2$ returns a number greater than $2,$ and we can get all numbers greater than $2$ this way, applying $f$ to any number greater than $2$ must give a number less than $2.$ Therefore $k(x)<2$ for any $x>2.$\n If $x>2$ and $f$ is its own inverse then \\[x=f(f(x))=f(k(x))=2+\\left(k(x)-2\\right)^2,\\]where in the last step we used that $k(x)<2.$ Subtracting $2$ from both sides gives \\[\\left(k(x) - 2\\right)^2 = x-2.\\]Next, we recall that we must have $k(x) < 2,$ so $k(x) - 2$ must be the negative number whose square is $x-2.$  That is, we have $k(x) - 2 = -\\sqrt{x-2}.$\n Solving this for $k(x)$ gives  \\[k(x)=\\boxed{-\\sqrt{x-2}+2}.\\]\n *)\n\ntheorem\nfixes x :: real and f k :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. x > 2 \\<longrightarrow> f x = k x\"\nand h1 : \"\\<forall> x. x \\<le> 2 \\<longrightarrow> f x = 2 + (x - 2) powr 2\"\nand h2 : \"f (f x) = x\"\nshows  \"\\<forall> x. x > 2 \\<longrightarrow> k x = - sqrt (x - 2) + 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider two functions $f(x)$ and $k(x)$. The function $f(x)$ is defined as follows:\n\n- If $x > 2$, then $f(x) = k(x)$.\n- If $x \\leq 2$, then $f(x) = 2 + (x - 2)^2$.\n\nAdditionally, the function $f$ has the property that $f(f(x)) = x$. Find a formula for $k(x)$ for all $x > 2$. The final answer is $k(x) = -\\sqrt{x - 2} + 2$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.6773669123649597,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x f k :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. x > 2 \\<longrightarrow> f x = k x\"\nand h2 : \"\\<forall> x. x \\<le> 2 \\<longrightarrow> f x = 2 + (x - 2) powr 2\"\nand h3 : \"f (inv f x) = x\"\nshows  \"\\<forall> x. x > 2 \\<longrightarrow> k x = - sqrt (x - 2) + 2\"",
+        "formal solution": "(* ### Problem\n Let  \\[f(x) =\n\\begin{cases}\nk(x) &\\text{if }x>2, \\\\\n2+(x-2)^2&\\text{if }x\\leq2.\n\\end{cases}\n\\]Find the function $k(x)$ such that $f$ is its own inverse. The final Answer is -\\sqrt{x-2}+2\n ### Proof\n We want to have that $f(f(x))=x$ for every $x.$ Since $f(f(2))=2,$ we know $f$ is its own inverse at $x=2,$ so we can restrict our attention to $x\\neq 2.$ Since $f$ applied to any number less than $2$ returns a number greater than $2,$ and we can get all numbers greater than $2$ this way, applying $f$ to any number greater than $2$ must give a number less than $2.$ Therefore $k(x)<2$ for any $x>2.$\n If $x>2$ and $f$ is its own inverse then \\[x=f(f(x))=f(k(x))=2+\\left(k(x)-2\\right)^2,\\]where in the last step we used that $k(x)<2.$ Subtracting $2$ from both sides gives \\[\\left(k(x) - 2\\right)^2 = x-2.\\]Next, we recall that we must have $k(x) < 2,$ so $k(x) - 2$ must be the negative number whose square is $x-2.$  That is, we have $k(x) - 2 = -\\sqrt{x-2}.$\n Solving this for $k(x)$ gives  \\[k(x)=\\boxed{-\\sqrt{x-2}+2}.\\]\n *)\n\ntheorem\nfixes x f k :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. x > 2 \\<longrightarrow> f x = k x\"\nand h2 : \"\\<forall> x. x \\<le> 2 \\<longrightarrow> f x = 2 + (x - 2) powr 2\"\nand h3 : \"f (inv f x) = x\"\nshows  \"\\<forall> x. x > 2 \\<longrightarrow> k x = - sqrt (x - 2) + 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x)$ that satisfies the following conditions:\n\n1. $f(x)$ is bijective (one-to-one and onto).\n2. For all $x > 2$, $f(x) = k(x)$.\n3. For all $x \\le 2$, $f(x) = 2 + (x - 2)^2$.\n4. $f(f^{-1}(x)) = x$.\n\nFind the function $k(x)$ for all $x > 2$. The final answer is $k(x) = -\\sqrt{x - 2} + 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8462304472923279,
+        "symbolic_score": 0.2
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x k f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (if x > 2 then k x else 2 + (x - 2) powr 2)\"\nand h2 : \"f (f x) = x\"\nshows  \"k x = - sqrt (x - 2) + 2\"",
+        "formal solution": "(* ### Problem\n Let  \\[f(x) =\n\\begin{cases}\nk(x) &\\text{if }x>2, \\\\\n2+(x-2)^2&\\text{if }x\\leq2.\n\\end{cases}\n\\]Find the function $k(x)$ such that $f$ is its own inverse. The final Answer is -\\sqrt{x-2}+2\n ### Proof\n We want to have that $f(f(x))=x$ for every $x.$ Since $f(f(2))=2,$ we know $f$ is its own inverse at $x=2,$ so we can restrict our attention to $x\\neq 2.$ Since $f$ applied to any number less than $2$ returns a number greater than $2,$ and we can get all numbers greater than $2$ this way, applying $f$ to any number greater than $2$ must give a number less than $2.$ Therefore $k(x)<2$ for any $x>2.$\n If $x>2$ and $f$ is its own inverse then \\[x=f(f(x))=f(k(x))=2+\\left(k(x)-2\\right)^2,\\]where in the last step we used that $k(x)<2.$ Subtracting $2$ from both sides gives \\[\\left(k(x) - 2\\right)^2 = x-2.\\]Next, we recall that we must have $k(x) < 2,$ so $k(x) - 2$ must be the negative number whose square is $x-2.$  That is, we have $k(x) - 2 = -\\sqrt{x-2}.$\n Solving this for $k(x)$ gives  \\[k(x)=\\boxed{-\\sqrt{x-2}+2}.\\]\n *)\n\ntheorem\nfixes x k f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (if x > 2 then k x else 2 + (x - 2) powr 2)\"\nand h2 : \"f (f x) = x\"\nshows  \"k x = - sqrt (x - 2) + 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a bijective function $f(x)$, where $f(x) = k(x)$ if $x > 2$, and $f(x) = 2 + (x - 2)^2$ otherwise. If $f(f(x)) = x$, find an expression for $k(x)$. The final answer is $k(x) = -\\sqrt{x - 2} + 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.4799043536186218,
+        "symbolic_score": 0.3
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x k :: \"real \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (if x > 2 then k x else 2 + (x - 2) powr 2)\"\nand h1 : \"bij f\"\nshows  \"k x = - sqrt (x - 2) + 2\"",
+        "formal solution": "(* ### Problem\n Let  \\[f(x) =\n\\begin{cases}\nk(x) &\\text{if }x>2, \\\\\n2+(x-2)^2&\\text{if }x\\leq2.\n\\end{cases}\n\\]Find the function $k(x)$ such that $f$ is its own inverse. The final Answer is -\\sqrt{x-2}+2\n ### Proof\n We want to have that $f(f(x))=x$ for every $x.$ Since $f(f(2))=2,$ we know $f$ is its own inverse at $x=2,$ so we can restrict our attention to $x\\neq 2.$ Since $f$ applied to any number less than $2$ returns a number greater than $2,$ and we can get all numbers greater than $2$ this way, applying $f$ to any number greater than $2$ must give a number less than $2.$ Therefore $k(x)<2$ for any $x>2.$\n If $x>2$ and $f$ is its own inverse then \\[x=f(f(x))=f(k(x))=2+\\left(k(x)-2\\right)^2,\\]where in the last step we used that $k(x)<2.$ Subtracting $2$ from both sides gives \\[\\left(k(x) - 2\\right)^2 = x-2.\\]Next, we recall that we must have $k(x) < 2,$ so $k(x) - 2$ must be the negative number whose square is $x-2.$  That is, we have $k(x) - 2 = -\\sqrt{x-2}.$\n Solving this for $k(x)$ gives  \\[k(x)=\\boxed{-\\sqrt{x-2}+2}.\\]\n *)\n\ntheorem\nfixes x k :: \"real \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (if x > 2 then k x else 2 + (x - 2) powr 2)\"\nand h1 : \"bij f\"\nshows  \"k x = - sqrt (x - 2) + 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f(x)$ is defined as follows: If $x > 2$, then $f(x) = k(x)$; otherwise, $f(x) = 2 + (x - 2)^2$. Given that $f$ is a bijection, find the expression for $k(x)$. The final answer is $k(x) = -\\sqrt{x - 2} + 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.731611967086792,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: real and f k :: \"real \\<Rightarrow> real\"\nassumes h0 : \"x > 2 \\<longrightarrow> f x = k x\"\nand h1 : \"x \\<le> 2 \\<longrightarrow> f x = 2 + (x - 2) powr 2\"\nand h2 : \"f (f x) = x\"\nshows  \"k x = -sqrt (x - 2) + 2\"",
+        "formal solution": "(* ### Problem\n Let  \\[f(x) =\n\\begin{cases}\nk(x) &\\text{if }x>2, \\\\\n2+(x-2)^2&\\text{if }x\\leq2.\n\\end{cases}\n\\]Find the function $k(x)$ such that $f$ is its own inverse. The final Answer is -\\sqrt{x-2}+2\n ### Proof\n We want to have that $f(f(x))=x$ for every $x.$ Since $f(f(2))=2,$ we know $f$ is its own inverse at $x=2,$ so we can restrict our attention to $x\\neq 2.$ Since $f$ applied to any number less than $2$ returns a number greater than $2,$ and we can get all numbers greater than $2$ this way, applying $f$ to any number greater than $2$ must give a number less than $2.$ Therefore $k(x)<2$ for any $x>2.$\n If $x>2$ and $f$ is its own inverse then \\[x=f(f(x))=f(k(x))=2+\\left(k(x)-2\\right)^2,\\]where in the last step we used that $k(x)<2.$ Subtracting $2$ from both sides gives \\[\\left(k(x) - 2\\right)^2 = x-2.\\]Next, we recall that we must have $k(x) < 2,$ so $k(x) - 2$ must be the negative number whose square is $x-2.$  That is, we have $k(x) - 2 = -\\sqrt{x-2}.$\n Solving this for $k(x)$ gives  \\[k(x)=\\boxed{-\\sqrt{x-2}+2}.\\]\n *)\n\ntheorem\nfixes x :: real and f k :: \"real \\<Rightarrow> real\"\nassumes h0 : \"x > 2 \\<longrightarrow> f x = k x\"\nand h1 : \"x \\<le> 2 \\<longrightarrow> f x = 2 + (x - 2) powr 2\"\nand h2 : \"f (f x) = x\"\nshows  \"k x = -sqrt (x - 2) + 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(x)$ defined as follows: if $x > 2$, then $f(x) = k(x)$, and if $x \\leq 2$, then $f(x) = 2 + (x - 2)^2$. If $f(f(x)) = x$, find the expression for $k(x)$. The final answer is $k(x) = -\\sqrt{x - 2} + 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7412590980529785,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x f k :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (if x > 2 then k x else 2 + (x - 2) powr 2)\"\nand h2 : \"f (f x) = x\"\nshows  \"k x = - sqrt (x - 2) + 2\"",
+        "formal solution": "(* ### Problem\n Let  \\[f(x) =\n\\begin{cases}\nk(x) &\\text{if }x>2, \\\\\n2+(x-2)^2&\\text{if }x\\leq2.\n\\end{cases}\n\\]Find the function $k(x)$ such that $f$ is its own inverse. The final Answer is -\\sqrt{x-2}+2\n ### Proof\n We want to have that $f(f(x))=x$ for every $x.$ Since $f(f(2))=2,$ we know $f$ is its own inverse at $x=2,$ so we can restrict our attention to $x\\neq 2.$ Since $f$ applied to any number less than $2$ returns a number greater than $2,$ and we can get all numbers greater than $2$ this way, applying $f$ to any number greater than $2$ must give a number less than $2.$ Therefore $k(x)<2$ for any $x>2.$\n If $x>2$ and $f$ is its own inverse then \\[x=f(f(x))=f(k(x))=2+\\left(k(x)-2\\right)^2,\\]where in the last step we used that $k(x)<2.$ Subtracting $2$ from both sides gives \\[\\left(k(x) - 2\\right)^2 = x-2.\\]Next, we recall that we must have $k(x) < 2,$ so $k(x) - 2$ must be the negative number whose square is $x-2.$  That is, we have $k(x) - 2 = -\\sqrt{x-2}.$\n Solving this for $k(x)$ gives  \\[k(x)=\\boxed{-\\sqrt{x-2}+2}.\\]\n *)\n\ntheorem\nfixes x f k :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (if x > 2 then k x else 2 + (x - 2) powr 2)\"\nand h2 : \"f (f x) = x\"\nshows  \"k x = - sqrt (x - 2) + 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the function $k(x)$ such that the function $f(x)$ is a bijection and satisfies the following conditions: $f(x) = k(x)$ if $x > 2$, and $f(x) = 2 + (x - 2)^2$ if $x \\leq 2$. Also, $f(f(x)) = x$. The final answer is $k(x) = -\\sqrt{x - 2} + 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.5365363359451294,
+        "symbolic_score": 0.3
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x k f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = (if x > 2 then k x else 2 + (x - 2) powr 2)\"\nand h1 : \"f (f x) = x\"\nshows  \"k x = -sqrt(x - 2) + 2\"",
+        "formal solution": "(* ### Problem\n Let  \\[f(x) =\n\\begin{cases}\nk(x) &\\text{if }x>2, \\\\\n2+(x-2)^2&\\text{if }x\\leq2.\n\\end{cases}\n\\]Find the function $k(x)$ such that $f$ is its own inverse. The final Answer is -\\sqrt{x-2}+2\n ### Proof\n We want to have that $f(f(x))=x$ for every $x.$ Since $f(f(2))=2,$ we know $f$ is its own inverse at $x=2,$ so we can restrict our attention to $x\\neq 2.$ Since $f$ applied to any number less than $2$ returns a number greater than $2,$ and we can get all numbers greater than $2$ this way, applying $f$ to any number greater than $2$ must give a number less than $2.$ Therefore $k(x)<2$ for any $x>2.$\n If $x>2$ and $f$ is its own inverse then \\[x=f(f(x))=f(k(x))=2+\\left(k(x)-2\\right)^2,\\]where in the last step we used that $k(x)<2.$ Subtracting $2$ from both sides gives \\[\\left(k(x) - 2\\right)^2 = x-2.\\]Next, we recall that we must have $k(x) < 2,$ so $k(x) - 2$ must be the negative number whose square is $x-2.$  That is, we have $k(x) - 2 = -\\sqrt{x-2}.$\n Solving this for $k(x)$ gives  \\[k(x)=\\boxed{-\\sqrt{x-2}+2}.\\]\n *)\n\ntheorem\nfixes x k f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = (if x > 2 then k x else 2 + (x - 2) powr 2)\"\nand h1 : \"f (f x) = x\"\nshows  \"k x = -sqrt(x - 2) + 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x)$ defined as follows:\n- If $x > 2$, then $f(x) = k(x)$\n- If $x \\leq 2$, then $f(x) = 2 + (x - 2)^2$\n\nFind a function $k(x)$ such that $f(f(x)) = x$. The final answer is $k(x) = -\\sqrt{x - 2} + 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7490051984786987,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x k f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. x > 2 \\<longrightarrow> f x = k x\"\nand h2 : \"\\<forall> x. x \\<le> 2 \\<longrightarrow> f x = 2 + (x - 2) powr 2\"\nand h3 : \"f (inv f x) = x\"\nshows  \"\\<forall> x. x > 2 \\<longrightarrow> k x = - sqrt (x - 2) + 2\"",
+        "formal solution": "(* ### Problem\n Let  \\[f(x) =\n\\begin{cases}\nk(x) &\\text{if }x>2, \\\\\n2+(x-2)^2&\\text{if }x\\leq2.\n\\end{cases}\n\\]Find the function $k(x)$ such that $f$ is its own inverse. The final Answer is -\\sqrt{x-2}+2\n ### Proof\n We want to have that $f(f(x))=x$ for every $x.$ Since $f(f(2))=2,$ we know $f$ is its own inverse at $x=2,$ so we can restrict our attention to $x\\neq 2.$ Since $f$ applied to any number less than $2$ returns a number greater than $2,$ and we can get all numbers greater than $2$ this way, applying $f$ to any number greater than $2$ must give a number less than $2.$ Therefore $k(x)<2$ for any $x>2.$\n If $x>2$ and $f$ is its own inverse then \\[x=f(f(x))=f(k(x))=2+\\left(k(x)-2\\right)^2,\\]where in the last step we used that $k(x)<2.$ Subtracting $2$ from both sides gives \\[\\left(k(x) - 2\\right)^2 = x-2.\\]Next, we recall that we must have $k(x) < 2,$ so $k(x) - 2$ must be the negative number whose square is $x-2.$  That is, we have $k(x) - 2 = -\\sqrt{x-2}.$\n Solving this for $k(x)$ gives  \\[k(x)=\\boxed{-\\sqrt{x-2}+2}.\\]\n *)\n\ntheorem\nfixes x k f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. x > 2 \\<longrightarrow> f x = k x\"\nand h2 : \"\\<forall> x. x \\<le> 2 \\<longrightarrow> f x = 2 + (x - 2) powr 2\"\nand h3 : \"f (inv f x) = x\"\nshows  \"\\<forall> x. x > 2 \\<longrightarrow> k x = - sqrt (x - 2) + 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(x)$ be a bijection such that $f(x) = kx$ for all $x > 2$, and $f(x) = 2 + (x - 2)^2$ for all $x \\le 2$. If $f(f^{-1}(x)) = x$, find the function $k(x)$ for all $x > 2$. The final answer is $k(x) = -\\sqrt{x - 2} + 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8197118639945984,
+        "symbolic_score": 0.2
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x k f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (if x > 2 then k x else 2 + (x - 2) powr 2)\"\nand h2 : \"f (f x) = x\"\nshows  \"k x = - sqrt(x - 2) + 2\"",
+        "formal solution": "(* ### Problem\n Let  \\[f(x) =\n\\begin{cases}\nk(x) &\\text{if }x>2, \\\\\n2+(x-2)^2&\\text{if }x\\leq2.\n\\end{cases}\n\\]Find the function $k(x)$ such that $f$ is its own inverse. The final Answer is -\\sqrt{x-2}+2\n ### Proof\n We want to have that $f(f(x))=x$ for every $x.$ Since $f(f(2))=2,$ we know $f$ is its own inverse at $x=2,$ so we can restrict our attention to $x\\neq 2.$ Since $f$ applied to any number less than $2$ returns a number greater than $2,$ and we can get all numbers greater than $2$ this way, applying $f$ to any number greater than $2$ must give a number less than $2.$ Therefore $k(x)<2$ for any $x>2.$\n If $x>2$ and $f$ is its own inverse then \\[x=f(f(x))=f(k(x))=2+\\left(k(x)-2\\right)^2,\\]where in the last step we used that $k(x)<2.$ Subtracting $2$ from both sides gives \\[\\left(k(x) - 2\\right)^2 = x-2.\\]Next, we recall that we must have $k(x) < 2,$ so $k(x) - 2$ must be the negative number whose square is $x-2.$  That is, we have $k(x) - 2 = -\\sqrt{x-2}.$\n Solving this for $k(x)$ gives  \\[k(x)=\\boxed{-\\sqrt{x-2}+2}.\\]\n *)\n\ntheorem\nfixes x k f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (if x > 2 then k x else 2 + (x - 2) powr 2)\"\nand h2 : \"f (f x) = x\"\nshows  \"k x = - sqrt(x - 2) + 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f(x)$ is defined as follows: $f(x) = k(x)$ when $x > 2$, and $f(x) = 2 + (x - 2)^2$ otherwise. If $f$ is a bijection and $f(f(x)) = x$, find the expression for $k(x)$. The final answer is $k(x) = -\\sqrt{x - 2} + 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.6877637505531311,
+        "symbolic_score": 0.3
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x :: real and f k :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. x > 2 \\<longrightarrow> f x = k x\"\nand h1 : \"\\<forall> x. x \\<le> 2 \\<longrightarrow> f x = 2 + (x - 2) powr 2\"\nand h2 : \"f (f x) = x\"\nshows  \"k x = - sqrt(x - 2) + 2\"",
+        "formal solution": "(* ### Problem\n Let  \\[f(x) =\n\\begin{cases}\nk(x) &\\text{if }x>2, \\\\\n2+(x-2)^2&\\text{if }x\\leq2.\n\\end{cases}\n\\]Find the function $k(x)$ such that $f$ is its own inverse. The final Answer is -\\sqrt{x-2}+2\n ### Proof\n We want to have that $f(f(x))=x$ for every $x.$ Since $f(f(2))=2,$ we know $f$ is its own inverse at $x=2,$ so we can restrict our attention to $x\\neq 2.$ Since $f$ applied to any number less than $2$ returns a number greater than $2,$ and we can get all numbers greater than $2$ this way, applying $f$ to any number greater than $2$ must give a number less than $2.$ Therefore $k(x)<2$ for any $x>2.$\n If $x>2$ and $f$ is its own inverse then \\[x=f(f(x))=f(k(x))=2+\\left(k(x)-2\\right)^2,\\]where in the last step we used that $k(x)<2.$ Subtracting $2$ from both sides gives \\[\\left(k(x) - 2\\right)^2 = x-2.\\]Next, we recall that we must have $k(x) < 2,$ so $k(x) - 2$ must be the negative number whose square is $x-2.$  That is, we have $k(x) - 2 = -\\sqrt{x-2}.$\n Solving this for $k(x)$ gives  \\[k(x)=\\boxed{-\\sqrt{x-2}+2}.\\]\n *)\n\ntheorem\nfixes x :: real and f k :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. x > 2 \\<longrightarrow> f x = k x\"\nand h1 : \"\\<forall> x. x \\<le> 2 \\<longrightarrow> f x = 2 + (x - 2) powr 2\"\nand h2 : \"f (f x) = x\"\nshows  \"k x = - sqrt(x - 2) + 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(x)$ defined as follows:\n- If $x > 2$, then $f(x) = k(x)$, where $k$ is another function.\n- If $x \\leq 2$, then $f(x) = 2 + (x - 2)^2$.\n\nGiven that $f(f(x)) = x$, find the function $k(x)$. The final answer is $k(x) = -\\sqrt{x - 2} + 2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8363151550292969,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "-\\sqrt{x-2}+2",
+    "natural problem": "Let  \\[f(x) =\n\\begin{cases}\nk(x) &\\text{if }x>2, \\\\\n2+(x-2)^2&\\text{if }x\\leq2.\n\\end{cases}\n\\]Find the function $k(x)$ such that $f$ is its own inverse.",
+    "natural solution": [
+        "We want to have that $f(f(x))=x$ for every $x.$ Since $f(f(2))=2,$ we know $f$ is its own inverse at $x=2,$ so we can restrict our attention to $x\\neq 2.$ Since $f$ applied to any number less than $2$ returns a number greater than $2,$ and we can get all numbers greater than $2$ this way, applying $f$ to any number greater than $2$ must give a number less than $2.$ Therefore $k(x)<2$ for any $x>2.$",
+        "If $x>2$ and $f$ is its own inverse then \\[x=f(f(x))=f(k(x))=2+\\left(k(x)-2\\right)^2,\\]where in the last step we used that $k(x)<2.$ Subtracting $2$ from both sides gives \\[\\left(k(x) - 2\\right)^2 = x-2.\\]Next, we recall that we must have $k(x) < 2,$ so $k(x) - 2$ must be the negative number whose square is $x-2.$  That is, we have $k(x) - 2 = -\\sqrt{x-2}.$",
+        "Solving this for $k(x)$ gives  \\[k(x)=\\boxed{-\\sqrt{x-2}+2}.\\]"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            8,
+            2,
+            5
+        ],
+        "1": [
+            1,
+            7
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            9
+        ]
+    },
+    "level": "Level 5",
+    "type": "Algebra"
+}

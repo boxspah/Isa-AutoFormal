@@ -1,0 +1,59 @@
+{
+    "natural problem": "My co-worker Larry only likes numbers that are divisible by 4, such as 20, or 4,004.  How many different ones digits are possible in numbers that Larry likes?",
+    "natural solution": [
+        "If a number is divisible by 4, then it is divisible by 2, which means that its last digit must be even. The numbers 20, 12, 24, 16, and 28 show that any even digit is possible, so the number of possible last digits is $\\boxed{5}$."
+    ],
+    "natural answer": "5",
+    "a_0": {
+        "formal problem": "theorem \nfixes n :: int\nassumes h0 : \"n mod 4 = 0\"\nshows  \"card {i. i \\<in> {0..9} \\<and> (\\<exists> n. n mod 10 = i \\<and> n mod 4 = 0)} = 5\"",
+        "formal solution": "(* ### Problem\n My co-worker Larry only likes numbers that are divisible by 4, such as 20, or 4,004.  How many different ones digits are possible in numbers that Larry likes? The final Answer is 5\n ### Proof\n If a number is divisible by 4, then it is divisible by 2, which means that its last digit must be even. The numbers 20, 12, 24, 16, and 28 show that any even digit is possible, so the number of possible last digits is $\\boxed{5}$.\n *)\n\ntheorem \nfixes n :: int\nassumes h0 : \"n mod 4 = 0\"\nshows  \"card {i. i \\<in> {0..9} \\<and> (\\<exists> n. n mod 10 = i \\<and> n mod 4 = 0)} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many integers from 0 to 9 inclusive have the property that there exists an integer $n$ such that $n$ reduced modulo 10 is equal to the said integer and $n$ reduced modulo 4 is equal to 0? The final answer is 5."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>n. f n = (n mod 4 = 0)\"\nand h1 : \"\\<forall>n. f n \\<longrightarrow> n mod 10 = 0 \\<or> n mod 10 = 2 \\<or> n mod 10 = 4 \\<or> n mod 10 = 6 \\<or> n mod 10 = 8\"\nshows  \"card {n. f n \\<and> n \\<ge> 0 \\<and> n < 10} = 5\"",
+        "formal solution": "(* ### Problem\n My co-worker Larry only likes numbers that are divisible by 4, such as 20, or 4,004.  How many different ones digits are possible in numbers that Larry likes? The final Answer is 5\n ### Proof\n If a number is divisible by 4, then it is divisible by 2, which means that its last digit must be even. The numbers 20, 12, 24, 16, and 28 show that any even digit is possible, so the number of possible last digits is $\\boxed{5}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>n. f n = (n mod 4 = 0)\"\nand h1 : \"\\<forall>n. f n \\<longrightarrow> n mod 10 = 0 \\<or> n mod 10 = 2 \\<or> n mod 10 = 4 \\<or> n mod 10 = 6 \\<or> n mod 10 = 8\"\nshows  \"card {n. f n \\<and> n \\<ge> 0 \\<and> n < 10} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f$ that maps an integer $n$ to a boolean value, and is defined such that $f(n)$ is true if and only if $n$ is divisible by 4. It is also known that if $f(n)$ is true, then $n$ ends in 0, 2, 4, 6 or 8. How many non-negative integers less than 10 satisfy the property defined by $f$? The final answer is 5."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: \"nat\"\nassumes h0 : \"n mod 10 < 10\"\nand h1 : \"\\<forall> n. n mod 4 = 0\"\nshows  \"card {d. \\<exists> n. n mod 10 = d \\<and> n mod 4 = 0} = 5\"",
+        "formal solution": "(* ### Problem\n My co-worker Larry only likes numbers that are divisible by 4, such as 20, or 4,004.  How many different ones digits are possible in numbers that Larry likes? The final Answer is 5\n ### Proof\n If a number is divisible by 4, then it is divisible by 2, which means that its last digit must be even. The numbers 20, 12, 24, 16, and 28 show that any even digit is possible, so the number of possible last digits is $\\boxed{5}$.\n *)\n\ntheorem\nfixes n :: \"nat\"\nassumes h0 : \"n mod 10 < 10\"\nand h1 : \"\\<forall> n. n mod 4 = 0\"\nshows  \"card {d. \\<exists> n. n mod 10 = d \\<and> n mod 4 = 0} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many distinct last digits can a number have if it is divisible by 4? The final answer is 5."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes Larry_likes :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>n. Larry_likes n = (n mod 4 = 0)\"\nshows  \"card {d. \\<exists>n. Larry_likes n \\<and> d = n mod 10} = 5\"",
+        "formal solution": "(* ### Problem\n My co-worker Larry only likes numbers that are divisible by 4, such as 20, or 4,004.  How many different ones digits are possible in numbers that Larry likes? The final Answer is 5\n ### Proof\n If a number is divisible by 4, then it is divisible by 2, which means that its last digit must be even. The numbers 20, 12, 24, 16, and 28 show that any even digit is possible, so the number of possible last digits is $\\boxed{5}$.\n *)\n\ntheorem\nfixes Larry_likes :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>n. Larry_likes n = (n mod 4 = 0)\"\nshows  \"card {d. \\<exists>n. Larry_likes n \\<and> d = n mod 10} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Larry likes a number if and only if it is a multiple of 4. How many unique last digits (i.e., remainders when divided by 10) can the numbers Larry likes have? The final answer is 5.\""
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. f n = (n mod 4 = 0)\"\nshows  \"card {n. f n \\<and> n \\<ge> 0 \\<and> n < 10} = 5\"",
+        "formal solution": "(* ### Problem\n My co-worker Larry only likes numbers that are divisible by 4, such as 20, or 4,004.  How many different ones digits are possible in numbers that Larry likes? The final Answer is 5\n ### Proof\n If a number is divisible by 4, then it is divisible by 2, which means that its last digit must be even. The numbers 20, 12, 24, 16, and 28 show that any even digit is possible, so the number of possible last digits is $\\boxed{5}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. f n = (n mod 4 = 0)\"\nshows  \"card {n. f n \\<and> n \\<ge> 0 \\<and> n < 10} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many non-negative integers less than 10 are divisible by 4? The final answer is 3."
+    },
+    "a_5": {
+        "formal problem": "theorem \nfixes n :: int\nassumes h0 : \"n mod 10 \\<ge> 0\"\nand h1 : \"n mod 10 \\<le> 9\"\nand h2 : \"\\<forall>n. n mod 4 = 0\"\nshows  \"card {i. i \\<in> {0..9} \\<and> (4*i) mod 10 \\<in> {0..9}} = 5\"",
+        "formal solution": "(* ### Problem\n My co-worker Larry only likes numbers that are divisible by 4, such as 20, or 4,004.  How many different ones digits are possible in numbers that Larry likes? The final Answer is 5\n ### Proof\n If a number is divisible by 4, then it is divisible by 2, which means that its last digit must be even. The numbers 20, 12, 24, 16, and 28 show that any even digit is possible, so the number of possible last digits is $\\boxed{5}$.\n *)\n\ntheorem \nfixes n :: int\nassumes h0 : \"n mod 10 \\<ge> 0\"\nand h1 : \"n mod 10 \\<le> 9\"\nand h2 : \"\\<forall>n. n mod 4 = 0\"\nshows  \"card {i. i \\<in> {0..9} \\<and> (4*i) mod 10 \\<in> {0..9}} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many numbers from 0 to 9, when multiplied by 4 and then divided by 10, yield a remainder between 0 and 9, inclusive? The final answer is 5."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n mod 4 = 0\"\nshows  \"card {i. \\<exists>n. n mod 10 = i \\<and> n mod 4 = 0} = 5\"",
+        "formal solution": "(* ### Problem\n My co-worker Larry only likes numbers that are divisible by 4, such as 20, or 4,004.  How many different ones digits are possible in numbers that Larry likes? The final Answer is 5\n ### Proof\n If a number is divisible by 4, then it is divisible by 2, which means that its last digit must be even. The numbers 20, 12, 24, 16, and 28 show that any even digit is possible, so the number of possible last digits is $\\boxed{5}$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n mod 4 = 0\"\nshows  \"card {i. \\<exists>n. n mod 10 = i \\<and> n mod 4 = 0} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many distinct remainders are possible when an integer divisible by 4 is divided by 10? The final answer is 5."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes Larry_likes :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. Larry_likes n = (n mod 4 = 0)\"\nshows  \"card {n. Larry_likes n \\<and> n mod 10 \\<in> {0,1,2,3,4,5,6,7,8,9}} = 5\"",
+        "formal solution": "(* ### Problem\n My co-worker Larry only likes numbers that are divisible by 4, such as 20, or 4,004.  How many different ones digits are possible in numbers that Larry likes? The final Answer is 5\n ### Proof\n If a number is divisible by 4, then it is divisible by 2, which means that its last digit must be even. The numbers 20, 12, 24, 16, and 28 show that any even digit is possible, so the number of possible last digits is $\\boxed{5}$.\n *)\n\ntheorem\nfixes Larry_likes :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. Larry_likes n = (n mod 4 = 0)\"\nshows  \"card {n. Larry_likes n \\<and> n mod 10 \\<in> {0,1,2,3,4,5,6,7,8,9}} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Larry likes a number if and only if that number is divisible by 4. How many numbers does Larry like between 0 and 9 (inclusive)? The final answer is 5."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n mod 4 = 0\"\nshows  \"card {d. \\<exists> n. n mod 10 = d} = 5\"",
+        "formal solution": "(* ### Problem\n My co-worker Larry only likes numbers that are divisible by 4, such as 20, or 4,004.  How many different ones digits are possible in numbers that Larry likes? The final Answer is 5\n ### Proof\n If a number is divisible by 4, then it is divisible by 2, which means that its last digit must be even. The numbers 20, 12, 24, 16, and 28 show that any even digit is possible, so the number of possible last digits is $\\boxed{5}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n mod 4 = 0\"\nshows  \"card {d. \\<exists> n. n mod 10 = d} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assuming that all natural numbers are divisible by 4, find the number of unique remainders when these numbers are divided by 10. The final answer is 5."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat and Larry_likes :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. Larry_likes n = (n mod 4 = 0)\"\nshows  \"card {x. \\<exists> n. Larry_likes n \\<and> x = n mod 10} = 5\"",
+        "formal solution": "(* ### Problem\n My co-worker Larry only likes numbers that are divisible by 4, such as 20, or 4,004.  How many different ones digits are possible in numbers that Larry likes? The final Answer is 5\n ### Proof\n If a number is divisible by 4, then it is divisible by 2, which means that its last digit must be even. The numbers 20, 12, 24, 16, and 28 show that any even digit is possible, so the number of possible last digits is $\\boxed{5}$.\n *)\n\ntheorem\nfixes n :: nat and Larry_likes :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. Larry_likes n = (n mod 4 = 0)\"\nshows  \"card {x. \\<exists> n. Larry_likes n \\<and> x = n mod 10} = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Larry likes a number if it is divisible by 4. How many unique last digits can Larry's liked numbers have? The final answer is 5.\""
+    },
+    "level": "Level 4",
+    "type": "Prealgebra"
+}

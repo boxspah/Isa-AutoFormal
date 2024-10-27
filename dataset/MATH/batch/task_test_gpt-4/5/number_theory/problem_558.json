@@ -1,0 +1,71 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes A :: int\nassumes h0 : \"A = (\\<Prod> d | d dvd 300. d)\"\nshows  \"sum_list (prime_factors A) = 10\"",
+        "formal solution": "(* ### Problem\n Let $A$ be the product of the divisors of $300$. What is the sum of the distinct prime divisors of $A$? The final Answer is 10\n ### Proof\n Suppose that 300 has $d$ divisors. The divisors of 300 can be split into $d/2$ pairs in such a way that the product of each pair is 300: $\\{1,300\\}, \\{2,150\\},$ etc.\n Thus $A=300^{d/2}$, which implies that $A$ has the same prime divisors as 300. Since the prime factorization of $300$ is $2^2 \\cdot 3 \\cdot 5^2$, the sum of the prime divisors of $A$ is $2+3+5=\\boxed{10}$.\n *)\n\ntheorem\nfixes A :: int\nassumes h0 : \"A = (\\<Prod> d | d dvd 300. d)\"\nshows  \"sum_list (prime_factors A) = 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let A be the product of all divisors of 300. Find the sum of the prime factors of A. The final answer is 10.",
+        "label": 0
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes A :: int and divisors :: \"int set\"\nassumes h0 : \"divisors = {d. d dvd 300}\"\nand h1 : \"A = prod id divisors\"\nand h2 : \"\\<forall>d. d \\<in> divisors \\<longrightarrow> is_prime d\"\nshows  \"sum id divisors = 10\"",
+        "formal solution": "(* ### Problem\n Let $A$ be the product of the divisors of $300$. What is the sum of the distinct prime divisors of $A$? The final Answer is 10\n ### Proof\n Suppose that 300 has $d$ divisors. The divisors of 300 can be split into $d/2$ pairs in such a way that the product of each pair is 300: $\\{1,300\\}, \\{2,150\\},$ etc.\n Thus $A=300^{d/2}$, which implies that $A$ has the same prime divisors as 300. Since the prime factorization of $300$ is $2^2 \\cdot 3 \\cdot 5^2$, the sum of the prime divisors of $A$ is $2+3+5=\\boxed{10}$.\n *)\n\ntheorem\nfixes A :: int and divisors :: \"int set\"\nassumes h0 : \"divisors = {d. d dvd 300}\"\nand h1 : \"A = prod id divisors\"\nand h2 : \"\\<forall>d. d \\<in> divisors \\<longrightarrow> is_prime d\"\nshows  \"sum id divisors = 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider the set of all prime numbers that divide 300. Find the sum of these numbers. The final answer is 10.",
+        "label": 0
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes A :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> d. A d = (if d dvd 300 then d else 0)\"\nand h1 : \"finite {d. A d \\<noteq> 0}\"\nand h2 : \"\\<forall> p. prime p \\<longrightarrow> (\\<exists> d. A d \\<noteq> 0 \\<and> p dvd A d)\"\nshows  \"(\\<Sum> p | prime p \\<and> (\\<exists> d. A d \\<noteq> 0 \\<and> p dvd A d). p) = 10\"",
+        "formal solution": "(* ### Problem\n Let $A$ be the product of the divisors of $300$. What is the sum of the distinct prime divisors of $A$? The final Answer is 10\n ### Proof\n Suppose that 300 has $d$ divisors. The divisors of 300 can be split into $d/2$ pairs in such a way that the product of each pair is 300: $\\{1,300\\}, \\{2,150\\},$ etc.\n Thus $A=300^{d/2}$, which implies that $A$ has the same prime divisors as 300. Since the prime factorization of $300$ is $2^2 \\cdot 3 \\cdot 5^2$, the sum of the prime divisors of $A$ is $2+3+5=\\boxed{10}$.\n *)\n\ntheorem\nfixes A :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> d. A d = (if d dvd 300 then d else 0)\"\nand h1 : \"finite {d. A d \\<noteq> 0}\"\nand h2 : \"\\<forall> p. prime p \\<longrightarrow> (\\<exists> d. A d \\<noteq> 0 \\<and> p dvd A d)\"\nshows  \"(\\<Sum> p | prime p \\<and> (\\<exists> d. A d \\<noteq> 0 \\<and> p dvd A d). p) = 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $A(d)$ that is defined as follows: if $d$ is a divisor of $300$, then $A(d) = d$; otherwise, $A(d) = 0$. We know that there is a finite number of $d$ such that $A(d) \u2260 0$. Also, for every prime number $p$, there exists a $d$ such that $A(d) \u2260 0$ and $p$ is a divisor of $A(d)$. Find the sum of all prime numbers $p$ for which there exists a $d$ such that $A(d) \u2260 0$ and $p$ is a divisor of $A(d)$. The final answer is 10.",
+        "label": 0
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes A :: \"int\"\nassumes h0 : \"A = (\\<Prod> d in divisors 300. d)\"\nshows  \"sum id (prime_factors A) = 10\"",
+        "formal solution": "(* ### Problem\n Let $A$ be the product of the divisors of $300$. What is the sum of the distinct prime divisors of $A$? The final Answer is 10\n ### Proof\n Suppose that 300 has $d$ divisors. The divisors of 300 can be split into $d/2$ pairs in such a way that the product of each pair is 300: $\\{1,300\\}, \\{2,150\\},$ etc.\n Thus $A=300^{d/2}$, which implies that $A$ has the same prime divisors as 300. Since the prime factorization of $300$ is $2^2 \\cdot 3 \\cdot 5^2$, the sum of the prime divisors of $A$ is $2+3+5=\\boxed{10}$.\n *)\n\ntheorem\nfixes A :: \"int\"\nassumes h0 : \"A = (\\<Prod> d in divisors 300. d)\"\nshows  \"sum id (prime_factors A) = 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the prime factors of the product of the divisors of 300. The final answer is 10.",
+        "label": 0
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes A :: int and prime_factors :: \"int set\"\nassumes h0 : \"A = (\\<Prod> x \\<in> {d. d dvd 300}. x)\"\nand h1 : \"prime_factors = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum> p \\<in> prime_factors. p) = 10\"",
+        "formal solution": "(* ### Problem\n Let $A$ be the product of the divisors of $300$. What is the sum of the distinct prime divisors of $A$? The final Answer is 10\n ### Proof\n Suppose that 300 has $d$ divisors. The divisors of 300 can be split into $d/2$ pairs in such a way that the product of each pair is 300: $\\{1,300\\}, \\{2,150\\},$ etc.\n Thus $A=300^{d/2}$, which implies that $A$ has the same prime divisors as 300. Since the prime factorization of $300$ is $2^2 \\cdot 3 \\cdot 5^2$, the sum of the prime divisors of $A$ is $2+3+5=\\boxed{10}$.\n *)\n\ntheorem\nfixes A :: int and prime_factors :: \"int set\"\nassumes h0 : \"A = (\\<Prod> x \\<in> {d. d dvd 300}. x)\"\nand h1 : \"prime_factors = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum> p \\<in> prime_factors. p) = 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the prime factors of the product of all the divisors of 300. The final answer is 10.",
+        "label": 0
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes A :: int and p :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"A = prod (divisors 300)\"\nand h1 : \"\\<forall> d. p d = (is_prime d \\<and> d dvd A)\"\nshows  \"sum p (divisors A) = 10\"",
+        "formal solution": "(* ### Problem\n Let $A$ be the product of the divisors of $300$. What is the sum of the distinct prime divisors of $A$? The final Answer is 10\n ### Proof\n Suppose that 300 has $d$ divisors. The divisors of 300 can be split into $d/2$ pairs in such a way that the product of each pair is 300: $\\{1,300\\}, \\{2,150\\},$ etc.\n Thus $A=300^{d/2}$, which implies that $A$ has the same prime divisors as 300. Since the prime factorization of $300$ is $2^2 \\cdot 3 \\cdot 5^2$, the sum of the prime divisors of $A$ is $2+3+5=\\boxed{10}$.\n *)\n\ntheorem\nfixes A :: int and p :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"A = prod (divisors 300)\"\nand h1 : \"\\<forall> d. p d = (is_prime d \\<and> d dvd A)\"\nshows  \"sum p (divisors A) = 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all prime divisors of the product of all divisors of 300. The final answer is 10.",
+        "label": 0
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes A :: int and prime_sum :: int\nassumes h0 : \"A = prod (divisors 300)\"\nand h1 : \"prime_sum = sum_list (filter prime (divisors A))\"\nshows  \"prime_sum = 10\"",
+        "formal solution": "(* ### Problem\n Let $A$ be the product of the divisors of $300$. What is the sum of the distinct prime divisors of $A$? The final Answer is 10\n ### Proof\n Suppose that 300 has $d$ divisors. The divisors of 300 can be split into $d/2$ pairs in such a way that the product of each pair is 300: $\\{1,300\\}, \\{2,150\\},$ etc.\n Thus $A=300^{d/2}$, which implies that $A$ has the same prime divisors as 300. Since the prime factorization of $300$ is $2^2 \\cdot 3 \\cdot 5^2$, the sum of the prime divisors of $A$ is $2+3+5=\\boxed{10}$.\n *)\n\ntheorem\nfixes A :: int and prime_sum :: int\nassumes h0 : \"A = prod (divisors 300)\"\nand h1 : \"prime_sum = sum_list (filter prime (divisors A))\"\nshows  \"prime_sum = 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A$ is the product of all divisors of $300$, and $prime\\_sum$ is the sum of all prime numbers in the list of divisors of $A$, what is the value of $prime\\_sum$? The final answer is $10$.",
+        "label": 0
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes A :: \"int \\<Rightarrow> int\"\nassumes h0 : \"A = 300\"\nand h1 : \"\\<forall> x. is_prime x \\<longrightarrow> x dvd A\"\nshows  \"sum_list (primes_upto A) = 10\"",
+        "formal solution": "(* ### Problem\n Let $A$ be the product of the divisors of $300$. What is the sum of the distinct prime divisors of $A$? The final Answer is 10\n ### Proof\n Suppose that 300 has $d$ divisors. The divisors of 300 can be split into $d/2$ pairs in such a way that the product of each pair is 300: $\\{1,300\\}, \\{2,150\\},$ etc.\n Thus $A=300^{d/2}$, which implies that $A$ has the same prime divisors as 300. Since the prime factorization of $300$ is $2^2 \\cdot 3 \\cdot 5^2$, the sum of the prime divisors of $A$ is $2+3+5=\\boxed{10}$.\n *)\n\ntheorem\nfixes A :: \"int \\<Rightarrow> int\"\nassumes h0 : \"A = 300\"\nand h1 : \"\\<forall> x. is_prime x \\<longrightarrow> x dvd A\"\nshows  \"sum_list (primes_upto A) = 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If 300 is divisible by any prime number, find the sum of all prime numbers up to 300. The final answer is 10.",
+        "label": 0
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes A :: int\nassumes h0 : \"A = prod_list (divisors_nat 300)\"\nshows  \"sum_list (distinct_prime_factors A) = 10\"",
+        "formal solution": "(* ### Problem\n Let $A$ be the product of the divisors of $300$. What is the sum of the distinct prime divisors of $A$? The final Answer is 10\n ### Proof\n Suppose that 300 has $d$ divisors. The divisors of 300 can be split into $d/2$ pairs in such a way that the product of each pair is 300: $\\{1,300\\}, \\{2,150\\},$ etc.\n Thus $A=300^{d/2}$, which implies that $A$ has the same prime divisors as 300. Since the prime factorization of $300$ is $2^2 \\cdot 3 \\cdot 5^2$, the sum of the prime divisors of $A$ is $2+3+5=\\boxed{10}$.\n *)\n\ntheorem\nfixes A :: int\nassumes h0 : \"A = prod_list (divisors_nat 300)\"\nshows  \"sum_list (distinct_prime_factors A) = 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider an integer $A$ which is the product of the divisors of 300. Find the sum of the distinct prime factors of $A$. The final answer is 10.",
+        "label": 0
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes A :: int\nassumes h0 : \"A = prod_list [divisors 300]\"\nand h1 : \"is_prime p\"\nand h2 : \"p dvd A\"\nshows  \"sum_list [distinct prime divisors of A] = 10\"",
+        "formal solution": "(* ### Problem\n Let $A$ be the product of the divisors of $300$. What is the sum of the distinct prime divisors of $A$? The final Answer is 10\n ### Proof\n Suppose that 300 has $d$ divisors. The divisors of 300 can be split into $d/2$ pairs in such a way that the product of each pair is 300: $\\{1,300\\}, \\{2,150\\},$ etc.\n Thus $A=300^{d/2}$, which implies that $A$ has the same prime divisors as 300. Since the prime factorization of $300$ is $2^2 \\cdot 3 \\cdot 5^2$, the sum of the prime divisors of $A$ is $2+3+5=\\boxed{10}$.\n *)\n\ntheorem\nfixes A :: int\nassumes h0 : \"A = prod_list [divisors 300]\"\nand h1 : \"is_prime p\"\nand h2 : \"p dvd A\"\nshows  \"sum_list [distinct prime divisors of A] = 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let A be the product of all divisors of 300. If p is a prime number that divides A, find the sum of all distinct prime divisors of A. The final answer is 10.",
+        "label": 0
+    },
+    "natural answer": "10",
+    "natural problem": "Let $A$ be the product of the divisors of $300$. What is the sum of the distinct prime divisors of $A$?",
+    "natural solution": [
+        "Suppose that 300 has $d$ divisors. The divisors of 300 can be split into $d/2$ pairs in such a way that the product of each pair is 300: $\\{1,300\\}, \\{2,150\\},$ etc.",
+        "Thus $A=300^{d/2}$, which implies that $A$ has the same prime divisors as 300. Since the prime factorization of $300$ is $2^2 \\cdot 3 \\cdot 5^2$, the sum of the prime divisors of $A$ is $2+3+5=\\boxed{10}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "level": "Level 4",
+    "type": "Number Theory"
+}

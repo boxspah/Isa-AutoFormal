@@ -1,0 +1,597 @@
+{
+    "problem_name": "mathd_numbertheory_237",
+    "informal_statement": "What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ Show that it is 4.",
+    "informal_proof": "Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n\"\nand h1 : \"sum f {1..100} mod 6 = 4\"\nshows  \"sum f {1..100} mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n\"\nand h1 : \"sum f {1..100} mod 6 = 4\"\nshows  \"sum f {1..100} mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If there is a function $f$ which maps every integer to itself, and the sum of $f(n)$ from $n = 1$ to $100$ (inclusive) gives a remainder of 4 when divided by 6, then prove that the sum of $f(n)$ from $n = 1$ to $100$ (inclusive) gives a remainder of 4 when divided by 6.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.5406770706176758,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n = (\\<Sum>i=1..100. i)\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n = (\\<Sum>i=1..100. i)\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder when the sum of the first 100 positive integers is divided by 6. The final answer is 4.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9389428496360779,
+        "symbolic_score": 0.8
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum (\\<lambda>i. i mod 6) {1..n} mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum (\\<lambda>i. i mod 6) {1..n} mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the remainders when each of the first 100 natural numbers is divided by 6. Then, find the remainder when the total sum is divided by 6. The final answer is 4.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9908193349838257,
+        "symbolic_score": 0.8
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum = (\\<Sum> i = 1..100. i)\"\nshows  \"(sum mod 6) = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum = (\\<Sum> i = 1..100. i)\"\nshows  \"(sum mod 6) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder when the sum of all natural numbers from 1 to 100 is divided by 6. The final answer is 4.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8404690027236938,
+        "symbolic_score": 0.8
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: \"nat\"\nassumes h0 : \"\\<forall> n \\<le> 100. (\\<Sum> i\\<le>n. i) mod 6 = 4\"\nshows  \"(\\<Sum> i\\<le>100. i) mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: \"nat\"\nassumes h0 : \"\\<forall> n \\<le> 100. (\\<Sum> i\\<le>n. i) mod 6 = 4\"\nshows  \"(\\<Sum> i\\<le>100. i) mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For all natural numbers $n$ up to and including 100, the sum of all integers up to and including $n$, when divided by 6, has a remainder of 4. What is the remainder when the sum of all integers up to and including 100 is divided by 6? The final answer is 4.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9923927187919617,
+        "symbolic_score": 0.8
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n = sum id {1..100}\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n = sum id {1..100}\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the remainder when the sum of the first 100 positive integers is divided by 6? The final answer is 4.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9956917762756348,
+        "symbolic_score": 0.8
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n mod 6\"\nand h1 : \"\\<forall> n \\<in> {1..100}. f n = n\"\nshows  \"sum f {1..100} mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n mod 6\"\nand h1 : \"\\<forall> n \\<in> {1..100}. f n = n\"\nshows  \"sum f {1..100} mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider an integer function $f$ defined as $f(n) = n$ mod $6$ for all $n$. However, for all $n$ in the range from $1$ to $100$, $f(n) = n$. What is the remainder when the sum of $f(n)$ for $n$ from $1$ to $100$ is divided by $6$? The final answer is $4$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9842219352722168,
+        "symbolic_score": 0.8
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. sum n = (n * (n + 1)) div 2\"\nshows  \"sum 100 mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. sum n = (n * (n + 1)) div 2\"\nshows  \"sum 100 mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of the first 100 natural numbers is given by the formula $sum = \\frac{n*(n+1)}{2}$. What is the remainder when this sum is divided by 6? The final answer is 4.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9255033731460571,
+        "symbolic_score": 0.8
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>i=1..100. i)\"\nshows  \"sum mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>i=1..100. i)\"\nshows  \"sum mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of all integers from 1 to 100, and find the remainder when this sum is divided by 6. The final answer is 4.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9607711434364319,
+        "symbolic_score": 0.8
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: \"nat\"\nassumes h0 : \"n = 100\"\nand h1 : \"sum id {1..n} mod 6 = 4\"\nshows  \"n = 100\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: \"nat\"\nassumes h0 : \"n = 100\"\nand h1 : \"sum id {1..n} mod 6 = 4\"\nshows  \"n = 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of all natural numbers up to 100, when divided by 6, gives a remainder of 4. What is the value of n? The final answer is 100.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9325411915779114,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nshows  \"(\\<Sum> k<101. k) mod 6 = (4::nat)\"",
+    "prediction": {
+        "0": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            9
+        ]
+    },
+    "equivalence_oracle": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+    ],
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum {1..n} mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum {1..n} mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the remainder when the sum of the numbers from 1 to 100 is divided by 6? The final answer is 4.",
+        "semantic_score": 0.994530126066622,
+        "symbolic_score": 0.3,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>i\\<in>{1..100}. i)\"\nshows  \"sum mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>i\\<in>{1..100}. i)\"\nshows  \"sum mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the remainder when the sum of the first 100 positive integers is divided by 6? The final answer is 4.",
+        "semantic_score": 0.995691695841849,
+        "symbolic_score": 0.6,
+        "naive_label": 1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum {1..n} mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum {1..n} mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the remainder when the sum of the first 100 positive integers is divided by 6? The final answer is 4.",
+        "semantic_score": 0.995691695841849,
+        "symbolic_score": 0.3,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"(sum (\\<lambda> i. i) {1..n}) mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"(sum (\\<lambda> i. i) {1..n}) mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If you add up all the whole numbers from 1 to 100, what is the remainder when this sum is divided by 6? The final answer is 4.",
+        "semantic_score": 0.9693890342775044,
+        "symbolic_score": 0.6,
+        "naive_label": 1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"(sum (\\<lambda>i. i) {1..n}) mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"(sum (\\<lambda>i. i) {1..n}) mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of the first $100$ positive integers is calculated, and the remainder when this sum is divided by $6$ is $4$. What is the remainder when the sum of the first $100$ positive integers is divided by $6$?",
+        "semantic_score": 0.980836626239039,
+        "symbolic_score": 0.6,
+        "naive_label": 1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum {1..n} mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum {1..n} mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the remainder when the sum of the integers from $1$ to $100$ is divided by $6$? The final remainder is $4$.",
+        "semantic_score": 0.9853877381995705,
+        "symbolic_score": 0.3,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nlet ?sum = \"\\<Sum>i\\<in>{1..100}. i\"\nshows  \"?sum mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nlet ?sum = \"\\<Sum>i\\<in>{1..100}. i\"\nshows  \"?sum mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the remainder when you add up the numbers $1$ through $100$ and divide by $6$? The remainder is $4$.",
+        "semantic_score": 0.9700777399299235,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>i\\<in>{1..100}. i)\"\nshows  \"sum mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>i\\<in>{1..100}. i)\"\nshows  \"sum mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the remainder when the sum of the integers from 1 to 100, inclusive, is divided by 6? The final answer is 4.",
+        "semantic_score": 0.992010346278858,
+        "symbolic_score": 0.6,
+        "naive_label": 1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"(\\<Sum>i\\<in>{1..n}. i) mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"(\\<Sum>i\\<in>{1..n}. i) mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If we add up all the integers from 1 to 100 inclusive, what is the remainder when this sum is divided by 6? The final answer is 4.",
+        "semantic_score": 0.9761011638979264,
+        "symbolic_score": 0.6,
+        "naive_label": 1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum (\\<lambda>i. i) {1..n} mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum (\\<lambda>i. i) {1..n} mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of the first 100 natural numbers is computed. What is the remainder when this sum is divided by 6? The final answer is 4.",
+        "semantic_score": 0.9383939518651612,
+        "symbolic_score": 0.6,
+        "naive_label": 1
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            1,
+            3,
+            4,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            0,
+            2,
+            5
+        ],
+        "2": [
+            6
+        ]
+    },
+    "equivalence_oracle_gpt3.5": [
+        1,
+        3,
+        4,
+        7,
+        8,
+        9
+    ],
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes n sum :: \"real\" and r :: \"real\"\nassumes h0 : \"1 + 1 + 1 + ... + 98 + 99 + 100 = n\"\nand h1 : \"r mod 6 = 4\"\nshows  \"n = 5050\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n sum :: \"real\" and r :: \"real\"\nassumes h0 : \"1 + 1 + 1 + ... + 98 + 99 + 100 = n\"\nand h1 : \"r mod 6 = 4\"\nshows  \"n = 5050\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the sum of the first 100 natural numbers, and what number, when divided by 6, leaves a remainder of 4? If these two quantities are equal, what is their common value?\n\nIn other words, find the value of n such that the sum of the first 100 natural numbers equals n, and find the value of r such that r mod 6 = 4. If these two quantities are equal, then what is their common value?\n\nThe final answer is 5050."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\" and sum :: \"real\"\nassumes h0 : \"1 + 1 + 2 + \\dots + 98 + 99 + 100 = sum\"\nand h1 : \"sum mod 6 = 4\"\nshows  \\<by> simp\n\n(* Proof assistant note: To complete the proof, you would need to expand the sum and apply the modulo theorem. *)",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: \"nat\" and sum :: \"real\"\nassumes h0 : \"1 + 1 + 2 + \\dots + 98 + 99 + 100 = sum\"\nand h1 : \"sum mod 6 = 4\"\nshows  \\<by> simp\n\n(* Proof assistant note: To complete the proof, you would need to expand the sum and apply the modulo theorem. *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the sum of the first 100 natural numbers, and what is the remainder when this sum is divided by 6? The final answer is 4."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes n sum :: \"nat\" and r :: \"int\"\nassumes h0 : \"\\<forall> i. 1 \\<= i \\<= 100 \\<longrightarrow> i = 1 + pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n sum :: \"nat\" and r :: \"int\"\nassumes h0 : \"\\<forall> i. 1 \\<= i \\<= 100 \\<longrightarrow> i = 1 + pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The following is a mathematical problem expressed in Isabelle that can be translated to natural language as follows:\n\nFind a formula for the nth term of a sequence defined recursively as follows:\n\n1. The base case is when n = 1, then the term is 1.\n2. For all other values of n, the term is given by the formula: n = 1 + pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred (pred"
+    },
+    "a_3_mistral": {
+        "formal problem": " theorem sum\\_modulo\\_six : \"cmod (1 + 1 + 2 + ... + 98 + 99 + 100) 6 = 4\"\n\n(* Proof by induction on the number of terms in the sum *)\n\nfixes n :: nat\nassumes sum\\_n : \"cmod (1 + 1 + 2 + ... + 1 + 1 + n) 6 = p\"\nassume p : \"n < 101\"\nhave sum\\_n\\_plus\\_one : \"cmod (1 + 1 + 2 + ... + 1 + 1 + (n + 1)) 6 = (p + 2) mod 6\" by {simp, ring, simpl, intros, auto}\nthen have sum\\_101 : \"cmod (1 + 1 + 2 + ... + 1 + 1 + 101) 6 = 4\" using sum\\_n, sum\\_n\\_plus\\_one by (rule mod\\_add)\nthen show \"cmod (1 + 1 + 2 + ... + 1 + 1 + 101) 6 = 4\"\n\n(* Base case *)\nassumes sum\\_1 : \"cmod (1 + 1) 6 = 1\" by simp\n\n(* Inductive step *)\nassumes sum\\_n : \"cmod (1+1+2+...+1+1+n) 6 = p\" by simp\nthen show \"cmod (1+1+2+...+1+1+(n+1)) 6 = (p+2) mod 6\" using sum\\_n by (rule mod\\_add)\n\n(* Inductive hypothesis *)\nthen assume \"n < 101\" by assumption\n\n(* Inductive step *)\nthen have sum\\_n\\_plus\\_one : \"cmod (1+1+2+...+1+1+(n+1)) 6 = (p+2) mod 6\" by {simp, ring, simpl, intros, auto}\n\n(* Conclusion *)\nthen show \"cmod (1+1+2+...+1+1+101) 6 = 4\" using sum\\_1, sum\\_n\\_plus\\_one by (rule mod\\_add)",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem sum\\_modulo\\_six : \"cmod (1 + 1 + 2 + ... + 98 + 99 + 100) 6 = 4\"\n\n(* Proof by induction on the number of terms in the sum *)\n\nfixes n :: nat\nassumes sum\\_n : \"cmod (1 + 1 + 2 + ... + 1 + 1 + n) 6 = p\"\nassume p : \"n < 101\"\nhave sum\\_n\\_plus\\_one : \"cmod (1 + 1 + 2 + ... + 1 + 1 + (n + 1)) 6 = (p + 2) mod 6\" by {simp, ring, simpl, intros, auto}\nthen have sum\\_101 : \"cmod (1 + 1 + 2 + ... + 1 + 1 + 101) 6 = 4\" using sum\\_n, sum\\_n\\_plus\\_one by (rule mod\\_add)\nthen show \"cmod (1 + 1 + 2 + ... + 1 + 1 + 101) 6 = 4\"\n\n(* Base case *)\nassumes sum\\_1 : \"cmod (1 + 1) 6 = 1\" by simp\n\n(* Inductive step *)\nassumes sum\\_n : \"cmod (1+1+2+...+1+1+n) 6 = p\" by simp\nthen show \"cmod (1+1+2+...+1+1+(n+1)) 6 = (p+2) mod 6\" using sum\\_n by (rule mod\\_add)\n\n(* Inductive hypothesis *)\nthen assume \"n < 101\" by assumption\n\n(* Inductive step *)\nthen have sum\\_n\\_plus\\_one : \"cmod (1+1+2+...+1+1+(n+1)) 6 = (p+2) mod 6\" by {simp, ring, simpl, intros, auto}\n\n(* Conclusion *)\nthen show \"cmod (1+1+2+...+1+1+101) 6 = 4\" using sum\\_1, sum\\_n\\_plus\\_one by (rule mod\\_add)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider the sum of the first 101 positive integers, $1+1+2+\\cdots+1+1+101$. Prove that the remainder when this sum is divided by 6 is equal to 4.\n\nProof by induction:\n\nBase case: The sum of the first two terms is 1 + 1 = 2. Since 2 is even, its remainder when divided by 6 is 0, but since we want the remainder to be 4, we need to add 4 to this base case. Thus, the base case is 2 + 4 = 6, which leaves a remainder of 4 when divided by 6.\n\nInductive step: Assume the sum of the first n terms leaves a remainder of p when divided by 6. We will prove that the sum of the first n+1 terms leaves a remainder of (p+2) mod 6.\n\nBy the modulo addition property, the remainder of the sum of two numbers x and y is the same as the remainder of x+y when divided by a modulo b if the remainders of x and y when divided by a modulo b are the same.\n\nTherefore, since the remainders of the first n terms and the first n+1 terms differ only by the last term, the remainder of the sum of the first n+1 terms will be (p+2) mod 6, as required.\n\nSince the base case holds, and the inductive step holds for all n<101, it follows that the sum of the first 101 positive integers leaves a remainder of 4 when divided by 6."
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes sum :: real\nassumes h0 : \"sum (range (1,101)) = 5050\"\nshows  \"mod (sum (range (1,101)), 6) = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes sum :: real\nassumes h0 : \"sum (range (1,101)) = 5050\"\nshows  \"mod (sum (range (1,101)), 6) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the remainder when the sum of the first 101 natural numbers (1+1+...+101) is divided by 6? The final answer is 4."
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes n sum :: \"nat\" and r :: \"nat\"\nassumes h0 : \"1 + 1 + 1 + ... + 98 + 99 + 100 = n\"\nand h1 : \"r = n mod 6\"\nshows  \"r = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n sum :: \"nat\" and r :: \"nat\"\nassumes h0 : \"1 + 1 + 1 + ... + 98 + 99 + 100 = n\"\nand h1 : \"r = n mod 6\"\nshows  \"r = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the sum of 1 to 100 is equal to a certain number $n$, find the remainder when $n$ is divided by 6. The final answer is 4."
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nfixes n sum :: \"nat\" and r :: \"int\"\nassumes h0 : \"1 + 1 + ... + 99 + 100 = n\"\nand h1 : \"r = n mod 6\"\nshows  \"r = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n sum :: \"nat\" and r :: \"int\"\nassumes h0 : \"1 + 1 + ... + 99 + 100 = n\"\nand h1 : \"r = n mod 6\"\nshows  \"r = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the sum of the first 101 natural numbers is equal to some number $n$, find the remainder when $n$ is divided by 6. The final answer is 4."
+    },
+    "a_7_mistral": {
+        "formal problem": "theorem\nfixes n sum :: \"nat\" and s :: \"int\"\nassumes h0 : \"1 + 1 + ... + 98 + 99 + 100 = 100 * (sum (nat_cons 1 (nat_cons 1 (nat_zero))) : list nat)\"\nand h1 : \"s = (sum (map (fn x => 6 * x) (list_map (fn x => Suc x) (take 100 (enum_from_nat 1)))) : int)\"\nshows  \"6 mod s = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n sum :: \"nat\" and s :: \"int\"\nassumes h0 : \"1 + 1 + ... + 98 + 99 + 100 = 100 * (sum (nat_cons 1 (nat_cons 1 (nat_zero))) : list nat)\"\nand h1 : \"s = (sum (map (fn x => 6 * x) (list_map (fn x => Suc x) (take 100 (enum_from_nat 1)))) : int)\"\nshows  \"6 mod s = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the first 101 natural numbers, and then find the remainder when 6 is divided by this sum. The final answer should be equal to 4."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes n sum :: \"real\" and r :: \"int\"\nassumes h0 : \"1 + 2 + 3 + \\dots + 98 + 99 + 100 = n\"\nand h1 : \"r = n mod 6\"\nshows  \"r = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n sum :: \"real\" and r :: \"int\"\nassumes h0 : \"1 + 2 + 3 + \\dots + 98 + 99 + 100 = n\"\nand h1 : \"r = n mod 6\"\nshows  \"r = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the sum of the first 100 natural numbers is equal to $n$, find the remainder when $n$ is divided by 6. The final answer is 4."
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes n sum :: \"nat\" and r :: \"int\"\nassumes h0 : \"n <= 100\"\nshows  \"r = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n sum :: \"nat\" and r :: \"int\"\nassumes h0 : \"n <= 100\"\nshows  \"r = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find an integer value for $r$ when $n$ is less than or equal to 100. The final answer is 4."
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the sum of the integers from 1 to 100. We are asked to find the remainder when n is divided by 6. The theorem claims that the remainder is 4."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider a natural number n, which is the sum of the integers from 1 to 100 (inclusive). Determine the remainder when n is divided by 6. The remainder should be 4."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that we have a natural number n, which is the sum of all the numbers from 1 to 100. We need to find the remainder when n is divided by 6. The theorem claims that the remainder will be 4."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the sum of the integers from 1 to 100. We are asked to find the remainder when n is divided by 6. The theorem asserts that the remainder is 4."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that we have a natural number n, which is the sum of the integers from 1 to 100. We need to find the remainder when n is divided by 6. The theorem asserts that the remainder is 4. In simpler terms, if you add up all the numbers from 1 to 100 and then divide the total by 6, the remainder you get is 4."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider the sum of all natural numbers from 1 to 100, inclusive. Find the remainder when this sum is divided by 6. Prove that the remainder is 4."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the sum of all integers from 1 to 100. We need to find the remainder when n is divided by 6. According to the theorem, the remainder is 4."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider the sum of all natural numbers from 1 to 100, inclusive. We denote this sum as n. Prove that when n is divided by 6, the remainder is 4."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider the sum of all natural numbers from 1 to 100, inclusive. What is the remainder when this sum is divided by 6? The remainder is 4."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nand h1 : \"summation (1::nat) n mod 6 = 4\"\nshows  \"summation (1::nat) n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nand h1 : \"summation (1::nat) n mod 6 = 4\"\nshows  \"summation (1::nat) n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that given a natural number n equal to 100, and the sum of all natural numbers from 1 to n modulo 6 equals 4, then the sum of all natural numbers from 1 to n modulo 6 indeed equals 4.\n\nIn natural language, this can be translated to:\n\n\"Consider a natural number n, which is equal to 100. If the sum of all natural numbers from 1 to 100, when divided by 6, leaves a remainder of 4, then it is true that the sum of all natural numbers from 1 to 100, when divided by 6, leaves a remainder of 4.\""
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+        ],
+        "1": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n\"\nand h1 : \"sum f {1..100} mod 6 = 4\"\nshows  \"sum f {1..100} mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n\"\nand h1 : \"sum f {1..100} mod 6 = 4\"\nshows  \"sum f {1..100} mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If there is a function $f$ which maps every integer to itself, and the sum of $f(n)$ from $n = 1$ to $100$ (inclusive) gives a remainder of 4 when divided by 6, then prove that the sum of $f(n)$ from $n = 1$ to $100$ (inclusive) gives a remainder of 4 when divided by 6.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.828602159476224,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n = (\\<Sum>i=1..100. i)\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n = (\\<Sum>i=1..100. i)\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder when the sum of the first 100 positive integers is divided by 6. The final answer is 4.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.91110348285598,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum (\\<lambda>i. i mod 6) {1..n} mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum (\\<lambda>i. i mod 6) {1..n} mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the remainders when each of the first 100 natural numbers is divided by 6. Then, find the remainder when the total sum is divided by 6. The final answer is 4.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8925997648546544,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum = (\\<Sum> i = 1..100. i)\"\nshows  \"(sum mod 6) = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum = (\\<Sum> i = 1..100. i)\"\nshows  \"(sum mod 6) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder when the sum of all natural numbers from 1 to 100 is divided by 6. The final answer is 4.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9008062186551683,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes n :: \"nat\"\nassumes h0 : \"\\<forall> n \\<le> 100. (\\<Sum> i\\<le>n. i) mod 6 = 4\"\nshows  \"(\\<Sum> i\\<le>100. i) mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: \"nat\"\nassumes h0 : \"\\<forall> n \\<le> 100. (\\<Sum> i\\<le>n. i) mod 6 = 4\"\nshows  \"(\\<Sum> i\\<le>100. i) mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For all natural numbers $n$ up to and including 100, the sum of all integers up to and including $n$, when divided by 6, has a remainder of 4. What is the remainder when the sum of all integers up to and including 100 is divided by 6? The final answer is 4.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8792701733733231,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n = sum id {1..100}\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n = sum id {1..100}\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the remainder when the sum of the first 100 positive integers is divided by 6? The final answer is 4.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.912128020552463,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n mod 6\"\nand h1 : \"\\<forall> n \\<in> {1..100}. f n = n\"\nshows  \"sum f {1..100} mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n mod 6\"\nand h1 : \"\\<forall> n \\<in> {1..100}. f n = n\"\nshows  \"sum f {1..100} mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider an integer function $f$ defined as $f(n) = n$ mod $6$ for all $n$. However, for all $n$ in the range from $1$ to $100$, $f(n) = n$. What is the remainder when the sum of $f(n)$ for $n$ from $1$ to $100$ is divided by $6$? The final answer is $4$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8669676641699708,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. sum n = (n * (n + 1)) div 2\"\nshows  \"sum 100 mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. sum n = (n * (n + 1)) div 2\"\nshows  \"sum 100 mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of the first 100 natural numbers is given by the formula $sum = \\frac{n*(n+1)}{2}$. What is the remainder when this sum is divided by 6? The final answer is 4.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8804845218055697,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>i=1..100. i)\"\nshows  \"sum mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>i=1..100. i)\"\nshows  \"sum mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of all integers from 1 to 100, and find the remainder when this sum is divided by 6. The final answer is 4.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8623285268843363,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes n :: \"nat\"\nassumes h0 : \"n = 100\"\nand h1 : \"sum id {1..n} mod 6 = 4\"\nshows  \"n = 100\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\ntheorem\nfixes n :: \"nat\"\nassumes h0 : \"n = 100\"\nand h1 : \"sum id {1..n} mod 6 = 4\"\nshows  \"n = 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of all natural numbers up to 100, when divided by 6, gives a remainder of 4. What is the value of n? The final answer is 100.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8803366433691635,
+        "symbolic_score": 0.1
+    },
+    "equivalence_oracle_solve_direct": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+    ],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the sum of the integers from 1 to 100. We are asked to find the remainder when n is divided by 6. The theorem claims that the remainder is 4.",
+        "semantic_score": 0.8016851690157714,
+        "symbolic_score": 0.9
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider a natural number n, which is the sum of the integers from 1 to 100 (inclusive). Determine the remainder when n is divided by 6. The remainder should be 4.",
+        "semantic_score": 0.842607711533001,
+        "symbolic_score": 0.9
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that we have a natural number n, which is the sum of all the numbers from 1 to 100. We need to find the remainder when n is divided by 6. The theorem claims that the remainder will be 4.",
+        "semantic_score": 0.7959629606766224,
+        "symbolic_score": 0.9
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the sum of the integers from 1 to 100. We are asked to find the remainder when n is divided by 6. The theorem asserts that the remainder is 4.",
+        "semantic_score": 0.7965481578969204,
+        "symbolic_score": 0.9
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that we have a natural number n, which is the sum of the integers from 1 to 100. We need to find the remainder when n is divided by 6. The theorem asserts that the remainder is 4. In simpler terms, if you add up all the numbers from 1 to 100 and then divide the total by 6, the remainder you get is 4.",
+        "semantic_score": 0.7965731598837332,
+        "symbolic_score": 0.9
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider the sum of all natural numbers from 1 to 100, inclusive. Find the remainder when this sum is divided by 6. Prove that the remainder is 4.",
+        "semantic_score": 0.8402803451319905,
+        "symbolic_score": 0.9
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the sum of all integers from 1 to 100. We need to find the remainder when n is divided by 6. According to the theorem, the remainder is 4.",
+        "semantic_score": 0.806118215495781,
+        "symbolic_score": 0.9
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider the sum of all natural numbers from 1 to 100, inclusive. We denote this sum as n. Prove that when n is divided by 6, the remainder is 4.",
+        "semantic_score": 0.8260671916023582,
+        "symbolic_score": 0.9
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 1 + 2 + 3 + 4 + ... + 98 + 99 + 100\"\nshows  \"n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider the sum of all natural numbers from 1 to 100, inclusive. What is the remainder when this sum is divided by 6? The remainder is 4.",
+        "semantic_score": 0.8526430320264371,
+        "symbolic_score": 0.9
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nand h1 : \"summation (1::nat) n mod 6 = 4\"\nshows  \"summation (1::nat) n mod 6 = 4\"",
+        "formal solution": "(* ### Problem\n What is the modulo $6$ remainder of the sum $1+2+3+4+\\dots+98+99+100?$ The final Answer is $4$\n ### Proof\n Instead of adding up the sum and finding the residue, we can find the residue of each number to make computation easier.\n\nEach group of 6 numbers would have the sum of residues $1+2+3+4+5+0 \\equiv 15 \\equiv 3 \\pmod6$.\n\nThere are $\\left\\lfloor\\frac{100}{6}\\right\\rfloor=16$ sets of $6$ numbers. This leaves the numbers $97,98,99,$ and $100$, which have the residues $1,2,3,$ and $4$. Adding together all the residues, we have $3 \\cdot 16 + 1+2+3+4 \\equiv 58 \\equiv 4 \\pmod6$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nand h1 : \"summation (1::nat) n mod 6 = 4\"\nshows  \"summation (1::nat) n mod 6 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that given a natural number n equal to 100, and the sum of all natural numbers from 1 to n modulo 6 equals 4, then the sum of all natural numbers from 1 to n modulo 6 indeed equals 4.\n\nIn natural language, this can be translated to:\n\n\"Consider a natural number n, which is equal to 100. If the sum of all natural numbers from 1 to 100, when divided by 6, leaves a remainder of 4, then it is true that the sum of all natural numbers from 1 to 100, when divided by 6, leaves a remainder of 4.\"",
+        "semantic_score": 0.7954734623186739,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+        ],
+        "1": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": []
+}

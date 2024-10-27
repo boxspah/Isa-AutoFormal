@@ -1,0 +1,599 @@
+{
+    "problem_name": "mathd_numbertheory_457",
+    "informal_statement": "What is the least positive integer $n$ such that $80325$ divides $n!$? Show that it is 17.",
+    "informal_proof": "We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"n > 0\"\nshows  \"n \\<ge> 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"n > 0\"\nshows  \"n \\<ge> 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $80325$ divides the factorial of $n$ (denoted as $n!$). The final answer is $n \\geq 17$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8748310208320618,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and div_factor :: nat\nassumes h0 : \"div_factor = 80325\"\nand h1 : \"n! dvd div_factor\"\nand h2 : \"\\<forall>m < n. \\<not> (m! dvd div_factor)\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat and div_factor :: nat\nassumes h0 : \"div_factor = 80325\"\nand h1 : \"n! dvd div_factor\"\nand h2 : \"\\<forall>m < n. \\<not> (m! dvd div_factor)\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest natural number $n$ such that $n!$ divides 80,325, and no larger factorial divides it. The final answer is 17.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.797112762928009,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. fact n = (if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall> n. 80325 dvd fact n\"\nshows  \"LEAST n. 80325 dvd fact n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. fact n = (if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall> n. 80325 dvd fact n\"\nshows  \"LEAST n. 80325 dvd fact n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $80325$ divides the factorial of $n$. The final answer is $17$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8424851894378662,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact = (\\<lambda>n. if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall> k. k > 0 \\<longrightarrow> 80325 dvd fact k\"\nshows  \"LEAST n. n > 0 \\<and> 80325 dvd fact n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact = (\\<lambda>n. if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall> k. k > 0 \\<longrightarrow> 80325 dvd fact k\"\nshows  \"LEAST n. n > 0 \\<and> 80325 dvd fact n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that the factorial of $n$ is divisible by 80,325. The final answer is 17.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8428052067756653,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"n > 0\"\nshows  \"\\<forall> m < n. m > 0 \\<longrightarrow> \\<not> (80325 dvd (fact m))\"\nand \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"n > 0\"\nshows  \"\\<forall> m < n. m > 0 \\<longrightarrow> \\<not> (80325 dvd (fact m))\"\nand \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $80325$ divides $n!$. The final answer is $n=17$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9055665731430054,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact n = (\\<Prod>i=1..n. i)\"\nand h1 : \"80325 dvd fact n\"\nand h2 : \"n \\<ge> 1\"\nshows  \"n = (LEAST n. 80325 dvd fact n)\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact n = (\\<Prod>i=1..n. i)\"\nand h1 : \"80325 dvd fact n\"\nand h2 : \"n \\<ge> 1\"\nshows  \"n = (LEAST n. 80325 dvd fact n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest natural number $n$ such that $80325$ divides the factorial of $n$, denoted by $n!$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.42769676446914673,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"\\<forall> m < n. \\<not> (80325 dvd (fact m))\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"\\<forall> m < n. \\<not> (80325 dvd (fact m))\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $80325$ divides $n!$ (factorial of $n$) and does not divide the factorial of any smaller positive integer. The final answer is $17$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9398042559623718,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and fact_n :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. fact_n n = fact n\"\nand h1 : \"80325 dvd fact_n n\"\nshows  \"n \\<ge> 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat and fact_n :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. fact_n n = fact n\"\nand h1 : \"80325 dvd fact_n n\"\nshows  \"n \\<ge> 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest natural number $n$ such that $80325$ is a divisor of the factorial of $n$? The final answer is $n \\geq 17$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9888520240783691,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"\\<forall> m. m < n \\<longrightarrow> \\<not> (80325 dvd (fact m))\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"\\<forall> m. m < n \\<longrightarrow> \\<not> (80325 dvd (fact m))\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $80325$ is a divisor of $n!$, but not a divisor of the factorial of any smaller integer. The final answer is $n = 17$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8991081118583679,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat and factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. factorial n = prod (\\<lambda>i. i) {1 .. n}\"\nand h1 : \"80325 dvd factorial n\"\nand h2 : \"\\<forall> m. m > 0 \\<and> m < n \\<longrightarrow> \\<not> (80325 dvd factorial m)\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat and factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. factorial n = prod (\\<lambda>i. i) {1 .. n}\"\nand h1 : \"80325 dvd factorial n\"\nand h2 : \"\\<forall> m. m > 0 \\<and> m < n \\<longrightarrow> \\<not> (80325 dvd factorial m)\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $80325$ divides $n!$, where $n!$ represents the factorial of $n$. The final answer is $17$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.956093430519104,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes n :: nat\nassumes \"0 < n\"\nand \"80325 dvd (fact n)\"\nshows \"17 \\<le> n\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "equivalence_oracle": [
+        7
+    ],
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"80325 dvd fact n\"\nshows  \"17 \\<le> n\" and \"\\<forall> m. 17 \\<le> m \\<longrightarrow> 80325 dvd fact m\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"80325 dvd fact n\"\nshows  \"17 \\<le> n\" and \"\\<forall> m. 17 \\<le> m \\<longrightarrow> 80325 dvd fact m\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest integer $n$ such that $80,325$ divides $n!$. Also, show that for any integer $m$ greater than or equal to $17$, $80,325$ divides $m!$.",
+        "semantic_score": 0.6984355298221331,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\n  fixes n :: nat\n  assumes h0 : \"80325 dvd fact n\"\nshows  \"17 \\<le> n\" and \"n \\<le> 17\" and \"\\<forall> k. 17 \\<le> k \\<longrightarrow> 80325 dvd fact k\" and \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\n  fixes n :: nat\n  assumes h0 : \"80325 dvd fact n\"\nshows  \"17 \\<le> n\" and \"n \\<le> 17\" and \"\\<forall> k. 17 \\<le> k \\<longrightarrow> 80325 dvd fact k\" and \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest positive integer $n$ such that $80325$ divides $n!$? The answer is $n = 17$. Additionally, prove that for all integers $k \\geq 17$, $80325$ divides $k!$.",
+        "semantic_score": 0.9863777193199046,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\n  fixes n :: nat\n  assumes h0 : \"80325 dvd fact n\"\nshows  \"17 \\<le> n\" \"n < 18\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\n  fixes n :: nat\n  assumes h0 : \"80325 dvd fact n\"\nshows  \"17 \\<le> n\" \"n < 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest integer $n$ such that $80325$ divides $n!$? The answer is that $n$ is between $17$ (inclusive) and $18$ (exclusive).",
+        "semantic_score": 0.9870233948014606,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\n  fixes n :: nat\n  assumes h0 : \"80325 dvd fact n\"\nshows  \"n \\<ge> 17\"\n    and \"n < 18\" \n    and \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\n  fixes n :: nat\n  assumes h0 : \"80325 dvd fact n\"\nshows  \"n \\<ge> 17\"\n    and \"n < 18\" \n    and \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest natural number $n$ such that $80325$ divides $n!$. The value of $n$ is $17$.",
+        "semantic_score": 0.6227850311682778,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\n  fixes n :: nat\n  assumes h0 : \"80325 dvd fact n\"\nshows  \"n \\<ge> 17 \\<and> n - 1 < 17 \\<and> 80325 dvd fact 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\n  fixes n :: nat\n  assumes h0 : \"80325 dvd fact n\"\nshows  \"n \\<ge> 17 \\<and> n - 1 < 17 \\<and> 80325 dvd fact 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest integer $n$ such that $80325$ divides $n!$, where $n$ is at least $17$ but less than $18$. The final answer is that $80325$ divides $17!$.",
+        "semantic_score": 0.9249924817076827,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"80325 dvd fact n\"\nshows  \"17 \\<le> n\" and \"n \\<le> 18\" and \"\\<not> 80325 dvd fact (n - 1)\" and \"\\<not> 80325 dvd fact (n + 1)\" and \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"80325 dvd fact n\"\nshows  \"17 \\<le> n\" and \"n \\<le> 18\" and \"\\<not> 80325 dvd fact (n - 1)\" and \"\\<not> 80325 dvd fact (n + 1)\" and \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest natural number $n$ such that $80325$ divides $n!$? The answer is $n=17$. Additionally, $n$ must satisfy the conditions that $17\\le n\\le 18$, $80325$ does not divide $(n-1)!$ and $80325$ does not divide $(n+1)!$.",
+        "semantic_score": 0.9882858463493615,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"80325 dvd fact n\"\nshows  \"17 \\<le> n\" and \"n \\<le> 18\" and \"80325 dvd fact 17\" and \"\\<not> 80325 dvd fact 16\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"80325 dvd fact n\"\nshows  \"17 \\<le> n\" and \"n \\<le> 18\" and \"80325 dvd fact 17\" and \"\\<not> 80325 dvd fact 16\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest positive integer $n$ such that $80325$ divides $n!$? The answer is that $n$ must be between $17$ and $18$, inclusive. Furthermore, $80325$ divides $17!$, but it does not divide $16!$.",
+        "semantic_score": 0.9518913303852904,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"80325 dvd fact n\"\nshows  \"n \\<ge> 17\" \nand \"n-1 \\<notin> {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16}\"\nand \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"80325 dvd fact n\"\nshows  \"n \\<ge> 17\" \nand \"n-1 \\<notin> {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16}\"\nand \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest natural number $n$ such that $80325$ divides $n!$? The answer is $17$.",
+        "semantic_score": 0.990961769357548,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"80325 dvd fact n\"\nshows  \"17 \\<le> n\" and \"\\<forall> m. 17 \\<le> m \\<longrightarrow> 80325 dvd fact m\" and \"n \\<le> 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"80325 dvd fact n\"\nshows  \"17 \\<le> n\" and \"\\<forall> m. 17 \\<le> m \\<longrightarrow> 80325 dvd fact m\" and \"n \\<le> 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest natural number $n$ such that $80325$ divides $n!$? Also, find all natural numbers $m$ greater than or equal to $17$ such that $80325$ divides $m!$. Finally, determine the largest such $n$.",
+        "semantic_score": 0.9477030634396617,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nassumes h0 : \"80325 dvd fact n\"\nand h1 : \"n > 0\"\nshows  \"n \\<ge> 17\" and \"\\<forall> m < 17. \\<not> 80325 dvd fact m\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nassumes h0 : \"80325 dvd fact n\"\nand h1 : \"n > 0\"\nshows  \"n \\<ge> 17\" and \"\\<forall> m < 17. \\<not> 80325 dvd fact m\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest positive integer $n$ such that $80325$ divides $n!$? Additionally, prove that $80325$ does not divide any $m!$ for $m < 17$.",
+        "semantic_score": 0.9641672978634834,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\" and p :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>m. 80325 \\<|> m! = T\"\nand h1 : \"\\<forall>n. n! = \\<Product> i. 1 \\<LE> i \\<AND> i \\<LE> n\"\nshows  \"17 = \\<min> { n | 80325 \\<|> n! }\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: \"nat\" and p :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>m. 80325 \\<|> m! = T\"\nand h1 : \"\\<forall>n. n! = \\<Product> i. 1 \\<LE> i \\<AND> i \\<LE> n\"\nshows  \"17 = \\<min> { n | 80325 \\<|> n! }\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $n!$ appears as a factor in the expansion of $80325!$ exactly $17$ times. The final answer is the desired integer."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\" and p :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"80325 = p (factorial n)\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: \"nat\" and p :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"80325 = p (factorial n)\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the value of $n$ such that $80325$ is equal to the factorial of $n$? The final Answer is $17$."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\" and P :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> k. 80325 \\<|> k \\<Longrightarrow> P k\"\nand h1 : \"\\<forall> k. P k \\<Longrightarrow> k! = 0 mod 80325\"\nand h2 : \"\\<exists> n. (\\<forall> m. m \\<Nle> n \\<Longrightarrow> ~P m) \\<and> P n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: \"nat\" and P :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> k. 80325 \\<|> k \\<Longrightarrow> P k\"\nand h1 : \"\\<forall> k. P k \\<Longrightarrow> k! = 0 mod 80325\"\nand h2 : \"\\<exists> n. (\\<forall> m. m \\<Nle> n \\<Longrightarrow> ~P m) \\<and> P n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $80325$ does not divide any of the $n-1$ smaller integers, but $80325$ divides $n!$. The final answer is $17$."
+    },
+    "a_3_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\" and fact :: \"nat \\<Rightarrow> nat\" and p :: \"nat \\<Rightarrow> nat \\<Rightarrow> bool\"\nassumes h0 : \"fact 0 = 1\"\nand h1 : \"\\<forall> n. fact n = \\<Product> i. 1 \\<leq> i \\<and> i \\<leq> n\"\nand h2 : \"p 80325 n <-> (\\<exists> m. fact m = n \\<and> 80325 \\<div> m)\"\nshows  \"\\<exists> n. 80325 \\<div> fact n \\<and> n \\<ge> 0\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: \"nat\" and fact :: \"nat \\<Rightarrow> nat\" and p :: \"nat \\<Rightarrow> nat \\<Rightarrow> bool\"\nassumes h0 : \"fact 0 = 1\"\nand h1 : \"\\<forall> n. fact n = \\<Product> i. 1 \\<leq> i \\<and> i \\<leq> n\"\nand h2 : \"p 80325 n <-> (\\<exists> m. fact m = n \\<and> 80325 \\<div> m)\"\nshows  \"\\<exists> n. 80325 \\<div> fact n \\<and> n \\<ge> 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a natural number $n$ such that $80,325$ is divisible by $fact(n)$, where $fact(0) = 1$ and $fact(n) = \\prod\\_{i=1}^n i$. In other words, find the factorial of a number that makes $80,325$ a multiple of it."
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\" and p :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"80325 = p (factorial n)\"\nand h1 : \"\\<forall> m. factorial m = \\<If> m = 0 \\<then> 1 \\<else> m * (factorial (m-1))\"\nand h2 : \"\\<forall> m. 0 < m \\<Longrightarrow> p (factorial m) \\<Vs> 0\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: \"nat\" and p :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"80325 = p (factorial n)\"\nand h1 : \"\\<forall> m. factorial m = \\<If> m = 0 \\<then> 1 \\<else> m * (factorial (m-1))\"\nand h2 : \"\\<forall> m. 0 < m \\<Longrightarrow> p (factorial m) \\<Vs> 0\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $80,325$ is equal to the factorial of some natural number $n$, and the factorial of a natural number $m$ is defined as $m! = m \\cdot (m-1)!$ for $m > 0$ and $0! = 1$, find the value of $n$. The final answer is $17$.\""
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\" and fact :: \"nat \\<Rightarrow> nat\" and i :: \"nat\"\nassumes h0 : \"\\<forall> n. fact n = \\<Product> i. 1 + i < n\"\nshows  \"1 + 16 * 17 = n\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: \"nat\" and fact :: \"nat \\<Rightarrow> nat\" and i :: \"nat\"\nassumes h0 : \"\\<forall> n. fact n = \\<Product> i. 1 + i < n\"\nshows  \"1 + 16 * 17 = n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a natural number $n$ such that $n$ is the product of all positive integers less than $n$. The final answer is $1 + 16 \\times 17$. (This is not a correct answer, but the Isabelle theorem does not guarantee that the answer is unique or even a finite number.)"
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\" and p :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>k. p k = k!\"\nand h1 : \" and divisibility : \"\nshows  n = 17\nproof (induct n)\n  assume n = 0\n  then show False by (auto, contradiction)\nnext\n  assume n = S m and i : \"80325 \\<|> p m\"\n  then show \"80325 \\<|> p (S m)\" by (auto, simp, auto, rule [fact, divisibility])\nqed\n\n(* This theorem states that 80325 divides the factorial of any integer n greater than or equal to 17 *)\nlemma divisibility : \"80325 \\<|> p n\" for n :: \"nat\" when \"n >= 17\"\nproof (induct n)\n  assume n = 17\n  then show True by (auto, simp)\nnext\n  assume n = S m and i : \"80325 \\<|> p m\"\n  then show \"80325 \\<|> p (S m)\" by (auto, simp, auto, rule [fact])\nqed\n\n(* This fact states that n! is the product of all integers from 1 to n *)\nfact :: \"nat \\<Rightarrow> nat\"\nfixes k :: nat\nfact k = k!\n\n(* This fact states that the factorial of a number is the product of all integers from 1 to that number *)\nlemma fact : \"\\<forall>k. p k = k!\"\nproof (induct k)\n  assume k = 0\n  then show 1 = 1 by (auto, simp)\nnext\n  assume k = S m\n  then show \"(p k) = (p m) * (S m)\" by (auto, simp, auto, rule [fact, mult_zero, mult_succ])\nqed\n\n(* This lemma states that any number greater than or equal to 17 is a multiple of 80325 *)\nlemma divisibility : \"80325 \\<|> p n\" for n :: \"nat\" when \"n >= 17\"\nproof (induct n)\n  assume n = 17\n  then show True by (auto, simp)\nnext\n  assume n = S m and i : \"80325 \\<|> p m\"\n  then show \"80325 \\<|> p (S m)\" by (auto, simp, auto, rule [fact, mult_zero, mult_succ, i])\nqed\n\n(* This theorem finds the least positive integer n such that 80325 divides n! *)\ntheorem least_integer : \"(\\<exists> n. 80325 \\<|> p n) \\<longrightarrow> n = 17\"\nproof (cases \"80325 \\<|> p 16\")\n  assume true\n  then show False by (auto, contradiction)\nnext\n  assume false\n  then show n = 17 by (auto, simp, rule [fact])\nqed\n\n(* This theorem states that 80325 does not divide 16! *)\nlemma not_divides_16 : \"\\<neg> (80325 \\<|",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: \"nat\" and p :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>k. p k = k!\"\nand h1 : \" and divisibility : \"\nshows  n = 17\nproof (induct n)\n  assume n = 0\n  then show False by (auto, contradiction)\nnext\n  assume n = S m and i : \"80325 \\<|> p m\"\n  then show \"80325 \\<|> p (S m)\" by (auto, simp, auto, rule [fact, divisibility])\nqed\n\n(* This theorem states that 80325 divides the factorial of any integer n greater than or equal to 17 *)\nlemma divisibility : \"80325 \\<|> p n\" for n :: \"nat\" when \"n >= 17\"\nproof (induct n)\n  assume n = 17\n  then show True by (auto, simp)\nnext\n  assume n = S m and i : \"80325 \\<|> p m\"\n  then show \"80325 \\<|> p (S m)\" by (auto, simp, auto, rule [fact])\nqed\n\n(* This fact states that n! is the product of all integers from 1 to n *)\nfact :: \"nat \\<Rightarrow> nat\"\nfixes k :: nat\nfact k = k!\n\n(* This fact states that the factorial of a number is the product of all integers from 1 to that number *)\nlemma fact : \"\\<forall>k. p k = k!\"\nproof (induct k)\n  assume k = 0\n  then show 1 = 1 by (auto, simp)\nnext\n  assume k = S m\n  then show \"(p k) = (p m) * (S m)\" by (auto, simp, auto, rule [fact, mult_zero, mult_succ])\nqed\n\n(* This lemma states that any number greater than or equal to 17 is a multiple of 80325 *)\nlemma divisibility : \"80325 \\<|> p n\" for n :: \"nat\" when \"n >= 17\"\nproof (induct n)\n  assume n = 17\n  then show True by (auto, simp)\nnext\n  assume n = S m and i : \"80325 \\<|> p m\"\n  then show \"80325 \\<|> p (S m)\" by (auto, simp, auto, rule [fact, mult_zero, mult_succ, i])\nqed\n\n(* This theorem finds the least positive integer n such that 80325 divides n! *)\ntheorem least_integer : \"(\\<exists> n. 80325 \\<|> p n) \\<longrightarrow> n = 17\"\nproof (cases \"80325 \\<|> p 16\")\n  assume true\n  then show False by (auto, contradiction)\nnext\n  assume false\n  then show n = 17 by (auto, simp, rule [fact])\nqed\n\n(* This theorem states that 80325 does not divide 16! *)\nlemma not_divides_16 : \"\\<neg> (80325 \\<|\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The theorem states that there exists an integer $n$ such that $80325$ is a factor of $n!$, and this number $n$ is equal to $17$.\n\nThe proof proceeds by induction on the natural number $n$. The base case is when $n=17$, in which case it is proven that $80325$ is a factor of $17!$ (which is $1$ by definition).\n\nThe inductive step assumes that $80325$ is a factor of $(n-1)!$ and then proves that it is a factor of $n!$. This is done using the multiplication property of factorials and the induction hypothesis.\n\nThe theorem is important because it states that $80325$ is a factor of any factorial starting from the factorial of $17$. This can be useful for various mathematical or computational applications.\n\nHowever, it is important to note that this theorem is not true for smaller values of $n$. For example, $80325$ is not a factor of $16!$ (as can be proven using a counterexample, such as $n=16$ in the theorem's negation)."
+    },
+    "a_7_mistral": {
+        "formal problem": " theorem\nfixes n :: \"nat\" and p :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. p x = x!\"\nshows  n = 17\n\nThis theorem states that the function p defined as the factorial function, and the number 17 is the least positive integer that has 80325 as a divisor of its factorial.",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: \"nat\" and p :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. p x = x!\"\nshows  n = 17\n\nThis theorem states that the function p defined as the factorial function, and the number 17 is the least positive integer that has 80325 as a divisor of its factorial.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ whose factorial is divisible by $80325$. The final answer is $17$."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\" and P :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> m. 80325 \\<|> m! = T <=> m = Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc 0)))))))))))))\"\nshows  \"(\\<exists> n. P n) = T\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: \"nat\" and P :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> m. 80325 \\<|> m! = T <=> m = Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc (Suc 0)))))))))))))\"\nshows  \"(\\<exists> n. P n) = T\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $n$ for which the proposition $P(n)$ is true. The final answer is the successor of the successor of the successor of the successor of the successor of the successor of the successor of the successor of the successor of the successor of the successor of the successor of $0$. In other words, the answer is the twelfth successor of $0$."
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes n :: \"nat\" and fact :: \"nat \\<Rightarrow> nat\" and p :: \"nat \\<Rightarrow> nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> m n. m divides n \\<longrightarrow> fact m \\<le> fact n\"\nshows  \"\\<exists> n. p 80325 n \\<and> n = fact n\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: \"nat\" and fact :: \"nat \\<Rightarrow> nat\" and p :: \"nat \\<Rightarrow> nat \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> m n. m divides n \\<longrightarrow> fact m \\<le> fact n\"\nshows  \"\\<exists> n. p 80325 n \\<and> n = fact n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a natural number $n$ such that $80325$ is divisible by it and $n$ is less than or equal to its prime factor $n$. In other words, find a prime factor $n$ of $80325$. The final answer is not explicitly stated in the problem, but it would be the found value of $n$."
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n, which is greater than 0, and the number 80,325 divides the factorial of n. The theorem shows that in this case, n must be equal to 17.\n\nIn natural language, the problem can be stated as follows:\n\nFind a natural number n greater than 0 such that the factorial of n is divisible by 80,325. The solution to this problem is that n must be equal to 17."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that $n$ is a positive natural number and $80325$ is a divisor of the factorial of $n$, find the value of $n$. The solution is $n = 17$."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\n\"Prove that if a natural number n is greater than 0 and 80325 divides the factorial of n, then n must be equal to 17.\""
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n greater than 0, and the number 80325 divides the factorial of n. The theorem claims that the only possible value for n in this case is 17.\n\nIn natural language, the problem can be stated as:\n\nFind a natural number n greater than 0 such that the factorial of n is divisible by 80325. Prove that the only possible value for n is 17."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n greater than 0, and the number 80325 is a divisor of the factorial of n. The theorem shows that in this case, the value of n must be 17.\n\nIn natural language, the problem can be stated as follows:\n\nFind a natural number n greater than 0 such that the factorial of n is divisible by 80325. Prove that the only possible value for n in this case is 17."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n, which is greater than 0. It is given that the number 80,325 divides the factorial of n (i.e., the product of all positive integers up to n). The theorem claims that the only value of n that satisfies these conditions is 17.\n\nIn natural language, the problem can be stated as:\n\n\"Find a natural number n greater than 0 such that the number 80,325 is a divisor of the factorial of n (the product of all positive integers up to n). Prove that the only solution for n is 17.\""
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n, which is greater than 0. It is also given that the number 80325 is a divisor of the factorial of n. The theorem then concludes that n must be equal to 17.\n\nIn natural language, the problem can be stated as follows:\n\nFind a natural number n that is greater than 0, such that the factorial of n is divisible by 80325. The solution to this problem is n = 17."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n greater than 0, and the number 80,325 divides the factorial of n. The theorem shows that in this case, the value of n must be 17.\n\nIn natural language, the problem can be stated as follows:\n\nFind a natural number n greater than 0 such that the factorial of n is divisible by 80,325. The solution to this problem is that n must be equal to 17."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that there is a theorem about a natural number n, which is greater than 0 (h0). It is also given that the number 80,325 divides the factorial of n (h1). The theorem concludes that n must be equal to 17.\n\nIn natural language, the problem can be stated as:\n\n\"Prove that for a natural number n greater than 0, if the number 80,325 divides the factorial of n, then n must be equal to 17.\""
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider a natural number n that is greater than 0. If the number 80,325 is a divisor of the factorial of n (denoted as \"fact n\"), then the value of n must be 17."
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"n > 0\"\nshows  \"n \\<ge> 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"n > 0\"\nshows  \"n \\<ge> 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $80325$ divides the factorial of $n$ (denoted as $n!$). The final answer is $n \\geq 17$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9402145743998241,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and div_factor :: nat\nassumes h0 : \"div_factor = 80325\"\nand h1 : \"n! dvd div_factor\"\nand h2 : \"\\<forall>m < n. \\<not> (m! dvd div_factor)\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat and div_factor :: nat\nassumes h0 : \"div_factor = 80325\"\nand h1 : \"n! dvd div_factor\"\nand h2 : \"\\<forall>m < n. \\<not> (m! dvd div_factor)\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest natural number $n$ such that $n!$ divides 80,325, and no larger factorial divides it. The final answer is 17.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9057793846820926,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. fact n = (if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall> n. 80325 dvd fact n\"\nshows  \"LEAST n. 80325 dvd fact n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. fact n = (if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall> n. 80325 dvd fact n\"\nshows  \"LEAST n. 80325 dvd fact n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $80325$ divides the factorial of $n$. The final answer is $17$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9420875040172283,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact = (\\<lambda>n. if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall> k. k > 0 \\<longrightarrow> 80325 dvd fact k\"\nshows  \"LEAST n. n > 0 \\<and> 80325 dvd fact n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact = (\\<lambda>n. if n = 0 then 1 else n * fact (n - 1))\"\nand h1 : \"\\<forall> k. k > 0 \\<longrightarrow> 80325 dvd fact k\"\nshows  \"LEAST n. n > 0 \\<and> 80325 dvd fact n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that the factorial of $n$ is divisible by 80,325. The final answer is 17.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9243944666244879,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"n > 0\"\nshows  \"\\<forall> m < n. m > 0 \\<longrightarrow> \\<not> (80325 dvd (fact m))\"\nand \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"n > 0\"\nshows  \"\\<forall> m < n. m > 0 \\<longrightarrow> \\<not> (80325 dvd (fact m))\"\nand \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $80325$ divides $n!$. The final answer is $n=17$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.96014508947156,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact n = (\\<Prod>i=1..n. i)\"\nand h1 : \"80325 dvd fact n\"\nand h2 : \"n \\<ge> 1\"\nshows  \"n = (LEAST n. 80325 dvd fact n)\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat and fact :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"fact n = (\\<Prod>i=1..n. i)\"\nand h1 : \"80325 dvd fact n\"\nand h2 : \"n \\<ge> 1\"\nshows  \"n = (LEAST n. 80325 dvd fact n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest natural number $n$ such that $80325$ divides the factorial of $n$, denoted by $n!$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8875772833348939,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"\\<forall> m < n. \\<not> (80325 dvd (fact m))\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"\\<forall> m < n. \\<not> (80325 dvd (fact m))\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $80325$ divides $n!$ (factorial of $n$) and does not divide the factorial of any smaller positive integer. The final answer is $17$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9450691206313101,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and fact_n :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. fact_n n = fact n\"\nand h1 : \"80325 dvd fact_n n\"\nshows  \"n \\<ge> 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat and fact_n :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. fact_n n = fact n\"\nand h1 : \"80325 dvd fact_n n\"\nshows  \"n \\<ge> 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the smallest natural number $n$ such that $80325$ is a divisor of the factorial of $n$? The final answer is $n \\geq 17$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9197336189675349,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"\\<forall> m. m < n \\<longrightarrow> \\<not> (80325 dvd (fact m))\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"80325 dvd (fact n)\"\nand h1 : \"\\<forall> m. m < n \\<longrightarrow> \\<not> (80325 dvd (fact m))\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $80325$ is a divisor of $n!$, but not a divisor of the factorial of any smaller integer. The final answer is $n = 17$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9381168395103402,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. factorial n = prod (\\<lambda>i. i) {1 .. n}\"\nand h1 : \"80325 dvd factorial n\"\nand h2 : \"\\<forall> m. m > 0 \\<and> m < n \\<longrightarrow> \\<not> (80325 dvd factorial m)\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\ntheorem\nfixes n :: nat and factorial :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. factorial n = prod (\\<lambda>i. i) {1 .. n}\"\nand h1 : \"80325 dvd factorial n\"\nand h2 : \"\\<forall> m. m > 0 \\<and> m < n \\<longrightarrow> \\<not> (80325 dvd factorial m)\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $n$ such that $80325$ divides $n!$, where $n!$ represents the factorial of $n$. The final answer is $17$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9430791637420263,
+        "symbolic_score": 0.1
+    },
+    "equivalence_oracle_solve_direct": [
+        7
+    ],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n, which is greater than 0, and the number 80,325 divides the factorial of n. The theorem shows that in this case, n must be equal to 17.\n\nIn natural language, the problem can be stated as follows:\n\nFind a natural number n greater than 0 such that the factorial of n is divisible by 80,325. The solution to this problem is that n must be equal to 17.",
+        "semantic_score": 0.7683945837332293,
+        "symbolic_score": 1.0
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that $n$ is a positive natural number and $80325$ is a divisor of the factorial of $n$, find the value of $n$. The solution is $n = 17$.",
+        "semantic_score": 0.8820716769131834,
+        "symbolic_score": 1.0
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\n\"Prove that if a natural number n is greater than 0 and 80325 divides the factorial of n, then n must be equal to 17.\"",
+        "semantic_score": 0.8264931576646846,
+        "symbolic_score": 1.0
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n greater than 0, and the number 80325 divides the factorial of n. The theorem claims that the only possible value for n in this case is 17.\n\nIn natural language, the problem can be stated as:\n\nFind a natural number n greater than 0 such that the factorial of n is divisible by 80325. Prove that the only possible value for n is 17.",
+        "semantic_score": 0.7773744383386013,
+        "symbolic_score": 1.0
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n greater than 0, and the number 80325 is a divisor of the factorial of n. The theorem shows that in this case, the value of n must be 17.\n\nIn natural language, the problem can be stated as follows:\n\nFind a natural number n greater than 0 such that the factorial of n is divisible by 80325. Prove that the only possible value for n in this case is 17.",
+        "semantic_score": 0.7751928798643385,
+        "symbolic_score": 1.0
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n, which is greater than 0. It is given that the number 80,325 divides the factorial of n (i.e., the product of all positive integers up to n). The theorem claims that the only value of n that satisfies these conditions is 17.\n\nIn natural language, the problem can be stated as:\n\n\"Find a natural number n greater than 0 such that the number 80,325 is a divisor of the factorial of n (the product of all positive integers up to n). Prove that the only solution for n is 17.\"",
+        "semantic_score": 0.7586286875780084,
+        "symbolic_score": 1.0
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n, which is greater than 0. It is also given that the number 80325 is a divisor of the factorial of n. The theorem then concludes that n must be equal to 17.\n\nIn natural language, the problem can be stated as follows:\n\nFind a natural number n that is greater than 0, such that the factorial of n is divisible by 80325. The solution to this problem is n = 17.",
+        "semantic_score": 0.7591940201536416,
+        "symbolic_score": 1.0
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number n greater than 0, and the number 80,325 divides the factorial of n. The theorem shows that in this case, the value of n must be 17.\n\nIn natural language, the problem can be stated as follows:\n\nFind a natural number n greater than 0 such that the factorial of n is divisible by 80,325. The solution to this problem is that n must be equal to 17.",
+        "semantic_score": 0.7752750964688209,
+        "symbolic_score": 1.0
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that there is a theorem about a natural number n, which is greater than 0 (h0). It is also given that the number 80,325 divides the factorial of n (h1). The theorem concludes that n must be equal to 17.\n\nIn natural language, the problem can be stated as:\n\n\"Prove that for a natural number n greater than 0, if the number 80,325 divides the factorial of n, then n must be equal to 17.\"",
+        "semantic_score": 0.7880016036681398,
+        "symbolic_score": 1.0
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"",
+        "formal solution": "(* ### Problem\n What is the least positive integer $n$ such that $80325$ divides $n!$? The final Answer is $17$\n ### Proof\n We find the prime factorization of $80325$, which is $3^3 \\cdot 5^2 \\cdot 7 \\cdot 17$. The largest prime in the factorization is $17$, so $n$ is at least 17. Since there are three factors of $3$, two factors of $5$, and one factor of $7$ in the prime factorization of $17!$, the minimum value of $n$ is $17$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"80325 dvd fact n\"\nshows  \"n = 17\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider a natural number n that is greater than 0. If the number 80,325 is a divisor of the factorial of n (denoted as \"fact n\"), then the value of n must be 17.",
+        "semantic_score": 0.8337638733319082,
+        "symbolic_score": 1.0
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": []
+}

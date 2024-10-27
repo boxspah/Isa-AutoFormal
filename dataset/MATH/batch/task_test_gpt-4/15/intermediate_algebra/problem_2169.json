@@ -1,0 +1,150 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = log ((x - 2) / (x powr 2 - 5))\"\nand h1 : \"x \\<in> UNIV - f -` UNIV\"\nshows  \"x = sqrt 5\"",
+        "formal solution": "(* ### Problem\n What is the largest possible value not in the domain of $\\log\\frac{x-2}{x^2-5}$? The final Answer is \\sqrt 5\n ### Proof\n In order for $\\dfrac{x-2}{x^2-5}$ to be defined, we must have $x^2 - 5 \\not = 0$.\n So, $x \\not = \\pm \\sqrt 5$. In order for $\\log \\dfrac{x-2}{x^2-5}$ to be defined, we must have $\\dfrac{x-2}{x^2 - 5} > 0$. There are two cases to consider: when $x^2 - 5 > 0$ and when $x^2 - 5 < 0$. Case 1: $x^2 - 5 > 0$.\n Since $x^2 - 5 > 0$, we have that $x < -\\sqrt{5}$ or $x > \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have $x -2 > 0$, or $x > 2$.\n Combining all of these facts, we must have $x > \\sqrt 5$. Case 2: $x^2 - 5 < 0$. Since $x^2 - 5 < 0$, we have that $-\\sqrt 5 < x < \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have that $x - 2 < 0$, or $x < 2$.\n Combining all of these facts, we must have $-\\sqrt 5 < x < 2$.\n So, we must have $-\\sqrt 5 < x < 2$ or $x > \\sqrt 5$. (We can also write this as $x = (-\\sqrt 5 , 2) \\cup (\\sqrt 5, \\infty)$.) The largest value not in the domain is therefore $\\boxed{\\sqrt 5}$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = log ((x - 2) / (x powr 2 - 5))\"\nand h1 : \"x \\<in> UNIV - f -` UNIV\"\nshows  \"x = sqrt 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $x$ such that $x$ is not in the preimage of the function $f(x) = \\log\\left(\\frac{x-2}{x^2-5}\\right)$. The final answer is $\\sqrt{5}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9687371253967285,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = ln ((x - 2) / (x powr 2 - 5))\"\nand h1 : \"x \\<notin> dom f\"\nshows  \"x = sqrt 5\"",
+        "formal solution": "(* ### Problem\n What is the largest possible value not in the domain of $\\log\\frac{x-2}{x^2-5}$? The final Answer is \\sqrt 5\n ### Proof\n In order for $\\dfrac{x-2}{x^2-5}$ to be defined, we must have $x^2 - 5 \\not = 0$.\n So, $x \\not = \\pm \\sqrt 5$. In order for $\\log \\dfrac{x-2}{x^2-5}$ to be defined, we must have $\\dfrac{x-2}{x^2 - 5} > 0$. There are two cases to consider: when $x^2 - 5 > 0$ and when $x^2 - 5 < 0$. Case 1: $x^2 - 5 > 0$.\n Since $x^2 - 5 > 0$, we have that $x < -\\sqrt{5}$ or $x > \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have $x -2 > 0$, or $x > 2$.\n Combining all of these facts, we must have $x > \\sqrt 5$. Case 2: $x^2 - 5 < 0$. Since $x^2 - 5 < 0$, we have that $-\\sqrt 5 < x < \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have that $x - 2 < 0$, or $x < 2$.\n Combining all of these facts, we must have $-\\sqrt 5 < x < 2$.\n So, we must have $-\\sqrt 5 < x < 2$ or $x > \\sqrt 5$. (We can also write this as $x = (-\\sqrt 5 , 2) \\cup (\\sqrt 5, \\infty)$.) The largest value not in the domain is therefore $\\boxed{\\sqrt 5}$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = ln ((x - 2) / (x powr 2 - 5))\"\nand h1 : \"x \\<notin> dom f\"\nshows  \"x = sqrt 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = ln \\left(\\frac{x - 2}{x^2 - 5}\\right)$, find the value of $x$ for which $x$ is not in the domain of $f$. The final answer is $\\sqrt{5}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7632238268852234,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = log (x - 2) / (x powr 2 - 5)\"\nand h1 : \"\\<exists> x. x \\<notin> UNIV - {x. f x is defined}\"\nshows  \"GREATEST x. x \\<notin> UNIV - {x. f x is defined} = sqrt 5\"",
+        "formal solution": "(* ### Problem\n What is the largest possible value not in the domain of $\\log\\frac{x-2}{x^2-5}$? The final Answer is \\sqrt 5\n ### Proof\n In order for $\\dfrac{x-2}{x^2-5}$ to be defined, we must have $x^2 - 5 \\not = 0$.\n So, $x \\not = \\pm \\sqrt 5$. In order for $\\log \\dfrac{x-2}{x^2-5}$ to be defined, we must have $\\dfrac{x-2}{x^2 - 5} > 0$. There are two cases to consider: when $x^2 - 5 > 0$ and when $x^2 - 5 < 0$. Case 1: $x^2 - 5 > 0$.\n Since $x^2 - 5 > 0$, we have that $x < -\\sqrt{5}$ or $x > \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have $x -2 > 0$, or $x > 2$.\n Combining all of these facts, we must have $x > \\sqrt 5$. Case 2: $x^2 - 5 < 0$. Since $x^2 - 5 < 0$, we have that $-\\sqrt 5 < x < \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have that $x - 2 < 0$, or $x < 2$.\n Combining all of these facts, we must have $-\\sqrt 5 < x < 2$.\n So, we must have $-\\sqrt 5 < x < 2$ or $x > \\sqrt 5$. (We can also write this as $x = (-\\sqrt 5 , 2) \\cup (\\sqrt 5, \\infty)$.) The largest value not in the domain is therefore $\\boxed{\\sqrt 5}$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = log (x - 2) / (x powr 2 - 5)\"\nand h1 : \"\\<exists> x. x \\<notin> UNIV - {x. f x is defined}\"\nshows  \"GREATEST x. x \\<notin> UNIV - {x. f x is defined} = sqrt 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest $x$ for which the function $f(x) = \\frac{log(x - 2)}{x^2 - 5}$ is defined. The final answer is $\\sqrt{5}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8815252780914307,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = log (x - 2) / (x powr 2 - 5)\"\nand h1 : \"\\<not> (\\<exists> x. f x = undefined)\"\nshows  \"sqrt 5 = (GREATEST x. x \\<notin> UNIV)\"",
+        "formal solution": "(* ### Problem\n What is the largest possible value not in the domain of $\\log\\frac{x-2}{x^2-5}$? The final Answer is \\sqrt 5\n ### Proof\n In order for $\\dfrac{x-2}{x^2-5}$ to be defined, we must have $x^2 - 5 \\not = 0$.\n So, $x \\not = \\pm \\sqrt 5$. In order for $\\log \\dfrac{x-2}{x^2-5}$ to be defined, we must have $\\dfrac{x-2}{x^2 - 5} > 0$. There are two cases to consider: when $x^2 - 5 > 0$ and when $x^2 - 5 < 0$. Case 1: $x^2 - 5 > 0$.\n Since $x^2 - 5 > 0$, we have that $x < -\\sqrt{5}$ or $x > \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have $x -2 > 0$, or $x > 2$.\n Combining all of these facts, we must have $x > \\sqrt 5$. Case 2: $x^2 - 5 < 0$. Since $x^2 - 5 < 0$, we have that $-\\sqrt 5 < x < \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have that $x - 2 < 0$, or $x < 2$.\n Combining all of these facts, we must have $-\\sqrt 5 < x < 2$.\n So, we must have $-\\sqrt 5 < x < 2$ or $x > \\sqrt 5$. (We can also write this as $x = (-\\sqrt 5 , 2) \\cup (\\sqrt 5, \\infty)$.) The largest value not in the domain is therefore $\\boxed{\\sqrt 5}$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = log (x - 2) / (x powr 2 - 5)\"\nand h1 : \"\\<not> (\\<exists> x. f x = undefined)\"\nshows  \"sqrt 5 = (GREATEST x. x \\<notin> UNIV)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = \\frac{log(x - 2)}{x^2 - 5}$ that is defined for all real numbers $x$, find the greatest $x$ that does not belong to the set of all real numbers. The final answer is $\\sqrt{5}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9026570916175842,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = log (x - 2) / (x powr 2 - 5)\"\nand h1 : \"x \\<in> UNIV - {sqrt 5}\"\nshows  \"f x < f (sqrt 5)\"",
+        "formal solution": "(* ### Problem\n What is the largest possible value not in the domain of $\\log\\frac{x-2}{x^2-5}$? The final Answer is \\sqrt 5\n ### Proof\n In order for $\\dfrac{x-2}{x^2-5}$ to be defined, we must have $x^2 - 5 \\not = 0$.\n So, $x \\not = \\pm \\sqrt 5$. In order for $\\log \\dfrac{x-2}{x^2-5}$ to be defined, we must have $\\dfrac{x-2}{x^2 - 5} > 0$. There are two cases to consider: when $x^2 - 5 > 0$ and when $x^2 - 5 < 0$. Case 1: $x^2 - 5 > 0$.\n Since $x^2 - 5 > 0$, we have that $x < -\\sqrt{5}$ or $x > \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have $x -2 > 0$, or $x > 2$.\n Combining all of these facts, we must have $x > \\sqrt 5$. Case 2: $x^2 - 5 < 0$. Since $x^2 - 5 < 0$, we have that $-\\sqrt 5 < x < \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have that $x - 2 < 0$, or $x < 2$.\n Combining all of these facts, we must have $-\\sqrt 5 < x < 2$.\n So, we must have $-\\sqrt 5 < x < 2$ or $x > \\sqrt 5$. (We can also write this as $x = (-\\sqrt 5 , 2) \\cup (\\sqrt 5, \\infty)$.) The largest value not in the domain is therefore $\\boxed{\\sqrt 5}$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = log (x - 2) / (x powr 2 - 5)\"\nand h1 : \"x \\<in> UNIV - {sqrt 5}\"\nshows  \"f x < f (sqrt 5)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = \\frac{\\log(x - 2)}{x^2 - 5}$ defined for all $x$ except $\\sqrt{5}$, prove that for any $x$, $f(x)$ is less than $f(\\sqrt{5})$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.4569917321205139,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"\\<exists>x. x \\<notin> {x. x \\<ge> 2 \\<and> x \\<noteq> sqrt 5 \\<and> x \\<noteq> - sqrt 5}\"\nshows  \"GREATEST x. x \\<notin> {x. x \\<ge> 2 \\<and> x \\<noteq> sqrt 5 \\<and> x \\<noteq> - sqrt 5} = sqrt 5\"",
+        "formal solution": "(* ### Problem\n What is the largest possible value not in the domain of $\\log\\frac{x-2}{x^2-5}$? The final Answer is \\sqrt 5\n ### Proof\n In order for $\\dfrac{x-2}{x^2-5}$ to be defined, we must have $x^2 - 5 \\not = 0$.\n So, $x \\not = \\pm \\sqrt 5$. In order for $\\log \\dfrac{x-2}{x^2-5}$ to be defined, we must have $\\dfrac{x-2}{x^2 - 5} > 0$. There are two cases to consider: when $x^2 - 5 > 0$ and when $x^2 - 5 < 0$. Case 1: $x^2 - 5 > 0$.\n Since $x^2 - 5 > 0$, we have that $x < -\\sqrt{5}$ or $x > \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have $x -2 > 0$, or $x > 2$.\n Combining all of these facts, we must have $x > \\sqrt 5$. Case 2: $x^2 - 5 < 0$. Since $x^2 - 5 < 0$, we have that $-\\sqrt 5 < x < \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have that $x - 2 < 0$, or $x < 2$.\n Combining all of these facts, we must have $-\\sqrt 5 < x < 2$.\n So, we must have $-\\sqrt 5 < x < 2$ or $x > \\sqrt 5$. (We can also write this as $x = (-\\sqrt 5 , 2) \\cup (\\sqrt 5, \\infty)$.) The largest value not in the domain is therefore $\\boxed{\\sqrt 5}$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"\\<exists>x. x \\<notin> {x. x \\<ge> 2 \\<and> x \\<noteq> sqrt 5 \\<and> x \\<noteq> - sqrt 5}\"\nshows  \"GREATEST x. x \\<notin> {x. x \\<ge> 2 \\<and> x \\<noteq> sqrt 5 \\<and> x \\<noteq> - sqrt 5} = sqrt 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the greatest possible value of $x$ that is not greater than or equal to 2 and is not equal to the square root of 5 or the negative square root of 5. The final answer is the square root of 5.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8672041296958923,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x :: real and logf :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. logf x = ln ((x - 2) / (x powr 2 - 5))\"\nand h1 : \"\\<exists> x. x \\<notin> UNIV - {x. x powr 2 - 5 = 0}\"\nshows  \"sqrt 5 = (GREATEST x. x \\<notin> UNIV - {x. x powr 2 - 5 = 0})\"",
+        "formal solution": "(* ### Problem\n What is the largest possible value not in the domain of $\\log\\frac{x-2}{x^2-5}$? The final Answer is \\sqrt 5\n ### Proof\n In order for $\\dfrac{x-2}{x^2-5}$ to be defined, we must have $x^2 - 5 \\not = 0$.\n So, $x \\not = \\pm \\sqrt 5$. In order for $\\log \\dfrac{x-2}{x^2-5}$ to be defined, we must have $\\dfrac{x-2}{x^2 - 5} > 0$. There are two cases to consider: when $x^2 - 5 > 0$ and when $x^2 - 5 < 0$. Case 1: $x^2 - 5 > 0$.\n Since $x^2 - 5 > 0$, we have that $x < -\\sqrt{5}$ or $x > \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have $x -2 > 0$, or $x > 2$.\n Combining all of these facts, we must have $x > \\sqrt 5$. Case 2: $x^2 - 5 < 0$. Since $x^2 - 5 < 0$, we have that $-\\sqrt 5 < x < \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have that $x - 2 < 0$, or $x < 2$.\n Combining all of these facts, we must have $-\\sqrt 5 < x < 2$.\n So, we must have $-\\sqrt 5 < x < 2$ or $x > \\sqrt 5$. (We can also write this as $x = (-\\sqrt 5 , 2) \\cup (\\sqrt 5, \\infty)$.) The largest value not in the domain is therefore $\\boxed{\\sqrt 5}$.\n *)\n\ntheorem\nfixes x :: real and logf :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. logf x = ln ((x - 2) / (x powr 2 - 5))\"\nand h1 : \"\\<exists> x. x \\<notin> UNIV - {x. x powr 2 - 5 = 0}\"\nshows  \"sqrt 5 = (GREATEST x. x \\<notin> UNIV - {x. x powr 2 - 5 = 0})\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a logarithmic function $logf(x) = ln\\left(\\frac{x - 2}{x^2 - 5}\\right)$, find the greatest $x$ that is not a solution to the equation $x^2 - 5 = 0$. The final answer is $\\sqrt{5}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9166779518127441,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x \\<noteq> 2\"\nand h1 : \"x \\<noteq> sqrt 5\"\nand h2 : \"x \\<noteq> - sqrt 5\"\nshows  \"sqrt 5 = (GREATEST a. \\<exists> x. x \\<noteq> a)\"",
+        "formal solution": "(* ### Problem\n What is the largest possible value not in the domain of $\\log\\frac{x-2}{x^2-5}$? The final Answer is \\sqrt 5\n ### Proof\n In order for $\\dfrac{x-2}{x^2-5}$ to be defined, we must have $x^2 - 5 \\not = 0$.\n So, $x \\not = \\pm \\sqrt 5$. In order for $\\log \\dfrac{x-2}{x^2-5}$ to be defined, we must have $\\dfrac{x-2}{x^2 - 5} > 0$. There are two cases to consider: when $x^2 - 5 > 0$ and when $x^2 - 5 < 0$. Case 1: $x^2 - 5 > 0$.\n Since $x^2 - 5 > 0$, we have that $x < -\\sqrt{5}$ or $x > \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have $x -2 > 0$, or $x > 2$.\n Combining all of these facts, we must have $x > \\sqrt 5$. Case 2: $x^2 - 5 < 0$. Since $x^2 - 5 < 0$, we have that $-\\sqrt 5 < x < \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have that $x - 2 < 0$, or $x < 2$.\n Combining all of these facts, we must have $-\\sqrt 5 < x < 2$.\n So, we must have $-\\sqrt 5 < x < 2$ or $x > \\sqrt 5$. (We can also write this as $x = (-\\sqrt 5 , 2) \\cup (\\sqrt 5, \\infty)$.) The largest value not in the domain is therefore $\\boxed{\\sqrt 5}$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x \\<noteq> 2\"\nand h1 : \"x \\<noteq> sqrt 5\"\nand h2 : \"x \\<noteq> - sqrt 5\"\nshows  \"sqrt 5 = (GREATEST a. \\<exists> x. x \\<noteq> a)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the greatest value of $x$ different from 2, $\\sqrt{5}$, and $-\\sqrt{5}$. The final answer is $\\sqrt{5}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8059403300285339,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x :: real and log :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. x \u2260 0 \\<longrightarrow> log x = ln x / ln (exp 1)\"\nand h1 : \"x \u2260 2\"\nand h2 : \"x \u2260 sqrt 5\"\nshows  \"log ((x - 2) / (x powr 2 - 5)) is undefined\"",
+        "formal solution": "(* ### Problem\n What is the largest possible value not in the domain of $\\log\\frac{x-2}{x^2-5}$? The final Answer is \\sqrt 5\n ### Proof\n In order for $\\dfrac{x-2}{x^2-5}$ to be defined, we must have $x^2 - 5 \\not = 0$.\n So, $x \\not = \\pm \\sqrt 5$. In order for $\\log \\dfrac{x-2}{x^2-5}$ to be defined, we must have $\\dfrac{x-2}{x^2 - 5} > 0$. There are two cases to consider: when $x^2 - 5 > 0$ and when $x^2 - 5 < 0$. Case 1: $x^2 - 5 > 0$.\n Since $x^2 - 5 > 0$, we have that $x < -\\sqrt{5}$ or $x > \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have $x -2 > 0$, or $x > 2$.\n Combining all of these facts, we must have $x > \\sqrt 5$. Case 2: $x^2 - 5 < 0$. Since $x^2 - 5 < 0$, we have that $-\\sqrt 5 < x < \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have that $x - 2 < 0$, or $x < 2$.\n Combining all of these facts, we must have $-\\sqrt 5 < x < 2$.\n So, we must have $-\\sqrt 5 < x < 2$ or $x > \\sqrt 5$. (We can also write this as $x = (-\\sqrt 5 , 2) \\cup (\\sqrt 5, \\infty)$.) The largest value not in the domain is therefore $\\boxed{\\sqrt 5}$.\n *)\n\ntheorem\nfixes x :: real and log :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. x \u2260 0 \\<longrightarrow> log x = ln x / ln (exp 1)\"\nand h1 : \"x \u2260 2\"\nand h2 : \"x \u2260 sqrt 5\"\nshows  \"log ((x - 2) / (x powr 2 - 5)) is undefined\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For which values of x is the logarithm of $\\frac{x - 2}{x^2 - 5}$ undefined? The final answer is $x \u2260 2$ and $x \u2260 \\sqrt{5}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8681526780128479,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"x \u2260 sqrt 5\"\nand h1 : \"\\<forall> x. x \u2260 sqrt 5 \\<longrightarrow> f x = ln ((x - 2) / (x powr 2 - 5))\"\nshows  \"sqrt 5 = (GREATEST a. \\<not> (\\<exists> x. a = f x))\"",
+        "formal solution": "(* ### Problem\n What is the largest possible value not in the domain of $\\log\\frac{x-2}{x^2-5}$? The final Answer is \\sqrt 5\n ### Proof\n In order for $\\dfrac{x-2}{x^2-5}$ to be defined, we must have $x^2 - 5 \\not = 0$.\n So, $x \\not = \\pm \\sqrt 5$. In order for $\\log \\dfrac{x-2}{x^2-5}$ to be defined, we must have $\\dfrac{x-2}{x^2 - 5} > 0$. There are two cases to consider: when $x^2 - 5 > 0$ and when $x^2 - 5 < 0$. Case 1: $x^2 - 5 > 0$.\n Since $x^2 - 5 > 0$, we have that $x < -\\sqrt{5}$ or $x > \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have $x -2 > 0$, or $x > 2$.\n Combining all of these facts, we must have $x > \\sqrt 5$. Case 2: $x^2 - 5 < 0$. Since $x^2 - 5 < 0$, we have that $-\\sqrt 5 < x < \\sqrt 5$.\n From $\\dfrac{x-2}{x^2 - 5} > 0$, we have that $x - 2 < 0$, or $x < 2$.\n Combining all of these facts, we must have $-\\sqrt 5 < x < 2$.\n So, we must have $-\\sqrt 5 < x < 2$ or $x > \\sqrt 5$. (We can also write this as $x = (-\\sqrt 5 , 2) \\cup (\\sqrt 5, \\infty)$.) The largest value not in the domain is therefore $\\boxed{\\sqrt 5}$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"x \u2260 sqrt 5\"\nand h1 : \"\\<forall> x. x \u2260 sqrt 5 \\<longrightarrow> f x = ln ((x - 2) / (x powr 2 - 5))\"\nshows  \"sqrt 5 = (GREATEST a. \\<not> (\\<exists> x. a = f x))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the largest value, a, that is not equal to the natural logarithm of the function $f(x) = \\ln\\left(\\frac{x-2}{x^2-5}\\right)$, where $x$ is not equal to the square root of $5$. The final answer is $\\sqrt{5}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8176429867744446,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "\\sqrt 5",
+    "natural problem": "What is the largest possible value not in the domain of $\\log\\frac{x-2}{x^2-5}$?",
+    "natural solution": [
+        "In order for $\\dfrac{x-2}{x^2-5}$ to be defined, we must have $x^2 - 5 \\not = 0$.",
+        "So, $x \\not = \\pm \\sqrt 5$. In order for $\\log \\dfrac{x-2}{x^2-5}$ to be defined, we must have $\\dfrac{x-2}{x^2 - 5} > 0$. There are two cases to consider: when $x^2 - 5 > 0$ and when $x^2 - 5 < 0$. Case 1: $x^2 - 5 > 0$.",
+        "Since $x^2 - 5 > 0$, we have that $x < -\\sqrt{5}$ or $x > \\sqrt 5$.",
+        "From $\\dfrac{x-2}{x^2 - 5} > 0$, we have $x -2 > 0$, or $x > 2$.",
+        "Combining all of these facts, we must have $x > \\sqrt 5$. Case 2: $x^2 - 5 < 0$. Since $x^2 - 5 < 0$, we have that $-\\sqrt 5 < x < \\sqrt 5$.",
+        "From $\\dfrac{x-2}{x^2 - 5} > 0$, we have that $x - 2 < 0$, or $x < 2$.",
+        "Combining all of these facts, we must have $-\\sqrt 5 < x < 2$.",
+        "So, we must have $-\\sqrt 5 < x < 2$ or $x > \\sqrt 5$. (We can also write this as $x = (-\\sqrt 5 , 2) \\cup (\\sqrt 5, \\infty)$.) The largest value not in the domain is therefore $\\boxed{\\sqrt 5}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 2",
+    "type": "Intermediate Algebra"
+}

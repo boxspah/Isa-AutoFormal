@@ -1,0 +1,124 @@
+{
+    "problem_name": "imo_1977_p5",
+    "informal_statement": "Let $a,b$ be two natural numbers. When we divide $a^2+b^2$ by $a+b$, we the the remainder $r$ and the quotient $q.$ Determine all pairs $(a, b)$ for which $q^2 + r = 1977.$ Show that it is (a,b)=(37,50) , (7, 50).",
+    "informal_proof": "Using $r=1977-q^2$, we have $a^2+b^2=(a+b)q+1977-q^2$, or $q^2-(a+b)q+a^2+b^2-1977=0$, which implies $\\Delta=7908+2ab-2(a^2+b^2)\\ge 0$. If we now assume Wlog that $a\\ge b$, it follows $a+b\\le 88$. If $q\\le 43$, then $r=1977-q^2\\ge 128$, contradicting $r<a+b\\le 88$. But $q\\le 44$ from $q^2+r=1977$, thus $q=44$. It follows $r=41$, and we get $a^2+b^2=44(a+b)+41\\Leftrightarrow (a-22)^2+(b-22)^2=1009\\in \\mathbb{P}$. By Jacobi's two squares theorem, we infer that $15^2+28^2=1009$ is the only representation of $1009$ as a sum of squares. This forces $(a,b)=(37,50) , (7, 50)$, and permutations. $\\blacksquare$",
+    "a_0": {
+        "formal problem": "theorem\nfixes a b q r :: nat\nassumes h0 : \"(a^2 + b^2) div (a + b) = q\"\nand h1 : \"(a^2 + b^2) mod (a + b) = r\"\nand h2 : \"q^2 + r = 1977\"\nshows  \"(a,b) = (37,50) \\<or> (a,b) = (50,37) \\<or> (a,b) = (7,50) \\<or> (a,b) = (50,7)\"",
+        "formal solution": "(* ### Problem\n Let $a,b$ be two natural numbers. When we divide $a^2+b^2$ by $a+b$, we the the remainder $r$ and the quotient $q.$ Determine all pairs $(a, b)$ for which $q^2 + r = 1977.$ Show that it is (a,b)=(37,50) , (7, 50).\n ### Proof\n Using $r=1977-q^2$, we have $a^2+b^2=(a+b)q+1977-q^2$, or $q^2-(a+b)q+a^2+b^2-1977=0$, which implies $\\Delta=7908+2ab-2(a^2+b^2)\\ge 0$. If we now assume Wlog that $a\\ge b$, it follows $a+b\\le 88$. If $q\\le 43$, then $r=1977-q^2\\ge 128$, contradicting $r<a+b\\le 88$. But $q\\le 44$ from $q^2+r=1977$, thus $q=44$. It follows $r=41$, and we get $a^2+b^2=44(a+b)+41\\Leftrightarrow (a-22)^2+(b-22)^2=1009\\in \\mathbb{P}$. By Jacobi's two squares theorem, we infer that $15^2+28^2=1009$ is the only representation of $1009$ as a sum of squares. This forces $(a,b)=(37,50) , (7, 50)$, and permutations. $\\blacksquare$\n *)\n\ntheorem\nfixes a b q r :: nat\nassumes h0 : \"(a^2 + b^2) div (a + b) = q\"\nand h1 : \"(a^2 + b^2) mod (a + b) = r\"\nand h2 : \"q^2 + r = 1977\"\nshows  \"(a,b) = (37,50) \\<or> (a,b) = (50,37) \\<or> (a,b) = (7,50) \\<or> (a,b) = (50,7)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the two natural numbers $a$ and $b$ for which the quotient $q$ when $a^2 + b^2$ is divided by $a + b$, and the remainder $r$ when $a^2 + b^2$ is divided by $a + b$, satisfy the equation $q^2 + r = 1977$. The possible pairs of $(a, b)$ are $(37, 50)$, $(50, 37)$, $(7, 50)$, or $(50, 7)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8852698802947998,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b q r :: nat\nassumes h0 : \"a^2 + b^2 = (a + b) * q + r\"\nand h1 : \"q^2 + r = 1977\"\nshows  \"(a, b) = (37, 50) \\<or> (a, b) = (7, 50)\"",
+        "formal solution": "(* ### Problem\n Let $a,b$ be two natural numbers. When we divide $a^2+b^2$ by $a+b$, we the the remainder $r$ and the quotient $q.$ Determine all pairs $(a, b)$ for which $q^2 + r = 1977.$ Show that it is (a,b)=(37,50) , (7, 50).\n ### Proof\n Using $r=1977-q^2$, we have $a^2+b^2=(a+b)q+1977-q^2$, or $q^2-(a+b)q+a^2+b^2-1977=0$, which implies $\\Delta=7908+2ab-2(a^2+b^2)\\ge 0$. If we now assume Wlog that $a\\ge b$, it follows $a+b\\le 88$. If $q\\le 43$, then $r=1977-q^2\\ge 128$, contradicting $r<a+b\\le 88$. But $q\\le 44$ from $q^2+r=1977$, thus $q=44$. It follows $r=41$, and we get $a^2+b^2=44(a+b)+41\\Leftrightarrow (a-22)^2+(b-22)^2=1009\\in \\mathbb{P}$. By Jacobi's two squares theorem, we infer that $15^2+28^2=1009$ is the only representation of $1009$ as a sum of squares. This forces $(a,b)=(37,50) , (7, 50)$, and permutations. $\\blacksquare$\n *)\n\ntheorem\nfixes a b q r :: nat\nassumes h0 : \"a^2 + b^2 = (a + b) * q + r\"\nand h1 : \"q^2 + r = 1977\"\nshows  \"(a, b) = (37, 50) \\<or> (a, b) = (7, 50)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two natural numbers $a$ and $b$ that satisfy the system of equations $a^2 + b^2 = (a + b)q + r$ and $q^2 + r = 1977$. The possible solutions are $(a, b) = (37, 50)$ or $(a, b) = (7, 50)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9838381409645081,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a b q r :: nat\nassumes h0 : \"a^2 + b^2 = q * (a + b) + r\"\nand h1 : \"q^2 + r = 1977\"\nshows  \"((a, b) = (37, 50)) \\<or> ((a, b) = (50, 37)) \\<or> ((a, b) = (7, 50)) \\<or> ((a, b) = (50, 7))\"",
+        "formal solution": "(* ### Problem\n Let $a,b$ be two natural numbers. When we divide $a^2+b^2$ by $a+b$, we the the remainder $r$ and the quotient $q.$ Determine all pairs $(a, b)$ for which $q^2 + r = 1977.$ Show that it is (a,b)=(37,50) , (7, 50).\n ### Proof\n Using $r=1977-q^2$, we have $a^2+b^2=(a+b)q+1977-q^2$, or $q^2-(a+b)q+a^2+b^2-1977=0$, which implies $\\Delta=7908+2ab-2(a^2+b^2)\\ge 0$. If we now assume Wlog that $a\\ge b$, it follows $a+b\\le 88$. If $q\\le 43$, then $r=1977-q^2\\ge 128$, contradicting $r<a+b\\le 88$. But $q\\le 44$ from $q^2+r=1977$, thus $q=44$. It follows $r=41$, and we get $a^2+b^2=44(a+b)+41\\Leftrightarrow (a-22)^2+(b-22)^2=1009\\in \\mathbb{P}$. By Jacobi's two squares theorem, we infer that $15^2+28^2=1009$ is the only representation of $1009$ as a sum of squares. This forces $(a,b)=(37,50) , (7, 50)$, and permutations. $\\blacksquare$\n *)\n\ntheorem\nfixes a b q r :: nat\nassumes h0 : \"a^2 + b^2 = q * (a + b) + r\"\nand h1 : \"q^2 + r = 1977\"\nshows  \"((a, b) = (37, 50)) \\<or> ((a, b) = (50, 37)) \\<or> ((a, b) = (7, 50)) \\<or> ((a, b) = (50, 7))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a pair of positive integers $(a, b)$ such that $a^2 + b^2$ equals $q(a + b) + r$, where $q^2 + r = 1977$. The possible solutions for $(a, b)$ are: $(37, 50)$, $(50, 37)$, $(7, 50)$, or $(50, 7)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9502162933349609,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a b r q :: nat\nassumes h0 : \"a \\<ge> 1\"\nand h1 : \"b \\<ge> 1\"\nand h2 : \"a^2 + b^2 = (a + b) * q + r\"\nand h3 : \"q^2 + r = 1977\"\nshows  \"(a, b) = (37, 50) \\<or> (a, b) = (7, 50)\"",
+        "formal solution": "(* ### Problem\n Let $a,b$ be two natural numbers. When we divide $a^2+b^2$ by $a+b$, we the the remainder $r$ and the quotient $q.$ Determine all pairs $(a, b)$ for which $q^2 + r = 1977.$ Show that it is (a,b)=(37,50) , (7, 50).\n ### Proof\n Using $r=1977-q^2$, we have $a^2+b^2=(a+b)q+1977-q^2$, or $q^2-(a+b)q+a^2+b^2-1977=0$, which implies $\\Delta=7908+2ab-2(a^2+b^2)\\ge 0$. If we now assume Wlog that $a\\ge b$, it follows $a+b\\le 88$. If $q\\le 43$, then $r=1977-q^2\\ge 128$, contradicting $r<a+b\\le 88$. But $q\\le 44$ from $q^2+r=1977$, thus $q=44$. It follows $r=41$, and we get $a^2+b^2=44(a+b)+41\\Leftrightarrow (a-22)^2+(b-22)^2=1009\\in \\mathbb{P}$. By Jacobi's two squares theorem, we infer that $15^2+28^2=1009$ is the only representation of $1009$ as a sum of squares. This forces $(a,b)=(37,50) , (7, 50)$, and permutations. $\\blacksquare$\n *)\n\ntheorem\nfixes a b r q :: nat\nassumes h0 : \"a \\<ge> 1\"\nand h1 : \"b \\<ge> 1\"\nand h2 : \"a^2 + b^2 = (a + b) * q + r\"\nand h3 : \"q^2 + r = 1977\"\nshows  \"(a, b) = (37, 50) \\<or> (a, b) = (7, 50)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two natural numbers $a$ and $b$ such that $a \\geq 1$, $b \\geq 1$ and their squares sum to a certain number which is equal to $(a + b)$ times another number $q$ plus a remainder $r$, such that $q^2 + r = 1977$. What are the possible values of $a$ and $b$? The final answer is $(a, b) = (37, 50)$ or $(a, b) = (7, 50)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.683355987071991,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b q r :: nat\nassumes h0 : \"(a * a + b * b) div (a + b) = q\"\nand h1 : \"(a * a + b * b) mod (a + b) = r\"\nand h2 : \"q * q + r = 1977\"\nshows  \"(a, b) = (37, 50) \\<or> (a, b) = (50, 37) \\<or> (a, b) = (7, 50) \\<or> (a, b) = (50, 7)\"",
+        "formal solution": "(* ### Problem\n Let $a,b$ be two natural numbers. When we divide $a^2+b^2$ by $a+b$, we the the remainder $r$ and the quotient $q.$ Determine all pairs $(a, b)$ for which $q^2 + r = 1977.$ Show that it is (a,b)=(37,50) , (7, 50).\n ### Proof\n Using $r=1977-q^2$, we have $a^2+b^2=(a+b)q+1977-q^2$, or $q^2-(a+b)q+a^2+b^2-1977=0$, which implies $\\Delta=7908+2ab-2(a^2+b^2)\\ge 0$. If we now assume Wlog that $a\\ge b$, it follows $a+b\\le 88$. If $q\\le 43$, then $r=1977-q^2\\ge 128$, contradicting $r<a+b\\le 88$. But $q\\le 44$ from $q^2+r=1977$, thus $q=44$. It follows $r=41$, and we get $a^2+b^2=44(a+b)+41\\Leftrightarrow (a-22)^2+(b-22)^2=1009\\in \\mathbb{P}$. By Jacobi's two squares theorem, we infer that $15^2+28^2=1009$ is the only representation of $1009$ as a sum of squares. This forces $(a,b)=(37,50) , (7, 50)$, and permutations. $\\blacksquare$\n *)\n\ntheorem\nfixes a b q r :: nat\nassumes h0 : \"(a * a + b * b) div (a + b) = q\"\nand h1 : \"(a * a + b * b) mod (a + b) = r\"\nand h2 : \"q * q + r = 1977\"\nshows  \"(a, b) = (37, 50) \\<or> (a, b) = (50, 37) \\<or> (a, b) = (7, 50) \\<or> (a, b) = (50, 7)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two natural numbers $a$ and $b$ such that when the sum of their squares is divided by their sum, the quotient $q$ and the remainder $r$ satisfy $q^2 + r = 1977$. The possible pairs for $(a, b)$ are either $(37, 50)$, $(50, 37)$, $(7, 50)$, or $(50, 7)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9774824380874634,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes a b r q :: nat\nassumes h0 : \"q = (a^2 + b^2) div (a + b)\"\nand h1 : \"r = (a^2 + b^2) mod (a + b)\"\nand h2 : \"q^2 + r = 1977\"\nshows  \"(a = 37 \\<and> b = 50) \\<or> (a = 7 \\<and> b = 50)\"",
+        "formal solution": "(* ### Problem\n Let $a,b$ be two natural numbers. When we divide $a^2+b^2$ by $a+b$, we the the remainder $r$ and the quotient $q.$ Determine all pairs $(a, b)$ for which $q^2 + r = 1977.$ Show that it is (a,b)=(37,50) , (7, 50).\n ### Proof\n Using $r=1977-q^2$, we have $a^2+b^2=(a+b)q+1977-q^2$, or $q^2-(a+b)q+a^2+b^2-1977=0$, which implies $\\Delta=7908+2ab-2(a^2+b^2)\\ge 0$. If we now assume Wlog that $a\\ge b$, it follows $a+b\\le 88$. If $q\\le 43$, then $r=1977-q^2\\ge 128$, contradicting $r<a+b\\le 88$. But $q\\le 44$ from $q^2+r=1977$, thus $q=44$. It follows $r=41$, and we get $a^2+b^2=44(a+b)+41\\Leftrightarrow (a-22)^2+(b-22)^2=1009\\in \\mathbb{P}$. By Jacobi's two squares theorem, we infer that $15^2+28^2=1009$ is the only representation of $1009$ as a sum of squares. This forces $(a,b)=(37,50) , (7, 50)$, and permutations. $\\blacksquare$\n *)\n\ntheorem\nfixes a b r q :: nat\nassumes h0 : \"q = (a^2 + b^2) div (a + b)\"\nand h1 : \"r = (a^2 + b^2) mod (a + b)\"\nand h2 : \"q^2 + r = 1977\"\nshows  \"(a = 37 \\<and> b = 50) \\<or> (a = 7 \\<and> b = 50)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the values of $a$ and $b$ such that the quotient and remainder when $a^2 + b^2$ is divided by $a + b$ are $q$ and $r$ respectively, and $q^2 + r = 1977$. The possible solutions are $(a, b) = (37, 50)$ or $(a, b) = (7, 50)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9876649379730225,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b q r :: nat\nassumes h0 : \"a \\<ge> 0\"\nand h1 : \"b \\<ge> 0\"\nand h2 : \"a + b > 0\"\nand h3 : \"q = (a powr 2 + b powr 2) div (a + b)\"\nand h4 : \"r = (a powr 2 + b powr 2) mod (a + b)\"\nand h5 : \"q powr 2 + r = 1977\"\nshows  \"(a, b) = (37, 50) \\<or> (a, b) = (7, 50)\"",
+        "formal solution": "(* ### Problem\n Let $a,b$ be two natural numbers. When we divide $a^2+b^2$ by $a+b$, we the the remainder $r$ and the quotient $q.$ Determine all pairs $(a, b)$ for which $q^2 + r = 1977.$ Show that it is (a,b)=(37,50) , (7, 50).\n ### Proof\n Using $r=1977-q^2$, we have $a^2+b^2=(a+b)q+1977-q^2$, or $q^2-(a+b)q+a^2+b^2-1977=0$, which implies $\\Delta=7908+2ab-2(a^2+b^2)\\ge 0$. If we now assume Wlog that $a\\ge b$, it follows $a+b\\le 88$. If $q\\le 43$, then $r=1977-q^2\\ge 128$, contradicting $r<a+b\\le 88$. But $q\\le 44$ from $q^2+r=1977$, thus $q=44$. It follows $r=41$, and we get $a^2+b^2=44(a+b)+41\\Leftrightarrow (a-22)^2+(b-22)^2=1009\\in \\mathbb{P}$. By Jacobi's two squares theorem, we infer that $15^2+28^2=1009$ is the only representation of $1009$ as a sum of squares. This forces $(a,b)=(37,50) , (7, 50)$, and permutations. $\\blacksquare$\n *)\n\ntheorem\nfixes a b q r :: nat\nassumes h0 : \"a \\<ge> 0\"\nand h1 : \"b \\<ge> 0\"\nand h2 : \"a + b > 0\"\nand h3 : \"q = (a powr 2 + b powr 2) div (a + b)\"\nand h4 : \"r = (a powr 2 + b powr 2) mod (a + b)\"\nand h5 : \"q powr 2 + r = 1977\"\nshows  \"(a, b) = (37, 50) \\<or> (a, b) = (7, 50)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two non-negative numbers $a$ and $b$ such that $a + b > 0$, let $q$ be the quotient and $r$ be the remainder when the sum of the squares of $a$ and $b$ is divided by the sum of $a$ and $b$. If $q^2 + r = 1977$, find the pairs of $(a, b)$. The possible solutions are $(a, b) = (37, 50)$ or $(a, b) = (7, 50)$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9483566880226135,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a b q r :: nat\nassumes h0 : \"\\<forall> a b. a \\<ge> 0 \\<and> b \\<ge> 0\"\nand h1 : \"\\<forall> a b. a * a + b * b = (a + b) * q + r\"\nand h2 : \"q * q + r = 1977\"\nshows  \"((a = 37 \\<and> b = 50) \\<or> (a = 7 \\<and> b = 50))\"",
+        "formal solution": "(* ### Problem\n Let $a,b$ be two natural numbers. When we divide $a^2+b^2$ by $a+b$, we the the remainder $r$ and the quotient $q.$ Determine all pairs $(a, b)$ for which $q^2 + r = 1977.$ Show that it is (a,b)=(37,50) , (7, 50).\n ### Proof\n Using $r=1977-q^2$, we have $a^2+b^2=(a+b)q+1977-q^2$, or $q^2-(a+b)q+a^2+b^2-1977=0$, which implies $\\Delta=7908+2ab-2(a^2+b^2)\\ge 0$. If we now assume Wlog that $a\\ge b$, it follows $a+b\\le 88$. If $q\\le 43$, then $r=1977-q^2\\ge 128$, contradicting $r<a+b\\le 88$. But $q\\le 44$ from $q^2+r=1977$, thus $q=44$. It follows $r=41$, and we get $a^2+b^2=44(a+b)+41\\Leftrightarrow (a-22)^2+(b-22)^2=1009\\in \\mathbb{P}$. By Jacobi's two squares theorem, we infer that $15^2+28^2=1009$ is the only representation of $1009$ as a sum of squares. This forces $(a,b)=(37,50) , (7, 50)$, and permutations. $\\blacksquare$\n *)\n\ntheorem\nfixes a b q r :: nat\nassumes h0 : \"\\<forall> a b. a \\<ge> 0 \\<and> b \\<ge> 0\"\nand h1 : \"\\<forall> a b. a * a + b * b = (a + b) * q + r\"\nand h2 : \"q * q + r = 1977\"\nshows  \"((a = 37 \\<and> b = 50) \\<or> (a = 7 \\<and> b = 50))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given any two non-negative integers $a$ and $b$, their squares sum up to $(a + b) * q + r$. If $q^2 + r = 1977$, find the possible values of $a$ and $b$. The possible pairs are $(37, 50)$ or $(7, 50)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9891212582588196,
+        "symbolic_score": 0.3
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a b r q :: nat\nassumes h0 : \"\\<forall> a b. a \\<noteq> 0 \\<and> b \\<noteq> 0 \\<longrightarrow> (a^2 + b^2) div (a + b) = q \\<and> (a^2 + b^2) mod (a + b) = r\"\nand h1 : \"q^2 + r = 1977\"\nshows  \"(a = 37 \\<and> b = 50) \\<or> (a = 7 \\<and> b = 50)\"",
+        "formal solution": "(* ### Problem\n Let $a,b$ be two natural numbers. When we divide $a^2+b^2$ by $a+b$, we the the remainder $r$ and the quotient $q.$ Determine all pairs $(a, b)$ for which $q^2 + r = 1977.$ Show that it is (a,b)=(37,50) , (7, 50).\n ### Proof\n Using $r=1977-q^2$, we have $a^2+b^2=(a+b)q+1977-q^2$, or $q^2-(a+b)q+a^2+b^2-1977=0$, which implies $\\Delta=7908+2ab-2(a^2+b^2)\\ge 0$. If we now assume Wlog that $a\\ge b$, it follows $a+b\\le 88$. If $q\\le 43$, then $r=1977-q^2\\ge 128$, contradicting $r<a+b\\le 88$. But $q\\le 44$ from $q^2+r=1977$, thus $q=44$. It follows $r=41$, and we get $a^2+b^2=44(a+b)+41\\Leftrightarrow (a-22)^2+(b-22)^2=1009\\in \\mathbb{P}$. By Jacobi's two squares theorem, we infer that $15^2+28^2=1009$ is the only representation of $1009$ as a sum of squares. This forces $(a,b)=(37,50) , (7, 50)$, and permutations. $\\blacksquare$\n *)\n\ntheorem\nfixes a b r q :: nat\nassumes h0 : \"\\<forall> a b. a \\<noteq> 0 \\<and> b \\<noteq> 0 \\<longrightarrow> (a^2 + b^2) div (a + b) = q \\<and> (a^2 + b^2) mod (a + b) = r\"\nand h1 : \"q^2 + r = 1977\"\nshows  \"(a = 37 \\<and> b = 50) \\<or> (a = 7 \\<and> b = 50)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two nonzero natural numbers $a$ and $b$, if the quotient and remainder when $a^2 + b^2$ is divided by $a + b$ are $q$ and $r$, respectively, and $q^2 + r = 1977$, find the possible values of $a$ and $b$. The possible pairs of values for $(a, b)$ are $(37, 50)$ or $(7, 50)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9517326951026917,
+        "symbolic_score": 0.3
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a b q r :: nat\nassumes h0 : \"q = (a\\<^sup>2 + b\\<^sup>2) div (a + b)\"\nand h1 : \"r = (a\\<^sup>2 + b\\<^sup>2) mod (a + b)\"\nand h2 : \"q\\<^sup>2 + r = 1977\"\nshows  \"((a, b) = (37,50)) \\<or> ((a, b) = (7,50))\"",
+        "formal solution": "(* ### Problem\n Let $a,b$ be two natural numbers. When we divide $a^2+b^2$ by $a+b$, we the the remainder $r$ and the quotient $q.$ Determine all pairs $(a, b)$ for which $q^2 + r = 1977.$ Show that it is (a,b)=(37,50) , (7, 50).\n ### Proof\n Using $r=1977-q^2$, we have $a^2+b^2=(a+b)q+1977-q^2$, or $q^2-(a+b)q+a^2+b^2-1977=0$, which implies $\\Delta=7908+2ab-2(a^2+b^2)\\ge 0$. If we now assume Wlog that $a\\ge b$, it follows $a+b\\le 88$. If $q\\le 43$, then $r=1977-q^2\\ge 128$, contradicting $r<a+b\\le 88$. But $q\\le 44$ from $q^2+r=1977$, thus $q=44$. It follows $r=41$, and we get $a^2+b^2=44(a+b)+41\\Leftrightarrow (a-22)^2+(b-22)^2=1009\\in \\mathbb{P}$. By Jacobi's two squares theorem, we infer that $15^2+28^2=1009$ is the only representation of $1009$ as a sum of squares. This forces $(a,b)=(37,50) , (7, 50)$, and permutations. $\\blacksquare$\n *)\n\ntheorem\nfixes a b q r :: nat\nassumes h0 : \"q = (a\\<^sup>2 + b\\<^sup>2) div (a + b)\"\nand h1 : \"r = (a\\<^sup>2 + b\\<^sup>2) mod (a + b)\"\nand h2 : \"q\\<^sup>2 + r = 1977\"\nshows  \"((a, b) = (37,50)) \\<or> ((a, b) = (7,50))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two natural numbers $a$ and $b$, let $q$ be the quotient and $r$ be the remainder when $a^2 + b^2$ is divided by $a + b$. If $q^2 + r = 1977$, find the possible values of $(a, b)$. The solution is either $(a, b) = (37,50)$ or $(a, b) = (7,50)$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8952964544296265,
+        "symbolic_score": 0.3
+    },
+    "oracle": "theorem\nfixes a b q r :: nat\nassumes h0 : \"r < a + b\"\nand h1 : \"a^2 + b^2 = (a+b) * q + r\"\nand h2 : \"q^2 + r = 1977\"\nshows \"(abs (int a - 22) = 15 \\<and> abs (int b - 22) = 28) \\<or> (abs (int a - 22) = 28 \\<and> abs (int b - 22) = 15)\"",
+    "prediction": {
+        "0": [
+            8,
+            9,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            4
+        ],
+        "6": [
+            5
+        ],
+        "7": [
+            6
+        ]
+    }
+}

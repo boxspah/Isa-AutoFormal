@@ -1,0 +1,124 @@
+{
+    "problem_name": "amc12a_2008_p4",
+    "informal_statement": "Which of the following is equal to the [[product]]\n$\\frac{8}{4}\\cdot\\frac{12}{8}\\cdot\\frac{16}{12}\\cdot\\cdots\\cdot\\frac{4n+4}{4n}\\cdot\\cdots\\cdot\\frac{2008}{2004}?$\n\n$\\textbf{(A)}\\ 251\\qquad\\textbf{(B)}\\ 502\\qquad\\textbf{(C)}\\ 1004\\qquad\\textbf{(D)}\\ 2008\\qquad\\textbf{(E)}\\ 4016$ Show that it is \\textbf{(B)}.",
+    "informal_proof": "$\\frac {8}{4}\\cdot\\frac {12}{8}\\cdot\\frac {16}{12}\\cdots\\frac {4n + 4}{4n}\\cdots\\frac {2008}{2004} = \\frac {1}{4}\\cdot\\left(\\frac {8}{8}\\cdot\\frac {12}{12}\\cdots\\frac {4n}{4n}\\cdots\\frac {2004}{2004}\\right)\\cdot 2008 = \\frac{2008}{4} =$ $502 \\Rightarrow B$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: real\nassumes h0 : \"\\<forall> n. 4 \\<le> n \\<and> n \\<le> 500. ((4*n+4)/(4*n)) = 1+1/n\"\nand h1 : \"product (\\<lambda>n. 1 + 1/n) {4..500} = 502\"\nshows  \"product (\\<lambda>n. ((4*n+4)/(4*n))) {4..500} = 502\"",
+        "formal solution": "(* ### Problem\n Which of the following is equal to the [[product]]\n$\\frac{8}{4}\\cdot\\frac{12}{8}\\cdot\\frac{16}{12}\\cdot\\cdots\\cdot\\frac{4n+4}{4n}\\cdot\\cdots\\cdot\\frac{2008}{2004}?$\n\n$\\textbf{(A)}\\ 251\\qquad\\textbf{(B)}\\ 502\\qquad\\textbf{(C)}\\ 1004\\qquad\\textbf{(D)}\\ 2008\\qquad\\textbf{(E)}\\ 4016$ Show that it is \\textbf{(B)}.\n ### Proof\n $\\frac {8}{4}\\cdot\\frac {12}{8}\\cdot\\frac {16}{12}\\cdots\\frac {4n + 4}{4n}\\cdots\\frac {2008}{2004} = \\frac {1}{4}\\cdot\\left(\\frac {8}{8}\\cdot\\frac {12}{12}\\cdots\\frac {4n}{4n}\\cdots\\frac {2004}{2004}\\right)\\cdot 2008 = \\frac{2008}{4} =$ $502 \\Rightarrow B$.\n *)\n\ntheorem\nfixes n :: real\nassumes h0 : \"\\<forall> n. 4 \\<le> n \\<and> n \\<le> 500. ((4*n+4)/(4*n)) = 1+1/n\"\nand h1 : \"product (\\<lambda>n. 1 + 1/n) {4..500} = 502\"\nshows  \"product (\\<lambda>n. ((4*n+4)/(4*n))) {4..500} = 502\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If for all real numbers $n$ in the range $[4, 500]$, the function $f(n) = \\frac{4n+4}{4n} = 1 + \\frac{1}{n}$ holds, and the product of all values $1 + \\frac{1}{n}$ from $n=4$ to $n=500$ equals $502$. What is the product of all values $\\frac{4n+4}{4n}$ from $n=4$ to $n=500$? The final answer is $502$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.963592529296875,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and S :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. S n = (4 * n + 4) / (4 * n)\"\nand h1 : \"S 502 = (\\<Prod> n \\<in> {1..502}. S n)\"\nshows  \"S 502 = 502\"",
+        "formal solution": "(* ### Problem\n Which of the following is equal to the [[product]]\n$\\frac{8}{4}\\cdot\\frac{12}{8}\\cdot\\frac{16}{12}\\cdot\\cdots\\cdot\\frac{4n+4}{4n}\\cdot\\cdots\\cdot\\frac{2008}{2004}?$\n\n$\\textbf{(A)}\\ 251\\qquad\\textbf{(B)}\\ 502\\qquad\\textbf{(C)}\\ 1004\\qquad\\textbf{(D)}\\ 2008\\qquad\\textbf{(E)}\\ 4016$ Show that it is \\textbf{(B)}.\n ### Proof\n $\\frac {8}{4}\\cdot\\frac {12}{8}\\cdot\\frac {16}{12}\\cdots\\frac {4n + 4}{4n}\\cdots\\frac {2008}{2004} = \\frac {1}{4}\\cdot\\left(\\frac {8}{8}\\cdot\\frac {12}{12}\\cdots\\frac {4n}{4n}\\cdots\\frac {2004}{2004}\\right)\\cdot 2008 = \\frac{2008}{4} =$ $502 \\Rightarrow B$.\n *)\n\ntheorem\nfixes n :: nat and S :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. S n = (4 * n + 4) / (4 * n)\"\nand h1 : \"S 502 = (\\<Prod> n \\<in> {1..502}. S n)\"\nshows  \"S 502 = 502\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a sequence $S$ defined by $S(n) = \\frac{4n+4}{4n}$ for all natural numbers $n$, find the value of the product of the first 502 terms of the sequence $S$, i.e., $\\prod_{n=1}^{502} S(n)$. The final answer is 502.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9511513113975525,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. P n = (4 * n + 4) / (4 * n)\"\nand h1 : \"finite {1..502}\"\nand h2 : \"(\\<Prod>n\\<in>{1..502}. P n) = 502\"\nshows  \"P 502 = 502\"",
+        "formal solution": "(* ### Problem\n Which of the following is equal to the [[product]]\n$\\frac{8}{4}\\cdot\\frac{12}{8}\\cdot\\frac{16}{12}\\cdot\\cdots\\cdot\\frac{4n+4}{4n}\\cdot\\cdots\\cdot\\frac{2008}{2004}?$\n\n$\\textbf{(A)}\\ 251\\qquad\\textbf{(B)}\\ 502\\qquad\\textbf{(C)}\\ 1004\\qquad\\textbf{(D)}\\ 2008\\qquad\\textbf{(E)}\\ 4016$ Show that it is \\textbf{(B)}.\n ### Proof\n $\\frac {8}{4}\\cdot\\frac {12}{8}\\cdot\\frac {16}{12}\\cdots\\frac {4n + 4}{4n}\\cdots\\frac {2008}{2004} = \\frac {1}{4}\\cdot\\left(\\frac {8}{8}\\cdot\\frac {12}{12}\\cdots\\frac {4n}{4n}\\cdots\\frac {2004}{2004}\\right)\\cdot 2008 = \\frac{2008}{4} =$ $502 \\Rightarrow B$.\n *)\n\ntheorem\nfixes n :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. P n = (4 * n + 4) / (4 * n)\"\nand h1 : \"finite {1..502}\"\nand h2 : \"(\\<Prod>n\\<in>{1..502}. P n) = 502\"\nshows  \"P 502 = 502\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $P(n) = \\frac{4n + 4}{4n}$ for all real numbers $n$. Calculate the product of $P(n)$ for all $n$ from $1$ to $502$ inclusively. If the product equals $502$, find the value of $P(502)$. The final answer is $502$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9479984045028687,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes product :: real\nassumes h0 : \"product = (\\<Prod>n=1..501. (4*n+4)/(4*n))\"\nshows  \"product = 502\"",
+        "formal solution": "(* ### Problem\n Which of the following is equal to the [[product]]\n$\\frac{8}{4}\\cdot\\frac{12}{8}\\cdot\\frac{16}{12}\\cdot\\cdots\\cdot\\frac{4n+4}{4n}\\cdot\\cdots\\cdot\\frac{2008}{2004}?$\n\n$\\textbf{(A)}\\ 251\\qquad\\textbf{(B)}\\ 502\\qquad\\textbf{(C)}\\ 1004\\qquad\\textbf{(D)}\\ 2008\\qquad\\textbf{(E)}\\ 4016$ Show that it is \\textbf{(B)}.\n ### Proof\n $\\frac {8}{4}\\cdot\\frac {12}{8}\\cdot\\frac {16}{12}\\cdots\\frac {4n + 4}{4n}\\cdots\\frac {2008}{2004} = \\frac {1}{4}\\cdot\\left(\\frac {8}{8}\\cdot\\frac {12}{12}\\cdots\\frac {4n}{4n}\\cdots\\frac {2004}{2004}\\right)\\cdot 2008 = \\frac{2008}{4} =$ $502 \\Rightarrow B$.\n *)\n\ntheorem\nfixes product :: real\nassumes h0 : \"product = (\\<Prod>n=1..501. (4*n+4)/(4*n))\"\nshows  \"product = 502\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the product of the sequence from $n=1$ to $n=501$ where each term in the sequence is $\\frac{4n+4}{4n}$. The final answer is 502.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9855303764343262,
+        "symbolic_score": 0.3
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: real\nassumes h0 : \"finite {n. 4 \\<le> n \\<and> n \\<le> 2004 \\<and> n mod 4 = 0}\"\nand h1 : \"prod (\\<lambda>n. (4*n + 4) / (4*n)) {n. 4 \\<le> n \\<and> n \\<le> 2004 \\<and> n mod 4 = 0} = 502\"\nshows  \"prod (\\<lambda>n. (4*n + 4) / (4*n)) {n. 4 \\<le> n \\<and> n \\<le> 2004 \\<and> n mod 4 = 0} = 502\"",
+        "formal solution": "(* ### Problem\n Which of the following is equal to the [[product]]\n$\\frac{8}{4}\\cdot\\frac{12}{8}\\cdot\\frac{16}{12}\\cdot\\cdots\\cdot\\frac{4n+4}{4n}\\cdot\\cdots\\cdot\\frac{2008}{2004}?$\n\n$\\textbf{(A)}\\ 251\\qquad\\textbf{(B)}\\ 502\\qquad\\textbf{(C)}\\ 1004\\qquad\\textbf{(D)}\\ 2008\\qquad\\textbf{(E)}\\ 4016$ Show that it is \\textbf{(B)}.\n ### Proof\n $\\frac {8}{4}\\cdot\\frac {12}{8}\\cdot\\frac {16}{12}\\cdots\\frac {4n + 4}{4n}\\cdots\\frac {2008}{2004} = \\frac {1}{4}\\cdot\\left(\\frac {8}{8}\\cdot\\frac {12}{12}\\cdots\\frac {4n}{4n}\\cdots\\frac {2004}{2004}\\right)\\cdot 2008 = \\frac{2008}{4} =$ $502 \\Rightarrow B$.\n *)\n\ntheorem\nfixes n :: real\nassumes h0 : \"finite {n. 4 \\<le> n \\<and> n \\<le> 2004 \\<and> n mod 4 = 0}\"\nand h1 : \"prod (\\<lambda>n. (4*n + 4) / (4*n)) {n. 4 \\<le> n \\<and> n \\<le> 2004 \\<and> n mod 4 = 0} = 502\"\nshows  \"prod (\\<lambda>n. (4*n + 4) / (4*n)) {n. 4 \\<le> n \\<and> n \\<le> 2004 \\<and> n mod 4 = 0} = 502\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider the set of all multiples of 4 between 4 and 2004 inclusive. If you multiply together the fraction (4n + 4) / (4n) for each number n in this set, the result is 502. Verify this statement.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6267969608306885,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. f n = (4 * n + 4) / (4 * n)\"\nand h1 : \"prod f {1..502} = 502\"\nshows  \"prod f {1..502} = 502\"",
+        "formal solution": "(* ### Problem\n Which of the following is equal to the [[product]]\n$\\frac{8}{4}\\cdot\\frac{12}{8}\\cdot\\frac{16}{12}\\cdot\\cdots\\cdot\\frac{4n+4}{4n}\\cdot\\cdots\\cdot\\frac{2008}{2004}?$\n\n$\\textbf{(A)}\\ 251\\qquad\\textbf{(B)}\\ 502\\qquad\\textbf{(C)}\\ 1004\\qquad\\textbf{(D)}\\ 2008\\qquad\\textbf{(E)}\\ 4016$ Show that it is \\textbf{(B)}.\n ### Proof\n $\\frac {8}{4}\\cdot\\frac {12}{8}\\cdot\\frac {16}{12}\\cdots\\frac {4n + 4}{4n}\\cdots\\frac {2008}{2004} = \\frac {1}{4}\\cdot\\left(\\frac {8}{8}\\cdot\\frac {12}{12}\\cdots\\frac {4n}{4n}\\cdots\\frac {2004}{2004}\\right)\\cdot 2008 = \\frac{2008}{4} =$ $502 \\Rightarrow B$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. f n = (4 * n + 4) / (4 * n)\"\nand h1 : \"prod f {1..502} = 502\"\nshows  \"prod f {1..502} = 502\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(n) = \\frac{4n+4}{4n}$ for all natural numbers $n$, and the product of $f(n)$ for $n$ from $1$ to $502$ is $502$. What is the value of this product? The final answer is $502$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9923930168151855,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. f n = (4 * n + 4) / (4 * n)\"\nand h1 : \"prod f {1..502} = 502\"\nshows  \"prod f {1..2004} = 502\"",
+        "formal solution": "(* ### Problem\n Which of the following is equal to the [[product]]\n$\\frac{8}{4}\\cdot\\frac{12}{8}\\cdot\\frac{16}{12}\\cdot\\cdots\\cdot\\frac{4n+4}{4n}\\cdot\\cdots\\cdot\\frac{2008}{2004}?$\n\n$\\textbf{(A)}\\ 251\\qquad\\textbf{(B)}\\ 502\\qquad\\textbf{(C)}\\ 1004\\qquad\\textbf{(D)}\\ 2008\\qquad\\textbf{(E)}\\ 4016$ Show that it is \\textbf{(B)}.\n ### Proof\n $\\frac {8}{4}\\cdot\\frac {12}{8}\\cdot\\frac {16}{12}\\cdots\\frac {4n + 4}{4n}\\cdots\\frac {2008}{2004} = \\frac {1}{4}\\cdot\\left(\\frac {8}{8}\\cdot\\frac {12}{12}\\cdots\\frac {4n}{4n}\\cdots\\frac {2004}{2004}\\right)\\cdot 2008 = \\frac{2008}{4} =$ $502 \\Rightarrow B$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. f n = (4 * n + 4) / (4 * n)\"\nand h1 : \"prod f {1..502} = 502\"\nshows  \"prod f {1..2004} = 502\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(n) = \\frac{4n+4}{4n}$ for all integers $n$. If the product of $f(n)$ for all $n$ from 1 to 502 is 502, find the product of $f(n)$ for all $n$ from 1 to 2004. The final answer is 502.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9609617590904236,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. f n = (4 * n + 4) / (4 * n)\"\nand h1 : \"prod f {1..501} = 502\"\nshows  \"prod f {1..501} = 502\"",
+        "formal solution": "(* ### Problem\n Which of the following is equal to the [[product]]\n$\\frac{8}{4}\\cdot\\frac{12}{8}\\cdot\\frac{16}{12}\\cdot\\cdots\\cdot\\frac{4n+4}{4n}\\cdot\\cdots\\cdot\\frac{2008}{2004}?$\n\n$\\textbf{(A)}\\ 251\\qquad\\textbf{(B)}\\ 502\\qquad\\textbf{(C)}\\ 1004\\qquad\\textbf{(D)}\\ 2008\\qquad\\textbf{(E)}\\ 4016$ Show that it is \\textbf{(B)}.\n ### Proof\n $\\frac {8}{4}\\cdot\\frac {12}{8}\\cdot\\frac {16}{12}\\cdots\\frac {4n + 4}{4n}\\cdots\\frac {2008}{2004} = \\frac {1}{4}\\cdot\\left(\\frac {8}{8}\\cdot\\frac {12}{12}\\cdots\\frac {4n}{4n}\\cdots\\frac {2004}{2004}\\right)\\cdot 2008 = \\frac{2008}{4} =$ $502 \\Rightarrow B$.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. f n = (4 * n + 4) / (4 * n)\"\nand h1 : \"prod f {1..501} = 502\"\nshows  \"prod f {1..501} = 502\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the function $f(n) = \\frac{4n + 4}{4n}$ is defined for all real numbers, and the product of $f(n)$ for $n$ ranging from 1 to 501 is 502, then prove that this product is indeed 502.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5825925469398499,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: real\nassumes h0 : \"n \\<ge> 1\"\nshows  \"prod (\\<lambda>n. (4*n + 4) / (4*n)) {1..502} = 502\"",
+        "formal solution": "(* ### Problem\n Which of the following is equal to the [[product]]\n$\\frac{8}{4}\\cdot\\frac{12}{8}\\cdot\\frac{16}{12}\\cdot\\cdots\\cdot\\frac{4n+4}{4n}\\cdot\\cdots\\cdot\\frac{2008}{2004}?$\n\n$\\textbf{(A)}\\ 251\\qquad\\textbf{(B)}\\ 502\\qquad\\textbf{(C)}\\ 1004\\qquad\\textbf{(D)}\\ 2008\\qquad\\textbf{(E)}\\ 4016$ Show that it is \\textbf{(B)}.\n ### Proof\n $\\frac {8}{4}\\cdot\\frac {12}{8}\\cdot\\frac {16}{12}\\cdots\\frac {4n + 4}{4n}\\cdots\\frac {2008}{2004} = \\frac {1}{4}\\cdot\\left(\\frac {8}{8}\\cdot\\frac {12}{12}\\cdots\\frac {4n}{4n}\\cdots\\frac {2004}{2004}\\right)\\cdot 2008 = \\frac{2008}{4} =$ $502 \\Rightarrow B$.\n *)\n\ntheorem\nfixes n :: real\nassumes h0 : \"n \\<ge> 1\"\nshows  \"prod (\\<lambda>n. (4*n + 4) / (4*n)) {1..502} = 502\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The problem is to find the product of the sequence ${(4n+4)}/{(4n)}$ from $n=1$ to $n=502$, given that $n$ is a real number greater than or equal to 1. The final answer is 502.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9517566561698914,
+        "symbolic_score": 0.3
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: real\nassumes h0 : \"n \\<in> {1..501}\"\nshows  \"(\\<Prod>n\\<in>{1..501}. (4*n+4)/(4*n)) = 502\"",
+        "formal solution": "(* ### Problem\n Which of the following is equal to the [[product]]\n$\\frac{8}{4}\\cdot\\frac{12}{8}\\cdot\\frac{16}{12}\\cdot\\cdots\\cdot\\frac{4n+4}{4n}\\cdot\\cdots\\cdot\\frac{2008}{2004}?$\n\n$\\textbf{(A)}\\ 251\\qquad\\textbf{(B)}\\ 502\\qquad\\textbf{(C)}\\ 1004\\qquad\\textbf{(D)}\\ 2008\\qquad\\textbf{(E)}\\ 4016$ Show that it is \\textbf{(B)}.\n ### Proof\n $\\frac {8}{4}\\cdot\\frac {12}{8}\\cdot\\frac {16}{12}\\cdots\\frac {4n + 4}{4n}\\cdots\\frac {2008}{2004} = \\frac {1}{4}\\cdot\\left(\\frac {8}{8}\\cdot\\frac {12}{12}\\cdots\\frac {4n}{4n}\\cdots\\frac {2004}{2004}\\right)\\cdot 2008 = \\frac{2008}{4} =$ $502 \\Rightarrow B$.\n *)\n\ntheorem\nfixes n :: real\nassumes h0 : \"n \\<in> {1..501}\"\nshows  \"(\\<Prod>n\\<in>{1..501}. (4*n+4)/(4*n)) = 502\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the product of all terms in the sequence $(4n+4)/(4n)$, where $n$ ranges from 1 to 501. The final answer is 502.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8469060063362122,
+        "symbolic_score": 0.3
+    },
+    "oracle": "theorem\nshows  \"(\\<Prod>k::nat=1..501. ((4::real) * k + 4) / (4 * k)) = 502\"",
+    "prediction": {
+        "0": [
+            8,
+            9,
+            3
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ]
+    }
+}

@@ -1,0 +1,127 @@
+{
+    "problem_name": "amc12a_2020_p4",
+    "informal_statement": "How many $4$-digit positive integers (that is, integers between $1000$ and $9999$, inclusive) having only even digits are divisible by $5?$\n\n$\\textbf{(A) } 80 \\qquad \\textbf{(B) } 100 \\qquad \\textbf{(C) } 125 \\qquad \\textbf{(D) } 200 \\qquad \\textbf{(E) } 500$ Show that it is \\textbf{(B) } 100.",
+    "informal_proof": "The units digit, for all numbers divisible by 5, must be either $0$ or $5$. However, since all digits are even, the units digit must be $0$. The middle two digits can be 0, 2, 4, 6, or 8, but the thousands digit can only be 2, 4, 6, or 8 since it cannot be zero. There is one choice for the units digit, 5 choices for each of the middle 2 digits, and 4 choices for the thousands digit, so there is a total of $4\\cdot5\\cdot5\\cdot1 = \\textbf{(B) } 100 \\qquad$ numbers.",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"1000 \\<le> n \\<and> n \\<le> 9999\"\nand h1 : \"even (n div 1000) \\<and> even (n div 100 mod 10) \\<and> even (n div 10 mod 10) \\<and> even (n mod 10)\"\nand h2 : \"n mod 5 = 0\"\nshows  \"card {n. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> even (n div 1000) \\<and> even (n div 100 mod 10) \\<and> even (n div 10 mod 10) \\<and> even (n mod 10) \\<and> n mod 5 = 0} = 100\"",
+        "formal solution": "(* ### Problem\n How many $4$-digit positive integers (that is, integers between $1000$ and $9999$, inclusive) having only even digits are divisible by $5?$\n\n$\\textbf{(A) } 80 \\qquad \\textbf{(B) } 100 \\qquad \\textbf{(C) } 125 \\qquad \\textbf{(D) } 200 \\qquad \\textbf{(E) } 500$ Show that it is \\textbf{(B) } 100.\n ### Proof\n The units digit, for all numbers divisible by 5, must be either $0$ or $5$. However, since all digits are even, the units digit must be $0$. The middle two digits can be 0, 2, 4, 6, or 8, but the thousands digit can only be 2, 4, 6, or 8 since it cannot be zero. There is one choice for the units digit, 5 choices for each of the middle 2 digits, and 4 choices for the thousands digit, so there is a total of $4\\cdot5\\cdot5\\cdot1 = \\textbf{(B) } 100 \\qquad$ numbers.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"1000 \\<le> n \\<and> n \\<le> 9999\"\nand h1 : \"even (n div 1000) \\<and> even (n div 100 mod 10) \\<and> even (n div 10 mod 10) \\<and> even (n mod 10)\"\nand h2 : \"n mod 5 = 0\"\nshows  \"card {n. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> even (n div 1000) \\<and> even (n div 100 mod 10) \\<and> even (n div 10 mod 10) \\<and> even (n mod 10) \\<and> n mod 5 = 0} = 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many 4-digit numbers are divisible by 5 and have all their digits even? The final answer is 100.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9324115514755249,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"1000 \\<le> n\"\nand h1 : \"n \\<le> 9999\"\nand h2 : \"even (n div 1000) \\<and> even ((n div 100) mod 10) \\<and> even ((n div 10) mod 10) \\<and> even (n mod 10)\"\nand h3 : \"n mod 5 = 0\"\nshows  \"card {n. (\\<forall>n. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> \n              even (n div 1000) \\<and> even ((n div 100) mod 10) \\<and> even ((n div 10) mod 10) \\<and> even (n mod 10) \\<and> \n              n mod 5 = 0)} = 100\"",
+        "formal solution": "(* ### Problem\n How many $4$-digit positive integers (that is, integers between $1000$ and $9999$, inclusive) having only even digits are divisible by $5?$\n\n$\\textbf{(A) } 80 \\qquad \\textbf{(B) } 100 \\qquad \\textbf{(C) } 125 \\qquad \\textbf{(D) } 200 \\qquad \\textbf{(E) } 500$ Show that it is \\textbf{(B) } 100.\n ### Proof\n The units digit, for all numbers divisible by 5, must be either $0$ or $5$. However, since all digits are even, the units digit must be $0$. The middle two digits can be 0, 2, 4, 6, or 8, but the thousands digit can only be 2, 4, 6, or 8 since it cannot be zero. There is one choice for the units digit, 5 choices for each of the middle 2 digits, and 4 choices for the thousands digit, so there is a total of $4\\cdot5\\cdot5\\cdot1 = \\textbf{(B) } 100 \\qquad$ numbers.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"1000 \\<le> n\"\nand h1 : \"n \\<le> 9999\"\nand h2 : \"even (n div 1000) \\<and> even ((n div 100) mod 10) \\<and> even ((n div 10) mod 10) \\<and> even (n mod 10)\"\nand h3 : \"n mod 5 = 0\"\nshows  \"card {n. (\\<forall>n. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> \n              even (n div 1000) \\<and> even ((n div 100) mod 10) \\<and> even ((n div 10) mod 10) \\<and> even (n mod 10) \\<and> \n              n mod 5 = 0)} = 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many four-digit numbers have the following properties: all of their digits are even, and the number is divisible by 5? There are 100 such numbers.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7166333198547363,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"1000 \\<le> n \\<and> n \\<le> 9999\"\nand h1 : \"n = 2 * a + 20 * (2 * b) + 200 * (2 * c) + 2000 * (2 * d) where a b c d are even digits\"\nand h2 : \"n mod 5 = 0\"\nshows  \"card {n. \\<forall>a b c d. n = 2 * a + 20 * (2 * b) + 200 * (2 * c) + 2000 * (2 * d) \\<and> 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> n mod 5 = 0} = 100\"",
+        "formal solution": "(* ### Problem\n How many $4$-digit positive integers (that is, integers between $1000$ and $9999$, inclusive) having only even digits are divisible by $5?$\n\n$\\textbf{(A) } 80 \\qquad \\textbf{(B) } 100 \\qquad \\textbf{(C) } 125 \\qquad \\textbf{(D) } 200 \\qquad \\textbf{(E) } 500$ Show that it is \\textbf{(B) } 100.\n ### Proof\n The units digit, for all numbers divisible by 5, must be either $0$ or $5$. However, since all digits are even, the units digit must be $0$. The middle two digits can be 0, 2, 4, 6, or 8, but the thousands digit can only be 2, 4, 6, or 8 since it cannot be zero. There is one choice for the units digit, 5 choices for each of the middle 2 digits, and 4 choices for the thousands digit, so there is a total of $4\\cdot5\\cdot5\\cdot1 = \\textbf{(B) } 100 \\qquad$ numbers.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"1000 \\<le> n \\<and> n \\<le> 9999\"\nand h1 : \"n = 2 * a + 20 * (2 * b) + 200 * (2 * c) + 2000 * (2 * d) where a b c d are even digits\"\nand h2 : \"n mod 5 = 0\"\nshows  \"card {n. \\<forall>a b c d. n = 2 * a + 20 * (2 * b) + 200 * (2 * c) + 2000 * (2 * d) \\<and> 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> n mod 5 = 0} = 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many four-digit numbers are divisible by 5 and can be expressed as $n = 2a + 20(2b) + 200(2c) + 2000(2d)$, where $a$, $b$, $c$, and $d$ are even digits? The final answer is 100.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9810758829116821,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes is_even_digit :: \"int \\<Rightarrow> bool\"\nand is_four_digit :: \"int \\<Rightarrow> bool\"\nand is_divisible_by_5 :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> d. is_even_digit d = (d mod 2 = 0 \\<and> 0 \\<le> d \\<and> d \\<le> 9)\"\nand h1 : \"\\<forall> n. is_four_digit n = (1000 \\<le> n \\<and> n \\<le> 9999)\"\nand h2 : \"\\<forall> n. is_divisible_by_5 n = (n mod 5 = 0)\"\nand h3 : \"\\<forall> n. is_four_digit n \\<and> (\\<forall> d. is_even_digit d) \\<and> is_divisible_by_5 n\"\nshows  \"card {n. h0 n} = 100\"",
+        "formal solution": "(* ### Problem\n How many $4$-digit positive integers (that is, integers between $1000$ and $9999$, inclusive) having only even digits are divisible by $5?$\n\n$\\textbf{(A) } 80 \\qquad \\textbf{(B) } 100 \\qquad \\textbf{(C) } 125 \\qquad \\textbf{(D) } 200 \\qquad \\textbf{(E) } 500$ Show that it is \\textbf{(B) } 100.\n ### Proof\n The units digit, for all numbers divisible by 5, must be either $0$ or $5$. However, since all digits are even, the units digit must be $0$. The middle two digits can be 0, 2, 4, 6, or 8, but the thousands digit can only be 2, 4, 6, or 8 since it cannot be zero. There is one choice for the units digit, 5 choices for each of the middle 2 digits, and 4 choices for the thousands digit, so there is a total of $4\\cdot5\\cdot5\\cdot1 = \\textbf{(B) } 100 \\qquad$ numbers.\n *)\n\ntheorem\nfixes is_even_digit :: \"int \\<Rightarrow> bool\"\nand is_four_digit :: \"int \\<Rightarrow> bool\"\nand is_divisible_by_5 :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> d. is_even_digit d = (d mod 2 = 0 \\<and> 0 \\<le> d \\<and> d \\<le> 9)\"\nand h1 : \"\\<forall> n. is_four_digit n = (1000 \\<le> n \\<and> n \\<le> 9999)\"\nand h2 : \"\\<forall> n. is_divisible_by_5 n = (n mod 5 = 0)\"\nand h3 : \"\\<forall> n. is_four_digit n \\<and> (\\<forall> d. is_even_digit d) \\<and> is_divisible_by_5 n\"\nshows  \"card {n. h0 n} = 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many four-digit numbers have all their digits even and are divisible by 5? The final answer is 100.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9130204319953918,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes count :: nat\nassumes h0 : \"count = card {n. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> (\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> even d) \\<and> n mod 5 = 0}\"\nshows  \"count = 100\"",
+        "formal solution": "(* ### Problem\n How many $4$-digit positive integers (that is, integers between $1000$ and $9999$, inclusive) having only even digits are divisible by $5?$\n\n$\\textbf{(A) } 80 \\qquad \\textbf{(B) } 100 \\qquad \\textbf{(C) } 125 \\qquad \\textbf{(D) } 200 \\qquad \\textbf{(E) } 500$ Show that it is \\textbf{(B) } 100.\n ### Proof\n The units digit, for all numbers divisible by 5, must be either $0$ or $5$. However, since all digits are even, the units digit must be $0$. The middle two digits can be 0, 2, 4, 6, or 8, but the thousands digit can only be 2, 4, 6, or 8 since it cannot be zero. There is one choice for the units digit, 5 choices for each of the middle 2 digits, and 4 choices for the thousands digit, so there is a total of $4\\cdot5\\cdot5\\cdot1 = \\textbf{(B) } 100 \\qquad$ numbers.\n *)\n\ntheorem\nfixes count :: nat\nassumes h0 : \"count = card {n. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> (\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> even d) \\<and> n mod 5 = 0}\"\nshows  \"count = 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many even 4-digit numbers are divisible by 5? The final answer is 100.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.909583330154419,
+        "symbolic_score": 0.3
+    },
+    "a_5": {
+        "formal problem": "theorem even_digits_divisible_by_5 :\n  fixes n :: nat\n  assumes h0 : \"1000 \\<le> n\"\nand h1 : \"n \\<le> 9999\"\nand h2 : \"\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> d mod 2 = 0\"\nshows  \"card {n. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> (\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> d mod 2 = 0) \\<and> n mod 5 = 0} = 100\"",
+        "formal solution": "(* ### Problem\n How many $4$-digit positive integers (that is, integers between $1000$ and $9999$, inclusive) having only even digits are divisible by $5?$\n\n$\\textbf{(A) } 80 \\qquad \\textbf{(B) } 100 \\qquad \\textbf{(C) } 125 \\qquad \\textbf{(D) } 200 \\qquad \\textbf{(E) } 500$ Show that it is \\textbf{(B) } 100.\n ### Proof\n The units digit, for all numbers divisible by 5, must be either $0$ or $5$. However, since all digits are even, the units digit must be $0$. The middle two digits can be 0, 2, 4, 6, or 8, but the thousands digit can only be 2, 4, 6, or 8 since it cannot be zero. There is one choice for the units digit, 5 choices for each of the middle 2 digits, and 4 choices for the thousands digit, so there is a total of $4\\cdot5\\cdot5\\cdot1 = \\textbf{(B) } 100 \\qquad$ numbers.\n *)\n\ntheorem even_digits_divisible_by_5 :\n  fixes n :: nat\n  assumes h0 : \"1000 \\<le> n\"\nand h1 : \"n \\<le> 9999\"\nand h2 : \"\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> d mod 2 = 0\"\nshows  \"card {n. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> (\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> d mod 2 = 0) \\<and> n mod 5 = 0} = 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many four-digit numbers have all even digits and are divisible by 5? The final answer is 100.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.91224205493927,
+        "symbolic_score": 0.2
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes count_even_divisible_by_five :: nat\nassumes h0 : \"count_even_divisible_by_five = card {n::nat. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> (\\<forall>digit. digit el digits n \\<longrightarrow> even digit) \\<and> n mod 5 = 0}\"\nshows  \"count_even_divisible_by_five = 100\"",
+        "formal solution": "(* ### Problem\n How many $4$-digit positive integers (that is, integers between $1000$ and $9999$, inclusive) having only even digits are divisible by $5?$\n\n$\\textbf{(A) } 80 \\qquad \\textbf{(B) } 100 \\qquad \\textbf{(C) } 125 \\qquad \\textbf{(D) } 200 \\qquad \\textbf{(E) } 500$ Show that it is \\textbf{(B) } 100.\n ### Proof\n The units digit, for all numbers divisible by 5, must be either $0$ or $5$. However, since all digits are even, the units digit must be $0$. The middle two digits can be 0, 2, 4, 6, or 8, but the thousands digit can only be 2, 4, 6, or 8 since it cannot be zero. There is one choice for the units digit, 5 choices for each of the middle 2 digits, and 4 choices for the thousands digit, so there is a total of $4\\cdot5\\cdot5\\cdot1 = \\textbf{(B) } 100 \\qquad$ numbers.\n *)\n\ntheorem\nfixes count_even_divisible_by_five :: nat\nassumes h0 : \"count_even_divisible_by_five = card {n::nat. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> (\\<forall>digit. digit el digits n \\<longrightarrow> even digit) \\<and> n mod 5 = 0}\"\nshows  \"count_even_divisible_by_five = 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many four-digit numbers have all even digits and are divisible by 5? The final answer is 100.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.91224205493927,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes even_digits_divisible_by_5 :: \"nat set\"\nassumes h0 : \"even_digits_divisible_by_5 = {n. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> (\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> even d) \\<and> n mod 5 = 0}\"\nshows  \"card even_digits_divisible_by_5 = 100\"",
+        "formal solution": "(* ### Problem\n How many $4$-digit positive integers (that is, integers between $1000$ and $9999$, inclusive) having only even digits are divisible by $5?$\n\n$\\textbf{(A) } 80 \\qquad \\textbf{(B) } 100 \\qquad \\textbf{(C) } 125 \\qquad \\textbf{(D) } 200 \\qquad \\textbf{(E) } 500$ Show that it is \\textbf{(B) } 100.\n ### Proof\n The units digit, for all numbers divisible by 5, must be either $0$ or $5$. However, since all digits are even, the units digit must be $0$. The middle two digits can be 0, 2, 4, 6, or 8, but the thousands digit can only be 2, 4, 6, or 8 since it cannot be zero. There is one choice for the units digit, 5 choices for each of the middle 2 digits, and 4 choices for the thousands digit, so there is a total of $4\\cdot5\\cdot5\\cdot1 = \\textbf{(B) } 100 \\qquad$ numbers.\n *)\n\ntheorem\nfixes even_digits_divisible_by_5 :: \"nat set\"\nassumes h0 : \"even_digits_divisible_by_5 = {n. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> (\\<forall>d. d \\<in> set (digits n) \\<longrightarrow> even d) \\<and> n mod 5 = 0}\"\nshows  \"card even_digits_divisible_by_5 = 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many four-digit numbers are divisible by 5 and have all their digits even? The final answer is 100.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9417631030082703,
+        "symbolic_score": 0.3
+    },
+    "a_8": {
+        "formal problem": "theorem\nshows  \"card {n :: nat. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> (\\<forall> d \\<in> set (digits n). even d) \\<and> n mod 5 = 0} = 100\"",
+        "formal solution": "(* ### Problem\n How many $4$-digit positive integers (that is, integers between $1000$ and $9999$, inclusive) having only even digits are divisible by $5?$\n\n$\\textbf{(A) } 80 \\qquad \\textbf{(B) } 100 \\qquad \\textbf{(C) } 125 \\qquad \\textbf{(D) } 200 \\qquad \\textbf{(E) } 500$ Show that it is \\textbf{(B) } 100.\n ### Proof\n The units digit, for all numbers divisible by 5, must be either $0$ or $5$. However, since all digits are even, the units digit must be $0$. The middle two digits can be 0, 2, 4, 6, or 8, but the thousands digit can only be 2, 4, 6, or 8 since it cannot be zero. There is one choice for the units digit, 5 choices for each of the middle 2 digits, and 4 choices for the thousands digit, so there is a total of $4\\cdot5\\cdot5\\cdot1 = \\textbf{(B) } 100 \\qquad$ numbers.\n *)\n\ntheorem\nshows  \"card {n :: nat. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> (\\<forall> d \\<in> set (digits n). even d) \\<and> n mod 5 = 0} = 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many 4-digit even numbers between 1000 and 9999 are divisible by 5 and have all even digits? The final answer is 100.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9324095249176025,
+        "symbolic_score": 0.3
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes even_digits_divisible_by_5 :: \"nat set\"\nassumes h0 : \"even_digits_divisible_by_5 = {n. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> (\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> d mod 2 = 0) \\<and> n mod 5 = 0}\"\nshows  \"card even_digits_divisible_by_5 = 100\"",
+        "formal solution": "(* ### Problem\n How many $4$-digit positive integers (that is, integers between $1000$ and $9999$, inclusive) having only even digits are divisible by $5?$\n\n$\\textbf{(A) } 80 \\qquad \\textbf{(B) } 100 \\qquad \\textbf{(C) } 125 \\qquad \\textbf{(D) } 200 \\qquad \\textbf{(E) } 500$ Show that it is \\textbf{(B) } 100.\n ### Proof\n The units digit, for all numbers divisible by 5, must be either $0$ or $5$. However, since all digits are even, the units digit must be $0$. The middle two digits can be 0, 2, 4, 6, or 8, but the thousands digit can only be 2, 4, 6, or 8 since it cannot be zero. There is one choice for the units digit, 5 choices for each of the middle 2 digits, and 4 choices for the thousands digit, so there is a total of $4\\cdot5\\cdot5\\cdot1 = \\textbf{(B) } 100 \\qquad$ numbers.\n *)\n\ntheorem\nfixes even_digits_divisible_by_5 :: \"nat set\"\nassumes h0 : \"even_digits_divisible_by_5 = {n. 1000 \\<le> n \\<and> n \\<le> 9999 \\<and> (\\<forall> d. d \\<in> set (digits n) \\<longrightarrow> d mod 2 = 0) \\<and> n mod 5 = 0}\"\nshows  \"card even_digits_divisible_by_5 = 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many 4-digit numbers have all their digits even and are divisible by 5? The final answer is 100.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8927794694900513,
+        "symbolic_score": 0.2
+    },
+    "oracle": "theorem\nshows \"card {n :: nat. 1000\\<le>n \\<and> n\\<le>9999 \\<and> (\\<forall>d\\<in>set (digits n). even d) \\<and> 5 dvd n} = 100\"",
+    "prediction": {
+        "0": [
+            8,
+            4,
+            7
+        ],
+        "1": [
+            9,
+            5
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            1
+        ],
+        "4": [
+            2
+        ],
+        "5": [
+            3
+        ],
+        "6": [
+            6
+        ]
+    },
+    "equivalence_oracle": [
+        4,
+        7,
+        8
+    ]
+}

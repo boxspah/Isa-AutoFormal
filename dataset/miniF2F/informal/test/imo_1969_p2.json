@@ -1,0 +1,628 @@
+{
+    "problem_name": "imo_1969_p2",
+    "informal_statement": "Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$",
+    "informal_proof": "Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$",
+    "a_0": {
+        "formal problem": "theorem\nfixes x1 x2 a f :: \"real \\<Rightarrow> real\" and n m :: nat\nassumes h0 : \"\\<forall> i \\<in> {1..n}. \\<exists> a_i. real i = a_i\"\nand h1 : \"f x = (\\<Sum>i\\<in>{1..n}. (1 / (2 powr (i-1))) * cos (a(i) + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"x2 - x1 = real m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 a f :: \"real \\<Rightarrow> real\" and n m :: nat\nassumes h0 : \"\\<forall> i \\<in> {1..n}. \\<exists> a_i. real i = a_i\"\nand h1 : \"f x = (\\<Sum>i\\<in>{1..n}. (1 / (2 powr (i-1))) * cos (a(i) + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"x2 - x1 = real m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(x)$ defined as the sum for $i$ from 1 to $n$ of $\\frac{1}{2^{i-1}} \\cos (a_i + x)$, where each $a_i$ is a real number equal to the corresponding $i$. If $f(x_1) = 0$ and $f(x_2) = 0$, prove that the difference $x_2 - x_1$ equals some integer $m$ times $\\pi$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.015783285722136497,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\" and x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (\\<Sum> n \\<in> {1..N}. (1 / 2^(n-1)) * cos(a n + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m::int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\" and x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (\\<Sum> n \\<in> {1..N}. (1 / 2^(n-1)) * cos(a n + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m::int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume a function $f(x)$ is defined as the sum from $n=1$ to $N$ of $\\frac{1}{2^{n-1}} * cos(a(n) + x)$ where $a(n)$ is a function from natural numbers to real numbers. If $f(x1) = 0$ and $f(x2) = 0$, show that there exists an integer $m$ such that $x2 - x1 = m * \\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": -0.034118883311748505,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x1 x2 :: real and a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and n :: nat\nassumes h0 : \"\\<forall> x. f x = (\\<Sum>i\\<in>{1..n}. (1/2) ^ (i-1) * cos (a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 :: real and a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and n :: nat\nassumes h0 : \"\\<forall> x. f x = (\\<Sum>i\\<in>{1..n}. (1/2) ^ (i-1) * cos (a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x)$ defined as the sum of $(\\frac{1}{2})^{i-1} \\cos(a_i + x)$ for $i$ ranging from 1 to $n$, if $f(x_1) = 0$ and $f(x_2) = 0$, then there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": -0.029950106516480446,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x1 x2 :: real and a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and n :: nat\nassumes h0 : \"\\<forall> x. f x = (\\<Sum>i\\<in>{1..n}. (1 / (2 powr (i - 1))) * cos(a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists>m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 :: real and a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and n :: nat\nassumes h0 : \"\\<forall> x. f x = (\\<Sum>i\\<in>{1..n}. (1 / (2 powr (i - 1))) * cos(a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists>m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined for all real numbers $x$ as the sum from $i=1$ to $n$ of $\\frac{1}{2^{i-1}}cos(a_i + x)$. Given that $f(x_1) = 0$ and $f(x_2) = 0$, show that there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.1121162548661232,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x1 x2 m :: real and a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"f = (\\<lambda>x. \\<Sum>n\\<in>{1..n}. (1 / 2 ^ (n - 1)) * cos(a n + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists>m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 m :: real and a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"f = (\\<lambda>x. \\<Sum>n\\<in>{1..n}. (1 / 2 ^ (n - 1)) * cos(a n + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists>m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume that there exists a function $f(x)$ which is defined as the sum from $n=1$ to infinity of the expression $\\frac{1}{2^{n-1}} \\cos(a_n + x)$. If $f(x_1) = 0$ and $f(x_2) = 0$, prove that there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.005243076477199793,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x1 x2 :: real \nand a :: \"nat \\<Rightarrow> real\"\nand f :: \"real \\<Rightarrow> real\"\nand m :: int\nassumes h0 : \"\\<forall> n \\<in> {1..n}. f x = (\\<Sum> i \\<in> {1..n}. (1/(2^(i-1))) * cos (a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 :: real \nand a :: \"nat \\<Rightarrow> real\"\nand f :: \"real \\<Rightarrow> real\"\nand m :: int\nassumes h0 : \"\\<forall> n \\<in> {1..n}. f x = (\\<Sum> i \\<in> {1..n}. (1/(2^(i-1))) * cos (a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined for every real number $x$ as the sum from $i=1$ to $n$ of the terms $(1/(2^{i-1})) * cos(a_i + x)$. It is given that $f(x_1) = 0$ and $f(x_2) = 0$. Find the integer $m$ such that the difference $x_2 - x_1$ equals $m$ times $\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": -0.11055639386177063,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and x1 x2 :: real\nassumes h0 : \"\\<forall> n \\<in> {1..N}. a n \\<in> \\<real>\"\nand h1 : \"\\<forall> x. f x = (\\<Sum>n\\<in>{1..N}. (1/(2^(n-1))) * cos(a n + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m \\<in> \\<int>. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and x1 x2 :: real\nassumes h0 : \"\\<forall> n \\<in> {1..N}. a n \\<in> \\<real>\"\nand h1 : \"\\<forall> x. f x = (\\<Sum>n\\<in>{1..N}. (1/(2^(n-1))) * cos(a n + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m \\<in> \\<int>. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $a$ be a function from natural numbers to real numbers such that for all $n$ from 1 to $N$, $a(n)$ is a real number. Let $f$ be a function from real numbers to real numbers such that $f(x)$ equals the sum over $n$ from 1 to $N$ of $\\frac{1}{2^{n-1}}$ times the cosine of $a(n) + x$. If $f(x_1) = 0$ and $f(x_2) = 0$, then there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": -0.04175921529531479,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and x1 x2 :: real\nassumes h0 : \"\\<forall> x. f x = (\\<Sum> i \\<in> {1..n}. (1 / (2^(i-1))) * cos (a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and x1 x2 :: real\nassumes h0 : \"\\<forall> x. f x = (\\<Sum> i \\<in> {1..n}. (1 / (2^(i-1))) * cos (a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose a function $f$ is defined as $f(x) = \\sum_{i=1}^{n} \\frac{1}{2^{i-1}} \\cdot \\cos(a(i) + x)$. If $f(x_1) = 0$ and $f(x_2) = 0$, prove that there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.06152728199958801,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x1 x2 :: real and f :: \"real \\<Rightarrow> real\" and a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = sum (\\<lambda>n. cos(a n + x) / 2 powr n) {1..n}\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 :: real and f :: \"real \\<Rightarrow> real\" and a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = sum (\\<lambda>n. cos(a n + x) / 2 powr n) {1..n}\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume a function $f$ is defined for every real number $x$ as the sum of terms $\\frac{\\cos(a(n) + x)}{2^n}$ for all integers $n$ from $1$ to $n$. If $f(x1) = 0$ and $f(x2) = 0$, prove that there exists an integer $m$ such that $x2 - x1 = m\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": -0.012795183807611465,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x1 x2 :: real \nand a :: \"nat \\<Rightarrow> real\" \nand f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (\\<Sum>n\\<in>{1..n}. (1 / 2 ^ (n - 1)) * cos(a n + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 :: real \nand a :: \"nat \\<Rightarrow> real\" \nand f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (\\<Sum>n\\<in>{1..n}. (1 / 2 ^ (n - 1)) * cos(a n + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x)$ is defined as the sum from $n=1$ to infinity of $\\frac{1}{2^{n-1}} \\cdot \\cos(a_n + x)$, and it is known that $f(x1) = 0$ and $f(x2) = 0$, find an integer $m$ such that $x2 - x1 = m \\cdot \\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": -0.08079979568719864,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes m n ::real\nand k ::nat\nand a :: \"nat \\<Rightarrow>real\"\nand y :: \"real \\<Rightarrow> real\"\nassumes \"0 < k\"\nand \"\\<forall> x. y x = (\\<Sum> i < k. ((cos (a i + x)) / (2^i)))\"\nand \"y m = 0\"\nand \"y n = 0\"\nshows \"\\<exists> t::int. m - n = t * pi\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes a :: \"real list\" and x1 x2 :: real\ndefines \"f x \\<equiv> (\\<Sum>i<length a. ((1 / 2) ^ i) * cos (a ! i + x))\"\nassumes h0 : \"f x1 = 0\"\nand h1 : \"f x2 = 0\"\nshows  \"\\<exists> m::int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"real list\" and x1 x2 :: real\ndefines \"f x \\<equiv> (\\<Sum>i<length a. ((1 / 2) ^ i) * cos (a ! i + x))\"\nassumes h0 : \"f x1 = 0\"\nand h1 : \"f x2 = 0\"\nshows  \"\\<exists> m::int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a list of real numbers $a$, and a function $f(x)$ defined as $f(x) = \\sum_{i=0}^{n-1} \\frac{1}{2^i} \\cdot \\cos(a_i + x)$. If $f(x_1) = 0$ and $f(x_2) = 0$, then there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "semantic_score": 0.029166538874999537,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes a :: \"real list\" and n x1 x2 :: real\ndefines \"f x \\<equiv> (\\<Sum>i<n. (1 / 2^i) * cos(a ! i + x))\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists>m::int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"real list\" and n x1 x2 :: real\ndefines \"f x \\<equiv> (\\<Sum>i<n. (1 / 2^i) * cos(a ! i + x))\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists>m::int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose you have a list $a$ of $n$ real numbers. Define $f(x)$ to be $\\sum_{i=0}^{n-1} \\frac{1}{2^i} \\cos(a_i + x)$. If $f(x_1) = 0$ and $f(x_2) = 0$, then there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "semantic_score": 0.142950638615846,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes a :: \"real list\" and x1 x2 :: real\ndefines \"f x \\<equiv> (\\<Sum>i=0..<length a. 1 / 2^i * cos (a ! i + x))\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m::int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"real list\" and x1 x2 :: real\ndefines \"f x \\<equiv> (\\<Sum>i=0..<length a. 1 / 2^i * cos (a ! i + x))\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m::int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we are given a list $a$ of $n$ real numbers. Define $f(x)$ to be the sum, over all $i$ from $0$ to $n-1$, of $\\frac{1}{2^i}\\cos(a_i+x)$. If $f(x_1) = 0$ and $f(x_2) = 0$, show that $x_2 - x_1$ is a multiple of $\\pi$.",
+        "semantic_score": 0.08416709918152676,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes a :: \"real list\" and x1 x2 :: real\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (\\<Sum>i<n. 1 / 2^i * cos (a ! i + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists>m::int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"real list\" and x1 x2 :: real\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (\\<Sum>i<n. 1 / 2^i * cos (a ! i + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists>m::int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a list of real numbers $a$, and a function $f(x)$ that is defined by the formula $f(x) = \\sum_{i=0}^{n-1} \\frac{1}{2^i} \\cos(a_i + x)$. Given that $f(x_1) = f(x_2) = 0$, prove that $x_2 - x_1$ is a multiple of $\\pi$.",
+        "semantic_score": -0.03235767272762313,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes a :: \"real list\" and x1 x2 :: real\nassumes h0 : \"f x1 = 0\"\nand h1 : \"f x2 = 0\"\nand h2 : \"f x = cos (a ! 0 + x) + (\\<Sum>i=1..<length a. 1 / 2^i * cos (a ! i + x))\"\nand h3 : \"length a = n\"\nshows  \"\\<exists>m::int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"real list\" and x1 x2 :: real\nassumes h0 : \"f x1 = 0\"\nand h1 : \"f x2 = 0\"\nand h2 : \"f x = cos (a ! 0 + x) + (\\<Sum>i=1..<length a. 1 / 2^i * cos (a ! i + x))\"\nand h3 : \"length a = n\"\nshows  \"\\<exists>m::int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of $n$ real numbers $a$, and two real numbers $x_1$ and $x_2$ such that $f(x_1) = f(x_2) = 0$, where $f(x) = \\cos(a_0 + x) + \\sum_{i=1}^{n-1} \\frac{\\cos(a_i + x)}{2^i}$. Prove that there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "semantic_score": -0.0853902305285168,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes a :: \"real list\" and x1 x2 :: real\nassumes h0 : \"length a = n\"\nand h1 : \"\\<forall> x. f x = (\\<Sum> i \\<in> {0..<n}. (1 / 2^i) * cos (a ! i + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"real list\" and x1 x2 :: real\nassumes h0 : \"length a = n\"\nand h1 : \"\\<forall> x. f x = (\\<Sum> i \\<in> {0..<n}. (1 / 2^i) * cos (a ! i + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a list of $n$ real numbers $a = [a_0, a_1, \\dots, a_{n-1}]$. Define a function $f$ that takes a real number $x$ and returns the sum of $2^{-i} \\cos(a_i + x)$ for $i$ from $0$ to $n-1$. If $f(x_1) = f(x_2) = 0$, where $x_1$ and $x_2$ are real numbers, then there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "semantic_score": 0.05095378638320014,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes a :: \"real list\" and x1 x2 :: real\ndefines \"f x \\<equiv> (\\<Sum>i = 0..<length a. (1 / 2 ^ i) * cos (a ! i + x))\"\nassumes h0 : \"f x1 = 0\"\nand h1 : \"f x2 = 0\"\nshows  \"\\<exists>m::int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"real list\" and x1 x2 :: real\ndefines \"f x \\<equiv> (\\<Sum>i = 0..<length a. (1 / 2 ^ i) * cos (a ! i + x))\"\nassumes h0 : \"f x1 = 0\"\nand h1 : \"f x2 = 0\"\nshows  \"\\<exists>m::int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers $a$, define a function $f(x)$ as the sum of $(1/2^i) * \\cos(a_i + x)$ for $i$ ranging from $0$ to $length\\ a - 1$. If $f(x_1) = 0$ and $f(x_2) = 0$, prove that there exists an integer $m$ such that $x_2 - x_1 = m \\pi$.",
+        "semantic_score": -0.007816648181586894,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes a :: \"real list\" and x1 x2 :: real\ndefines \"f x \\<equiv> (\\<Sum>i<length a. (1 / 2^i) * cos (a ! i + x))\"\nassumes h0 : \"f x1 = 0\"\nand h1 : \"f x2 = 0\"\nshows  \"\\<exists>m::int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"real list\" and x1 x2 :: real\ndefines \"f x \\<equiv> (\\<Sum>i<length a. (1 / 2^i) * cos (a ! i + x))\"\nassumes h0 : \"f x1 = 0\"\nand h1 : \"f x2 = 0\"\nshows  \"\\<exists>m::int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers $a$, define a function $f(x)$ as the sum of a series. If $f(x_1) = 0$ and $f(x_2) = 0$, then there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "semantic_score": 0.15079015030809928,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat and a :: \"real list\" and x1 x2 :: real\ndefines \"f x \\<equiv> (\\<Sum>i\\<in>{0..<n}. (1 / 2^i) * cos (a!i + x))\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m \\<in> \\<int>. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes n :: nat and a :: \"real list\" and x1 x2 :: real\ndefines \"f x \\<equiv> (\\<Sum>i\\<in>{0..<n}. (1 / 2^i) * cos (a!i + x))\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m \\<in> \\<int>. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $a$ is a list of real numbers with $n$ elements, and $f(x)$ is defined as the sum of $(1/2^i) * cos(a_i + x)$ for $i$ ranging from $0$ to $n-1$. If $f(x_1) = 0$ and $f(x_2) = 0$, then there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "semantic_score": 0.08319250695678726,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes a :: \"real list\" and x1 x2 :: real\nassumes h0 : \"f x1 = 0\"\nand h1 : \"f x2 = 0\"\nand h2 : \"f x = (\\<Sum>i<length a. 1 / 2^i * cos (a ! i + x))\"\nshows  \"\\<exists>m::int. x2 - x1 = m * pi\"\n",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"real list\" and x1 x2 :: real\nassumes h0 : \"f x1 = 0\"\nand h1 : \"f x2 = 0\"\nand h2 : \"f x = (\\<Sum>i<length a. 1 / 2^i * cos (a ! i + x))\"\nshows  \"\\<exists>m::int. x2 - x1 = m * pi\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of real numbers $a$ and a function $f(x)$ defined as $f(x) = \\sum_{i=0}^{n-1}\\frac{1}{2^i}\\cos(a_i + x)$, where $n$ is the length of the list $a$. If $f(x_1) = 0$ and $f(x_2) = 0$, then there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "semantic_score": -0.06257428054887093,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            1,
+            2
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes a1 a2 :: real and i :: nat and x1 x2 :: real and n :: nat\nassumes h0 : \"\\<forall>x. cos (a1 + x) \\<in> \\<set> {cos a1, 0}\"\nand h1 : \"\\<forall>x. cos (a2 + x) \\<in> \\<set> {cos a2, 0}\"\nand h2 : \"x1 \\<ne> x2\"\nand h3 : \"\\<forall>i. 1 \\<le> i < n \\<longrightarrow> \\<exists>j. \\<exists>x. (a_i + x = a_j) \\<and> (x1 \\<ne> x \\<or> x2 \\<ne> x)\"\nand h4 : \"f x1 = 0\"\nand h5 : \"f x2 = 0\"\nshows  \"\\<exists>m. m \\<is_int> \\<and> (x2 - x1 = m * pi)\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a1 a2 :: real and i :: nat and x1 x2 :: real and n :: nat\nassumes h0 : \"\\<forall>x. cos (a1 + x) \\<in> \\<set> {cos a1, 0}\"\nand h1 : \"\\<forall>x. cos (a2 + x) \\<in> \\<set> {cos a2, 0}\"\nand h2 : \"x1 \\<ne> x2\"\nand h3 : \"\\<forall>i. 1 \\<le> i < n \\<longrightarrow> \\<exists>j. \\<exists>x. (a_i + x = a_j) \\<and> (x1 \\<ne> x \\<or> x2 \\<ne> x)\"\nand h4 : \"f x1 = 0\"\nand h5 : \"f x2 = 0\"\nshows  \"\\<exists>m. m \\<is_int> \\<and> (x2 - x1 = m * pi)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that for all $x$, the cosine of $a\\_1 + x$ is in the set $\\{cos(a\\_1), 0\\}$ and the cosine of $a\\_2 + x$ is in the set $\\{cos(a\\_2), 0\\}$. Furthermore, $x\\_1$ and $x\\_2$ are distinct. Prove that there exists an integer $m$ such that the difference between $x\\_2$ and $x\\_1$ is equal to $m\\pi$.\n\nIn other words, find an integer $m$ such that $x\\_2 - x\\_1 = m\\pi$."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem\nfixes a1 :: real and a2 ::: ... and a\\_n :: real and x :: real and x1 :: real and x2 :: real\nassumes h0 : \"real const a1\"\nand h1 : \"real const a2\"\nand h2 : \"real const a\\_n\"\nand h3 : \"real var x\"\nand h4 : \"x1 =? x\"\nand h5 : \"x2 =? x\"\nand h6 : \"f x = cos (a1 + x) + (1 / 2) * (cos (a2 + x)) + (1 / 4) * (cos (a3 + x)) + ... + (1 / 2^(n - 1)) * (cos (a\\_n + x))\"\nand h7 : \"f x1 = 0\"\nand h8 : \"f x2 = 0\"\nshows  \"exists m. (m :: int) * pi = x2 - x1\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a1 :: real and a2 ::: ... and a\\_n :: real and x :: real and x1 :: real and x2 :: real\nassumes h0 : \"real const a1\"\nand h1 : \"real const a2\"\nand h2 : \"real const a\\_n\"\nand h3 : \"real var x\"\nand h4 : \"x1 =? x\"\nand h5 : \"x2 =? x\"\nand h6 : \"f x = cos (a1 + x) + (1 / 2) * (cos (a2 + x)) + (1 / 4) * (cos (a3 + x)) + ... + (1 / 2^(n - 1)) * (cos (a\\_n + x))\"\nand h7 : \"f x1 = 0\"\nand h8 : \"f x2 = 0\"\nshows  \"exists m. (m :: int) * pi = x2 - x1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given real numbers $a\\_1, a\\_2, \\dots, a\\_n$, find a value for $x$ such that $x$ can be expressed as a multiple of $\\pi$ subtracted from $x\\_2$, and $x\\_1 = x$. Additionally, for this value of $x$, $f(x) = \\cos(a\\_1 + x) + \\frac{1}{2}\\cos(a\\_2 + x) + \\frac{1}{4}\\cos(a\\_3 + x) + \\dots + \\frac{1}{2^{n-1}}\\cos(a\\_n + x)$ equals zero when evaluated at $x\\_1$ and $x\\_2$. The final answer is an integer $m$ such that $m\\pi = x\\_2 - x\\_1$."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes a1 :: real and a2 :::... and an :: real and x :: real and x1 :: real and x2 :: real\nassumes h0 : \"real a1\"\nand h1 : \"real a2\"\nand h2 : \"real an\"\nand h3 : \"\\<forall> x. cos (a1 + x) = cos a1 * cos x - sin a1 * sin x\"\nand h4 : \"\\<forall> x. cos (a2 + x) = cos a2 * cos x - sin a2 * sin x\"\nand h5 : \"\\<forall> x. cos (an + x) = cos an * cos x - sin an * sin x\"\nand h6 : \"f x1 = 0\"\nand h7 : \"f x2 = 0\"\nshows  \"\\<exists> m. integer m \\<and> abs (x2 - x1) = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a1 :: real and a2 :::... and an :: real and x :: real and x1 :: real and x2 :: real\nassumes h0 : \"real a1\"\nand h1 : \"real a2\"\nand h2 : \"real an\"\nand h3 : \"\\<forall> x. cos (a1 + x) = cos a1 * cos x - sin a1 * sin x\"\nand h4 : \"\\<forall> x. cos (a2 + x) = cos a2 * cos x - sin a2 * sin x\"\nand h5 : \"\\<forall> x. cos (an + x) = cos an * cos x - sin an * sin x\"\nand h6 : \"f x1 = 0\"\nand h7 : \"f x2 = 0\"\nshows  \"\\<exists> m. integer m \\<and> abs (x2 - x1) = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find an integer $m$ such that the difference between $x_1$ and $x_2$ is equal to $m\\pi$.\n\nIn other words, determine if there exists an integer $m$ that makes the following equation true: $x_2 - x_1 = m\\pi$.\n\nAssume $a_1, a_2, \\ldots, a_n$ are real numbers and $\\cos(\\sum_{i=1}^{n} a_i + x) = \\cos(a_1)\\cos(x) - \\sin(a_1)\\sin(x)$ for all real $x$. Also, $f(x_1) = 0$ and $f(x_2) = 0$."
+    },
+    "a_3_mistral": {
+        "formal problem": "theorem\nfixes a1 :: real and a2 :: ... and a_n :: real and x :: real and y :: real and m :: int\nassumes h0 : \"\\<forall> x. cos (a1 + x) = cos a1 * cos x - sin a1 * sin x\"\nand h1 : \"\\<forall> x1 x2. (f x1 = 0) /\\ (f x2 = 0) \\<Longrightarrow> (x1 - x2 = m * PI forsome m)\"\nand h2 : \"f x = cos a1 * cos x + (sum from i in 2 to n of (pow 1/2 i) * cos (a i + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"x2 - x1 = m * PI\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a1 :: real and a2 :: ... and a_n :: real and x :: real and y :: real and m :: int\nassumes h0 : \"\\<forall> x. cos (a1 + x) = cos a1 * cos x - sin a1 * sin x\"\nand h1 : \"\\<forall> x1 x2. (f x1 = 0) /\\ (f x2 = 0) \\<Longrightarrow> (x1 - x2 = m * PI forsome m)\"\nand h2 : \"f x = cos a1 * cos x + (sum from i in 2 to n of (pow 1/2 i) * cos (a i + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"x2 - x1 = m * PI\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Given the values of $a\\_1, a\\_2, ..., a\\_n$ and the variables $x$ and $y$, which are both real numbers, and an integer $m$.\n\nAssume that the cosine function of a sum of an angle and a variable is equal to the product of the cosines of each angle and the variable, minus the product of the sines.\n\nAssume that if two functions $f(x\\_1)$ and $f(x\\_2)$ are both zero, then the difference between $x\\_1$ and $x\\_2$ is equal to a multiple of $\\pi$.\n\nGiven that $f(x\\_1) = 0$ and $f(x\\_2) = 0$, find the value of $x\\_2 - x\\_1$. The final answer is a multiple of $\\pi$.\n\nHint: Use the given definitions to derive the expression for $f(x)$ and apply the assumptions to find $x\\_2$ and $x\\_1$.\""
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes a1 :: real and a2 :: :... : real and a\\_n :: real and x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"x1 \\<neq> x2\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nand h3 : \"\\<forall> x. f x = cos (a1 + x) + 1/2 * cos (a2 + x) + 1/4 * cos (a3 + x) + ... + 1/2^(n-1) * cos (a\\_n + x)\"\nshows  \"(\\<exists> m. x2 - x1 = m * pi)\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a1 :: real and a2 :: :... : real and a\\_n :: real and x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"x1 \\<neq> x2\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nand h3 : \"\\<forall> x. f x = cos (a1 + x) + 1/2 * cos (a2 + x) + 1/4 * cos (a3 + x) + ... + 1/2^(n-1) * cos (a\\_n + x)\"\nshows  \"(\\<exists> m. x2 - x1 = m * pi)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find real numbers $a\\_1, a\\_2, \\ldots, a\\_n$ and $x\\_1, x\\_2$ such that $x\\_1 \\neq x\\_2$ and $f(x\\_1) = f(x\\_2) = 0$, where $f(x) = \\cos(a\\_1 + x) + \\frac{1}{2}\\cos(a\\_2 + x) + \\frac{1}{4}\\cos(a\\_3 + x) + \\ldots + \\frac{1}{2^{n-1}}\\cos(a\\_n + x)$. Determine if there exists a $m$ such that $x\\_2 - x\\_1 = m\\pi$."
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes a1 :: real and a2 :: :: ... and a\\_n :: real and x :: real and x1 :: real and x2 :: real\nassumes h0 : \"\\<forall> x. f x = cos (a1 + x) + (1 / 2) * cos (a2 + x) + (1 / 4) * cos (a3 + x) + ... + (1 / 2^(n-1)) * cos (a\\_n + x)\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"exists m. is_int (x2 - x1) \\<and> x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a1 :: real and a2 :: :: ... and a\\_n :: real and x :: real and x1 :: real and x2 :: real\nassumes h0 : \"\\<forall> x. f x = cos (a1 + x) + (1 / 2) * cos (a2 + x) + (1 / 4) * cos (a3 + x) + ... + (1 / 2^(n-1)) * cos (a\\_n + x)\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"exists m. is_int (x2 - x1) \\<and> x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = \\cos(a\\_1 + x) + \\frac{1}{2}\\cos(a\\_2 + x) + \\frac{1}{4}\\cos(a\\_3 + x) + ... + \\frac{1}{2^{n-1}}\\cos(a\\_n + x)$, find a pair of real numbers $x\\_1$ and $x\\_2$ such that $f(x\\_1) = 0$ and $f(x\\_2) = 0$. If such a pair exists, find the integer $m$ such that $x\\_2 - x\\_1 = m\\pi$."
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nfixes a1 :: real and a2 :: :: real ... and an :: real and x :: real and x1 :: real and x2 :: real and m :: int\nassumes h0 : \"real a1\"\nand h1 : \"real a2\"\nand h2 : \"real an\"\nand h3 : \"real x\"\nand h4 : \"real x1\"\nand h5 : \"real x2\"\nand h6 : \"{\\<lambda> x. cos (a1 + x) + 1 / 2 * cos (a2 + x) + 1 / 4 * cos (a3 + x) + ... + 1 / 2^(n-1) * cos (an + x)} = f\"\nand h7 : \"f x1 = 0\"\nand h8 : \"f x2 = 0\"\nshows  \"x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a1 :: real and a2 :: :: real ... and an :: real and x :: real and x1 :: real and x2 :: real and m :: int\nassumes h0 : \"real a1\"\nand h1 : \"real a2\"\nand h2 : \"real an\"\nand h3 : \"real x\"\nand h4 : \"real x1\"\nand h5 : \"real x2\"\nand h6 : \"{\\<lambda> x. cos (a1 + x) + 1 / 2 * cos (a2 + x) + 1 / 4 * cos (a3 + x) + ... + 1 / 2^(n-1) * cos (an + x)} = f\"\nand h7 : \"f x1 = 0\"\nand h8 : \"f x2 = 0\"\nshows  \"x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given real numbers $a_1$, $a_2$, ..., $a_n$, find the difference between the roots of the equation:\n\n$$ \\cos (a_1 + x) + \\frac{1}{2} \\cos (a_2 + x) + \\frac{1}{4} \\cos (a_3 + x) + \\cdots + \\frac{1}{2^{n-1}} \\cos (a_n + x) = 0$$\n\nThe difference between the roots is equal to $m \\pi$.\n\n(Note: In the given Isabelle version, $m$ is an integer.)"
+    },
+    "a_7_mistral": {
+        "formal problem": "theorem\nfixes a1 a2 :: real and i :: nat and x1 x2 :: real and f :: \"real -> real\"\nassumes h0 : \"\\<forall> x. a1 :: real\"\nand h1 : \"\\<forall> x. a2 :: real\"\nand h2 : \"\\<forall> x. cos (a1 + x) = cos a1 * cos x - sin a1 * sin x\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nand h5 : \"\\<forall> x. f x = cos a1 * cos (x + a1) + (1 / 2) * (cos a2 * cos (x + a2) + 1 / 4 * (cos a3 * cos (x + a3) + \\... + 1 / 2^(i - 1) * (cos a_i * cos (x + a_i) + cos (x + a_i - a_1) * (sin a_i * sin (x + a_i) + \\... + 1 / 2^(n - 1) * (cos a_n * cos (x + a_n) + cos (x + a_n - a_1) * sin a_n))\"\nshows  \"\\<exists> m. m :: int \\<and> x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a1 a2 :: real and i :: nat and x1 x2 :: real and f :: \"real -> real\"\nassumes h0 : \"\\<forall> x. a1 :: real\"\nand h1 : \"\\<forall> x. a2 :: real\"\nand h2 : \"\\<forall> x. cos (a1 + x) = cos a1 * cos x - sin a1 * sin x\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nand h5 : \"\\<forall> x. f x = cos a1 * cos (x + a1) + (1 / 2) * (cos a2 * cos (x + a2) + 1 / 4 * (cos a3 * cos (x + a3) + \\... + 1 / 2^(i - 1) * (cos a_i * cos (x + a_i) + cos (x + a_i - a_1) * (sin a_i * sin (x + a_i) + \\... + 1 / 2^(n - 1) * (cos a_n * cos (x + a_n) + cos (x + a_n - a_1) * sin a_n))\"\nshows  \"\\<exists> m. m :: int \\<and> x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given real numbers $a\\_1$ and $a\\_2$, find a natural number $m$ such that the difference between the angles $a\\_2$ and $a\\_1$ is equal to $m$ times $\\pi$.\n\nThe cosine of the sum of two angles is equal to the product of the cosines of each angle minus the product of their sines. Also, the function $f(x)$ is defined as the cosine of $a\\_1$ multiplied by the cosine of $x+a\\_1$, plus one-half the sum of the cosines of $a\\_2$ through $a\\_n$ multiplied by the cosine of $x+a\\_2$, $x+a\\_3$, ..., $x+a\\_n$. This function equals zero at $x\\_1$ and $x\\_2$."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes a1 :: real and a2 ::... and an :: real and x :: real and x1 :: real and x2 :: real and m :: int\nassumes h0 : \"\\<forall> x. cos (a1 + x) = cos a1 * cos x - sin a1 * sin x\"\nand h1 : \"x1 \\<ne> x2\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nand h4 : \"\\<forall> i. 1 \\<le> i < n \\<longrightarrow> (a1 + i * pi) \\<notin> {a1 + x1, a1 + x2}\"\nshows  \"x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a1 :: real and a2 ::... and an :: real and x :: real and x1 :: real and x2 :: real and m :: int\nassumes h0 : \"\\<forall> x. cos (a1 + x) = cos a1 * cos x - sin a1 * sin x\"\nand h1 : \"x1 \\<ne> x2\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nand h4 : \"\\<forall> i. 1 \\<le> i < n \\<longrightarrow> (a1 + i * pi) \\<notin> {a1 + x1, a1 + x2}\"\nshows  \"x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the difference between two values $x\\_1$ and $x\\_2$ such that the cosine of their sum with $a\\_1$ is equal to the product of the cosines of $a\\_1$ and each value, minus the product of their sines. Moreover, both values must be distinct and neither of them is a zero of the function $f(x)$. Additionally, neither of the values can be the sum of $a\\_1$ with an integer multiple of $\\pi$. The final answer is the difference between $x\\_1$ and $x\\_2$ expressed as a multiple of $\\pi$."
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes a1 :: real and a2 :: :...: real and a :: \"real \\<Rightarrow> real\" and x1 x2 :: real\nassumes h0 : \"\\<forall> x. a x = cos (a1 + x) + (1 / 2) * cos (a2 + x) + (1 / 4) * cos (a3 + x) + ... + (1 / 2^(n-1)) * cos (an + x)\"\nand h1 : \"a x1 = 0\"\nand h2 : \"a x2 = 0\"\nshows  \"\\<exists> m. m :: int \\<and> x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a1 :: real and a2 :: :...: real and a :: \"real \\<Rightarrow> real\" and x1 x2 :: real\nassumes h0 : \"\\<forall> x. a x = cos (a1 + x) + (1 / 2) * cos (a2 + x) + (1 / 4) * cos (a3 + x) + ... + (1 / 2^(n-1)) * cos (an + x)\"\nand h1 : \"a x1 = 0\"\nand h2 : \"a x2 = 0\"\nshows  \"\\<exists> m. m :: int \\<and> x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $a(x) = \\cos(a_1 + x) + \\frac{1}{2}\\cos(a_2 + x) + \\frac{1}{4}\\cos(a_3 + x) + ... + \\frac{1}{2^{n-1}}\\cos(a_n + x)$, find an integer $m$ such that $x_2 - x_1 = m\\pi$. In other words, find the number of full periods of the function between $x_1$ and $x_2$."
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes a :: \"real list\"\nand x :: real\nand f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"\\<forall> i < n. a ! i = real_of_int (a_i i)\"\nand h2 : \"\\<forall> x. f x = (\\<Sum>i<n. (1 / 2 powr i) * cos (a ! i + x))\"\nand h3 : \"f x_1 = 0\"\nand h4 : \"f x_2 = 0\"\nshows  \"\\<exists> m. x_2 - x_1 = real_of_int m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\"\nand x :: real\nand f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"\\<forall> i < n. a ! i = real_of_int (a_i i)\"\nand h2 : \"\\<forall> x. f x = (\\<Sum>i<n. (1 / 2 powr i) * cos (a ! i + x))\"\nand h3 : \"f x_1 = 0\"\nand h4 : \"f x_2 = 0\"\nshows  \"\\<exists> m. x_2 - x_1 = real_of_int m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers `a` with length `n`, and two real numbers `x_1` and `x_2`, there exists a function `f` defined as the sum of the product of `(1 / 2 powr i)` and `cos(a[i] + x)` for each `i` from 0 to `n-1`. If `f(x_1) = 0` and `f(x_2) = 0`, then there exists an integer `m` such that `x_2 - x_1` is equal to `m * pi`."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1 / 2 * COS (a ! 1 + x) + 1 / 2 powr 2 * COS (a ! 2 + x) + ... + 1 / 2 powr (n - 1) * COS (a ! (n - 1) + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1 / 2 * COS (a ! 1 + x) + 1 / 2 powr 2 * COS (a ! 2 + x) + ... + 1 / 2 powr (n - 1) * COS (a ! (n - 1) + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers 'a' of length 'n' where 'n' is greater than 0, and a function 'f' defined as the sum of cosine functions with coefficients that are powers of 1/2, where each cosine function is a cosine of the sum of a number from the list 'a' and a variable 'x'. If there are two values 'x1' and 'x2' such that 'f' evaluated at 'x1' and 'x2' both equal 0, then there exists an integer 'm' such that the difference between 'x2' and 'x1' is equal to 'm' times pi."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (COS ((a ! 0) + x)) + (1 / 2) * (COS ((a ! 1) + x)) + (1 / 2 powr 2) * (COS ((a ! 2) + x)) + ... + (1 / 2 powr (n - 1)) * (COS ((a ! (n - 1)) + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (COS ((a ! 0) + x)) + (1 / 2) * (COS ((a ! 1) + x)) + (1 / 2 powr 2) * (COS ((a ! 2) + x)) + ... + (1 / 2 powr (n - 1)) * (COS ((a ! (n - 1)) + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers 'a' of length 'n', and a function 'f' that takes a real number 'x' and returns the sum of cosine functions, where each term in the sum is a cosine function of 'x' plus an element from the list 'a', multiplied by a decreasing power of 1/2. We are given that 'f' equals 0 at two different real numbers 'x1' and 'x2'. We need to show that there exists an integer 'm' such that the difference between 'x2' and 'x1' is equal to 'm' times pi."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> x. f x = (COS ((a ! 0) + x)) + (1 / 2) * (COS ((a ! 1) + x)) + (1 / 2 powr (2)) * (COS ((a ! 2) + x)) + ... + (1 / 2 powr (n - 1)) * (COS ((a ! (n - 1)) + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"\\<exists> m. x2 - x1 = m * pi \\<and> m \\<in> int\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> x. f x = (COS ((a ! 0) + x)) + (1 / 2) * (COS ((a ! 1) + x)) + (1 / 2 powr (2)) * (COS ((a ! 2) + x)) + ... + (1 / 2 powr (n - 1)) * (COS ((a ! (n - 1)) + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"\\<exists> m. x2 - x1 = m * pi \\<and> m \\<in> int\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers 'a' with length 'n' where 'n' is greater than 0, and a function 'f' defined as the sum of cosine functions with arguments that are the sum of each element in 'a' and a real number 'x', each multiplied by a decreasing power of 1/2. If there exist two real numbers 'x1' and 'x2' such that 'f(x1)' and 'f(x2)' both equal 0, then there exists an integer 'm' such that the difference between 'x2' and 'x1' is equal to 'm' times pi."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + ... + 1/(2^(n-1)) * COS (a ! (n-1) + x))\"\nand h2 : \"f x_1 = 0\"\nand h3 : \"f x_2 = 0\"\nshows  \"\\<exists>m. x_2 - x_1 = m * pi \\<and> m \\<in> int\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + ... + 1/(2^(n-1)) * COS (a ! (n-1) + x))\"\nand h2 : \"f x_1 = 0\"\nand h3 : \"f x_2 = 0\"\nshows  \"\\<exists>m. x_2 - x_1 = m * pi \\<and> m \\<in> int\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers `a` of length `n`, and a function `f` defined as the sum of cosine functions with arguments that are the sum of each element in `a` and a real number `x`, each term in the sum is multiplied by a decreasing power of 1/2. If there exist two real numbers `x_1` and `x_2` such that `f(x_1) = 0` and `f(x_2) = 0`, then there exists an integer `m` such that the difference between `x_2` and `x_1` is equal to `m` times `pi`."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + \\<dots> + 1/(2 powr (n - 1)) * COS (a ! (n - 1) + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + \\<dots> + 1/(2 powr (n - 1)) * COS (a ! (n - 1) + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a list of real numbers 'a' with a length 'n' where 'n' is greater than 0. Define a function 'f' such that for any real number 'x', 'f(x)' is equal to the sum of cosine functions with arguments formed by adding 'x' to each element of the list 'a', and each term in the sum is multiplied by a decreasing power of 1/2. If there exist two real numbers 'x1' and 'x2' such that 'f(x1) = 0' and 'f(x2) = 0', then there must exist an integer 'm' such that the difference between 'x2' and 'x1' is equal to 'm' times pi."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + ... + 1/(2^(n-1)) * COS (a ! (n-1) + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + ... + 1/(2^(n-1)) * COS (a ! (n-1) + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a list of real numbers \"a\" with a length \"n\". Define a function \"f\" that takes a real number \"x\" and returns the sum of cosine functions, where each term in the sum is a cosine function of the form \"1/(2^(i-1)) * COS (a[i] + x)\", for i ranging from 0 to n-1. Given that \"f\" equals 0 at two distinct real numbers \"x1\" and \"x2\", prove that there exists an integer \"m\" such that the difference between \"x2\" and \"x1\" is equal to \"m * pi\"."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"\\<forall> i < n. a ! i = real i\"\nand h2 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + ... + 1/(2^(n-1)) * COS (a ! (n-1) + x))\"\nand h3 : \"f x_1 = 0\"\nand h4 : \"f x_2 = 0\"\nshows  \"\\<exists> m :: int. x_2 - x_1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"\\<forall> i < n. a ! i = real i\"\nand h2 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + ... + 1/(2^(n-1)) * COS (a ! (n-1) + x))\"\nand h3 : \"f x_1 = 0\"\nand h4 : \"f x_2 = 0\"\nshows  \"\\<exists> m :: int. x_2 - x_1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a list `a` of real numbers with length `n`, where each element `a[i]` is equal to the real number `i` for `i` less than `n`. Define a function `f` that takes a real number `x` and returns the sum of cosine functions, where the `i`-th term is `1/(2^(i-1)) * COS(a[i] + x)`. Given that `f` equals 0 at two distinct real numbers `x_1` and `x_2`, prove that there exists an integer `m` such that the difference between `x_2` and `x_1` is equal to `m * pi`."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> i < n. a ! i = real i\"\nand h3 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1 / 2 powr 1 * COS (a ! 1 + x) + 1 / 2 powr 2 * COS (a ! 2 + x) + ... + 1 / 2 powr (n - 1) * COS (a ! (n - 1) + x))\"\nand h4 : \"f x1 = 0\"\nand h5 : \"f x2 = 0\"\nshows  \"\\<exists> m. x2 - x1 = real m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> i < n. a ! i = real i\"\nand h3 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1 / 2 powr 1 * COS (a ! 1 + x) + 1 / 2 powr 2 * COS (a ! 2 + x) + ... + 1 / 2 powr (n - 1) * COS (a ! (n - 1) + x))\"\nand h4 : \"f x1 = 0\"\nand h5 : \"f x2 = 0\"\nshows  \"\\<exists> m. x2 - x1 = real m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers 'a' with length 'n' where 'n' is greater than 0, and each element 'a[i]' in the list 'a' is equal to the real number 'i', we define a function 'f' that takes a real number 'x' and returns the sum of cosine functions of the form (1 / 2^(i-1)) * cos(a[i] + x) for all 'i' from 0 to 'n-1'. If there exist two real numbers 'x1' and 'x2' such that 'f(x1) = 0' and 'f(x2) = 0', then there exists an integer 'm' such that the difference between 'x2' and 'x1' is equal to 'm * pi'."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes a :: \"real list\"\nand x :: real\nand f :: \"real \\<Rightarrow> real\"\nand x1 x2 :: real\nassumes h0 : \"length a = n\"\nand h1 : \"f x = cos (a ! 0 + x) + 1 / 2 * cos (a ! 1 + x) + 1 / 2 powr (n - 1) * cos (a ! (n - 1) + x)\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\"\nand x :: real\nand f :: \"real \\<Rightarrow> real\"\nand x1 x2 :: real\nassumes h0 : \"length a = n\"\nand h1 : \"f x = cos (a ! 0 + x) + 1 / 2 * cos (a ! 1 + x) + 1 / 2 powr (n - 1) * cos (a ! (n - 1) + x)\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers 'a' of length 'n', and a function 'f' that takes a real number 'x' and returns the sum of the cosine of the sum of 'x' and each element of 'a', each multiplied by a decreasing power of 1/2, starting from 1 for the first element and ending with 1/2^(n-1) for the last element, plus 1.\n\nIf there are two real numbers 'x1' and 'x2' such that 'f' applied to both of them equals 0, then there exists an integer 'm' such that the difference between 'x2' and 'x1' is equal to 'm' times pi."
+    },
+    "prediction_deepseek": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes x1 x2 a f :: \"real \\<Rightarrow> real\" and n m :: nat\nassumes h0 : \"\\<forall> i \\<in> {1..n}. \\<exists> a_i. real i = a_i\"\nand h1 : \"f x = (\\<Sum>i\\<in>{1..n}. (1 / (2 powr (i-1))) * cos (a(i) + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"x2 - x1 = real m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 a f :: \"real \\<Rightarrow> real\" and n m :: nat\nassumes h0 : \"\\<forall> i \\<in> {1..n}. \\<exists> a_i. real i = a_i\"\nand h1 : \"f x = (\\<Sum>i\\<in>{1..n}. (1 / (2 powr (i-1))) * cos (a(i) + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"x2 - x1 = real m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(x)$ defined as the sum for $i$ from 1 to $n$ of $\\frac{1}{2^{i-1}} \\cos (a_i + x)$, where each $a_i$ is a real number equal to the corresponding $i$. If $f(x_1) = 0$ and $f(x_2) = 0$, prove that the difference $x_2 - x_1$ equals some integer $m$ times $\\pi$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.949129652861152,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\" and x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (\\<Sum> n \\<in> {1..N}. (1 / 2^(n-1)) * cos(a n + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m::int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\" and x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (\\<Sum> n \\<in> {1..N}. (1 / 2^(n-1)) * cos(a n + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m::int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume a function $f(x)$ is defined as the sum from $n=1$ to $N$ of $\\frac{1}{2^{n-1}} * cos(a(n) + x)$ where $a(n)$ is a function from natural numbers to real numbers. If $f(x1) = 0$ and $f(x2) = 0$, show that there exists an integer $m$ such that $x2 - x1 = m * \\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9559088077318307,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes x1 x2 :: real and a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and n :: nat\nassumes h0 : \"\\<forall> x. f x = (\\<Sum>i\\<in>{1..n}. (1/2) ^ (i-1) * cos (a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 :: real and a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and n :: nat\nassumes h0 : \"\\<forall> x. f x = (\\<Sum>i\\<in>{1..n}. (1/2) ^ (i-1) * cos (a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x)$ defined as the sum of $(\\frac{1}{2})^{i-1} \\cos(a_i + x)$ for $i$ ranging from 1 to $n$, if $f(x_1) = 0$ and $f(x_2) = 0$, then there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9325847182340353,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes x1 x2 :: real and a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and n :: nat\nassumes h0 : \"\\<forall> x. f x = (\\<Sum>i\\<in>{1..n}. (1 / (2 powr (i - 1))) * cos(a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists>m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 :: real and a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and n :: nat\nassumes h0 : \"\\<forall> x. f x = (\\<Sum>i\\<in>{1..n}. (1 / (2 powr (i - 1))) * cos(a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists>m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined for all real numbers $x$ as the sum from $i=1$ to $n$ of $\\frac{1}{2^{i-1}}cos(a_i + x)$. Given that $f(x_1) = 0$ and $f(x_2) = 0$, show that there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9573766365434742,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes x1 x2 m :: real and a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"f = (\\<lambda>x. \\<Sum>n\\<in>{1..n}. (1 / 2 ^ (n - 1)) * cos(a n + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists>m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 m :: real and a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"f = (\\<lambda>x. \\<Sum>n\\<in>{1..n}. (1 / 2 ^ (n - 1)) * cos(a n + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists>m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume that there exists a function $f(x)$ which is defined as the sum from $n=1$ to infinity of the expression $\\frac{1}{2^{n-1}} \\cos(a_n + x)$. If $f(x_1) = 0$ and $f(x_2) = 0$, prove that there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9520604812854583,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes x1 x2 :: real \nand a :: \"nat \\<Rightarrow> real\"\nand f :: \"real \\<Rightarrow> real\"\nand m :: int\nassumes h0 : \"\\<forall> n \\<in> {1..n}. f x = (\\<Sum> i \\<in> {1..n}. (1/(2^(i-1))) * cos (a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 :: real \nand a :: \"nat \\<Rightarrow> real\"\nand f :: \"real \\<Rightarrow> real\"\nand m :: int\nassumes h0 : \"\\<forall> n \\<in> {1..n}. f x = (\\<Sum> i \\<in> {1..n}. (1/(2^(i-1))) * cos (a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined for every real number $x$ as the sum from $i=1$ to $n$ of the terms $(1/(2^{i-1})) * cos(a_i + x)$. It is given that $f(x_1) = 0$ and $f(x_2) = 0$. Find the integer $m$ such that the difference $x_2 - x_1$ equals $m$ times $\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9264066606080071,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and x1 x2 :: real\nassumes h0 : \"\\<forall> n \\<in> {1..N}. a n \\<in> \\<real>\"\nand h1 : \"\\<forall> x. f x = (\\<Sum>n\\<in>{1..N}. (1/(2^(n-1))) * cos(a n + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m \\<in> \\<int>. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and x1 x2 :: real\nassumes h0 : \"\\<forall> n \\<in> {1..N}. a n \\<in> \\<real>\"\nand h1 : \"\\<forall> x. f x = (\\<Sum>n\\<in>{1..N}. (1/(2^(n-1))) * cos(a n + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m \\<in> \\<int>. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $a$ be a function from natural numbers to real numbers such that for all $n$ from 1 to $N$, $a(n)$ is a real number. Let $f$ be a function from real numbers to real numbers such that $f(x)$ equals the sum over $n$ from 1 to $N$ of $\\frac{1}{2^{n-1}}$ times the cosine of $a(n) + x$. If $f(x_1) = 0$ and $f(x_2) = 0$, then there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.93264731123461,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and x1 x2 :: real\nassumes h0 : \"\\<forall> x. f x = (\\<Sum> i \\<in> {1..n}. (1 / (2^(i-1))) * cos (a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\" and f :: \"real \\<Rightarrow> real\" and x1 x2 :: real\nassumes h0 : \"\\<forall> x. f x = (\\<Sum> i \\<in> {1..n}. (1 / (2^(i-1))) * cos (a i + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose a function $f$ is defined as $f(x) = \\sum_{i=1}^{n} \\frac{1}{2^{i-1}} \\cdot \\cos(a(i) + x)$. If $f(x_1) = 0$ and $f(x_2) = 0$, prove that there exists an integer $m$ such that $x_2 - x_1 = m\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9536579451708942,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes x1 x2 :: real and f :: \"real \\<Rightarrow> real\" and a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = sum (\\<lambda>n. cos(a n + x) / 2 powr n) {1..n}\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 :: real and f :: \"real \\<Rightarrow> real\" and a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = sum (\\<lambda>n. cos(a n + x) / 2 powr n) {1..n}\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Assume a function $f$ is defined for every real number $x$ as the sum of terms $\\frac{\\cos(a(n) + x)}{2^n}$ for all integers $n$ from $1$ to $n$. If $f(x1) = 0$ and $f(x2) = 0$, prove that there exists an integer $m$ such that $x2 - x1 = m\\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9472997718711281,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes x1 x2 :: real \nand a :: \"nat \\<Rightarrow> real\" \nand f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (\\<Sum>n\\<in>{1..n}. (1 / 2 ^ (n - 1)) * cos(a n + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\ntheorem\nfixes x1 x2 :: real \nand a :: \"nat \\<Rightarrow> real\" \nand f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (\\<Sum>n\\<in>{1..n}. (1 / 2 ^ (n - 1)) * cos(a n + x))\"\nand h1 : \"f x1 = 0\"\nand h2 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x)$ is defined as the sum from $n=1$ to infinity of $\\frac{1}{2^{n-1}} \\cdot \\cos(a_n + x)$, and it is known that $f(x1) = 0$ and $f(x2) = 0$, find an integer $m$ such that $x2 - x1 = m \\cdot \\pi$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9294229375419892,
+        "symbolic_score": 0.1
+    },
+    "equivalence_oracle_solve_direct": [],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes a :: \"real list\"\nand x :: real\nand f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"\\<forall> i < n. a ! i = real_of_int (a_i i)\"\nand h2 : \"\\<forall> x. f x = (\\<Sum>i<n. (1 / 2 powr i) * cos (a ! i + x))\"\nand h3 : \"f x_1 = 0\"\nand h4 : \"f x_2 = 0\"\nshows  \"\\<exists> m. x_2 - x_1 = real_of_int m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\"\nand x :: real\nand f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"\\<forall> i < n. a ! i = real_of_int (a_i i)\"\nand h2 : \"\\<forall> x. f x = (\\<Sum>i<n. (1 / 2 powr i) * cos (a ! i + x))\"\nand h3 : \"f x_1 = 0\"\nand h4 : \"f x_2 = 0\"\nshows  \"\\<exists> m. x_2 - x_1 = real_of_int m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers `a` with length `n`, and two real numbers `x_1` and `x_2`, there exists a function `f` defined as the sum of the product of `(1 / 2 powr i)` and `cos(a[i] + x)` for each `i` from 0 to `n-1`. If `f(x_1) = 0` and `f(x_2) = 0`, then there exists an integer `m` such that `x_2 - x_1` is equal to `m * pi`.",
+        "semantic_score": 0.9191304943493445,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1 / 2 * COS (a ! 1 + x) + 1 / 2 powr 2 * COS (a ! 2 + x) + ... + 1 / 2 powr (n - 1) * COS (a ! (n - 1) + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1 / 2 * COS (a ! 1 + x) + 1 / 2 powr 2 * COS (a ! 2 + x) + ... + 1 / 2 powr (n - 1) * COS (a ! (n - 1) + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers 'a' of length 'n' where 'n' is greater than 0, and a function 'f' defined as the sum of cosine functions with coefficients that are powers of 1/2, where each cosine function is a cosine of the sum of a number from the list 'a' and a variable 'x'. If there are two values 'x1' and 'x2' such that 'f' evaluated at 'x1' and 'x2' both equal 0, then there exists an integer 'm' such that the difference between 'x2' and 'x1' is equal to 'm' times pi.",
+        "semantic_score": 0.9202804440760693,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (COS ((a ! 0) + x)) + (1 / 2) * (COS ((a ! 1) + x)) + (1 / 2 powr 2) * (COS ((a ! 2) + x)) + ... + (1 / 2 powr (n - 1)) * (COS ((a ! (n - 1)) + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (COS ((a ! 0) + x)) + (1 / 2) * (COS ((a ! 1) + x)) + (1 / 2 powr 2) * (COS ((a ! 2) + x)) + ... + (1 / 2 powr (n - 1)) * (COS ((a ! (n - 1)) + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers 'a' of length 'n', and a function 'f' that takes a real number 'x' and returns the sum of cosine functions, where each term in the sum is a cosine function of 'x' plus an element from the list 'a', multiplied by a decreasing power of 1/2. We are given that 'f' equals 0 at two different real numbers 'x1' and 'x2'. We need to show that there exists an integer 'm' such that the difference between 'x2' and 'x1' is equal to 'm' times pi.",
+        "semantic_score": 0.9285417988142693,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> x. f x = (COS ((a ! 0) + x)) + (1 / 2) * (COS ((a ! 1) + x)) + (1 / 2 powr (2)) * (COS ((a ! 2) + x)) + ... + (1 / 2 powr (n - 1)) * (COS ((a ! (n - 1)) + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"\\<exists> m. x2 - x1 = m * pi \\<and> m \\<in> int\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> x. f x = (COS ((a ! 0) + x)) + (1 / 2) * (COS ((a ! 1) + x)) + (1 / 2 powr (2)) * (COS ((a ! 2) + x)) + ... + (1 / 2 powr (n - 1)) * (COS ((a ! (n - 1)) + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"\\<exists> m. x2 - x1 = m * pi \\<and> m \\<in> int\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers 'a' with length 'n' where 'n' is greater than 0, and a function 'f' defined as the sum of cosine functions with arguments that are the sum of each element in 'a' and a real number 'x', each multiplied by a decreasing power of 1/2. If there exist two real numbers 'x1' and 'x2' such that 'f(x1)' and 'f(x2)' both equal 0, then there exists an integer 'm' such that the difference between 'x2' and 'x1' is equal to 'm' times pi.",
+        "semantic_score": 0.9181322246545467,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + ... + 1/(2^(n-1)) * COS (a ! (n-1) + x))\"\nand h2 : \"f x_1 = 0\"\nand h3 : \"f x_2 = 0\"\nshows  \"\\<exists>m. x_2 - x_1 = m * pi \\<and> m \\<in> int\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + ... + 1/(2^(n-1)) * COS (a ! (n-1) + x))\"\nand h2 : \"f x_1 = 0\"\nand h3 : \"f x_2 = 0\"\nshows  \"\\<exists>m. x_2 - x_1 = m * pi \\<and> m \\<in> int\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers `a` of length `n`, and a function `f` defined as the sum of cosine functions with arguments that are the sum of each element in `a` and a real number `x`, each term in the sum is multiplied by a decreasing power of 1/2. If there exist two real numbers `x_1` and `x_2` such that `f(x_1) = 0` and `f(x_2) = 0`, then there exists an integer `m` such that the difference between `x_2` and `x_1` is equal to `m` times `pi`.",
+        "semantic_score": 0.9188631338083083,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + \\<dots> + 1/(2 powr (n - 1)) * COS (a ! (n - 1) + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + \\<dots> + 1/(2 powr (n - 1)) * COS (a ! (n - 1) + x))\"\nand h3 : \"f x1 = 0\"\nand h4 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a list of real numbers 'a' with a length 'n' where 'n' is greater than 0. Define a function 'f' such that for any real number 'x', 'f(x)' is equal to the sum of cosine functions with arguments formed by adding 'x' to each element of the list 'a', and each term in the sum is multiplied by a decreasing power of 1/2. If there exist two real numbers 'x1' and 'x2' such that 'f(x1) = 0' and 'f(x2) = 0', then there must exist an integer 'm' such that the difference between 'x2' and 'x1' is equal to 'm' times pi.",
+        "semantic_score": 0.9100599508793775,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + ... + 1/(2^(n-1)) * COS (a ! (n-1) + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x x1 x2 :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + ... + 1/(2^(n-1)) * COS (a ! (n-1) + x))\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a list of real numbers \"a\" with a length \"n\". Define a function \"f\" that takes a real number \"x\" and returns the sum of cosine functions, where each term in the sum is a cosine function of the form \"1/(2^(i-1)) * COS (a[i] + x)\", for i ranging from 0 to n-1. Given that \"f\" equals 0 at two distinct real numbers \"x1\" and \"x2\", prove that there exists an integer \"m\" such that the difference between \"x2\" and \"x1\" is equal to \"m * pi\".",
+        "semantic_score": 0.9246993488085928,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"\\<forall> i < n. a ! i = real i\"\nand h2 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + ... + 1/(2^(n-1)) * COS (a ! (n-1) + x))\"\nand h3 : \"f x_1 = 0\"\nand h4 : \"f x_2 = 0\"\nshows  \"\\<exists> m :: int. x_2 - x_1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"\\<forall> i < n. a ! i = real i\"\nand h2 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1/2 * COS (a ! 1 + x) + 1/4 * COS (a ! 2 + x) + ... + 1/(2^(n-1)) * COS (a ! (n-1) + x))\"\nand h3 : \"f x_1 = 0\"\nand h4 : \"f x_2 = 0\"\nshows  \"\\<exists> m :: int. x_2 - x_1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a list `a` of real numbers with length `n`, where each element `a[i]` is equal to the real number `i` for `i` less than `n`. Define a function `f` that takes a real number `x` and returns the sum of cosine functions, where the `i`-th term is `1/(2^(i-1)) * COS(a[i] + x)`. Given that `f` equals 0 at two distinct real numbers `x_1` and `x_2`, prove that there exists an integer `m` such that the difference between `x_2` and `x_1` is equal to `m * pi`.",
+        "semantic_score": 0.922529132582406,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> i < n. a ! i = real i\"\nand h3 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1 / 2 powr 1 * COS (a ! 1 + x) + 1 / 2 powr 2 * COS (a ! 2 + x) + ... + 1 / 2 powr (n - 1) * COS (a ! (n - 1) + x))\"\nand h4 : \"f x1 = 0\"\nand h5 : \"f x2 = 0\"\nshows  \"\\<exists> m. x2 - x1 = real m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\" and x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"length a = n\"\nand h1 : \"n > 0\"\nand h2 : \"\\<forall> i < n. a ! i = real i\"\nand h3 : \"\\<forall> x. f x = (COS (a ! 0 + x) + 1 / 2 powr 1 * COS (a ! 1 + x) + 1 / 2 powr 2 * COS (a ! 2 + x) + ... + 1 / 2 powr (n - 1) * COS (a ! (n - 1) + x))\"\nand h4 : \"f x1 = 0\"\nand h5 : \"f x2 = 0\"\nshows  \"\\<exists> m. x2 - x1 = real m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers 'a' with length 'n' where 'n' is greater than 0, and each element 'a[i]' in the list 'a' is equal to the real number 'i', we define a function 'f' that takes a real number 'x' and returns the sum of cosine functions of the form (1 / 2^(i-1)) * cos(a[i] + x) for all 'i' from 0 to 'n-1'. If there exist two real numbers 'x1' and 'x2' such that 'f(x1) = 0' and 'f(x2) = 0', then there exists an integer 'm' such that the difference between 'x2' and 'x1' is equal to 'm * pi'.",
+        "semantic_score": 0.9147441416694626,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes a :: \"real list\"\nand x :: real\nand f :: \"real \\<Rightarrow> real\"\nand x1 x2 :: real\nassumes h0 : \"length a = n\"\nand h1 : \"f x = cos (a ! 0 + x) + 1 / 2 * cos (a ! 1 + x) + 1 / 2 powr (n - 1) * cos (a ! (n - 1) + x)\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"",
+        "formal solution": "(* ### Problem\n Let $a_1, a_2,\\cdots, a_n$ be real constants, $x$ a real variable, and $f(x)=\\cos(a_1+x)+\\frac{1}{2}\\cos(a_2+x)+\\frac{1}{4}\\cos(a_3+x)+\\cdots+\\frac{1}{2^{n-1}}\\cos(a_n+x).$ Given that $f(x_1)=f(x_2)=0,$ prove that $x_2-x_1=m\\pi$ for some integer $m.$\n ### Proof\n Because the period of $\\cos(x)$ is $2\\pi$, the period of $f(x)$ is also $2\\pi$.\n$f(x_1)=f(x_2)=f(x_1+x_2-x_1)$\nWe can get $x_2-x_1 = 2k\\pi$ for $k\\in N^*$. Thus, $x_2-x_1=m\\pi$ for some integer $m.$\n *)\n\n theorem\nfixes a :: \"real list\"\nand x :: real\nand f :: \"real \\<Rightarrow> real\"\nand x1 x2 :: real\nassumes h0 : \"length a = n\"\nand h1 : \"f x = cos (a ! 0 + x) + 1 / 2 * cos (a ! 1 + x) + 1 / 2 powr (n - 1) * cos (a ! (n - 1) + x)\"\nand h2 : \"f x1 = 0\"\nand h3 : \"f x2 = 0\"\nshows  \"\\<exists> m :: int. x2 - x1 = m * pi\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a list of real numbers 'a' of length 'n', and a function 'f' that takes a real number 'x' and returns the sum of the cosine of the sum of 'x' and each element of 'a', each multiplied by a decreasing power of 1/2, starting from 1 for the first element and ending with 1/2^(n-1) for the last element, plus 1.\n\nIf there are two real numbers 'x1' and 'x2' such that 'f' applied to both of them equals 0, then there exists an integer 'm' such that the difference between 'x2' and 'x1' is equal to 'm' times pi.",
+        "semantic_score": 0.9195260098628371,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": []
+}

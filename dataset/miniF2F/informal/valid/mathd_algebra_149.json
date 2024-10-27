@@ -1,0 +1,128 @@
+{
+    "problem_name": "mathd_algebra_149",
+    "informal_statement": "Let \\[f(x) =\n\\begin{cases}\nx^2+9 &\\text{if }x<-5, \\\\\n3x-8&\\text{if }x\\ge-5.\n\\end{cases}\n\\]If $f(x)=10$, find the sum of all possible values of $x$. Show that it is 6.",
+    "informal_proof": "We begin by looking at each of the two possible cases; either $x<-5$ and $f(x)=x^2+9=10$, or $x\\ge-5$ and $f(x)=3x-8=10$.\n\nTackling the first case, we find that the only possible values of $x$ that could satisfy $x^2+9=10\\Rightarrow x^2=1$ are 1 and -1, neither of which are less than -5, thus yielding no possible solutions.\n\nIn the second case, the only possible value of $x$ that satisfies $3x-8=10$ is 6. Since this value is greater than or equal to -5, it satisfies both conditions. Thus, the only possible value of $x$ for which $f(x)=10$ is $6$, which means the sum of all possible values is also $6$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. (x < -5 \\<longrightarrow> f x = x powr 2 + 9) \\<and> (x \\<ge> -5 \\<longrightarrow> f x = 3 * x - 8)\"\nand h1 : \"f x = 10\"\nshows  \"sum_list (all_possible_values x) = 6\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx^2+9 &\\text{if }x<-5, \\\\\n3x-8&\\text{if }x\\ge-5.\n\\end{cases}\n\\]If $f(x)=10$, find the sum of all possible values of $x$. Show that it is 6.\n ### Proof\n We begin by looking at each of the two possible cases; either $x<-5$ and $f(x)=x^2+9=10$, or $x\\ge-5$ and $f(x)=3x-8=10$.\n\nTackling the first case, we find that the only possible values of $x$ that could satisfy $x^2+9=10\\Rightarrow x^2=1$ are 1 and -1, neither of which are less than -5, thus yielding no possible solutions.\n\nIn the second case, the only possible value of $x$ that satisfies $3x-8=10$ is 6. Since this value is greater than or equal to -5, it satisfies both conditions. Thus, the only possible value of $x$ for which $f(x)=10$ is $6$, which means the sum of all possible values is also $6$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. (x < -5 \\<longrightarrow> f x = x powr 2 + 9) \\<and> (x \\<ge> -5 \\<longrightarrow> f x = 3 * x - 8)\"\nand h1 : \"f x = 10\"\nshows  \"sum_list (all_possible_values x) = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find all possible values of $x$ for which the function $f(x)$ is defined as follows: $f(x) = x^2 + 9$ when $x < -5$ and $f(x) = 3x - 8$ when $x \\ge -5$, and $f(x) = 10$. Calculate the sum of all the possible values of $x$. The final answer is $6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9861617088317871,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and x :: real\nassumes h0 : \"\\<forall>x. (x < -5 \\<longrightarrow> f x = x powr 2 + 9) \\<and> (x \\<ge> -5 \\<longrightarrow> f x = 3 * x - 8)\"\nand h1 : \"f x = 10\"\nshows  \"(\\<Sum>x | f x = 10. x) = 6\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx^2+9 &\\text{if }x<-5, \\\\\n3x-8&\\text{if }x\\ge-5.\n\\end{cases}\n\\]If $f(x)=10$, find the sum of all possible values of $x$. Show that it is 6.\n ### Proof\n We begin by looking at each of the two possible cases; either $x<-5$ and $f(x)=x^2+9=10$, or $x\\ge-5$ and $f(x)=3x-8=10$.\n\nTackling the first case, we find that the only possible values of $x$ that could satisfy $x^2+9=10\\Rightarrow x^2=1$ are 1 and -1, neither of which are less than -5, thus yielding no possible solutions.\n\nIn the second case, the only possible value of $x$ that satisfies $3x-8=10$ is 6. Since this value is greater than or equal to -5, it satisfies both conditions. Thus, the only possible value of $x$ for which $f(x)=10$ is $6$, which means the sum of all possible values is also $6$.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and x :: real\nassumes h0 : \"\\<forall>x. (x < -5 \\<longrightarrow> f x = x powr 2 + 9) \\<and> (x \\<ge> -5 \\<longrightarrow> f x = 3 * x - 8)\"\nand h1 : \"f x = 10\"\nshows  \"(\\<Sum>x | f x = 10. x) = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(x)$ such that for all $x$, if $x < -5$, then $f(x) = x^2 + 9$, and if $x \\ge -5$, then $f(x) = 3x - 8$. Find the sum of all values of $x$ for which $f(x) = 10$. The final answer is $6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9864321947097778,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. x < -5 \\<longrightarrow> f x = x powr 2 + 9\"\nand h1 : \"\\<forall> x. x \\<ge> -5 \\<longrightarrow> f x = 3 * x - 8\"\nand h2 : \"f x = 10\"\nshows  \"sum_list (filter (\\<lambda> x. f x = 10) [-5..5]) = 6\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx^2+9 &\\text{if }x<-5, \\\\\n3x-8&\\text{if }x\\ge-5.\n\\end{cases}\n\\]If $f(x)=10$, find the sum of all possible values of $x$. Show that it is 6.\n ### Proof\n We begin by looking at each of the two possible cases; either $x<-5$ and $f(x)=x^2+9=10$, or $x\\ge-5$ and $f(x)=3x-8=10$.\n\nTackling the first case, we find that the only possible values of $x$ that could satisfy $x^2+9=10\\Rightarrow x^2=1$ are 1 and -1, neither of which are less than -5, thus yielding no possible solutions.\n\nIn the second case, the only possible value of $x$ that satisfies $3x-8=10$ is 6. Since this value is greater than or equal to -5, it satisfies both conditions. Thus, the only possible value of $x$ for which $f(x)=10$ is $6$, which means the sum of all possible values is also $6$.\n *)\n\ntheorem\nfixes x f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. x < -5 \\<longrightarrow> f x = x powr 2 + 9\"\nand h1 : \"\\<forall> x. x \\<ge> -5 \\<longrightarrow> f x = 3 * x - 8\"\nand h2 : \"f x = 10\"\nshows  \"sum_list (filter (\\<lambda> x. f x = 10) [-5..5]) = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f(x)$ is defined as follows: for $x < -5$, $f(x) = x^2 + 9$, and for $x \\ge -5$, $f(x) = 3x - 8$. Find the sum of all integers $x$ in the range $[-5, 5]$ such that $f(x) = 10$. The final answer is 6.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8576242923736572,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x f1 f2 :: real\nassumes h0 : \"\\<forall> x. x < -5 \\<longrightarrow> f1 x = x powr 2 + 9\"\nand h1 : \"\\<forall> x. x \\<ge> -5 \\<longrightarrow> f2 x = 3 * x - 8\"\nand h2 : \"(x < -5 \\<longrightarrow> f1 x = 10) \\<or> (x \\<ge> -5 \\<longrightarrow> f2 x = 10)\"\nshows  \"x1 + x2 = 6\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx^2+9 &\\text{if }x<-5, \\\\\n3x-8&\\text{if }x\\ge-5.\n\\end{cases}\n\\]If $f(x)=10$, find the sum of all possible values of $x$. Show that it is 6.\n ### Proof\n We begin by looking at each of the two possible cases; either $x<-5$ and $f(x)=x^2+9=10$, or $x\\ge-5$ and $f(x)=3x-8=10$.\n\nTackling the first case, we find that the only possible values of $x$ that could satisfy $x^2+9=10\\Rightarrow x^2=1$ are 1 and -1, neither of which are less than -5, thus yielding no possible solutions.\n\nIn the second case, the only possible value of $x$ that satisfies $3x-8=10$ is 6. Since this value is greater than or equal to -5, it satisfies both conditions. Thus, the only possible value of $x$ for which $f(x)=10$ is $6$, which means the sum of all possible values is also $6$.\n *)\n\ntheorem\nfixes x f1 f2 :: real\nassumes h0 : \"\\<forall> x. x < -5 \\<longrightarrow> f1 x = x powr 2 + 9\"\nand h1 : \"\\<forall> x. x \\<ge> -5 \\<longrightarrow> f2 x = 3 * x - 8\"\nand h2 : \"(x < -5 \\<longrightarrow> f1 x = 10) \\<or> (x \\<ge> -5 \\<longrightarrow> f2 x = 10)\"\nshows  \"x1 + x2 = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider two functions, $f_1(x)$ and $f_2(x)$. $f_1(x)$ is defined as $x^2 + 9$ for $x < -5$, and $f_2(x)$ is defined as $3x - 8$ for $x \\ge -5$. Find the sum of the two solutions $x_1$ and $x_2$ that make either $f_1(x) = 10$ or $f_2(x) = 10$. The final answer is $x_1 + x_2 = 6$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9710320830345154,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (if x < -5 then x powr 2 + 9 else 3 * x - 8)\"\nand h1 : \"f x = 10\"\nshows  \"sum_list (filter (\\<lambda>x. f x = 10) [-5..5]) = 6\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx^2+9 &\\text{if }x<-5, \\\\\n3x-8&\\text{if }x\\ge-5.\n\\end{cases}\n\\]If $f(x)=10$, find the sum of all possible values of $x$. Show that it is 6.\n ### Proof\n We begin by looking at each of the two possible cases; either $x<-5$ and $f(x)=x^2+9=10$, or $x\\ge-5$ and $f(x)=3x-8=10$.\n\nTackling the first case, we find that the only possible values of $x$ that could satisfy $x^2+9=10\\Rightarrow x^2=1$ are 1 and -1, neither of which are less than -5, thus yielding no possible solutions.\n\nIn the second case, the only possible value of $x$ that satisfies $3x-8=10$ is 6. Since this value is greater than or equal to -5, it satisfies both conditions. Thus, the only possible value of $x$ for which $f(x)=10$ is $6$, which means the sum of all possible values is also $6$.\n *)\n\ntheorem\nfixes x f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (if x < -5 then x powr 2 + 9 else 3 * x - 8)\"\nand h1 : \"f x = 10\"\nshows  \"sum_list (filter (\\<lambda>x. f x = 10) [-5..5]) = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(x)$ defined as follows:\n\n$$\nf(x) = \\begin{cases}\nx^2 + 9, & \\text{if } x < -5 \\\\\n3x - 8, & \\text{otherwise}\n\\end{cases}\n$$\n\nFind the sum of all integer values of $x$ in the range $[-5, 5]$ such that $f(x) = 10$. The final answer is $6$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9910354614257812,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x f1 f2 :: real\nassumes h0 : \"\\<forall> x. x < -5 \\<longrightarrow> f1 x = x powr 2 + 9\"\nand h1 : \"\\<forall> x. x \\<ge> -5 \\<longrightarrow> f2 x = 3 * x - 8\"\nand h2 : \"(\\<exists> x. x < -5 \\<and> f1 x = 10) \\<or> (\\<exists> x. x \\<ge> -5 \\<and> f2 x = 10)\"\nshows  \"sum_list [x1, x2] = 6\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx^2+9 &\\text{if }x<-5, \\\\\n3x-8&\\text{if }x\\ge-5.\n\\end{cases}\n\\]If $f(x)=10$, find the sum of all possible values of $x$. Show that it is 6.\n ### Proof\n We begin by looking at each of the two possible cases; either $x<-5$ and $f(x)=x^2+9=10$, or $x\\ge-5$ and $f(x)=3x-8=10$.\n\nTackling the first case, we find that the only possible values of $x$ that could satisfy $x^2+9=10\\Rightarrow x^2=1$ are 1 and -1, neither of which are less than -5, thus yielding no possible solutions.\n\nIn the second case, the only possible value of $x$ that satisfies $3x-8=10$ is 6. Since this value is greater than or equal to -5, it satisfies both conditions. Thus, the only possible value of $x$ for which $f(x)=10$ is $6$, which means the sum of all possible values is also $6$.\n *)\n\ntheorem\nfixes x f1 f2 :: real\nassumes h0 : \"\\<forall> x. x < -5 \\<longrightarrow> f1 x = x powr 2 + 9\"\nand h1 : \"\\<forall> x. x \\<ge> -5 \\<longrightarrow> f2 x = 3 * x - 8\"\nand h2 : \"(\\<exists> x. x < -5 \\<and> f1 x = 10) \\<or> (\\<exists> x. x \\<ge> -5 \\<and> f2 x = 10)\"\nshows  \"sum_list [x1, x2] = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two functions $f_1(x) = x^2 + 9$ for $x < -5$ and $f_2(x) = 3x - 8$ for $x \\ge -5$, find the sum of the two values $x_1$ and $x_2$ such that either $f_1(x_1) = 10$ or $f_2(x_2) = 10$. The final answer is 6.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9406309723854065,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x f1 f2 :: real\nassumes h0 : \"x < -5 \\<Longrightarrow> f1 x = x * x + 9\"\nand h1 : \"x \\<ge> -5 \\<Longrightarrow> f2 x = 3 * x - 8\"\nand h2 : \"(x < -5 \\<longrightarrow> f1 x = 10) \\<or> (x \\<ge> -5 \\<longrightarrow> f2 x = 10)\"\nshows  \"sum_list (filter (\\<lambda>x. (x < -5 \\<and> f1 x = 10) \\<or> (x \\<ge> -5 \\<and> f2 x = 10)) [-100..100]) = 6\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx^2+9 &\\text{if }x<-5, \\\\\n3x-8&\\text{if }x\\ge-5.\n\\end{cases}\n\\]If $f(x)=10$, find the sum of all possible values of $x$. Show that it is 6.\n ### Proof\n We begin by looking at each of the two possible cases; either $x<-5$ and $f(x)=x^2+9=10$, or $x\\ge-5$ and $f(x)=3x-8=10$.\n\nTackling the first case, we find that the only possible values of $x$ that could satisfy $x^2+9=10\\Rightarrow x^2=1$ are 1 and -1, neither of which are less than -5, thus yielding no possible solutions.\n\nIn the second case, the only possible value of $x$ that satisfies $3x-8=10$ is 6. Since this value is greater than or equal to -5, it satisfies both conditions. Thus, the only possible value of $x$ for which $f(x)=10$ is $6$, which means the sum of all possible values is also $6$.\n *)\n\ntheorem\nfixes x f1 f2 :: real\nassumes h0 : \"x < -5 \\<Longrightarrow> f1 x = x * x + 9\"\nand h1 : \"x \\<ge> -5 \\<Longrightarrow> f2 x = 3 * x - 8\"\nand h2 : \"(x < -5 \\<longrightarrow> f1 x = 10) \\<or> (x \\<ge> -5 \\<longrightarrow> f2 x = 10)\"\nshows  \"sum_list (filter (\\<lambda>x. (x < -5 \\<and> f1 x = 10) \\<or> (x \\<ge> -5 \\<and> f2 x = 10)) [-100..100]) = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider two functions: $f_1(x) = x^2 + 9$ for $x < -5$ and $f_2(x) = 3x - 8$ for $x \\ge -5$. Find the sum of all integers from $-100$ to $100$ where either $f_1(x) = 10$ for $x < -5$ or $f_2(x) = 10$ for $x \\ge -5$. The final answer is $6$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9165166616439819,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (if x < -5 then x * x + 9 else 3 * x - 8)\"\nand h1 : \"f x = 10\"\nshows  \"sum_list (filter (\\<lambda>x. f x = 10) [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6]) = 6\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx^2+9 &\\text{if }x<-5, \\\\\n3x-8&\\text{if }x\\ge-5.\n\\end{cases}\n\\]If $f(x)=10$, find the sum of all possible values of $x$. Show that it is 6.\n ### Proof\n We begin by looking at each of the two possible cases; either $x<-5$ and $f(x)=x^2+9=10$, or $x\\ge-5$ and $f(x)=3x-8=10$.\n\nTackling the first case, we find that the only possible values of $x$ that could satisfy $x^2+9=10\\Rightarrow x^2=1$ are 1 and -1, neither of which are less than -5, thus yielding no possible solutions.\n\nIn the second case, the only possible value of $x$ that satisfies $3x-8=10$ is 6. Since this value is greater than or equal to -5, it satisfies both conditions. Thus, the only possible value of $x$ for which $f(x)=10$ is $6$, which means the sum of all possible values is also $6$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (if x < -5 then x * x + 9 else 3 * x - 8)\"\nand h1 : \"f x = 10\"\nshows  \"sum_list (filter (\\<lambda>x. f x = 10) [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6]) = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(x)$ be a piecewise-defined function such that $f(x) = x^2 + 9$ if $x < -5$, and $f(x) = 3x - 8$ otherwise. Find the sum of all the integers in the list $[-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6]$ for which $f(x) = 10$. The final answer is 6.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9224438667297363,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. (x < -5 \\<longrightarrow> f x = x powr 2 + 9) \\<and> (x \\<ge> -5 \\<longrightarrow> f x = 3 * x - 8)\"\nand h1 : \"f x = 10\"\nshows  \"sum_list (possible_values x) = 6\"\n",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx^2+9 &\\text{if }x<-5, \\\\\n3x-8&\\text{if }x\\ge-5.\n\\end{cases}\n\\]If $f(x)=10$, find the sum of all possible values of $x$. Show that it is 6.\n ### Proof\n We begin by looking at each of the two possible cases; either $x<-5$ and $f(x)=x^2+9=10$, or $x\\ge-5$ and $f(x)=3x-8=10$.\n\nTackling the first case, we find that the only possible values of $x$ that could satisfy $x^2+9=10\\Rightarrow x^2=1$ are 1 and -1, neither of which are less than -5, thus yielding no possible solutions.\n\nIn the second case, the only possible value of $x$ that satisfies $3x-8=10$ is 6. Since this value is greater than or equal to -5, it satisfies both conditions. Thus, the only possible value of $x$ for which $f(x)=10$ is $6$, which means the sum of all possible values is also $6$.\n *)\n\ntheorem\nfixes x :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. (x < -5 \\<longrightarrow> f x = x powr 2 + 9) \\<and> (x \\<ge> -5 \\<longrightarrow> f x = 3 * x - 8)\"\nand h1 : \"f x = 10\"\nshows  \"sum_list (possible_values x) = 6\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(x)$ defined as follows:\n- If $x < -5$, then $f(x) = x^2 + 9$\n- If $x \\ge -5$, then $f(x) = 3x - 8$\n\nFind all possible values of $x$ such that $f(x) = 10$. What is the sum of these values? The final answer is $6$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8262835144996643,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (if x < -5 then x powr 2 + 9 else 3 * x - 8)\"\nand h1 : \"f x = 10\"\nshows  \"\\<Sum>x. f x = 6\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx^2+9 &\\text{if }x<-5, \\\\\n3x-8&\\text{if }x\\ge-5.\n\\end{cases}\n\\]If $f(x)=10$, find the sum of all possible values of $x$. Show that it is 6.\n ### Proof\n We begin by looking at each of the two possible cases; either $x<-5$ and $f(x)=x^2+9=10$, or $x\\ge-5$ and $f(x)=3x-8=10$.\n\nTackling the first case, we find that the only possible values of $x$ that could satisfy $x^2+9=10\\Rightarrow x^2=1$ are 1 and -1, neither of which are less than -5, thus yielding no possible solutions.\n\nIn the second case, the only possible value of $x$ that satisfies $3x-8=10$ is 6. Since this value is greater than or equal to -5, it satisfies both conditions. Thus, the only possible value of $x$ for which $f(x)=10$ is $6$, which means the sum of all possible values is also $6$.\n *)\n\ntheorem\nfixes x f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (if x < -5 then x powr 2 + 9 else 3 * x - 8)\"\nand h1 : \"f x = 10\"\nshows  \"\\<Sum>x. f x = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find all values of $x$ such that $f(x) = 10$, where $f(x) = x^2 + 9$ if $x < -5$, and $f(x) = 3x - 8$ otherwise. What is the sum of all possible values of $x$? The final answer is 6.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9342936873435974,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes \"\\<forall> x < -5. f x = x^2 + 5\"\nand \"\\<forall> x \\<ge> -5. f x = 3 * x -8\"\nshows \"(\\<Sum> k \\<in> (f -` {10}). k) = 6\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    }
+}

@@ -1,0 +1,59 @@
+{
+    "natural problem": "Find\n\\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100}.\\]",
+    "natural solution": [
+        "By the Binomial Theorem, \\[(x + y)^{100} = \\binom{100}{0} x^{100} + \\binom{100}{1} x^{99} y + \\binom{100}{2} x^{98} y^2 + \\dots + \\binom{100}{100} y^{100}.\\]Setting $x = 1$ and $y = -1,$ we get \\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100} = \\boxed{0}.\\]"
+    ],
+    "natural answer": "0",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 100\"\nand h1 : \"\\<forall> k. k \\<le> n \\<longrightarrow> f k = (if even k then 1 else -1) * (n choose k)\"\nshows  \"sum f {..n} = 0\"",
+        "formal solution": "(* ### Problem\n Find\n\\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100}.\\] The final Answer is 0\n ### Proof\n By the Binomial Theorem, \\[(x + y)^{100} = \\binom{100}{0} x^{100} + \\binom{100}{1} x^{99} y + \\binom{100}{2} x^{98} y^2 + \\dots + \\binom{100}{100} y^{100}.\\]Setting $x = 1$ and $y = -1,$ we get \\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100} = \\boxed{0}.\\]\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 100\"\nand h1 : \"\\<forall> k. k \\<le> n \\<longrightarrow> f k = (if even k then 1 else -1) * (n choose k)\"\nshows  \"sum f {..n} = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f$ defined on the natural numbers, with the property that for any natural number $k$, $f(k)$ equals $(-1)^k$ times the number of ways to choose $k$ items from $100$ items. What is the sum of $f(k)$ for all $k$ from $0$ to $100$? The final answer is $0$."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 100\"\nand h1 : \"\\<forall> k. f k = (-1)^k * (n choose k)\"\nshows  \"(\\<Sum>k\\<le>n. f k) = 0\"",
+        "formal solution": "(* ### Problem\n Find\n\\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100}.\\] The final Answer is 0\n ### Proof\n By the Binomial Theorem, \\[(x + y)^{100} = \\binom{100}{0} x^{100} + \\binom{100}{1} x^{99} y + \\binom{100}{2} x^{98} y^2 + \\dots + \\binom{100}{100} y^{100}.\\]Setting $x = 1$ and $y = -1,$ we get \\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100} = \\boxed{0}.\\]\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 100\"\nand h1 : \"\\<forall> k. f k = (-1)^k * (n choose k)\"\nshows  \"(\\<Sum>k\\<le>n. f k) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(k)$ defined as $f(k) = (-1)^k * {n \\choose k}$ for natural numbers $k$, and $n = 100$, find the sum of $f(k)$ for all $k$ up to $n$. The final answer is $0$."
+    },
+    "a_2": {
+        "formal problem": "theorem\nshows  \"(\\<Sum>k=0..100. ((-1) ^ k) * (fact 100 / (fact k * fact (100 - k)))) = 0\"",
+        "formal solution": "(* ### Problem\n Find\n\\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100}.\\] The final Answer is 0\n ### Proof\n By the Binomial Theorem, \\[(x + y)^{100} = \\binom{100}{0} x^{100} + \\binom{100}{1} x^{99} y + \\binom{100}{2} x^{98} y^2 + \\dots + \\binom{100}{100} y^{100}.\\]Setting $x = 1$ and $y = -1,$ we get \\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100} = \\boxed{0}.\\]\n *)\n\ntheorem\nshows  \"(\\<Sum>k=0..100. ((-1) ^ k) * (fact 100 / (fact k * fact (100 - k)))) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the series from $k=0$ to $100$ where each term is $(-1)^k$ times the factorial of $100$ divided by the product of the factorial of $k$ and the factorial of $100-k$. The final answer is $0$."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"(\\<Sum>k=0..100. (-1)^k * (n choose k)) = 0\"",
+        "formal solution": "(* ### Problem\n Find\n\\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100}.\\] The final Answer is 0\n ### Proof\n By the Binomial Theorem, \\[(x + y)^{100} = \\binom{100}{0} x^{100} + \\binom{100}{1} x^{99} y + \\binom{100}{2} x^{98} y^2 + \\dots + \\binom{100}{100} y^{100}.\\]Setting $x = 1$ and $y = -1,$ we get \\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100} = \\boxed{0}.\\]\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"(\\<Sum>k=0..100. (-1)^k * (n choose k)) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Evaluate the sum from k=0 to 100 of \"(-1)^k times the binomial coefficient of 100 choose k\". The final answer is 0."
+    },
+    "a_4": {
+        "formal problem": "theorem\nassumes h0 : \"\\<forall>n. choose (100::nat) n = (if n mod 2 = 0 then 1 else -1) * choose 100 n\"\nshows  \"sum (\\<lambda>n. choose 100 n) {0..100} = (0::int)\"",
+        "formal solution": "(* ### Problem\n Find\n\\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100}.\\] The final Answer is 0\n ### Proof\n By the Binomial Theorem, \\[(x + y)^{100} = \\binom{100}{0} x^{100} + \\binom{100}{1} x^{99} y + \\binom{100}{2} x^{98} y^2 + \\dots + \\binom{100}{100} y^{100}.\\]Setting $x = 1$ and $y = -1,$ we get \\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100} = \\boxed{0}.\\]\n *)\n\ntheorem\nassumes h0 : \"\\<forall>n. choose (100::nat) n = (if n mod 2 = 0 then 1 else -1) * choose 100 n\"\nshows  \"sum (\\<lambda>n. choose 100 n) {0..100} = (0::int)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The coefficients of the terms in the expansion of $(x - y)^{100}$ are given by $\\binom{100}{n}(-1)^n$. What is the sum of the coefficients? The final answer is 0."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"(\\<Sum>k\\<le>n. (-1)^k * (n choose k)) = 0\"",
+        "formal solution": "(* ### Problem\n Find\n\\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100}.\\] The final Answer is 0\n ### Proof\n By the Binomial Theorem, \\[(x + y)^{100} = \\binom{100}{0} x^{100} + \\binom{100}{1} x^{99} y + \\binom{100}{2} x^{98} y^2 + \\dots + \\binom{100}{100} y^{100}.\\]Setting $x = 1$ and $y = -1,$ we get \\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100} = \\boxed{0}.\\]\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"(\\<Sum>k\\<le>n. (-1)^k * (n choose k)) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the sum of all terms in the sequence that is defined as follows: for each natural number $k$ less than or equal to 100, the $k$th term is $(-1)^k$ times the number of ways to choose $k$ items from 100 items. The final answer is 0."
+    },
+    "a_6": {
+        "formal problem": "theorem\nshows  \"(\\<Sum>k=0..100. (-1)^k * (100 choose k)) = 0\"",
+        "formal solution": "(* ### Problem\n Find\n\\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100}.\\] The final Answer is 0\n ### Proof\n By the Binomial Theorem, \\[(x + y)^{100} = \\binom{100}{0} x^{100} + \\binom{100}{1} x^{99} y + \\binom{100}{2} x^{98} y^2 + \\dots + \\binom{100}{100} y^{100}.\\]Setting $x = 1$ and $y = -1,$ we get \\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100} = \\boxed{0}.\\]\n *)\n\ntheorem\nshows  \"(\\<Sum>k=0..100. (-1)^k * (100 choose k)) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the sequence generated by $(-1)^k \\times \\binom{100}{k}$ for all integers $k$ from 0 to 100. The final answer is 0."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum (\\<lambda>k. (-1)^k * (n choose k)) {0..n} = 0\"",
+        "formal solution": "(* ### Problem\n Find\n\\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100}.\\] The final Answer is 0\n ### Proof\n By the Binomial Theorem, \\[(x + y)^{100} = \\binom{100}{0} x^{100} + \\binom{100}{1} x^{99} y + \\binom{100}{2} x^{98} y^2 + \\dots + \\binom{100}{100} y^{100}.\\]Setting $x = 1$ and $y = -1,$ we get \\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100} = \\boxed{0}.\\]\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum (\\<lambda>k. (-1)^k * (n choose k)) {0..n} = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of $(-1)^k$ times the binomial coefficient of 100 choose $k$ as $k$ ranges from 0 to 100. The final answer is 0."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"(\\<Sum>k=0..n. (- 1)^k * (n choose k)) = 0\"",
+        "formal solution": "(* ### Problem\n Find\n\\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100}.\\] The final Answer is 0\n ### Proof\n By the Binomial Theorem, \\[(x + y)^{100} = \\binom{100}{0} x^{100} + \\binom{100}{1} x^{99} y + \\binom{100}{2} x^{98} y^2 + \\dots + \\binom{100}{100} y^{100}.\\]Setting $x = 1$ and $y = -1,$ we get \\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100} = \\boxed{0}.\\]\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"(\\<Sum>k=0..n. (- 1)^k * (n choose k)) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the summation from $k=0$ to $100$ of $(-1)^k$ times the binomial coefficient \"100 choose $k$\". The final answer is $0$."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. f n = (if n mod 2 = 0 then 1 else -1) * (100 choose n)\"\nshows  \"(\\<Sum>n\\<le>100. f n) = 0\"",
+        "formal solution": "(* ### Problem\n Find\n\\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100}.\\] The final Answer is 0\n ### Proof\n By the Binomial Theorem, \\[(x + y)^{100} = \\binom{100}{0} x^{100} + \\binom{100}{1} x^{99} y + \\binom{100}{2} x^{98} y^2 + \\dots + \\binom{100}{100} y^{100}.\\]Setting $x = 1$ and $y = -1,$ we get \\[\\binom{100}{0} - \\binom{100}{1} + \\binom{100}{2} - \\dots + \\binom{100}{100} = \\boxed{0}.\\]\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. f n = (if n mod 2 = 0 then 1 else -1) * (100 choose n)\"\nshows  \"(\\<Sum>n\\<le>100. f n) = 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a function $f(n)$ that equals to $1*(100 choose n)$ if $n$ is even and equals to $-1*(100 choose n)$ if $n$ is odd, find the sum of $f(n)$ for all $n$ less than or equal to 100. The answer is $0$."
+    },
+    "level": "Level 3",
+    "type": "Intermediate Algebra"
+}

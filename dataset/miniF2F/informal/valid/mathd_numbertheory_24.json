@@ -1,0 +1,120 @@
+{
+    "problem_name": "mathd_numbertheory_24",
+    "informal_statement": "What is the tens digit in the sum $11^1 + 11^2 + 11^3 + \\ldots + 11^9$? Show that it is 5.",
+    "informal_proof": "First of all, we notice that $11 = 1 + 10,$ and so we write $11^n$ as follows: $$(1 + 10)^n = \\binom{n}{0} \\cdot 1^n + \\binom{n}{1} \\cdot 1^{n-1} \\cdot 10^{1} + \\binom{n}{2} \\cdot 1^{n-2} \\cdot 10^{2} + \\cdots$$ We can see that every term after the first two in our expansion has at least two powers of $10,$ therefore they will not contribute to the tens digit of anything. Meanwhile, the first term is always $1,$ and the second term can be simplified to $10n.$\n\nTherefore, we have: \\begin{align*}\n&11^1 + 11^2 + 11^3 + \\cdots + 11^9 \\\\\n&\\qquad\\equiv (1 + 10) + (1 + 20) + \\cdots + (1 + 90) \\pmod{100}. \\\\\n&\\qquad\\equiv 459 \\equiv 59 \\pmod{100}.\n\\end{align*} Thus, the tens digit must be $5.$",
+    "a_0": {
+        "formal problem": "theorem\nfixes sum_pow :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_pow n = (\\<Sum> i \\<in> {1 .. n}. 11^i)\"\nand h1 : \"sum_pow 9 = k * 10 + 5\"\nshows  \"k = (\\<Sum> i \\<in> {1 .. 8}. 11^i) div 10\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $11^1 + 11^2 + 11^3 + \\ldots + 11^9$? The final Answer is $5$\n ### Proof\n First of all, we notice that $11 = 1 + 10,$ and so we write $11^n$ as follows: $$(1 + 10)^n = \\binom{n}{0} \\cdot 1^n + \\binom{n}{1} \\cdot 1^{n-1} \\cdot 10^{1} + \\binom{n}{2} \\cdot 1^{n-2} \\cdot 10^{2} + \\cdots$$ We can see that every term after the first two in our expansion has at least two powers of $10,$ therefore they will not contribute to the tens digit of anything. Meanwhile, the first term is always $1,$ and the second term can be simplified to $10n.$\n\nTherefore, we have: \\begin{align*}\n&11^1 + 11^2 + 11^3 + \\cdots + 11^9 \\\\\n&\\qquad\\equiv (1 + 10) + (1 + 20) + \\cdots + (1 + 90) \\pmod{100}. \\\\\n&\\qquad\\equiv 459 \\equiv 59 \\pmod{100}.\n\\end{align*} Thus, the tens digit must be $5.$\n *)\n\ntheorem\nfixes sum_pow :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_pow n = (\\<Sum> i \\<in> {1 .. n}. 11^i)\"\nand h1 : \"sum_pow 9 = k * 10 + 5\"\nshows  \"k = (\\<Sum> i \\<in> {1 .. 8}. 11^i) div 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $k$ such that the sum of the first 9 powers of 11, i.e., $\\sum_{i=1}^{9} 11^i$, can be written as $k \\cdot 10 + 5$. The final answer is the sum of the first 8 powers of 11 divided by 10, i.e., $k = \\frac{\\sum_{i=1}^{8} 11^i}{10}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8963689804077148,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = 11 ^ n\"\nand h1 : \"sum f {1..9} = x * 10 + 5\"\nshows  \"x = (\\<Sum> n \\<in> {1..9}. 11 ^ n) div 10 mod 10\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $11^1 + 11^2 + 11^3 + \\ldots + 11^9$? The final Answer is $5$\n ### Proof\n First of all, we notice that $11 = 1 + 10,$ and so we write $11^n$ as follows: $$(1 + 10)^n = \\binom{n}{0} \\cdot 1^n + \\binom{n}{1} \\cdot 1^{n-1} \\cdot 10^{1} + \\binom{n}{2} \\cdot 1^{n-2} \\cdot 10^{2} + \\cdots$$ We can see that every term after the first two in our expansion has at least two powers of $10,$ therefore they will not contribute to the tens digit of anything. Meanwhile, the first term is always $1,$ and the second term can be simplified to $10n.$\n\nTherefore, we have: \\begin{align*}\n&11^1 + 11^2 + 11^3 + \\cdots + 11^9 \\\\\n&\\qquad\\equiv (1 + 10) + (1 + 20) + \\cdots + (1 + 90) \\pmod{100}. \\\\\n&\\qquad\\equiv 459 \\equiv 59 \\pmod{100}.\n\\end{align*} Thus, the tens digit must be $5.$\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = 11 ^ n\"\nand h1 : \"sum f {1..9} = x * 10 + 5\"\nshows  \"x = (\\<Sum> n \\<in> {1..9}. 11 ^ n) div 10 mod 10\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit before the decimal point of the sum of the first 9 powers of 11 (i.e., $11^1 + 11^2 + \\cdots + 11^9$). The final answer is $x$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7461190223693848,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat and sum_11_powers :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_11_powers n = (\\<Sum>k\\<in>{1..n}. 11^k)\"\nand h1 : \"n = 9\"\nshows  \"tens_digit (sum_11_powers n) = 5\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $11^1 + 11^2 + 11^3 + \\ldots + 11^9$? The final Answer is $5$\n ### Proof\n First of all, we notice that $11 = 1 + 10,$ and so we write $11^n$ as follows: $$(1 + 10)^n = \\binom{n}{0} \\cdot 1^n + \\binom{n}{1} \\cdot 1^{n-1} \\cdot 10^{1} + \\binom{n}{2} \\cdot 1^{n-2} \\cdot 10^{2} + \\cdots$$ We can see that every term after the first two in our expansion has at least two powers of $10,$ therefore they will not contribute to the tens digit of anything. Meanwhile, the first term is always $1,$ and the second term can be simplified to $10n.$\n\nTherefore, we have: \\begin{align*}\n&11^1 + 11^2 + 11^3 + \\cdots + 11^9 \\\\\n&\\qquad\\equiv (1 + 10) + (1 + 20) + \\cdots + (1 + 90) \\pmod{100}. \\\\\n&\\qquad\\equiv 459 \\equiv 59 \\pmod{100}.\n\\end{align*} Thus, the tens digit must be $5.$\n *)\n\ntheorem\nfixes n :: nat and sum_11_powers :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_11_powers n = (\\<Sum>k\\<in>{1..n}. 11^k)\"\nand h1 : \"n = 9\"\nshows  \"tens_digit (sum_11_powers n) = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the tens digit of the sum of the first 9 powers of 11 (i.e., $11^1 + 11^2 + \\cdots + 11^9$). The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8344319462776184,
+        "symbolic_score": 0.5
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>k=1..9. 11^k)\"\nshows  \"tens_digit sum = 5\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $11^1 + 11^2 + 11^3 + \\ldots + 11^9$? The final Answer is $5$\n ### Proof\n First of all, we notice that $11 = 1 + 10,$ and so we write $11^n$ as follows: $$(1 + 10)^n = \\binom{n}{0} \\cdot 1^n + \\binom{n}{1} \\cdot 1^{n-1} \\cdot 10^{1} + \\binom{n}{2} \\cdot 1^{n-2} \\cdot 10^{2} + \\cdots$$ We can see that every term after the first two in our expansion has at least two powers of $10,$ therefore they will not contribute to the tens digit of anything. Meanwhile, the first term is always $1,$ and the second term can be simplified to $10n.$\n\nTherefore, we have: \\begin{align*}\n&11^1 + 11^2 + 11^3 + \\cdots + 11^9 \\\\\n&\\qquad\\equiv (1 + 10) + (1 + 20) + \\cdots + (1 + 90) \\pmod{100}. \\\\\n&\\qquad\\equiv 459 \\equiv 59 \\pmod{100}.\n\\end{align*} Thus, the tens digit must be $5.$\n *)\n\ntheorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>k=1..9. 11^k)\"\nshows  \"tens_digit sum = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the tens digit of the sum of the series $11^1 + 11^2 + 11^3 + \\dots + 11^9$. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8739466667175293,
+        "symbolic_score": 0.5
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>k\\<in>{1..9}. 11^k)\"\nshows  \"tens_digit sum = 5\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $11^1 + 11^2 + 11^3 + \\ldots + 11^9$? The final Answer is $5$\n ### Proof\n First of all, we notice that $11 = 1 + 10,$ and so we write $11^n$ as follows: $$(1 + 10)^n = \\binom{n}{0} \\cdot 1^n + \\binom{n}{1} \\cdot 1^{n-1} \\cdot 10^{1} + \\binom{n}{2} \\cdot 1^{n-2} \\cdot 10^{2} + \\cdots$$ We can see that every term after the first two in our expansion has at least two powers of $10,$ therefore they will not contribute to the tens digit of anything. Meanwhile, the first term is always $1,$ and the second term can be simplified to $10n.$\n\nTherefore, we have: \\begin{align*}\n&11^1 + 11^2 + 11^3 + \\cdots + 11^9 \\\\\n&\\qquad\\equiv (1 + 10) + (1 + 20) + \\cdots + (1 + 90) \\pmod{100}. \\\\\n&\\qquad\\equiv 459 \\equiv 59 \\pmod{100}.\n\\end{align*} Thus, the tens digit must be $5.$\n *)\n\ntheorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>k\\<in>{1..9}. 11^k)\"\nshows  \"tens_digit sum = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the tens digit of the sum of the first nine powers of 11, i.e., $11^1 + 11^2 + \\dots + 11^9$. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8600206971168518,
+        "symbolic_score": 0.5
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes sum :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"sum 0 = 0\"\nand h1 : \"\\<forall>n. sum (Suc n) = sum n + 11 ^ (n + 1)\"\nand h2 : \"sum 9 = (\\<Sum>n\\<in>{1..9}. 11 ^ n)\"\nshows  \"tens_digit (sum 9) = 5\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $11^1 + 11^2 + 11^3 + \\ldots + 11^9$? The final Answer is $5$\n ### Proof\n First of all, we notice that $11 = 1 + 10,$ and so we write $11^n$ as follows: $$(1 + 10)^n = \\binom{n}{0} \\cdot 1^n + \\binom{n}{1} \\cdot 1^{n-1} \\cdot 10^{1} + \\binom{n}{2} \\cdot 1^{n-2} \\cdot 10^{2} + \\cdots$$ We can see that every term after the first two in our expansion has at least two powers of $10,$ therefore they will not contribute to the tens digit of anything. Meanwhile, the first term is always $1,$ and the second term can be simplified to $10n.$\n\nTherefore, we have: \\begin{align*}\n&11^1 + 11^2 + 11^3 + \\cdots + 11^9 \\\\\n&\\qquad\\equiv (1 + 10) + (1 + 20) + \\cdots + (1 + 90) \\pmod{100}. \\\\\n&\\qquad\\equiv 459 \\equiv 59 \\pmod{100}.\n\\end{align*} Thus, the tens digit must be $5.$\n *)\n\ntheorem\nfixes sum :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"sum 0 = 0\"\nand h1 : \"\\<forall>n. sum (Suc n) = sum n + 11 ^ (n + 1)\"\nand h2 : \"sum 9 = (\\<Sum>n\\<in>{1..9}. 11 ^ n)\"\nshows  \"tens_digit (sum 9) = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the tens digit of the sum of the first 9 terms of the series $11, 11^2, 11^3, \\dots, 11^9$. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8433670997619629,
+        "symbolic_score": 0.5
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>k=1..9. 11 ^ k)\"\nshows  \"((sum div 10) mod 10) = 5\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $11^1 + 11^2 + 11^3 + \\ldots + 11^9$? The final Answer is $5$\n ### Proof\n First of all, we notice that $11 = 1 + 10,$ and so we write $11^n$ as follows: $$(1 + 10)^n = \\binom{n}{0} \\cdot 1^n + \\binom{n}{1} \\cdot 1^{n-1} \\cdot 10^{1} + \\binom{n}{2} \\cdot 1^{n-2} \\cdot 10^{2} + \\cdots$$ We can see that every term after the first two in our expansion has at least two powers of $10,$ therefore they will not contribute to the tens digit of anything. Meanwhile, the first term is always $1,$ and the second term can be simplified to $10n.$\n\nTherefore, we have: \\begin{align*}\n&11^1 + 11^2 + 11^3 + \\cdots + 11^9 \\\\\n&\\qquad\\equiv (1 + 10) + (1 + 20) + \\cdots + (1 + 90) \\pmod{100}. \\\\\n&\\qquad\\equiv 459 \\equiv 59 \\pmod{100}.\n\\end{align*} Thus, the tens digit must be $5.$\n *)\n\ntheorem\nfixes sum :: int\nassumes h0 : \"sum = (\\<Sum>k=1..9. 11 ^ k)\"\nshows  \"((sum div 10) mod 10) = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the tens digit of the sum of the first nine powers of 11, i.e., $11^1 + 11^2 + \\cdots + 11^9$. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9124443531036377,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum n = (\\<Sum>k \\<in> {1..n}. 11 ^ k)\"\nshows  \"digit (sum 9) 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $11^1 + 11^2 + 11^3 + \\ldots + 11^9$? The final Answer is $5$\n ### Proof\n First of all, we notice that $11 = 1 + 10,$ and so we write $11^n$ as follows: $$(1 + 10)^n = \\binom{n}{0} \\cdot 1^n + \\binom{n}{1} \\cdot 1^{n-1} \\cdot 10^{1} + \\binom{n}{2} \\cdot 1^{n-2} \\cdot 10^{2} + \\cdots$$ We can see that every term after the first two in our expansion has at least two powers of $10,$ therefore they will not contribute to the tens digit of anything. Meanwhile, the first term is always $1,$ and the second term can be simplified to $10n.$\n\nTherefore, we have: \\begin{align*}\n&11^1 + 11^2 + 11^3 + \\cdots + 11^9 \\\\\n&\\qquad\\equiv (1 + 10) + (1 + 20) + \\cdots + (1 + 90) \\pmod{100}. \\\\\n&\\qquad\\equiv 459 \\equiv 59 \\pmod{100}.\n\\end{align*} Thus, the tens digit must be $5.$\n *)\n\ntheorem\nfixes sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum n = (\\<Sum>k \\<in> {1..n}. 11 ^ k)\"\nshows  \"digit (sum 9) 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the units digit of the sum of the first 9 powers of 11, i.e., $11^1 + 11^2 + \\dots + 11^9$. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8278860449790955,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat and sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum n = (\\<Sum> k \\<in> {1..n}. 11 ^ k)\"\nshows  \"digit 10 (sum 9) 1 = 5\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $11^1 + 11^2 + 11^3 + \\ldots + 11^9$? The final Answer is $5$\n ### Proof\n First of all, we notice that $11 = 1 + 10,$ and so we write $11^n$ as follows: $$(1 + 10)^n = \\binom{n}{0} \\cdot 1^n + \\binom{n}{1} \\cdot 1^{n-1} \\cdot 10^{1} + \\binom{n}{2} \\cdot 1^{n-2} \\cdot 10^{2} + \\cdots$$ We can see that every term after the first two in our expansion has at least two powers of $10,$ therefore they will not contribute to the tens digit of anything. Meanwhile, the first term is always $1,$ and the second term can be simplified to $10n.$\n\nTherefore, we have: \\begin{align*}\n&11^1 + 11^2 + 11^3 + \\cdots + 11^9 \\\\\n&\\qquad\\equiv (1 + 10) + (1 + 20) + \\cdots + (1 + 90) \\pmod{100}. \\\\\n&\\qquad\\equiv 459 \\equiv 59 \\pmod{100}.\n\\end{align*} Thus, the tens digit must be $5.$\n *)\n\ntheorem\nfixes n :: nat and sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum n = (\\<Sum> k \\<in> {1..n}. 11 ^ k)\"\nshows  \"digit 10 (sum 9) 1 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the units digit of the sum of the first 9 powers of 11, i.e., $11^1 + 11^2 + \\cdots + 11^9$. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.88775235414505,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes sum :: nat\nassumes h0 : \"sum = (\\<Sum>k=1..9. 11 ^ k)\"\nshows  \"tens_digit sum = 5\"",
+        "formal solution": "(* ### Problem\n What is the tens digit in the sum $11^1 + 11^2 + 11^3 + \\ldots + 11^9$? The final Answer is $5$\n ### Proof\n First of all, we notice that $11 = 1 + 10,$ and so we write $11^n$ as follows: $$(1 + 10)^n = \\binom{n}{0} \\cdot 1^n + \\binom{n}{1} \\cdot 1^{n-1} \\cdot 10^{1} + \\binom{n}{2} \\cdot 1^{n-2} \\cdot 10^{2} + \\cdots$$ We can see that every term after the first two in our expansion has at least two powers of $10,$ therefore they will not contribute to the tens digit of anything. Meanwhile, the first term is always $1,$ and the second term can be simplified to $10n.$\n\nTherefore, we have: \\begin{align*}\n&11^1 + 11^2 + 11^3 + \\cdots + 11^9 \\\\\n&\\qquad\\equiv (1 + 10) + (1 + 20) + \\cdots + (1 + 90) \\pmod{100}. \\\\\n&\\qquad\\equiv 459 \\equiv 59 \\pmod{100}.\n\\end{align*} Thus, the tens digit must be $5.$\n *)\n\ntheorem\nfixes sum :: nat\nassumes h0 : \"sum = (\\<Sum>k=1..9. 11 ^ k)\"\nshows  \"tens_digit sum = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the tens digit of the sum of the first 9 powers of 11, i.e., $\\sum_{k=1}^{9} 11^k$. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9206834435462952,
+        "symbolic_score": 0.5
+    },
+    "oracle": "theorem\nshows  \"(\\<Sum> k \\<in>{1..<10}. 11^k) mod 100 = (59::nat)\"",
+    "prediction": {
+        "0": [
+            2,
+            3,
+            4,
+            5,
+            9
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            6
+        ],
+        "4": [
+            7
+        ],
+        "5": [
+            8
+        ]
+    }
+}

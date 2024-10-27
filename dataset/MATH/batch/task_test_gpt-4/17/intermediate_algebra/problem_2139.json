@@ -1,0 +1,146 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes a b :: nat and binomial_expansion :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n k. binomial_expansion n k = (fact n) div (fact k * fact (n - k))\"\nand h1 : \"\\<forall> a b. coprime a b\"\nand h2 : \"max_term = (GREATEST x. \\<exists> n k. n = 31 \\<and> k = x \\<and> binomial_expansion n k = (a div b))\"\nshows  \"b = 1024\"",
+        "formal solution": "(* ### Problem\n The largest term in the binomial expansion of $(1 + \\tfrac{1}{2})^{31}$ is of the form $\\tfrac{a}{b}$, where $a$ and $b$ are relatively prime positive integers.  What is the value of $b$? The final Answer is 1024\n ### Proof\n A term of the binomial expansion takes the form \\[a_k = \\binom{31}{k} \\left(\\frac{1}{2}\\right)^k,\\]where $0 \\le k \\le 31.$ To find which $a_k$ is the largest, we evaluate the ratio $\\frac{a_{k+1}}{a_k}$: \\[\\frac{a_{k+1}}{a_k} = \\frac{\\binom{31}{k+1} \\left(\\frac12\\right)^{k+1}}{\\binom{31}{k} \\left(\\frac12\\right)^k} = \\frac{\\frac{31!}{(k+1)!(30-k)!}\n \\left(\\frac12\\right)^{k+1}}{\\frac{31!}{k!(31-k!)} \\left(\\frac12\\right)^k} = \\frac{31-k}{2(k+1)}.\\]Now, the inequality $\\frac{31-k}{2(k+1)} > 1$ is equivalent to $31-k > 2k+2,$ or $k < \\frac{29}{3},$ or $k \\le 9.$ Furthermore, $\\frac{31-k}{2(k+1)} < 1$ when $k > \\frac{29}{3},$ or $k \\ge 10.$ Therefore, $a_{k+1} > a_k$ for $k \\le 9$ and $a_{k+1} < a_k$ for $k \\ge 10.$ It follows that $a_{10}$ is the largest term of the binomial expansion.\n We have \\[a_{10} = \\binom{31}{10} \\left(\\frac12\\right)^{10},\\]so it suffices to find the power of $2$ in the prime factorization of $\\binom{31}{10}.$ We have \\[\\binom{31}{10} = \\frac{31 \\cdot 30 \\cdot 29 \\cdot 28 \\cdot 27 \\cdot 26 \\cdot 25 \\cdot 24 \\cdot 23 \\cdot 22 \\cdot 21}{10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1} = \\frac{A \\cdot 2^{8}}{B \\cdot 2^8} = \\frac{A}{B},\\]where $A$ and $B$ are odd integers.\n Therefore, $\\binom{31}{10}$ is odd, and so the answer is $2^{10} = \\boxed{1024}.$\n *)\n\ntheorem\nfixes a b :: nat and binomial_expansion :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n k. binomial_expansion n k = (fact n) div (fact k * fact (n - k))\"\nand h1 : \"\\<forall> a b. coprime a b\"\nand h2 : \"max_term = (GREATEST x. \\<exists> n k. n = 31 \\<and> k = x \\<and> binomial_expansion n k = (a div b))\"\nshows  \"b = 1024\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the greatest value of $k$ such that the binomial coefficient $C(31, k)$ equals the quotient of two coprime numbers $a$ and $b$ (where $C(n, k) = \\frac{n!}{k!(n-k)!}$). What is the value of $b$? The final answer is 1024.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9469770193099976,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b :: int and binom :: \"int \\<Rightarrow> int \\<Rightarrow> int\"\nassumes h0 : \"gcd a b = 1\"\nand h1 : \"binom 31 (arg max (binom 31) {0..31}) = a / b\"\nshows  \"b = 1024\"",
+        "formal solution": "(* ### Problem\n The largest term in the binomial expansion of $(1 + \\tfrac{1}{2})^{31}$ is of the form $\\tfrac{a}{b}$, where $a$ and $b$ are relatively prime positive integers.  What is the value of $b$? The final Answer is 1024\n ### Proof\n A term of the binomial expansion takes the form \\[a_k = \\binom{31}{k} \\left(\\frac{1}{2}\\right)^k,\\]where $0 \\le k \\le 31.$ To find which $a_k$ is the largest, we evaluate the ratio $\\frac{a_{k+1}}{a_k}$: \\[\\frac{a_{k+1}}{a_k} = \\frac{\\binom{31}{k+1} \\left(\\frac12\\right)^{k+1}}{\\binom{31}{k} \\left(\\frac12\\right)^k} = \\frac{\\frac{31!}{(k+1)!(30-k)!}\n \\left(\\frac12\\right)^{k+1}}{\\frac{31!}{k!(31-k!)} \\left(\\frac12\\right)^k} = \\frac{31-k}{2(k+1)}.\\]Now, the inequality $\\frac{31-k}{2(k+1)} > 1$ is equivalent to $31-k > 2k+2,$ or $k < \\frac{29}{3},$ or $k \\le 9.$ Furthermore, $\\frac{31-k}{2(k+1)} < 1$ when $k > \\frac{29}{3},$ or $k \\ge 10.$ Therefore, $a_{k+1} > a_k$ for $k \\le 9$ and $a_{k+1} < a_k$ for $k \\ge 10.$ It follows that $a_{10}$ is the largest term of the binomial expansion.\n We have \\[a_{10} = \\binom{31}{10} \\left(\\frac12\\right)^{10},\\]so it suffices to find the power of $2$ in the prime factorization of $\\binom{31}{10}.$ We have \\[\\binom{31}{10} = \\frac{31 \\cdot 30 \\cdot 29 \\cdot 28 \\cdot 27 \\cdot 26 \\cdot 25 \\cdot 24 \\cdot 23 \\cdot 22 \\cdot 21}{10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1} = \\frac{A \\cdot 2^{8}}{B \\cdot 2^8} = \\frac{A}{B},\\]where $A$ and $B$ are odd integers.\n Therefore, $\\binom{31}{10}$ is odd, and so the answer is $2^{10} = \\boxed{1024}.$\n *)\n\ntheorem\nfixes a b :: int and binom :: \"int \\<Rightarrow> int \\<Rightarrow> int\"\nassumes h0 : \"gcd a b = 1\"\nand h1 : \"binom 31 (arg max (binom 31) {0..31}) = a / b\"\nshows  \"b = 1024\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a$ and $b$ are integers such that $gcd(a,b) = 1$ and the maximum value of the binomial coefficient \"31 choose k\" for $0 \\leq k \\leq 31$ is equal to $a/b$, find the value of $b$. The final answer is $1024$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8377714157104492,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"gcd a b = 1\"\nand h3 : \"a / b = binomial 31 (maxindex (binomial_coeffs 31)) * (1 + 1 / 2) ^ (31 - maxindex (binomial_coeffs 31)) * (1 / 2) ^ maxindex (binomial_coeffs 31)\"\nshows  \"b = 1024\"",
+        "formal solution": "(* ### Problem\n The largest term in the binomial expansion of $(1 + \\tfrac{1}{2})^{31}$ is of the form $\\tfrac{a}{b}$, where $a$ and $b$ are relatively prime positive integers.  What is the value of $b$? The final Answer is 1024\n ### Proof\n A term of the binomial expansion takes the form \\[a_k = \\binom{31}{k} \\left(\\frac{1}{2}\\right)^k,\\]where $0 \\le k \\le 31.$ To find which $a_k$ is the largest, we evaluate the ratio $\\frac{a_{k+1}}{a_k}$: \\[\\frac{a_{k+1}}{a_k} = \\frac{\\binom{31}{k+1} \\left(\\frac12\\right)^{k+1}}{\\binom{31}{k} \\left(\\frac12\\right)^k} = \\frac{\\frac{31!}{(k+1)!(30-k)!}\n \\left(\\frac12\\right)^{k+1}}{\\frac{31!}{k!(31-k!)} \\left(\\frac12\\right)^k} = \\frac{31-k}{2(k+1)}.\\]Now, the inequality $\\frac{31-k}{2(k+1)} > 1$ is equivalent to $31-k > 2k+2,$ or $k < \\frac{29}{3},$ or $k \\le 9.$ Furthermore, $\\frac{31-k}{2(k+1)} < 1$ when $k > \\frac{29}{3},$ or $k \\ge 10.$ Therefore, $a_{k+1} > a_k$ for $k \\le 9$ and $a_{k+1} < a_k$ for $k \\ge 10.$ It follows that $a_{10}$ is the largest term of the binomial expansion.\n We have \\[a_{10} = \\binom{31}{10} \\left(\\frac12\\right)^{10},\\]so it suffices to find the power of $2$ in the prime factorization of $\\binom{31}{10}.$ We have \\[\\binom{31}{10} = \\frac{31 \\cdot 30 \\cdot 29 \\cdot 28 \\cdot 27 \\cdot 26 \\cdot 25 \\cdot 24 \\cdot 23 \\cdot 22 \\cdot 21}{10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1} = \\frac{A \\cdot 2^{8}}{B \\cdot 2^8} = \\frac{A}{B},\\]where $A$ and $B$ are odd integers.\n Therefore, $\\binom{31}{10}$ is odd, and so the answer is $2^{10} = \\boxed{1024}.$\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a > 0\"\nand h1 : \"b > 0\"\nand h2 : \"gcd a b = 1\"\nand h3 : \"a / b = binomial 31 (maxindex (binomial_coeffs 31)) * (1 + 1 / 2) ^ (31 - maxindex (binomial_coeffs 31)) * (1 / 2) ^ maxindex (binomial_coeffs 31)\"\nshows  \"b = 1024\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive real numbers $a$ and $b$ with greatest common divisor equal to 1, if the ratio $a$ to $b$ is equal to the product of the maximum binomial coefficient of 31, $(1 + \\frac{1}{2})$ raised to the power of $(31 - \\text{index of the maximum binomial coefficient of 31})$ and $\\frac{1}{2}$ raised to the power of the index of the maximum binomial coefficient of 31, then find the value of $b$. The final answer is $1024$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9866469502449036,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a/b = (1 + 1/2) powr 31\"\nand h1 : \"gcd a b = 1\"\nshows  \"b = 1024\"",
+        "formal solution": "(* ### Problem\n The largest term in the binomial expansion of $(1 + \\tfrac{1}{2})^{31}$ is of the form $\\tfrac{a}{b}$, where $a$ and $b$ are relatively prime positive integers.  What is the value of $b$? The final Answer is 1024\n ### Proof\n A term of the binomial expansion takes the form \\[a_k = \\binom{31}{k} \\left(\\frac{1}{2}\\right)^k,\\]where $0 \\le k \\le 31.$ To find which $a_k$ is the largest, we evaluate the ratio $\\frac{a_{k+1}}{a_k}$: \\[\\frac{a_{k+1}}{a_k} = \\frac{\\binom{31}{k+1} \\left(\\frac12\\right)^{k+1}}{\\binom{31}{k} \\left(\\frac12\\right)^k} = \\frac{\\frac{31!}{(k+1)!(30-k)!}\n \\left(\\frac12\\right)^{k+1}}{\\frac{31!}{k!(31-k!)} \\left(\\frac12\\right)^k} = \\frac{31-k}{2(k+1)}.\\]Now, the inequality $\\frac{31-k}{2(k+1)} > 1$ is equivalent to $31-k > 2k+2,$ or $k < \\frac{29}{3},$ or $k \\le 9.$ Furthermore, $\\frac{31-k}{2(k+1)} < 1$ when $k > \\frac{29}{3},$ or $k \\ge 10.$ Therefore, $a_{k+1} > a_k$ for $k \\le 9$ and $a_{k+1} < a_k$ for $k \\ge 10.$ It follows that $a_{10}$ is the largest term of the binomial expansion.\n We have \\[a_{10} = \\binom{31}{10} \\left(\\frac12\\right)^{10},\\]so it suffices to find the power of $2$ in the prime factorization of $\\binom{31}{10}.$ We have \\[\\binom{31}{10} = \\frac{31 \\cdot 30 \\cdot 29 \\cdot 28 \\cdot 27 \\cdot 26 \\cdot 25 \\cdot 24 \\cdot 23 \\cdot 22 \\cdot 21}{10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1} = \\frac{A \\cdot 2^{8}}{B \\cdot 2^8} = \\frac{A}{B},\\]where $A$ and $B$ are odd integers.\n Therefore, $\\binom{31}{10}$ is odd, and so the answer is $2^{10} = \\boxed{1024}.$\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a/b = (1 + 1/2) powr 31\"\nand h1 : \"gcd a b = 1\"\nshows  \"b = 1024\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the ratio of two numbers $a$ and $b$ is equal to $(1 + \\frac{1}{2})^{31}$ and that the greatest common divisor of $a$ and $b$ is 1, find the value of $b$. The final answer is 1024.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9424226880073547,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: real and binom :: \"int \\<Rightarrow> int \\<Rightarrow> real\"\nassumes h0 : \"x = (1 + 1/2) powr 31\"\nand h1 : \"\\<forall>n k. binom n k = fact n / (fact k * fact (n - k))\"\nand h2 : \"GREATEST a. \\<exists> n k. binom n k = a\"\nshows  \"snd (Ratfunc.quot_of_fract (GREATEST a. \\<exists> n k. binom n k = a)) = 1024\"",
+        "formal solution": "(* ### Problem\n The largest term in the binomial expansion of $(1 + \\tfrac{1}{2})^{31}$ is of the form $\\tfrac{a}{b}$, where $a$ and $b$ are relatively prime positive integers.  What is the value of $b$? The final Answer is 1024\n ### Proof\n A term of the binomial expansion takes the form \\[a_k = \\binom{31}{k} \\left(\\frac{1}{2}\\right)^k,\\]where $0 \\le k \\le 31.$ To find which $a_k$ is the largest, we evaluate the ratio $\\frac{a_{k+1}}{a_k}$: \\[\\frac{a_{k+1}}{a_k} = \\frac{\\binom{31}{k+1} \\left(\\frac12\\right)^{k+1}}{\\binom{31}{k} \\left(\\frac12\\right)^k} = \\frac{\\frac{31!}{(k+1)!(30-k)!}\n \\left(\\frac12\\right)^{k+1}}{\\frac{31!}{k!(31-k!)} \\left(\\frac12\\right)^k} = \\frac{31-k}{2(k+1)}.\\]Now, the inequality $\\frac{31-k}{2(k+1)} > 1$ is equivalent to $31-k > 2k+2,$ or $k < \\frac{29}{3},$ or $k \\le 9.$ Furthermore, $\\frac{31-k}{2(k+1)} < 1$ when $k > \\frac{29}{3},$ or $k \\ge 10.$ Therefore, $a_{k+1} > a_k$ for $k \\le 9$ and $a_{k+1} < a_k$ for $k \\ge 10.$ It follows that $a_{10}$ is the largest term of the binomial expansion.\n We have \\[a_{10} = \\binom{31}{10} \\left(\\frac12\\right)^{10},\\]so it suffices to find the power of $2$ in the prime factorization of $\\binom{31}{10}.$ We have \\[\\binom{31}{10} = \\frac{31 \\cdot 30 \\cdot 29 \\cdot 28 \\cdot 27 \\cdot 26 \\cdot 25 \\cdot 24 \\cdot 23 \\cdot 22 \\cdot 21}{10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1} = \\frac{A \\cdot 2^{8}}{B \\cdot 2^8} = \\frac{A}{B},\\]where $A$ and $B$ are odd integers.\n Therefore, $\\binom{31}{10}$ is odd, and so the answer is $2^{10} = \\boxed{1024}.$\n *)\n\ntheorem\nfixes x :: real and binom :: \"int \\<Rightarrow> int \\<Rightarrow> real\"\nassumes h0 : \"x = (1 + 1/2) powr 31\"\nand h1 : \"\\<forall>n k. binom n k = fact n / (fact k * fact (n - k))\"\nand h2 : \"GREATEST a. \\<exists> n k. binom n k = a\"\nshows  \"snd (Ratfunc.quot_of_fract (GREATEST a. \\<exists> n k. binom n k = a)) = 1024\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider the expression $(1 + \\frac{1}{2})^{31}$. Let the binomial coefficient $C(n, k)$ be defined as $\\frac{n!}{k!(n-k)!}$. Find the greatest value of $C(n, k)$. Express your answer as a fraction and find the denominator. The final answer is $1024$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9383694529533386,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a = (1 + 1/2) powr 31\"\nand h1 : \"b = GREATEST b. \\<exists> a. a/b is prime & a/b > 0 & a/b is a term in binomial expansion of (1 + 1/2) powr 31\"\nshows  \"b = 1024\"",
+        "formal solution": "(* ### Problem\n The largest term in the binomial expansion of $(1 + \\tfrac{1}{2})^{31}$ is of the form $\\tfrac{a}{b}$, where $a$ and $b$ are relatively prime positive integers.  What is the value of $b$? The final Answer is 1024\n ### Proof\n A term of the binomial expansion takes the form \\[a_k = \\binom{31}{k} \\left(\\frac{1}{2}\\right)^k,\\]where $0 \\le k \\le 31.$ To find which $a_k$ is the largest, we evaluate the ratio $\\frac{a_{k+1}}{a_k}$: \\[\\frac{a_{k+1}}{a_k} = \\frac{\\binom{31}{k+1} \\left(\\frac12\\right)^{k+1}}{\\binom{31}{k} \\left(\\frac12\\right)^k} = \\frac{\\frac{31!}{(k+1)!(30-k)!}\n \\left(\\frac12\\right)^{k+1}}{\\frac{31!}{k!(31-k!)} \\left(\\frac12\\right)^k} = \\frac{31-k}{2(k+1)}.\\]Now, the inequality $\\frac{31-k}{2(k+1)} > 1$ is equivalent to $31-k > 2k+2,$ or $k < \\frac{29}{3},$ or $k \\le 9.$ Furthermore, $\\frac{31-k}{2(k+1)} < 1$ when $k > \\frac{29}{3},$ or $k \\ge 10.$ Therefore, $a_{k+1} > a_k$ for $k \\le 9$ and $a_{k+1} < a_k$ for $k \\ge 10.$ It follows that $a_{10}$ is the largest term of the binomial expansion.\n We have \\[a_{10} = \\binom{31}{10} \\left(\\frac12\\right)^{10},\\]so it suffices to find the power of $2$ in the prime factorization of $\\binom{31}{10}.$ We have \\[\\binom{31}{10} = \\frac{31 \\cdot 30 \\cdot 29 \\cdot 28 \\cdot 27 \\cdot 26 \\cdot 25 \\cdot 24 \\cdot 23 \\cdot 22 \\cdot 21}{10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1} = \\frac{A \\cdot 2^{8}}{B \\cdot 2^8} = \\frac{A}{B},\\]where $A$ and $B$ are odd integers.\n Therefore, $\\binom{31}{10}$ is odd, and so the answer is $2^{10} = \\boxed{1024}.$\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a = (1 + 1/2) powr 31\"\nand h1 : \"b = GREATEST b. \\<exists> a. a/b is prime & a/b > 0 & a/b is a term in binomial expansion of (1 + 1/2) powr 31\"\nshows  \"b = 1024\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the 31st power of 1.5. Then, find the largest number (b) such that there exists a term in the binomial expansion of $(1 + 1/2)^{31}$ which when divided by b is a positive prime number. The final answer is 1024.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.963110625743866,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a = 31\"\nand h1 : \"b = 1024\"\nand h2 : \"\\<forall>n. (1 + 1/2) powr n = (n choose a) * (1 powr (n-a)) * (1/2 powr a)\"\nshows  \"b = 1024\"",
+        "formal solution": "(* ### Problem\n The largest term in the binomial expansion of $(1 + \\tfrac{1}{2})^{31}$ is of the form $\\tfrac{a}{b}$, where $a$ and $b$ are relatively prime positive integers.  What is the value of $b$? The final Answer is 1024\n ### Proof\n A term of the binomial expansion takes the form \\[a_k = \\binom{31}{k} \\left(\\frac{1}{2}\\right)^k,\\]where $0 \\le k \\le 31.$ To find which $a_k$ is the largest, we evaluate the ratio $\\frac{a_{k+1}}{a_k}$: \\[\\frac{a_{k+1}}{a_k} = \\frac{\\binom{31}{k+1} \\left(\\frac12\\right)^{k+1}}{\\binom{31}{k} \\left(\\frac12\\right)^k} = \\frac{\\frac{31!}{(k+1)!(30-k)!}\n \\left(\\frac12\\right)^{k+1}}{\\frac{31!}{k!(31-k!)} \\left(\\frac12\\right)^k} = \\frac{31-k}{2(k+1)}.\\]Now, the inequality $\\frac{31-k}{2(k+1)} > 1$ is equivalent to $31-k > 2k+2,$ or $k < \\frac{29}{3},$ or $k \\le 9.$ Furthermore, $\\frac{31-k}{2(k+1)} < 1$ when $k > \\frac{29}{3},$ or $k \\ge 10.$ Therefore, $a_{k+1} > a_k$ for $k \\le 9$ and $a_{k+1} < a_k$ for $k \\ge 10.$ It follows that $a_{10}$ is the largest term of the binomial expansion.\n We have \\[a_{10} = \\binom{31}{10} \\left(\\frac12\\right)^{10},\\]so it suffices to find the power of $2$ in the prime factorization of $\\binom{31}{10}.$ We have \\[\\binom{31}{10} = \\frac{31 \\cdot 30 \\cdot 29 \\cdot 28 \\cdot 27 \\cdot 26 \\cdot 25 \\cdot 24 \\cdot 23 \\cdot 22 \\cdot 21}{10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1} = \\frac{A \\cdot 2^{8}}{B \\cdot 2^8} = \\frac{A}{B},\\]where $A$ and $B$ are odd integers.\n Therefore, $\\binom{31}{10}$ is odd, and so the answer is $2^{10} = \\boxed{1024}.$\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a = 31\"\nand h1 : \"b = 1024\"\nand h2 : \"\\<forall>n. (1 + 1/2) powr n = (n choose a) * (1 powr (n-a)) * (1/2 powr a)\"\nshows  \"b = 1024\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $a = 31$ and $b = 1024$. For all $n$, $(1 + \\frac{1}{2})^n = \\binom{n}{a} \\cdot (1^{(n-a)}) \\cdot (\\frac{1}{2}^a)$. Prove that $b = 1024$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.45103520154953003,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes binomial_coeff :: \"int \\<Rightarrow> int \\<Rightarrow> int\"\nand largest_term :: \"real\"\nassumes h0 : \"\\<forall> n k. binomial_coeff n k = (fact n) / (fact k * fact (n - k))\"\nand h1 : \"largest_term = max {binomial_coeff 31 k * (1 powr k) * (1/2 powr (31 - k)) |k. k \\<in> {0..31}}\"\nand h2 : \"largest_term = real a / real b\"\nand h3 : \"gcd a b = 1\"\nshows  \"b = 1024\"",
+        "formal solution": "(* ### Problem\n The largest term in the binomial expansion of $(1 + \\tfrac{1}{2})^{31}$ is of the form $\\tfrac{a}{b}$, where $a$ and $b$ are relatively prime positive integers.  What is the value of $b$? The final Answer is 1024\n ### Proof\n A term of the binomial expansion takes the form \\[a_k = \\binom{31}{k} \\left(\\frac{1}{2}\\right)^k,\\]where $0 \\le k \\le 31.$ To find which $a_k$ is the largest, we evaluate the ratio $\\frac{a_{k+1}}{a_k}$: \\[\\frac{a_{k+1}}{a_k} = \\frac{\\binom{31}{k+1} \\left(\\frac12\\right)^{k+1}}{\\binom{31}{k} \\left(\\frac12\\right)^k} = \\frac{\\frac{31!}{(k+1)!(30-k)!}\n \\left(\\frac12\\right)^{k+1}}{\\frac{31!}{k!(31-k!)} \\left(\\frac12\\right)^k} = \\frac{31-k}{2(k+1)}.\\]Now, the inequality $\\frac{31-k}{2(k+1)} > 1$ is equivalent to $31-k > 2k+2,$ or $k < \\frac{29}{3},$ or $k \\le 9.$ Furthermore, $\\frac{31-k}{2(k+1)} < 1$ when $k > \\frac{29}{3},$ or $k \\ge 10.$ Therefore, $a_{k+1} > a_k$ for $k \\le 9$ and $a_{k+1} < a_k$ for $k \\ge 10.$ It follows that $a_{10}$ is the largest term of the binomial expansion.\n We have \\[a_{10} = \\binom{31}{10} \\left(\\frac12\\right)^{10},\\]so it suffices to find the power of $2$ in the prime factorization of $\\binom{31}{10}.$ We have \\[\\binom{31}{10} = \\frac{31 \\cdot 30 \\cdot 29 \\cdot 28 \\cdot 27 \\cdot 26 \\cdot 25 \\cdot 24 \\cdot 23 \\cdot 22 \\cdot 21}{10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1} = \\frac{A \\cdot 2^{8}}{B \\cdot 2^8} = \\frac{A}{B},\\]where $A$ and $B$ are odd integers.\n Therefore, $\\binom{31}{10}$ is odd, and so the answer is $2^{10} = \\boxed{1024}.$\n *)\n\ntheorem\nfixes binomial_coeff :: \"int \\<Rightarrow> int \\<Rightarrow> int\"\nand largest_term :: \"real\"\nassumes h0 : \"\\<forall> n k. binomial_coeff n k = (fact n) / (fact k * fact (n - k))\"\nand h1 : \"largest_term = max {binomial_coeff 31 k * (1 powr k) * (1/2 powr (31 - k)) |k. k \\<in> {0..31}}\"\nand h2 : \"largest_term = real a / real b\"\nand h3 : \"gcd a b = 1\"\nshows  \"b = 1024\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a binomial coefficient defined as $binomial\\_coeff\\; n\\; k = \\frac{n!}{k!(n-k)!}$ for all $n$ and $k$. Let $largest\\_term$ be the maximum value of the expression $binomial\\_coeff\\; 31\\; k * 1^k * (\\frac{1}{2})^{31-k}$ for $k$ in the range of 0 to 31. If $largest\\_term$ can be written as a fraction $\\frac{a}{b}$ where $a$ and $b$ are relatively prime (their greatest common divisor is 1), what is the value of $b$? The final answer is $1024$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9817410111427307,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a b :: int\nassumes h0 : \"gcd a b = 1\"\nand h1 : \"a/b = maxterm_binomial (1/2) 31\"\nshows  \"b = 1024\"",
+        "formal solution": "(* ### Problem\n The largest term in the binomial expansion of $(1 + \\tfrac{1}{2})^{31}$ is of the form $\\tfrac{a}{b}$, where $a$ and $b$ are relatively prime positive integers.  What is the value of $b$? The final Answer is 1024\n ### Proof\n A term of the binomial expansion takes the form \\[a_k = \\binom{31}{k} \\left(\\frac{1}{2}\\right)^k,\\]where $0 \\le k \\le 31.$ To find which $a_k$ is the largest, we evaluate the ratio $\\frac{a_{k+1}}{a_k}$: \\[\\frac{a_{k+1}}{a_k} = \\frac{\\binom{31}{k+1} \\left(\\frac12\\right)^{k+1}}{\\binom{31}{k} \\left(\\frac12\\right)^k} = \\frac{\\frac{31!}{(k+1)!(30-k)!}\n \\left(\\frac12\\right)^{k+1}}{\\frac{31!}{k!(31-k!)} \\left(\\frac12\\right)^k} = \\frac{31-k}{2(k+1)}.\\]Now, the inequality $\\frac{31-k}{2(k+1)} > 1$ is equivalent to $31-k > 2k+2,$ or $k < \\frac{29}{3},$ or $k \\le 9.$ Furthermore, $\\frac{31-k}{2(k+1)} < 1$ when $k > \\frac{29}{3},$ or $k \\ge 10.$ Therefore, $a_{k+1} > a_k$ for $k \\le 9$ and $a_{k+1} < a_k$ for $k \\ge 10.$ It follows that $a_{10}$ is the largest term of the binomial expansion.\n We have \\[a_{10} = \\binom{31}{10} \\left(\\frac12\\right)^{10},\\]so it suffices to find the power of $2$ in the prime factorization of $\\binom{31}{10}.$ We have \\[\\binom{31}{10} = \\frac{31 \\cdot 30 \\cdot 29 \\cdot 28 \\cdot 27 \\cdot 26 \\cdot 25 \\cdot 24 \\cdot 23 \\cdot 22 \\cdot 21}{10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1} = \\frac{A \\cdot 2^{8}}{B \\cdot 2^8} = \\frac{A}{B},\\]where $A$ and $B$ are odd integers.\n Therefore, $\\binom{31}{10}$ is odd, and so the answer is $2^{10} = \\boxed{1024}.$\n *)\n\ntheorem\nfixes a b :: int\nassumes h0 : \"gcd a b = 1\"\nand h1 : \"a/b = maxterm_binomial (1/2) 31\"\nshows  \"b = 1024\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the greatest common divisor of two integers a and b is 1 and the fraction a/b is equal to the maximum term of the binomial expansion of (1/2) raised to the power of 31, find the value of b. The final answer is 1024.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9902071356773376,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x y a b :: real\nassumes h0 : \"x = 1\"\nand h1 : \"y = 1/2\"\nand h2 : \"(x + y) powr 31 = a / b\"\nand h3 : \"gcd a b = 1\"\nshows  \"b = 1024\"",
+        "formal solution": "(* ### Problem\n The largest term in the binomial expansion of $(1 + \\tfrac{1}{2})^{31}$ is of the form $\\tfrac{a}{b}$, where $a$ and $b$ are relatively prime positive integers.  What is the value of $b$? The final Answer is 1024\n ### Proof\n A term of the binomial expansion takes the form \\[a_k = \\binom{31}{k} \\left(\\frac{1}{2}\\right)^k,\\]where $0 \\le k \\le 31.$ To find which $a_k$ is the largest, we evaluate the ratio $\\frac{a_{k+1}}{a_k}$: \\[\\frac{a_{k+1}}{a_k} = \\frac{\\binom{31}{k+1} \\left(\\frac12\\right)^{k+1}}{\\binom{31}{k} \\left(\\frac12\\right)^k} = \\frac{\\frac{31!}{(k+1)!(30-k)!}\n \\left(\\frac12\\right)^{k+1}}{\\frac{31!}{k!(31-k!)} \\left(\\frac12\\right)^k} = \\frac{31-k}{2(k+1)}.\\]Now, the inequality $\\frac{31-k}{2(k+1)} > 1$ is equivalent to $31-k > 2k+2,$ or $k < \\frac{29}{3},$ or $k \\le 9.$ Furthermore, $\\frac{31-k}{2(k+1)} < 1$ when $k > \\frac{29}{3},$ or $k \\ge 10.$ Therefore, $a_{k+1} > a_k$ for $k \\le 9$ and $a_{k+1} < a_k$ for $k \\ge 10.$ It follows that $a_{10}$ is the largest term of the binomial expansion.\n We have \\[a_{10} = \\binom{31}{10} \\left(\\frac12\\right)^{10},\\]so it suffices to find the power of $2$ in the prime factorization of $\\binom{31}{10}.$ We have \\[\\binom{31}{10} = \\frac{31 \\cdot 30 \\cdot 29 \\cdot 28 \\cdot 27 \\cdot 26 \\cdot 25 \\cdot 24 \\cdot 23 \\cdot 22 \\cdot 21}{10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1} = \\frac{A \\cdot 2^{8}}{B \\cdot 2^8} = \\frac{A}{B},\\]where $A$ and $B$ are odd integers.\n Therefore, $\\binom{31}{10}$ is odd, and so the answer is $2^{10} = \\boxed{1024}.$\n *)\n\ntheorem\nfixes x y a b :: real\nassumes h0 : \"x = 1\"\nand h1 : \"y = 1/2\"\nand h2 : \"(x + y) powr 31 = a / b\"\nand h3 : \"gcd a b = 1\"\nshows  \"b = 1024\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the denominator of the fraction obtained when $1 + \\frac{1}{2}$ is raised to the power of 31 and the fraction is in its simplest form. The final answer is 1024.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9159532785415649,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "1024",
+    "natural problem": "The largest term in the binomial expansion of $(1 + \\tfrac{1}{2})^{31}$ is of the form $\\tfrac{a}{b}$, where $a$ and $b$ are relatively prime positive integers.  What is the value of $b$?",
+    "natural solution": [
+        "A term of the binomial expansion takes the form \\[a_k = \\binom{31}{k} \\left(\\frac{1}{2}\\right)^k,\\]where $0 \\le k \\le 31.$ To find which $a_k$ is the largest, we evaluate the ratio $\\frac{a_{k+1}}{a_k}$: \\[\\frac{a_{k+1}}{a_k} = \\frac{\\binom{31}{k+1} \\left(\\frac12\\right)^{k+1}}{\\binom{31}{k} \\left(\\frac12\\right)^k} = \\frac{\\frac{31!}{(k+1)!(30-k)!}",
+        "\\left(\\frac12\\right)^{k+1}}{\\frac{31!}{k!(31-k!)} \\left(\\frac12\\right)^k} = \\frac{31-k}{2(k+1)}.\\]Now, the inequality $\\frac{31-k}{2(k+1)} > 1$ is equivalent to $31-k > 2k+2,$ or $k < \\frac{29}{3},$ or $k \\le 9.$ Furthermore, $\\frac{31-k}{2(k+1)} < 1$ when $k > \\frac{29}{3},$ or $k \\ge 10.$ Therefore, $a_{k+1} > a_k$ for $k \\le 9$ and $a_{k+1} < a_k$ for $k \\ge 10.$ It follows that $a_{10}$ is the largest term of the binomial expansion.",
+        "We have \\[a_{10} = \\binom{31}{10} \\left(\\frac12\\right)^{10},\\]so it suffices to find the power of $2$ in the prime factorization of $\\binom{31}{10}.$ We have \\[\\binom{31}{10} = \\frac{31 \\cdot 30 \\cdot 29 \\cdot 28 \\cdot 27 \\cdot 26 \\cdot 25 \\cdot 24 \\cdot 23 \\cdot 22 \\cdot 21}{10 \\cdot 9 \\cdot 8 \\cdot 7 \\cdot 6 \\cdot 5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1} = \\frac{A \\cdot 2^{8}}{B \\cdot 2^8} = \\frac{A}{B},\\]where $A$ and $B$ are odd integers.",
+        "Therefore, $\\binom{31}{10}$ is odd, and so the answer is $2^{10} = \\boxed{1024}.$"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 5",
+    "type": "Intermediate Algebra"
+}

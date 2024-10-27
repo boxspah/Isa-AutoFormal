@@ -1,0 +1,59 @@
+{
+    "natural problem": "How many digits are located to the right of the decimal point when $\\frac{3^6}{6^4\\cdot625}$ is expressed as a decimal?",
+    "natural solution": [
+        "To find the decimal expression, we try to get a denominator of the form $2^a\\cdot5^a=10^a$, where $a$ is an integer. $$\\frac{3^6}{6^4\\cdot625}=\\frac{3^6}{2^4\\cdot3^4\\cdot5^4}=\\frac{3^2}{10^4}=9\\cdot10^{-4}=0.0009$$So there are $\\boxed{4}$ digits to the right of the decimal point."
+    ],
+    "natural answer": "4",
+    "a_0": {
+        "formal problem": "theorem\nfixes x y z :: real\nassumes h0 : \"x = 3 powr 6 / (6 powr 4 * 625)\"\nand h1 : \"y = floor x\"\nand h2 : \"z = x - y\"\nshows  \"length (snd (mantissa_field (z))) = 4\"",
+        "formal solution": "(* ### Problem\n How many digits are located to the right of the decimal point when $\\frac{3^6}{6^4\\cdot625}$ is expressed as a decimal? The final Answer is 4\n ### Proof\n To find the decimal expression, we try to get a denominator of the form $2^a\\cdot5^a=10^a$, where $a$ is an integer. $$\\frac{3^6}{6^4\\cdot625}=\\frac{3^6}{2^4\\cdot3^4\\cdot5^4}=\\frac{3^2}{10^4}=9\\cdot10^{-4}=0.0009$$So there are $\\boxed{4}$ digits to the right of the decimal point.\n *)\n\ntheorem\nfixes x y z :: real\nassumes h0 : \"x = 3 powr 6 / (6 powr 4 * 625)\"\nand h1 : \"y = floor x\"\nand h2 : \"z = x - y\"\nshows  \"length (snd (mantissa_field (z))) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the decimal part of the number given by $x = \\frac{3^6}{6^4 \\cdot 625}$. How many digits are there after the decimal point? The final answer is 4."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a = 3 powr 6 / (6 powr 4 * 625)\"\nand h1 : \"\\<exists> d. d \\<ge> 0 \\<and> b = a * 10 powr d \\<and> b \\<in> \\<int>\"\nshows  \"d = 4\"",
+        "formal solution": "(* ### Problem\n How many digits are located to the right of the decimal point when $\\frac{3^6}{6^4\\cdot625}$ is expressed as a decimal? The final Answer is 4\n ### Proof\n To find the decimal expression, we try to get a denominator of the form $2^a\\cdot5^a=10^a$, where $a$ is an integer. $$\\frac{3^6}{6^4\\cdot625}=\\frac{3^6}{2^4\\cdot3^4\\cdot5^4}=\\frac{3^2}{10^4}=9\\cdot10^{-4}=0.0009$$So there are $\\boxed{4}$ digits to the right of the decimal point.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a = 3 powr 6 / (6 powr 4 * 625)\"\nand h1 : \"\\<exists> d. d \\<ge> 0 \\<and> b = a * 10 powr d \\<and> b \\<in> \\<int>\"\nshows  \"d = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a$ is the result of $3^6$ divided by the product of $6^4$ and $625$, find a non-negative integer $d$ such that $b = a * 10^d$ is an integer. The final answer is $d=4$."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (3 powr 6) / (6 powr 4 * 625)\"\nshows  \"Decimal_Digits x = 4\"",
+        "formal solution": "(* ### Problem\n How many digits are located to the right of the decimal point when $\\frac{3^6}{6^4\\cdot625}$ is expressed as a decimal? The final Answer is 4\n ### Proof\n To find the decimal expression, we try to get a denominator of the form $2^a\\cdot5^a=10^a$, where $a$ is an integer. $$\\frac{3^6}{6^4\\cdot625}=\\frac{3^6}{2^4\\cdot3^4\\cdot5^4}=\\frac{3^2}{10^4}=9\\cdot10^{-4}=0.0009$$So there are $\\boxed{4}$ digits to the right of the decimal point.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (3 powr 6) / (6 powr 4 * 625)\"\nshows  \"Decimal_Digits x = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the value of $x$ given that $x$ is equal to $\\frac{3^6}{6^4 * 625}$. How many digits are there after the decimal point in the value of $x$? The final answer is 4."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (3 ^ 6) / (6 ^ 4 * 625)\"\nand h1 : \"x = real_of_float (truncate_down 4 x)\"\nshows  \"length (snd (quotient_of (real_of_float (truncate_down 4 x)))) = 4\"",
+        "formal solution": "(* ### Problem\n How many digits are located to the right of the decimal point when $\\frac{3^6}{6^4\\cdot625}$ is expressed as a decimal? The final Answer is 4\n ### Proof\n To find the decimal expression, we try to get a denominator of the form $2^a\\cdot5^a=10^a$, where $a$ is an integer. $$\\frac{3^6}{6^4\\cdot625}=\\frac{3^6}{2^4\\cdot3^4\\cdot5^4}=\\frac{3^2}{10^4}=9\\cdot10^{-4}=0.0009$$So there are $\\boxed{4}$ digits to the right of the decimal point.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (3 ^ 6) / (6 ^ 4 * 625)\"\nand h1 : \"x = real_of_float (truncate_down 4 x)\"\nshows  \"length (snd (quotient_of (real_of_float (truncate_down 4 x)))) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the length of the fractional part of the number resulting from the expression $(3^6) / (6^4 * 625)$, after it is truncated down to 4 decimal places. The final answer is 4."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (3^6) / (6^4 * 625)\"\nand h1 : \"x = a / 10^b\"\nand h2 : \"a \\<in> \\<nat>\"\nand h3 : \"b \\<in> \\<nat>\"\nshows  \"b = 4\"",
+        "formal solution": "(* ### Problem\n How many digits are located to the right of the decimal point when $\\frac{3^6}{6^4\\cdot625}$ is expressed as a decimal? The final Answer is 4\n ### Proof\n To find the decimal expression, we try to get a denominator of the form $2^a\\cdot5^a=10^a$, where $a$ is an integer. $$\\frac{3^6}{6^4\\cdot625}=\\frac{3^6}{2^4\\cdot3^4\\cdot5^4}=\\frac{3^2}{10^4}=9\\cdot10^{-4}=0.0009$$So there are $\\boxed{4}$ digits to the right of the decimal point.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (3^6) / (6^4 * 625)\"\nand h1 : \"x = a / 10^b\"\nand h2 : \"a \\<in> \\<nat>\"\nand h3 : \"b \\<in> \\<nat>\"\nshows  \"b = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Express $\\frac{3^6}{6^4 \\times 625}$ as a fraction $\\frac{a}{10^b}$ where $a$ and $b$ are natural numbers. What is the value of $b$? The final answer is $4$."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (3 powr 6) / (6 powr 4 * 625)\"\nshows  \"count_digits_after_decimal x = 4\"",
+        "formal solution": "(* ### Problem\n How many digits are located to the right of the decimal point when $\\frac{3^6}{6^4\\cdot625}$ is expressed as a decimal? The final Answer is 4\n ### Proof\n To find the decimal expression, we try to get a denominator of the form $2^a\\cdot5^a=10^a$, where $a$ is an integer. $$\\frac{3^6}{6^4\\cdot625}=\\frac{3^6}{2^4\\cdot3^4\\cdot5^4}=\\frac{3^2}{10^4}=9\\cdot10^{-4}=0.0009$$So there are $\\boxed{4}$ digits to the right of the decimal point.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (3 powr 6) / (6 powr 4 * 625)\"\nshows  \"count_digits_after_decimal x = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of digits after the decimal point when the number $\\frac{3^6}{6^4 * 625}$ is expressed as a decimal. The final answer is 4."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (3 ^ 6) / (6 ^ 4 * 625)\"\nshows  \"decimal_places x = 4\"",
+        "formal solution": "(* ### Problem\n How many digits are located to the right of the decimal point when $\\frac{3^6}{6^4\\cdot625}$ is expressed as a decimal? The final Answer is 4\n ### Proof\n To find the decimal expression, we try to get a denominator of the form $2^a\\cdot5^a=10^a$, where $a$ is an integer. $$\\frac{3^6}{6^4\\cdot625}=\\frac{3^6}{2^4\\cdot3^4\\cdot5^4}=\\frac{3^2}{10^4}=9\\cdot10^{-4}=0.0009$$So there are $\\boxed{4}$ digits to the right of the decimal point.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (3 ^ 6) / (6 ^ 4 * 625)\"\nshows  \"decimal_places x = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of decimal places in the value of $x$, where $x = \\frac{3^6}{6^4 \\times 625}$. The answer is 4 decimal places."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a = 3 powr 6\"\nand h1 : \"b = 6 powr 4\"\nand h2 : \"c = 625\"\nshows  \"length (snd (split_at (find_index (\\<lambda>x. x = '.') (show (a / (b * c))))) - 1 = 4\"",
+        "formal solution": "(* ### Problem\n How many digits are located to the right of the decimal point when $\\frac{3^6}{6^4\\cdot625}$ is expressed as a decimal? The final Answer is 4\n ### Proof\n To find the decimal expression, we try to get a denominator of the form $2^a\\cdot5^a=10^a$, where $a$ is an integer. $$\\frac{3^6}{6^4\\cdot625}=\\frac{3^6}{2^4\\cdot3^4\\cdot5^4}=\\frac{3^2}{10^4}=9\\cdot10^{-4}=0.0009$$So there are $\\boxed{4}$ digits to the right of the decimal point.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a = 3 powr 6\"\nand h1 : \"b = 6 powr 4\"\nand h2 : \"c = 625\"\nshows  \"length (snd (split_at (find_index (\\<lambda>x. x = '.') (show (a / (b * c))))) - 1 = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of decimal places in the number obtained by dividing $3^6$ by the product of $6^4$ and $625$. The final answer is $4$."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x = (3^6)/(6^4*625)\"\nshows  \"count_digits_right_of_decimal_in x = 4\"",
+        "formal solution": "(* ### Problem\n How many digits are located to the right of the decimal point when $\\frac{3^6}{6^4\\cdot625}$ is expressed as a decimal? The final Answer is 4\n ### Proof\n To find the decimal expression, we try to get a denominator of the form $2^a\\cdot5^a=10^a$, where $a$ is an integer. $$\\frac{3^6}{6^4\\cdot625}=\\frac{3^6}{2^4\\cdot3^4\\cdot5^4}=\\frac{3^2}{10^4}=9\\cdot10^{-4}=0.0009$$So there are $\\boxed{4}$ digits to the right of the decimal point.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x = (3^6)/(6^4*625)\"\nshows  \"count_digits_right_of_decimal_in x = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of digits to the right of the decimal point in the decimal representation of $\\frac{3^6}{6^4*625}$. The final answer is 4."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = length (snd (quotient_of (3^6 / (6^4 * 625))))\"\nshows  \"n = 4\"",
+        "formal solution": "(* ### Problem\n How many digits are located to the right of the decimal point when $\\frac{3^6}{6^4\\cdot625}$ is expressed as a decimal? The final Answer is 4\n ### Proof\n To find the decimal expression, we try to get a denominator of the form $2^a\\cdot5^a=10^a$, where $a$ is an integer. $$\\frac{3^6}{6^4\\cdot625}=\\frac{3^6}{2^4\\cdot3^4\\cdot5^4}=\\frac{3^2}{10^4}=9\\cdot10^{-4}=0.0009$$So there are $\\boxed{4}$ digits to the right of the decimal point.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = length (snd (quotient_of (3^6 / (6^4 * 625))))\"\nshows  \"n = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the length of the decimal representation of the fraction $3^6$ divided by $6^4$ times $625$. The final answer is $4$."
+    },
+    "level": "Level 3",
+    "type": "Number Theory"
+}

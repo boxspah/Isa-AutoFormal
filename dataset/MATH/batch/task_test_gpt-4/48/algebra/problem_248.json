@@ -1,0 +1,130 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes t :: nat and s :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"s 1 = 45\"\nand h1 : \"\\<forall> t > 0. s (t + 1) = s t - 5\"\nand h2 : \"(\\<forall> t. s t > 0) \\<and> (\\<exists> T. s T = 0)\"\nshows  \"(\\<Sum> t = 1..T. s t) = 225\"",
+        "formal solution": "(* ### Problem\n When a car's brakes are applied, it travels 5 feet less in each  second than the previous second until it comes to a complete stop.  A car goes 45 feet in the first second after the brakes are applied.  How many feet does the car travel from the time the  brakes are applied to the time the car stops? The final Answer is 225\n ### Proof\n The number of feet the car travels in each second is an arithmetic sequence with first term 45 and common difference $-5$.\n We are summing all the positive terms in this sequence (these terms represent the number of feet the car travels in each second).\n Thus, we want to find the sum $45+40+\\dots+5$. The sum of an arithmetic series is equal to the average of the first and last term, multiplied by the number of terms. The number of terms is $45/5 = 9$, so the sum is $(45 + 5)/2 \\cdot 9 = \\boxed{225}$.\n *)\n\ntheorem\nfixes t :: nat and s :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"s 1 = 45\"\nand h1 : \"\\<forall> t > 0. s (t + 1) = s t - 5\"\nand h2 : \"(\\<forall> t. s t > 0) \\<and> (\\<exists> T. s T = 0)\"\nshows  \"(\\<Sum> t = 1..T. s t) = 225\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of numbers is defined by $s(1) = 45$ and $s(t+1) = s(t) - 5$ for $t > 0$. The sequence is positive and there exists a term $s(T) = 0$. Find the sum of the terms in the sequence from $s(1)$ to $s(T)$. The final answer is $225$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8480988144874573,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes t :: nat and d :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"d 1 = 45\"\nand h1 : \"\\<forall>t. t > 1 \\<longrightarrow> d t = d (t - 1) - 5\"\nand h2 : \"\\<forall>t. t > 0 \\<longrightarrow> (\\<exists>s. d t = 5 * s)\"\nand h3 : \"d t = 0\"\nshows  \"(\\<Sum>i=1..t. d i) = 225\"",
+        "formal solution": "(* ### Problem\n When a car's brakes are applied, it travels 5 feet less in each  second than the previous second until it comes to a complete stop.  A car goes 45 feet in the first second after the brakes are applied.  How many feet does the car travel from the time the  brakes are applied to the time the car stops? The final Answer is 225\n ### Proof\n The number of feet the car travels in each second is an arithmetic sequence with first term 45 and common difference $-5$.\n We are summing all the positive terms in this sequence (these terms represent the number of feet the car travels in each second).\n Thus, we want to find the sum $45+40+\\dots+5$. The sum of an arithmetic series is equal to the average of the first and last term, multiplied by the number of terms. The number of terms is $45/5 = 9$, so the sum is $(45 + 5)/2 \\cdot 9 = \\boxed{225}$.\n *)\n\ntheorem\nfixes t :: nat and d :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"d 1 = 45\"\nand h1 : \"\\<forall>t. t > 1 \\<longrightarrow> d t = d (t - 1) - 5\"\nand h2 : \"\\<forall>t. t > 0 \\<longrightarrow> (\\<exists>s. d t = 5 * s)\"\nand h3 : \"d t = 0\"\nshows  \"(\\<Sum>i=1..t. d i) = 225\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of distances is defined recursively as $d(1)=45$ and $d(t)=d(t-1)-5$ for all $t>1$. If $d(t)=0$, find the sum of the first $t$ terms of the sequence. The final answer is 225.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9653447270393372,
+        "symbolic_score": 0.8
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes car_distance :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"car_distance 1 = 45\"\nand h1 : \"\\<forall>n. n > 1 \\<longrightarrow> car_distance n = car_distance (n-1) - 5\"\nand h2 : \"\\<forall>n. car_distance n = 0 \\<longrightarrow> (\\<forall>m>n. car_distance m = 0)\"\nshows  \"sum car_distance {1..(LEAST n. car_distance n = 0)} = 225\"",
+        "formal solution": "(* ### Problem\n When a car's brakes are applied, it travels 5 feet less in each  second than the previous second until it comes to a complete stop.  A car goes 45 feet in the first second after the brakes are applied.  How many feet does the car travel from the time the  brakes are applied to the time the car stops? The final Answer is 225\n ### Proof\n The number of feet the car travels in each second is an arithmetic sequence with first term 45 and common difference $-5$.\n We are summing all the positive terms in this sequence (these terms represent the number of feet the car travels in each second).\n Thus, we want to find the sum $45+40+\\dots+5$. The sum of an arithmetic series is equal to the average of the first and last term, multiplied by the number of terms. The number of terms is $45/5 = 9$, so the sum is $(45 + 5)/2 \\cdot 9 = \\boxed{225}$.\n *)\n\ntheorem\nfixes car_distance :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"car_distance 1 = 45\"\nand h1 : \"\\<forall>n. n > 1 \\<longrightarrow> car_distance n = car_distance (n-1) - 5\"\nand h2 : \"\\<forall>n. car_distance n = 0 \\<longrightarrow> (\\<forall>m>n. car_distance m = 0)\"\nshows  \"sum car_distance {1..(LEAST n. car_distance n = 0)} = 225\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A car travels a certain distance every day, with the distance decreasing by 5 miles each day. On the first day, the car travels 45 miles. The car continues to travel until it covers no distance. Find the total distance traveled by the car over all the days. The final answer is 225 miles.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9724912643432617,
+        "symbolic_score": 0.8
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat and s :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"s 1 = 45\"\nand h1 : \"\\<forall> n > 0. s (n + 1) = s n - 5\"\nand h2 : \"s n = 0\"\nshows  \"sum s {1..n} = 225\"",
+        "formal solution": "(* ### Problem\n When a car's brakes are applied, it travels 5 feet less in each  second than the previous second until it comes to a complete stop.  A car goes 45 feet in the first second after the brakes are applied.  How many feet does the car travel from the time the  brakes are applied to the time the car stops? The final Answer is 225\n ### Proof\n The number of feet the car travels in each second is an arithmetic sequence with first term 45 and common difference $-5$.\n We are summing all the positive terms in this sequence (these terms represent the number of feet the car travels in each second).\n Thus, we want to find the sum $45+40+\\dots+5$. The sum of an arithmetic series is equal to the average of the first and last term, multiplied by the number of terms. The number of terms is $45/5 = 9$, so the sum is $(45 + 5)/2 \\cdot 9 = \\boxed{225}$.\n *)\n\ntheorem\nfixes n :: nat and s :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"s 1 = 45\"\nand h1 : \"\\<forall> n > 0. s (n + 1) = s n - 5\"\nand h2 : \"s n = 0\"\nshows  \"sum s {1..n} = 225\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $s(n)$ is defined recursively as follows: $s(1) = 45$, and for each $n > 0$, $s(n+1) = s(n) - 5$. If $s(n) = 0$, find the sum of the first $n$ terms of the sequence. The final answer is 225.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.984316885471344,
+        "symbolic_score": 0.8
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes t :: nat and s :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"s 0 = 0\"\nand h1 : \"s 1 = 45\"\nand h2 : \"\\<forall>t > 0. s (Suc t) = s t - 5\"\nand h3 : \"\\<forall>t. s t = 0 \\<longrightarrow> (\\<forall> t' > t. s t' = 0)\"\nshows  \"(\\<Sum> t \\<in> {0..}. s t) = 225\"",
+        "formal solution": "(* ### Problem\n When a car's brakes are applied, it travels 5 feet less in each  second than the previous second until it comes to a complete stop.  A car goes 45 feet in the first second after the brakes are applied.  How many feet does the car travel from the time the  brakes are applied to the time the car stops? The final Answer is 225\n ### Proof\n The number of feet the car travels in each second is an arithmetic sequence with first term 45 and common difference $-5$.\n We are summing all the positive terms in this sequence (these terms represent the number of feet the car travels in each second).\n Thus, we want to find the sum $45+40+\\dots+5$. The sum of an arithmetic series is equal to the average of the first and last term, multiplied by the number of terms. The number of terms is $45/5 = 9$, so the sum is $(45 + 5)/2 \\cdot 9 = \\boxed{225}$.\n *)\n\ntheorem\nfixes t :: nat and s :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"s 0 = 0\"\nand h1 : \"s 1 = 45\"\nand h2 : \"\\<forall>t > 0. s (Suc t) = s t - 5\"\nand h3 : \"\\<forall>t. s t = 0 \\<longrightarrow> (\\<forall> t' > t. s t' = 0)\"\nshows  \"(\\<Sum> t \\<in> {0..}. s t) = 225\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $s(t)$ is defined as follows: $s(0) = 0$, $s(1) = 45$, and for $t > 0$, $s(t+1) = s(t) - 5$. Once the sequence reaches 0, all subsequent terms are also 0. Find the sum of all terms in this sequence. The final answer is 225.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9160045385360718,
+        "symbolic_score": 0.8
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes t :: nat and d_t :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"d_t 1 = 45\"\nand h1 : \"\\<forall> t \\<ge> 1. d_t (t+1) = d_t t - 5\"\nand h2 : \"\\<exists> n. \\<forall> t > n. d_t t = 0\"\nshows  \"(\\<Sum>t\\<le>n. d_t t) = 225\"",
+        "formal solution": "(* ### Problem\n When a car's brakes are applied, it travels 5 feet less in each  second than the previous second until it comes to a complete stop.  A car goes 45 feet in the first second after the brakes are applied.  How many feet does the car travel from the time the  brakes are applied to the time the car stops? The final Answer is 225\n ### Proof\n The number of feet the car travels in each second is an arithmetic sequence with first term 45 and common difference $-5$.\n We are summing all the positive terms in this sequence (these terms represent the number of feet the car travels in each second).\n Thus, we want to find the sum $45+40+\\dots+5$. The sum of an arithmetic series is equal to the average of the first and last term, multiplied by the number of terms. The number of terms is $45/5 = 9$, so the sum is $(45 + 5)/2 \\cdot 9 = \\boxed{225}$.\n *)\n\ntheorem\nfixes t :: nat and d_t :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"d_t 1 = 45\"\nand h1 : \"\\<forall> t \\<ge> 1. d_t (t+1) = d_t t - 5\"\nand h2 : \"\\<exists> n. \\<forall> t > n. d_t t = 0\"\nshows  \"(\\<Sum>t\\<le>n. d_t t) = 225\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of integers $d_t$ is defined as follows: $d_1 = 45$, and for each $t \\geq 1$, $d_{t+1} = d_t - 5$. At some point, the sequence becomes zero and remains zero thereafter. Find the sum of all the terms in the sequence up to and including the first zero term. The final answer is 225.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8728815913200378,
+        "symbolic_score": 0.8
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes s :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"s 0 = 45\"\nand h1 : \"\\<forall> n. s (n+1) = s n - 5\"\nand h2 : \"\\<exists> k. s k = 0\"\nshows  \"(\\<Sum>i<k. s i) = 225\"",
+        "formal solution": "(* ### Problem\n When a car's brakes are applied, it travels 5 feet less in each  second than the previous second until it comes to a complete stop.  A car goes 45 feet in the first second after the brakes are applied.  How many feet does the car travel from the time the  brakes are applied to the time the car stops? The final Answer is 225\n ### Proof\n The number of feet the car travels in each second is an arithmetic sequence with first term 45 and common difference $-5$.\n We are summing all the positive terms in this sequence (these terms represent the number of feet the car travels in each second).\n Thus, we want to find the sum $45+40+\\dots+5$. The sum of an arithmetic series is equal to the average of the first and last term, multiplied by the number of terms. The number of terms is $45/5 = 9$, so the sum is $(45 + 5)/2 \\cdot 9 = \\boxed{225}$.\n *)\n\ntheorem\nfixes s :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"s 0 = 45\"\nand h1 : \"\\<forall> n. s (n+1) = s n - 5\"\nand h2 : \"\\<exists> k. s k = 0\"\nshows  \"(\\<Sum>i<k. s i) = 225\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of numbers is defined by $s_0 = 45$ and $s_{n+1} = s_n - 5$ for all natural numbers $n$. If there exists an index $k$ such that $s_k = 0$, find the sum of the first $k$ terms of the sequence. The final answer is 225.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.913137674331665,
+        "symbolic_score": 0.8
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes s :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"s 1 = 45\"\nand h1 : \"\\<forall> k \\<ge> 2. s k = s (k - 1) - 5\"\nand h2 : \"\\<forall> k \\<ge> 1. s k > 0\"\nand h3 : \"s n \\<le> 0\"\nshows  \"(\\<Sum>k = 1..n. s k) = 225\"",
+        "formal solution": "(* ### Problem\n When a car's brakes are applied, it travels 5 feet less in each  second than the previous second until it comes to a complete stop.  A car goes 45 feet in the first second after the brakes are applied.  How many feet does the car travel from the time the  brakes are applied to the time the car stops? The final Answer is 225\n ### Proof\n The number of feet the car travels in each second is an arithmetic sequence with first term 45 and common difference $-5$.\n We are summing all the positive terms in this sequence (these terms represent the number of feet the car travels in each second).\n Thus, we want to find the sum $45+40+\\dots+5$. The sum of an arithmetic series is equal to the average of the first and last term, multiplied by the number of terms. The number of terms is $45/5 = 9$, so the sum is $(45 + 5)/2 \\cdot 9 = \\boxed{225}$.\n *)\n\ntheorem\nfixes s :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"s 1 = 45\"\nand h1 : \"\\<forall> k \\<ge> 2. s k = s (k - 1) - 5\"\nand h2 : \"\\<forall> k \\<ge> 1. s k > 0\"\nand h3 : \"s n \\<le> 0\"\nshows  \"(\\<Sum>k = 1..n. s k) = 225\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $s$ is defined recursively by $s(1)=45$ and $s(k)=s(k-1)-5$ for all integers $k \\geq 2$. It is also given that $s(k) > 0$ for all integers $k \\geq 1$. Find the value of the sum $\\sum_{k=1}^{n} s(k)$ when $s(n) \\leq 0$ for the first time. The final answer is 225.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9320476055145264,
+        "symbolic_score": 0.8
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes travel_distance :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"travel_distance 1 = 45\"\nand h1 : \"\\<forall> n > 0. travel_distance (n + 1) = travel_distance n - 5\"\nand h2 : \"\\<forall> n. n > 0 \\<and> travel_distance n = 0 \\<longrightarrow> (\\<Sum>k=1..n. travel_distance k) = 225\"\nshows  \"\\<Sum>k=1..n. travel_distance k = 225\"",
+        "formal solution": "(* ### Problem\n When a car's brakes are applied, it travels 5 feet less in each  second than the previous second until it comes to a complete stop.  A car goes 45 feet in the first second after the brakes are applied.  How many feet does the car travel from the time the  brakes are applied to the time the car stops? The final Answer is 225\n ### Proof\n The number of feet the car travels in each second is an arithmetic sequence with first term 45 and common difference $-5$.\n We are summing all the positive terms in this sequence (these terms represent the number of feet the car travels in each second).\n Thus, we want to find the sum $45+40+\\dots+5$. The sum of an arithmetic series is equal to the average of the first and last term, multiplied by the number of terms. The number of terms is $45/5 = 9$, so the sum is $(45 + 5)/2 \\cdot 9 = \\boxed{225}$.\n *)\n\ntheorem\nfixes travel_distance :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"travel_distance 1 = 45\"\nand h1 : \"\\<forall> n > 0. travel_distance (n + 1) = travel_distance n - 5\"\nand h2 : \"\\<forall> n. n > 0 \\<and> travel_distance n = 0 \\<longrightarrow> (\\<Sum>k=1..n. travel_distance k) = 225\"\nshows  \"\\<Sum>k=1..n. travel_distance k = 225\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A car travels a certain distance every day. On the first day, it travels 45 miles. Each day after that, it travels 5 miles less than it did the previous day. When the total distance traveled is exactly 225 miles, the car stops. Find the sum of the distances traveled each day until it stops. The final answer is 225 miles.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9917935729026794,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes car_distance :: \"int \\<Rightarrow> int\"\nassumes h0 : \"car_distance 1 = 45\"\nand h1 : \"\\<forall>n. n > 0 \\<longrightarrow> car_distance (n + 1) = car_distance n - 5\"\nand h2 : \"\\<exists>n. car_distance n = 0\"\nshows  \"(\\<Sum>i=1..the n. car_distance i) = 225\"",
+        "formal solution": "(* ### Problem\n When a car's brakes are applied, it travels 5 feet less in each  second than the previous second until it comes to a complete stop.  A car goes 45 feet in the first second after the brakes are applied.  How many feet does the car travel from the time the  brakes are applied to the time the car stops? The final Answer is 225\n ### Proof\n The number of feet the car travels in each second is an arithmetic sequence with first term 45 and common difference $-5$.\n We are summing all the positive terms in this sequence (these terms represent the number of feet the car travels in each second).\n Thus, we want to find the sum $45+40+\\dots+5$. The sum of an arithmetic series is equal to the average of the first and last term, multiplied by the number of terms. The number of terms is $45/5 = 9$, so the sum is $(45 + 5)/2 \\cdot 9 = \\boxed{225}$.\n *)\n\ntheorem\nfixes car_distance :: \"int \\<Rightarrow> int\"\nassumes h0 : \"car_distance 1 = 45\"\nand h1 : \"\\<forall>n. n > 0 \\<longrightarrow> car_distance (n + 1) = car_distance n - 5\"\nand h2 : \"\\<exists>n. car_distance n = 0\"\nshows  \"(\\<Sum>i=1..the n. car_distance i) = 225\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A car travels at a constant speed of 45 miles per hour for the first hour. After that, its speed decreases by 5 miles per hour every hour. The car will eventually stop when its speed reaches 0. What is the total distance traveled by the car before it stops? The final answer is 225 miles.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9952444434165955,
+        "symbolic_score": 0.8
+    },
+    "natural answer": "225",
+    "natural problem": "When a car's brakes are applied, it travels 5 feet less in each  second than the previous second until it comes to a complete stop.  A car goes 45 feet in the first second after the brakes are applied.  How many feet does the car travel from the time the  brakes are applied to the time the car stops?",
+    "natural solution": [
+        "The number of feet the car travels in each second is an arithmetic sequence with first term 45 and common difference $-5$.",
+        "We are summing all the positive terms in this sequence (these terms represent the number of feet the car travels in each second).",
+        "Thus, we want to find the sum $45+40+\\dots+5$. The sum of an arithmetic series is equal to the average of the first and last term, multiplied by the number of terms. The number of terms is $45/5 = 9$, so the sum is $(45 + 5)/2 \\cdot 9 = \\boxed{225}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            8
+        ]
+    },
+    "level": "Level 4",
+    "type": "Algebra"
+}

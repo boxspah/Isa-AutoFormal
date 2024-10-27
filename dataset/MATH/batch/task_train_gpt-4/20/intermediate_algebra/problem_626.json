@@ -1,0 +1,61 @@
+{
+    "natural problem": "What is the value of the following expression: $1 - 4 + 7 - 10 + 13 - \\cdots - 46 + 49 - 52 + 55$ ?",
+    "natural solution": [
+        "Pair every two terms starting from the first.",
+        "We see that the sum of each pair is $-3$. There are $(49+5)/6=9$ pairs, so the sum of all the pairs is $-3\\cdot9=-27$.",
+        "Add that to the last number in the series and the value of the entire expression is $-27+55=\\boxed{28}$."
+    ],
+    "natural answer": "28",
+    "a_0": {
+        "formal problem": "theorem\nfixes s :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. s n = (if odd n then 3*n-2 else -(3*n-2))\"\nshows  \"(\\<Sum>i=1..18. s i) = 28\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $1 - 4 + 7 - 10 + 13 - \\cdots - 46 + 49 - 52 + 55$ ? The final Answer is 28\n ### Proof\n Pair every two terms starting from the first.\n We see that the sum of each pair is $-3$. There are $(49+5)/6=9$ pairs, so the sum of all the pairs is $-3\\cdot9=-27$.\n Add that to the last number in the series and the value of the entire expression is $-27+55=\\boxed{28}$.\n *)\n\ntheorem\nfixes s :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. s n = (if odd n then 3*n-2 else -(3*n-2))\"\nshows  \"(\\<Sum>i=1..18. s i) = 28\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $s$ is defined by $s(n) = 3n-2$ if $n$ is odd and $s(n) = -(3n-2)$ if $n$ is even. Find the sum of the first 18 terms of this sequence. The final answer is 28."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes s :: \"int \\<Rightarrow> int\"\nassumes h0 : \"s 1 = 1\"\nand h1 : \"\\<forall> n \\<ge> 2. n mod 2 = 0 \\<longrightarrow> s n = s (n - 1) - n\"\nand h2 : \"\\<forall> n \\<ge> 2. n mod 2 = 1 \\<longrightarrow> s n = s (n - 1) + n\"\nshows  \"s 55 = 28\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $1 - 4 + 7 - 10 + 13 - \\cdots - 46 + 49 - 52 + 55$ ? The final Answer is 28\n ### Proof\n Pair every two terms starting from the first.\n We see that the sum of each pair is $-3$. There are $(49+5)/6=9$ pairs, so the sum of all the pairs is $-3\\cdot9=-27$.\n Add that to the last number in the series and the value of the entire expression is $-27+55=\\boxed{28}$.\n *)\n\ntheorem\nfixes s :: \"int \\<Rightarrow> int\"\nassumes h0 : \"s 1 = 1\"\nand h1 : \"\\<forall> n \\<ge> 2. n mod 2 = 0 \\<longrightarrow> s n = s (n - 1) - n\"\nand h2 : \"\\<forall> n \\<ge> 2. n mod 2 = 1 \\<longrightarrow> s n = s (n - 1) + n\"\nshows  \"s 55 = 28\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $s$ is defined as follows: $s(1) = 1$, for $n \\geq 2$, if $n$ is even, $s(n) = s(n - 1) - n$ and if $n$ is odd, $s(n) = s(n - 1) + n$. What is the value of $s(55)$? The final answer is $28$."
+    },
+    "a_2": {
+        "formal problem": "theorem \nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> f n = 3 * (n - 1) - (-1)^n\"\nshows  \"(\\<Sum>n = 1..18. f n) = 28\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $1 - 4 + 7 - 10 + 13 - \\cdots - 46 + 49 - 52 + 55$ ? The final Answer is 28\n ### Proof\n Pair every two terms starting from the first.\n We see that the sum of each pair is $-3$. There are $(49+5)/6=9$ pairs, so the sum of all the pairs is $-3\\cdot9=-27$.\n Add that to the last number in the series and the value of the entire expression is $-27+55=\\boxed{28}$.\n *)\n\ntheorem \nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> f n = 3 * (n - 1) - (-1)^n\"\nshows  \"(\\<Sum>n = 1..18. f n) = 28\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(n)$, where $f(n)$ is defined as $3 * (n - 1) - (-1)^n$ for all integers $n \\geq 1$, what is the sum of $f(n)$ for $n$ from 1 to 18? The final answer is 28."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. (n mod 2 = 0) \\<longrightarrow> f n = -1 * (3 * n / 2 - 2)\"\nand h1 : \"\\<forall>n. (n mod 2 \\<noteq> 0) \\<longrightarrow> f n = 3 * (n / 2) + 1\"\nand h2 : \"sum f {1..36} = 28\"\nshows  \"sum f {1..36} = 28\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $1 - 4 + 7 - 10 + 13 - \\cdots - 46 + 49 - 52 + 55$ ? The final Answer is 28\n ### Proof\n Pair every two terms starting from the first.\n We see that the sum of each pair is $-3$. There are $(49+5)/6=9$ pairs, so the sum of all the pairs is $-3\\cdot9=-27$.\n Add that to the last number in the series and the value of the entire expression is $-27+55=\\boxed{28}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. (n mod 2 = 0) \\<longrightarrow> f n = -1 * (3 * n / 2 - 2)\"\nand h1 : \"\\<forall>n. (n mod 2 \\<noteq> 0) \\<longrightarrow> f n = 3 * (n / 2) + 1\"\nand h2 : \"sum f {1..36} = 28\"\nshows  \"sum f {1..36} = 28\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For a function $f$, if an integer $n$ is even, then $f(n) = -1 * (3n/2 - 2)$. If $n$ is odd, then $f(n) = 3 * (n/2) + 1$. Find the sum of $f(n)$ for $n$ from 1 to 36. The final answer is 28."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> f n = (-1) ^ n * (3 * n - 2)\"\nshows  \"(\\<Sum> n \\<le> 18. f n) = 28\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $1 - 4 + 7 - 10 + 13 - \\cdots - 46 + 49 - 52 + 55$ ? The final Answer is 28\n ### Proof\n Pair every two terms starting from the first.\n We see that the sum of each pair is $-3$. There are $(49+5)/6=9$ pairs, so the sum of all the pairs is $-3\\cdot9=-27$.\n Add that to the last number in the series and the value of the entire expression is $-27+55=\\boxed{28}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> f n = (-1) ^ n * (3 * n - 2)\"\nshows  \"(\\<Sum> n \\<le> 18. f n) = 28\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(n)$ defined as $f(n) = (-1)^n \\cdot (3n - 2)$ for all integers $n$ greater than or equal to 1, calculate the sum of the function values from $n = 1$ to $n = 18$. The final answer is 28."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: int and s :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. s n = (-1)^(n+1) * (3n - 2)\"\nshows  \"(\\<Sum> n=1..18. s n) = 28\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $1 - 4 + 7 - 10 + 13 - \\cdots - 46 + 49 - 52 + 55$ ? The final Answer is 28\n ### Proof\n Pair every two terms starting from the first.\n We see that the sum of each pair is $-3$. There are $(49+5)/6=9$ pairs, so the sum of all the pairs is $-3\\cdot9=-27$.\n Add that to the last number in the series and the value of the entire expression is $-27+55=\\boxed{28}$.\n *)\n\ntheorem\nfixes n :: int and s :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. s n = (-1)^(n+1) * (3n - 2)\"\nshows  \"(\\<Sum> n=1..18. s n) = 28\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the series $(-1)^{n+1} * (3n - 2)$ from $n=1$ to $n=18$. The final answer is $28$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes s :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<And>n. n \\<ge> 1 \\<Longrightarrow> s n = (-1)^(n+1) * (3*n - 2)\"\nshows  \"sum s {1..18} = 28\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $1 - 4 + 7 - 10 + 13 - \\cdots - 46 + 49 - 52 + 55$ ? The final Answer is 28\n ### Proof\n Pair every two terms starting from the first.\n We see that the sum of each pair is $-3$. There are $(49+5)/6=9$ pairs, so the sum of all the pairs is $-3\\cdot9=-27$.\n Add that to the last number in the series and the value of the entire expression is $-27+55=\\boxed{28}$.\n *)\n\ntheorem\nfixes s :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<And>n. n \\<ge> 1 \\<Longrightarrow> s n = (-1)^(n+1) * (3*n - 2)\"\nshows  \"sum s {1..18} = 28\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the series where the nth term is given by $(-1)^{n+1} * (3n - 2)$ for n ranging from 1 to 18. The final answer is 28."
+    },
+    "a_7": {
+        "formal problem": "theorem\nassumes h0 : \"sum (\\<lambda>i. if i mod 2 = 0 then -3 * i else 3 * i + 1) {1..18} = 28\"\nshows  \"sum (\\<lambda>i. if i mod 2 = 0 then -3 * i else 3 * i + 1) {1..18} = 28\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $1 - 4 + 7 - 10 + 13 - \\cdots - 46 + 49 - 52 + 55$ ? The final Answer is 28\n ### Proof\n Pair every two terms starting from the first.\n We see that the sum of each pair is $-3$. There are $(49+5)/6=9$ pairs, so the sum of all the pairs is $-3\\cdot9=-27$.\n Add that to the last number in the series and the value of the entire expression is $-27+55=\\boxed{28}$.\n *)\n\ntheorem\nassumes h0 : \"sum (\\<lambda>i. if i mod 2 = 0 then -3 * i else 3 * i + 1) {1..18} = 28\"\nshows  \"sum (\\<lambda>i. if i mod 2 = 0 then -3 * i else 3 * i + 1) {1..18} = 28\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the series from 1 to 18, where each term is defined as follows: if the term's index is even, the term is -3 times the index, and if the term's index is odd, the term is 3 times the index plus 1. The sum of the series is 28."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. f n = (-1)^(n + 1) * ((3 * n) - 2)\"\nshows  \"sum f {1..18} = 28\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $1 - 4 + 7 - 10 + 13 - \\cdots - 46 + 49 - 52 + 55$ ? The final Answer is 28\n ### Proof\n Pair every two terms starting from the first.\n We see that the sum of each pair is $-3$. There are $(49+5)/6=9$ pairs, so the sum of all the pairs is $-3\\cdot9=-27$.\n Add that to the last number in the series and the value of the entire expression is $-27+55=\\boxed{28}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. f n = (-1)^(n + 1) * ((3 * n) - 2)\"\nshows  \"sum f {1..18} = 28\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the series where the nth term is given by $(-1)^{n+1} * (3n - 2)$ for n ranging from 1 to 18. The final answer is 28."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: int and sum_seq :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. sum_seq n = (if even n then -n else n)\"\nand h1 : \"n = 55\"\nshows  \"sum (\\<lambda>i. sum_seq i) {1..n} = 28\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $1 - 4 + 7 - 10 + 13 - \\cdots - 46 + 49 - 52 + 55$ ? The final Answer is 28\n ### Proof\n Pair every two terms starting from the first.\n We see that the sum of each pair is $-3$. There are $(49+5)/6=9$ pairs, so the sum of all the pairs is $-3\\cdot9=-27$.\n Add that to the last number in the series and the value of the entire expression is $-27+55=\\boxed{28}$.\n *)\n\ntheorem\nfixes n :: int and sum_seq :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. sum_seq n = (if even n then -n else n)\"\nand h1 : \"n = 55\"\nshows  \"sum (\\<lambda>i. sum_seq i) {1..n} = 28\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence where each term is equal to its position if the position is odd, and the negative of its position if the position is even. What is the sum of the first 55 terms of this sequence? The final answer is 28."
+    },
+    "level": "Level 3",
+    "type": "Intermediate Algebra"
+}

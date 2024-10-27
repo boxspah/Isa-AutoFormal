@@ -1,0 +1,143 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes n p q :: nat\nassumes h0 : \"composite n\"\nand h1 : \"n = p * q\"\nand h2 : \"p > 0\"\nand h3 : \"q > 0\"\nand h4 : \"p = q + 10\"\nand h5 : \"\\<forall> m < n. \\<not> (composite m \\<and> (\\<exists> r s. m = r * s \\<and> r > 0 \\<and> s > 0 \\<and> r = s + 10))\"\nshows  \"card (prime_factors n) = 2\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest composite number such that it can be written as the product of two positive integers that differ by 10.  How many distinct prime factors does $n$ have? The final Answer is 2\n ### Proof\n The smallest pair of numbers that differ by 10 is 1 and 11; however, they multiply to 11 which is not composite.\n We try the next pair up: 2 and 12, which multiply to 24 which is composite, so $n=24$. $24$ factors as $2^3 \\cdot 3$, so it has $\\boxed{2}$ prime factors: 2 and 3.\n *)\n\ntheorem\nfixes n p q :: nat\nassumes h0 : \"composite n\"\nand h1 : \"n = p * q\"\nand h2 : \"p > 0\"\nand h3 : \"q > 0\"\nand h4 : \"p = q + 10\"\nand h5 : \"\\<forall> m < n. \\<not> (composite m \\<and> (\\<exists> r s. m = r * s \\<and> r > 0 \\<and> s > 0 \\<and> r = s + 10))\"\nshows  \"card (prime_factors n) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a composite number $n$ that is the product of two positive numbers $p$ and $q$, where $p$ is 10 more than $q$. Additionally, there are no composite numbers less than $n$ that can be expressed as the product of two positive numbers where one is 10 more than the other. The number $n$ should have exactly two distinct prime factors.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.914541482925415,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n a b :: nat and P :: \"nat set\"\nassumes h0 : \"n = a * b \\<and> a > 1 \\<and> b > 1 \\<and> a \\<noteq> b \\<and> abs(a - b) = 10\"\nand h1 : \"P = {p. prime p \\<and> p dvd n}\"\nand h2 : \"\\<forall> m < n. \\<forall> c d. m = c * d \\<and> c > 1 \\<and> d > 1 \\<and> c \\<noteq> d \\<and> abs(c - d) = 10 \\<longrightarrow> n \\<le> m\"\nshows  \"card P = 2\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest composite number such that it can be written as the product of two positive integers that differ by 10.  How many distinct prime factors does $n$ have? The final Answer is 2\n ### Proof\n The smallest pair of numbers that differ by 10 is 1 and 11; however, they multiply to 11 which is not composite.\n We try the next pair up: 2 and 12, which multiply to 24 which is composite, so $n=24$. $24$ factors as $2^3 \\cdot 3$, so it has $\\boxed{2}$ prime factors: 2 and 3.\n *)\n\ntheorem\nfixes n a b :: nat and P :: \"nat set\"\nassumes h0 : \"n = a * b \\<and> a > 1 \\<and> b > 1 \\<and> a \\<noteq> b \\<and> abs(a - b) = 10\"\nand h1 : \"P = {p. prime p \\<and> p dvd n}\"\nand h2 : \"\\<forall> m < n. \\<forall> c d. m = c * d \\<and> c > 1 \\<and> d > 1 \\<and> c \\<noteq> d \\<and> abs(c - d) = 10 \\<longrightarrow> n \\<le> m\"\nshows  \"card P = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose that $n$ is the product of two different natural numbers $a$ and $b$, both greater than 1, such that the absolute difference between $a$ and $b$ is 10. Also, suppose that $P$ is the set of prime numbers that divide $n$. If for all natural numbers $m$ less than $n$, there do not exist two different numbers $c$ and $d$, both greater than 1, such that $m$ is the product of $c$ and $d$ and the absolute difference between $c$ and $d$ is 10, unless $n$ is less than or equal to $m$. How many elements are in the set $P$? The final answer is 2.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9709815979003906,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: int and p1 p2 :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"composite n\"\nand h1 : \"\\<exists>a b. a > 0 \\<and> b > 0 \\<and> a - b = 10 \\<and> n = a * b\"\nand h2 : \"p1 n \\<noteq> p2 n\"\nand h3 : \"\\<forall> p. prime p \\<and> p dvd n \\<longrightarrow> (p = p1 n \\<or> p = p2 n)\"\nshows  \"card {p. prime p \\<and> p dvd n} = 2\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest composite number such that it can be written as the product of two positive integers that differ by 10.  How many distinct prime factors does $n$ have? The final Answer is 2\n ### Proof\n The smallest pair of numbers that differ by 10 is 1 and 11; however, they multiply to 11 which is not composite.\n We try the next pair up: 2 and 12, which multiply to 24 which is composite, so $n=24$. $24$ factors as $2^3 \\cdot 3$, so it has $\\boxed{2}$ prime factors: 2 and 3.\n *)\n\ntheorem\nfixes n :: int and p1 p2 :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"composite n\"\nand h1 : \"\\<exists>a b. a > 0 \\<and> b > 0 \\<and> a - b = 10 \\<and> n = a * b\"\nand h2 : \"p1 n \\<noteq> p2 n\"\nand h3 : \"\\<forall> p. prime p \\<and> p dvd n \\<longrightarrow> (p = p1 n \\<or> p = p2 n)\"\nshows  \"card {p. prime p \\<and> p dvd n} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a composite number $n$ which can be expressed as a product of two positive numbers $a$ and $b$ such that $a - b = 10$. The number $n$ has exactly two distinct prime factors $p1$ and $p2$, and these are the only prime factors of $n$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8985708355903625,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n a b :: nat and is_prime :: \"nat \\<Rightarrow> bool\" and distinct_prime_factors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"a * b = n\"\nand h1 : \"b - a = 10\"\nand h2 : \"\\<forall> x y. x * y < n \\<longrightarrow> y - x \\<noteq> 10\"\nand h3 : \"\\<not> is_prime n\"\nshows  \"distinct_prime_factors n = 2\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest composite number such that it can be written as the product of two positive integers that differ by 10.  How many distinct prime factors does $n$ have? The final Answer is 2\n ### Proof\n The smallest pair of numbers that differ by 10 is 1 and 11; however, they multiply to 11 which is not composite.\n We try the next pair up: 2 and 12, which multiply to 24 which is composite, so $n=24$. $24$ factors as $2^3 \\cdot 3$, so it has $\\boxed{2}$ prime factors: 2 and 3.\n *)\n\ntheorem\nfixes n a b :: nat and is_prime :: \"nat \\<Rightarrow> bool\" and distinct_prime_factors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"a * b = n\"\nand h1 : \"b - a = 10\"\nand h2 : \"\\<forall> x y. x * y < n \\<longrightarrow> y - x \\<noteq> 10\"\nand h3 : \"\\<not> is_prime n\"\nshows  \"distinct_prime_factors n = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a number $n$ such that $n$ is the product of two natural numbers $a$ and $b$ with $b - a = 10$. $n$ cannot be a prime number and there are no other pairs of numbers $x$ and $y$ (where $x$ and $y$ are less than $n$) that their product is less than $n$ and $y - x = 10$. Finally, $n$ has exactly two distinct prime factors.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8951469659805298,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: int and p1 p2 :: int\nassumes h0 : \"n = p1 * p2\"\nand h1 : \"p2 - p1 = 10\"\nand h2 : \"p1 > 1 \\<and> p2 > 1\"\nand h3 : \"n is the smallest number satisfying h0, h1, and h2\"\nand h4 : \"prime p1 \\<and> prime p2\"\nshows  \"card (prime_factors n) = 2\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest composite number such that it can be written as the product of two positive integers that differ by 10.  How many distinct prime factors does $n$ have? The final Answer is 2\n ### Proof\n The smallest pair of numbers that differ by 10 is 1 and 11; however, they multiply to 11 which is not composite.\n We try the next pair up: 2 and 12, which multiply to 24 which is composite, so $n=24$. $24$ factors as $2^3 \\cdot 3$, so it has $\\boxed{2}$ prime factors: 2 and 3.\n *)\n\ntheorem\nfixes n :: int and p1 p2 :: int\nassumes h0 : \"n = p1 * p2\"\nand h1 : \"p2 - p1 = 10\"\nand h2 : \"p1 > 1 \\<and> p2 > 1\"\nand h3 : \"n is the smallest number satisfying h0, h1, and h2\"\nand h4 : \"prime p1 \\<and> prime p2\"\nshows  \"card (prime_factors n) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest number $n$ which is the product of two prime numbers, $p1$ and $p2$, such that $p2 - p1 = 10$ and both $p1 > 1$ and $p2 > 1$. How many unique prime factors does $n$ have? The final answer is 2.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8878246545791626,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: int and a b :: int and prime_factors :: \"int set\"\nassumes h0 : \"composite n\"\nand h1 : \"n = a * b\"\nand h2 : \"abs (a - b) = 10\"\nand h3 : \"prime_factors = {p. prime p \\<and> p dvd n}\"\nshows  \"card prime_factors = 2\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest composite number such that it can be written as the product of two positive integers that differ by 10.  How many distinct prime factors does $n$ have? The final Answer is 2\n ### Proof\n The smallest pair of numbers that differ by 10 is 1 and 11; however, they multiply to 11 which is not composite.\n We try the next pair up: 2 and 12, which multiply to 24 which is composite, so $n=24$. $24$ factors as $2^3 \\cdot 3$, so it has $\\boxed{2}$ prime factors: 2 and 3.\n *)\n\ntheorem\nfixes n :: int and a b :: int and prime_factors :: \"int set\"\nassumes h0 : \"composite n\"\nand h1 : \"n = a * b\"\nand h2 : \"abs (a - b) = 10\"\nand h3 : \"prime_factors = {p. prime p \\<and> p dvd n}\"\nshows  \"card prime_factors = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a composite number, $n$, that is a product of two numbers, $a$ and $b$, such that the absolute difference between $a$ and $b$ is $10$. Furthermore, $n$ should have exactly two distinct prime factors.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9111640453338623,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: int and a b :: int and prime_factors :: \"int set\"\nassumes h0 : \"a * b = n\"\nand h1 : \"a > 1\"\nand h2 : \"b > 1\"\nand h3 : \"abs(a - b) = 10\"\nand h4 : \"n = (LEAST n. \\<exists>a b. a * b = n \\<and> a > 1 \\<and> b > 1 \\<and> abs(a - b) = 10)\"\nand h5 : \"prime_factors = {p. prime p \\<and> p dvd n}\"\nshows  \"card prime_factors = 2\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest composite number such that it can be written as the product of two positive integers that differ by 10.  How many distinct prime factors does $n$ have? The final Answer is 2\n ### Proof\n The smallest pair of numbers that differ by 10 is 1 and 11; however, they multiply to 11 which is not composite.\n We try the next pair up: 2 and 12, which multiply to 24 which is composite, so $n=24$. $24$ factors as $2^3 \\cdot 3$, so it has $\\boxed{2}$ prime factors: 2 and 3.\n *)\n\ntheorem\nfixes n :: int and a b :: int and prime_factors :: \"int set\"\nassumes h0 : \"a * b = n\"\nand h1 : \"a > 1\"\nand h2 : \"b > 1\"\nand h3 : \"abs(a - b) = 10\"\nand h4 : \"n = (LEAST n. \\<exists>a b. a * b = n \\<and> a > 1 \\<and> b > 1 \\<and> abs(a - b) = 10)\"\nand h5 : \"prime_factors = {p. prime p \\<and> p dvd n}\"\nshows  \"card prime_factors = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a pair of positive integers $a$ and $b$ such that $a \\cdot b = n$, both $a$ and $b$ are greater than 1, and the absolute difference between $a$ and $b$ is 10. Among all such $n$, find the smallest. The prime factors of this number $n$ form a set. How many elements are in this set? The final answer is 2.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8310436606407166,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and p1 p2 :: nat\nassumes h0 : \"n = p1 * p2\"\nand h1 : \"p2 - p1 = 10\"\nand h2 : \"\\<forall> m \\<in> {2..n-1}. n mod m \\<noteq> 0\"\nand h3 : \"p1 > 1\"\nand h4 : \"p2 > 1\"\nand h5 : \"p1 = (LEAST m. m > 1 \\<and> n mod m = 0)\"\nshows  \"card {p. prime p \\<and> p dvd n} = 2\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest composite number such that it can be written as the product of two positive integers that differ by 10.  How many distinct prime factors does $n$ have? The final Answer is 2\n ### Proof\n The smallest pair of numbers that differ by 10 is 1 and 11; however, they multiply to 11 which is not composite.\n We try the next pair up: 2 and 12, which multiply to 24 which is composite, so $n=24$. $24$ factors as $2^3 \\cdot 3$, so it has $\\boxed{2}$ prime factors: 2 and 3.\n *)\n\ntheorem\nfixes n :: nat and p1 p2 :: nat\nassumes h0 : \"n = p1 * p2\"\nand h1 : \"p2 - p1 = 10\"\nand h2 : \"\\<forall> m \\<in> {2..n-1}. n mod m \\<noteq> 0\"\nand h3 : \"p1 > 1\"\nand h4 : \"p2 > 1\"\nand h5 : \"p1 = (LEAST m. m > 1 \\<and> n mod m = 0)\"\nshows  \"card {p. prime p \\<and> p dvd n} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $n$ be a natural number that is the product of two natural numbers $p1$ and $p2$, where $p2 - p1 = 10$. Also, $n$ is not divisible by any other natural number in the range from $2$ to $n-1$, and both $p1$ and $p2$ are greater than $1$. Additionally, $p1$ is the smallest natural number greater than $1$ that divides $n$. How many prime numbers divide $n$? The final answer is $2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8249775171279907,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: int and a b :: int\nassumes h0 : \"n = a * b\"\nand h1 : \"b - a = 10\"\nand h2 : \"a > 1\"\nand h3 : \"b > 1\"\nand h4 : \"\\<forall> p. prime p \\<longrightarrow> p dvd n \\<longrightarrow> p = a \\<or> p = b\"\nshows  \"card {p. prime p \\<and> p dvd n} = 2\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest composite number such that it can be written as the product of two positive integers that differ by 10.  How many distinct prime factors does $n$ have? The final Answer is 2\n ### Proof\n The smallest pair of numbers that differ by 10 is 1 and 11; however, they multiply to 11 which is not composite.\n We try the next pair up: 2 and 12, which multiply to 24 which is composite, so $n=24$. $24$ factors as $2^3 \\cdot 3$, so it has $\\boxed{2}$ prime factors: 2 and 3.\n *)\n\ntheorem\nfixes n :: int and a b :: int\nassumes h0 : \"n = a * b\"\nand h1 : \"b - a = 10\"\nand h2 : \"a > 1\"\nand h3 : \"b > 1\"\nand h4 : \"\\<forall> p. prime p \\<longrightarrow> p dvd n \\<longrightarrow> p = a \\<or> p = b\"\nshows  \"card {p. prime p \\<and> p dvd n} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $n$ be the product of two positive integers $a$ and $b$ such that $b - a = 10$ and $a, b > 1$. If the only prime numbers that divide $n$ are $a$ and $b$, how many distinct prime numbers divide $n$? The final answer is $2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.825238823890686,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat and prime_factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"n = Min {m. m > 1 \\<and> (\\<exists>a b. m = a * b \\<and> abs(a - b) = 10)}\"\nand h1 : \"\\<forall> m. prime_factors m = {p. prime p \\<and> p dvd m}\"\nshows  \"card (prime_factors n) = 2\"",
+        "formal solution": "(* ### Problem\n Let $n$ be the smallest composite number such that it can be written as the product of two positive integers that differ by 10.  How many distinct prime factors does $n$ have? The final Answer is 2\n ### Proof\n The smallest pair of numbers that differ by 10 is 1 and 11; however, they multiply to 11 which is not composite.\n We try the next pair up: 2 and 12, which multiply to 24 which is composite, so $n=24$. $24$ factors as $2^3 \\cdot 3$, so it has $\\boxed{2}$ prime factors: 2 and 3.\n *)\n\ntheorem\nfixes n :: nat and prime_factors :: \"nat \\<Rightarrow> nat set\"\nassumes h0 : \"n = Min {m. m > 1 \\<and> (\\<exists>a b. m = a * b \\<and> abs(a - b) = 10)}\"\nand h1 : \"\\<forall> m. prime_factors m = {p. prime p \\<and> p dvd m}\"\nshows  \"card (prime_factors n) = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest number greater than 1 that can be expressed as the product of two numbers, with the absolute difference of the two numbers being 10. Then, determine how many distinct prime factors this number has. The final answer is 2.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9025422930717468,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "2",
+    "natural problem": "Let $n$ be the smallest composite number such that it can be written as the product of two positive integers that differ by 10.  How many distinct prime factors does $n$ have?",
+    "natural solution": [
+        "The smallest pair of numbers that differ by 10 is 1 and 11; however, they multiply to 11 which is not composite.",
+        "We try the next pair up: 2 and 12, which multiply to 24 which is composite, so $n=24$. $24$ factors as $2^3 \\cdot 3$, so it has $\\boxed{2}$ prime factors: 2 and 3."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "level": "Level 3",
+    "type": "Prealgebra"
+}

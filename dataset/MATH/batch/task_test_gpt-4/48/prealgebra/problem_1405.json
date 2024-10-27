@@ -1,0 +1,136 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes x1 x2 x3 :: real\nassumes h0 : \"1/7 * (17 + 10 + 9 + 14 + 16 + 8 + 10) + 1/3 * (x1 + x2 + x3) = 14\"\nshows  \"x1 + x2 + x3 = 56\"",
+        "formal solution": "(* ### Problem\n Alula has the following quiz scores: 17, 10, 9, 14, 16, 8 and 10. What must the sum of her next three quiz scores be in order to have an overall average of 14? The final Answer is 56\n ### Proof\n Alula has already taken 7 quizzes, so after taking three more quizzes she will have 10 scores. For these scores to have an average of 14, they must have a sum of $14\\times10=140$. The sum of 17, 10, 9, 14, 16, 8, and 10 is 84, so the three remaining scores must sum to $140-84=\\boxed{56}$.\n *)\n\ntheorem\nfixes x1 x2 x3 :: real\nassumes h0 : \"1/7 * (17 + 10 + 9 + 14 + 16 + 8 + 10) + 1/3 * (x1 + x2 + x3) = 14\"\nshows  \"x1 + x2 + x3 = 56\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of three unknown numbers, x1, x2, and x3, if the average of the numbers 17, 10, 9, 14, 16, 8, and 10 is 1/7 of the total sum and the average of x1, x2, and x3 is 1/3 of the total sum, which equals 14. The final answer should be 56.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9323998093605042,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes scores :: \"nat list\"\nassumes h0 : \"scores = [17, 10, 9, 14, 16, 8, 10]\"\nand h1 : \"average scores = 14\"\nshows  \"sum (take 3 (drop (length scores) scores)) = 56\"",
+        "formal solution": "(* ### Problem\n Alula has the following quiz scores: 17, 10, 9, 14, 16, 8 and 10. What must the sum of her next three quiz scores be in order to have an overall average of 14? The final Answer is 56\n ### Proof\n Alula has already taken 7 quizzes, so after taking three more quizzes she will have 10 scores. For these scores to have an average of 14, they must have a sum of $14\\times10=140$. The sum of 17, 10, 9, 14, 16, 8, and 10 is 84, so the three remaining scores must sum to $140-84=\\boxed{56}$.\n *)\n\ntheorem\nfixes scores :: \"nat list\"\nassumes h0 : \"scores = [17, 10, 9, 14, 16, 8, 10]\"\nand h1 : \"average scores = 14\"\nshows  \"sum (take 3 (drop (length scores) scores)) = 56\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of scores [17, 10, 9, 14, 16, 8, 10], with an average score of 14, find the sum of the last three scores in the list. The final answer is 56.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8843826055526733,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes sum :: real\nassumes h0 : \"sum = 17 + 10 + 9 + 14 + 16 + 8 + 10\"\nand h1 : \"((sum + x) / 10) = 14\"\nshows  \"x = 56\"",
+        "formal solution": "(* ### Problem\n Alula has the following quiz scores: 17, 10, 9, 14, 16, 8 and 10. What must the sum of her next three quiz scores be in order to have an overall average of 14? The final Answer is 56\n ### Proof\n Alula has already taken 7 quizzes, so after taking three more quizzes she will have 10 scores. For these scores to have an average of 14, they must have a sum of $14\\times10=140$. The sum of 17, 10, 9, 14, 16, 8, and 10 is 84, so the three remaining scores must sum to $140-84=\\boxed{56}$.\n *)\n\ntheorem\nfixes sum :: real\nassumes h0 : \"sum = 17 + 10 + 9 + 14 + 16 + 8 + 10\"\nand h1 : \"((sum + x) / 10) = 14\"\nshows  \"x = 56\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of 17, 10, 9, 14, 16, 8, and 10 is increased by an unknown amount $x$. If the new sum divided by 10 is equal to 14, find the value of $x$. The final answer is 56.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9185659289360046,
+        "symbolic_score": 0.4
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes alula_scores :: \"nat list\"\nand next_scores :: \"nat list\"\nassumes h0 : \"alula_scores = [17, 10, 9, 14, 16, 8, 10]\"\nand h1 : \"length next_scores = 3\"\nand h2 : \"sum_list (alula_scores @ next_scores) / length (alula_scores @ next_scores) = 14\"\nshows  \"sum_list next_scores = 56\"",
+        "formal solution": "(* ### Problem\n Alula has the following quiz scores: 17, 10, 9, 14, 16, 8 and 10. What must the sum of her next three quiz scores be in order to have an overall average of 14? The final Answer is 56\n ### Proof\n Alula has already taken 7 quizzes, so after taking three more quizzes she will have 10 scores. For these scores to have an average of 14, they must have a sum of $14\\times10=140$. The sum of 17, 10, 9, 14, 16, 8, and 10 is 84, so the three remaining scores must sum to $140-84=\\boxed{56}$.\n *)\n\ntheorem\nfixes alula_scores :: \"nat list\"\nand next_scores :: \"nat list\"\nassumes h0 : \"alula_scores = [17, 10, 9, 14, 16, 8, 10]\"\nand h1 : \"length next_scores = 3\"\nand h2 : \"sum_list (alula_scores @ next_scores) / length (alula_scores @ next_scores) = 14\"\nshows  \"sum_list next_scores = 56\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Alula has already scored 17, 10, 9, 14, 16, 8, and 10 points in 7 rounds of a game. If she plays 3 more rounds with the average score of all 10 rounds being 14, what is the total score of Alula in the last 3 rounds? The final answer is 56.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9665110111236572,
+        "symbolic_score": 0.4
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes scores :: \"nat list\"\nassumes h0 : \"scores = [17, 10, 9, 14, 16, 8, 10]\"\nand h1 : \"length scores = 7\"\nand h2 : \"(sum_list scores + sum_list next_scores) / (length scores + length next_scores) = 14\"\nand h3 : \"length next_scores = 3\"\nshows  \"sum_list next_scores = 56\"",
+        "formal solution": "(* ### Problem\n Alula has the following quiz scores: 17, 10, 9, 14, 16, 8 and 10. What must the sum of her next three quiz scores be in order to have an overall average of 14? The final Answer is 56\n ### Proof\n Alula has already taken 7 quizzes, so after taking three more quizzes she will have 10 scores. For these scores to have an average of 14, they must have a sum of $14\\times10=140$. The sum of 17, 10, 9, 14, 16, 8, and 10 is 84, so the three remaining scores must sum to $140-84=\\boxed{56}$.\n *)\n\ntheorem\nfixes scores :: \"nat list\"\nassumes h0 : \"scores = [17, 10, 9, 14, 16, 8, 10]\"\nand h1 : \"length scores = 7\"\nand h2 : \"(sum_list scores + sum_list next_scores) / (length scores + length next_scores) = 14\"\nand h3 : \"length next_scores = 3\"\nshows  \"sum_list next_scores = 56\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that there are two lists of scores, the first one containing 7 scores: 17, 10, 9, 14, 16, 8, and 10, and the second one containing 3 scores. If the average of all the scores from both lists is 14, find the sum of the scores in the second list. The final answer is 56.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9080204963684082,
+        "symbolic_score": 0.4
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes scores :: \"int list\"\nassumes h0 : \"scores = [17, 10, 9, 14, 16, 8, 10]\"\nand h1 : \"\\<forall>x. x \\<in> set scores \\<longrightarrow> 0 \\<le> x \\<and> x \\<le> 20\"\nand h2 : \"average scores = 14\"\nshows  \"sum_list (take 3 scores) = 56\"",
+        "formal solution": "(* ### Problem\n Alula has the following quiz scores: 17, 10, 9, 14, 16, 8 and 10. What must the sum of her next three quiz scores be in order to have an overall average of 14? The final Answer is 56\n ### Proof\n Alula has already taken 7 quizzes, so after taking three more quizzes she will have 10 scores. For these scores to have an average of 14, they must have a sum of $14\\times10=140$. The sum of 17, 10, 9, 14, 16, 8, and 10 is 84, so the three remaining scores must sum to $140-84=\\boxed{56}$.\n *)\n\ntheorem\nfixes scores :: \"int list\"\nassumes h0 : \"scores = [17, 10, 9, 14, 16, 8, 10]\"\nand h1 : \"\\<forall>x. x \\<in> set scores \\<longrightarrow> 0 \\<le> x \\<and> x \\<le> 20\"\nand h2 : \"average scores = 14\"\nshows  \"sum_list (take 3 scores) = 56\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a list of scores [17, 10, 9, 14, 16, 8, 10], where each score is between 0 and 20, and the average of all scores is 14, find the sum of the first three scores in the list. The final answer is 56.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.983710765838623,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes scores :: \"nat list\"\nassumes h0 : \"scores = [17, 10, 9, 14, 16, 8, 10]\"\nand h1 : \"14 = sum_list scores div (length scores + 3)\"\nshows  \"sum_list (take 3 scores) = 56\"",
+        "formal solution": "(* ### Problem\n Alula has the following quiz scores: 17, 10, 9, 14, 16, 8 and 10. What must the sum of her next three quiz scores be in order to have an overall average of 14? The final Answer is 56\n ### Proof\n Alula has already taken 7 quizzes, so after taking three more quizzes she will have 10 scores. For these scores to have an average of 14, they must have a sum of $14\\times10=140$. The sum of 17, 10, 9, 14, 16, 8, and 10 is 84, so the three remaining scores must sum to $140-84=\\boxed{56}$.\n *)\n\ntheorem\nfixes scores :: \"nat list\"\nassumes h0 : \"scores = [17, 10, 9, 14, 16, 8, 10]\"\nand h1 : \"14 = sum_list scores div (length scores + 3)\"\nshows  \"sum_list (take 3 scores) = 56\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the list of scores [17, 10, 9, 14, 16, 8, 10], the average of all scores is 14 when the denominator of the average is the length of the list plus 3. What is the sum of the first three scores in the list? The final answer is 56.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9785484075546265,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes scores :: \"nat list\"\nassumes h0 : \"scores = [17, 10, 9, 14, 16, 8, 10]\"\nand h1 : \"14 = (sum_list scores + next_3_scores) div (length scores + 3)\"\nshows  \"next_3_scores = 56\"",
+        "formal solution": "(* ### Problem\n Alula has the following quiz scores: 17, 10, 9, 14, 16, 8 and 10. What must the sum of her next three quiz scores be in order to have an overall average of 14? The final Answer is 56\n ### Proof\n Alula has already taken 7 quizzes, so after taking three more quizzes she will have 10 scores. For these scores to have an average of 14, they must have a sum of $14\\times10=140$. The sum of 17, 10, 9, 14, 16, 8, and 10 is 84, so the three remaining scores must sum to $140-84=\\boxed{56}$.\n *)\n\ntheorem\nfixes scores :: \"nat list\"\nassumes h0 : \"scores = [17, 10, 9, 14, 16, 8, 10]\"\nand h1 : \"14 = (sum_list scores + next_3_scores) div (length scores + 3)\"\nshows  \"next_3_scores = 56\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A basketball player has scores of 17, 10, 9, 14, 16, 8, 10 in seven games. If his average score over the next ten games (including the original seven) is 14, what is the total score of his next three games? The final answer is 56.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.876370370388031,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"(17 + 10 + 9 + 14 + 16 + 8 + 10 + a + b + c) / 10 = 14\"\nshows  \"a + b + c = 56\"",
+        "formal solution": "(* ### Problem\n Alula has the following quiz scores: 17, 10, 9, 14, 16, 8 and 10. What must the sum of her next three quiz scores be in order to have an overall average of 14? The final Answer is 56\n ### Proof\n Alula has already taken 7 quizzes, so after taking three more quizzes she will have 10 scores. For these scores to have an average of 14, they must have a sum of $14\\times10=140$. The sum of 17, 10, 9, 14, 16, 8, and 10 is 84, so the three remaining scores must sum to $140-84=\\boxed{56}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"(17 + 10 + 9 + 14 + 16 + 8 + 10 + a + b + c) / 10 = 14\"\nshows  \"a + b + c = 56\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the average of ten numbers is 14, and the first seven numbers are 17, 10, 9, 14, 16, 8, and 10, find the sum of the last three numbers. The final answer is 56.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.929543137550354,
+        "symbolic_score": 0.4
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"average [17, 10, 9, 14, 16, 8, 10, a, b, c] = 14\"\nshows  \"a + b + c = 56\"",
+        "formal solution": "(* ### Problem\n Alula has the following quiz scores: 17, 10, 9, 14, 16, 8 and 10. What must the sum of her next three quiz scores be in order to have an overall average of 14? The final Answer is 56\n ### Proof\n Alula has already taken 7 quizzes, so after taking three more quizzes she will have 10 scores. For these scores to have an average of 14, they must have a sum of $14\\times10=140$. The sum of 17, 10, 9, 14, 16, 8, and 10 is 84, so the three remaining scores must sum to $140-84=\\boxed{56}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"average [17, 10, 9, 14, 16, 8, 10, a, b, c] = 14\"\nshows  \"a + b + c = 56\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The average of the numbers 17, 10, 9, 14, 16, 8, 10, and three unknown numbers a, b, and c is 14. Find the sum of a, b, and c. The final answer is 56.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9268022775650024,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "56",
+    "natural problem": "Alula has the following quiz scores: 17, 10, 9, 14, 16, 8 and 10. What must the sum of her next three quiz scores be in order to have an overall average of 14?",
+    "natural solution": [
+        "Alula has already taken 7 quizzes, so after taking three more quizzes she will have 10 scores. For these scores to have an average of 14, they must have a sum of $14\\times10=140$. The sum of 17, 10, 9, 14, 16, 8, and 10 is 84, so the three remaining scores must sum to $140-84=\\boxed{56}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            8,
+            2,
+            3,
+            4
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            5
+        ],
+        "4": [
+            6
+        ],
+        "5": [
+            7
+        ],
+        "6": [
+            9
+        ]
+    },
+    "level": "Level 3",
+    "type": "Prealgebra"
+}

@@ -1,0 +1,596 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes p q x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"\\<forall> x. g x = (f inv) x\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"\\<forall> x. g x = (f inv) x\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two functions $f(x) = \\frac{-px - 3}{-qx + 3}$ and $g(x) = f^{-1}(x)$, where $f^{-1}(x)$ is the inverse of $f(x)$, and given that $f(7) = -22$ and $g(-22) = 7$, find the sum of $p$ and $q$. The answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.26254335045814514,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"\\<forall> x. g x = (inv f) x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes x p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"\\<forall> x. g x = (inv f) x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two functions $f$ and $g$ such that $f$ is a bijection and $f(x) = \\frac{-px - 3}{-qx + 3}$ and $g(x) = f^{-1}(x)$, with $f(7) = -22$ and $g(-22) = 7$. Find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.6673159003257751,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x p q :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"f 7 = -22\"\nand h3 : \"(inv f) -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes x p q :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"f 7 = -22\"\nand h3 : \"(inv f) -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = \\frac{-px - 3}{-qx + 3}$ and $f$ is a bijective function such that $f(7) = -22$ and $f^{-1}(-22) = 7$, find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8487976789474487,
+        "symbolic_score": 0.2
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes p q x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g = inv f\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g = inv f\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = \\frac{-px - 3}{-qx + 3}$ is a bijective function, find the values of $p$ and $q$ such that $f(7) = -22$ and $f^{-1}(-22) = 7$. The final answer is that $p + q = \\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9094493389129639,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes x p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose there are two functions $f(x)$ and $g(x)$ such that $f(x)$ is bijective and $f(x) = \\frac{-px - 3}{-qx + 3}$. Furthermore, $g(x)$ is the inverse of $f(x)$, $f(7) = -22$ and $g(-22) = 7$. Find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.956574559211731,
+        "symbolic_score": 0.2
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes p q x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a bijective function $f(x) = \\frac{-px - 3}{-qx + 3}$ and its inverse function $g = f^{-1}$. If $f(7) = -22$ and $g(-22) = 7$, find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7496073842048645,
+        "symbolic_score": 0.2
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x p q :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p*x - 3) / (-q*x + 3)\"\nand h2 : \"f 7 = -22\"\nand h3 : \"(inv f) -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes x p q :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p*x - 3) / (-q*x + 3)\"\nand h2 : \"f 7 = -22\"\nand h3 : \"(inv f) -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = \\frac{-p*x - 3}{-q*x + 3}$ is a bijective function such that $f(7) = -22$ and $f^{-1}(-22) = 7$, find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8732908964157104,
+        "symbolic_score": 0.2
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f g :: \"real \\<Rightarrow> real\"\nand p q :: real\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows  \"p + q = 36/11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes f g :: \"real \\<Rightarrow> real\"\nand p q :: real\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows  \"p + q = 36/11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $f(x)$ is a bijective function, defined by $f(x) = \\frac{-p*x - 3}{-q*x + 3}$, and $g$ is the inverse function of $f$. If $f(7) = -22$ and $g(-22) = 7$, find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7865452170372009,
+        "symbolic_score": 0.2
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"(f 7 = -22) \\<and> (g -22 = 7)\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes x p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"(f 7 = -22) \\<and> (g -22 = 7)\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = \\frac{-px - 3}{-qx + 3}$ and its inverse function $g$, where $f$ and $g$ are bijective. If $f(7) = -22$ and $g(-22) = 7$, find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.5716985464096069,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $f(x) = \\frac{-px -3}{-qx +3}$ is a bijective function and that $g = f^{-1}$, if $f(7) = -22$ and $g(-22) = 7$, find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7858754396438599,
+        "symbolic_score": 0.2
+    },
+    "natural answer": "\\frac{36}{11}",
+    "natural problem": "Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$",
+    "natural solution": [
+        "If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$",
+        "Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            2,
+            6
+        ],
+        "1": [
+            9,
+            4
+        ],
+        "2": [
+            5,
+            7
+        ],
+        "3": [
+            0
+        ],
+        "4": [
+            1
+        ],
+        "5": [
+            3
+        ],
+        "6": [
+            8
+        ]
+    },
+    "str_pred": "[[9, 4], [5, 7], [0], [1], [2], [3], [6], [8]]",
+    "level": "Level 5",
+    "type": "Intermediate Algebra",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"bij g\"\nand h3 : \"inv f = g\"\nand h4 : \"f 7 = -22\"\nand h5 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"bij g\"\nand h3 : \"inv f = g\"\nand h4 : \"f 7 = -22\"\nand h5 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two real numbers $p$ and $q$, and two functions $f$ and $g$ from the real numbers to the real numbers, where:\n\n1. The function $f$ is defined as $f(x) = \\frac{-px - 3}{-qx + 3}$ for all real numbers $x$.\n2. The function $f$ is a bijection (a one-to-one and onto function).\n3. The function $g$ is also a bijection.\n4. The inverse of function $f$ is the function $g$, i.e., $g = f^{-1}$.\n5. $f(7) = -22$.\n6. $g(-22) = 7$.\n\nFind the value of $p + q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.9912313386620547,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"g = inv f\"\nand h3 : \"(7, -22) \\<in> {(x, y). y = f x}\"\nand h4 : \"(7, -22) \\<in> {(x, y). y = g x}\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"g = inv f\"\nand h3 : \"(7, -22) \\<in> {(x, y). y = f x}\"\nand h4 : \"(7, -22) \\<in> {(x, y). y = g x}\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a function $f(x)$ defined as $\\frac{-px - 3}{-qx + 3}$, where $p$ and $q$ are real numbers, and it is known that $f(x)$ is a bijection. Let $g(x)$ be the inverse function of $f(x)$. It is given that the point $(7, -22)$ lies on both the graph of $f(x)$ and $g(x)$. Find the value of $p + q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.7698788736197726,
+        "symbolic_score": 0.2
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"(7, -22) \\<in> {(x, y). y = f x}\"\nand h4 : \"(7, -22) \\<in> {(x, y). y = g x}\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"(7, -22) \\<in> {(x, y). y = f x}\"\nand h4 : \"(7, -22) \\<in> {(x, y). y = g x}\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two real numbers p and q, and two functions f and g from real numbers to real numbers, where:\n\n1. For every real number x, f(x) is defined as (-p * x - 3) / (-q * x + 3).\n2. The function f is a bijection (i.e., it is both injective and surjective).\n3. For every real number x, g(x) is the inverse of f(x).\n4. The point (7, -22) lies on the graph of the function f (i.e., f(7) = -22).\n5. The point (7, -22) also lies on the graph of the function g (i.e., g(7) = -22).\n\nFind the value of p + q. The final answer is 36/11.",
+        "syntax": 1,
+        "semantic_score": 0.9551988365505473,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij_betw f (UNIV::real set) (UNIV::real set)\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij_betw f (UNIV::real set) (UNIV::real set)\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two real numbers p and q, and two functions f and g from the set of real numbers to the set of real numbers, where:\n\n1. For all real numbers x, f(x) is defined as (-p * x - 3) / (-q * x + 3).\n2. The function f is a bijection between the set of all real numbers and itself.\n3. For all real numbers x, g(x) is the inverse of f(x).\n4. f(7) equals -22.\n5. g(-22) equals 7.\n\nFind the value of p + q. The answer is 36/11.",
+        "syntax": 1,
+        "semantic_score": 0.9604928259893835,
+        "symbolic_score": 0.3
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes p q :: real\nand f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h1 : \"bij_betw f (inv_image g UNIV) UNIV\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real\nand f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h1 : \"bij_betw f (inv_image g UNIV) UNIV\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two real numbers p and q, and two functions f and g, where f is defined as f(x) = (-p * x - 3) / (-q * x + 3) for all real numbers x, and g is an inverse function of f such that f(g(x)) = x for all x in the domain of g. It is also given that f(7) = -22 and g(-22) = 7. Find the value of p + q. The answer is p + q = 36/11.",
+        "syntax": 0,
+        "semantic_score": 0.5714609685465971,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a function $f(x)$ defined as $\\frac{-px - 3}{-qx + 3}$, where $p$ and $q$ are real numbers, and it is known that $f(x)$ is a bijection (a one-to-one and onto function). Also, there exists an inverse function $g(x)$ such that $g(x) = f^{-1}(x)$. The following conditions are given: $f(7) = -22$ and $g(-22) = 7$. Find the value of $p + q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.6162950626502355,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a function $f(x)$ defined as $\\frac{-px - 3}{-qx + 3}$, where $p$ and $q$ are real numbers, and it is known that $f(x)$ is a bijective function. Another function $g(x)$ is defined as the inverse of $f(x)$. It is given that $f(7) = -22$ and $g(-22) = 7$. Find the value of $p + q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.8325753570440687,
+        "symbolic_score": 0.3
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij_betw f (UNIV::real set) (UNIV::real set)\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij_betw f (UNIV::real set) (UNIV::real set)\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider two real numbers, p and q, and two functions, f and g, where f is a bijection from the set of all real numbers to itself. The function f is defined as f(x) = (-px - 3) / (-qx + 3) for all real numbers x. The function g is the inverse of f, such that g(x) = f^(-1)(x) for all real numbers x. Given that f(7) = -22 and g(-22) = 7, find the value of p + q. The answer is p + q = 36/11.",
+        "syntax": 1,
+        "semantic_score": 0.7475849071615326,
+        "symbolic_score": 0.3
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g = inv f\"\nand h3 : \"(7, -22) \\<in> {(x, y). y = f x}\"\nand h4 : \"(7, -22) \\<in> {(x, y). y = g x}\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g = inv f\"\nand h3 : \"(7, -22) \\<in> {(x, y). y = f x}\"\nand h4 : \"(7, -22) \\<in> {(x, y). y = g x}\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two real numbers $p$ and $q$, and two functions $f$ and $g$ from real numbers to real numbers, where:\n\n1. For every real number $x$, $f(x) = \\frac{-px - 3}{-qx + 3}$.\n2. The function $f$ is a bijection (i.e., it is both injective and surjective).\n3. For every real number $x$, $g$ is the inverse function of $f$.\n4. The point $(7, -22)$ lies on the graph of the function $f$, meaning $f(7) = -22$.\n5. The point $(7, -22)$ also lies on the graph of the function $g$, meaning $g(7) = -22$.\n\nFind the value of $p + q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.97434234699737,
+        "symbolic_score": 0.2
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes p q :: real\nassumes h0 : \"f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"g = inv f\"\nand h2 : \"(f 7, g (-22)) = (7, -22)\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real\nassumes h0 : \"f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"g = inv f\"\nand h2 : \"(f 7, g (-22)) = (7, -22)\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a function $f(x)$ defined as $\\frac{-px - 3}{-qx + 3}$, and its inverse function $g(x)$, where $f(7) = 7$ and $g(-22) = -22$, find the value of $p + q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.567905126049274,
+        "symbolic_score": 0.1
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes p q :: real\nassumes h0 : \"q \\<noteq> 0\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"\\<forall> x. g x = (3 * x - 3) / (p + q * x)\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real\nassumes h0 : \"q \\<noteq> 0\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"\\<forall> x. g x = (3 * x - 3) / (p + q * x)\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $f(x) = \\frac{-px-3}{-qx+3}$ and $g(x) = \\frac{3x-3}{p+qx}$, where $q \\neq 0$. If $f(7) = -22$ and $g(-22) = 7$, what is the value of $p+q$? The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.920740800415478,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"\\<forall>x. g (f x) = x\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"\\<forall>x. g (f x) = x\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $f(x) = \\frac{-px-3}{-qx+3}$ and $g(f(x)) = x$. If $f(7) = -22$ and $g(-22) = 7$, what is the value of $p+q$? The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.8972471250544779,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes p q x y :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"p \\<noteq> 0\"\nand h1 : \"q \\<noteq> 0\"\nand h2 : \"f x = (-p * x - 3) / (-q * x + 3)\"\nand h3 : \"g y = (-3 - p * y) / (3 * q - y * q)\"\nand h4 : \"f 7 = -22\"\nand h5 : \"g -22 = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q x y :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"p \\<noteq> 0\"\nand h1 : \"q \\<noteq> 0\"\nand h2 : \"f x = (-p * x - 3) / (-q * x + 3)\"\nand h3 : \"g y = (-3 - p * y) / (3 * q - y * q)\"\nand h4 : \"f 7 = -22\"\nand h5 : \"g -22 = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose that $f(x) = \\frac{-px-3}{-qx+3}$ and $g(y) = \\frac{-3-py}{3q-yq}$. If $f(7) = -22$ and $g(-22) = 7$, find $p+q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 0,
+        "semantic_score": 0.9244660834512374,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes p q :: real\nassumes h0 : \"p \\<noteq> 3/q\"\nand h1 : \"g (f x) = x\"\nand h2 : \"f (g x) = x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36/11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real\nassumes h0 : \"p \\<noteq> 3/q\"\nand h1 : \"g (f x) = x\"\nand h2 : \"f (g x) = x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36/11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x)$ and $g(x)$ are functions such that $g(f(x)) = x$ and $f(g(x)) = x$, and $g(-22) = 7$ and $f(7) = -22$, and $p \\neq 3/q$, find $p + q$. The final answer is $36/11$.",
+        "syntax": 1,
+        "semantic_score": 0.5314308900972496,
+        "symbolic_score": 0.1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes p q x y :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"q * x - 3 \\<noteq> 0\"\nand h1 : \"y = f x\"\nand h2 : \"x = g y\"\nand h3 : \"y = g x\"\nand h4 : \"f x = (-p * x - 3) / (-q * x + 3)\"\nand h5 : \"g y = (-p * y - 3) / (-q * y + 3)\"\nand h6 : \"y = -p / q * x - 22 / q\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q x y :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"q * x - 3 \\<noteq> 0\"\nand h1 : \"y = f x\"\nand h2 : \"x = g y\"\nand h3 : \"y = g x\"\nand h4 : \"f x = (-p * x - 3) / (-q * x + 3)\"\nand h5 : \"g y = (-p * y - 3) / (-q * y + 3)\"\nand h6 : \"y = -p / q * x - 22 / q\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $p$, $q$, $x$, and $y$ are real numbers and $f$ and $g$ are functions from the real numbers to the real numbers. Assume that $q x - 3 \\neq 0$, $y = f(x)$, $x = g(y)$, $y = g(x)$, $f(x) = (-p x - 3) / (-q x + 3)$, $g(y) = (-p y - 3) / (-q y + 3)$, and $y = -p/q x - 22/q$. Then, $p + q = 36/11$.",
+        "syntax": 1,
+        "semantic_score": 0.5011667641285813,
+        "symbolic_score": 0.1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes p q x y :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"q \\<noteq> 3 / x\"\nand h1 : \"\\<forall> x. f x = (-p*x - 3) / (-q*x + 3)\"\nand h2 : \"\\<forall> x. g x = (-3*q*x - 3) / (p*x - 3)\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q x y :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"q \\<noteq> 3 / x\"\nand h1 : \"\\<forall> x. f x = (-p*x - 3) / (-q*x + 3)\"\nand h2 : \"\\<forall> x. g x = (-3*q*x - 3) / (p*x - 3)\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = \\frac{-px - 3}{-qx + 3}$ and $g(x) = \\frac{-3qx - 3}{px - 3}$, where $q \\neq \\frac{3}{x}$, and $f(7) = -22$ and $g(-22) = 7$, find $p + q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.7887912130915077,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes p q x y :: real\nassumes h0 : \"q * x - 3 \\<noteq> 0\"\nand h1 : \"y = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"x = (-p * y - 3) / (-q * y + 3)\"\nand h3 : \"y = 7\"\nand h4 : \"x = -22\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q x y :: real\nassumes h0 : \"q * x - 3 \\<noteq> 0\"\nand h1 : \"y = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"x = (-p * y - 3) / (-q * y + 3)\"\nand h3 : \"y = 7\"\nand h4 : \"x = -22\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $y$ is equal to $7$ and $x$ is equal to $-22$, find $p$ and $q$ such that $q\\cdot x-3 \\neq 0$, and $p+q=\\frac{36}{11}$, where $y=\\frac{-px-3}{-qx+3}$ and $x=\\frac{-py-3}{-qy+3}$.",
+        "syntax": 1,
+        "semantic_score": 0.5272049504162596,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes p q x y :: real\nassumes h0 : \"q \\<noteq> 0\"\nand h1 : \"y = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"x = (-p * y - 3) / (-q * y + 3)\"\nand h3 : \"y = 7\"\nand h4 : \"x = -22\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q x y :: real\nassumes h0 : \"q \\<noteq> 0\"\nand h1 : \"y = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"x = (-p * y - 3) / (-q * y + 3)\"\nand h3 : \"y = 7\"\nand h4 : \"x = -22\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $x$ and $y$ are real numbers such that $y = \\frac{-px-3}{-qx+3}$ and $x = \\frac{-py-3}{-qy+3}$, where $q \\neq 0$, and $x = -22$ and $y = 7$, find $p+q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.679459285811033,
+        "symbolic_score": 0.2
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes p q x y :: real\nassumes h0 : \"x = 7\"\nand h1 : \"y = -22\"\nand h2 : \"p \\<noteq> 0\"\nand h3 : \"q \\<noteq> 3 / q\"\nand h4 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h5 : \"\\<forall> x. g x = (3 * x - 3) / (p + q * x)\"\nand h6 : \"y = f x\"\nand h7 : \"x = g y\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q x y :: real\nassumes h0 : \"x = 7\"\nand h1 : \"y = -22\"\nand h2 : \"p \\<noteq> 0\"\nand h3 : \"q \\<noteq> 3 / q\"\nand h4 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h5 : \"\\<forall> x. g x = (3 * x - 3) / (p + q * x)\"\nand h6 : \"y = f x\"\nand h7 : \"x = g y\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = \\dfrac{-px-3}{-qx+3}$ and $g(x) = \\dfrac{3x-3}{p+qx}$, where $p$ and $q$ are non-zero real numbers, find $p+q$ given that $x=7$ and $y=-22$ satisfy $y=f(x)$ and $x=g(y)$, and $\\dfrac{3}{q} \\neq q$. The final answer is $\\dfrac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.8835126214764576,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes p q x y :: real\nassumes h0 : \"q \\<noteq> 0\"\nand h1 : \"y = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"x = (-p * y - 3) / (-q * y + 3)\"\nand h3 : \"y = 7\"\nand h4 : \"x = -22\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q x y :: real\nassumes h0 : \"q \\<noteq> 0\"\nand h1 : \"y = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"x = (-p * y - 3) / (-q * y + 3)\"\nand h3 : \"y = 7\"\nand h4 : \"x = -22\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $y = \\frac{-px-3}{-qx+3}$ and $x = \\frac{-py-3}{-qy+3}$, where $q \\neq 0$, and that $x = -22$ and $y = 7$, find the value of $p+q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.5879478974203037,
+        "symbolic_score": 0.2
+    },
+    "prediction_deepseek": {
+        "0": [
+            3,
+            6,
+            7
+        ],
+        "1": [
+            8,
+            1
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            9
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            9,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            4
+        ],
+        "6": [
+            5
+        ],
+        "7": [
+            6
+        ],
+        "8": [
+            8
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            2,
+            6
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes p q x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"\\<forall> x. g x = (f inv) x\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"\\<forall> x. g x = (f inv) x\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two functions $f(x) = \\frac{-px - 3}{-qx + 3}$ and $g(x) = f^{-1}(x)$, where $f^{-1}(x)$ is the inverse of $f(x)$, and given that $f(7) = -22$ and $g(-22) = 7$, find the sum of $p$ and $q$. The answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8852862576673373,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes x p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"\\<forall> x. g x = (inv f) x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes x p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"\\<forall> x. g x = (inv f) x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two functions $f$ and $g$ such that $f$ is a bijection and $f(x) = \\frac{-px - 3}{-qx + 3}$ and $g(x) = f^{-1}(x)$, with $f(7) = -22$ and $g(-22) = 7$. Find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9197318353919556,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes x p q :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"f 7 = -22\"\nand h3 : \"(inv f) -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes x p q :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"f 7 = -22\"\nand h3 : \"(inv f) -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = \\frac{-px - 3}{-qx + 3}$ and $f$ is a bijective function such that $f(7) = -22$ and $f^{-1}(-22) = 7$, find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9259436762628501,
+        "symbolic_score": 0.2
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes p q x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g = inv f\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g = inv f\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = \\frac{-px - 3}{-qx + 3}$ is a bijective function, find the values of $p$ and $q$ such that $f(7) = -22$ and $f^{-1}(-22) = 7$. The final answer is that $p + q = \\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9157265976493703,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes x p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes x p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose there are two functions $f(x)$ and $g(x)$ such that $f(x)$ is bijective and $f(x) = \\frac{-px - 3}{-qx + 3}$. Furthermore, $g(x)$ is the inverse of $f(x)$, $f(7) = -22$ and $g(-22) = 7$. Find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9168679068763134,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes p q x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q x :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a bijective function $f(x) = \\frac{-px - 3}{-qx + 3}$ and its inverse function $g = f^{-1}$. If $f(7) = -22$ and $g(-22) = 7$, find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.932307259372394,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes x p q :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p*x - 3) / (-q*x + 3)\"\nand h2 : \"f 7 = -22\"\nand h3 : \"(inv f) -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes x p q :: real and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p*x - 3) / (-q*x + 3)\"\nand h2 : \"f 7 = -22\"\nand h3 : \"(inv f) -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = \\frac{-p*x - 3}{-q*x + 3}$ is a bijective function such that $f(7) = -22$ and $f^{-1}(-22) = 7$, find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9262270521801808,
+        "symbolic_score": 0.2
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes f g :: \"real \\<Rightarrow> real\"\nand p q :: real\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows  \"p + q = 36/11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes f g :: \"real \\<Rightarrow> real\"\nand p q :: real\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows  \"p + q = 36/11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $f(x)$ is a bijective function, defined by $f(x) = \\frac{-p*x - 3}{-q*x + 3}$, and $g$ is the inverse function of $f$. If $f(7) = -22$ and $g(-22) = 7$, find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9353851141259807,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes x p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"(f 7 = -22) \\<and> (g -22 = 7)\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes x p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"(f 7 = -22) \\<and> (g -22 = 7)\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = \\frac{-px - 3}{-qx + 3}$ and its inverse function $g$, where $f$ and $g$ are bijective. If $f(7) = -22$ and $g(-22) = 7$, find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9097114769716514,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is \\frac{36}{11}\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\n Solving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"bij f\"\nand h1 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h2 : \"g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g -22 = 7\"\nshows  \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $f(x) = \\frac{-px -3}{-qx +3}$ is a bijective function and that $g = f^{-1}$, if $f(7) = -22$ and $g(-22) = 7$, find the sum of $p$ and $q$. The final answer is $\\frac{36}{11}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9379154466919141,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"bij g\"\nand h3 : \"inv f = g\"\nand h4 : \"f 7 = -22\"\nand h5 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"bij g\"\nand h3 : \"inv f = g\"\nand h4 : \"f 7 = -22\"\nand h5 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two real numbers $p$ and $q$, and two functions $f$ and $g$ from the real numbers to the real numbers, where:\n\n1. The function $f$ is defined as $f(x) = \\frac{-px - 3}{-qx + 3}$ for all real numbers $x$.\n2. The function $f$ is a bijection (a one-to-one and onto function).\n3. The function $g$ is also a bijection.\n4. The inverse of function $f$ is the function $g$, i.e., $g = f^{-1}$.\n5. $f(7) = -22$.\n6. $g(-22) = 7$.\n\nFind the value of $p + q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.8905441259237615,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"g = inv f\"\nand h3 : \"(7, -22) \\<in> {(x, y). y = f x}\"\nand h4 : \"(7, -22) \\<in> {(x, y). y = g x}\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"g = inv f\"\nand h3 : \"(7, -22) \\<in> {(x, y). y = f x}\"\nand h4 : \"(7, -22) \\<in> {(x, y). y = g x}\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a function $f(x)$ defined as $\\frac{-px - 3}{-qx + 3}$, where $p$ and $q$ are real numbers, and it is known that $f(x)$ is a bijection. Let $g(x)$ be the inverse function of $f(x)$. It is given that the point $(7, -22)$ lies on both the graph of $f(x)$ and $g(x)$. Find the value of $p + q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.871772245188077,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"(7, -22) \\<in> {(x, y). y = f x}\"\nand h4 : \"(7, -22) \\<in> {(x, y). y = g x}\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"(7, -22) \\<in> {(x, y). y = f x}\"\nand h4 : \"(7, -22) \\<in> {(x, y). y = g x}\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two real numbers p and q, and two functions f and g from real numbers to real numbers, where:\n\n1. For every real number x, f(x) is defined as (-p * x - 3) / (-q * x + 3).\n2. The function f is a bijection (i.e., it is both injective and surjective).\n3. For every real number x, g(x) is the inverse of f(x).\n4. The point (7, -22) lies on the graph of the function f (i.e., f(7) = -22).\n5. The point (7, -22) also lies on the graph of the function g (i.e., g(7) = -22).\n\nFind the value of p + q. The final answer is 36/11.",
+        "syntax": 1,
+        "semantic_score": 0.9042054148043795,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij_betw f (UNIV::real set) (UNIV::real set)\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij_betw f (UNIV::real set) (UNIV::real set)\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two real numbers p and q, and two functions f and g from the set of real numbers to the set of real numbers, where:\n\n1. For all real numbers x, f(x) is defined as (-p * x - 3) / (-q * x + 3).\n2. The function f is a bijection between the set of all real numbers and itself.\n3. For all real numbers x, g(x) is the inverse of f(x).\n4. f(7) equals -22.\n5. g(-22) equals 7.\n\nFind the value of p + q. The answer is 36/11.",
+        "syntax": 1,
+        "semantic_score": 0.8812872351150627,
+        "symbolic_score": 0.2
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes p q :: real\nand f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h1 : \"bij_betw f (inv_image g UNIV) UNIV\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real\nand f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h1 : \"bij_betw f (inv_image g UNIV) UNIV\"\nand h2 : \"f 7 = -22\"\nand h3 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two real numbers p and q, and two functions f and g, where f is defined as f(x) = (-p * x - 3) / (-q * x + 3) for all real numbers x, and g is an inverse function of f such that f(g(x)) = x for all x in the domain of g. It is also given that f(7) = -22 and g(-22) = 7. Find the value of p + q. The answer is p + q = 36/11.",
+        "syntax": 0,
+        "semantic_score": 0.8804699325903679,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g = inv f\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a function $f(x)$ defined as $\\frac{-px - 3}{-qx + 3}$, where $p$ and $q$ are real numbers, and it is known that $f(x)$ is a bijection (a one-to-one and onto function). Also, there exists an inverse function $g(x)$ such that $g(x) = f^{-1}(x)$. The following conditions are given: $f(7) = -22$ and $g(-22) = 7$. Find the value of $p + q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.8452152153072898,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a function $f(x)$ defined as $\\frac{-px - 3}{-qx + 3}$, where $p$ and $q$ are real numbers, and it is known that $f(x)$ is a bijective function. Another function $g(x)$ is defined as the inverse of $f(x)$. It is given that $f(7) = -22$ and $g(-22) = 7$. Find the value of $p + q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.8595940215494342,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij_betw f (UNIV::real set) (UNIV::real set)\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"bij_betw f (UNIV::real set) (UNIV::real set)\"\nand h2 : \"\\<forall> x. g x = inv f x\"\nand h3 : \"f 7 = -22\"\nand h4 : \"g (-22) = 7\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider two real numbers, p and q, and two functions, f and g, where f is a bijection from the set of all real numbers to itself. The function f is defined as f(x) = (-px - 3) / (-qx + 3) for all real numbers x. The function g is the inverse of f, such that g(x) = f^(-1)(x) for all real numbers x. Given that f(7) = -22 and g(-22) = 7, find the value of p + q. The answer is p + q = 36/11.",
+        "syntax": 1,
+        "semantic_score": 0.8553027632110838,
+        "symbolic_score": 0.2
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g = inv f\"\nand h3 : \"(7, -22) \\<in> {(x, y). y = f x}\"\nand h4 : \"(7, -22) \\<in> {(x, y). y = g x}\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real and f g :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (- p * x - 3) / (- q * x + 3)\"\nand h1 : \"bij f\"\nand h2 : \"\\<forall> x. g = inv f\"\nand h3 : \"(7, -22) \\<in> {(x, y). y = f x}\"\nand h4 : \"(7, -22) \\<in> {(x, y). y = g x}\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two real numbers $p$ and $q$, and two functions $f$ and $g$ from real numbers to real numbers, where:\n\n1. For every real number $x$, $f(x) = \\frac{-px - 3}{-qx + 3}$.\n2. The function $f$ is a bijection (i.e., it is both injective and surjective).\n3. For every real number $x$, $g$ is the inverse function of $f$.\n4. The point $(7, -22)$ lies on the graph of the function $f$, meaning $f(7) = -22$.\n5. The point $(7, -22)$ also lies on the graph of the function $g$, meaning $g(7) = -22$.\n\nFind the value of $p + q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.9068793615133607,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes p q :: real\nassumes h0 : \"f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"g = inv f\"\nand h2 : \"(f 7, g (-22)) = (7, -22)\"\nshows \"p + q = 36 / 11\"",
+        "formal solution": "(* ### Problem\n Let\n\\[f(x) = \\frac{-px - 3}{-qx + 3},\\]and let $g(x)$ be the inverse of $f(x).$  If $(7,-22)$ lies on both of the graphs of $y = f(x)$ and $y = g(x),$ then find $p + q.$ The final Answer is $\\frac{36}{11}$\n ### Proof\n If $(7,-22)$ lies on both $y = f(x)$ and the graph of its inverse, then $f(7) = -22$ and $f(-22) = 7.$  Hence, \\begin{align} \\frac{-7p - 3}{-7q + 3} &= -22, \\\\ \\frac{22p - 3}{22q + 3} &= 7. \\end{align}Then $-7p - 3 = -22(-7q + 3) = 154q - 66$ and $22p - 3 = 7(22q + 3) = 154q + 21.$\nSolving, we find $p = 3$ and $q = \\frac{3}{11},$ so $p + q = 3 + \\frac{3}{11} = \\boxed{\\frac{36}{11}}.$\n *)\n\ntheorem\nfixes p q :: real\nassumes h0 : \"f x = (-p * x - 3) / (-q * x + 3)\"\nand h1 : \"g = inv f\"\nand h2 : \"(f 7, g (-22)) = (7, -22)\"\nshows \"p + q = 36 / 11\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a function $f(x)$ defined as $\\frac{-px - 3}{-qx + 3}$, and its inverse function $g(x)$, where $f(7) = 7$ and $g(-22) = -22$, find the value of $p + q$. The final answer is $\\frac{36}{11}$.",
+        "syntax": 1,
+        "semantic_score": 0.8881296760300509,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            3,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

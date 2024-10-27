@@ -1,0 +1,122 @@
+{
+    "problem_name": "imo_1964_p1_2",
+    "informal_statement": "Show that for any natural number $n$, $7$ does not divide $2^n + 1$.\n",
+    "informal_proof": "If $2^n+1$ is congruent to 0 mod 7, then $2^n$ must be congruent to 6 mod 7, but this is not possible due to how $2^n$ mod 7 cycles. Therefore, there is no solution.",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat\nshows  \"7 \\<noteq> gcd (2^n + 1) 7\"",
+        "formal solution": "(* ### Problem\n Show that for any natural number $n$, $7$ does not divide $2^n + 1$.\n\n ### Proof\n If $2^n+1$ is congruent to 0 mod 7, then $2^n$ must be congruent to 6 mod 7, but this is not possible due to how $2^n$ mod 7 cycles. Therefore, there is no solution.\n *)\n\ntheorem\nfixes n :: nat\nshows  \"7 \\<noteq> gcd (2^n + 1) 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Show that the greatest common divisor of $2^n + 1$ and $7$ is not equal to $7$ for any natural number $n$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9980989098548889,
+        "symbolic_score": 0.2
+    },
+    "a_1": {
+        "formal problem": "theorem not_divisible_by_seven:\nfixes n :: nat\nshows  \"7 \\<notin> {d. \\<exists>k. 2^n + 1 = d * k}\"\nproof\n  assume \"7 \\<in> {d. \\<exists>k. 2^n + 1 = d * k}\"\n  then obtain k where k_def: \"2^n + 1 = 7 * k\" by blast\n  have \"2^n mod 7 + 1 mod 7 = (7 * k) mod 7\"\n    using k_def by (simp add: mod_simps)\n  hence \"((2^n) mod 7 + 1) mod 7 = 0\" by simp\n  have \"((2^n) mod 7 + 1) mod 7 = (2 * 2^n) mod 7\" by simp\n  hence \"(2 * 2^n) mod 7 = 0\" using `((2^n) mod 7 + 1) mod 7 = 0` by simp\n  have \"2 * 2^n = 7 * m\" for some m using `((2 * 2^n) mod 7) = 0` by (auto simp: dvd_eq_mod_eq_0)\n  then show False by simp\nqed",
+        "formal solution": "(* ### Problem\n Show that for any natural number $n$, $7$ does not divide $2^n + 1$.\n\n ### Proof\n If $2^n+1$ is congruent to 0 mod 7, then $2^n$ must be congruent to 6 mod 7, but this is not possible due to how $2^n$ mod 7 cycles. Therefore, there is no solution.\n *)\n\ntheorem not_divisible_by_seven:\nfixes n :: nat\nshows  \"7 \\<notin> {d. \\<exists>k. 2^n + 1 = d * k}\"\nproof\n  assume \"7 \\<in> {d. \\<exists>k. 2^n + 1 = d * k}\"\n  then obtain k where k_def: \"2^n + 1 = 7 * k\" by blast\n  have \"2^n mod 7 + 1 mod 7 = (7 * k) mod 7\"\n    using k_def by (simp add: mod_simps)\n  hence \"((2^n) mod 7 + 1) mod 7 = 0\" by simp\n  have \"((2^n) mod 7 + 1) mod 7 = (2 * 2^n) mod 7\" by simp\n  hence \"(2 * 2^n) mod 7 = 0\" using `((2^n) mod 7 + 1) mod 7 = 0` by simp\n  have \"2 * 2^n = 7 * m\" for some m using `((2 * 2^n) mod 7) = 0` by (auto simp: dvd_eq_mod_eq_0)\n  then show False by simp\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Prove that for any natural number $n$, $2^n + 1$ is not divisible by $7$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9882069230079651,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem not_divisible_by_7:\nfixes n :: nat\nshows  \"7 \u2209 prime_factors (2 ^ n + 1)\"\nproof\n  assume \"7 \u2208 prime_factors (2 ^ n + 1)\"\n  hence \"7 dvd 2 ^ n + 1\" using prime_factors_dvd by auto\n  thus False by auto\nqed",
+        "formal solution": "(* ### Problem\n Show that for any natural number $n$, $7$ does not divide $2^n + 1$.\n\n ### Proof\n If $2^n+1$ is congruent to 0 mod 7, then $2^n$ must be congruent to 6 mod 7, but this is not possible due to how $2^n$ mod 7 cycles. Therefore, there is no solution.\n *)\n\ntheorem not_divisible_by_7:\nfixes n :: nat\nshows  \"7 \u2209 prime_factors (2 ^ n + 1)\"\nproof\n  assume \"7 \u2208 prime_factors (2 ^ n + 1)\"\n  hence \"7 dvd 2 ^ n + 1\" using prime_factors_dvd by auto\n  thus False by auto\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Show that 7 is not a prime factor of $2^n + 1$ for any natural number $n$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9957595467567444,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat\nshows  \"7 \\<noteq> (2 ^ n + 1) mod 7\"",
+        "formal solution": "(* ### Problem\n Show that for any natural number $n$, $7$ does not divide $2^n + 1$.\n\n ### Proof\n If $2^n+1$ is congruent to 0 mod 7, then $2^n$ must be congruent to 6 mod 7, but this is not possible due to how $2^n$ mod 7 cycles. Therefore, there is no solution.\n *)\n\ntheorem\nfixes n :: nat\nshows  \"7 \\<noteq> (2 ^ n + 1) mod 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Prove that there is no natural number $n$ such that $7$ is equal to the remainder when $2^n + 1$ is divided by $7$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9963579773902893,
+        "symbolic_score": 0.3
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat\nshows  \"7 \\<noteq> (2^n + 1) mod 7\"",
+        "formal solution": "(* ### Problem\n Show that for any natural number $n$, $7$ does not divide $2^n + 1$.\n\n ### Proof\n If $2^n+1$ is congruent to 0 mod 7, then $2^n$ must be congruent to 6 mod 7, but this is not possible due to how $2^n$ mod 7 cycles. Therefore, there is no solution.\n *)\n\ntheorem\nfixes n :: nat\nshows  \"7 \\<noteq> (2^n + 1) mod 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Show that there is no natural number $n$ for which $7$ is equal to the remainder when $2^n + 1$ is divided by $7$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9984390139579773,
+        "symbolic_score": 0.3
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat\nshows  \"7 \\<noteq> gcd (2 ^ n + 1) 7\"",
+        "formal solution": "(* ### Problem\n Show that for any natural number $n$, $7$ does not divide $2^n + 1$.\n\n ### Proof\n If $2^n+1$ is congruent to 0 mod 7, then $2^n$ must be congruent to 6 mod 7, but this is not possible due to how $2^n$ mod 7 cycles. Therefore, there is no solution.\n *)\n\ntheorem\nfixes n :: nat\nshows  \"7 \\<noteq> gcd (2 ^ n + 1) 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Prove that the greatest common divisor of $2^n + 1$ and $7$ is not equal to $7$ for any natural number $n$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.998582661151886,
+        "symbolic_score": 0.2
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat\nshows  \"2^n + 1 mod 7 \\<noteq> 0\"",
+        "formal solution": "(* ### Problem\n Show that for any natural number $n$, $7$ does not divide $2^n + 1$.\n\n ### Proof\n If $2^n+1$ is congruent to 0 mod 7, then $2^n$ must be congruent to 6 mod 7, but this is not possible due to how $2^n$ mod 7 cycles. Therefore, there is no solution.\n *)\n\ntheorem\nfixes n :: nat\nshows  \"2^n + 1 mod 7 \\<noteq> 0\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Show that for any natural number $n$, the expression $2^n + 1$ is not divisible by 7.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9929354190826416,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem not_divisible_by_7:\nfixes n :: nat\nshows  \"\u00ac (7 dvd (2^n + 1))\"\nproof\n  assume \"7 dvd (2^n + 1)\"\n  then obtain k where \"2^n + 1 = 7 * k\" by (auto simp: dvd_def)\n  hence \"2^n = 7 * k - 1\" by auto\n  have \"2^n mod 7 = (7 * k - 1) mod 7\"\n    by (subst \\<open>2^n = 7 * k - 1\\<close>, rule refl)\n  then have \"2^n mod 7 = 6\"\n    by (simp add: mod_diff_right_eq)\n  have \"2^n mod 7 = 1^n mod 7\"\n    by (simp add: power_mod)\n  then have \"1 = 6\"\n    using \\<open>2^n mod 7 = 6\\<close> by auto\n  then show False by auto\nqed",
+        "formal solution": "(* ### Problem\n Show that for any natural number $n$, $7$ does not divide $2^n + 1$.\n\n ### Proof\n If $2^n+1$ is congruent to 0 mod 7, then $2^n$ must be congruent to 6 mod 7, but this is not possible due to how $2^n$ mod 7 cycles. Therefore, there is no solution.\n *)\n\ntheorem not_divisible_by_7:\nfixes n :: nat\nshows  \"\u00ac (7 dvd (2^n + 1))\"\nproof\n  assume \"7 dvd (2^n + 1)\"\n  then obtain k where \"2^n + 1 = 7 * k\" by (auto simp: dvd_def)\n  hence \"2^n = 7 * k - 1\" by auto\n  have \"2^n mod 7 = (7 * k - 1) mod 7\"\n    by (subst \\<open>2^n = 7 * k - 1\\<close>, rule refl)\n  then have \"2^n mod 7 = 6\"\n    by (simp add: mod_diff_right_eq)\n  have \"2^n mod 7 = 1^n mod 7\"\n    by (simp add: power_mod)\n  then have \"1 = 6\"\n    using \\<open>2^n mod 7 = 6\\<close> by auto\n  then show False by auto\nqed\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Prove that for any natural number $n$, $2^n + 1$ is not divisible by $7$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9882069230079651,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat\nshows  \"7 \\<notin> set (prime_factors (2 ^ n + 1))\"",
+        "formal solution": "(* ### Problem\n Show that for any natural number $n$, $7$ does not divide $2^n + 1$.\n\n ### Proof\n If $2^n+1$ is congruent to 0 mod 7, then $2^n$ must be congruent to 6 mod 7, but this is not possible due to how $2^n$ mod 7 cycles. Therefore, there is no solution.\n *)\n\ntheorem\nfixes n :: nat\nshows  \"7 \\<notin> set (prime_factors (2 ^ n + 1))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Show that the number 7 is not a prime factor of the expression $2^n + 1$ for any natural number $n$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9797624349594116,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat\nshows  \"7 \\<noteq> (2 ^ n + 1) mod 7\"",
+        "formal solution": "(* ### Problem\n Show that for any natural number $n$, $7$ does not divide $2^n + 1$.\n\n ### Proof\n If $2^n+1$ is congruent to 0 mod 7, then $2^n$ must be congruent to 6 mod 7, but this is not possible due to how $2^n$ mod 7 cycles. Therefore, there is no solution.\n *)\n\ntheorem\nfixes n :: nat\nshows  \"7 \\<noteq> (2 ^ n + 1) mod 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Show that there is no natural number $n$ such that $7$ is congruent to $2^n + 1$ modulo $7$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9958692193031311,
+        "symbolic_score": 0.3
+    },
+    "oracle": "theorem\nfixes n :: nat\nshows \"\\<not> ((7::nat) dvd (2^n + 1))\"",
+    "prediction": {
+        "0": [
+            9,
+            3,
+            4
+        ],
+        "1": [
+            0,
+            5
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            6
+        ],
+        "5": [
+            7
+        ],
+        "6": [
+            8
+        ]
+    }
+}

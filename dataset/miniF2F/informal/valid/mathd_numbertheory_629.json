@@ -1,0 +1,122 @@
+{
+    "problem_name": "mathd_numbertheory_629",
+    "informal_statement": "Suppose $t$ is a positive integer such that $\\mathop{\\text{lcm}}[12,t]^3=(12t)^2$. What is the smallest possible value for $t$? Show that it is 18.",
+    "informal_proof": "Recall the identity $\\mathop{\\text{lcm}}[a,b]\\cdot \\gcd(a,b)=ab$, which holds for all positive integers $a$ and $b$. Applying this identity to $12$ and $t$, we obtain $$\\mathop{\\text{lcm}}[12,t]\\cdot \\gcd(12,t) = 12t,$$and so (cubing both sides) $$\\mathop{\\text{lcm}}[12,t]^3 \\cdot \\gcd(12,t)^3 = (12t)^3.$$Substituting $(12t)^2$ for $\\mathop{\\text{lcm}}[12,t]^3$ and dividing both sides by $(12t)^2$, we have $$\\gcd(12,t)^3 = 12t,$$so in particular, $12t$ is the cube of an integer. Since $12=2^2\\cdot 3^1$, the smallest cube of the form $12t$ is $2^3\\cdot 3^3$, which is obtained when $t=2^1\\cdot 3^2 = 18$. This tells us that $t\\ge 18$.\n\nWe must check whether $t$ can be $18$. That is, we must check whether $\\mathop{\\text{lcm}}[12,18]^3=(12\\cdot 18)^2$. In fact, this equality does hold (both sides are equal to $6^6$), so the smallest possible value of $t$ is confirmed to be $18$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes t :: nat and lcm :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"t > 0\"\nand h1 : \"lcm 12 t ^ 3 = (12 * t) ^ 2\"\nand h2 : \"is_lcm (12 :: nat) t (lcm 12 t)\"\nshows  \"t = 18\"",
+        "formal solution": "(* ### Problem\n Suppose $t$ is a positive integer such that $\\mathop{\\text{lcm}}[12,t]^3=(12t)^2$. What is the smallest possible value for $t$? The final Answer is $18$\n ### Proof\n Recall the identity $\\mathop{\\text{lcm}}[a,b]\\cdot \\gcd(a,b)=ab$, which holds for all positive integers $a$ and $b$. Applying this identity to $12$ and $t$, we obtain $$\\mathop{\\text{lcm}}[12,t]\\cdot \\gcd(12,t) = 12t,$$and so (cubing both sides) $$\\mathop{\\text{lcm}}[12,t]^3 \\cdot \\gcd(12,t)^3 = (12t)^3.$$Substituting $(12t)^2$ for $\\mathop{\\text{lcm}}[12,t]^3$ and dividing both sides by $(12t)^2$, we have $$\\gcd(12,t)^3 = 12t,$$so in particular, $12t$ is the cube of an integer. Since $12=2^2\\cdot 3^1$, the smallest cube of the form $12t$ is $2^3\\cdot 3^3$, which is obtained when $t=2^1\\cdot 3^2 = 18$. This tells us that $t\\ge 18$.\n\nWe must check whether $t$ can be $18$. That is, we must check whether $\\mathop{\\text{lcm}}[12,18]^3=(12\\cdot 18)^2$. In fact, this equality does hold (both sides are equal to $6^6$), so the smallest possible value of $t$ is confirmed to be $18$.\n *)\n\ntheorem\nfixes t :: nat and lcm :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"t > 0\"\nand h1 : \"lcm 12 t ^ 3 = (12 * t) ^ 2\"\nand h2 : \"is_lcm (12 :: nat) t (lcm 12 t)\"\nshows  \"t = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $t$ such that the least common multiple of 12 and $t^3$ is equal to $(12t)^2$. The final answer is $t = 18$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8587723970413208,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm (12, t) ^ 3 = (12 * t) ^ 2\"\nshows  \"t = 18\"",
+        "formal solution": "(* ### Problem\n Suppose $t$ is a positive integer such that $\\mathop{\\text{lcm}}[12,t]^3=(12t)^2$. What is the smallest possible value for $t$? The final Answer is $18$\n ### Proof\n Recall the identity $\\mathop{\\text{lcm}}[a,b]\\cdot \\gcd(a,b)=ab$, which holds for all positive integers $a$ and $b$. Applying this identity to $12$ and $t$, we obtain $$\\mathop{\\text{lcm}}[12,t]\\cdot \\gcd(12,t) = 12t,$$and so (cubing both sides) $$\\mathop{\\text{lcm}}[12,t]^3 \\cdot \\gcd(12,t)^3 = (12t)^3.$$Substituting $(12t)^2$ for $\\mathop{\\text{lcm}}[12,t]^3$ and dividing both sides by $(12t)^2$, we have $$\\gcd(12,t)^3 = 12t,$$so in particular, $12t$ is the cube of an integer. Since $12=2^2\\cdot 3^1$, the smallest cube of the form $12t$ is $2^3\\cdot 3^3$, which is obtained when $t=2^1\\cdot 3^2 = 18$. This tells us that $t\\ge 18$.\n\nWe must check whether $t$ can be $18$. That is, we must check whether $\\mathop{\\text{lcm}}[12,18]^3=(12\\cdot 18)^2$. In fact, this equality does hold (both sides are equal to $6^6$), so the smallest possible value of $t$ is confirmed to be $18$.\n *)\n\ntheorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm (12, t) ^ 3 = (12 * t) ^ 2\"\nshows  \"t = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a positive integer $t$ such that the cube of the least common multiple of $12$ and $t$ equals the square of the product of $12$ and $t$. The final answer is $t = 18$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7609425187110901,
+        "symbolic_score": 0.3
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm (12, t) ^ 3 = (12 * t) ^ 2\"\nshows  \"t = (18::nat)\"",
+        "formal solution": "(* ### Problem\n Suppose $t$ is a positive integer such that $\\mathop{\\text{lcm}}[12,t]^3=(12t)^2$. What is the smallest possible value for $t$? The final Answer is $18$\n ### Proof\n Recall the identity $\\mathop{\\text{lcm}}[a,b]\\cdot \\gcd(a,b)=ab$, which holds for all positive integers $a$ and $b$. Applying this identity to $12$ and $t$, we obtain $$\\mathop{\\text{lcm}}[12,t]\\cdot \\gcd(12,t) = 12t,$$and so (cubing both sides) $$\\mathop{\\text{lcm}}[12,t]^3 \\cdot \\gcd(12,t)^3 = (12t)^3.$$Substituting $(12t)^2$ for $\\mathop{\\text{lcm}}[12,t]^3$ and dividing both sides by $(12t)^2$, we have $$\\gcd(12,t)^3 = 12t,$$so in particular, $12t$ is the cube of an integer. Since $12=2^2\\cdot 3^1$, the smallest cube of the form $12t$ is $2^3\\cdot 3^3$, which is obtained when $t=2^1\\cdot 3^2 = 18$. This tells us that $t\\ge 18$.\n\nWe must check whether $t$ can be $18$. That is, we must check whether $\\mathop{\\text{lcm}}[12,18]^3=(12\\cdot 18)^2$. In fact, this equality does hold (both sides are equal to $6^6$), so the smallest possible value of $t$ is confirmed to be $18$.\n *)\n\ntheorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm (12, t) ^ 3 = (12 * t) ^ 2\"\nshows  \"t = (18::nat)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a positive integer $t$ such that the cube of the least common multiple of 12 and $t$ is equal to the square of their product. The final answer is $t = 18$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8519797325134277,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm (12, t) ^ 3 = (12 * t) ^ 2\"\nshows  \"t = 18\"",
+        "formal solution": "(* ### Problem\n Suppose $t$ is a positive integer such that $\\mathop{\\text{lcm}}[12,t]^3=(12t)^2$. What is the smallest possible value for $t$? The final Answer is $18$\n ### Proof\n Recall the identity $\\mathop{\\text{lcm}}[a,b]\\cdot \\gcd(a,b)=ab$, which holds for all positive integers $a$ and $b$. Applying this identity to $12$ and $t$, we obtain $$\\mathop{\\text{lcm}}[12,t]\\cdot \\gcd(12,t) = 12t,$$and so (cubing both sides) $$\\mathop{\\text{lcm}}[12,t]^3 \\cdot \\gcd(12,t)^3 = (12t)^3.$$Substituting $(12t)^2$ for $\\mathop{\\text{lcm}}[12,t]^3$ and dividing both sides by $(12t)^2$, we have $$\\gcd(12,t)^3 = 12t,$$so in particular, $12t$ is the cube of an integer. Since $12=2^2\\cdot 3^1$, the smallest cube of the form $12t$ is $2^3\\cdot 3^3$, which is obtained when $t=2^1\\cdot 3^2 = 18$. This tells us that $t\\ge 18$.\n\nWe must check whether $t$ can be $18$. That is, we must check whether $\\mathop{\\text{lcm}}[12,18]^3=(12\\cdot 18)^2$. In fact, this equality does hold (both sides are equal to $6^6$), so the smallest possible value of $t$ is confirmed to be $18$.\n *)\n\ntheorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm (12, t) ^ 3 = (12 * t) ^ 2\"\nshows  \"t = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a positive integer $t$ such that the cube of the least common multiple of 12 and $t$ is equal to the square of their product. The final answer is $t = 18$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8519797325134277,
+        "symbolic_score": 0.3
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes t :: nat and lcm_12_t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm 12 t = lcm_12_t\"\nand h2 : \"(lcm_12_t ^ 3) = (12 * t) ^ 2\"\nshows  \"t = 18\"",
+        "formal solution": "(* ### Problem\n Suppose $t$ is a positive integer such that $\\mathop{\\text{lcm}}[12,t]^3=(12t)^2$. What is the smallest possible value for $t$? The final Answer is $18$\n ### Proof\n Recall the identity $\\mathop{\\text{lcm}}[a,b]\\cdot \\gcd(a,b)=ab$, which holds for all positive integers $a$ and $b$. Applying this identity to $12$ and $t$, we obtain $$\\mathop{\\text{lcm}}[12,t]\\cdot \\gcd(12,t) = 12t,$$and so (cubing both sides) $$\\mathop{\\text{lcm}}[12,t]^3 \\cdot \\gcd(12,t)^3 = (12t)^3.$$Substituting $(12t)^2$ for $\\mathop{\\text{lcm}}[12,t]^3$ and dividing both sides by $(12t)^2$, we have $$\\gcd(12,t)^3 = 12t,$$so in particular, $12t$ is the cube of an integer. Since $12=2^2\\cdot 3^1$, the smallest cube of the form $12t$ is $2^3\\cdot 3^3$, which is obtained when $t=2^1\\cdot 3^2 = 18$. This tells us that $t\\ge 18$.\n\nWe must check whether $t$ can be $18$. That is, we must check whether $\\mathop{\\text{lcm}}[12,18]^3=(12\\cdot 18)^2$. In fact, this equality does hold (both sides are equal to $6^6$), so the smallest possible value of $t$ is confirmed to be $18$.\n *)\n\ntheorem\nfixes t :: nat and lcm_12_t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm 12 t = lcm_12_t\"\nand h2 : \"(lcm_12_t ^ 3) = (12 * t) ^ 2\"\nshows  \"t = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the positive integer $t$ such that the least common multiple of 12 and $t$ cubed is equal to the square of the product of 12 and $t$. The final answer is $t = 18$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8285223841667175,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm 12 t ^ 3 = (12 * t) ^ 2\"\nshows  \"t = 18\"",
+        "formal solution": "(* ### Problem\n Suppose $t$ is a positive integer such that $\\mathop{\\text{lcm}}[12,t]^3=(12t)^2$. What is the smallest possible value for $t$? The final Answer is $18$\n ### Proof\n Recall the identity $\\mathop{\\text{lcm}}[a,b]\\cdot \\gcd(a,b)=ab$, which holds for all positive integers $a$ and $b$. Applying this identity to $12$ and $t$, we obtain $$\\mathop{\\text{lcm}}[12,t]\\cdot \\gcd(12,t) = 12t,$$and so (cubing both sides) $$\\mathop{\\text{lcm}}[12,t]^3 \\cdot \\gcd(12,t)^3 = (12t)^3.$$Substituting $(12t)^2$ for $\\mathop{\\text{lcm}}[12,t]^3$ and dividing both sides by $(12t)^2$, we have $$\\gcd(12,t)^3 = 12t,$$so in particular, $12t$ is the cube of an integer. Since $12=2^2\\cdot 3^1$, the smallest cube of the form $12t$ is $2^3\\cdot 3^3$, which is obtained when $t=2^1\\cdot 3^2 = 18$. This tells us that $t\\ge 18$.\n\nWe must check whether $t$ can be $18$. That is, we must check whether $\\mathop{\\text{lcm}}[12,18]^3=(12\\cdot 18)^2$. In fact, this equality does hold (both sides are equal to $6^6$), so the smallest possible value of $t$ is confirmed to be $18$.\n *)\n\ntheorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm 12 t ^ 3 = (12 * t) ^ 2\"\nshows  \"t = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a positive integer $t$ such that the least common multiple of $12$ and $t^3$ is equal to $(12t)^2$. The final answer is $t = 18$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8115625381469727,
+        "symbolic_score": 0.2
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm (12, t) ^ 3 = (12 * t) ^ 2\"\nshows  \"t = 18\"",
+        "formal solution": "(* ### Problem\n Suppose $t$ is a positive integer such that $\\mathop{\\text{lcm}}[12,t]^3=(12t)^2$. What is the smallest possible value for $t$? The final Answer is $18$\n ### Proof\n Recall the identity $\\mathop{\\text{lcm}}[a,b]\\cdot \\gcd(a,b)=ab$, which holds for all positive integers $a$ and $b$. Applying this identity to $12$ and $t$, we obtain $$\\mathop{\\text{lcm}}[12,t]\\cdot \\gcd(12,t) = 12t,$$and so (cubing both sides) $$\\mathop{\\text{lcm}}[12,t]^3 \\cdot \\gcd(12,t)^3 = (12t)^3.$$Substituting $(12t)^2$ for $\\mathop{\\text{lcm}}[12,t]^3$ and dividing both sides by $(12t)^2$, we have $$\\gcd(12,t)^3 = 12t,$$so in particular, $12t$ is the cube of an integer. Since $12=2^2\\cdot 3^1$, the smallest cube of the form $12t$ is $2^3\\cdot 3^3$, which is obtained when $t=2^1\\cdot 3^2 = 18$. This tells us that $t\\ge 18$.\n\nWe must check whether $t$ can be $18$. That is, we must check whether $\\mathop{\\text{lcm}}[12,18]^3=(12\\cdot 18)^2$. In fact, this equality does hold (both sides are equal to $6^6$), so the smallest possible value of $t$ is confirmed to be $18$.\n *)\n\ntheorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm (12, t) ^ 3 = (12 * t) ^ 2\"\nshows  \"t = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a positive integer $t$ such that the cube of the least common multiple of $12$ and $t$ is equal to the square of the product of $12$ and $t$. The final answer is $t = 18$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.748893141746521,
+        "symbolic_score": 0.3
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm (12, t) powr 3 = (12 * t) powr 2\"\nshows  \"t = (LEAST t. t > 0 \\<and> lcm(12, t) powr 3 = (12 * t) powr 2)\"",
+        "formal solution": "(* ### Problem\n Suppose $t$ is a positive integer such that $\\mathop{\\text{lcm}}[12,t]^3=(12t)^2$. What is the smallest possible value for $t$? The final Answer is $18$\n ### Proof\n Recall the identity $\\mathop{\\text{lcm}}[a,b]\\cdot \\gcd(a,b)=ab$, which holds for all positive integers $a$ and $b$. Applying this identity to $12$ and $t$, we obtain $$\\mathop{\\text{lcm}}[12,t]\\cdot \\gcd(12,t) = 12t,$$and so (cubing both sides) $$\\mathop{\\text{lcm}}[12,t]^3 \\cdot \\gcd(12,t)^3 = (12t)^3.$$Substituting $(12t)^2$ for $\\mathop{\\text{lcm}}[12,t]^3$ and dividing both sides by $(12t)^2$, we have $$\\gcd(12,t)^3 = 12t,$$so in particular, $12t$ is the cube of an integer. Since $12=2^2\\cdot 3^1$, the smallest cube of the form $12t$ is $2^3\\cdot 3^3$, which is obtained when $t=2^1\\cdot 3^2 = 18$. This tells us that $t\\ge 18$.\n\nWe must check whether $t$ can be $18$. That is, we must check whether $\\mathop{\\text{lcm}}[12,18]^3=(12\\cdot 18)^2$. In fact, this equality does hold (both sides are equal to $6^6$), so the smallest possible value of $t$ is confirmed to be $18$.\n *)\n\ntheorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm (12, t) powr 3 = (12 * t) powr 2\"\nshows  \"t = (LEAST t. t > 0 \\<and> lcm(12, t) powr 3 = (12 * t) powr 2)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $t$ such that the least common multiple of $12$ and $t$, cubed, is equal to the product of $12$ and $t$, squared.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.5402412414550781,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm (12::nat) t ^ 3 = (12 * t) ^ 2\"\nshows  \"t = 18\"",
+        "formal solution": "(* ### Problem\n Suppose $t$ is a positive integer such that $\\mathop{\\text{lcm}}[12,t]^3=(12t)^2$. What is the smallest possible value for $t$? The final Answer is $18$\n ### Proof\n Recall the identity $\\mathop{\\text{lcm}}[a,b]\\cdot \\gcd(a,b)=ab$, which holds for all positive integers $a$ and $b$. Applying this identity to $12$ and $t$, we obtain $$\\mathop{\\text{lcm}}[12,t]\\cdot \\gcd(12,t) = 12t,$$and so (cubing both sides) $$\\mathop{\\text{lcm}}[12,t]^3 \\cdot \\gcd(12,t)^3 = (12t)^3.$$Substituting $(12t)^2$ for $\\mathop{\\text{lcm}}[12,t]^3$ and dividing both sides by $(12t)^2$, we have $$\\gcd(12,t)^3 = 12t,$$so in particular, $12t$ is the cube of an integer. Since $12=2^2\\cdot 3^1$, the smallest cube of the form $12t$ is $2^3\\cdot 3^3$, which is obtained when $t=2^1\\cdot 3^2 = 18$. This tells us that $t\\ge 18$.\n\nWe must check whether $t$ can be $18$. That is, we must check whether $\\mathop{\\text{lcm}}[12,18]^3=(12\\cdot 18)^2$. In fact, this equality does hold (both sides are equal to $6^6$), so the smallest possible value of $t$ is confirmed to be $18$.\n *)\n\ntheorem\nfixes t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm (12::nat) t ^ 3 = (12 * t) ^ 2\"\nshows  \"t = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a positive integer $t$ such that the least common multiple of 12 and $t^3$ is equal to $(12t)^2$. The final answer is $t = 18$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8314566612243652,
+        "symbolic_score": 0.2
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes t :: nat and lcm_12t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm 12 t = lcm_12t\"\nand h2 : \"lcm_12t^3 = (12 * t)^2\"\nshows  \"t = 18\"",
+        "formal solution": "(* ### Problem\n Suppose $t$ is a positive integer such that $\\mathop{\\text{lcm}}[12,t]^3=(12t)^2$. What is the smallest possible value for $t$? The final Answer is $18$\n ### Proof\n Recall the identity $\\mathop{\\text{lcm}}[a,b]\\cdot \\gcd(a,b)=ab$, which holds for all positive integers $a$ and $b$. Applying this identity to $12$ and $t$, we obtain $$\\mathop{\\text{lcm}}[12,t]\\cdot \\gcd(12,t) = 12t,$$and so (cubing both sides) $$\\mathop{\\text{lcm}}[12,t]^3 \\cdot \\gcd(12,t)^3 = (12t)^3.$$Substituting $(12t)^2$ for $\\mathop{\\text{lcm}}[12,t]^3$ and dividing both sides by $(12t)^2$, we have $$\\gcd(12,t)^3 = 12t,$$so in particular, $12t$ is the cube of an integer. Since $12=2^2\\cdot 3^1$, the smallest cube of the form $12t$ is $2^3\\cdot 3^3$, which is obtained when $t=2^1\\cdot 3^2 = 18$. This tells us that $t\\ge 18$.\n\nWe must check whether $t$ can be $18$. That is, we must check whether $\\mathop{\\text{lcm}}[12,18]^3=(12\\cdot 18)^2$. In fact, this equality does hold (both sides are equal to $6^6$), so the smallest possible value of $t$ is confirmed to be $18$.\n *)\n\ntheorem\nfixes t :: nat and lcm_12t :: nat\nassumes h0 : \"t > 0\"\nand h1 : \"lcm 12 t = lcm_12t\"\nand h2 : \"lcm_12t^3 = (12 * t)^2\"\nshows  \"t = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $t$ be a positive integer such that the least common multiple of $12$ and $t$ is $lcm_{12t}$. If $(lcm_{12t})^3 = (12t)^2$, find the value of $t$. The final answer is $18$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9730496406555176,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nshows  \"(LEAST t::nat. (lcm 12 t)^3 = (12 * t)^2) = 18\"",
+    "prediction": {
+        "0": [
+            1,
+            3,
+            6
+        ],
+        "1": [
+            8,
+            5
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            7
+        ],
+        "6": [
+            9
+        ]
+    }
+}

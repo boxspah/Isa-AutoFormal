@@ -1,0 +1,59 @@
+{
+    "natural problem": "Let \\[f(x) =\n\\begin{cases}\nx/2 &\\quad \\text{if } x \\text{ is even}, \\\\\n3x+1 &\\quad \\text{if } x \\text{ is odd}.\n\\end{cases}\n\\]What is $f(f(f(f(1))))$?",
+    "natural solution": [
+        "Evaluating each value, $f(1) = 3 \\cdot 1 + 1 = 4$; $f(f(1)) = f(4) = 4/2 = 2$; $f(f(f(1))) = f(2) = 2/2 = 1$; and finally $f(f(f(f(1)))) = f(1) = \\boxed{4}$."
+    ],
+    "natural answer": "4",
+    "a_0": {
+        "formal problem": "fun f :: \"int \\<Rightarrow> int\" where\n\"f x = (if x mod 2 = 0 then x div 2 else 3 * x + 1)\"\n\ntheorem\nshows  \"f (f (f (f 1))) = 4\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx/2 &\\quad \\text{if } x \\text{ is even}, \\\\\n3x+1 &\\quad \\text{if } x \\text{ is odd}.\n\\end{cases}\n\\]What is $f(f(f(f(1))))$? The final Answer is 4\n ### Proof\n Evaluating each value, $f(1) = 3 \\cdot 1 + 1 = 4$; $f(f(1)) = f(4) = 4/2 = 2$; $f(f(f(1))) = f(2) = 2/2 = 1$; and finally $f(f(f(f(1)))) = f(1) = \\boxed{4}$.\n *)\n\nfun f :: \"int \\<Rightarrow> int\" where\n\"f x = (if x mod 2 = 0 then x div 2 else 3 * x + 1)\"\n\ntheorem\nshows  \"f (f (f (f 1))) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ such that for any integer $x$, $f(x)$ is equal to $x/2$ if $x$ is even, and $3x + 1$ if $x$ is odd. What is the value of $f(f(f(f(1))))$? The final answer is $4$."
+    },
+    "a_1": {
+        "formal problem": "The Isabelle version of the problem is as follows:\n\nfun f :: \"int => int\" where\n\"f x = (if even x then x div 2 else 3 * x + 1)\"\n\ntheorem f_iterate: \"f (f (f (f 1))) = 4\"\nby (simp add: f_def)",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx/2 &\\quad \\text{if } x \\text{ is even}, \\\\\n3x+1 &\\quad \\text{if } x \\text{ is odd}.\n\\end{cases}\n\\]What is $f(f(f(f(1))))$? The final Answer is 4\n ### Proof\n Evaluating each value, $f(1) = 3 \\cdot 1 + 1 = 4$; $f(f(1)) = f(4) = 4/2 = 2$; $f(f(f(1))) = f(2) = 2/2 = 1$; and finally $f(f(f(f(1)))) = f(1) = \\boxed{4}$.\n *)\n\nThe Isabelle version of the problem is as follows:\n\nfun f :: \"int => int\" where\n\"f x = (if even x then x div 2 else 3 * x + 1)\"\n\ntheorem f_iterate: \"f (f (f (f 1))) = 4\"\nby (simp add: f_def)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f$, defined as follows: if $x$ is an even integer, $f(x)$ is $x$ divided by 2. If $x$ is an odd integer, $f(x)$ is $3x + 1$. The problem is to show that applying the function $f$ four times consecutively to the number 1 results in the number 4."
+    },
+    "a_2": {
+        "formal problem": "fun f :: \"int \\<Rightarrow> int\" where\n\"f x = (if even x then x div 2 else 3 * x + 1)\"\n\ntheorem\nshows  \"f (f (f (f 1))) = 4\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx/2 &\\quad \\text{if } x \\text{ is even}, \\\\\n3x+1 &\\quad \\text{if } x \\text{ is odd}.\n\\end{cases}\n\\]What is $f(f(f(f(1))))$? The final Answer is 4\n ### Proof\n Evaluating each value, $f(1) = 3 \\cdot 1 + 1 = 4$; $f(f(1)) = f(4) = 4/2 = 2$; $f(f(f(1))) = f(2) = 2/2 = 1$; and finally $f(f(f(f(1)))) = f(1) = \\boxed{4}$.\n *)\n\nfun f :: \"int \\<Rightarrow> int\" where\n\"f x = (if even x then x div 2 else 3 * x + 1)\"\n\ntheorem\nshows  \"f (f (f (f 1))) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x)$ such that if $x$ is an even number, $f(x) = \\frac{x}{2}$, and if $x$ is an odd number, $f(x) = 3x + 1$. Find the value of $f(f(f(f(1))))$. The final answer is $4$."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>x. even x \\<longrightarrow> f x = x div 2\"\nand h1 : \"\\<forall>x. odd x \\<longrightarrow> f x = 3 * x + 1\"\nshows  \"f(f(f(f 1))) = 4\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx/2 &\\quad \\text{if } x \\text{ is even}, \\\\\n3x+1 &\\quad \\text{if } x \\text{ is odd}.\n\\end{cases}\n\\]What is $f(f(f(f(1))))$? The final Answer is 4\n ### Proof\n Evaluating each value, $f(1) = 3 \\cdot 1 + 1 = 4$; $f(f(1)) = f(4) = 4/2 = 2$; $f(f(f(1))) = f(2) = 2/2 = 1$; and finally $f(f(f(f(1)))) = f(1) = \\boxed{4}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>x. even x \\<longrightarrow> f x = x div 2\"\nand h1 : \"\\<forall>x. odd x \\<longrightarrow> f x = 3 * x + 1\"\nshows  \"f(f(f(f 1))) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider the following function $f$: if $x$ is even, $f(x) = x/2$; if $x$ is odd, $f(x) = 3x + 1$. What is the value of $f(f(f(f(1))))$? The final answer is $4$."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. even x \\<longrightarrow> f x = x div 2\"\nand h1 : \"\\<forall> x. odd x \\<longrightarrow> f x = 3 * x + 1\"\nshows  \"f (f (f (f 1))) = 4\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx/2 &\\quad \\text{if } x \\text{ is even}, \\\\\n3x+1 &\\quad \\text{if } x \\text{ is odd}.\n\\end{cases}\n\\]What is $f(f(f(f(1))))$? The final Answer is 4\n ### Proof\n Evaluating each value, $f(1) = 3 \\cdot 1 + 1 = 4$; $f(f(1)) = f(4) = 4/2 = 2$; $f(f(f(1))) = f(2) = 2/2 = 1$; and finally $f(f(f(f(1)))) = f(1) = \\boxed{4}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. even x \\<longrightarrow> f x = x div 2\"\nand h1 : \"\\<forall> x. odd x \\<longrightarrow> f x = 3 * x + 1\"\nshows  \"f (f (f (f 1))) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined as follows: for an even integer $x$, $f(x) = \\frac{x}{2}$, and for an odd integer $x$, $f(x) = 3x + 1$. Find the value of $f(f(f(f(1))))$. The final answer is $4$."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. even x \\<longrightarrow> f x = x div 2\"\nand h1 : \"\\<forall> x. odd x \\<longrightarrow> f x = 3 * x + 1\"\nshows  \"f (f (f (f 1))) = 4\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx/2 &\\quad \\text{if } x \\text{ is even}, \\\\\n3x+1 &\\quad \\text{if } x \\text{ is odd}.\n\\end{cases}\n\\]What is $f(f(f(f(1))))$? The final Answer is 4\n ### Proof\n Evaluating each value, $f(1) = 3 \\cdot 1 + 1 = 4$; $f(f(1)) = f(4) = 4/2 = 2$; $f(f(f(1))) = f(2) = 2/2 = 1$; and finally $f(f(f(f(1)))) = f(1) = \\boxed{4}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. even x \\<longrightarrow> f x = x div 2\"\nand h1 : \"\\<forall> x. odd x \\<longrightarrow> f x = 3 * x + 1\"\nshows  \"f (f (f (f 1))) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f$ defined as follows: for any integer $x$, if $x$ is even, then $f(x) = \\frac{x}{2}$; if $x$ is odd, then $f(x) = 3x + 1$. Find the value of $f(f(f(f(1))))$. The final answer is $4$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. even x \\<longrightarrow> f x = x div 2\"\nand h1 : \"\\<forall> x. odd x \\<longrightarrow> f x = 3 * x + 1\"\nshows  \"f (f (f (f 1))) = 4\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx/2 &\\quad \\text{if } x \\text{ is even}, \\\\\n3x+1 &\\quad \\text{if } x \\text{ is odd}.\n\\end{cases}\n\\]What is $f(f(f(f(1))))$? The final Answer is 4\n ### Proof\n Evaluating each value, $f(1) = 3 \\cdot 1 + 1 = 4$; $f(f(1)) = f(4) = 4/2 = 2$; $f(f(f(1))) = f(2) = 2/2 = 1$; and finally $f(f(f(f(1)))) = f(1) = \\boxed{4}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. even x \\<longrightarrow> f x = x div 2\"\nand h1 : \"\\<forall> x. odd x \\<longrightarrow> f x = 3 * x + 1\"\nshows  \"f (f (f (f 1))) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ for integer input $x$ as follows: if $x$ is even, $f(x) = \\frac{x}{2}$, and if $x$ is odd, $f(x) = 3x + 1$. Find the value of $f(f(f(f(1))))$. The final answer is 4."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. even x \\<longrightarrow> f x = x div 2\"\nand h1 : \"\\<forall> x. odd x \\<longrightarrow> f x = 3 * x + 1\"\nshows  \"f (f (f (f 1))) = 4\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx/2 &\\quad \\text{if } x \\text{ is even}, \\\\\n3x+1 &\\quad \\text{if } x \\text{ is odd}.\n\\end{cases}\n\\]What is $f(f(f(f(1))))$? The final Answer is 4\n ### Proof\n Evaluating each value, $f(1) = 3 \\cdot 1 + 1 = 4$; $f(f(1)) = f(4) = 4/2 = 2$; $f(f(f(1))) = f(2) = 2/2 = 1$; and finally $f(f(f(f(1)))) = f(1) = \\boxed{4}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. even x \\<longrightarrow> f x = x div 2\"\nand h1 : \"\\<forall> x. odd x \\<longrightarrow> f x = 3 * x + 1\"\nshows  \"f (f (f (f 1))) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ such that for every even integer $x$, $f(x) = \\frac{x}{2}$ and for every odd integer $x$, $f(x) = 3x + 1$. Compute $f(f(f(f(1))))$. The final answer is $4$."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>x. f x = (if even x then x div 2 else 3 * x + 1)\"\nshows  \"f (f (f (f 1))) = 4\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx/2 &\\quad \\text{if } x \\text{ is even}, \\\\\n3x+1 &\\quad \\text{if } x \\text{ is odd}.\n\\end{cases}\n\\]What is $f(f(f(f(1))))$? The final Answer is 4\n ### Proof\n Evaluating each value, $f(1) = 3 \\cdot 1 + 1 = 4$; $f(f(1)) = f(4) = 4/2 = 2$; $f(f(f(1))) = f(2) = 2/2 = 1$; and finally $f(f(f(f(1)))) = f(1) = \\boxed{4}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>x. f x = (if even x then x div 2 else 3 * x + 1)\"\nshows  \"f (f (f (f 1))) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x)$ such that $f(x) = \\frac{x}{2}$ if $x$ is even and $f(x) = 3x + 1$ if $x$ is odd. What is the value of $f(f(f(f(1))))$? The final answer is 4."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. (even x \\<longrightarrow> f x = x div 2) \\<and> (odd x \\<longrightarrow> f x = 3 * x + 1)\"\nshows  \"f (f (f (f 1))) = 4\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\nx/2 &\\quad \\text{if } x \\text{ is even}, \\\\\n3x+1 &\\quad \\text{if } x \\text{ is odd}.\n\\end{cases}\n\\]What is $f(f(f(f(1))))$? The final Answer is 4\n ### Proof\n Evaluating each value, $f(1) = 3 \\cdot 1 + 1 = 4$; $f(f(1)) = f(4) = 4/2 = 2$; $f(f(f(1))) = f(2) = 2/2 = 1$; and finally $f(f(f(f(1)))) = f(1) = \\boxed{4}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> x. (even x \\<longrightarrow> f x = x div 2) \\<and> (odd x \\<longrightarrow> f x = 3 * x + 1)\"\nshows  \"f (f (f (f 1))) = 4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f$ such that $f(x) = x/2$ if $x$ is even and $f(x) = 3x + 1$ if $x$ is odd. Calculate the value of $f(f(f(f(1))))$. The final answer is $4$."
+    },
+    "level": "Level 2",
+    "type": "Algebra"
+}

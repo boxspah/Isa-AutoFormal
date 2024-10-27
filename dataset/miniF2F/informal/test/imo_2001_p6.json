@@ -1,0 +1,116 @@
+{
+    "problem_name": "imo_2001_p6",
+    "informal_statement": "$K > L > M > N$ are positive integers such that $KM + LN = (K + L - M + N)(-K + L + M + N)$. Prove that $KL + MN$ is not prime.",
+    "informal_proof": "First, $(KL+MN)-(KM+LN)=(K-N)(L-M)>0$ as $K>N$ and $L>M$.  Thus, $KL+MN>KM+LN$.  \n\nSimilarly, $(KM+LN)-(KN+LM)=(K-L)(M-N)>0$ since $K>L$ and $M>N$.  Thus, $KM+LN>KN+LM$.  \n\nPutting the two together, we have\n$KL+MN>KM+LN>KN+LM$\n\nNow, we have:\n$(K+L-M+N)(-K+L+M+N)=KM+LN$\n$-K^2+KM+L^2+LN+KM-M^2+LN+N^2=KM+LN$\n$L^2+LN+N^2=K^2-KM+M^2$\nSo, we have:\n$(KM+LN)(L^2+LN+N^2)=KM(L^2+LN+N^2)+LN(L^2+LN+N^2)$\n$=KM(L^2+LN+N^2)+LN(K^2-KM+M^2)$\n$=KML^2+KMN^2+K^2LN+LM^2N$\n$=(KL+MN)(KN+LM)$\nThus, it follows that $(KM+LN) \\mid (KL+MN)(KN+LM).$  \nNow, since $KL+MN>KM+LN$ if $KL+MN$ is prime, then there are no common factors between the two.  So, in order to have $(KM+LN)\\mid (KL+MN)(KN+LM),$ we would have to have $(KM+LN) \\mid (KN+LM).$ This is impossible as $KM+LN>KN+LM$.  Thus, $KL+MN$ must be composite.",
+    "a_0": {
+        "formal problem": "theorem\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"KM + LN = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not> prime (K * L + M * N)\"",
+        "formal solution": "(* ### Problem\n $K > L > M > N$ are positive integers such that $KM + LN = (K + L - M + N)(-K + L + M + N)$. Prove that $KL + MN$ is not prime.\n ### Proof\n First, $(KL+MN)-(KM+LN)=(K-N)(L-M)>0$ as $K>N$ and $L>M$.  Thus, $KL+MN>KM+LN$.  \n\nSimilarly, $(KM+LN)-(KN+LM)=(K-L)(M-N)>0$ since $K>L$ and $M>N$.  Thus, $KM+LN>KN+LM$.  \n\nPutting the two together, we have\n$KL+MN>KM+LN>KN+LM$\n\nNow, we have:\n$(K+L-M+N)(-K+L+M+N)=KM+LN$\n$-K^2+KM+L^2+LN+KM-M^2+LN+N^2=KM+LN$\n$L^2+LN+N^2=K^2-KM+M^2$\nSo, we have:\n$(KM+LN)(L^2+LN+N^2)=KM(L^2+LN+N^2)+LN(L^2+LN+N^2)$\n$=KM(L^2+LN+N^2)+LN(K^2-KM+M^2)$\n$=KML^2+KMN^2+K^2LN+LM^2N$\n$=(KL+MN)(KN+LM)$\nThus, it follows that $(KM+LN) \\mid (KL+MN)(KN+LM).$  \nNow, since $KL+MN>KM+LN$ if $KL+MN$ is prime, then there are no common factors between the two.  So, in order to have $(KM+LN)\\mid (KL+MN)(KN+LM),$ we would have to have $(KM+LN) \\mid (KN+LM).$ This is impossible as $KM+LN>KN+LM$.  Thus, $KL+MN$ must be composite.\n *)\n\ntheorem\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"KM + LN = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not> prime (K * L + M * N)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given four natural numbers $K, L, M, N$ such that $K > L > M > N$ and $KM + LN = (K + L - M + N)(-K + L + M + N)$, prove that the number $KL + MN$ is not a prime.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.919061541557312,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not> (prime (K * L + M * N))\"",
+        "formal solution": "(* ### Problem\n $K > L > M > N$ are positive integers such that $KM + LN = (K + L - M + N)(-K + L + M + N)$. Prove that $KL + MN$ is not prime.\n ### Proof\n First, $(KL+MN)-(KM+LN)=(K-N)(L-M)>0$ as $K>N$ and $L>M$.  Thus, $KL+MN>KM+LN$.  \n\nSimilarly, $(KM+LN)-(KN+LM)=(K-L)(M-N)>0$ since $K>L$ and $M>N$.  Thus, $KM+LN>KN+LM$.  \n\nPutting the two together, we have\n$KL+MN>KM+LN>KN+LM$\n\nNow, we have:\n$(K+L-M+N)(-K+L+M+N)=KM+LN$\n$-K^2+KM+L^2+LN+KM-M^2+LN+N^2=KM+LN$\n$L^2+LN+N^2=K^2-KM+M^2$\nSo, we have:\n$(KM+LN)(L^2+LN+N^2)=KM(L^2+LN+N^2)+LN(L^2+LN+N^2)$\n$=KM(L^2+LN+N^2)+LN(K^2-KM+M^2)$\n$=KML^2+KMN^2+K^2LN+LM^2N$\n$=(KL+MN)(KN+LM)$\nThus, it follows that $(KM+LN) \\mid (KL+MN)(KN+LM).$  \nNow, since $KL+MN>KM+LN$ if $KL+MN$ is prime, then there are no common factors between the two.  So, in order to have $(KM+LN)\\mid (KL+MN)(KN+LM),$ we would have to have $(KM+LN) \\mid (KN+LM).$ This is impossible as $KM+LN>KN+LM$.  Thus, $KL+MN$ must be composite.\n *)\n\ntheorem\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not> (prime (K * L + M * N))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose there are four natural numbers $K, L, M, N$ such that $K > L > M > N$ and $K * M + L * N = (K + L - M + N)(-K + L + M + N)$. Prove that the number $K * L + M * N$ is not a prime number.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.974134087562561,
+        "symbolic_score": 0.6
+    },
+    "a_2": {
+        "formal problem": "theorem not_prime:\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (- K + L + M + N)\"\nshows  \"\\<not> (prime (K * L + M * N))\"",
+        "formal solution": "(* ### Problem\n $K > L > M > N$ are positive integers such that $KM + LN = (K + L - M + N)(-K + L + M + N)$. Prove that $KL + MN$ is not prime.\n ### Proof\n First, $(KL+MN)-(KM+LN)=(K-N)(L-M)>0$ as $K>N$ and $L>M$.  Thus, $KL+MN>KM+LN$.  \n\nSimilarly, $(KM+LN)-(KN+LM)=(K-L)(M-N)>0$ since $K>L$ and $M>N$.  Thus, $KM+LN>KN+LM$.  \n\nPutting the two together, we have\n$KL+MN>KM+LN>KN+LM$\n\nNow, we have:\n$(K+L-M+N)(-K+L+M+N)=KM+LN$\n$-K^2+KM+L^2+LN+KM-M^2+LN+N^2=KM+LN$\n$L^2+LN+N^2=K^2-KM+M^2$\nSo, we have:\n$(KM+LN)(L^2+LN+N^2)=KM(L^2+LN+N^2)+LN(L^2+LN+N^2)$\n$=KM(L^2+LN+N^2)+LN(K^2-KM+M^2)$\n$=KML^2+KMN^2+K^2LN+LM^2N$\n$=(KL+MN)(KN+LM)$\nThus, it follows that $(KM+LN) \\mid (KL+MN)(KN+LM).$  \nNow, since $KL+MN>KM+LN$ if $KL+MN$ is prime, then there are no common factors between the two.  So, in order to have $(KM+LN)\\mid (KL+MN)(KN+LM),$ we would have to have $(KM+LN) \\mid (KN+LM).$ This is impossible as $KM+LN>KN+LM$.  Thus, $KL+MN$ must be composite.\n *)\n\ntheorem not_prime:\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (- K + L + M + N)\"\nshows  \"\\<not> (prime (K * L + M * N))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have four natural numbers, $K, L, M, N$ such that $K > L > M > N$. We are given that $K * M + L * N = (K + L - M + N) * (- K + L + M + N)$. Prove that the number $K * L + M * N$ is not prime.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9196743965148926,
+        "symbolic_score": 0.6
+    },
+    "a_3": {
+        "formal problem": "theorem not_prime_sum:\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not> prime (K * L + M * N)\"",
+        "formal solution": "(* ### Problem\n $K > L > M > N$ are positive integers such that $KM + LN = (K + L - M + N)(-K + L + M + N)$. Prove that $KL + MN$ is not prime.\n ### Proof\n First, $(KL+MN)-(KM+LN)=(K-N)(L-M)>0$ as $K>N$ and $L>M$.  Thus, $KL+MN>KM+LN$.  \n\nSimilarly, $(KM+LN)-(KN+LM)=(K-L)(M-N)>0$ since $K>L$ and $M>N$.  Thus, $KM+LN>KN+LM$.  \n\nPutting the two together, we have\n$KL+MN>KM+LN>KN+LM$\n\nNow, we have:\n$(K+L-M+N)(-K+L+M+N)=KM+LN$\n$-K^2+KM+L^2+LN+KM-M^2+LN+N^2=KM+LN$\n$L^2+LN+N^2=K^2-KM+M^2$\nSo, we have:\n$(KM+LN)(L^2+LN+N^2)=KM(L^2+LN+N^2)+LN(L^2+LN+N^2)$\n$=KM(L^2+LN+N^2)+LN(K^2-KM+M^2)$\n$=KML^2+KMN^2+K^2LN+LM^2N$\n$=(KL+MN)(KN+LM)$\nThus, it follows that $(KM+LN) \\mid (KL+MN)(KN+LM).$  \nNow, since $KL+MN>KM+LN$ if $KL+MN$ is prime, then there are no common factors between the two.  So, in order to have $(KM+LN)\\mid (KL+MN)(KN+LM),$ we would have to have $(KM+LN) \\mid (KN+LM).$ This is impossible as $KM+LN>KN+LM$.  Thus, $KL+MN$ must be composite.\n *)\n\ntheorem not_prime_sum:\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not> prime (K * L + M * N)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given four natural numbers K, L, M, and N such that K > L > M > N, and the equation K * M + L * N = (K + L - M + N) * (-K + L + M + N), prove that the number K * L + M * N is not a prime number.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9595787525177002,
+        "symbolic_score": 0.6
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\u00ac prime (K * L + M * N)\"",
+        "formal solution": "(* ### Problem\n $K > L > M > N$ are positive integers such that $KM + LN = (K + L - M + N)(-K + L + M + N)$. Prove that $KL + MN$ is not prime.\n ### Proof\n First, $(KL+MN)-(KM+LN)=(K-N)(L-M)>0$ as $K>N$ and $L>M$.  Thus, $KL+MN>KM+LN$.  \n\nSimilarly, $(KM+LN)-(KN+LM)=(K-L)(M-N)>0$ since $K>L$ and $M>N$.  Thus, $KM+LN>KN+LM$.  \n\nPutting the two together, we have\n$KL+MN>KM+LN>KN+LM$\n\nNow, we have:\n$(K+L-M+N)(-K+L+M+N)=KM+LN$\n$-K^2+KM+L^2+LN+KM-M^2+LN+N^2=KM+LN$\n$L^2+LN+N^2=K^2-KM+M^2$\nSo, we have:\n$(KM+LN)(L^2+LN+N^2)=KM(L^2+LN+N^2)+LN(L^2+LN+N^2)$\n$=KM(L^2+LN+N^2)+LN(K^2-KM+M^2)$\n$=KML^2+KMN^2+K^2LN+LM^2N$\n$=(KL+MN)(KN+LM)$\nThus, it follows that $(KM+LN) \\mid (KL+MN)(KN+LM).$  \nNow, since $KL+MN>KM+LN$ if $KL+MN$ is prime, then there are no common factors between the two.  So, in order to have $(KM+LN)\\mid (KL+MN)(KN+LM),$ we would have to have $(KM+LN) \\mid (KN+LM).$ This is impossible as $KM+LN>KN+LM$.  Thus, $KL+MN$ must be composite.\n *)\n\ntheorem\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\u00ac prime (K * L + M * N)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given four natural numbers $K, L, M,$ and $N$ such that $K > L > M > N$, and $K * M + L * N = (K + L - M + N) * (-K + L + M + N)$. Prove that the number $K * L + M * N$ is not prime.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9647189378738403,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem not_prime_KL_MN:\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"N > 0\"\nand h4 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not>prime (K * L + M * N)\"",
+        "formal solution": "(* ### Problem\n $K > L > M > N$ are positive integers such that $KM + LN = (K + L - M + N)(-K + L + M + N)$. Prove that $KL + MN$ is not prime.\n ### Proof\n First, $(KL+MN)-(KM+LN)=(K-N)(L-M)>0$ as $K>N$ and $L>M$.  Thus, $KL+MN>KM+LN$.  \n\nSimilarly, $(KM+LN)-(KN+LM)=(K-L)(M-N)>0$ since $K>L$ and $M>N$.  Thus, $KM+LN>KN+LM$.  \n\nPutting the two together, we have\n$KL+MN>KM+LN>KN+LM$\n\nNow, we have:\n$(K+L-M+N)(-K+L+M+N)=KM+LN$\n$-K^2+KM+L^2+LN+KM-M^2+LN+N^2=KM+LN$\n$L^2+LN+N^2=K^2-KM+M^2$\nSo, we have:\n$(KM+LN)(L^2+LN+N^2)=KM(L^2+LN+N^2)+LN(L^2+LN+N^2)$\n$=KM(L^2+LN+N^2)+LN(K^2-KM+M^2)$\n$=KML^2+KMN^2+K^2LN+LM^2N$\n$=(KL+MN)(KN+LM)$\nThus, it follows that $(KM+LN) \\mid (KL+MN)(KN+LM).$  \nNow, since $KL+MN>KM+LN$ if $KL+MN$ is prime, then there are no common factors between the two.  So, in order to have $(KM+LN)\\mid (KL+MN)(KN+LM),$ we would have to have $(KM+LN) \\mid (KN+LM).$ This is impossible as $KM+LN>KN+LM$.  Thus, $KL+MN$ must be composite.\n *)\n\ntheorem not_prime_KL_MN:\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"N > 0\"\nand h4 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not>prime (K * L + M * N)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $K$, $L$, $M$, and $N$ be natural numbers such that $K > L > M > N > 0$. Given that $K * M + L * N = (K + L - M + N) * (-K + L + M + N)$, show that the number $K * L + M * N$ is not prime.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8903842568397522,
+        "symbolic_score": 0.2
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not> prime (K * L + M * N)\"",
+        "formal solution": "(* ### Problem\n $K > L > M > N$ are positive integers such that $KM + LN = (K + L - M + N)(-K + L + M + N)$. Prove that $KL + MN$ is not prime.\n ### Proof\n First, $(KL+MN)-(KM+LN)=(K-N)(L-M)>0$ as $K>N$ and $L>M$.  Thus, $KL+MN>KM+LN$.  \n\nSimilarly, $(KM+LN)-(KN+LM)=(K-L)(M-N)>0$ since $K>L$ and $M>N$.  Thus, $KM+LN>KN+LM$.  \n\nPutting the two together, we have\n$KL+MN>KM+LN>KN+LM$\n\nNow, we have:\n$(K+L-M+N)(-K+L+M+N)=KM+LN$\n$-K^2+KM+L^2+LN+KM-M^2+LN+N^2=KM+LN$\n$L^2+LN+N^2=K^2-KM+M^2$\nSo, we have:\n$(KM+LN)(L^2+LN+N^2)=KM(L^2+LN+N^2)+LN(L^2+LN+N^2)$\n$=KM(L^2+LN+N^2)+LN(K^2-KM+M^2)$\n$=KML^2+KMN^2+K^2LN+LM^2N$\n$=(KL+MN)(KN+LM)$\nThus, it follows that $(KM+LN) \\mid (KL+MN)(KN+LM).$  \nNow, since $KL+MN>KM+LN$ if $KL+MN$ is prime, then there are no common factors between the two.  So, in order to have $(KM+LN)\\mid (KL+MN)(KN+LM),$ we would have to have $(KM+LN) \\mid (KN+LM).$ This is impossible as $KM+LN>KN+LM$.  Thus, $KL+MN$ must be composite.\n *)\n\ntheorem\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not> prime (K * L + M * N)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $K > L > M > N$ are natural numbers and $K * M + L * N = (K + L - M + N)(-K + L + M + N)$, prove that the expression $K * L + M * N$ is not a prime number.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9363536238670349,
+        "symbolic_score": 0.6
+    },
+    "a_7": {
+        "formal problem": "theorem not_prime_KL_MN:\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"N > 0\"\nand h4 : \"K * M + L * N = (K + L - M + N) * (- K + L + M + N)\"\nshows  \"\\<not> prime (K * L + M * N)\"",
+        "formal solution": "(* ### Problem\n $K > L > M > N$ are positive integers such that $KM + LN = (K + L - M + N)(-K + L + M + N)$. Prove that $KL + MN$ is not prime.\n ### Proof\n First, $(KL+MN)-(KM+LN)=(K-N)(L-M)>0$ as $K>N$ and $L>M$.  Thus, $KL+MN>KM+LN$.  \n\nSimilarly, $(KM+LN)-(KN+LM)=(K-L)(M-N)>0$ since $K>L$ and $M>N$.  Thus, $KM+LN>KN+LM$.  \n\nPutting the two together, we have\n$KL+MN>KM+LN>KN+LM$\n\nNow, we have:\n$(K+L-M+N)(-K+L+M+N)=KM+LN$\n$-K^2+KM+L^2+LN+KM-M^2+LN+N^2=KM+LN$\n$L^2+LN+N^2=K^2-KM+M^2$\nSo, we have:\n$(KM+LN)(L^2+LN+N^2)=KM(L^2+LN+N^2)+LN(L^2+LN+N^2)$\n$=KM(L^2+LN+N^2)+LN(K^2-KM+M^2)$\n$=KML^2+KMN^2+K^2LN+LM^2N$\n$=(KL+MN)(KN+LM)$\nThus, it follows that $(KM+LN) \\mid (KL+MN)(KN+LM).$  \nNow, since $KL+MN>KM+LN$ if $KL+MN$ is prime, then there are no common factors between the two.  So, in order to have $(KM+LN)\\mid (KL+MN)(KN+LM),$ we would have to have $(KM+LN) \\mid (KN+LM).$ This is impossible as $KM+LN>KN+LM$.  Thus, $KL+MN$ must be composite.\n *)\n\ntheorem not_prime_KL_MN:\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"N > 0\"\nand h4 : \"K * M + L * N = (K + L - M + N) * (- K + L + M + N)\"\nshows  \"\\<not> prime (K * L + M * N)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given four natural numbers $K$, $L$, $M$, and $N$ such that $K > L > M > N > 0$, and $K * M + L * N = (K + L - M + N) * (- K + L + M + N)$. Show that the number $(K * L + M * N)$ is not prime.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9633141756057739,
+        "symbolic_score": 0.2
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not> (prime (K * L + M * N))\"",
+        "formal solution": "(* ### Problem\n $K > L > M > N$ are positive integers such that $KM + LN = (K + L - M + N)(-K + L + M + N)$. Prove that $KL + MN$ is not prime.\n ### Proof\n First, $(KL+MN)-(KM+LN)=(K-N)(L-M)>0$ as $K>N$ and $L>M$.  Thus, $KL+MN>KM+LN$.  \n\nSimilarly, $(KM+LN)-(KN+LM)=(K-L)(M-N)>0$ since $K>L$ and $M>N$.  Thus, $KM+LN>KN+LM$.  \n\nPutting the two together, we have\n$KL+MN>KM+LN>KN+LM$\n\nNow, we have:\n$(K+L-M+N)(-K+L+M+N)=KM+LN$\n$-K^2+KM+L^2+LN+KM-M^2+LN+N^2=KM+LN$\n$L^2+LN+N^2=K^2-KM+M^2$\nSo, we have:\n$(KM+LN)(L^2+LN+N^2)=KM(L^2+LN+N^2)+LN(L^2+LN+N^2)$\n$=KM(L^2+LN+N^2)+LN(K^2-KM+M^2)$\n$=KML^2+KMN^2+K^2LN+LM^2N$\n$=(KL+MN)(KN+LM)$\nThus, it follows that $(KM+LN) \\mid (KL+MN)(KN+LM).$  \nNow, since $KL+MN>KM+LN$ if $KL+MN$ is prime, then there are no common factors between the two.  So, in order to have $(KM+LN)\\mid (KL+MN)(KN+LM),$ we would have to have $(KM+LN) \\mid (KN+LM).$ This is impossible as $KM+LN>KN+LM$.  Thus, $KL+MN$ must be composite.\n *)\n\ntheorem\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not> (prime (K * L + M * N))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given four natural numbers $K, L, M, N$ such that $K > L > M > N$, and the equation $K * M + L * N = (K + L - M + N)(-K + L + M + N)$. Prove that the number $(K * L + M * N)$ is not prime.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9735724329948425,
+        "symbolic_score": 0.6
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not>prime (K * L + M * N)\"",
+        "formal solution": "(* ### Problem\n $K > L > M > N$ are positive integers such that $KM + LN = (K + L - M + N)(-K + L + M + N)$. Prove that $KL + MN$ is not prime.\n ### Proof\n First, $(KL+MN)-(KM+LN)=(K-N)(L-M)>0$ as $K>N$ and $L>M$.  Thus, $KL+MN>KM+LN$.  \n\nSimilarly, $(KM+LN)-(KN+LM)=(K-L)(M-N)>0$ since $K>L$ and $M>N$.  Thus, $KM+LN>KN+LM$.  \n\nPutting the two together, we have\n$KL+MN>KM+LN>KN+LM$\n\nNow, we have:\n$(K+L-M+N)(-K+L+M+N)=KM+LN$\n$-K^2+KM+L^2+LN+KM-M^2+LN+N^2=KM+LN$\n$L^2+LN+N^2=K^2-KM+M^2$\nSo, we have:\n$(KM+LN)(L^2+LN+N^2)=KM(L^2+LN+N^2)+LN(L^2+LN+N^2)$\n$=KM(L^2+LN+N^2)+LN(K^2-KM+M^2)$\n$=KML^2+KMN^2+K^2LN+LM^2N$\n$=(KL+MN)(KN+LM)$\nThus, it follows that $(KM+LN) \\mid (KL+MN)(KN+LM).$  \nNow, since $KL+MN>KM+LN$ if $KL+MN$ is prime, then there are no common factors between the two.  So, in order to have $(KM+LN)\\mid (KL+MN)(KN+LM),$ we would have to have $(KM+LN) \\mid (KN+LM).$ This is impossible as $KM+LN>KN+LM$.  Thus, $KL+MN$ must be composite.\n *)\n\ntheorem\nfixes K L M N :: nat\nassumes h0 : \"K > L\"\nand h1 : \"L > M\"\nand h2 : \"M > N\"\nand h3 : \"K * M + L * N = (K + L - M + N) * (-K + L + M + N)\"\nshows  \"\\<not>prime (K * L + M * N)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given four natural numbers $K$, $L$, $M$, and $N$ such that $K > L > M > N$ and $K * M + L * N = (K + L - M + N) * (-K + L + M + N)$. Show that the number $K * L + M * N$ is not prime.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9614997506141663,
+        "symbolic_score": 0.6
+    },
+    "oracle": "theorem\nfixes a b c d ::nat\nassumes \"0 < a \\<and> 0 < b \\<and> 0 < c \\<and> 0 < d\"\nand \"d < c\"\nand \"c < b\"\nand \"b < a\"\nand \"a * c + b * d = (b + d + a - c) * (b + d + c - a)\"\nshows \"\\<not> prime (a * b + c * d)\"",
+    "prediction": {
+        "0": [
+            1,
+            2,
+            3,
+            6,
+            8,
+            9
+        ],
+        "1": [
+            5,
+            7
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            4
+        ]
+    }
+}

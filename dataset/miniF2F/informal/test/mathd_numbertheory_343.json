@@ -1,0 +1,628 @@
+{
+    "problem_name": "mathd_numbertheory_343",
+    "informal_statement": "What is the units digit of the product of all of the odd integers between 0 and 12? Show that it is 5.",
+    "informal_proof": "Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 0 = 1\"\nand h1 : \"\\<forall> n. n > 0 \\<and> odd n \\<and> n \\<le> 12 \\<longrightarrow> f n = n * f (n - 2)\"\nshows  \"f 11 mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 0 = 1\"\nand h1 : \"\\<forall> n. n > 0 \\<and> odd n \\<and> n \\<le> 12 \\<longrightarrow> f n = n * f (n - 2)\"\nshows  \"f 11 mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively for natural numbers as follows: $f(0) = 1$, and for any odd $n$ between $1$ and $12$, inclusive, $f(n) = n \\cdot f(n - 2)$. Find the last digit of $f(11)$. The final answer is $5$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9276348948478699,
+        "symbolic_score": 0.8
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"n \\<le> 12\"\nand h2 : \"odd n\"\nshows  \"digit (prod {k. odd k \\<and> k > 0 \\<and> k \\<le> 12}) 1 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"n \\<le> 12\"\nand h2 : \"odd n\"\nshows  \"digit (prod {k. odd k \\<and> k > 0 \\<and> k \\<le> 12}) 1 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit of the product of all odd positive integers less than or equal to 12. The final answer is 5.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8432284593582153,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes product :: \"nat\"\nassumes h0 : \"product = (\\<Prod> i \\<in> {i. i > 0 \\<and> i < 12 \\<and> odd i}. i)\"\nshows  \"product mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes product :: \"nat\"\nassumes h0 : \"product = (\\<Prod> i \\<in> {i. i > 0 \\<and> i < 12 \\<and> odd i}. i)\"\nshows  \"product mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all odd positive integers less than 12 and determine the last digit of the product. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.966216504573822,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes product :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. product n = (\\<Prod> i = 1..n. if odd i then i else 1)\"\nshows  \"product 12 mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes product :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. product n = (\\<Prod> i = 1..n. if odd i then i else 1)\"\nshows  \"product 12 mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit of the product of all odd numbers from 1 to 12. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8906456232070923,
+        "symbolic_score": 0.8
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes product_of_odds :: \"int \\<Rightarrow> int\"\nassumes h0 : \"product_of_odds 0 = 1\"\nand h1 : \"\\<forall>n. product_of_odds (n + 1) = (if odd n then product_of_odds n * (n + 1) else product_of_odds n)\"\nand h2 : \"product_of_odds 12 = 5\"\nshows  \"product_of_odds 12 mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes product_of_odds :: \"int \\<Rightarrow> int\"\nassumes h0 : \"product_of_odds 0 = 1\"\nand h1 : \"\\<forall>n. product_of_odds (n + 1) = (if odd n then product_of_odds n * (n + 1) else product_of_odds n)\"\nand h2 : \"product_of_odds 12 = 5\"\nshows  \"product_of_odds 12 mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function called \"product_of_odds\" which calculates the product of odd numbers up to a given integer n. The function is defined as follows: \n\n1. If n = 0, product_of_odds(n) = 1.\n2. If n is an odd number, product_of_odds(n + 1) = product_of_odds(n) * (n + 1).\n3. If n is an even number, product_of_odds(n + 1) = product_of_odds(n).\n\nGiven that product_of_odds(12) = 5, find the remainder when product_of_odds(12) is divided by 10. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9722525477409363,
+        "symbolic_score": 0.8
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes units_digit :: nat\nassumes h0 : \"units_digit = (\\<Prod>x \\<in> {1, 3, 5, 7, 9, 11}. x) mod 10\"\nshows  \"units_digit = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes units_digit :: nat\nassumes h0 : \"units_digit = (\\<Prod>x \\<in> {1, 3, 5, 7, 9, 11}. x) mod 10\"\nshows  \"units_digit = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the units digit of the product of the numbers 1, 3, 5, 7, 9, and 11. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.6581920981407166,
+        "symbolic_score": 0.8
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes product :: \"int \\<Rightarrow> int\"\nassumes h0 : \"product 0 = 1\"\nand h1 : \"\\<forall> n. 1 \\<le> n \\<and> n \\<le> 12 \\<and> odd n \\<longrightarrow> product n = product (n - 2) * n\"\nand h2 : \"\\<forall> n. n > 12 \\<or> even n \\<longrightarrow> product n = product (n - 1)\"\nshows  \"product 12 mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes product :: \"int \\<Rightarrow> int\"\nassumes h0 : \"product 0 = 1\"\nand h1 : \"\\<forall> n. 1 \\<le> n \\<and> n \\<le> 12 \\<and> odd n \\<longrightarrow> product n = product (n - 2) * n\"\nand h2 : \"\\<forall> n. n > 12 \\<or> even n \\<longrightarrow> product n = product (n - 1)\"\nshows  \"product 12 mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A product function is defined recursively as follows: \n- $product(0) = 1$\n- For odd integers $n$ between 1 and 12, inclusive, $product(n) = product(n-2) \\cdot n$\n- For all other integers $n$ (those greater than 12 or even), $product(n) = product(n-1)$\n\nFind the last digit (ones place) of $product(12)$. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9794641733169556,
+        "symbolic_score": 0.8
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and prod :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. prod n = (\\<Prod> k \\<in> {k. k \\<in> {1..n} \\<and> odd k}. k)\"\nshows  \"prod 12 mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes n :: nat and prod :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. prod n = (\\<Prod> k \\<in> {k. k \\<in> {1..n} \\<and> odd k}. k)\"\nshows  \"prod 12 mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all odd numbers from 1 to 12, and then calculate the remainder when this product is divided by 10. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.98560631275177,
+        "symbolic_score": 0.8
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes product :: nat\nassumes h0 : \"product = (\\<Prod>x \\<in> {1..12}. if x mod 2 = 1 then x else 1)\"\nshows  \"product mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes product :: nat\nassumes h0 : \"product = (\\<Prod>x \\<in> {1..12}. if x mod 2 = 1 then x else 1)\"\nshows  \"product mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all odd numbers between 1 and 12, inclusive. What is the remainder when this product is divided by 10? The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9928457140922546,
+        "symbolic_score": 0.8
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes units_digit :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. units_digit n = n mod 10\"\nand h1 : \"\\<forall>n. n \\<ge> 0 \\<longrightarrow> units_digit (n * 2 + 1) = (n * 2 + 1) mod 10\"\nshows  \"units_digit (1 * 3 * 5 * 7 * 9 * 11) = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes units_digit :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. units_digit n = n mod 10\"\nand h1 : \"\\<forall>n. n \\<ge> 0 \\<longrightarrow> units_digit (n * 2 + 1) = (n * 2 + 1) mod 10\"\nshows  \"units_digit (1 * 3 * 5 * 7 * 9 * 11) = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the units digit of the product of the first six odd positive integers (i.e., $1\\times3\\times5\\times7\\times9\\times11$). The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.6686860918998718,
+        "symbolic_score": 0.8
+    },
+    "oracle": "theorem\nshows  \"(\\<Prod> k < 6. (2 * k + 1)) mod 10 = (5::nat)\"",
+    "prediction": {
+        "0": [
+            0,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ]
+    },
+    "equivalence_oracle": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+    ],
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\n  fixes prod_odd :: nat\n  assumes h0 : \"prod_odd = prod {n::nat. odd n \\<and> n \\<le> 12}\"\nshows  \"prod_odd mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\n  fixes prod_odd :: nat\n  assumes h0 : \"prod_odd = prod {n::nat. odd n \\<and> n \\<le> 12}\"\nshows  \"prod_odd mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the last digit of the product of all odd numbers from $1$ to $12$? The final answer is $5$.",
+        "semantic_score": 0.970356567766311,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes prod :: nat\nassumes h0 : \"prod = (\\<Prod>i \\<in> {1, 3, 5, 7, 9, 11} . i)\"\nshows  \"prod mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes prod :: nat\nassumes h0 : \"prod = (\\<Prod>i \\<in> {1, 3, 5, 7, 9, 11} . i)\"\nshows  \"prod mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the units digit of the product of the odd integers from 1 to 11 inclusive? The final answer is 5.",
+        "semantic_score": 0.9950815615665533,
+        "symbolic_score": 0.4,
+        "naive_label": 1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes prod :: int\nassumes h0 : \"prod = (prod_list [1, 3, 5, 7, 9, 11]) mod 10\"\nshows  \"prod = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes prod :: int\nassumes h0 : \"prod = (prod_list [1, 3, 5, 7, 9, 11]) mod 10\"\nshows  \"prod = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of the integers $1$, $3$, $5$, $7$, $9$, and $11$, and then find the remainder when the product is divided by $10$. The final answer is $5$.",
+        "semantic_score": 0.7737348267828912,
+        "symbolic_score": 0.1,
+        "naive_label": 1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes p :: nat\nassumes h0 : \"p = prod_list [x\\<leftarrow>[1,3,5,7,9,11]. True] mod 10\"\nshows  \"p = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes p :: nat\nassumes h0 : \"p = prod_list [x\\<leftarrow>[1,3,5,7,9,11]. True] mod 10\"\nshows  \"p = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the last digit of the product of the odd integers from $1$ to $11$ inclusive? The final answer is $5$.",
+        "semantic_score": 0.971780497903672,
+        "symbolic_score": 0.4,
+        "naive_label": 1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes product :: int\nassumes h0 : \"product = (prod odd {0..12})\"\nshows  \"product mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes product :: int\nassumes h0 : \"product = (prod odd {0..12})\"\nshows  \"product mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all odd integers from $1$ to $12$, and then compute the remainder when the product is divided by $10$. The final remainder is $5$.",
+        "semantic_score": 0.8946813384908353,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes s :: nat\nassumes h0 : \"s = prod_list (filter odd [1, 3, 5, 7, 9, 11]) mod 10\"\nshows  \"s = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes s :: nat\nassumes h0 : \"s = prod_list (filter odd [1, 3, 5, 7, 9, 11]) mod 10\"\nshows  \"s = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the units digit of the product of all odd integers between 1 and 11 inclusive? The final answer is 5.",
+        "semantic_score": 0.9955562536379949,
+        "symbolic_score": 0.4,
+        "naive_label": 1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes s :: nat\nassumes h0 : \"s = prod_list [1, 3, 5, 7, 9, 11]\"\nshows  \"s mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes s :: nat\nassumes h0 : \"s = prod_list [1, 3, 5, 7, 9, 11]\"\nshows  \"s mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the remainder when the product of the list of the first six odd numbers is divided by $10$. The final answer is $5$.",
+        "semantic_score": 0.6398440083262986,
+        "symbolic_score": 0.4,
+        "naive_label": 1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\ndefines A :: \"nat set\"\nassumes h0 : \"A = {n. n \\<in> {1, 3, 5, 7, 9, 11} }\"\nshows  \"(\\<Prod>n \\<in> A. n) mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\ndefines A :: \"nat set\"\nassumes h0 : \"A = {n. n \\<in> {1, 3, 5, 7, 9, 11} }\"\nshows  \"(\\<Prod>n \\<in> A. n) mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Compute the product of all the odd numbers between 1 and 11 inclusive, and find the remainder when this product is divided by 10. The final answer is 5.",
+        "semantic_score": 0.9181134419488274,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nlet ?s = \"{n::nat. n > 0 \\<and> odd n \\<and> n \\<le> 12}\"\nlet ?p = \"prod id ?s\"\nshows  \"?p mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nlet ?s = \"{n::nat. n > 0 \\<and> odd n \\<and> n \\<le> 12}\"\nlet ?p = \"prod id ?s\"\nshows  \"?p mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Calculate the product of all odd, positive integers less than or equal to 12. What is the last digit of the result? The final answer is 5.\"",
+        "semantic_score": 0.6674708886565797,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes x :: nat\nassumes h0 : \"x = prod {n \\<in> {1..12}. odd n}\"\nshows  \"x mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes x :: nat\nassumes h0 : \"x = prod {n \\<in> {1..12}. odd n}\"\nshows  \"x mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the units digit of the product of all odd integers from $1$ to $12$ inclusive?",
+        "semantic_score": 0.945037608950742,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            1,
+            3,
+            5,
+            6
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            7
+        ],
+        "5": [
+            8
+        ],
+        "6": [
+            9
+        ]
+    },
+    "equivalence_oracle_gpt3.5": [
+        1,
+        3,
+        5,
+        6
+    ],
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes i :: \"int\" and prod :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> i. i.is\\_odd \\<Longrightarrow> i \\<in> [0..12] \\<Longrightarrow> prod i \\<is\\_mult> 0\"\nand h1 : \"prod 0 = 1\"\nand h2 : \"\\<forall> i. i.is\\_odd \\<Longrightarrow> i \\<in> [0..12] \\<Longrightarrow> prod i = 2 * prod (Suc i)\"\nshows  \"last\\_digit (prod (Suc 0)) = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes i :: \"int\" and prod :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> i. i.is\\_odd \\<Longrightarrow> i \\<in> [0..12] \\<Longrightarrow> prod i \\<is\\_mult> 0\"\nand h1 : \"prod 0 = 1\"\nand h2 : \"\\<forall> i. i.is\\_odd \\<Longrightarrow> i \\<in> [0..12] \\<Longrightarrow> prod i = 2 * prod (Suc i)\"\nshows  \"last\\_digit (prod (Suc 0)) = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the last digit of the product of the sequence of numbers starting with 0, whose terms are odd numbers between 0 and 13, and the first term is 1, and each term is the product of the previous term and 2? The final answer is 5."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem\nfixes i :: \"int\" and sum :: \"real\"\nassumes h0 : \"\\<forall> i. i = 2 * i + 1 \\<Longrightarrow> 0 <= i \\<and> i <= 12\"\nand h1 : \"sum = \\<sum> i. if i = 0 then 1 else if i = 1 then 1 else if i = 3 then 1 else if i = 5 then 1 else if i = 7 then 1 else if i = 9 then 1 else 0\"\nshows  \"digit_at (sum) (10) = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes i :: \"int\" and sum :: \"real\"\nassumes h0 : \"\\<forall> i. i = 2 * i + 1 \\<Longrightarrow> 0 <= i \\<and> i <= 12\"\nand h1 : \"sum = \\<sum> i. if i = 0 then 1 else if i = 1 then 1 else if i = 3 then 1 else if i = 5 then 1 else if i = 7 then 1 else if i = 9 then 1 else 0\"\nshows  \"digit_at (sum) (10) = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the sequence of numbers starting from 1, where the sequence only includes terms that satisfy the condition $i = 2n + 1$ for some integer $n$, and check if the digit in the 11th place of this sum is equal to 5. The final answer is 'yes' if the condition is met, and 'no' otherwise."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes i :: \"int\" and sum :: \"real\"\nassumes h0 : \"\\<forall> i. i.is\\_odd \\<longrightarrow> i \\<in> [0..12]\"\nand h1 : \"i.is\\_odd \\<longrightarrow> 1 + 2 * i = 2 * (i + 1) \\<or> i = 0\"\nand h2 : \"\\<forall> n. n = 1 \\<longrightarrow> 1 = 1\"\nand h3 : \"\\<forall> n m. n = m \\<longrightarrow> 1 = 1\"\nand h4 : \"\\<forall> n. n.is\\_odd \\<longrightarrow> n \\<notequal> 0\"\nand h5 : \"\\<forall> n m. n.is\\_odd \\<and> m.is\\_odd \\<longrightarrow> (n + 1) * (m + 1) = (n * m + n + m) \\<and> (n + 1).is\\_odd\"\nand h6 : \"sum = (\\<Sum> i. if i.is\\_odd then i else 0)\"\nand h7 : \"11 = 11\"\nand h8 : \"\\<forall> n. n \\<in> [0..12] \\<longrightarrow> n.is\\_odd \\<or> (n = 0)\"\nshows  \"1 + sum = 5 * 10 + 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes i :: \"int\" and sum :: \"real\"\nassumes h0 : \"\\<forall> i. i.is\\_odd \\<longrightarrow> i \\<in> [0..12]\"\nand h1 : \"i.is\\_odd \\<longrightarrow> 1 + 2 * i = 2 * (i + 1) \\<or> i = 0\"\nand h2 : \"\\<forall> n. n = 1 \\<longrightarrow> 1 = 1\"\nand h3 : \"\\<forall> n m. n = m \\<longrightarrow> 1 = 1\"\nand h4 : \"\\<forall> n. n.is\\_odd \\<longrightarrow> n \\<notequal> 0\"\nand h5 : \"\\<forall> n m. n.is\\_odd \\<and> m.is\\_odd \\<longrightarrow> (n + 1) * (m + 1) = (n * m + n + m) \\<and> (n + 1).is\\_odd\"\nand h6 : \"sum = (\\<Sum> i. if i.is\\_odd then i else 0)\"\nand h7 : \"11 = 11\"\nand h8 : \"\\<forall> n. n \\<in> [0..12] \\<longrightarrow> n.is\\_odd \\<or> (n = 0)\"\nshows  \"1 + sum = 5 * 10 + 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all odd numbers between 0 and 12 (inclusive). The final answer is $1+$ the sum $=$ $5\\times10+5$."
+    },
+    "a_3_mistral": {
+        "formal problem": "theorem\nfixes n i :: \"nat\" and sum \"::\" \"nat \\<list> \\<Rightarrow> nat\" and prod \"::\" \"nat \\<list> \\<Rightarrow> nat\"\nassumes h0 : \"0 < n\"\nand h1 : \"\\<forall> i. 0 < i \\<longrightarrow> i mod 2 <> 0 \\<longrightarrow> i \\<isin> [0..n]\"\nand h2 : \"\\<forall> i. 0 < i \\<longrightarrow> i \\<isin> [0..n] \\<longrightarrow> i * (sum [0..n]) mod 10 = i\"\nshows  \"prod [0..n] mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes n i :: \"nat\" and sum \"::\" \"nat \\<list> \\<Rightarrow> nat\" and prod \"::\" \"nat \\<list> \\<Rightarrow> nat\"\nassumes h0 : \"0 < n\"\nand h1 : \"\\<forall> i. 0 < i \\<longrightarrow> i mod 2 <> 0 \\<longrightarrow> i \\<isin> [0..n]\"\nand h2 : \"\\<forall> i. 0 < i \\<longrightarrow> i \\<isin> [0..n] \\<longrightarrow> i * (sum [0..n]) mod 10 = i\"\nshows  \"prod [0..n] mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Find the remainder when the product of all integers from 0 to n (inclusive) is divided by 10. The final answer is 5.\""
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes i j :: nat\nassumes h0 : \"0 < i <= 12\"\nand h1 : \"i mod 2 <> 0\"\nand h2 : \"k : nat => (k < i -> (k * (sum (i32.iter (n) 0 (pred i) (2 * n + 1)))))\"\nand h3 : \"units_digit (sum (i32.iter (n) 0 (pred i) (2 * n + 1))) = 5\"\nshows  \"true\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes i j :: nat\nassumes h0 : \"0 < i <= 12\"\nand h1 : \"i mod 2 <> 0\"\nand h2 : \"k : nat => (k < i -> (k * (sum (i32.iter (n) 0 (pred i) (2 * n + 1)))))\"\nand h3 : \"units_digit (sum (i32.iter (n) 0 (pred i) (2 * n + 1))) = 5\"\nshows  \"true\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a value for $i$ (where $0 < i \\leq 12$ and $i$ is odd) such that the sum of the sequence $1^2 +3^2+...+(2i-1)^2$ has a digit of $5$ in its units place.\n\n(Note: In the Isabelle version, `i32` refers to the type of 32-bit integers, and `sum (i32.iter (n) 0 (pred i) (2 * n + 1))` refers to the sum of the sequence, and `units_digit` refers to the units digit of a number.)\n\nThe final Answer is not given in the Isabelle version. However, it is stated that this sum has a digit of $5$ in its units place."
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes i :: \"int\" and p :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> i. i.is\\_odd \\<Longrightarrow> i \\<in> [0..12]\"\nand h1 : \"i.is\\_odd \\<Longrightarrow> i = 2 * j + 1\"\nand h2 : \"j \\<in> [0..6]\"\nand h3 : \"p i = i\"\nshows  \"last\\_digit (prod i. p i) = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes i :: \"int\" and p :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> i. i.is\\_odd \\<Longrightarrow> i \\<in> [0..12]\"\nand h1 : \"i.is\\_odd \\<Longrightarrow> i = 2 * j + 1\"\nand h2 : \"j \\<in> [0..6]\"\nand h3 : \"p i = i\"\nshows  \"last\\_digit (prod i. p i) = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit of the product of integers $i$, where $i$ is an odd number in the range of 0 to 12, and the product is calculated using the function $p(i) = i$. The final answer is 5."
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nfixes i j :: \"int\" and sum \"real\"\nassumes h0 : \"0 <= i <= 12\"\nand h1 : \"i mod 2 <> 0\"\nand h2 : \"sum = 1 + sum (i+1)\"\nand h3 : \"n = (2*sum - 1)\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes i j :: \"int\" and sum \"real\"\nassumes h0 : \"0 <= i <= 12\"\nand h1 : \"i mod 2 <> 0\"\nand h2 : \"sum = 1 + sum (i+1)\"\nand h3 : \"n = (2*sum - 1)\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Find the value of $n$ such that $n$ is the result of adding $1$ to a sum that starts at $1$ and increments every time the index $i$ is odd and less than or equal to $12$. The final answer is a number with a remainder of $5$ when divided by $10$. \"\n\nOr,\n\n\"Given a sum that starts at $1$ and increases by $1$ every time the index $i$ is odd and less than or equal to $12$. Find the value of $n$ which leaves a remainder of $5$ when divided by $10$.\""
+    },
+    "a_7_mistral": {
+        "formal problem": "theorem\nfixes i j :: \"int\" and sum \":: \"int list\"\nassumes h0 : \"\\<forall>i. 0 < i \\<= 11 \\<longrightarrow> i mod 2 <> 0 \\<longrightarrow> i * (sum [i..1..11]) = \\<sum> j. 0 <= j <= 11. if i mod 2 <> 0 then i * j else 0\"\nand h1 : \"\\<exists>r. prod = 10 \\* r\"\nshows  \"r mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes i j :: \"int\" and sum \":: \"int list\"\nassumes h0 : \"\\<forall>i. 0 < i \\<= 11 \\<longrightarrow> i mod 2 <> 0 \\<longrightarrow> i * (sum [i..1..11]) = \\<sum> j. 0 <= j <= 11. if i mod 2 <> 0 then i * j else 0\"\nand h1 : \"\\<exists>r. prod = 10 \\* r\"\nshows  \"r mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the sum of the products of an integer $i$ and the sum of the first 12 integers is equal to the product of $i$ and another integer $r$, if $i$ is odd, find the remainder when $r$ is divided by 10. The final answer is 5.\n\nIn other words, find $r$ such that $10 \\times r = \\sum\\_{i=1}^{12} i \\times i$, and when $r$ is divided by 10, the remainder is 5."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes i :: \"int\" and sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. 0 <= n \\<and> n mod 2 = 1 \\<Longrightarrow> sum n = sum (n - 1) + n\"\nand h1 : \"sum 0 = 0\"\nand h2 : \"sum 12 mod 10 = 5\"\nshows  \"true\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes i :: \"int\" and sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. 0 <= n \\<and> n mod 2 = 1 \\<Longrightarrow> sum n = sum (n - 1) + n\"\nand h1 : \"sum 0 = 0\"\nand h2 : \"sum 12 mod 10 = 5\"\nshows  \"true\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"For each positive odd integer $n$, the sum of the first $n$ positive integers is the sum of the previous integer and $n$. The sum of the first 0 integers is 0. The sum of the first 12 integers leaves a remainder of 5 when divided by 10. Therefore, the statement is true.\"\n\nOr:\n\n\"The sum of the first $n$ odd positive integers can be calculated as the sum of the previous integer and $n$. The sum of the first 0 integers is 0. The sum of the first 12 integers leaves a remainder of 5 when divided by 10. Consequently, the statement is true.\""
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes n i :: \"int\" and sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"0 <= i\"\nand h1 : \"i <= 12\"\nand h2 : \"i mod 2 <> 0\"\nand h3 : \"sum i = (\\<SUM> j from 1 to i. if j mod 2 <> 0 then j else 0)\"\nshows  \"digit (last (digits (sum 12))) = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes n i :: \"int\" and sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"0 <= i\"\nand h1 : \"i <= 12\"\nand h2 : \"i mod 2 <> 0\"\nand h3 : \"sum i = (\\<SUM> j from 1 to i. if j mod 2 <> 0 then j else 0)\"\nshows  \"digit (last (digits (sum 12))) = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Find the last digit of the sum of numbers from 1 to 12, where the sum only includes odd numbers. The final answer is 5.\""
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i <- [1,3..11]. i)\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i <- [1,3..11]. i)\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the product of all odd numbers from 1 to 11 (inclusive) in steps of 2 (i.e., 1, 3, 5, 7, 9, and 11). The goal is to show that the last digit of this product, when divided by 10, is equal to 5."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the product of the numbers 1, 3, 5, 7, 9, and 11. We need to find the remainder when n is divided by 10. The theorem claims that the remainder will be 5."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes odd_ints :: \"nat list\"\ndefines \"odd_ints \\<equiv> [1, 3, 5, 7, 9, 11]\"\nand h0 : \"units_digit (foldr (*) 1 odd_ints) = 5\"\nshows  \"units_digit (foldr (*) 1 odd_ints) = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes odd_ints :: \"nat list\"\ndefines \"odd_ints \\<equiv> [1, 3, 5, 7, 9, 11]\"\nand h0 : \"units_digit (foldr (*) 1 odd_ints) = 5\"\nshows  \"units_digit (foldr (*) 1 odd_ints) = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a list of odd integers, defined as [1, 3, 5, 7, 9, 11]. The task is to find the units digit of the product of all the numbers in this list when multiplied together, starting from the first number and moving to the right. The result is given as 5. The goal is to verify that the units digit of the product is indeed 5."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> i. i \\<in> {1..11} \\<and> i mod 2 = 1 \\<longrightarrow> n = n * i\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> i. i \\<in> {1..11} \\<and> i mod 2 = 1 \\<longrightarrow> n = n * i\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number n, if n is multiplied by every odd number from 1 to 11 (inclusive), what is the remainder when n is divided by 10? The final answer is 5."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> i \\<in> {1, 3, 5, 7, 9, 11}. n = n * i\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> i \\<in> {1, 3, 5, 7, 9, 11}. n = n * i\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider a natural number n such that when multiplied by any of the numbers in the set {1, 3, 5, 7, 9, 11}, the result is still n. Prove that the remainder when n is divided by 10 is equal to 5."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> i \\<in> {1, 3, 5, 7, 9, 11}. n = i\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> i \\<in> {1, 3, 5, 7, 9, 11}. n = i\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider a natural number n that is equal to one of the numbers in the set {1, 3, 5, 7, 9, 11}. Prove that the remainder when n is divided by 10 is equal to 5."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the product of the numbers 1, 3, 5, 7, 9, and 11. We need to find the remainder when n is divided by 10. The theorem asserts that the remainder will be 5."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the product of the numbers 1, 3, 5, 7, 9, and 11. We are asked to find the remainder when n is divided by 10. The solution is that the remainder is 5."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"\\<forall>x. x \\<in> {1, 3, 5, 7, 9, 11} \\<longrightarrow> n = n * x mod 10\"\nshows  \"n = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"\\<forall>x. x \\<in> {1, 3, 5, 7, 9, 11} \\<longrightarrow> n = n * x mod 10\"\nshows  \"n = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n such that when it is multiplied by any number in the set {1, 3, 5, 7, 9, 11} and the result is divided by 10, the remainder is always equal to n itself. The theorem claims that the value of n that satisfies this condition is 5."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider a natural number n that is the product of the numbers 1, 3, 5, 7, 9, and 11. Prove that the remainder when n is divided by 10 is equal to 5."
+    },
+    "prediction_deepseek": {
+        "0": [
+            1,
+            9,
+            6,
+            7
+        ],
+        "1": [
+            3,
+            4
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            8
+        ]
+    },
+    "equivalence_oracle_deepseek": [
+        3,
+        4
+    ],
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 0 = 1\"\nand h1 : \"\\<forall> n. n > 0 \\<and> odd n \\<and> n \\<le> 12 \\<longrightarrow> f n = n * f (n - 2)\"\nshows  \"f 11 mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 0 = 1\"\nand h1 : \"\\<forall> n. n > 0 \\<and> odd n \\<and> n \\<le> 12 \\<longrightarrow> f n = n * f (n - 2)\"\nshows  \"f 11 mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively for natural numbers as follows: $f(0) = 1$, and for any odd $n$ between $1$ and $12$, inclusive, $f(n) = n \\cdot f(n - 2)$. Find the last digit of $f(11)$. The final answer is $5$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8161134940514918,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"n \\<le> 12\"\nand h2 : \"odd n\"\nshows  \"digit (prod {k. odd k \\<and> k > 0 \\<and> k \\<le> 12}) 1 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"n \\<le> 12\"\nand h2 : \"odd n\"\nshows  \"digit (prod {k. odd k \\<and> k > 0 \\<and> k \\<le> 12}) 1 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit of the product of all odd positive integers less than or equal to 12. The final answer is 5.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9344997373679578,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes product :: \"nat\"\nassumes h0 : \"product = (\\<Prod> i \\<in> {i. i > 0 \\<and> i < 12 \\<and> odd i}. i)\"\nshows  \"product mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes product :: \"nat\"\nassumes h0 : \"product = (\\<Prod> i \\<in> {i. i > 0 \\<and> i < 12 \\<and> odd i}. i)\"\nshows  \"product mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all odd positive integers less than 12 and determine the last digit of the product. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9206851544701523,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes product :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. product n = (\\<Prod> i = 1..n. if odd i then i else 1)\"\nshows  \"product 12 mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes product :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. product n = (\\<Prod> i = 1..n. if odd i then i else 1)\"\nshows  \"product 12 mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the last digit of the product of all odd numbers from 1 to 12. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9269726831834646,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes product_of_odds :: \"int \\<Rightarrow> int\"\nassumes h0 : \"product_of_odds 0 = 1\"\nand h1 : \"\\<forall>n. product_of_odds (n + 1) = (if odd n then product_of_odds n * (n + 1) else product_of_odds n)\"\nand h2 : \"product_of_odds 12 = 5\"\nshows  \"product_of_odds 12 mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes product_of_odds :: \"int \\<Rightarrow> int\"\nassumes h0 : \"product_of_odds 0 = 1\"\nand h1 : \"\\<forall>n. product_of_odds (n + 1) = (if odd n then product_of_odds n * (n + 1) else product_of_odds n)\"\nand h2 : \"product_of_odds 12 = 5\"\nshows  \"product_of_odds 12 mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function called \"product_of_odds\" which calculates the product of odd numbers up to a given integer n. The function is defined as follows: \n\n1. If n = 0, product_of_odds(n) = 1.\n2. If n is an odd number, product_of_odds(n + 1) = product_of_odds(n) * (n + 1).\n3. If n is an even number, product_of_odds(n + 1) = product_of_odds(n).\n\nGiven that product_of_odds(12) = 5, find the remainder when product_of_odds(12) is divided by 10. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.7807202645773547,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes units_digit :: nat\nassumes h0 : \"units_digit = (\\<Prod>x \\<in> {1, 3, 5, 7, 9, 11}. x) mod 10\"\nshows  \"units_digit = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes units_digit :: nat\nassumes h0 : \"units_digit = (\\<Prod>x \\<in> {1, 3, 5, 7, 9, 11}. x) mod 10\"\nshows  \"units_digit = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the units digit of the product of the numbers 1, 3, 5, 7, 9, and 11. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8952365308748098,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes product :: \"int \\<Rightarrow> int\"\nassumes h0 : \"product 0 = 1\"\nand h1 : \"\\<forall> n. 1 \\<le> n \\<and> n \\<le> 12 \\<and> odd n \\<longrightarrow> product n = product (n - 2) * n\"\nand h2 : \"\\<forall> n. n > 12 \\<or> even n \\<longrightarrow> product n = product (n - 1)\"\nshows  \"product 12 mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes product :: \"int \\<Rightarrow> int\"\nassumes h0 : \"product 0 = 1\"\nand h1 : \"\\<forall> n. 1 \\<le> n \\<and> n \\<le> 12 \\<and> odd n \\<longrightarrow> product n = product (n - 2) * n\"\nand h2 : \"\\<forall> n. n > 12 \\<or> even n \\<longrightarrow> product n = product (n - 1)\"\nshows  \"product 12 mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A product function is defined recursively as follows: \n- $product(0) = 1$\n- For odd integers $n$ between 1 and 12, inclusive, $product(n) = product(n-2) \\cdot n$\n- For all other integers $n$ (those greater than 12 or even), $product(n) = product(n-1)$\n\nFind the last digit (ones place) of $product(12)$. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8685806650844838,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and prod :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. prod n = (\\<Prod> k \\<in> {k. k \\<in> {1..n} \\<and> odd k}. k)\"\nshows  \"prod 12 mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes n :: nat and prod :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. prod n = (\\<Prod> k \\<in> {k. k \\<in> {1..n} \\<and> odd k}. k)\"\nshows  \"prod 12 mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all odd numbers from 1 to 12, and then calculate the remainder when this product is divided by 10. The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8712994575205183,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes product :: nat\nassumes h0 : \"product = (\\<Prod>x \\<in> {1..12}. if x mod 2 = 1 then x else 1)\"\nshows  \"product mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes product :: nat\nassumes h0 : \"product = (\\<Prod>x \\<in> {1..12}. if x mod 2 = 1 then x else 1)\"\nshows  \"product mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all odd numbers between 1 and 12, inclusive. What is the remainder when this product is divided by 10? The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8962054158819484,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes units_digit :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. units_digit n = n mod 10\"\nand h1 : \"\\<forall>n. n \\<ge> 0 \\<longrightarrow> units_digit (n * 2 + 1) = (n * 2 + 1) mod 10\"\nshows  \"units_digit (1 * 3 * 5 * 7 * 9 * 11) = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\ntheorem\nfixes units_digit :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. units_digit n = n mod 10\"\nand h1 : \"\\<forall>n. n \\<ge> 0 \\<longrightarrow> units_digit (n * 2 + 1) = (n * 2 + 1) mod 10\"\nshows  \"units_digit (1 * 3 * 5 * 7 * 9 * 11) = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the units digit of the product of the first six odd positive integers (i.e., $1\\times3\\times5\\times7\\times9\\times11$). The final answer is 5.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9139726729060362,
+        "symbolic_score": 0.1
+    },
+    "equivalence_oracle_solve_direct": [
+        0,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+    ],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i <- [1,3..11]. i)\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i <- [1,3..11]. i)\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the product of all odd numbers from 1 to 11 (inclusive) in steps of 2 (i.e., 1, 3, 5, 7, 9, and 11). The goal is to show that the last digit of this product, when divided by 10, is equal to 5.",
+        "semantic_score": 0.7896949073128297,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the product of the numbers 1, 3, 5, 7, 9, and 11. We need to find the remainder when n is divided by 10. The theorem claims that the remainder will be 5.",
+        "semantic_score": 0.7075139790998396,
+        "symbolic_score": 0.4
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes odd_ints :: \"nat list\"\ndefines \"odd_ints \\<equiv> [1, 3, 5, 7, 9, 11]\"\nand h0 : \"units_digit (foldr (*) 1 odd_ints) = 5\"\nshows  \"units_digit (foldr (*) 1 odd_ints) = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes odd_ints :: \"nat list\"\ndefines \"odd_ints \\<equiv> [1, 3, 5, 7, 9, 11]\"\nand h0 : \"units_digit (foldr (*) 1 odd_ints) = 5\"\nshows  \"units_digit (foldr (*) 1 odd_ints) = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a list of odd integers, defined as [1, 3, 5, 7, 9, 11]. The task is to find the units digit of the product of all the numbers in this list when multiplied together, starting from the first number and moving to the right. The result is given as 5. The goal is to verify that the units digit of the product is indeed 5.",
+        "semantic_score": 0.8063346366166105,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> i. i \\<in> {1..11} \\<and> i mod 2 = 1 \\<longrightarrow> n = n * i\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> i. i \\<in> {1..11} \\<and> i mod 2 = 1 \\<longrightarrow> n = n * i\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number n, if n is multiplied by every odd number from 1 to 11 (inclusive), what is the remainder when n is divided by 10? The final answer is 5.",
+        "semantic_score": 0.8357943264155027,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> i \\<in> {1, 3, 5, 7, 9, 11}. n = n * i\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> i \\<in> {1, 3, 5, 7, 9, 11}. n = n * i\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider a natural number n such that when multiplied by any of the numbers in the set {1, 3, 5, 7, 9, 11}, the result is still n. Prove that the remainder when n is divided by 10 is equal to 5.",
+        "semantic_score": 0.7452660486143459,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> i \\<in> {1, 3, 5, 7, 9, 11}. n = i\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> i \\<in> {1, 3, 5, 7, 9, 11}. n = i\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider a natural number n that is equal to one of the numbers in the set {1, 3, 5, 7, 9, 11}. Prove that the remainder when n is divided by 10 is equal to 5.",
+        "semantic_score": 0.7423271325471242,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the product of the numbers 1, 3, 5, 7, 9, and 11. We need to find the remainder when n is divided by 10. The theorem asserts that the remainder will be 5.",
+        "semantic_score": 0.7011936281688115,
+        "symbolic_score": 0.4
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n, which is the product of the numbers 1, 3, 5, 7, 9, and 11. We are asked to find the remainder when n is divided by 10. The solution is that the remainder is 5.",
+        "semantic_score": 0.7404834523819255,
+        "symbolic_score": 0.4
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"\\<forall>x. x \\<in> {1, 3, 5, 7, 9, 11} \\<longrightarrow> n = n * x mod 10\"\nshows  \"n = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"\\<forall>x. x \\<in> {1, 3, 5, 7, 9, 11} \\<longrightarrow> n = n * x mod 10\"\nshows  \"n = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that there is a natural number n such that when it is multiplied by any number in the set {1, 3, 5, 7, 9, 11} and the result is divided by 10, the remainder is always equal to n itself. The theorem claims that the value of n that satisfies this condition is 5.",
+        "semantic_score": 0.6751612918912385,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"",
+        "formal solution": "(* ### Problem\n What is the units digit of the product of all of the odd integers between 0 and 12? The final Answer is $5$\n ### Proof\n Let $N$ be the product of all odd integers between 0 and 12. Thus, $N=1\\times3\\times5\\times7\\times9\\times11= 5(1\\times3\\times7\\times9\\times11)$. The product of odd integers is odd, and the units digit of 5 times any odd number is $5$. Therefore,  the units digit of $N$ is $5$.\n *)\n\n theorem\nfixes n :: nat\nassumes h0 : \"n = (PROD i\\<in>{1,3,5,7,9,11}. i)\"\nshows  \"n mod 10 = 5\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The natural language version of the given Isabelle theorem is:\n\nConsider a natural number n that is the product of the numbers 1, 3, 5, 7, 9, and 11. Prove that the remainder when n is divided by 10 is equal to 5.",
+        "semantic_score": 0.7679962679897393,
+        "symbolic_score": 0.4
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            1,
+            9,
+            6,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            8
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [
+        3,
+        4
+    ]
+}

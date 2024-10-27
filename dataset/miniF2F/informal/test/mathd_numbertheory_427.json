@@ -1,0 +1,599 @@
+{
+    "problem_name": "mathd_numbertheory_427",
+    "informal_statement": "If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? Show that it is 25.",
+    "informal_proof": "First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"prime_factors A = {p. prime p}\"\nshows  \"sum id (prime_factors A) = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"prime_factors A = {p. prime p}\"\nshows  \"sum id (prime_factors A) = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all distinct prime factors of the sum of the positive divisors of 500. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.988086998462677,
+        "symbolic_score": 0.6
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes A :: nat and prime_divisors_sum :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"prime_divisors_sum = (\\<Sum>p | prime p \\<and> p dvd A. p)\"\nshows  \"prime_divisors_sum = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat and prime_divisors_sum :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"prime_divisors_sum = (\\<Sum>p | prime p \\<and> p dvd A. p)\"\nshows  \"prime_divisors_sum = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all positive divisors of 500, and then find the sum of the prime divisors of this sum. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9348452687263489,
+        "symbolic_score": 0.6
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes A :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"A = p1 * p2 * p3\"\nand h2 : \"prime p1 \\<and> prime p2 \\<and> prime p3 \\<and> p1 < p2 \\<and> p2 < p3\"\nshows  \"p1 + p2 + p3 = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"A = p1 * p2 * p3\"\nand h2 : \"prime p1 \\<and> prime p2 \\<and> prime p3 \\<and> p1 < p2 \\<and> p2 < p3\"\nshows  \"p1 + p2 + p3 = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find three distinct prime numbers, $p1$, $p2$, and $p3$ such that the sum of all positive divisors of 500 is equal to the product of these three prime numbers. What is the sum of $p1$, $p2$, and $p3$? The final answer is 25.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9390702843666077,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes A :: int and sum_prime_divisors :: int\nassumes h0 : \"A = sum_of_divisors 500\"\nand h1 : \"sum_prime_divisors = sum_of_distinct_prime_divisors A\"\nshows  \"sum_prime_divisors = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: int and sum_prime_divisors :: int\nassumes h0 : \"A = sum_of_divisors 500\"\nand h1 : \"sum_prime_divisors = sum_of_distinct_prime_divisors A\"\nshows  \"sum_prime_divisors = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the distinct prime divisors of the sum of divisors of 500. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9882655143737793,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes A :: nat and divisors_A :: \"nat set\" and prime_divisors_A :: \"nat set\"\nassumes h0 : \"divisors_A = {d. d dvd 500 \\<and> d > 0}\"\nand h1 : \"A = (\\<Sum>d\\<in>divisors_A. d)\"\nand h2 : \"prime_divisors_A = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum>p\\<in>prime_divisors_A. p) = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat and divisors_A :: \"nat set\" and prime_divisors_A :: \"nat set\"\nassumes h0 : \"divisors_A = {d. d dvd 500 \\<and> d > 0}\"\nand h1 : \"A = (\\<Sum>d\\<in>divisors_A. d)\"\nand h2 : \"prime_divisors_A = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum>p\\<in>prime_divisors_A. p) = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all positive divisors of 500, then find the sum of all prime divisors of that sum. What is the final answer? The answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.923852264881134,
+        "symbolic_score": 0.6
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes A :: int and sum_prime_divisors :: \"int set \\<Rightarrow> int\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"sum_prime_divisors S = (\\<Sum>p \\<in> S. p)\"\nand h2 : \"S = {p. prime p \\<and> p dvd A}\"\nshows  \"sum_prime_divisors S = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: int and sum_prime_divisors :: \"int set \\<Rightarrow> int\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"sum_prime_divisors S = (\\<Sum>p \\<in> S. p)\"\nand h2 : \"S = {p. prime p \\<and> p dvd A}\"\nshows  \"sum_prime_divisors S = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all prime divisors of the sum of the positive divisors of 500. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9901599287986755,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes A :: int\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nshows  \"prime_factors A = {2, 23}\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: int\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nshows  \"prime_factors A = {2, 23}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all positive divisors of 500, and then determine its prime factors. The final answer is {2, 23}.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9837402105331421,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes A :: nat and sum_prime_divisors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"sum_prime_divisors = (\\<lambda>n. \\<Sum>p | prime p \\<and> p dvd n. p)\"\nshows  \"sum_prime_divisors A = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat and sum_prime_divisors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"sum_prime_divisors = (\\<lambda>n. \\<Sum>p | prime p \\<and> p dvd n. p)\"\nshows  \"sum_prime_divisors A = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the prime divisors of the sum of all positive divisors of 500. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9868075251579285,
+        "symbolic_score": 0.6
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500. d)\"\nand h1 : \"prime_factors A = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum>p\\<in>(prime_factors A). p) = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500. d)\"\nand h1 : \"prime_factors A = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum>p\\<in>(prime_factors A). p) = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the prime factors of the sum of the divisors of 500. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9881883263587952,
+        "symbolic_score": 0.6
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500. d)\"\nand h1 : \"prime_factors A = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum>p\\<in>prime_factors A. p) = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500. d)\"\nand h1 : \"prime_factors A = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum>p\\<in>prime_factors A. p) = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the prime factors of the sum of the divisors of 500. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9881883263587952,
+        "symbolic_score": 0.6
+    },
+    "oracle": "theorem\nfixes a :: nat\nassumes \"a = (\\<Sum> k\\<in> {n. n dvd 500}. k)\"\nshows \"(\\<Sum> k \\<in> {n. prime n \\<and> n dvd a}. k) = 25\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            4,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            2
+        ],
+        "2": [
+            3
+        ],
+        "3": [
+            5
+        ],
+        "4": [
+            6
+        ]
+    },
+    "equivalence_oracle": [
+        0,
+        1,
+        4,
+        7,
+        8,
+        9
+    ],
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"B = {p. prime p \\<and> p dvd A}\"\nshows  \"sum B = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"B = {p. prime p \\<and> p dvd A}\"\nshows  \"sum B = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the sum of the prime factors of the sum of all positive divisors of 500? The final answer is 25.",
+        "semantic_score": 0.9656807870524853,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = sum (set (filter (\\<lambda>n. 500 mod n = 0) [1..500])))\"\nand h1 : \"p \\<in> prime_factors A \\<Longrightarrow> q \\<in> prime_factors A \\<Longrightarrow> p \\<noteq> q \\<Longrightarrow> p + q = 25\"\nshows  \"sum (prime_factors A) = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = sum (set (filter (\\<lambda>n. 500 mod n = 0) [1..500])))\"\nand h1 : \"p \\<in> prime_factors A \\<Longrightarrow> q \\<in> prime_factors A \\<Longrightarrow> p \\<noteq> q \\<Longrightarrow> p + q = 25\"\nshows  \"sum (prime_factors A) = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all prime factors of $A$, where $A$ is the sum of all positive integers less than or equal to 500 that are divisible by 500. If $p$ and $q$ are distinct prime factors of $A$, then their sum is 25. The final answer is 25.",
+        "semantic_score": 0.9195720866580703,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes A :: nat and S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"S p = (\\<Sum>d | d dvd A \\<and> prime d \\<and> d = p. d)\"\nand h2 : \"S 2 + S 5 = 25\"\nshows  \"S 2 + S 5 = (\\<Sum>p | prime p \\<and> p dvd A. p)\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat and S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"S p = (\\<Sum>d | d dvd A \\<and> prime d \\<and> d = p. d)\"\nand h2 : \"S 2 + S 5 = 25\"\nshows  \"S 2 + S 5 = (\\<Sum>p | prime p \\<and> p dvd A. p)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of the prime factors of a positive integer $A$ that divides $500$ is $25$, where $2$ and $5$ are two of the prime factors. What is the sum of all the prime factors of $A$?",
+        "semantic_score": 0.9344638621739964,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes A :: nat and S :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"A = sum (Set.filter (\\<lambda>n. n dvd 500)) {1..500}\"\nand h1 : \"S 2\"\nand h2 : \"S 5\"\nand h3 : \"\\<not> S 3\"\nand h4 : \"\\<not> S 7\"\nand h5 : \"\\<forall>p. prime p \\<longrightarrow> S p \\<longrightarrow> (\\<exists>n. prime n \\<and> n \\<noteq> p \\<and> S n \\<and> n dvd A)\"\nand h6 : \"\\<forall>p. prime p \\<longrightarrow> S p \\<longrightarrow> (\\<forall>n. prime n \\<and> n \\<noteq> p \\<and> S n \\<longrightarrow> \\<not> (n dvd A))\"\nshows  \"sum (Set.filter prime {2, 3, 5, 7}) S = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat and S :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"A = sum (Set.filter (\\<lambda>n. n dvd 500)) {1..500}\"\nand h1 : \"S 2\"\nand h2 : \"S 5\"\nand h3 : \"\\<not> S 3\"\nand h4 : \"\\<not> S 7\"\nand h5 : \"\\<forall>p. prime p \\<longrightarrow> S p \\<longrightarrow> (\\<exists>n. prime n \\<and> n \\<noteq> p \\<and> S n \\<and> n dvd A)\"\nand h6 : \"\\<forall>p. prime p \\<longrightarrow> S p \\<longrightarrow> (\\<forall>n. prime n \\<and> n \\<noteq> p \\<and> S n \\<longrightarrow> \\<not> (n dvd A))\"\nshows  \"sum (Set.filter prime {2, 3, 5, 7}) S = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all prime numbers in the set $\\{2, 3, 5, 7\\}$ such that each prime satisfies a certain property $S$. It is known that $S$ holds for $2$, $5$, but not for $3$, or $7$. Moreover, for any prime number $p$ such that $S$ holds for $p$, there exists another prime number $n$ such that $n \\neq p$, $S$ holds for $n$ and $n$ divides the sum of all integers between $1$ and $500$ that are divisible by $500$. Additionally, if $S$ holds for a prime number $p$, then it is not true that there exists another prime number $n$ such that $n \\neq p$, $S$ holds for $n$, and $n$ divides the sum of all integers between $1$ and $500$ that are divisible by $500$. The final answer is $25$.",
+        "semantic_score": 0.6266644485585623,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"p \\<in> prime_factors A \\<Longrightarrow> q \\<in> prime_factors A \\<Longrightarrow> p \\<noteq> q \\<Longrightarrow> p + q = 25\"\nshows  \"sum prime_factors A = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"p \\<in> prime_factors A \\<Longrightarrow> q \\<in> prime_factors A \\<Longrightarrow> p \\<noteq> q \\<Longrightarrow> p + q = 25\"\nshows  \"sum prime_factors A = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Write $500$ as a sum of its divisors. If $p$ and $q$ are distinct prime factors of the sum, then their sum is $25$. Find the sum of all prime factors of the sum. The final answer is $25$.",
+        "semantic_score": 0.9344739441482496,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = sum (set (filter (\\<lambda>x. 500 mod x = 0) [1..500])))\"\nand h1 : \"p \\<in> prime_factors A \\<Longrightarrow> distinct (prime_factors A) \\<Longrightarrow> sum (set (prime_factors A)) = 25\"\nshows  \"sum (set (prime_factors A)) = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = sum (set (filter (\\<lambda>x. 500 mod x = 0) [1..500])))\"\nand h1 : \"p \\<in> prime_factors A \\<Longrightarrow> distinct (prime_factors A) \\<Longrightarrow> sum (set (prime_factors A)) = 25\"\nshows  \"sum (set (prime_factors A)) = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider the set of positive integers from 1 to 500. Let $A$ be the sum of all integers in that set that are divisible by 500. If the prime factors of $A$ are distinct, and $p$ is a prime factor of $A$, what is the sum of all prime factors of $A$? The final answer is 25.",
+        "semantic_score": 0.8839090009382304,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = sum_of_divisors 500\"\nand h1 : \"prime_factors A = {2, 5}\"\nshows  \"sum {p. p \\<in> prime_factors A} = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = sum_of_divisors 500\"\nand h1 : \"prime_factors A = {2, 5}\"\nshows  \"sum {p. p \\<in> prime_factors A} = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the prime factors of the number that has only $2$ and $5$ as its prime factors and whose sum of divisors is $500$. The final answer is $25$.",
+        "semantic_score": 0.9439381291426543,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = sum (set (divisors (500 :: nat))) id\"\nand h1 : \"B = {p. prime p \\<and> p dvd A}\"\nshows  \"sum B id = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = sum (set (divisors (500 :: nat))) id\"\nand h1 : \"B = {p. prime p \\<and> p dvd A}\"\nshows  \"sum B id = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of all divisors of 500 is calculated and stored in $A$. The set $B$ is defined as the set of all prime divisors of $A$. What is the sum of all elements in $B$? The final answer is $25$.",
+        "semantic_score": 0.8725387199287918,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = sum (set (divisors (500))) id\"\nand h1 : \"B = prime_factors A\"\nshows  \"sum (set B) id = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = sum (set (divisors (500))) id\"\nand h1 : \"B = prime_factors A\"\nshows  \"sum (set B) id = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the prime factors of the sum of all the divisors of 500. The final answer is 25.",
+        "semantic_score": 0.99130681337882,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"prime p \\<Longrightarrow> p dvd A \\<Longrightarrow> prime q \\<Longrightarrow> q dvd A \\<Longrightarrow> p \\<noteq> q \\<Longrightarrow> p + q = 25\"\nshows  \"prime p \\<Longrightarrow> p dvd A \\<Longrightarrow> p = 5 \\<Longrightarrow> (\\<Sum>p. if prime p \\<and> p dvd A then p else 0) = 5 + 20\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"prime p \\<Longrightarrow> p dvd A \\<Longrightarrow> prime q \\<Longrightarrow> q dvd A \\<Longrightarrow> p \\<noteq> q \\<Longrightarrow> p + q = 25\"\nshows  \"prime p \\<Longrightarrow> p dvd A \\<Longrightarrow> p = 5 \\<Longrightarrow> (\\<Sum>p. if prime p \\<and> p dvd A then p else 0) = 5 + 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum $A$ is defined as the sum of all the positive divisors of $500$. If $p$ and $q$ are distinct prime divisors of $A$ such that $p+q=25$, what is the sum of all prime divisors of $A$ that are equal to $5$? The final answer is $5+20$.",
+        "semantic_score": 0.9583562519974924,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes A :: \"nat\" and P :: \"nat \\<Rightarrow> list nat\"\nassumes h0 : \"A = (sum (map (fn x => x) (filter (fn n => 0 < (rem 500 n) AND 0 < n) (tails (numbers 1 1000)))))\"\nand h1 : \"\\<forall> p. prime p \\<longrightarrow> mem p (P p)\"\nand h2 : \"\\<forall> n. sum (P n) = 2 * (if is_prime n then n else 0)\"\nshows  \"sum (P A) = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: \"nat\" and P :: \"nat \\<Rightarrow> list nat\"\nassumes h0 : \"A = (sum (map (fn x => x) (filter (fn n => 0 < (rem 500 n) AND 0 < n) (tails (numbers 1 1000)))))\"\nand h1 : \"\\<forall> p. prime p \\<longrightarrow> mem p (P p)\"\nand h2 : \"\\<forall> n. sum (P n) = 2 * (if is_prime n then n else 0)\"\nshows  \"sum (P A) = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the prime numbers between 1 and 1000. The final answer is 25.\n\nExplanation:\n\nThe theorem states that A is the sum of prime numbers between 1 and 1000, and the sum of all prime numbers in a list P is twice the number if it's prime, and zero otherwise. Therefore, the sum of prime numbers between 1 and 1000 is equal to 25."
+    },
+    "a_1_mistral": {
+        "formal problem": " To translate the natural language problem into an Isabelle version, we first need to define some concepts and assumptions.\n\nFirst, we need to define the concept of divisors and positive divisors.\n\nDefinition divisors \"n:nat => powset nat\" where\n  \"m:nat => m :: divisors n <- (m divides n) \\/ (m = n)\"\n\nDefinition positive_divisors \"n:nat => powset nat\" where\n  \"m:nat => m :: positive_divisors n <- m > 0 /\\ m divides n\"\n\nNext, we need to define the sum of a set.\n\nDefinition sum \"S:set nat => nat\" where\n  \"sum {} = 0\"\n  \"sum (s :: S) = s + sum S\"\n\nNow we can define the problem. Let A be the sum of the positive divisors of 500.\n\nDefinition A : nat\nA = sum (positive_divisors 500)\n\nTo find the sum of the distinct prime divisors of A, we need to define the prime divisors of a number and the sum of a list of primes.\n\nDefinition prime_divisors \"n:nat => powset nat\" where\n  \"p:nat => p :: prime_divisors n <- p > 1 /\\ is_prime p /\\ p divides n\"\n\nDefinition is_prime \"p:nat => bool\" where\n  \"is_prime 1 = False\"\n  \"is_prime 2 = True\"\n  \"is_prime n = (\\<forall> i. i < n /\\ (i mod n = 0) => i = n \\/ (2 < i /\\ is_prime (i div 2)))\"\n\nDefinition sum_primes \"L:list nat => nat\" where\n  \"sum_primes [] = 0\"\n  \"sum_primes (p :: L) = p + sum_primes L\"\n\nFinally, we can state and prove the theorem.\n\nTheorem prime_sum : \"sum (prime_divisors A) = 25\"\n\nProof.\n  have A_prime_divisors : \"is_prime p => p :: positive_divisors 500\" by auto\n  have prime_A : \"prime_divisors A = {2, 5, 5, 5, 7, 11, 13, 17, 19, 23, 29}\" by (simp add: A_prime_divisors)\n  have sum_primes_prime_divisors : \"sum_primes (prime_divisors A) = 25\" by auto\n  thus \"sum (prime_divisors A) = 25\" by simp.\n\nThe proof relies on the fact that the prime divisors of 500 are 2, 2, 2, 5, 5, 7, 11, 13, 17, 19, 23, and 29. The proof also uses the definition of positive divisors, the sum of a set, and the is_prime predicate.",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n To translate the natural language problem into an Isabelle version, we first need to define some concepts and assumptions.\n\nFirst, we need to define the concept of divisors and positive divisors.\n\nDefinition divisors \"n:nat => powset nat\" where\n  \"m:nat => m :: divisors n <- (m divides n) \\/ (m = n)\"\n\nDefinition positive_divisors \"n:nat => powset nat\" where\n  \"m:nat => m :: positive_divisors n <- m > 0 /\\ m divides n\"\n\nNext, we need to define the sum of a set.\n\nDefinition sum \"S:set nat => nat\" where\n  \"sum {} = 0\"\n  \"sum (s :: S) = s + sum S\"\n\nNow we can define the problem. Let A be the sum of the positive divisors of 500.\n\nDefinition A : nat\nA = sum (positive_divisors 500)\n\nTo find the sum of the distinct prime divisors of A, we need to define the prime divisors of a number and the sum of a list of primes.\n\nDefinition prime_divisors \"n:nat => powset nat\" where\n  \"p:nat => p :: prime_divisors n <- p > 1 /\\ is_prime p /\\ p divides n\"\n\nDefinition is_prime \"p:nat => bool\" where\n  \"is_prime 1 = False\"\n  \"is_prime 2 = True\"\n  \"is_prime n = (\\<forall> i. i < n /\\ (i mod n = 0) => i = n \\/ (2 < i /\\ is_prime (i div 2)))\"\n\nDefinition sum_primes \"L:list nat => nat\" where\n  \"sum_primes [] = 0\"\n  \"sum_primes (p :: L) = p + sum_primes L\"\n\nFinally, we can state and prove the theorem.\n\nTheorem prime_sum : \"sum (prime_divisors A) = 25\"\n\nProof.\n  have A_prime_divisors : \"is_prime p => p :: positive_divisors 500\" by auto\n  have prime_A : \"prime_divisors A = {2, 5, 5, 5, 7, 11, 13, 17, 19, 23, 29}\" by (simp add: A_prime_divisors)\n  have sum_primes_prime_divisors : \"sum_primes (prime_divisors A) = 25\" by auto\n  thus \"sum (prime_divisors A) = 25\" by simp.\n\nThe proof relies on the fact that the prime divisors of 500 are 2, 2, 2, 5, 5, 7, 11, 13, 17, 19, 23, and 29. The proof also uses the definition of positive divisors, the sum of a set, and the is_prime predicate.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let A be the sum of the positive divisors of 500. To find the sum of the distinct prime divisors of A, we first need to understand some definitions.\n\nA divisor of a natural number n is a number m that can be obtained by dividing n by some integer. Positive divisors are divisors greater than 1.\n\nThe sum of a set S of natural numbers is the total sum of all numbers in the set.\n\nNow, let A be the sum of the positive divisors of 500. We define the set of positive divisors of 500 and the sum of its prime divisors.\n\n1. The positive divisors of 500 are the numbers that can be obtained by dividing 500 by some integer greater than 0.\n2. The prime divisors of a number n are the prime numbers (numbers greater than 1) that divide n.\n3. The sum of the prime divisors of a number is the sum of all its prime factors.\n\nBy definition, the positive divisors of 500 are the numbers 1, 2, 2, 2, 5, 5, 5, 7, 11, 13, 17, 19, 23, 29, and 500.\n\nThe prime divisors of A are 2, 2, 2, 5, 5, 7, 11, 13, 17, 19, 23, and 29.\n\nThe sum of the prime divisors of A is the sum of these prime numbers, which equals 2 + 2+ 2 + 5 + 5 + 5 + 7 + 11 + 13 + 17 + 19 + 23 + 29 = 25.\n\nTherefore, the sum of the distinct prime divisors of A is 25."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"is\\_perfect\\_square n\"\nand h1 : \"n = sum (filter (fun d. is\\_divisor d n) (seq\\_from 1 (sqrt\\_int n)))\"\nshows  \"sum (filter prime (factors n)) = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"is\\_perfect\\_square n\"\nand h1 : \"n = sum (filter (fun d. is\\_divisor d n) (seq\\_from 1 (sqrt\\_int n)))\"\nshows  \"sum (filter prime (factors n)) = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a perfect square number $n$. Determine the sum of its prime factors. The final answer is 25.\n\n(Note: In natural language, it's more common to ask for the prime factorization of a number and then find the sum of the primes in the factorization. However, the Isabelle version uses filters, so the given translation is as close to the original as possible.)"
+    },
+    "a_3_mistral": {
+        "formal problem": " To translate this natural language problem into an Isabelle version, we first need to define some terms and lemmas.\n\nLet's define the function `sum_positive_divisors` that computes the sum of positive divisors of a given number.\n\n```isabelle\nfun sum_positive_divisors n =\n  if n = 1 then 1\n  else sum (seq (1, sqrt (nat_abs n), 1)) (fn i => if i = n div 2 then n div i else if n mod i = 0 then n div i else 0)\n\nlemma sum_positive_divisors_preserves_multiplicativity:\n  assumes h0 : \"a b = m\"\nshows  \"sum_positive_divisors a + sum_positive_divisors b = sum_positive_divisors m\"\n\nlemma sum_positive_divisors_500: \"sum_positive_divisors 500 = A\"\n```\n\nNow let's define a function `sum_distinct_prime_divisors` that computes the sum of distinct prime divisors of a given number.\n\n```isabelle\nfun prime_divisors n =\n  if n = 2 then [2]\n  else if is_prime n then [n]\n  else (seq (2, (1 + (sqrt 0.25 * (nat_abs n))), 2) (fn i =>\n              if n mod i = 0 then i :: prime_divisors (n div i) else []))\n\nfun sum_distinct_prime_divisors n = list_sum (prime_divisors n)\n\nlemma sum_distinct_prime_divisors_preserves_multiplicativity:\n  assumes \"a b = m\"\n  ",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n To translate this natural language problem into an Isabelle version, we first need to define some terms and lemmas.\n\nLet's define the function `sum_positive_divisors` that computes the sum of positive divisors of a given number.\n\n```isabelle\nfun sum_positive_divisors n =\n  if n = 1 then 1\n  else sum (seq (1, sqrt (nat_abs n), 1)) (fn i => if i = n div 2 then n div i else if n mod i = 0 then n div i else 0)\n\nlemma sum_positive_divisors_preserves_multiplicativity:\n  assumes h0 : \"a b = m\"\nshows  \"sum_positive_divisors a + sum_positive_divisors b = sum_positive_divisors m\"\n\nlemma sum_positive_divisors_500: \"sum_positive_divisors 500 = A\"\n```\n\nNow let's define a function `sum_distinct_prime_divisors` that computes the sum of distinct prime divisors of a given number.\n\n```isabelle\nfun prime_divisors n =\n  if n = 2 then [2]\n  else if is_prime n then [n]\n  else (seq (2, (1 + (sqrt 0.25 * (nat_abs n))), 2) (fn i =>\n              if n mod i = 0 then i :: prime_divisors (n div i) else []))\n\nfun sum_distinct_prime_divisors n = list_sum (prime_divisors n)\n\nlemma sum_distinct_prime_divisors_preserves_multiplicativity:\n  assumes \"a b = m\"\n  \n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the distinct prime divisors of the product of two numbers $a$ and $b$. The final answer is the sum of the distinct prime divisors of the number $m$, which is the product of $a$ and $b$.\n\n(Isabelle Definition)\nLet's define the function `sum_positive_divisors` that computes the sum of positive divisors of a given number:\n\n1. If the number is 1, return 1.\n2. Otherwise, sum the numbers from 1 to the square root of the absolute value of the number, checking if each number is a divisor (i.e., divides evenly) of the given number.\n\n(Isabelle Lemma)\nThe sum of positive divisors of a number preserves multiplicativity, meaning that the sum of positive divisors of the product of two numbers equals the sum of the positive divisors of each individual number.\n\n(Isabelle Definition)\nNow let's define a function `prime_divisors` that computes the list of distinct prime divisors of a given number:\n\n1. If the number is 2, return a list containing only 2.\n2. Otherwise, if the number is prime, return a list containing only the prime number.\n3. Otherwise, find the distinct prime divisors of the number by recursively calling the `prime_divisors` function on the quotient of the number divided by each prime number from 2 up to the square root.\n\n(Isabelle Function)\nThe function `sum_distinct_prime_divisors` computes the sum of distinct prime divisors of a given number by using the `prime_divisors` function and the `list_sum` function to sum the list of prime divisors.\n\n(Isabelle Lemma)\nThe sum of distinct prime divisors of a number preserves multiplicativity, meaning that the sum of distinct prime divisors of the product of two numbers equals the sum of the distinct prime divisors of each individual number."
+    },
+    "a_4_mistral": {
+        "formal problem": " theorem sum\\_of\\_distinct\\_prime\\_divisors\\_of\\_sum\\_of\\_positive\\_divisors\\_of\\_500 :\n  (sum (filter pos (divisors 500)) = A) ->\n  (sum (map prime\\_factor (factorization A)) = 25)\n\nwhere \"A : nat\" and \"sum\" and \"filter\" and \"map\" and \"factorization\" are defined in the standard library of Isabelle/HOL.\n\nThe predicate \"pos\" is a built-in predicate in Isabelle/HOL, which returns true for positive numbers. The predicate \"prime\\_factor\" returns the prime factor of a given number.\n\nThe statement \"sum (filter pos (divisors 500)) = A\" represents the sum of the positive divisors of 500, and \"sum (map prime\\_factor (factorization A))\" represents the sum of the distinct prime divisors of A. The theorem states that if A is the sum of the positive divisors of 500, then the sum of the distinct prime divisors of A is equal to 25.",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem sum\\_of\\_distinct\\_prime\\_divisors\\_of\\_sum\\_of\\_positive\\_divisors\\_of\\_500 :\n  (sum (filter pos (divisors 500)) = A) ->\n  (sum (map prime\\_factor (factorization A)) = 25)\n\nwhere \"A : nat\" and \"sum\" and \"filter\" and \"map\" and \"factorization\" are defined in the standard library of Isabelle/HOL.\n\nThe predicate \"pos\" is a built-in predicate in Isabelle/HOL, which returns true for positive numbers. The predicate \"prime\\_factor\" returns the prime factor of a given number.\n\nThe statement \"sum (filter pos (divisors 500)) = A\" represents the sum of the positive divisors of 500, and \"sum (map prime\\_factor (factorization A))\" represents the sum of the distinct prime divisors of A. The theorem states that if A is the sum of the positive divisors of 500, then the sum of the distinct prime divisors of A is equal to 25.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the positive divisors of 500. If this sum is equal to a certain number A, what is the sum of the distinct prime divisors of number A? The theorem states that in such a case, the sum of the distinct prime divisors of A is equal to 25."
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes A :: \"nat\" and P :: \"nat \\<Rightarrow> list nat\"\nassumes h0 : \"\\<forall> n. sum (filter pos (map (fun i. if (0 < i) then i else 0) (divisors 500))) = A\"\nand h1 : \"\\<forall> p. prime p \\<imp> (elem p (map (fun i. fst (head (in_list i (map sqrt (prime_decomposition p)))))) \\<or> (elem p (map sqr (filter (fun i. i * i = p) (range 2 (1 + sqrt (real_of_int A)))))\"\nshows  \"length (filter (fun i. i = 2 \\<or> i = 5) (map (fun i. fst (head (in_list i (map sqrt (prime_decomposition i)))))) + length (filter (fun i. i * i = 25) (range 2 (1 + sqrt (real_of_int A)))) = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: \"nat\" and P :: \"nat \\<Rightarrow> list nat\"\nassumes h0 : \"\\<forall> n. sum (filter pos (map (fun i. if (0 < i) then i else 0) (divisors 500))) = A\"\nand h1 : \"\\<forall> p. prime p \\<imp> (elem p (map (fun i. fst (head (in_list i (map sqrt (prime_decomposition p)))))) \\<or> (elem p (map sqr (filter (fun i. i * i = p) (range 2 (1 + sqrt (real_of_int A)))))\"\nshows  \"length (filter (fun i. i = 2 \\<or> i = 5) (map (fun i. fst (head (in_list i (map sqrt (prime_decomposition i)))))) + length (filter (fun i. i * i = 25) (range 2 (1 + sqrt (real_of_int A)))) = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the integer $A$ such that the sum of the positive divisors of $500$ is equal to $A$. Let $p$ be a prime number. If $p$ is a prime factor of $A$, then $p$ or $p^2$ must be in the list of square roots of primes less than $\\sqrt{A}+1$. The number of integers from $2$ to $\\sqrt{A}+1$ that satisfy this condition is equal to $25$. Therefore, the number of positive divisors of $A$ that are either $2$ or $5$ is also $25$."
+    },
+    "a_6_mistral": {
+        "formal problem": " To translate the natural language problem into an Isabelle version, we first need to define some concepts and assumptions.\n\nFirst, let's define the function `sum_positive_divisors` that computes the sum of positive divisors of a given number.\n\n```isabelle\nfun sum_positive_divisors :: \"nat \\<Rightarrow> nat\" where\n  \"sum_positive_divisors 1 = 1\"\nand \"sum_positive_divisors n =\n  sum (filter (fun i. i <= sqrt (nat_abs n) /. 0 < i . i mod n = 0) (enum_from_to 1 (sqrt (nat_abs n). int_ceil)))\"\n```\n\nNext, we define a theorem that states that the product of prime divisors of a number is equal to the sum of its positive divisors.\n\n```isabelle\nlemma prime_divisors_product_sum: \"nat_abs n > 1 \\<Longrightarrow>\n  (sum (map prime_factors (prime_decomposition n)) = sum_positive_divisors n)\"\n```\n\nNow, we can state and prove the main theorem.\n\n```isabelle\ntheorem sum_distinct_prime_divisors_A: \"sum_distinct_prime_factors (sum_positive_divisors 500) = 25\"\n",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n To translate the natural language problem into an Isabelle version, we first need to define some concepts and assumptions.\n\nFirst, let's define the function `sum_positive_divisors` that computes the sum of positive divisors of a given number.\n\n```isabelle\nfun sum_positive_divisors :: \"nat \\<Rightarrow> nat\" where\n  \"sum_positive_divisors 1 = 1\"\nand \"sum_positive_divisors n =\n  sum (filter (fun i. i <= sqrt (nat_abs n) /. 0 < i . i mod n = 0) (enum_from_to 1 (sqrt (nat_abs n). int_ceil)))\"\n```\n\nNext, we define a theorem that states that the product of prime divisors of a number is equal to the sum of its positive divisors.\n\n```isabelle\nlemma prime_divisors_product_sum: \"nat_abs n > 1 \\<Longrightarrow>\n  (sum (map prime_factors (prime_decomposition n)) = sum_positive_divisors n)\"\n```\n\nNow, we can state and prove the main theorem.\n\n```isabelle\ntheorem sum_distinct_prime_divisors_A: \"sum_distinct_prime_factors (sum_positive_divisors 500) = 25\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of distinct prime divisors in the set of positive divisors of 500. The final answer is 25.\n\nHere's a breakdown of the problem:\n\n1. First, we need to understand that the function `sum_positive_divisors` computes the sum of all positive divisors of a given number.\n2. Next, we have a lemma stating that the product of prime divisors of a number is equal to the sum of its positive divisors.\n3. The main theorem we want to translate states that the sum of distinct prime divisors in the set of positive divisors of 500 is equal to 25."
+    },
+    "a_7_mistral": {
+        "formal problem": "\n  unfold sum_distinct_prime_divisors sum_divisors\n  have sum_of_primes : \"sum (\\<all> p. prime p \\<and> p <= sqrt (2 * 500). p = (sum_divisors 500) mod p) = 25\" using [prime_sum, sum_divisors_mod_prime, 1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239]\n  thus \"sum_distinct_prime_divisors (sum_divisors 500) = 25\"\nend\n```\n\nNote: The proof above uses the `prime_sum` lemma which states that the sum of distinct prime divisors of a number is equal to the product of those primes, minus one. This lemma is a well-known result in number theory.",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n\n  unfold sum_distinct_prime_divisors sum_divisors\n  have sum_of_primes : \"sum (\\<all> p. prime p \\<and> p <= sqrt (2 * 500). p = (sum_divisors 500) mod p) = 25\" using [prime_sum, sum_divisors_mod_prime, 1, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239]\n  thus \"sum_distinct_prime_divisors (sum_divisors 500) = 25\"\nend\n```\n\nNote: The proof above uses the `prime_sum` lemma which states that the sum of distinct prime divisors of a number is equal to the product of those primes, minus one. This lemma is a well-known result in number theory.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the distinct prime divisors of 500. The final answer is 25.\n\n(Note: A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself. The sum of the distinct prime divisors of a number is the sum of the prime numbers that divide the number, with each prime number being counted only once.)"
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"0 < n\"\nand h1 : \"n > 1\"\nshows  \"sum\\_of\\_distinct\\_prime\\_divisors = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"0 < n\"\nand h1 : \"n > 1\"\nshows  \"sum\\_of\\_distinct\\_prime\\_divisors = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all distinct prime divisors for a positive integer greater than one, and determine if the answer is equal to 25."
+    },
+    "a_9_mistral": {
+        "formal problem": " theorem sum\\_of\\_prime\\_divisors : real -> real\nand assume (is\\_int : int x) and (n : real = of\\_int x)\nand (sum\\_of\\_divisors : real = sum (all\\_filter (fun d => 0 < d and also (rem n d = 0) and also (is\\_prime d)) (range (sqrt (of\\_int (int\\_of\\_real n))))))\nand (is\\_prime : \"primetest\" -> bool)\nand (prime\\_factors : real list = map (fn x => of\\_real (exact (square\\_root (trunc (of\\_real (1.0 /. x))))) (filter (fn d => rem (trunc (of\\_real n)) d = 0) (range (int\\_of\\_real (1.0 /. (of\\_real (0.0001)))))))\nand (sum\\_of\\_prime\\_factors : real = sum (map (fn p => p) prime\\_factors))\nand (is\\_prime\\_function : \"primetest\" -> bool = lambda (n, primetest.is\\_prime))\nand (is\\_prime\\_test : is\\_prime\\_function (int\\_of\\_real n))\nand (num\\_primes : int = length (filter (fn p => is\\_prime\\_test p) (map (fn i => of\\_int i) (range (int\\_of\\_real (sqrt (of\\_int n)))))))\nand (sum\\_of\\_primes : real = real\\_of\\_int (sum (map (fn i => pow (2, i - 1) * if (rem (num\\_primes) 2 = 0, then 2, 1) else 1) (range (0, num\\_primes))))))\nand (answer : real = sum\\_of\\_prime\\_factors + sum\\_of\\_primes)\nshows  answer = 25.0\n\nThis theorem states that if n is an integer, the sum of the distinct prime divisors of the sum of the positive divisors of n is equal to 25. The proof involves calculating the sum of the divisors of n, finding the prime factors of that sum, and then summing those prime factors and the square of the number of prime divisors. The final answer is 25.\n\nNote that the function \"primetest\" is assumed to be defined elsewhere in the theory, and it should be a function that tests whether a given integer is prime. Also, the function \"sum\" is the standard list sum function, and \"map\" and \"filter\" are standard list functions as well.",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem sum\\_of\\_prime\\_divisors : real -> real\nand assume (is\\_int : int x) and (n : real = of\\_int x)\nand (sum\\_of\\_divisors : real = sum (all\\_filter (fun d => 0 < d and also (rem n d = 0) and also (is\\_prime d)) (range (sqrt (of\\_int (int\\_of\\_real n))))))\nand (is\\_prime : \"primetest\" -> bool)\nand (prime\\_factors : real list = map (fn x => of\\_real (exact (square\\_root (trunc (of\\_real (1.0 /. x))))) (filter (fn d => rem (trunc (of\\_real n)) d = 0) (range (int\\_of\\_real (1.0 /. (of\\_real (0.0001)))))))\nand (sum\\_of\\_prime\\_factors : real = sum (map (fn p => p) prime\\_factors))\nand (is\\_prime\\_function : \"primetest\" -> bool = lambda (n, primetest.is\\_prime))\nand (is\\_prime\\_test : is\\_prime\\_function (int\\_of\\_real n))\nand (num\\_primes : int = length (filter (fn p => is\\_prime\\_test p) (map (fn i => of\\_int i) (range (int\\_of\\_real (sqrt (of\\_int n)))))))\nand (sum\\_of\\_primes : real = real\\_of\\_int (sum (map (fn i => pow (2, i - 1) * if (rem (num\\_primes) 2 = 0, then 2, 1) else 1) (range (0, num\\_primes))))))\nand (answer : real = sum\\_of\\_prime\\_factors + sum\\_of\\_primes)\nshows  answer = 25.0\n\nThis theorem states that if n is an integer, the sum of the distinct prime divisors of the sum of the positive divisors of n is equal to 25. The proof involves calculating the sum of the divisors of n, finding the prime factors of that sum, and then summing those prime factors and the square of the number of prime divisors. The final answer is 25.\n\nNote that the function \"primetest\" is assumed to be defined elsewhere in the theory, and it should be a function that tests whether a given integer is prime. Also, the function \"sum\" is the standard list sum function, and \"map\" and \"filter\" are standard list functions as well.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $n$ is an integer, the sum of its distinct prime divisors is equal to the sum of the positive divisors of $n$ minus $25$. This can be calculated by finding the sum of all divisors of $n$, determining the prime factors of that sum, and then summing those prime factors along with the square of the number of prime divisors. The final answer is $25$.\n\nNote that the validity of this statement depends on the truth of the function \"primetest\", which is assumed to be defined elsewhere and should test whether a given integer is prime."
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem is asking to find the sum of all divisors of the number 500, which is represented as A in the problem. Then, find the sum of all prime divisors of A. The final answer should be 25."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number A, which is defined as the sum of all divisors (d) of the number 500. The theorem then claims that the sum of all prime divisors (p) of A, where p is a prime number and divides A, is equal to 25.\n\nIn natural language, the problem can be stated as follows:\n\nConsider a number A, which is the sum of all the divisors of 500. Find the sum of all prime divisors of A. The theorem asserts that this sum is equal to 25."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem is asking to find the sum of all divisors of the number 500, and then find the sum of all prime divisors of the resulting number. The final answer should be 25."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that A is the sum of all divisors of 500. We are then asked to find the sum of all prime divisors of A. The final answer is 25."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number A, which is the sum of all divisors of 500. The problem then asks to find the sum of all prime divisors of A. The final answer is 25.\n\nIn natural language, the problem can be stated as follows:\n\nFind the sum of all divisors of 500, and let this sum be represented by the natural number A. Now, find the sum of all prime numbers that are divisors of A. What is the final answer?"
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that A is the sum of all divisors of 500. We need to find the sum of all prime divisors of A. The final answer is 25."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number A, which is the sum of all divisors d of the number 500. The theorem then shows that the sum of all prime divisors p of A, where p is a prime number and also a divisor of A, is equal to 25.\n\nIn natural language, the problem can be stated as follows:\n\nConsider a natural number A, which is the sum of all the divisors of the number 500. Determine the sum of all prime divisors of A, where a prime divisor is a prime number that also divides A. The result should be 25."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that A is the sum of all divisors of 500. The task then asks to find the sum of all prime divisors of A. The final answer is 25.\n\nIn a more natural language, the problem can be stated as:\n\n\"Find the sum of all divisors of 500, let's call this sum A. Then, find the sum of all prime numbers that are divisors of A. What is this sum?\"\n\nThe answer to this problem is 25."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that A is the sum of all divisors of 500. We need to find the sum of all prime divisors of A. The final answer is 25."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that we have a natural number A, which is the sum of all divisors of 500. We need to find the sum of all prime divisors of A. The final answer is 25."
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"prime_factors A = {p. prime p}\"\nshows  \"sum id (prime_factors A) = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"prime_factors A = {p. prime p}\"\nshows  \"sum id (prime_factors A) = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all distinct prime factors of the sum of the positive divisors of 500. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9326341855208592,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes A :: nat and prime_divisors_sum :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"prime_divisors_sum = (\\<Sum>p | prime p \\<and> p dvd A. p)\"\nshows  \"prime_divisors_sum = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat and prime_divisors_sum :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"prime_divisors_sum = (\\<Sum>p | prime p \\<and> p dvd A. p)\"\nshows  \"prime_divisors_sum = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all positive divisors of 500, and then find the sum of the prime divisors of this sum. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9344230261427399,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes A :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"A = p1 * p2 * p3\"\nand h2 : \"prime p1 \\<and> prime p2 \\<and> prime p3 \\<and> p1 < p2 \\<and> p2 < p3\"\nshows  \"p1 + p2 + p3 = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"A = p1 * p2 * p3\"\nand h2 : \"prime p1 \\<and> prime p2 \\<and> prime p3 \\<and> p1 < p2 \\<and> p2 < p3\"\nshows  \"p1 + p2 + p3 = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find three distinct prime numbers, $p1$, $p2$, and $p3$ such that the sum of all positive divisors of 500 is equal to the product of these three prime numbers. What is the sum of $p1$, $p2$, and $p3$? The final answer is 25.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9218490001372437,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes A :: int and sum_prime_divisors :: int\nassumes h0 : \"A = sum_of_divisors 500\"\nand h1 : \"sum_prime_divisors = sum_of_distinct_prime_divisors A\"\nshows  \"sum_prime_divisors = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: int and sum_prime_divisors :: int\nassumes h0 : \"A = sum_of_divisors 500\"\nand h1 : \"sum_prime_divisors = sum_of_distinct_prime_divisors A\"\nshows  \"sum_prime_divisors = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the distinct prime divisors of the sum of divisors of 500. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9481724244464823,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes A :: nat and divisors_A :: \"nat set\" and prime_divisors_A :: \"nat set\"\nassumes h0 : \"divisors_A = {d. d dvd 500 \\<and> d > 0}\"\nand h1 : \"A = (\\<Sum>d\\<in>divisors_A. d)\"\nand h2 : \"prime_divisors_A = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum>p\\<in>prime_divisors_A. p) = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat and divisors_A :: \"nat set\" and prime_divisors_A :: \"nat set\"\nassumes h0 : \"divisors_A = {d. d dvd 500 \\<and> d > 0}\"\nand h1 : \"A = (\\<Sum>d\\<in>divisors_A. d)\"\nand h2 : \"prime_divisors_A = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum>p\\<in>prime_divisors_A. p) = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all positive divisors of 500, then find the sum of all prime divisors of that sum. What is the final answer? The answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9383537502115405,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes A :: int and sum_prime_divisors :: \"int set \\<Rightarrow> int\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"sum_prime_divisors S = (\\<Sum>p \\<in> S. p)\"\nand h2 : \"S = {p. prime p \\<and> p dvd A}\"\nshows  \"sum_prime_divisors S = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: int and sum_prime_divisors :: \"int set \\<Rightarrow> int\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"sum_prime_divisors S = (\\<Sum>p \\<in> S. p)\"\nand h2 : \"S = {p. prime p \\<and> p dvd A}\"\nshows  \"sum_prime_divisors S = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all prime divisors of the sum of the positive divisors of 500. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9378731685358399,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes A :: int\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nshows  \"prime_factors A = {2, 23}\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: int\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nshows  \"prime_factors A = {2, 23}\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all positive divisors of 500, and then determine its prime factors. The final answer is {2, 23}.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9036435005800468,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes A :: nat and sum_prime_divisors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"sum_prime_divisors = (\\<lambda>n. \\<Sum>p | prime p \\<and> p dvd n. p)\"\nshows  \"sum_prime_divisors A = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat and sum_prime_divisors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"A = (\\<Sum>d | d dvd 500 \\<and> d > 0. d)\"\nand h1 : \"sum_prime_divisors = (\\<lambda>n. \\<Sum>p | prime p \\<and> p dvd n. p)\"\nshows  \"sum_prime_divisors A = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the prime divisors of the sum of all positive divisors of 500. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9383206889753412,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500. d)\"\nand h1 : \"prime_factors A = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum>p\\<in>(prime_factors A). p) = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500. d)\"\nand h1 : \"prime_factors A = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum>p\\<in>(prime_factors A). p) = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the prime factors of the sum of the divisors of 500. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.924329114111586,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500. d)\"\nand h1 : \"prime_factors A = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum>p\\<in>prime_factors A. p) = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\ntheorem\nfixes A :: nat\nassumes h0 : \"A = (\\<Sum>d | d dvd 500. d)\"\nand h1 : \"prime_factors A = {p. prime p \\<and> p dvd A}\"\nshows  \"(\\<Sum>p\\<in>prime_factors A. p) = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the prime factors of the sum of the divisors of 500. The final answer is 25.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.924329114111586,
+        "symbolic_score": 0.1
+    },
+    "equivalence_oracle_solve_direct": [
+        0,
+        1,
+        4,
+        7,
+        8,
+        9
+    ],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem is asking to find the sum of all divisors of the number 500, which is represented as A in the problem. Then, find the sum of all prime divisors of A. The final answer should be 25.",
+        "semantic_score": 0.914471180182594,
+        "symbolic_score": 1.0
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number A, which is defined as the sum of all divisors (d) of the number 500. The theorem then claims that the sum of all prime divisors (p) of A, where p is a prime number and divides A, is equal to 25.\n\nIn natural language, the problem can be stated as follows:\n\nConsider a number A, which is the sum of all the divisors of 500. Find the sum of all prime divisors of A. The theorem asserts that this sum is equal to 25.",
+        "semantic_score": 0.7685671046609689,
+        "symbolic_score": 1.0
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem is asking to find the sum of all divisors of the number 500, and then find the sum of all prime divisors of the resulting number. The final answer should be 25.",
+        "semantic_score": 0.8991292894323412,
+        "symbolic_score": 1.0
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that A is the sum of all divisors of 500. We are then asked to find the sum of all prime divisors of A. The final answer is 25.",
+        "semantic_score": 0.927188215732523,
+        "symbolic_score": 1.0
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number A, which is the sum of all divisors of 500. The problem then asks to find the sum of all prime divisors of A. The final answer is 25.\n\nIn natural language, the problem can be stated as follows:\n\nFind the sum of all divisors of 500, and let this sum be represented by the natural number A. Now, find the sum of all prime numbers that are divisors of A. What is the final answer?",
+        "semantic_score": 0.8210675204703084,
+        "symbolic_score": 1.0
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that A is the sum of all divisors of 500. We need to find the sum of all prime divisors of A. The final answer is 25.",
+        "semantic_score": 0.9327747196467676,
+        "symbolic_score": 1.0
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that there is a natural number A, which is the sum of all divisors d of the number 500. The theorem then shows that the sum of all prime divisors p of A, where p is a prime number and also a divisor of A, is equal to 25.\n\nIn natural language, the problem can be stated as follows:\n\nConsider a natural number A, which is the sum of all the divisors of the number 500. Determine the sum of all prime divisors of A, where a prime divisor is a prime number that also divides A. The result should be 25.",
+        "semantic_score": 0.7765363336892198,
+        "symbolic_score": 1.0
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version of the problem states that A is the sum of all divisors of 500. The task then asks to find the sum of all prime divisors of A. The final answer is 25.\n\nIn a more natural language, the problem can be stated as:\n\n\"Find the sum of all divisors of 500, let's call this sum A. Then, find the sum of all prime numbers that are divisors of A. What is this sum?\"\n\nThe answer to this problem is 25.",
+        "semantic_score": 0.8554905756500361,
+        "symbolic_score": 1.0
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that A is the sum of all divisors of 500. We need to find the sum of all prime divisors of A. The final answer is 25.",
+        "semantic_score": 0.9327747196467676,
+        "symbolic_score": 1.0
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"",
+        "formal solution": "(* ### Problem\n If $A$ is the sum of the positive divisors of $500$, what is the sum of the distinct prime divisors of $A$? The final Answer is $25$\n ### Proof\n First, we find $A$. The prime factorization of $500$ is $2^2 \\cdot 5^3$. Therefore,  $$A=(1+2+2^2)(1+5+5^2+5^3)=(7)(156).$$To see why $(1+2+2^2)(1+5+5^2+5^3)$ equals the sum of the divisors of 500, note that if you distribute (without simplifying), you get 12 terms, with each divisor of $2^2\\cdot 5^3$ appearing exactly once.\n\nNow we prime factorize $7 \\cdot 156 = 7 \\cdot 2^2 \\cdot 3 \\cdot 13$. The sum of the prime divisors of $A$ is $2+3+7+13=25$.\n *)\n\n theorem\nfixes A :: nat\nassumes h0 : \"A = (SUM d | d dvd 500. d)\"\nshows  \"SUM p | p dvd A \\<and> prime p. p = 25\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The problem states that we have a natural number A, which is the sum of all divisors of 500. We need to find the sum of all prime divisors of A. The final answer is 25.",
+        "semantic_score": 0.8961915348207135,
+        "symbolic_score": 1.0
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": []
+}

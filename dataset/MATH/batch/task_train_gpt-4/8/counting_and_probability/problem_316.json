@@ -1,0 +1,60 @@
+{
+    "natural problem": "Determine the number of ways to arrange the letters of the word TOOT.",
+    "natural solution": [
+        "First we count the arrangements if all the letters are unique, which is $4!$. Then since the T's and the O's are not unique, we divide by $2!$ twice for the arrangements of T's and the arrangement of O's, for an answer of $\\dfrac{4!}{2!",
+        "\\times 2!} = \\boxed{6}$."
+    ],
+    "natural answer": "6",
+    "a_0": {
+        "formal problem": "theorem\nfixes n_permutations :: nat\nassumes h0 : \"n_permutations = fact (card (set_of (word_characters ''TOOT'')))\"\nand h1 : \"card (set_of (word_characters ''TOOT'')) = 4\"\nand h2 : \"card {c. c : word_characters ''TOOT'' & c = ''T''} = 2\"\nand h3 : \"card {c. c : word_characters ''TOOT'' & c = ''O''} = 2\"\nshows  \"n_permutations = 6\"",
+        "formal solution": "(* ### Problem\n Determine the number of ways to arrange the letters of the word TOOT. The final Answer is 6\n ### Proof\n First we count the arrangements if all the letters are unique, which is $4!$. Then since the T's and the O's are not unique, we divide by $2!$ twice for the arrangements of T's and the arrangement of O's, for an answer of $\\dfrac{4!}{2!\n \\times 2!} = \\boxed{6}$.\n *)\n\ntheorem\nfixes n_permutations :: nat\nassumes h0 : \"n_permutations = fact (card (set_of (word_characters ''TOOT'')))\"\nand h1 : \"card (set_of (word_characters ''TOOT'')) = 4\"\nand h2 : \"card {c. c : word_characters ''TOOT'' & c = ''T''} = 2\"\nand h3 : \"card {c. c : word_characters ''TOOT'' & c = ''O''} = 2\"\nshows  \"n_permutations = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many distinct permutations can be formed using all the letters in the word \"TOOT\"? The final answer is 6."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes S :: \"char multiset\"\nassumes h0 : \"S = multiset_of (String.explode ''TOOT'')\"\nshows  \"Multiset.permutation (S, [\\<^sub>2\\<^esub>T, \\<^sub>2\\<^esub>O]) = 6\"",
+        "formal solution": "(* ### Problem\n Determine the number of ways to arrange the letters of the word TOOT. The final Answer is 6\n ### Proof\n First we count the arrangements if all the letters are unique, which is $4!$. Then since the T's and the O's are not unique, we divide by $2!$ twice for the arrangements of T's and the arrangement of O's, for an answer of $\\dfrac{4!}{2!\n \\times 2!} = \\boxed{6}$.\n *)\n\ntheorem\nfixes S :: \"char multiset\"\nassumes h0 : \"S = multiset_of (String.explode ''TOOT'')\"\nshows  \"Multiset.permutation (S, [\\<^sub>2\\<^esub>T, \\<^sub>2\\<^esub>O]) = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In how many ways can the letters of the word \"TOOT\" be arranged such that there are exactly two T's and two O's? The final answer is 6."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes permutations :: nat\nassumes h0 : \"permutations = fact 4 div (fact 2 * fact 2)\"\nshows  \"permutations = 6\"",
+        "formal solution": "(* ### Problem\n Determine the number of ways to arrange the letters of the word TOOT. The final Answer is 6\n ### Proof\n First we count the arrangements if all the letters are unique, which is $4!$. Then since the T's and the O's are not unique, we divide by $2!$ twice for the arrangements of T's and the arrangement of O's, for an answer of $\\dfrac{4!}{2!\n \\times 2!} = \\boxed{6}$.\n *)\n\ntheorem\nfixes permutations :: nat\nassumes h0 : \"permutations = fact 4 div (fact 2 * fact 2)\"\nshows  \"permutations = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many permutations can be made using 4 items if 2 of them are identical and the other 2 are also identical? The final answer is 6."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes permutations :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"permutations n = fact n\"\nand h1 : \"fact 4 = 24\"\nand h2 : \"fact 2 = 2\"\nshows  \"permutations 4 div (permutations 2 * permutations 2) = 6\"",
+        "formal solution": "(* ### Problem\n Determine the number of ways to arrange the letters of the word TOOT. The final Answer is 6\n ### Proof\n First we count the arrangements if all the letters are unique, which is $4!$. Then since the T's and the O's are not unique, we divide by $2!$ twice for the arrangements of T's and the arrangement of O's, for an answer of $\\dfrac{4!}{2!\n \\times 2!} = \\boxed{6}$.\n *)\n\ntheorem\nfixes permutations :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"permutations n = fact n\"\nand h1 : \"fact 4 = 24\"\nand h2 : \"fact 2 = 2\"\nshows  \"permutations 4 div (permutations 2 * permutations 2) = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many ways are there to arrange 4 objects, if two of the objects are identical and the other two are also identical, but different from the first two? The final answer is 6."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes word :: \"char list\"\nassumes h0 : \"word = ['T', 'O', 'O', 'T']\"\nshows  \"card (permutations word) = 6\"",
+        "formal solution": "(* ### Problem\n Determine the number of ways to arrange the letters of the word TOOT. The final Answer is 6\n ### Proof\n First we count the arrangements if all the letters are unique, which is $4!$. Then since the T's and the O's are not unique, we divide by $2!$ twice for the arrangements of T's and the arrangement of O's, for an answer of $\\dfrac{4!}{2!\n \\times 2!} = \\boxed{6}$.\n *)\n\ntheorem\nfixes word :: \"char list\"\nassumes h0 : \"word = ['T', 'O', 'O', 'T']\"\nshows  \"card (permutations word) = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of unique permutations of the letters in the word \"TOOT\". The final answer is 6."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat and P :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"P(n) = n!\"\nand h1 : \"P(4) / (P(2) * P(2)) = 6\"\nshows  \"6 = (GREATEST a. \\<exists> n. P n = a)\"",
+        "formal solution": "(* ### Problem\n Determine the number of ways to arrange the letters of the word TOOT. The final Answer is 6\n ### Proof\n First we count the arrangements if all the letters are unique, which is $4!$. Then since the T's and the O's are not unique, we divide by $2!$ twice for the arrangements of T's and the arrangement of O's, for an answer of $\\dfrac{4!}{2!\n \\times 2!} = \\boxed{6}$.\n *)\n\ntheorem\nfixes n :: nat and P :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"P(n) = n!\"\nand h1 : \"P(4) / (P(2) * P(2)) = 6\"\nshows  \"6 = (GREATEST a. \\<exists> n. P n = a)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the greatest possible value of $n!$ such that $\\frac{n!}{(2!)^2} = 6$. The final answer is $6$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat and perms :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"perms n = fact n\"\nand h1 : \"fact n = n * fact (n - 1)\"\nand h2 : \"fact 0 = 1\"\nshows  \"perms 4 div (perms 2 * perms 2) = 6\"",
+        "formal solution": "(* ### Problem\n Determine the number of ways to arrange the letters of the word TOOT. The final Answer is 6\n ### Proof\n First we count the arrangements if all the letters are unique, which is $4!$. Then since the T's and the O's are not unique, we divide by $2!$ twice for the arrangements of T's and the arrangement of O's, for an answer of $\\dfrac{4!}{2!\n \\times 2!} = \\boxed{6}$.\n *)\n\ntheorem\nfixes n :: nat and perms :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"perms n = fact n\"\nand h1 : \"fact n = n * fact (n - 1)\"\nand h2 : \"fact 0 = 1\"\nshows  \"perms 4 div (perms 2 * perms 2) = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many ways can you arrange 4 items, given that there are 2 of one kind and 2 of another kind? The final answer is 6."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and perms :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"perms n = fact n\"\nand h1 : \"fact 4 = 24\"\nand h2 : \"fact 2 = 2\"\nshows  \"perms 4 / (perms 2 * perms 2) = 6\"",
+        "formal solution": "(* ### Problem\n Determine the number of ways to arrange the letters of the word TOOT. The final Answer is 6\n ### Proof\n First we count the arrangements if all the letters are unique, which is $4!$. Then since the T's and the O's are not unique, we divide by $2!$ twice for the arrangements of T's and the arrangement of O's, for an answer of $\\dfrac{4!}{2!\n \\times 2!} = \\boxed{6}$.\n *)\n\ntheorem\nfixes n :: nat and perms :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"perms n = fact n\"\nand h1 : \"fact 4 = 24\"\nand h2 : \"fact 2 = 2\"\nshows  \"perms 4 / (perms 2 * perms 2) = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In how many ways can you arrange 4 objects, if 2 of them are identical and the other 2 are also identical but different from the first 2? The final answer is 6."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat and word :: \"char list\"\nassumes h0 : \"word = ['T', 'O', 'O', 'T']\"\nand h1 : \"n = fact (length word) div (fact (count_list word 'T') * fact (count_list word 'O'))\"\nshows  \"n = 6\"",
+        "formal solution": "(* ### Problem\n Determine the number of ways to arrange the letters of the word TOOT. The final Answer is 6\n ### Proof\n First we count the arrangements if all the letters are unique, which is $4!$. Then since the T's and the O's are not unique, we divide by $2!$ twice for the arrangements of T's and the arrangement of O's, for an answer of $\\dfrac{4!}{2!\n \\times 2!} = \\boxed{6}$.\n *)\n\ntheorem\nfixes n :: nat and word :: \"char list\"\nassumes h0 : \"word = ['T', 'O', 'O', 'T']\"\nand h1 : \"n = fact (length word) div (fact (count_list word 'T') * fact (count_list word 'O'))\"\nshows  \"n = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many unique arrangements can be made using the letters in the word \"TOOT\"? The final answer is 6."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = fact 4 div (fact 2 * fact 2)\"\nshows  \"n = 6\"",
+        "formal solution": "(* ### Problem\n Determine the number of ways to arrange the letters of the word TOOT. The final Answer is 6\n ### Proof\n First we count the arrangements if all the letters are unique, which is $4!$. Then since the T's and the O's are not unique, we divide by $2!$ twice for the arrangements of T's and the arrangement of O's, for an answer of $\\dfrac{4!}{2!\n \\times 2!} = \\boxed{6}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = fact 4 div (fact 2 * fact 2)\"\nshows  \"n = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $\\frac{4!}{(2! \\times 2!)}$. The final answer is 6."
+    },
+    "level": "Level 2",
+    "type": "Counting & Probability"
+}

@@ -1,0 +1,146 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f 2 = 1\"\nand h1 : \"\\<forall> n. n \\<ge> 2015 \\<longrightarrow> f n = (\\<Sum> i \\<in> {0..n}. binomial n i) - (\\<Sum> j \\<in> {0..n-1}. \\<Sum> k \\<in> {0..j}. binomial j k)\"\nshows  \"f 2015 = 1\"",
+        "formal solution": "(* ### Problem\n For each integer $n$, let $f(n)$ be the sum of the elements of the $n$th row (i.e. the row with $n+1$ elements) of Pascal's triangle minus the sum of all the elements from previous rows. For example, \\[f(2) = \\underbrace{(1 + 2 + 1)}_{\\text{2nd row}} - \\underbrace{(1 + 1 + 1)}_{\\text{0th and 1st rows}} = 1. \\]What is the minimum value of $f(n)$ for $n \\ge 2015$? The final Answer is 1\n ### Proof\n Suppose $m \\ge 1$. The sum of the elements of the $m$th row is simply \\[\\sum_{i=0}^{m} \\binom{m}{i} = \\sum_{i=0}^m \\binom{m}{i}1^i = (1+1)^m=2^m\\] by the binomial theorem.\n Thus the sum of the elements of the $k$th row, for $k \\le n$, is $2^k$, so the total sum of all the elements of the previous rows is \\[\\sum_{k=0}^{n-1} 2^k = \\frac{2^n-1}{2-1} = 2^n-1\\] by the formula for the sum of a geometric series.\n Therefore, $f(n)=2^n-(2^n-1)=1$ for all $n \\ge 2015$. (That is, it is a constant!)\n Thus, the minimum value is clearly $\\boxed{1}$.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f 2 = 1\"\nand h1 : \"\\<forall> n. n \\<ge> 2015 \\<longrightarrow> f n = (\\<Sum> i \\<in> {0..n}. binomial n i) - (\\<Sum> j \\<in> {0..n-1}. \\<Sum> k \\<in> {0..j}. binomial j k)\"\nshows  \"f 2015 = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively by $f(2) = 1$ and for all $n \\geq 2015$, $f(n) = \\sum_{i=0}^n {n \\choose i} - \\sum_{j=0}^{n-1} \\sum_{k=0}^j {j \\choose k}$. What is the value of $f(2015)$? The final answer is 1.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9336979389190674,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f 2 = 1\"\nand h1 : \"\\<forall> n. n \\<ge> 2015 \\<longrightarrow> f n = (\\<Sum>k\\<le>n. binomial n k) - (\\<Sum>k\\<le>(n-1). \\<Sum>j\\<le>k. binomial k j)\"\nshows  \"\\<forall> n. n \\<ge> 2015 \\<longrightarrow> f n \\<ge> 1\"",
+        "formal solution": "(* ### Problem\n For each integer $n$, let $f(n)$ be the sum of the elements of the $n$th row (i.e. the row with $n+1$ elements) of Pascal's triangle minus the sum of all the elements from previous rows. For example, \\[f(2) = \\underbrace{(1 + 2 + 1)}_{\\text{2nd row}} - \\underbrace{(1 + 1 + 1)}_{\\text{0th and 1st rows}} = 1. \\]What is the minimum value of $f(n)$ for $n \\ge 2015$? The final Answer is 1\n ### Proof\n Suppose $m \\ge 1$. The sum of the elements of the $m$th row is simply \\[\\sum_{i=0}^{m} \\binom{m}{i} = \\sum_{i=0}^m \\binom{m}{i}1^i = (1+1)^m=2^m\\] by the binomial theorem.\n Thus the sum of the elements of the $k$th row, for $k \\le n$, is $2^k$, so the total sum of all the elements of the previous rows is \\[\\sum_{k=0}^{n-1} 2^k = \\frac{2^n-1}{2-1} = 2^n-1\\] by the formula for the sum of a geometric series.\n Therefore, $f(n)=2^n-(2^n-1)=1$ for all $n \\ge 2015$. (That is, it is a constant!)\n Thus, the minimum value is clearly $\\boxed{1}$.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f 2 = 1\"\nand h1 : \"\\<forall> n. n \\<ge> 2015 \\<longrightarrow> f n = (\\<Sum>k\\<le>n. binomial n k) - (\\<Sum>k\\<le>(n-1). \\<Sum>j\\<le>k. binomial k j)\"\nshows  \"\\<forall> n. n \\<ge> 2015 \\<longrightarrow> f n \\<ge> 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ such that $f(2)=1$ and for all integers $n \\geq 2015$, $f(n) = \\left(\\sum_{k=0}^{n} \\binom{n}{k}\\right) - \\left(\\sum_{k=0}^{n-1} \\sum_{j=0}^{k} \\binom{k}{j}\\right)$, show that for all integers $n \\geq 2015$, $f(n) \\geq 1$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.4004630744457245,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"f 2 = 1\"\nand h1 : \"f n = (\\<Sum>k=0..<n+1. (binomial n k)) - (\\<Sum>k=0..<n. (\\<Sum>j=0..<k+1. (binomial k j)))\"\nand h2 : \"n \\<ge> 2015\"\nshows  \"Min {f n |n. n \\<ge> 2015} = 1\"",
+        "formal solution": "(* ### Problem\n For each integer $n$, let $f(n)$ be the sum of the elements of the $n$th row (i.e. the row with $n+1$ elements) of Pascal's triangle minus the sum of all the elements from previous rows. For example, \\[f(2) = \\underbrace{(1 + 2 + 1)}_{\\text{2nd row}} - \\underbrace{(1 + 1 + 1)}_{\\text{0th and 1st rows}} = 1. \\]What is the minimum value of $f(n)$ for $n \\ge 2015$? The final Answer is 1\n ### Proof\n Suppose $m \\ge 1$. The sum of the elements of the $m$th row is simply \\[\\sum_{i=0}^{m} \\binom{m}{i} = \\sum_{i=0}^m \\binom{m}{i}1^i = (1+1)^m=2^m\\] by the binomial theorem.\n Thus the sum of the elements of the $k$th row, for $k \\le n$, is $2^k$, so the total sum of all the elements of the previous rows is \\[\\sum_{k=0}^{n-1} 2^k = \\frac{2^n-1}{2-1} = 2^n-1\\] by the formula for the sum of a geometric series.\n Therefore, $f(n)=2^n-(2^n-1)=1$ for all $n \\ge 2015$. (That is, it is a constant!)\n Thus, the minimum value is clearly $\\boxed{1}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"f 2 = 1\"\nand h1 : \"f n = (\\<Sum>k=0..<n+1. (binomial n k)) - (\\<Sum>k=0..<n. (\\<Sum>j=0..<k+1. (binomial k j)))\"\nand h2 : \"n \\<ge> 2015\"\nshows  \"Min {f n |n. n \\<ge> 2015} = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on integers by $f(2) = 1$ and $f(n) = \\left(\\sum_{k=0}^{n} \\binom{n}{k}\\right) - \\left(\\sum_{k=0}^{n-1} \\sum_{j=0}^{k} \\binom{k}{j}\\right)$ for all integers $n \\ge 3$. What is the minimum value of $f(n)$ for $n \\ge 2015$? The final answer is $1$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9939159750938416,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nand pascals_triangle :: \"int \\<Rightarrow> int list\"\nassumes h0 : \"\\<forall>n. pascals_triangle n = \\<dots>\"\nand h1 : \"\\<forall>n. f n = sum_list (pascals_triangle n) - sum_list (concat (map pascals_triangle [0..<n]))\"\nand h2 : \"\\<forall>n. n \\<ge> 2015 \\<longrightarrow> f n \\<ge> 1\"\nshows  \"\\<exists>n. n \\<ge> 2015 \\<and> f n = 1\"",
+        "formal solution": "(* ### Problem\n For each integer $n$, let $f(n)$ be the sum of the elements of the $n$th row (i.e. the row with $n+1$ elements) of Pascal's triangle minus the sum of all the elements from previous rows. For example, \\[f(2) = \\underbrace{(1 + 2 + 1)}_{\\text{2nd row}} - \\underbrace{(1 + 1 + 1)}_{\\text{0th and 1st rows}} = 1. \\]What is the minimum value of $f(n)$ for $n \\ge 2015$? The final Answer is 1\n ### Proof\n Suppose $m \\ge 1$. The sum of the elements of the $m$th row is simply \\[\\sum_{i=0}^{m} \\binom{m}{i} = \\sum_{i=0}^m \\binom{m}{i}1^i = (1+1)^m=2^m\\] by the binomial theorem.\n Thus the sum of the elements of the $k$th row, for $k \\le n$, is $2^k$, so the total sum of all the elements of the previous rows is \\[\\sum_{k=0}^{n-1} 2^k = \\frac{2^n-1}{2-1} = 2^n-1\\] by the formula for the sum of a geometric series.\n Therefore, $f(n)=2^n-(2^n-1)=1$ for all $n \\ge 2015$. (That is, it is a constant!)\n Thus, the minimum value is clearly $\\boxed{1}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nand pascals_triangle :: \"int \\<Rightarrow> int list\"\nassumes h0 : \"\\<forall>n. pascals_triangle n = \\<dots>\"\nand h1 : \"\\<forall>n. f n = sum_list (pascals_triangle n) - sum_list (concat (map pascals_triangle [0..<n]))\"\nand h2 : \"\\<forall>n. n \\<ge> 2015 \\<longrightarrow> f n \\<ge> 1\"\nshows  \"\\<exists>n. n \\<ge> 2015 \\<and> f n = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(n)$ that calculates the difference between the sum of elements in the $n$th row of Pascal's triangle and the sum of all elements in the rows before the $n$th row. Find the smallest integer $n \\geq 2015$ for which $f(n) = 1$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.6126930117607117,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"\\<forall>n. f n = (\\<Sum>k = 0..n. binomial n k) - (\\<Sum>k = 0..(n - 1). binomial (n - 1) k)\"\nand h1 : \"n \\<ge> 2015\"\nshows  \"Min {f n |n. n \\<ge> 2015} = 1\"",
+        "formal solution": "(* ### Problem\n For each integer $n$, let $f(n)$ be the sum of the elements of the $n$th row (i.e. the row with $n+1$ elements) of Pascal's triangle minus the sum of all the elements from previous rows. For example, \\[f(2) = \\underbrace{(1 + 2 + 1)}_{\\text{2nd row}} - \\underbrace{(1 + 1 + 1)}_{\\text{0th and 1st rows}} = 1. \\]What is the minimum value of $f(n)$ for $n \\ge 2015$? The final Answer is 1\n ### Proof\n Suppose $m \\ge 1$. The sum of the elements of the $m$th row is simply \\[\\sum_{i=0}^{m} \\binom{m}{i} = \\sum_{i=0}^m \\binom{m}{i}1^i = (1+1)^m=2^m\\] by the binomial theorem.\n Thus the sum of the elements of the $k$th row, for $k \\le n$, is $2^k$, so the total sum of all the elements of the previous rows is \\[\\sum_{k=0}^{n-1} 2^k = \\frac{2^n-1}{2-1} = 2^n-1\\] by the formula for the sum of a geometric series.\n Therefore, $f(n)=2^n-(2^n-1)=1$ for all $n \\ge 2015$. (That is, it is a constant!)\n Thus, the minimum value is clearly $\\boxed{1}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"\\<forall>n. f n = (\\<Sum>k = 0..n. binomial n k) - (\\<Sum>k = 0..(n - 1). binomial (n - 1) k)\"\nand h1 : \"n \\<ge> 2015\"\nshows  \"Min {f n |n. n \\<ge> 2015} = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(n)$ be defined as the difference between the sum of the binomial coefficients of $n$ and the sum of the binomial coefficients of $n-1$. That is, $f(n) = \\sum_{k=0}^n {n \\choose k} - \\sum_{k=0}^{n-1} {(n-1) \\choose k}$. What is the smallest value of $f(n)$ for $n \\geq 2015$? The final answer is $1$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9933849573135376,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 0 \\<longrightarrow> f n = (\\<Sum>i \\<in> {0..n}. binomial n i) - (\\<Sum>i \\<in> {0..n-1}. \\<Sum>j \\<in> {0..i}. binomial i j)\"\nshows  \"Min {f n |n. n \\<ge> 2015} = 1\"",
+        "formal solution": "(* ### Problem\n For each integer $n$, let $f(n)$ be the sum of the elements of the $n$th row (i.e. the row with $n+1$ elements) of Pascal's triangle minus the sum of all the elements from previous rows. For example, \\[f(2) = \\underbrace{(1 + 2 + 1)}_{\\text{2nd row}} - \\underbrace{(1 + 1 + 1)}_{\\text{0th and 1st rows}} = 1. \\]What is the minimum value of $f(n)$ for $n \\ge 2015$? The final Answer is 1\n ### Proof\n Suppose $m \\ge 1$. The sum of the elements of the $m$th row is simply \\[\\sum_{i=0}^{m} \\binom{m}{i} = \\sum_{i=0}^m \\binom{m}{i}1^i = (1+1)^m=2^m\\] by the binomial theorem.\n Thus the sum of the elements of the $k$th row, for $k \\le n$, is $2^k$, so the total sum of all the elements of the previous rows is \\[\\sum_{k=0}^{n-1} 2^k = \\frac{2^n-1}{2-1} = 2^n-1\\] by the formula for the sum of a geometric series.\n Therefore, $f(n)=2^n-(2^n-1)=1$ for all $n \\ge 2015$. (That is, it is a constant!)\n Thus, the minimum value is clearly $\\boxed{1}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 0 \\<longrightarrow> f n = (\\<Sum>i \\<in> {0..n}. binomial n i) - (\\<Sum>i \\<in> {0..n-1}. \\<Sum>j \\<in> {0..i}. binomial i j)\"\nshows  \"Min {f n |n. n \\<ge> 2015} = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(n)$ such that for all non-negative integers $n$, $f(n)$ is the difference between the sum of the binomial coefficients of $n$ and the sum of all binomial coefficients of the integers from $0$ to $n-1$. What is the smallest value of $f(n)$ when $n$ is greater than or equal to $2015$? The final answer is 1.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9933662414550781,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\" and pascal_sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"pascal_sum n = (\\<Sum>i\\<le>n. binomial n i)\"\nand h1 : \"\\<forall>n. n \\<ge> 2015 \\<longrightarrow> f n = pascal_sum n - pascal_sum (n - 1)\"\nshows  \"Min {f n | n. n \\<ge> 2015} = 1\"",
+        "formal solution": "(* ### Problem\n For each integer $n$, let $f(n)$ be the sum of the elements of the $n$th row (i.e. the row with $n+1$ elements) of Pascal's triangle minus the sum of all the elements from previous rows. For example, \\[f(2) = \\underbrace{(1 + 2 + 1)}_{\\text{2nd row}} - \\underbrace{(1 + 1 + 1)}_{\\text{0th and 1st rows}} = 1. \\]What is the minimum value of $f(n)$ for $n \\ge 2015$? The final Answer is 1\n ### Proof\n Suppose $m \\ge 1$. The sum of the elements of the $m$th row is simply \\[\\sum_{i=0}^{m} \\binom{m}{i} = \\sum_{i=0}^m \\binom{m}{i}1^i = (1+1)^m=2^m\\] by the binomial theorem.\n Thus the sum of the elements of the $k$th row, for $k \\le n$, is $2^k$, so the total sum of all the elements of the previous rows is \\[\\sum_{k=0}^{n-1} 2^k = \\frac{2^n-1}{2-1} = 2^n-1\\] by the formula for the sum of a geometric series.\n Therefore, $f(n)=2^n-(2^n-1)=1$ for all $n \\ge 2015$. (That is, it is a constant!)\n Thus, the minimum value is clearly $\\boxed{1}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\" and pascal_sum :: \"int \\<Rightarrow> int\"\nassumes h0 : \"pascal_sum n = (\\<Sum>i\\<le>n. binomial n i)\"\nand h1 : \"\\<forall>n. n \\<ge> 2015 \\<longrightarrow> f n = pascal_sum n - pascal_sum (n - 1)\"\nshows  \"Min {f n | n. n \\<ge> 2015} = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(n)$, where $n$ is an integer and $n \\geq 2015$. The function is defined as $f(n) = pascal\\_sum(n) - pascal\\_sum(n-1)$, where $pascal\\_sum(n)$ is the sum of the elements in the $n$-th row of Pascal's triangle, i.e., $pascal\\_sum(n) = \\sum_{i=0}^{n} \\binom{n}{i}$. What is the minimum value of $f(n)$ for $n \\geq 2015$? The final answer is $1$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9118901491165161,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"f n = (\\<Sum>i\\<in>{0..n}. binomial n i) - (\\<Sum>i\\<in>{0..n-1}. \\<Sum>j\\<in>{0..i}. binomial i j)\"\nand h1 : \"n \\<ge> 2015\"\nshows  \"Min {f n |n. n \\<ge> 2015} = 1\"",
+        "formal solution": "(* ### Problem\n For each integer $n$, let $f(n)$ be the sum of the elements of the $n$th row (i.e. the row with $n+1$ elements) of Pascal's triangle minus the sum of all the elements from previous rows. For example, \\[f(2) = \\underbrace{(1 + 2 + 1)}_{\\text{2nd row}} - \\underbrace{(1 + 1 + 1)}_{\\text{0th and 1st rows}} = 1. \\]What is the minimum value of $f(n)$ for $n \\ge 2015$? The final Answer is 1\n ### Proof\n Suppose $m \\ge 1$. The sum of the elements of the $m$th row is simply \\[\\sum_{i=0}^{m} \\binom{m}{i} = \\sum_{i=0}^m \\binom{m}{i}1^i = (1+1)^m=2^m\\] by the binomial theorem.\n Thus the sum of the elements of the $k$th row, for $k \\le n$, is $2^k$, so the total sum of all the elements of the previous rows is \\[\\sum_{k=0}^{n-1} 2^k = \\frac{2^n-1}{2-1} = 2^n-1\\] by the formula for the sum of a geometric series.\n Therefore, $f(n)=2^n-(2^n-1)=1$ for all $n \\ge 2015$. (That is, it is a constant!)\n Thus, the minimum value is clearly $\\boxed{1}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\" and n :: int\nassumes h0 : \"f n = (\\<Sum>i\\<in>{0..n}. binomial n i) - (\\<Sum>i\\<in>{0..n-1}. \\<Sum>j\\<in>{0..i}. binomial i j)\"\nand h1 : \"n \\<ge> 2015\"\nshows  \"Min {f n |n. n \\<ge> 2015} = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let the function $f(n)$ be defined as the difference between the sum of the binomial coefficients of $n$ and the sum of the sums of the binomial coefficients of all integers less than $n$. In other words, $f(n) = \\sum_{i=0}^n {n \\choose i} - \\sum_{i=0}^{n-1} \\sum_{j=0}^i {i \\choose j}$. Find the minimum value of $f(n)$ for all integers $n \\geq 2015$. The final answer is $1$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9825311899185181,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f(2) = 1\"\nand h1 : \"\\<forall>n. n \\<ge> 2015 \\<longrightarrow> f n = (sum (\\<lambda>k. binomial n k) {0..n}) - (sum (\\<lambda>k. binomial (n-1) k) {0..n-1})\"\nshows  \"Min {f n | n. n \\<ge> 2015} = 1\"",
+        "formal solution": "(* ### Problem\n For each integer $n$, let $f(n)$ be the sum of the elements of the $n$th row (i.e. the row with $n+1$ elements) of Pascal's triangle minus the sum of all the elements from previous rows. For example, \\[f(2) = \\underbrace{(1 + 2 + 1)}_{\\text{2nd row}} - \\underbrace{(1 + 1 + 1)}_{\\text{0th and 1st rows}} = 1. \\]What is the minimum value of $f(n)$ for $n \\ge 2015$? The final Answer is 1\n ### Proof\n Suppose $m \\ge 1$. The sum of the elements of the $m$th row is simply \\[\\sum_{i=0}^{m} \\binom{m}{i} = \\sum_{i=0}^m \\binom{m}{i}1^i = (1+1)^m=2^m\\] by the binomial theorem.\n Thus the sum of the elements of the $k$th row, for $k \\le n$, is $2^k$, so the total sum of all the elements of the previous rows is \\[\\sum_{k=0}^{n-1} 2^k = \\frac{2^n-1}{2-1} = 2^n-1\\] by the formula for the sum of a geometric series.\n Therefore, $f(n)=2^n-(2^n-1)=1$ for all $n \\ge 2015$. (That is, it is a constant!)\n Thus, the minimum value is clearly $\\boxed{1}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f(2) = 1\"\nand h1 : \"\\<forall>n. n \\<ge> 2015 \\<longrightarrow> f n = (sum (\\<lambda>k. binomial n k) {0..n}) - (sum (\\<lambda>k. binomial (n-1) k) {0..n-1})\"\nshows  \"Min {f n | n. n \\<ge> 2015} = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(n)$ with $f(2) = 1$ and for all $n \\geq 2015$, $f(n) = \\left(\\sum_{k=0}^{n} \\binom{n}{k}\\right) - \\left(\\sum_{k=0}^{n-1} \\binom{n-1}{k}\\right)$. Find the minimum value of $f(n)$ for $n \\geq 2015$. The final answer is $1$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7689875364303589,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = (\\<Sum> i \\<in> {0..n}. (binomial n i)) - (\\<Sum> i \\<in> {0..n-1}. (\\<Sum> j \\<in> {0..i}. (binomial i j)))\"\nand h1 : \"n \\<ge> 2015\"\nshows  \"\\<exists> k. k \\<ge> 2015 \\<and> f k = 1\"",
+        "formal solution": "(* ### Problem\n For each integer $n$, let $f(n)$ be the sum of the elements of the $n$th row (i.e. the row with $n+1$ elements) of Pascal's triangle minus the sum of all the elements from previous rows. For example, \\[f(2) = \\underbrace{(1 + 2 + 1)}_{\\text{2nd row}} - \\underbrace{(1 + 1 + 1)}_{\\text{0th and 1st rows}} = 1. \\]What is the minimum value of $f(n)$ for $n \\ge 2015$? The final Answer is 1\n ### Proof\n Suppose $m \\ge 1$. The sum of the elements of the $m$th row is simply \\[\\sum_{i=0}^{m} \\binom{m}{i} = \\sum_{i=0}^m \\binom{m}{i}1^i = (1+1)^m=2^m\\] by the binomial theorem.\n Thus the sum of the elements of the $k$th row, for $k \\le n$, is $2^k$, so the total sum of all the elements of the previous rows is \\[\\sum_{k=0}^{n-1} 2^k = \\frac{2^n-1}{2-1} = 2^n-1\\] by the formula for the sum of a geometric series.\n Therefore, $f(n)=2^n-(2^n-1)=1$ for all $n \\ge 2015$. (That is, it is a constant!)\n Thus, the minimum value is clearly $\\boxed{1}$.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = (\\<Sum> i \\<in> {0..n}. (binomial n i)) - (\\<Sum> i \\<in> {0..n-1}. (\\<Sum> j \\<in> {0..i}. (binomial i j)))\"\nand h1 : \"n \\<ge> 2015\"\nshows  \"\\<exists> k. k \\<ge> 2015 \\<and> f k = 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(n)$ defined by $f(n) = \\left(\\sum_{i=0}^n \\binom{n}{i}\\right) - \\left(\\sum_{i=0}^{n-1} \\sum_{j=0}^i \\binom{i}{j}\\right)$. Find a value of $k \\ge 2015$ such that $f(k) = 1$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.4143843948841095,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "1",
+    "natural problem": "For each integer $n$, let $f(n)$ be the sum of the elements of the $n$th row (i.e. the row with $n+1$ elements) of Pascal's triangle minus the sum of all the elements from previous rows. For example, \\[f(2) = \\underbrace{(1 + 2 + 1)}_{\\text{2nd row}} - \\underbrace{(1 + 1 + 1)}_{\\text{0th and 1st rows}} = 1. \\]What is the minimum value of $f(n)$ for $n \\ge 2015$?",
+    "natural solution": [
+        "Suppose $m \\ge 1$. The sum of the elements of the $m$th row is simply \\[\\sum_{i=0}^{m} \\binom{m}{i} = \\sum_{i=0}^m \\binom{m}{i}1^i = (1+1)^m=2^m\\] by the binomial theorem.",
+        "Thus the sum of the elements of the $k$th row, for $k \\le n$, is $2^k$, so the total sum of all the elements of the previous rows is \\[\\sum_{k=0}^{n-1} 2^k = \\frac{2^n-1}{2-1} = 2^n-1\\] by the formula for the sum of a geometric series.",
+        "Therefore, $f(n)=2^n-(2^n-1)=1$ for all $n \\ge 2015$. (That is, it is a constant!)",
+        "Thus, the minimum value is clearly $\\boxed{1}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 4",
+    "type": "Counting & Probability"
+}

@@ -1,0 +1,120 @@
+{
+    "problem_name": "mathd_numbertheory_690",
+    "informal_statement": "Determine the smallest non-negative integer $a$ that satisfies the congruences: \\begin{align*}\n&a\\equiv 2\\pmod 3,\\\\\n&a\\equiv 4\\pmod 5,\\\\\n&a\\equiv 6\\pmod 7,\\\\\n&a\\equiv 8\\pmod 9.\n\\end{align*} Show that it is 314.",
+    "informal_proof": "First notice that $a\\equiv 8\\pmod 9$ tells us that $a\\equiv 2\\pmod 3$, so once we satisfy the former, we have the latter.    So, we focus on the final three congruences.  We do so by rewriting them as \\begin{align*}\na&\\equiv -1\\pmod 5,\\\\\na&\\equiv -1\\pmod 7,\\\\\na&\\equiv -1\\pmod 9.\n\\end{align*} Since $\\gcd(5,7)=\\gcd(7,9)=\\gcd(9,5)=1$, the above congruences apply that $a\\equiv -1\\pmod{5\\cdot 7\\cdot 9}$, or $a\\equiv 314\\pmod{315}$. So $a$ is of the form $314+315n$ for an integer $n$. The smallest non-negative number of this form is $314$, which satisfies the original congruences.",
+    "a_0": {
+        "formal problem": "theorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"a \\<ge> 0\"\nshows  \"a = 314\"",
+        "formal solution": "(* ### Problem\n Determine the smallest non-negative integer $a$ that satisfies the congruences: \\begin{align*}\n&a\\equiv 2\\pmod 3,\\\\\n&a\\equiv 4\\pmod 5,\\\\\n&a\\equiv 6\\pmod 7,\\\\\n&a\\equiv 8\\pmod 9.\n\\end{align*} Show that it is 314.\n ### Proof\n First notice that $a\\equiv 8\\pmod 9$ tells us that $a\\equiv 2\\pmod 3$, so once we satisfy the former, we have the latter.    So, we focus on the final three congruences.  We do so by rewriting them as \\begin{align*}\na&\\equiv -1\\pmod 5,\\\\\na&\\equiv -1\\pmod 7,\\\\\na&\\equiv -1\\pmod 9.\n\\end{align*} Since $\\gcd(5,7)=\\gcd(7,9)=\\gcd(9,5)=1$, the above congruences apply that $a\\equiv -1\\pmod{5\\cdot 7\\cdot 9}$, or $a\\equiv 314\\pmod{315}$. So $a$ is of the form $314+315n$ for an integer $n$. The smallest non-negative number of this form is $314$, which satisfies the original congruences.\n *)\n\ntheorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"a \\<ge> 0\"\nshows  \"a = 314\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest non-negative integer $a$ that satisfies the following system of congruences:\n\n$a \\equiv 2 \\pmod{3}$\n\n$a \\equiv 4 \\pmod{5}$\n\n$a \\equiv 6 \\pmod{7}$\n\n$a \\equiv 8 \\pmod{9}$\n\nThe final answer is $a = 314$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8643549084663391,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"\\<forall> b. 0 \\<le> b \\<and> b < a \\<longrightarrow> (b mod 3 \\<noteq> 2 \\<or> b mod 5 \\<noteq> 4 \\<or> b mod 7 \\<noteq> 6 \\<or> b mod 9 \\<noteq> 8)\"\nshows  \"a = 314\"",
+        "formal solution": "(* ### Problem\n Determine the smallest non-negative integer $a$ that satisfies the congruences: \\begin{align*}\n&a\\equiv 2\\pmod 3,\\\\\n&a\\equiv 4\\pmod 5,\\\\\n&a\\equiv 6\\pmod 7,\\\\\n&a\\equiv 8\\pmod 9.\n\\end{align*} Show that it is 314.\n ### Proof\n First notice that $a\\equiv 8\\pmod 9$ tells us that $a\\equiv 2\\pmod 3$, so once we satisfy the former, we have the latter.    So, we focus on the final three congruences.  We do so by rewriting them as \\begin{align*}\na&\\equiv -1\\pmod 5,\\\\\na&\\equiv -1\\pmod 7,\\\\\na&\\equiv -1\\pmod 9.\n\\end{align*} Since $\\gcd(5,7)=\\gcd(7,9)=\\gcd(9,5)=1$, the above congruences apply that $a\\equiv -1\\pmod{5\\cdot 7\\cdot 9}$, or $a\\equiv 314\\pmod{315}$. So $a$ is of the form $314+315n$ for an integer $n$. The smallest non-negative number of this form is $314$, which satisfies the original congruences.\n *)\n\ntheorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"\\<forall> b. 0 \\<le> b \\<and> b < a \\<longrightarrow> (b mod 3 \\<noteq> 2 \\<or> b mod 5 \\<noteq> 4 \\<or> b mod 7 \\<noteq> 6 \\<or> b mod 9 \\<noteq> 8)\"\nshows  \"a = 314\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $a$ such that $a \\equiv 2 \\pmod{3}$, $a \\equiv 4 \\pmod{5}$, $a \\equiv 6 \\pmod{7}$, and $a \\equiv 8 \\pmod{9}$. The final answer is $a = 314$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.951633870601654,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nshows  \"a = (LEAST a. a \\<ge> 0 \\<and> a mod 3 = 2 \\<and> a mod 5 = 4 \\<and> a mod 7 = 6 \\<and> a mod 9 = 8)\"",
+        "formal solution": "(* ### Problem\n Determine the smallest non-negative integer $a$ that satisfies the congruences: \\begin{align*}\n&a\\equiv 2\\pmod 3,\\\\\n&a\\equiv 4\\pmod 5,\\\\\n&a\\equiv 6\\pmod 7,\\\\\n&a\\equiv 8\\pmod 9.\n\\end{align*} Show that it is 314.\n ### Proof\n First notice that $a\\equiv 8\\pmod 9$ tells us that $a\\equiv 2\\pmod 3$, so once we satisfy the former, we have the latter.    So, we focus on the final three congruences.  We do so by rewriting them as \\begin{align*}\na&\\equiv -1\\pmod 5,\\\\\na&\\equiv -1\\pmod 7,\\\\\na&\\equiv -1\\pmod 9.\n\\end{align*} Since $\\gcd(5,7)=\\gcd(7,9)=\\gcd(9,5)=1$, the above congruences apply that $a\\equiv -1\\pmod{5\\cdot 7\\cdot 9}$, or $a\\equiv 314\\pmod{315}$. So $a$ is of the form $314+315n$ for an integer $n$. The smallest non-negative number of this form is $314$, which satisfies the original congruences.\n *)\n\ntheorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nshows  \"a = (LEAST a. a \\<ge> 0 \\<and> a mod 3 = 2 \\<and> a mod 5 = 4 \\<and> a mod 7 = 6 \\<and> a mod 9 = 8)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest non-negative integer $a$ that satisfies the following system of congruences:\n\n1. $a \\equiv 2 \\pmod{3}$\n2. $a \\equiv 4 \\pmod{5}$\n3. $a \\equiv 6 \\pmod{7}$\n4. $a \\equiv 8 \\pmod{9}$",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5857821702957153,
+        "symbolic_score": 0.4
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nshows  \"a = 314\"",
+        "formal solution": "(* ### Problem\n Determine the smallest non-negative integer $a$ that satisfies the congruences: \\begin{align*}\n&a\\equiv 2\\pmod 3,\\\\\n&a\\equiv 4\\pmod 5,\\\\\n&a\\equiv 6\\pmod 7,\\\\\n&a\\equiv 8\\pmod 9.\n\\end{align*} Show that it is 314.\n ### Proof\n First notice that $a\\equiv 8\\pmod 9$ tells us that $a\\equiv 2\\pmod 3$, so once we satisfy the former, we have the latter.    So, we focus on the final three congruences.  We do so by rewriting them as \\begin{align*}\na&\\equiv -1\\pmod 5,\\\\\na&\\equiv -1\\pmod 7,\\\\\na&\\equiv -1\\pmod 9.\n\\end{align*} Since $\\gcd(5,7)=\\gcd(7,9)=\\gcd(9,5)=1$, the above congruences apply that $a\\equiv -1\\pmod{5\\cdot 7\\cdot 9}$, or $a\\equiv 314\\pmod{315}$. So $a$ is of the form $314+315n$ for an integer $n$. The smallest non-negative number of this form is $314$, which satisfies the original congruences.\n *)\n\ntheorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nshows  \"a = 314\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find an integer $a$ such that it satisfies the following conditions: $a \\equiv 2 \\pmod{3},$ $a \\equiv 4 \\pmod{5},$ $a \\equiv 6 \\pmod{7},$ and $a \\equiv 8 \\pmod{9}$. The final answer is $a=314$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9303907752037048,
+        "symbolic_score": 0.4
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"\\<forall> b. b \\<ge> 0 \\<and> b mod 3 = 2 \\<and> b mod 5 = 4 \\<and> b mod 7 = 6 \\<and> b mod 9 = 8 \\<longrightarrow> b \\<ge> a\"\nshows  \"a = 314\"",
+        "formal solution": "(* ### Problem\n Determine the smallest non-negative integer $a$ that satisfies the congruences: \\begin{align*}\n&a\\equiv 2\\pmod 3,\\\\\n&a\\equiv 4\\pmod 5,\\\\\n&a\\equiv 6\\pmod 7,\\\\\n&a\\equiv 8\\pmod 9.\n\\end{align*} Show that it is 314.\n ### Proof\n First notice that $a\\equiv 8\\pmod 9$ tells us that $a\\equiv 2\\pmod 3$, so once we satisfy the former, we have the latter.    So, we focus on the final three congruences.  We do so by rewriting them as \\begin{align*}\na&\\equiv -1\\pmod 5,\\\\\na&\\equiv -1\\pmod 7,\\\\\na&\\equiv -1\\pmod 9.\n\\end{align*} Since $\\gcd(5,7)=\\gcd(7,9)=\\gcd(9,5)=1$, the above congruences apply that $a\\equiv -1\\pmod{5\\cdot 7\\cdot 9}$, or $a\\equiv 314\\pmod{315}$. So $a$ is of the form $314+315n$ for an integer $n$. The smallest non-negative number of this form is $314$, which satisfies the original congruences.\n *)\n\ntheorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"\\<forall> b. b \\<ge> 0 \\<and> b mod 3 = 2 \\<and> b mod 5 = 4 \\<and> b mod 7 = 6 \\<and> b mod 9 = 8 \\<longrightarrow> b \\<ge> a\"\nshows  \"a = 314\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest non-negative integer $a$ that satisfies the following conditions:\n\n1. $a \\equiv 2 \\pmod{3}$\n2. $a \\equiv 4 \\pmod{5}$\n3. $a \\equiv 6 \\pmod{7}$\n4. $a \\equiv 8 \\pmod{9}$\n\nThe final answer is $a = 314$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.869382381439209,
+        "symbolic_score": 0.2
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"\\<forall> n. (n mod 3 = 2 \\<and> n mod 5 = 4 \\<and> n mod 7 = 6 \\<and> n mod 9 = 8) \\<longrightarrow> n \\<ge> a\"\nshows  \"a = 314\"",
+        "formal solution": "(* ### Problem\n Determine the smallest non-negative integer $a$ that satisfies the congruences: \\begin{align*}\n&a\\equiv 2\\pmod 3,\\\\\n&a\\equiv 4\\pmod 5,\\\\\n&a\\equiv 6\\pmod 7,\\\\\n&a\\equiv 8\\pmod 9.\n\\end{align*} Show that it is 314.\n ### Proof\n First notice that $a\\equiv 8\\pmod 9$ tells us that $a\\equiv 2\\pmod 3$, so once we satisfy the former, we have the latter.    So, we focus on the final three congruences.  We do so by rewriting them as \\begin{align*}\na&\\equiv -1\\pmod 5,\\\\\na&\\equiv -1\\pmod 7,\\\\\na&\\equiv -1\\pmod 9.\n\\end{align*} Since $\\gcd(5,7)=\\gcd(7,9)=\\gcd(9,5)=1$, the above congruences apply that $a\\equiv -1\\pmod{5\\cdot 7\\cdot 9}$, or $a\\equiv 314\\pmod{315}$. So $a$ is of the form $314+315n$ for an integer $n$. The smallest non-negative number of this form is $314$, which satisfies the original congruences.\n *)\n\ntheorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"\\<forall> n. (n mod 3 = 2 \\<and> n mod 5 = 4 \\<and> n mod 7 = 6 \\<and> n mod 9 = 8) \\<longrightarrow> n \\<ge> a\"\nshows  \"a = 314\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest integer $a$ such that $a \\equiv 2 \\pmod{3}$, $a \\equiv 4 \\pmod{5}$, $a \\equiv 6 \\pmod{7}$, and $a \\equiv 8 \\pmod{9}$. The final answer is $a = 314$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9569875001907349,
+        "symbolic_score": 0.4
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"a \\<ge> 0\"\nshows  \"a = (LEAST a. a mod 3 = 2 \\<and> a mod 5 = 4 \\<and> a mod 7 = 6 \\<and> a mod 9 = 8 \\<and> a \\<ge> 0)\"",
+        "formal solution": "(* ### Problem\n Determine the smallest non-negative integer $a$ that satisfies the congruences: \\begin{align*}\n&a\\equiv 2\\pmod 3,\\\\\n&a\\equiv 4\\pmod 5,\\\\\n&a\\equiv 6\\pmod 7,\\\\\n&a\\equiv 8\\pmod 9.\n\\end{align*} Show that it is 314.\n ### Proof\n First notice that $a\\equiv 8\\pmod 9$ tells us that $a\\equiv 2\\pmod 3$, so once we satisfy the former, we have the latter.    So, we focus on the final three congruences.  We do so by rewriting them as \\begin{align*}\na&\\equiv -1\\pmod 5,\\\\\na&\\equiv -1\\pmod 7,\\\\\na&\\equiv -1\\pmod 9.\n\\end{align*} Since $\\gcd(5,7)=\\gcd(7,9)=\\gcd(9,5)=1$, the above congruences apply that $a\\equiv -1\\pmod{5\\cdot 7\\cdot 9}$, or $a\\equiv 314\\pmod{315}$. So $a$ is of the form $314+315n$ for an integer $n$. The smallest non-negative number of this form is $314$, which satisfies the original congruences.\n *)\n\ntheorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"a \\<ge> 0\"\nshows  \"a = (LEAST a. a mod 3 = 2 \\<and> a mod 5 = 4 \\<and> a mod 7 = 6 \\<and> a mod 9 = 8 \\<and> a \\<ge> 0)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest non-negative integer $a$ that satisfies the following congruences:\n\n$a \\equiv 2 \\pmod{3}$\n\n$a \\equiv 4 \\pmod{5}$\n\n$a \\equiv 6 \\pmod{7}$\n\n$a \\equiv 8 \\pmod{9}$",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6921094059944153,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"\\<forall> x. x \\<ge> 0 \\<and> x mod 3 = 2 \\<and> x mod 5 = 4 \\<and> x mod 7 = 6 \\<and> x mod 9 = 8 \\<longrightarrow> x \\<ge> a\"\nshows  \"a = 314\"",
+        "formal solution": "(* ### Problem\n Determine the smallest non-negative integer $a$ that satisfies the congruences: \\begin{align*}\n&a\\equiv 2\\pmod 3,\\\\\n&a\\equiv 4\\pmod 5,\\\\\n&a\\equiv 6\\pmod 7,\\\\\n&a\\equiv 8\\pmod 9.\n\\end{align*} Show that it is 314.\n ### Proof\n First notice that $a\\equiv 8\\pmod 9$ tells us that $a\\equiv 2\\pmod 3$, so once we satisfy the former, we have the latter.    So, we focus on the final three congruences.  We do so by rewriting them as \\begin{align*}\na&\\equiv -1\\pmod 5,\\\\\na&\\equiv -1\\pmod 7,\\\\\na&\\equiv -1\\pmod 9.\n\\end{align*} Since $\\gcd(5,7)=\\gcd(7,9)=\\gcd(9,5)=1$, the above congruences apply that $a\\equiv -1\\pmod{5\\cdot 7\\cdot 9}$, or $a\\equiv 314\\pmod{315}$. So $a$ is of the form $314+315n$ for an integer $n$. The smallest non-negative number of this form is $314$, which satisfies the original congruences.\n *)\n\ntheorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"\\<forall> x. x \\<ge> 0 \\<and> x mod 3 = 2 \\<and> x mod 5 = 4 \\<and> x mod 7 = 6 \\<and> x mod 9 = 8 \\<longrightarrow> x \\<ge> a\"\nshows  \"a = 314\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest non-negative integer $a$ that satisfies the following congruences:\n\n$a \\equiv 2 \\pmod{3}$,\n$a \\equiv 4 \\pmod{5}$,\n$a \\equiv 6 \\pmod{7}$, and\n$a \\equiv 8 \\pmod{9}$.\n\nThe final answer is $a = 314$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9640424847602844,
+        "symbolic_score": 0.2
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nshows  \"a = (LEAST a. a \\<ge> 0 \\<and> a mod 3 = 2 \\<and> a mod 5 = 4 \\<and> a mod 7 = 6 \\<and> a mod 9 = 8)\"",
+        "formal solution": "(* ### Problem\n Determine the smallest non-negative integer $a$ that satisfies the congruences: \\begin{align*}\n&a\\equiv 2\\pmod 3,\\\\\n&a\\equiv 4\\pmod 5,\\\\\n&a\\equiv 6\\pmod 7,\\\\\n&a\\equiv 8\\pmod 9.\n\\end{align*} Show that it is 314.\n ### Proof\n First notice that $a\\equiv 8\\pmod 9$ tells us that $a\\equiv 2\\pmod 3$, so once we satisfy the former, we have the latter.    So, we focus on the final three congruences.  We do so by rewriting them as \\begin{align*}\na&\\equiv -1\\pmod 5,\\\\\na&\\equiv -1\\pmod 7,\\\\\na&\\equiv -1\\pmod 9.\n\\end{align*} Since $\\gcd(5,7)=\\gcd(7,9)=\\gcd(9,5)=1$, the above congruences apply that $a\\equiv -1\\pmod{5\\cdot 7\\cdot 9}$, or $a\\equiv 314\\pmod{315}$. So $a$ is of the form $314+315n$ for an integer $n$. The smallest non-negative number of this form is $314$, which satisfies the original congruences.\n *)\n\ntheorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nshows  \"a = (LEAST a. a \\<ge> 0 \\<and> a mod 3 = 2 \\<and> a mod 5 = 4 \\<and> a mod 7 = 6 \\<and> a mod 9 = 8)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest non-negative integer $a$ that satisfies the following conditions:\n\n1. $a$ leaves a remainder of 2 when divided by 3.\n2. $a$ leaves a remainder of 4 when divided by 5.\n3. $a$ leaves a remainder of 6 when divided by 7.\n4. $a$ leaves a remainder of 8 when divided by 9.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9766170382499695,
+        "symbolic_score": 0.4
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"0 \\<le> a\"\nshows  \"\\<exists> n. (\\<forall> m < n. \\<not> (m mod 3 = 2 \\<and> m mod 5 = 4 \\<and> m mod 7 = 6 \\<and> m mod 9 = 8)) \\<and> a = 314\"",
+        "formal solution": "(* ### Problem\n Determine the smallest non-negative integer $a$ that satisfies the congruences: \\begin{align*}\n&a\\equiv 2\\pmod 3,\\\\\n&a\\equiv 4\\pmod 5,\\\\\n&a\\equiv 6\\pmod 7,\\\\\n&a\\equiv 8\\pmod 9.\n\\end{align*} Show that it is 314.\n ### Proof\n First notice that $a\\equiv 8\\pmod 9$ tells us that $a\\equiv 2\\pmod 3$, so once we satisfy the former, we have the latter.    So, we focus on the final three congruences.  We do so by rewriting them as \\begin{align*}\na&\\equiv -1\\pmod 5,\\\\\na&\\equiv -1\\pmod 7,\\\\\na&\\equiv -1\\pmod 9.\n\\end{align*} Since $\\gcd(5,7)=\\gcd(7,9)=\\gcd(9,5)=1$, the above congruences apply that $a\\equiv -1\\pmod{5\\cdot 7\\cdot 9}$, or $a\\equiv 314\\pmod{315}$. So $a$ is of the form $314+315n$ for an integer $n$. The smallest non-negative number of this form is $314$, which satisfies the original congruences.\n *)\n\ntheorem\nfixes a :: int\nassumes h0 : \"a mod 3 = 2\"\nand h1 : \"a mod 5 = 4\"\nand h2 : \"a mod 7 = 6\"\nand h3 : \"a mod 9 = 8\"\nand h4 : \"0 \\<le> a\"\nshows  \"\\<exists> n. (\\<forall> m < n. \\<not> (m mod 3 = 2 \\<and> m mod 5 = 4 \\<and> m mod 7 = 6 \\<and> m mod 9 = 8)) \\<and> a = 314\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest non-negative integer $a$ that satisfies the following conditions:\n\n1. $a \\equiv 2 \\pmod{3}$\n2. $a \\equiv 4 \\pmod{5}$\n3. $a \\equiv 6 \\pmod{7}$\n4. $a \\equiv 8 \\pmod{9}$\n\nThe final answer is $a = 314$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.869382381439209,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nshows  \"(LEAST a ::nat.  [a = 2] (mod 3) \\<and> [a = 4] (mod 5)\n\\<and> [a = 6] (mod 7) \\<and> [a = 8] (mod 9)) = 314\"",
+    "prediction": {
+        "0": [
+            8,
+            2,
+            3,
+            5
+        ],
+        "1": [
+            4,
+            7
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            1
+        ],
+        "4": [
+            6
+        ],
+        "5": [
+            9
+        ]
+    }
+}

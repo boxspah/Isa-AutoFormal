@@ -1,0 +1,126 @@
+{
+    "problem_name": "aime_1983_p3",
+    "informal_statement": "What is the product of the [[real]] [[root]]s of the [[equation]] $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$? Show that it is 020.",
+    "informal_proof": "If we were to expand by squaring, we would get a [[quartic Equation|quartic]] [[polynomial]], which isn't always the easiest thing to deal with.\n\nInstead, we substitute $y$ for $x^2+18x+30$, so that the equation becomes $y=2\\sqrt{y+15}$.\n\nNow we can square; solving for $y$, we get $y=10$ or $y=-6$. The second root is extraneous since $2\\sqrt{y+15}$ is always non-negative (and moreover, plugging in $y=-6$, we get $-6=6$, which is obviously false). Hence we have $y=10$ as the only solution for $y$. Substituting $x^2+18x+30$ back in for $y$,\n\n<center>$x^2+18x+30=10 \\Longrightarrow x^2+18x+20=0.$</center> Both of the roots of this equation are real, since its discriminant is $18^2 - 4 \\cdot 1 \\cdot 20 = 244$, which is positive. Thus by [[Vieta's formulas]], the product of the real roots is simply $020$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18*x + 30 = 2 * sqrt(x powr 2 + 18*x + 45)\"\nshows  \"x = 20\"",
+        "formal solution": "(* ### Problem\n What is the product of the [[real]] [[root]]s of the [[equation]] $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$? The final Answer is $020$\n ### Proof\n If we were to expand by squaring, we would get a [[quartic Equation|quartic]] [[polynomial]], which isn't always the easiest thing to deal with.\n\nInstead, we substitute $y$ for $x^2+18x+30$, so that the equation becomes $y=2\\sqrt{y+15}$.\n\nNow we can square; solving for $y$, we get $y=10$ or $y=-6$. The second root is extraneous since $2\\sqrt{y+15}$ is always non-negative (and moreover, plugging in $y=-6$, we get $-6=6$, which is obviously false). Hence we have $y=10$ as the only solution for $y$. Substituting $x^2+18x+30$ back in for $y$,\n\n<center>$x^2+18x+30=10 \\Longrightarrow x^2+18x+20=0.$</center> Both of the roots of this equation are real, since its discriminant is $18^2 - 4 \\cdot 1 \\cdot 20 = 244$, which is positive. Thus by [[Vieta's formulas]], the product of the real roots is simply $020$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18*x + 30 = 2 * sqrt(x powr 2 + 18*x + 45)\"\nshows  \"x = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Solve the equation $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$. The final answer is $x=20$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8296467661857605,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nand h1 : \"\\<forall> x. poly [1, 18, 30] x = 0\"\nshows  \"prod_list [x. poly [1, 18, 30] x = 0] = 20\"",
+        "formal solution": "(* ### Problem\n What is the product of the [[real]] [[root]]s of the [[equation]] $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$? The final Answer is $020$\n ### Proof\n If we were to expand by squaring, we would get a [[quartic Equation|quartic]] [[polynomial]], which isn't always the easiest thing to deal with.\n\nInstead, we substitute $y$ for $x^2+18x+30$, so that the equation becomes $y=2\\sqrt{y+15}$.\n\nNow we can square; solving for $y$, we get $y=10$ or $y=-6$. The second root is extraneous since $2\\sqrt{y+15}$ is always non-negative (and moreover, plugging in $y=-6$, we get $-6=6$, which is obviously false). Hence we have $y=10$ as the only solution for $y$. Substituting $x^2+18x+30$ back in for $y$,\n\n<center>$x^2+18x+30=10 \\Longrightarrow x^2+18x+20=0.$</center> Both of the roots of this equation are real, since its discriminant is $18^2 - 4 \\cdot 1 \\cdot 20 = 244$, which is positive. Thus by [[Vieta's formulas]], the product of the real roots is simply $020$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nand h1 : \"\\<forall> x. poly [1, 18, 30] x = 0\"\nshows  \"prod_list [x. poly [1, 18, 30] x = 0] = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the equation $x^2 + 18x + 30 = 2\\sqrt{x^2 + 18x + 45}$, find the roots of the polynomial $x^2 + 18x + 30 = 0$. The product of the roots is 20.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7899499535560608,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nshows  \"prod_list (roots_of ([:30, 18, 1:] - [:0, 0, 2:] * sqrt_poly ([:45, 18, 1:]))) = 20\"",
+        "formal solution": "(* ### Problem\n What is the product of the [[real]] [[root]]s of the [[equation]] $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$? The final Answer is $020$\n ### Proof\n If we were to expand by squaring, we would get a [[quartic Equation|quartic]] [[polynomial]], which isn't always the easiest thing to deal with.\n\nInstead, we substitute $y$ for $x^2+18x+30$, so that the equation becomes $y=2\\sqrt{y+15}$.\n\nNow we can square; solving for $y$, we get $y=10$ or $y=-6$. The second root is extraneous since $2\\sqrt{y+15}$ is always non-negative (and moreover, plugging in $y=-6$, we get $-6=6$, which is obviously false). Hence we have $y=10$ as the only solution for $y$. Substituting $x^2+18x+30$ back in for $y$,\n\n<center>$x^2+18x+30=10 \\Longrightarrow x^2+18x+20=0.$</center> Both of the roots of this equation are real, since its discriminant is $18^2 - 4 \\cdot 1 \\cdot 20 = 244$, which is positive. Thus by [[Vieta's formulas]], the product of the real roots is simply $020$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nshows  \"prod_list (roots_of ([:30, 18, 1:] - [:0, 0, 2:] * sqrt_poly ([:45, 18, 1:]))) = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of the roots of the equation $x^2 + 18x + 30 = 2\\sqrt{x^2 + 18x + 45}$. The final answer is 20.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9518647789955139,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18*x + 30 = 2 * sqrt(x powr 2 + 18*x + 45)\"\nand h1 : \"\\<exists> a b. x = a \\<or> x = b\"\nshows  \"let a = -9 + sqrt 21; \n           b = -9 - sqrt 21 in a * b = 20\"",
+        "formal solution": "(* ### Problem\n What is the product of the [[real]] [[root]]s of the [[equation]] $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$? The final Answer is $020$\n ### Proof\n If we were to expand by squaring, we would get a [[quartic Equation|quartic]] [[polynomial]], which isn't always the easiest thing to deal with.\n\nInstead, we substitute $y$ for $x^2+18x+30$, so that the equation becomes $y=2\\sqrt{y+15}$.\n\nNow we can square; solving for $y$, we get $y=10$ or $y=-6$. The second root is extraneous since $2\\sqrt{y+15}$ is always non-negative (and moreover, plugging in $y=-6$, we get $-6=6$, which is obviously false). Hence we have $y=10$ as the only solution for $y$. Substituting $x^2+18x+30$ back in for $y$,\n\n<center>$x^2+18x+30=10 \\Longrightarrow x^2+18x+20=0.$</center> Both of the roots of this equation are real, since its discriminant is $18^2 - 4 \\cdot 1 \\cdot 20 = 244$, which is positive. Thus by [[Vieta's formulas]], the product of the real roots is simply $020$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18*x + 30 = 2 * sqrt(x powr 2 + 18*x + 45)\"\nand h1 : \"\\<exists> a b. x = a \\<or> x = b\"\nshows  \"let a = -9 + sqrt 21; \n           b = -9 - sqrt 21 in a * b = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the values of $x$ which satisfy the equation $x^2 + 18x + 30 = 2\\sqrt{x^2 + 18x + 45}$. The possible values of $x$ are $-9 + \\sqrt{21}$ and $-9 - \\sqrt{21}$. What is the product of these two possible values of $x$? The final answer is $20$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9790632724761963,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nshows  \"x * x = 20\"",
+        "formal solution": "(* ### Problem\n What is the product of the [[real]] [[root]]s of the [[equation]] $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$? The final Answer is $020$\n ### Proof\n If we were to expand by squaring, we would get a [[quartic Equation|quartic]] [[polynomial]], which isn't always the easiest thing to deal with.\n\nInstead, we substitute $y$ for $x^2+18x+30$, so that the equation becomes $y=2\\sqrt{y+15}$.\n\nNow we can square; solving for $y$, we get $y=10$ or $y=-6$. The second root is extraneous since $2\\sqrt{y+15}$ is always non-negative (and moreover, plugging in $y=-6$, we get $-6=6$, which is obviously false). Hence we have $y=10$ as the only solution for $y$. Substituting $x^2+18x+30$ back in for $y$,\n\n<center>$x^2+18x+30=10 \\Longrightarrow x^2+18x+20=0.$</center> Both of the roots of this equation are real, since its discriminant is $18^2 - 4 \\cdot 1 \\cdot 20 = 244$, which is positive. Thus by [[Vieta's formulas]], the product of the real roots is simply $020$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nshows  \"x * x = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a real number $x$ such that $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$ and $x^2 = 20$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6052190065383911,
+        "symbolic_score": 0.2
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nshows  \"prod_list (roots [1, 18, 30] - roots [2, sqrt 2, sqrt 45]) = 20\"",
+        "formal solution": "(* ### Problem\n What is the product of the [[real]] [[root]]s of the [[equation]] $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$? The final Answer is $020$\n ### Proof\n If we were to expand by squaring, we would get a [[quartic Equation|quartic]] [[polynomial]], which isn't always the easiest thing to deal with.\n\nInstead, we substitute $y$ for $x^2+18x+30$, so that the equation becomes $y=2\\sqrt{y+15}$.\n\nNow we can square; solving for $y$, we get $y=10$ or $y=-6$. The second root is extraneous since $2\\sqrt{y+15}$ is always non-negative (and moreover, plugging in $y=-6$, we get $-6=6$, which is obviously false). Hence we have $y=10$ as the only solution for $y$. Substituting $x^2+18x+30$ back in for $y$,\n\n<center>$x^2+18x+30=10 \\Longrightarrow x^2+18x+20=0.$</center> Both of the roots of this equation are real, since its discriminant is $18^2 - 4 \\cdot 1 \\cdot 20 = 244$, which is positive. Thus by [[Vieta's formulas]], the product of the real roots is simply $020$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nshows  \"prod_list (roots [1, 18, 30] - roots [2, sqrt 2, sqrt 45]) = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of the roots of the equation $x^2 + 18x + 30 = 2\\sqrt{x^2 + 18x + 45}$. The final Answer is $20$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9749800562858582,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nshows  \"prod_list (roots (\\<lambda>x. x powr 2 + 18 * x + 30)) = 20\"",
+        "formal solution": "(* ### Problem\n What is the product of the [[real]] [[root]]s of the [[equation]] $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$? The final Answer is $020$\n ### Proof\n If we were to expand by squaring, we would get a [[quartic Equation|quartic]] [[polynomial]], which isn't always the easiest thing to deal with.\n\nInstead, we substitute $y$ for $x^2+18x+30$, so that the equation becomes $y=2\\sqrt{y+15}$.\n\nNow we can square; solving for $y$, we get $y=10$ or $y=-6$. The second root is extraneous since $2\\sqrt{y+15}$ is always non-negative (and moreover, plugging in $y=-6$, we get $-6=6$, which is obviously false). Hence we have $y=10$ as the only solution for $y$. Substituting $x^2+18x+30$ back in for $y$,\n\n<center>$x^2+18x+30=10 \\Longrightarrow x^2+18x+20=0.$</center> Both of the roots of this equation are real, since its discriminant is $18^2 - 4 \\cdot 1 \\cdot 20 = 244$, which is positive. Thus by [[Vieta's formulas]], the product of the real roots is simply $020$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nshows  \"prod_list (roots (\\<lambda>x. x powr 2 + 18 * x + 30)) = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of all solutions to the equation $x^2 + 18x + 30 = 2\\sqrt{x^2 + 18x + 45}$. The final answer is $20$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9450681209564209,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nand h1 : \"x \\<ge> 0\"\nshows  \"\\<exists> a b. (a * b = 20) \\<and> ((a powr 2 + 18 * a + 30 = 2 * sqrt (a powr 2 + 18 * a + 45)) \\<and> (b powr 2 + 18 * b + 30 = 2 * sqrt (b powr 2 + 18 * b + 45)))\"",
+        "formal solution": "(* ### Problem\n What is the product of the [[real]] [[root]]s of the [[equation]] $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$? The final Answer is $020$\n ### Proof\n If we were to expand by squaring, we would get a [[quartic Equation|quartic]] [[polynomial]], which isn't always the easiest thing to deal with.\n\nInstead, we substitute $y$ for $x^2+18x+30$, so that the equation becomes $y=2\\sqrt{y+15}$.\n\nNow we can square; solving for $y$, we get $y=10$ or $y=-6$. The second root is extraneous since $2\\sqrt{y+15}$ is always non-negative (and moreover, plugging in $y=-6$, we get $-6=6$, which is obviously false). Hence we have $y=10$ as the only solution for $y$. Substituting $x^2+18x+30$ back in for $y$,\n\n<center>$x^2+18x+30=10 \\Longrightarrow x^2+18x+20=0.$</center> Both of the roots of this equation are real, since its discriminant is $18^2 - 4 \\cdot 1 \\cdot 20 = 244$, which is positive. Thus by [[Vieta's formulas]], the product of the real roots is simply $020$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nand h1 : \"x \\<ge> 0\"\nshows  \"\\<exists> a b. (a * b = 20) \\<and> ((a powr 2 + 18 * a + 30 = 2 * sqrt (a powr 2 + 18 * a + 45)) \\<and> (b powr 2 + 18 * b + 30 = 2 * sqrt (b powr 2 + 18 * b + 45)))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a nonnegative real number $x$ such that $x^2 + 18x + 30 = 2\\sqrt{x^2 + 18x + 45}$, find two numbers $a$ and $b$ such that $ab = 20$ and each number also satisfies the equation $a^2 + 18a + 30 = 2\\sqrt{a^2 + 18a + 45}$ and $b^2 + 18b + 30 = 2\\sqrt{b^2 + 18b + 45}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5737602114677429,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nshows  \"\\<exists> a b :: real. a * b = 20\"",
+        "formal solution": "(* ### Problem\n What is the product of the [[real]] [[root]]s of the [[equation]] $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$? The final Answer is $020$\n ### Proof\n If we were to expand by squaring, we would get a [[quartic Equation|quartic]] [[polynomial]], which isn't always the easiest thing to deal with.\n\nInstead, we substitute $y$ for $x^2+18x+30$, so that the equation becomes $y=2\\sqrt{y+15}$.\n\nNow we can square; solving for $y$, we get $y=10$ or $y=-6$. The second root is extraneous since $2\\sqrt{y+15}$ is always non-negative (and moreover, plugging in $y=-6$, we get $-6=6$, which is obviously false). Hence we have $y=10$ as the only solution for $y$. Substituting $x^2+18x+30$ back in for $y$,\n\n<center>$x^2+18x+30=10 \\Longrightarrow x^2+18x+20=0.$</center> Both of the roots of this equation are real, since its discriminant is $18^2 - 4 \\cdot 1 \\cdot 20 = 244$, which is positive. Thus by [[Vieta's formulas]], the product of the real roots is simply $020$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nshows  \"\\<exists> a b :: real. a * b = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two real numbers a and b such that their product equals 20, given that $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.6418282985687256,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nshows  \"x * x = 20\"",
+        "formal solution": "(* ### Problem\n What is the product of the [[real]] [[root]]s of the [[equation]] $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$? The final Answer is $020$\n ### Proof\n If we were to expand by squaring, we would get a [[quartic Equation|quartic]] [[polynomial]], which isn't always the easiest thing to deal with.\n\nInstead, we substitute $y$ for $x^2+18x+30$, so that the equation becomes $y=2\\sqrt{y+15}$.\n\nNow we can square; solving for $y$, we get $y=10$ or $y=-6$. The second root is extraneous since $2\\sqrt{y+15}$ is always non-negative (and moreover, plugging in $y=-6$, we get $-6=6$, which is obviously false). Hence we have $y=10$ as the only solution for $y$. Substituting $x^2+18x+30$ back in for $y$,\n\n<center>$x^2+18x+30=10 \\Longrightarrow x^2+18x+20=0.$</center> Both of the roots of this equation are real, since its discriminant is $18^2 - 4 \\cdot 1 \\cdot 20 = 244$, which is positive. Thus by [[Vieta's formulas]], the product of the real roots is simply $020$.\n *)\n\ntheorem\nfixes x :: real\nassumes h0 : \"x powr 2 + 18 * x + 30 = 2 * sqrt (x powr 2 + 18 * x + 45)\"\nshows  \"x * x = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $x$ for which the equation $x^2 + 18x + 30 = 2 \\sqrt{x^2 + 18x + 45}$ holds. The solution is a value of $x$ such that $x^2 = 20$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.662057101726532,
+        "symbolic_score": 0.2
+    },
+    "oracle": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (x^2 + (18 * x +  30) - 2\n* sqrt (x^2 + (18 * x + 45)))\"\nshows \"(\\<Prod> (f -` {0})) = 20\"",
+    "prediction": {
+        "0": [
+            9,
+            4
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ]
+    }
+}

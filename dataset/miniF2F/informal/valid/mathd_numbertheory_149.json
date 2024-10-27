@@ -1,0 +1,122 @@
+{
+    "problem_name": "mathd_numbertheory_149",
+    "informal_statement": "A group of $N$ students, where $N < 50$, is on a field trip. If their teacher puts them in groups of 8, the last group has 5 students. If their teacher instead puts them in groups of 6, the last group has 3 students. What is the sum of all possible values of $N$? Show that it is 66.",
+    "informal_proof": "We are given that $N\\equiv 5\\pmod{8}$ and $N\\equiv 3\\pmod{6}$.  We begin checking numbers which are 5 more than a multiple of 8, and we find that 5 and 13 are not 3 more than a multiple of 6, but 21 is 3 more than a multiple of 6. Thus 21 is one possible value of $N$. By the Chinese Remainder Theorem, the integers $x$ satisfying $x\\equiv 5\\pmod{8}$ and $x\\equiv 3\\pmod{6}$ are those of the form $x=21+\\text{lcm}(6,8)k = 21 + 24 k$, where $k$ is an integer. Thus the 2 solutions less than $50$ are 21 and $21+24(1) = 45$, and their sum is $21+45=66$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list (filter (\\<lambda>x. x < 50 \\<and> x mod 8 = 5 \\<and> x mod 6 = 3) [1..<50]) = 66\"",
+        "formal solution": "(* ### Problem\n A group of $N$ students, where $N < 50$, is on a field trip. If their teacher puts them in groups of 8, the last group has 5 students. If their teacher instead puts them in groups of 6, the last group has 3 students. What is the sum of all possible values of $N$? The final Answer is $66$\n ### Proof\n We are given that $N\\equiv 5\\pmod{8}$ and $N\\equiv 3\\pmod{6}$.  We begin checking numbers which are 5 more than a multiple of 8, and we find that 5 and 13 are not 3 more than a multiple of 6, but 21 is 3 more than a multiple of 6. Thus 21 is one possible value of $N$. By the Chinese Remainder Theorem, the integers $x$ satisfying $x\\equiv 5\\pmod{8}$ and $x\\equiv 3\\pmod{6}$ are those of the form $x=21+\\text{lcm}(6,8)k = 21 + 24 k$, where $k$ is an integer. Thus the 2 solutions less than $50$ are 21 and $21+24(1) = 45$, and their sum is $21+45=66$.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list (filter (\\<lambda>x. x < 50 \\<and> x mod 8 = 5 \\<and> x mod 6 = 3) [1..<50]) = 66\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all natural numbers less than 50 that leave a remainder of 5 when divided by 8 and a remainder of 3 when divided by 6. The final answer is 66.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8218877911567688,
+        "symbolic_score": 0.4
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_of N = 66\"\nwhere \"sum_of N = (\\<Sum>i\\<in>{N. N < 50 \\<and> N mod 8 = 5 \\<and> N mod 6 = 3}. i)\"",
+        "formal solution": "(* ### Problem\n A group of $N$ students, where $N < 50$, is on a field trip. If their teacher puts them in groups of 8, the last group has 5 students. If their teacher instead puts them in groups of 6, the last group has 3 students. What is the sum of all possible values of $N$? The final Answer is $66$\n ### Proof\n We are given that $N\\equiv 5\\pmod{8}$ and $N\\equiv 3\\pmod{6}$.  We begin checking numbers which are 5 more than a multiple of 8, and we find that 5 and 13 are not 3 more than a multiple of 6, but 21 is 3 more than a multiple of 6. Thus 21 is one possible value of $N$. By the Chinese Remainder Theorem, the integers $x$ satisfying $x\\equiv 5\\pmod{8}$ and $x\\equiv 3\\pmod{6}$ are those of the form $x=21+\\text{lcm}(6,8)k = 21 + 24 k$, where $k$ is an integer. Thus the 2 solutions less than $50$ are 21 and $21+24(1) = 45$, and their sum is $21+45=66$.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_of N = 66\"\nwhere \"sum_of N = (\\<Sum>i\\<in>{N. N < 50 \\<and> N mod 8 = 5 \\<and> N mod 6 = 3}. i)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all positive integers less than 50 that are congruent to 5 modulo 8 and congruent to 3 modulo 6. The final answer is 66.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8669814467430115,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list [N] = 66\"",
+        "formal solution": "(* ### Problem\n A group of $N$ students, where $N < 50$, is on a field trip. If their teacher puts them in groups of 8, the last group has 5 students. If their teacher instead puts them in groups of 6, the last group has 3 students. What is the sum of all possible values of $N$? The final Answer is $66$\n ### Proof\n We are given that $N\\equiv 5\\pmod{8}$ and $N\\equiv 3\\pmod{6}$.  We begin checking numbers which are 5 more than a multiple of 8, and we find that 5 and 13 are not 3 more than a multiple of 6, but 21 is 3 more than a multiple of 6. Thus 21 is one possible value of $N$. By the Chinese Remainder Theorem, the integers $x$ satisfying $x\\equiv 5\\pmod{8}$ and $x\\equiv 3\\pmod{6}$ are those of the form $x=21+\\text{lcm}(6,8)k = 21 + 24 k$, where $k$ is an integer. Thus the 2 solutions less than $50$ are 21 and $21+24(1) = 45$, and their sum is $21+45=66$.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list [N] = 66\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest natural number $N$ less than 50 that satisfies the following conditions: $N \\equiv 5 \\pmod{8}$ and $N \\equiv 3 \\pmod{6}$. The final answer is $N = 66$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7575237154960632,
+        "symbolic_score": 0.4
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list (filter (\\<lambda>n. n < 50 \\<and> n mod 8 = 5 \\<and> n mod 6 = 3) [0..<50]) = 66\"",
+        "formal solution": "(* ### Problem\n A group of $N$ students, where $N < 50$, is on a field trip. If their teacher puts them in groups of 8, the last group has 5 students. If their teacher instead puts them in groups of 6, the last group has 3 students. What is the sum of all possible values of $N$? The final Answer is $66$\n ### Proof\n We are given that $N\\equiv 5\\pmod{8}$ and $N\\equiv 3\\pmod{6}$.  We begin checking numbers which are 5 more than a multiple of 8, and we find that 5 and 13 are not 3 more than a multiple of 6, but 21 is 3 more than a multiple of 6. Thus 21 is one possible value of $N$. By the Chinese Remainder Theorem, the integers $x$ satisfying $x\\equiv 5\\pmod{8}$ and $x\\equiv 3\\pmod{6}$ are those of the form $x=21+\\text{lcm}(6,8)k = 21 + 24 k$, where $k$ is an integer. Thus the 2 solutions less than $50$ are 21 and $21+24(1) = 45$, and their sum is $21+45=66$.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list (filter (\\<lambda>n. n < 50 \\<and> n mod 8 = 5 \\<and> n mod 6 = 3) [0..<50]) = 66\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all natural numbers less than 50 that have a remainder of 5 when divided by 8 and a remainder of 3 when divided by 6. The final answer is 66.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8434223532676697,
+        "symbolic_score": 0.4
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"setsum id {N. N < 50 \\<and> N mod 8 = 5 \\<and> N mod 6 = 3} = 66\"",
+        "formal solution": "(* ### Problem\n A group of $N$ students, where $N < 50$, is on a field trip. If their teacher puts them in groups of 8, the last group has 5 students. If their teacher instead puts them in groups of 6, the last group has 3 students. What is the sum of all possible values of $N$? The final Answer is $66$\n ### Proof\n We are given that $N\\equiv 5\\pmod{8}$ and $N\\equiv 3\\pmod{6}$.  We begin checking numbers which are 5 more than a multiple of 8, and we find that 5 and 13 are not 3 more than a multiple of 6, but 21 is 3 more than a multiple of 6. Thus 21 is one possible value of $N$. By the Chinese Remainder Theorem, the integers $x$ satisfying $x\\equiv 5\\pmod{8}$ and $x\\equiv 3\\pmod{6}$ are those of the form $x=21+\\text{lcm}(6,8)k = 21 + 24 k$, where $k$ is an integer. Thus the 2 solutions less than $50$ are 21 and $21+24(1) = 45$, and their sum is $21+45=66$.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"setsum id {N. N < 50 \\<and> N mod 8 = 5 \\<and> N mod 6 = 3} = 66\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all positive integers less than 50 that have a remainder of 5 when divided by 8 and a remainder of 3 when divided by 6. The final answer is 66.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8641284704208374,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list (possible_N_values N) = 66\"",
+        "formal solution": "(* ### Problem\n A group of $N$ students, where $N < 50$, is on a field trip. If their teacher puts them in groups of 8, the last group has 5 students. If their teacher instead puts them in groups of 6, the last group has 3 students. What is the sum of all possible values of $N$? The final Answer is $66$\n ### Proof\n We are given that $N\\equiv 5\\pmod{8}$ and $N\\equiv 3\\pmod{6}$.  We begin checking numbers which are 5 more than a multiple of 8, and we find that 5 and 13 are not 3 more than a multiple of 6, but 21 is 3 more than a multiple of 6. Thus 21 is one possible value of $N$. By the Chinese Remainder Theorem, the integers $x$ satisfying $x\\equiv 5\\pmod{8}$ and $x\\equiv 3\\pmod{6}$ are those of the form $x=21+\\text{lcm}(6,8)k = 21 + 24 k$, where $k$ is an integer. Thus the 2 solutions less than $50$ are 21 and $21+24(1) = 45$, and their sum is $21+45=66$.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list (possible_N_values N) = 66\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find all natural numbers less than 50 which have a remainder of 5 when divided by 8 and a remainder of 3 when divided by 6. What is the sum of these numbers? The final answer is 66.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9629213809967041,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list [N] = 66\"",
+        "formal solution": "(* ### Problem\n A group of $N$ students, where $N < 50$, is on a field trip. If their teacher puts them in groups of 8, the last group has 5 students. If their teacher instead puts them in groups of 6, the last group has 3 students. What is the sum of all possible values of $N$? The final Answer is $66$\n ### Proof\n We are given that $N\\equiv 5\\pmod{8}$ and $N\\equiv 3\\pmod{6}$.  We begin checking numbers which are 5 more than a multiple of 8, and we find that 5 and 13 are not 3 more than a multiple of 6, but 21 is 3 more than a multiple of 6. Thus 21 is one possible value of $N$. By the Chinese Remainder Theorem, the integers $x$ satisfying $x\\equiv 5\\pmod{8}$ and $x\\equiv 3\\pmod{6}$ are those of the form $x=21+\\text{lcm}(6,8)k = 21 + 24 k$, where $k$ is an integer. Thus the 2 solutions less than $50$ are 21 and $21+24(1) = 45$, and their sum is $21+45=66$.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list [N] = 66\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a natural number $N$ less than 50 such that $N$ leaves a remainder of 5 when divided by 8 and a remainder of 3 when divided by 6. What is the sum of the list containing this number? The final answer is 66.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9390437602996826,
+        "symbolic_score": 0.4
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list (filter (\\<lambda>n. n < 50 \\<and> n mod 8 = 5 \\<and> n mod 6 = 3) [1..]) = 66\"",
+        "formal solution": "(* ### Problem\n A group of $N$ students, where $N < 50$, is on a field trip. If their teacher puts them in groups of 8, the last group has 5 students. If their teacher instead puts them in groups of 6, the last group has 3 students. What is the sum of all possible values of $N$? The final Answer is $66$\n ### Proof\n We are given that $N\\equiv 5\\pmod{8}$ and $N\\equiv 3\\pmod{6}$.  We begin checking numbers which are 5 more than a multiple of 8, and we find that 5 and 13 are not 3 more than a multiple of 6, but 21 is 3 more than a multiple of 6. Thus 21 is one possible value of $N$. By the Chinese Remainder Theorem, the integers $x$ satisfying $x\\equiv 5\\pmod{8}$ and $x\\equiv 3\\pmod{6}$ are those of the form $x=21+\\text{lcm}(6,8)k = 21 + 24 k$, where $k$ is an integer. Thus the 2 solutions less than $50$ are 21 and $21+24(1) = 45$, and their sum is $21+45=66$.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list (filter (\\<lambda>n. n < 50 \\<and> n mod 8 = 5 \\<and> n mod 6 = 3) [1..]) = 66\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all natural numbers less than 50 that are congruent to 5 modulo 8 and congruent to 3 modulo 6. The final answer is 66.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8426241874694824,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list [i \\<leftarrow> [1..50]. i mod 8 = 5 \\<and> i mod 6 = 3] = 66\"",
+        "formal solution": "(* ### Problem\n A group of $N$ students, where $N < 50$, is on a field trip. If their teacher puts them in groups of 8, the last group has 5 students. If their teacher instead puts them in groups of 6, the last group has 3 students. What is the sum of all possible values of $N$? The final Answer is $66$\n ### Proof\n We are given that $N\\equiv 5\\pmod{8}$ and $N\\equiv 3\\pmod{6}$.  We begin checking numbers which are 5 more than a multiple of 8, and we find that 5 and 13 are not 3 more than a multiple of 6, but 21 is 3 more than a multiple of 6. Thus 21 is one possible value of $N$. By the Chinese Remainder Theorem, the integers $x$ satisfying $x\\equiv 5\\pmod{8}$ and $x\\equiv 3\\pmod{6}$ are those of the form $x=21+\\text{lcm}(6,8)k = 21 + 24 k$, where $k$ is an integer. Thus the 2 solutions less than $50$ are 21 and $21+24(1) = 45$, and their sum is $21+45=66$.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list [i \\<leftarrow> [1..50]. i mod 8 = 5 \\<and> i mod 6 = 3] = 66\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all natural numbers less than 50 that have a remainder of 5 when divided by 8 and a remainder of 3 when divided by 6. The final answer is 66.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8434223532676697,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list (filter (\\<lambda>x. x < 50 \\<and> x mod 8 = 5 \\<and> x mod 6 = 3) [1..N]) = 66\"",
+        "formal solution": "(* ### Problem\n A group of $N$ students, where $N < 50$, is on a field trip. If their teacher puts them in groups of 8, the last group has 5 students. If their teacher instead puts them in groups of 6, the last group has 3 students. What is the sum of all possible values of $N$? The final Answer is $66$\n ### Proof\n We are given that $N\\equiv 5\\pmod{8}$ and $N\\equiv 3\\pmod{6}$.  We begin checking numbers which are 5 more than a multiple of 8, and we find that 5 and 13 are not 3 more than a multiple of 6, but 21 is 3 more than a multiple of 6. Thus 21 is one possible value of $N$. By the Chinese Remainder Theorem, the integers $x$ satisfying $x\\equiv 5\\pmod{8}$ and $x\\equiv 3\\pmod{6}$ are those of the form $x=21+\\text{lcm}(6,8)k = 21 + 24 k$, where $k$ is an integer. Thus the 2 solutions less than $50$ are 21 and $21+24(1) = 45$, and their sum is $21+45=66$.\n *)\n\ntheorem\nfixes N :: nat\nassumes h0 : \"N < 50\"\nand h1 : \"N mod 8 = 5\"\nand h2 : \"N mod 6 = 3\"\nshows  \"sum_list (filter (\\<lambda>x. x < 50 \\<and> x mod 8 = 5 \\<and> x mod 6 = 3) [1..N]) = 66\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of all natural numbers less than 50 that have a remainder of 5 when divided by 8 and a remainder of 3 when divided by 6. The final answer is 66.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8434223532676697,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nshows  \"(\\<Sum> k\\<in> {x::nat. x<50 \\<and> x mod 8 =5 \\<and> x mod 6=3}. k) = 66\"",
+    "prediction": {
+        "0": [
+            0,
+            2,
+            3,
+            6
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            4
+        ],
+        "3": [
+            5
+        ],
+        "4": [
+            7
+        ],
+        "5": [
+            8
+        ],
+        "6": [
+            9
+        ]
+    }
+}

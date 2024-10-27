@@ -1,0 +1,140 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"b \\<ge> 0\"\nand h1 : \"a = sqrt (sqrt 56 * sqrt 126)\"\nand h2 : \"\\<exists> c. b = c powr 2 \\<and> (\\<forall> d. d powr 2 dvd b \\<longrightarrow> d \\<le> 1)\"\nshows  \"a + b = 23\"",
+        "formal solution": "(* ### Problem\n The expression $\\sqrt{(\\sqrt{56})(\\sqrt{126})}$ can be simplified to $a\\sqrt b$, where $a$ and $b$ are integers and $b$ is not divisible by any perfect square greater than 1. What is $a+b$? The final Answer is 23\n ### Proof\n Since 56 is a multiple of 4 and 126 is a multiple of 9, we can factor squares out of both terms, getting $\\sqrt{(2\\sqrt{14})(3\\sqrt{14})}=\\sqrt{2\\cdot3\\cdot14}$. Then, we can factor $2^2$ out of the outer square root to get $2\\sqrt{21}$.\n Thus $a=2$ and $b=21$, yielding $a+b=\\boxed{23}$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"b \\<ge> 0\"\nand h1 : \"a = sqrt (sqrt 56 * sqrt 126)\"\nand h2 : \"\\<exists> c. b = c powr 2 \\<and> (\\<forall> d. d powr 2 dvd b \\<longrightarrow> d \\<le> 1)\"\nshows  \"a + b = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the square root of the product of the square roots of 56 and 126 equals to a, and there exists a nonnegative number b such that b equals to the square of c and for all d, if the square of d divides b, then d is less than or equal to 1, find the value of a + b. The final answer is 23.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9877973198890686,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a * sqrt b = sqrt (sqrt 56 * sqrt 126)\"\nand h1 : \"\\<forall> n. n > 1 \\<and> is_square n \\<longrightarrow> \\<not> b mod n = 0\"\nshows  \"a + b = 23\"",
+        "formal solution": "(* ### Problem\n The expression $\\sqrt{(\\sqrt{56})(\\sqrt{126})}$ can be simplified to $a\\sqrt b$, where $a$ and $b$ are integers and $b$ is not divisible by any perfect square greater than 1. What is $a+b$? The final Answer is 23\n ### Proof\n Since 56 is a multiple of 4 and 126 is a multiple of 9, we can factor squares out of both terms, getting $\\sqrt{(2\\sqrt{14})(3\\sqrt{14})}=\\sqrt{2\\cdot3\\cdot14}$. Then, we can factor $2^2$ out of the outer square root to get $2\\sqrt{21}$.\n Thus $a=2$ and $b=21$, yielding $a+b=\\boxed{23}$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a * sqrt b = sqrt (sqrt 56 * sqrt 126)\"\nand h1 : \"\\<forall> n. n > 1 \\<and> is_square n \\<longrightarrow> \\<not> b mod n = 0\"\nshows  \"a + b = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given $a\\sqrt{b} = \\sqrt{\\sqrt{56}\\sqrt{126}}$ and $b$ is not divisible by any square number greater than $1$, find the sum of $a$ and $b$. The final answer is $23$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.689386248588562,
+        "symbolic_score": 0.3
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"sqrt ((sqrt 56) * (sqrt 126)) = a * sqrt b\"\nand h1 : \"is_integer a\"\nand h2 : \"is_integer b\"\nand h3 : \"b > 1\"\nand h4 : \"\\<forall> c. is_integer c \\<and> c > 1 \\<longrightarrow> c * c does not divide b\"\nshows  \"a + b = 23\"",
+        "formal solution": "(* ### Problem\n The expression $\\sqrt{(\\sqrt{56})(\\sqrt{126})}$ can be simplified to $a\\sqrt b$, where $a$ and $b$ are integers and $b$ is not divisible by any perfect square greater than 1. What is $a+b$? The final Answer is 23\n ### Proof\n Since 56 is a multiple of 4 and 126 is a multiple of 9, we can factor squares out of both terms, getting $\\sqrt{(2\\sqrt{14})(3\\sqrt{14})}=\\sqrt{2\\cdot3\\cdot14}$. Then, we can factor $2^2$ out of the outer square root to get $2\\sqrt{21}$.\n Thus $a=2$ and $b=21$, yielding $a+b=\\boxed{23}$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"sqrt ((sqrt 56) * (sqrt 126)) = a * sqrt b\"\nand h1 : \"is_integer a\"\nand h2 : \"is_integer b\"\nand h3 : \"b > 1\"\nand h4 : \"\\<forall> c. is_integer c \\<and> c > 1 \\<longrightarrow> c * c does not divide b\"\nshows  \"a + b = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the integer values of $a$ and $b$ such that $a$ is the square root of the product of the square roots of $56$ and $126$, and $b$ is greater than $1$ and cannot be divided by the square of any integer greater than $1$. What is the sum of $a$ and $b$? The final answer is $23$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8807997107505798,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"\\<forall> a b. sqrt (a * b) = sqrt a * sqrt b\"\nand h1 : \"sqrt (sqrt 56 * sqrt 126) = a * sqrt b\"\nand h2 : \"b mod (n * n) \\<noteq> 0\"\nand h3 : \" \\<forall>n \\<ge> 2\"\nshows  \"a + b = 23\"",
+        "formal solution": "(* ### Problem\n The expression $\\sqrt{(\\sqrt{56})(\\sqrt{126})}$ can be simplified to $a\\sqrt b$, where $a$ and $b$ are integers and $b$ is not divisible by any perfect square greater than 1. What is $a+b$? The final Answer is 23\n ### Proof\n Since 56 is a multiple of 4 and 126 is a multiple of 9, we can factor squares out of both terms, getting $\\sqrt{(2\\sqrt{14})(3\\sqrt{14})}=\\sqrt{2\\cdot3\\cdot14}$. Then, we can factor $2^2$ out of the outer square root to get $2\\sqrt{21}$.\n Thus $a=2$ and $b=21$, yielding $a+b=\\boxed{23}$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"\\<forall> a b. sqrt (a * b) = sqrt a * sqrt b\"\nand h1 : \"sqrt (sqrt 56 * sqrt 126) = a * sqrt b\"\nand h2 : \"b mod (n * n) \\<noteq> 0\"\nand h3 : \" \\<forall>n \\<ge> 2\"\nshows  \"a + b = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the square root of a product of any two numbers is equal to the product of the square roots of those numbers, find the values of $a$ and $b$ where $a \\cdot \\sqrt{b}$ is equal to the square root of the product of the square roots of $56$ and $126$, and $b$ is not a multiple of the square of any number greater than or equal to $2$. What is the sum of $a$ and $b$? The final answer is $23$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9768531322479248,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a = sqrt (sqrt 56 * sqrt 126)\"\nand h1 : \"b = 23 - a\"\nand h2 : \"b = (sqrt (56 * 126)) div (a * a)\"\nshows  \"a + b = 23\"",
+        "formal solution": "(* ### Problem\n The expression $\\sqrt{(\\sqrt{56})(\\sqrt{126})}$ can be simplified to $a\\sqrt b$, where $a$ and $b$ are integers and $b$ is not divisible by any perfect square greater than 1. What is $a+b$? The final Answer is 23\n ### Proof\n Since 56 is a multiple of 4 and 126 is a multiple of 9, we can factor squares out of both terms, getting $\\sqrt{(2\\sqrt{14})(3\\sqrt{14})}=\\sqrt{2\\cdot3\\cdot14}$. Then, we can factor $2^2$ out of the outer square root to get $2\\sqrt{21}$.\n Thus $a=2$ and $b=21$, yielding $a+b=\\boxed{23}$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a = sqrt (sqrt 56 * sqrt 126)\"\nand h1 : \"b = 23 - a\"\nand h2 : \"b = (sqrt (56 * 126)) div (a * a)\"\nshows  \"a + b = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a=\\sqrt{\\sqrt{56}*\\sqrt{126}}$ and $b=23-a$, if $b=\\frac{\\sqrt{56*126}}{a^2}$, find the sum of $a$ and $b$. The final answer is $23$.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.7560414671897888,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"sqrt (sqrt 56 * sqrt 126) = a * sqrt b\"\nand h1 : \"\\<forall> x. x \\<ge> 2 \\<and> is_square x \\<longrightarrow> \\<not> (b mod x = 0)\"\nshows  \"a + b = 23\"",
+        "formal solution": "(* ### Problem\n The expression $\\sqrt{(\\sqrt{56})(\\sqrt{126})}$ can be simplified to $a\\sqrt b$, where $a$ and $b$ are integers and $b$ is not divisible by any perfect square greater than 1. What is $a+b$? The final Answer is 23\n ### Proof\n Since 56 is a multiple of 4 and 126 is a multiple of 9, we can factor squares out of both terms, getting $\\sqrt{(2\\sqrt{14})(3\\sqrt{14})}=\\sqrt{2\\cdot3\\cdot14}$. Then, we can factor $2^2$ out of the outer square root to get $2\\sqrt{21}$.\n Thus $a=2$ and $b=21$, yielding $a+b=\\boxed{23}$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"sqrt (sqrt 56 * sqrt 126) = a * sqrt b\"\nand h1 : \"\\<forall> x. x \\<ge> 2 \\<and> is_square x \\<longrightarrow> \\<not> (b mod x = 0)\"\nshows  \"a + b = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $\\sqrt{(\\sqrt{56} \\cdot \\sqrt{126})}$ equals $a$ times the square root of $b$ and that $b$ is not divisible by any square number greater than or equal to $2$, find the sum of $a$ and $b$. The final answer is $23$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8840090036392212,
+        "symbolic_score": 0.3
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a powr 2 * b = sqrt (sqrt 56 * sqrt 126)\"\nand h1 : \"b = (GREATEST d. \\<exists> k. k > 0 \\<and> d powr 2 dvd b)\"\nand h2 : \"\\<not> (\\<exists> d. d > 1 \\<and> d powr 4 dvd b)\"\nshows  \"a + sqrt b = 23\"",
+        "formal solution": "(* ### Problem\n The expression $\\sqrt{(\\sqrt{56})(\\sqrt{126})}$ can be simplified to $a\\sqrt b$, where $a$ and $b$ are integers and $b$ is not divisible by any perfect square greater than 1. What is $a+b$? The final Answer is 23\n ### Proof\n Since 56 is a multiple of 4 and 126 is a multiple of 9, we can factor squares out of both terms, getting $\\sqrt{(2\\sqrt{14})(3\\sqrt{14})}=\\sqrt{2\\cdot3\\cdot14}$. Then, we can factor $2^2$ out of the outer square root to get $2\\sqrt{21}$.\n Thus $a=2$ and $b=21$, yielding $a+b=\\boxed{23}$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a powr 2 * b = sqrt (sqrt 56 * sqrt 126)\"\nand h1 : \"b = (GREATEST d. \\<exists> k. k > 0 \\<and> d powr 2 dvd b)\"\nand h2 : \"\\<not> (\\<exists> d. d > 1 \\<and> d powr 4 dvd b)\"\nshows  \"a + sqrt b = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a^2 * b = \\sqrt{\\sqrt{56} * \\sqrt{126}}$, $b$ is the greatest perfect square that divides $b$, and there doesn't exist a $d > 1$ such that $d^4$ divides $b$, find the value of $a + \\sqrt{b}$. The final answer is $23$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8680958151817322,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a * sqrt b = sqrt (sqrt 56 * sqrt 126)\"\nand h1 : \"\\<forall> i > 1. is_square i \\<longrightarrow> \\<not> b mod i = 0\"\nshows  \"a + b = 23\"",
+        "formal solution": "(* ### Problem\n The expression $\\sqrt{(\\sqrt{56})(\\sqrt{126})}$ can be simplified to $a\\sqrt b$, where $a$ and $b$ are integers and $b$ is not divisible by any perfect square greater than 1. What is $a+b$? The final Answer is 23\n ### Proof\n Since 56 is a multiple of 4 and 126 is a multiple of 9, we can factor squares out of both terms, getting $\\sqrt{(2\\sqrt{14})(3\\sqrt{14})}=\\sqrt{2\\cdot3\\cdot14}$. Then, we can factor $2^2$ out of the outer square root to get $2\\sqrt{21}$.\n Thus $a=2$ and $b=21$, yielding $a+b=\\boxed{23}$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a * sqrt b = sqrt (sqrt 56 * sqrt 126)\"\nand h1 : \"\\<forall> i > 1. is_square i \\<longrightarrow> \\<not> b mod i = 0\"\nshows  \"a + b = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a$ and $b$ are real numbers such that $a \\cdot \\sqrt{b} = \\sqrt{\\sqrt{56} \\cdot \\sqrt{126}}$ and $b$ is not divisible by any square number greater than 1, find the value of $a + b$. The final answer is 23.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9564599394798279,
+        "symbolic_score": 0.3
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a * sqrt b = sqrt (sqrt 56 * sqrt 126)\"\nand h1 : \"\\<not>(\\<exists> k > 1. is_square (b * k * k))\"\nshows  \"a + b = 23\"",
+        "formal solution": "(* ### Problem\n The expression $\\sqrt{(\\sqrt{56})(\\sqrt{126})}$ can be simplified to $a\\sqrt b$, where $a$ and $b$ are integers and $b$ is not divisible by any perfect square greater than 1. What is $a+b$? The final Answer is 23\n ### Proof\n Since 56 is a multiple of 4 and 126 is a multiple of 9, we can factor squares out of both terms, getting $\\sqrt{(2\\sqrt{14})(3\\sqrt{14})}=\\sqrt{2\\cdot3\\cdot14}$. Then, we can factor $2^2$ out of the outer square root to get $2\\sqrt{21}$.\n Thus $a=2$ and $b=21$, yielding $a+b=\\boxed{23}$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a * sqrt b = sqrt (sqrt 56 * sqrt 126)\"\nand h1 : \"\\<not>(\\<exists> k > 1. is_square (b * k * k))\"\nshows  \"a + b = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a\\sqrt{b} = \\sqrt{\\sqrt{56}\\sqrt{126}}$ and there does not exist any $k > 1$ such that $b \\cdot k^2$ is a perfect square, find the sum of $a$ and $b$. The final answer is $23$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.803361177444458,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"a * sqrt b = sqrt (sqrt 56 * sqrt 126)\"\nand h1 : \"\\<forall>n. n \\<ge> 2 \\<longrightarrow> b mod (n powr 2) \\<noteq> 0\"\nshows  \"a + b = 23\"",
+        "formal solution": "(* ### Problem\n The expression $\\sqrt{(\\sqrt{56})(\\sqrt{126})}$ can be simplified to $a\\sqrt b$, where $a$ and $b$ are integers and $b$ is not divisible by any perfect square greater than 1. What is $a+b$? The final Answer is 23\n ### Proof\n Since 56 is a multiple of 4 and 126 is a multiple of 9, we can factor squares out of both terms, getting $\\sqrt{(2\\sqrt{14})(3\\sqrt{14})}=\\sqrt{2\\cdot3\\cdot14}$. Then, we can factor $2^2$ out of the outer square root to get $2\\sqrt{21}$.\n Thus $a=2$ and $b=21$, yielding $a+b=\\boxed{23}$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"a * sqrt b = sqrt (sqrt 56 * sqrt 126)\"\nand h1 : \"\\<forall>n. n \\<ge> 2 \\<longrightarrow> b mod (n powr 2) \\<noteq> 0\"\nshows  \"a + b = 23\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the values of $a$ and $b$ such that $a \\cdot \\sqrt{b} = \\sqrt{\\sqrt{56} \\cdot \\sqrt{126}}$ and for all integers $n \\geq 2$, $b$ is not divisible by $n^2$. What is the sum of $a$ and $b$? The final answer is $23$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8423293828964233,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "23",
+    "natural problem": "The expression $\\sqrt{(\\sqrt{56})(\\sqrt{126})}$ can be simplified to $a\\sqrt b$, where $a$ and $b$ are integers and $b$ is not divisible by any perfect square greater than 1. What is $a+b$?",
+    "natural solution": [
+        "Since 56 is a multiple of 4 and 126 is a multiple of 9, we can factor squares out of both terms, getting $\\sqrt{(2\\sqrt{14})(3\\sqrt{14})}=\\sqrt{2\\cdot3\\cdot14}$. Then, we can factor $2^2$ out of the outer square root to get $2\\sqrt{21}$.",
+        "Thus $a=2$ and $b=21$, yielding $a+b=\\boxed{23}$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            1,
+            5,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            8
+        ],
+        "7": [
+            9
+        ]
+    },
+    "str_pred": "[[1, 5, 7], [0], [2], [3], [4], [6], [8], [9]]",
+    "level": "Level 5",
+    "type": "Prealgebra"
+}

@@ -1,0 +1,60 @@
+{
+    "natural problem": "The sum of 27 consecutive positive integers is $3^7$. What is their median?",
+    "natural solution": [
+        "The median of a set of consecutive positive integers is equal to the mean of the set of integers.",
+        "Therefore, we can find the median by dividing the sum by the number of integers: $3^7/3^3=3^4=\\boxed{81}$."
+    ],
+    "natural answer": "81",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat and sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 27\"\nand h1 : \"\\<forall> k. sum k = k * (k + 1) div 2\"\nand h2 : \"sum (n + 80) - sum 80 = 3^7\"\nshows  \"median = 81\"",
+        "formal solution": "(* ### Problem\n The sum of 27 consecutive positive integers is $3^7$. What is their median? The final Answer is 81\n ### Proof\n The median of a set of consecutive positive integers is equal to the mean of the set of integers.\n Therefore, we can find the median by dividing the sum by the number of integers: $3^7/3^3=3^4=\\boxed{81}$.\n *)\n\ntheorem\nfixes n :: nat and sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 27\"\nand h1 : \"\\<forall> k. sum k = k * (k + 1) div 2\"\nand h2 : \"sum (n + 80) - sum 80 = 3^7\"\nshows  \"median = 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the median of the set of integers between 27 and the sum of the first $n+80$ integers, inclusive, such that the sum of the integers between 27 and the sum of the first $n+80$ integers equals $3^7$. The final answer is 81."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n :: nat and sum :: \"nat \\<Rightarrow> nat\" and median :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum n = n * (2 * n + 26) div 2\"\nand h1 : \"sum n = 3^7\"\nand h2 : \"\\<forall> n. median n = n + 13\"\nshows  \"median n = 81\"",
+        "formal solution": "(* ### Problem\n The sum of 27 consecutive positive integers is $3^7$. What is their median? The final Answer is 81\n ### Proof\n The median of a set of consecutive positive integers is equal to the mean of the set of integers.\n Therefore, we can find the median by dividing the sum by the number of integers: $3^7/3^3=3^4=\\boxed{81}$.\n *)\n\ntheorem\nfixes n :: nat and sum :: \"nat \\<Rightarrow> nat\" and median :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum n = n * (2 * n + 26) div 2\"\nand h1 : \"sum n = 3^7\"\nand h2 : \"\\<forall> n. median n = n + 13\"\nshows  \"median n = 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of the first $n$ consecutive integers, each increased by 26, is given by the formula $S_n = n * (2n + 26) / 2$. If $S_n = 3^7$, find the value of $n$ increased by 13. The final answer is 81."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat and S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> k. S k = k + 27\"\nand h1 : \"(\\<Sum> k \\<in> {n..n+26}. S k) = 3 powr 7\"\nshows  \"S (n + 13) = 81\"",
+        "formal solution": "(* ### Problem\n The sum of 27 consecutive positive integers is $3^7$. What is their median? The final Answer is 81\n ### Proof\n The median of a set of consecutive positive integers is equal to the mean of the set of integers.\n Therefore, we can find the median by dividing the sum by the number of integers: $3^7/3^3=3^4=\\boxed{81}$.\n *)\n\ntheorem\nfixes n :: nat and S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> k. S k = k + 27\"\nand h1 : \"(\\<Sum> k \\<in> {n..n+26}. S k) = 3 powr 7\"\nshows  \"S (n + 13) = 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose a function $S(k)$ is defined as $S(k) = k + 27$. If the sum of the function values from $n$ to $n + 26$ is equal to $3^7$, find the value of $S(n + 13)$. The final answer is $81$."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"27 * n + (\\<Sum>i = 1..27. i) = 3^7\"\nshows  \"n = 81\"",
+        "formal solution": "(* ### Problem\n The sum of 27 consecutive positive integers is $3^7$. What is their median? The final Answer is 81\n ### Proof\n The median of a set of consecutive positive integers is equal to the mean of the set of integers.\n Therefore, we can find the median by dividing the sum by the number of integers: $3^7/3^3=3^4=\\boxed{81}$.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"27 * n + (\\<Sum>i = 1..27. i) = 3^7\"\nshows  \"n = 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the natural number $n$ such that $27n + \\sum_{i=1}^{27} i = 3^7$. The final answer is $n = 81$."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: nat and S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 27\"\nand h1 : \"\\<forall> k. S k = sum id {k..k + n - 1}\"\nand h2 : \"S k = 3^7\"\nshows  \"median {k..k + n - 1} = 81\"",
+        "formal solution": "(* ### Problem\n The sum of 27 consecutive positive integers is $3^7$. What is their median? The final Answer is 81\n ### Proof\n The median of a set of consecutive positive integers is equal to the mean of the set of integers.\n Therefore, we can find the median by dividing the sum by the number of integers: $3^7/3^3=3^4=\\boxed{81}$.\n *)\n\ntheorem\nfixes n :: nat and S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 27\"\nand h1 : \"\\<forall> k. S k = sum id {k..k + n - 1}\"\nand h2 : \"S k = 3^7\"\nshows  \"median {k..k + n - 1} = 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the median of a set of 27 consecutive natural numbers, starting with k, such that the sum of these numbers is equal to $3^7$. The final answer is 81."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat and a :: nat\nassumes h0 : \"27 * (2 * a + 26) = 3^7\"\nand h1 : \"n = (a + a + 26) div 2\"\nshows  \"n = 81\"",
+        "formal solution": "(* ### Problem\n The sum of 27 consecutive positive integers is $3^7$. What is their median? The final Answer is 81\n ### Proof\n The median of a set of consecutive positive integers is equal to the mean of the set of integers.\n Therefore, we can find the median by dividing the sum by the number of integers: $3^7/3^3=3^4=\\boxed{81}$.\n *)\n\ntheorem\nfixes n :: nat and a :: nat\nassumes h0 : \"27 * (2 * a + 26) = 3^7\"\nand h1 : \"n = (a + a + 26) div 2\"\nshows  \"n = 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $n$ if $27(2a + 26) = 3^7$ and $n = \\frac{2a + 26}{2}$. The final answer is $n = 81$."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat and sum_median :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_median n = (\\<Sum>k\\<in>{n..n+26}. k)\"\nand h1 : \"sum_median n = 3^7\"\nshows  \"n + 13 = 81\"",
+        "formal solution": "(* ### Problem\n The sum of 27 consecutive positive integers is $3^7$. What is their median? The final Answer is 81\n ### Proof\n The median of a set of consecutive positive integers is equal to the mean of the set of integers.\n Therefore, we can find the median by dividing the sum by the number of integers: $3^7/3^3=3^4=\\boxed{81}$.\n *)\n\ntheorem\nfixes n :: nat and sum_median :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_median n = (\\<Sum>k\\<in>{n..n+26}. k)\"\nand h1 : \"sum_median n = 3^7\"\nshows  \"n + 13 = 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the first number in a sequence of 27 consecutive natural numbers whose sum is equal to $3^7$. What is the middle number of the sequence? The final answer is 81."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: real and sum :: real\nassumes h0 : \"n = 27\"\nand h1 : \"sum = 3 powr 7\"\nand h2 : \"sum = (\\<Sum> i \\<in> {1..n}. i)\"\nshows  \"median = 81\"",
+        "formal solution": "(* ### Problem\n The sum of 27 consecutive positive integers is $3^7$. What is their median? The final Answer is 81\n ### Proof\n The median of a set of consecutive positive integers is equal to the mean of the set of integers.\n Therefore, we can find the median by dividing the sum by the number of integers: $3^7/3^3=3^4=\\boxed{81}$.\n *)\n\ntheorem\nfixes n :: real and sum :: real\nassumes h0 : \"n = 27\"\nand h1 : \"sum = 3 powr 7\"\nand h2 : \"sum = (\\<Sum> i \\<in> {1..n}. i)\"\nshows  \"median = 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the median of the first 27 positive integers, given that their sum is equal to $3^7$. The final answer is 81."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n :: nat and S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> k. S k = k + 27\"\nand h1 : \"sum S {1..27} = 3^7\"\nshows  \"S 14 = 81\"",
+        "formal solution": "(* ### Problem\n The sum of 27 consecutive positive integers is $3^7$. What is their median? The final Answer is 81\n ### Proof\n The median of a set of consecutive positive integers is equal to the mean of the set of integers.\n Therefore, we can find the median by dividing the sum by the number of integers: $3^7/3^3=3^4=\\boxed{81}$.\n *)\n\ntheorem\nfixes n :: nat and S :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> k. S k = k + 27\"\nand h1 : \"sum S {1..27} = 3^7\"\nshows  \"S 14 = 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence $S_n$ such that $S_n = n + 27$ for all natural numbers $n$. If the sum of the first 27 terms of the sequence equals $3^7$, find the value of $S_{14}$. The final answer is 81."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat and sum :: nat\nassumes h0 : \"sum = 3^7\"\nand h1 : \"sum = (\\<Sum>i = n..n+26. i)\"\nshows  \"n + 13 = 81\"",
+        "formal solution": "(* ### Problem\n The sum of 27 consecutive positive integers is $3^7$. What is their median? The final Answer is 81\n ### Proof\n The median of a set of consecutive positive integers is equal to the mean of the set of integers.\n Therefore, we can find the median by dividing the sum by the number of integers: $3^7/3^3=3^4=\\boxed{81}$.\n *)\n\ntheorem\nfixes n :: nat and sum :: nat\nassumes h0 : \"sum = 3^7\"\nand h1 : \"sum = (\\<Sum>i = n..n+26. i)\"\nshows  \"n + 13 = 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of 27 consecutive natural numbers is equal to $3^7$. Find the number that is 13 positions away from the first number in this sequence. The final answer is 81."
+    },
+    "level": "Level 4",
+    "type": "Algebra"
+}

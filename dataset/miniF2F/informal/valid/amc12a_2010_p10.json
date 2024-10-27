@@ -1,0 +1,128 @@
+{
+    "problem_name": "amc12a_2010_p10",
+    "informal_statement": "The first four terms of an arithmetic sequence are $p$, $9$, $3p-q$, and $3p+q$. What is the $2010^\\text{th}$ term of this sequence?\n\n$\\textbf{(A)}\\ 8041 \\qquad \\textbf{(B)}\\ 8043 \\qquad \\textbf{(C)}\\ 8045 \\qquad \\textbf{(D)}\\ 8047 \\qquad \\textbf{(E)}\\ 8049$ Show that it is \\textbf{(A) }8041.",
+    "informal_proof": "$3p-q$ and $3p+q$ are consecutive terms, so the common difference is $(3p+q)-(3p-q) = 2q$.\n\n$\\begin{align*}p+2q &= 9\\\\\n9+2q &= 3p-q\\\\\nq&=2\\\\\np&=5\\end{align*}$\n\nThe common difference is $4$. The first term is $5$ and the $2010^\\text{th}$ term is\n\n$5+4(2009) = \\textbf{(A) }8041$",
+    "a_0": {
+        "formal problem": "theorem\nfixes p q a_n :: real\nassumes h0 : \"a_n 1 = p\"\nand h1 : \"a_n 2 = 9\"\nand h2 : \"a_n 3 = 3 * p - q\"\nand h3 : \"a_n 4 = 3 * p + q\"\nand h4 : \"arithmetic_sequence a_n\"\nshows  \"a_n 2010 = 8041\"",
+        "formal solution": "(* ### Problem\n The first four terms of an arithmetic sequence are $p$, $9$, $3p-q$, and $3p+q$. What is the $2010^\\text{th}$ term of this sequence?\n\n$\\textbf{(A)}\\ 8041 \\qquad \\textbf{(B)}\\ 8043 \\qquad \\textbf{(C)}\\ 8045 \\qquad \\textbf{(D)}\\ 8047 \\qquad \\textbf{(E)}\\ 8049$ Show that it is \\textbf{(A) }8041.\n ### Proof\n $3p-q$ and $3p+q$ are consecutive terms, so the common difference is $(3p+q)-(3p-q) = 2q$.\n\n$\\begin{align*}p+2q &= 9\\\\\n9+2q &= 3p-q\\\\\nq&=2\\\\\np&=5\\end{align*}$\n\nThe common difference is $4$. The first term is $5$ and the $2010^\\text{th}$ term is\n\n$5+4(2009) = \\textbf{(A) }8041$\n *)\n\ntheorem\nfixes p q a_n :: real\nassumes h0 : \"a_n 1 = p\"\nand h1 : \"a_n 2 = 9\"\nand h2 : \"a_n 3 = 3 * p - q\"\nand h3 : \"a_n 4 = 3 * p + q\"\nand h4 : \"arithmetic_sequence a_n\"\nshows  \"a_n 2010 = 8041\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given an arithmetic sequence $a_n$ with $a_1 = p$, $a_2 = 9$, $a_3 = 3p - q$, and $a_4 = 3p + q$, find the value of $a_{2010}$. The final answer is 8041.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.683027446269989,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes p q :: real and seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 1 = p\"\nand h1 : \"seq 2 = 9\"\nand h2 : \"seq 3 = 3 * p - q\"\nand h3 : \"seq 4 = 3 * p + q\"\nand h4 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> seq (n + 1) - seq n = seq (n + 2) - seq (n + 1)\"\nshows  \"seq 2010 = 8041\"",
+        "formal solution": "(* ### Problem\n The first four terms of an arithmetic sequence are $p$, $9$, $3p-q$, and $3p+q$. What is the $2010^\\text{th}$ term of this sequence?\n\n$\\textbf{(A)}\\ 8041 \\qquad \\textbf{(B)}\\ 8043 \\qquad \\textbf{(C)}\\ 8045 \\qquad \\textbf{(D)}\\ 8047 \\qquad \\textbf{(E)}\\ 8049$ Show that it is \\textbf{(A) }8041.\n ### Proof\n $3p-q$ and $3p+q$ are consecutive terms, so the common difference is $(3p+q)-(3p-q) = 2q$.\n\n$\\begin{align*}p+2q &= 9\\\\\n9+2q &= 3p-q\\\\\nq&=2\\\\\np&=5\\end{align*}$\n\nThe common difference is $4$. The first term is $5$ and the $2010^\\text{th}$ term is\n\n$5+4(2009) = \\textbf{(A) }8041$\n *)\n\ntheorem\nfixes p q :: real and seq :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"seq 1 = p\"\nand h1 : \"seq 2 = 9\"\nand h2 : \"seq 3 = 3 * p - q\"\nand h3 : \"seq 4 = 3 * p + q\"\nand h4 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> seq (n + 1) - seq n = seq (n + 2) - seq (n + 1)\"\nshows  \"seq 2010 = 8041\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sequence $(seq_n)$ is defined as follows:\n\n- $seq_1 = p$\n- $seq_2 = 9$\n- $seq_3 = 3p - q$\n- $seq_4 = 3p + q$\n\nThe sequence also satisfies the condition that for all $n \\geq 1$, the difference between consecutive terms is constant, i.e., $seq_{n+1} - seq_n = seq_{n+2} - seq_{n+1}$.\n\nFind the value of $seq_{2010}$. The final answer is 8041.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9434772729873657,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes p q n :: real\nassumes h0 : \"n = 2010\"\nand h1 : \"arith_seq p 9 (3 * p - q) (3 * p + q)\"\nshows  \"arith_term n p 9 = 8041\"",
+        "formal solution": "(* ### Problem\n The first four terms of an arithmetic sequence are $p$, $9$, $3p-q$, and $3p+q$. What is the $2010^\\text{th}$ term of this sequence?\n\n$\\textbf{(A)}\\ 8041 \\qquad \\textbf{(B)}\\ 8043 \\qquad \\textbf{(C)}\\ 8045 \\qquad \\textbf{(D)}\\ 8047 \\qquad \\textbf{(E)}\\ 8049$ Show that it is \\textbf{(A) }8041.\n ### Proof\n $3p-q$ and $3p+q$ are consecutive terms, so the common difference is $(3p+q)-(3p-q) = 2q$.\n\n$\\begin{align*}p+2q &= 9\\\\\n9+2q &= 3p-q\\\\\nq&=2\\\\\np&=5\\end{align*}$\n\nThe common difference is $4$. The first term is $5$ and the $2010^\\text{th}$ term is\n\n$5+4(2009) = \\textbf{(A) }8041$\n *)\n\ntheorem\nfixes p q n :: real\nassumes h0 : \"n = 2010\"\nand h1 : \"arith_seq p 9 (3 * p - q) (3 * p + q)\"\nshows  \"arith_term n p 9 = 8041\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In an arithmetic sequence with first term $p$ and common difference $9$, the sum of the third term $(3p - q)$ and the fourth term $(3p + q)$ is equal to the 2010th term. Find the 2010th term of the sequence. The final answer is 8041.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9188312292098999,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat and p q :: int and seq :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"seq 1 = p\"\nand h1 : \"seq 2 = 9\"\nand h2 : \"seq 3 = 3 * p - q\"\nand h3 : \"seq 4 = 3 * p + q\"\nand h4 : \"\\<forall> n. n > 0 \\<longrightarrow> seq (n + 1) - seq n = seq 2 - seq 1\"\nshows  \"seq 2010 = 8041\"",
+        "formal solution": "(* ### Problem\n The first four terms of an arithmetic sequence are $p$, $9$, $3p-q$, and $3p+q$. What is the $2010^\\text{th}$ term of this sequence?\n\n$\\textbf{(A)}\\ 8041 \\qquad \\textbf{(B)}\\ 8043 \\qquad \\textbf{(C)}\\ 8045 \\qquad \\textbf{(D)}\\ 8047 \\qquad \\textbf{(E)}\\ 8049$ Show that it is \\textbf{(A) }8041.\n ### Proof\n $3p-q$ and $3p+q$ are consecutive terms, so the common difference is $(3p+q)-(3p-q) = 2q$.\n\n$\\begin{align*}p+2q &= 9\\\\\n9+2q &= 3p-q\\\\\nq&=2\\\\\np&=5\\end{align*}$\n\nThe common difference is $4$. The first term is $5$ and the $2010^\\text{th}$ term is\n\n$5+4(2009) = \\textbf{(A) }8041$\n *)\n\ntheorem\nfixes n :: nat and p q :: int and seq :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"seq 1 = p\"\nand h1 : \"seq 2 = 9\"\nand h2 : \"seq 3 = 3 * p - q\"\nand h3 : \"seq 4 = 3 * p + q\"\nand h4 : \"\\<forall> n. n > 0 \\<longrightarrow> seq (n + 1) - seq n = seq 2 - seq 1\"\nshows  \"seq 2010 = 8041\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence is defined as follows: $seq(1) = p$, $seq(2) = 9$, $seq(3) = 3p - q$, $seq(4) = 3p + q$, and for every positive integer $n$, $seq(n + 1) - seq(n) = seq(2) - seq(1)$. What is the value of $seq(2010)$? The final answer is $8041$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9131689667701721,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes p q a_n :: real\nassumes h0 : \"a_n 1 = p\"\nand h1 : \"a_n 2 = 9\"\nand h2 : \"a_n 3 = 3 * p - q\"\nand h3 : \"a_n 4 = 3 * p + q\"\nand h4 : \"\\<forall> n. n > 1 \\<longrightarrow> a_n n = a_n (n-1) + (a_n (n-1) - a_n (n-2))\"\nshows  \"a_n 2010 = 8041\"",
+        "formal solution": "(* ### Problem\n The first four terms of an arithmetic sequence are $p$, $9$, $3p-q$, and $3p+q$. What is the $2010^\\text{th}$ term of this sequence?\n\n$\\textbf{(A)}\\ 8041 \\qquad \\textbf{(B)}\\ 8043 \\qquad \\textbf{(C)}\\ 8045 \\qquad \\textbf{(D)}\\ 8047 \\qquad \\textbf{(E)}\\ 8049$ Show that it is \\textbf{(A) }8041.\n ### Proof\n $3p-q$ and $3p+q$ are consecutive terms, so the common difference is $(3p+q)-(3p-q) = 2q$.\n\n$\\begin{align*}p+2q &= 9\\\\\n9+2q &= 3p-q\\\\\nq&=2\\\\\np&=5\\end{align*}$\n\nThe common difference is $4$. The first term is $5$ and the $2010^\\text{th}$ term is\n\n$5+4(2009) = \\textbf{(A) }8041$\n *)\n\ntheorem\nfixes p q a_n :: real\nassumes h0 : \"a_n 1 = p\"\nand h1 : \"a_n 2 = 9\"\nand h2 : \"a_n 3 = 3 * p - q\"\nand h3 : \"a_n 4 = 3 * p + q\"\nand h4 : \"\\<forall> n. n > 1 \\<longrightarrow> a_n n = a_n (n-1) + (a_n (n-1) - a_n (n-2))\"\nshows  \"a_n 2010 = 8041\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $(a_n)$ is defined as follows: $a_1 = p$, $a_2 = 9$, $a_3 = 3p - q$, $a_4 = 3p + q$, and for $n > 1$, $a_n = a_{n-1} + (a_{n-1} - a_{n-2})$. Find the value of $a_{2010}$. The final answer is $8041$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9708085060119629,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes p q :: real\nassumes h0 : \"9 - p = 3 * p - q - 9\"\nand h1 : \"3 * p - q - 9 = 3 * p + q - (3 * p - q)\"\nshows  \"p + 2009 * (3 * p - q - 9) = 8041\"",
+        "formal solution": "(* ### Problem\n The first four terms of an arithmetic sequence are $p$, $9$, $3p-q$, and $3p+q$. What is the $2010^\\text{th}$ term of this sequence?\n\n$\\textbf{(A)}\\ 8041 \\qquad \\textbf{(B)}\\ 8043 \\qquad \\textbf{(C)}\\ 8045 \\qquad \\textbf{(D)}\\ 8047 \\qquad \\textbf{(E)}\\ 8049$ Show that it is \\textbf{(A) }8041.\n ### Proof\n $3p-q$ and $3p+q$ are consecutive terms, so the common difference is $(3p+q)-(3p-q) = 2q$.\n\n$\\begin{align*}p+2q &= 9\\\\\n9+2q &= 3p-q\\\\\nq&=2\\\\\np&=5\\end{align*}$\n\nThe common difference is $4$. The first term is $5$ and the $2010^\\text{th}$ term is\n\n$5+4(2009) = \\textbf{(A) }8041$\n *)\n\ntheorem\nfixes p q :: real\nassumes h0 : \"9 - p = 3 * p - q - 9\"\nand h1 : \"3 * p - q - 9 = 3 * p + q - (3 * p - q)\"\nshows  \"p + 2009 * (3 * p - q - 9) = 8041\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the equations $9 - p = 3p - q - 9$ and $3p - q - 9 = 3p + q - (3p - q)$, find the value of $p + 2009(3p - q - 9)$. The final answer is 8041.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.86033034324646,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes p q :: real and a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 1 = p\"\nand h1 : \"a 2 = 9\"\nand h2 : \"a 3 = 3 * p - q\"\nand h3 : \"a 4 = 3 * p + q\"\nand h4 : \"\\<forall> n. n \\<ge> 2 \\<longrightarrow> a (n + 1) - a n = a (n + 2) - a (n + 1)\"\nshows  \"a 2010 = 8041\"",
+        "formal solution": "(* ### Problem\n The first four terms of an arithmetic sequence are $p$, $9$, $3p-q$, and $3p+q$. What is the $2010^\\text{th}$ term of this sequence?\n\n$\\textbf{(A)}\\ 8041 \\qquad \\textbf{(B)}\\ 8043 \\qquad \\textbf{(C)}\\ 8045 \\qquad \\textbf{(D)}\\ 8047 \\qquad \\textbf{(E)}\\ 8049$ Show that it is \\textbf{(A) }8041.\n ### Proof\n $3p-q$ and $3p+q$ are consecutive terms, so the common difference is $(3p+q)-(3p-q) = 2q$.\n\n$\\begin{align*}p+2q &= 9\\\\\n9+2q &= 3p-q\\\\\nq&=2\\\\\np&=5\\end{align*}$\n\nThe common difference is $4$. The first term is $5$ and the $2010^\\text{th}$ term is\n\n$5+4(2009) = \\textbf{(A) }8041$\n *)\n\ntheorem\nfixes p q :: real and a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 1 = p\"\nand h1 : \"a 2 = 9\"\nand h2 : \"a 3 = 3 * p - q\"\nand h3 : \"a 4 = 3 * p + q\"\nand h4 : \"\\<forall> n. n \\<ge> 2 \\<longrightarrow> a (n + 1) - a n = a (n + 2) - a (n + 1)\"\nshows  \"a 2010 = 8041\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sequence $a_n$ with $a_1 = p$, $a_2 = 9$, $a_3 = 3p - q$, and $a_4 = 3p + q$, such that the differences between consecutive terms form a constant sequence, find the value of $a_{2010}$. The final answer is 8041.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9412756562232971,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n p q :: int and a :: \"int \\<Rightarrow> int\"\nassumes h0 : \"a 1 = p\"\nand h1 : \"a 2 = 9\"\nand h2 : \"a 3 = 3 * p - q\"\nand h3 : \"a 4 = 3 * p + q\"\nand h4 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> a (n + 1) - a n = a 2 - a 1\"\nshows  \"a 2010 = 8041\"",
+        "formal solution": "(* ### Problem\n The first four terms of an arithmetic sequence are $p$, $9$, $3p-q$, and $3p+q$. What is the $2010^\\text{th}$ term of this sequence?\n\n$\\textbf{(A)}\\ 8041 \\qquad \\textbf{(B)}\\ 8043 \\qquad \\textbf{(C)}\\ 8045 \\qquad \\textbf{(D)}\\ 8047 \\qquad \\textbf{(E)}\\ 8049$ Show that it is \\textbf{(A) }8041.\n ### Proof\n $3p-q$ and $3p+q$ are consecutive terms, so the common difference is $(3p+q)-(3p-q) = 2q$.\n\n$\\begin{align*}p+2q &= 9\\\\\n9+2q &= 3p-q\\\\\nq&=2\\\\\np&=5\\end{align*}$\n\nThe common difference is $4$. The first term is $5$ and the $2010^\\text{th}$ term is\n\n$5+4(2009) = \\textbf{(A) }8041$\n *)\n\ntheorem\nfixes n p q :: int and a :: \"int \\<Rightarrow> int\"\nassumes h0 : \"a 1 = p\"\nand h1 : \"a 2 = 9\"\nand h2 : \"a 3 = 3 * p - q\"\nand h3 : \"a 4 = 3 * p + q\"\nand h4 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> a (n + 1) - a n = a 2 - a 1\"\nshows  \"a 2010 = 8041\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of integers is defined by $a_1 = p$, $a_2 = 9$, $a_3 = 3p - q$, and $a_4 = 3p + q$. The difference between consecutive terms is constant, i.e., $a_{n+1} - a_n = a_2 - a_1$ for all $n \\geq 1$. Find the value of $a_{2010}$. The final answer is $8041$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7579697370529175,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes p q :: real and a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 1 = p\"\nand h1 : \"a 2 = 9\"\nand h2 : \"a 3 = 3 * p - q\"\nand h3 : \"a 4 = 3 * p + q\"\nand h4 : \"\\<forall> n. n \\<ge> 2 \\<longrightarrow> a (n + 1) - a n = a n - a (n - 1)\"\nshows  \"a 2010 = 8041\"",
+        "formal solution": "(* ### Problem\n The first four terms of an arithmetic sequence are $p$, $9$, $3p-q$, and $3p+q$. What is the $2010^\\text{th}$ term of this sequence?\n\n$\\textbf{(A)}\\ 8041 \\qquad \\textbf{(B)}\\ 8043 \\qquad \\textbf{(C)}\\ 8045 \\qquad \\textbf{(D)}\\ 8047 \\qquad \\textbf{(E)}\\ 8049$ Show that it is \\textbf{(A) }8041.\n ### Proof\n $3p-q$ and $3p+q$ are consecutive terms, so the common difference is $(3p+q)-(3p-q) = 2q$.\n\n$\\begin{align*}p+2q &= 9\\\\\n9+2q &= 3p-q\\\\\nq&=2\\\\\np&=5\\end{align*}$\n\nThe common difference is $4$. The first term is $5$ and the $2010^\\text{th}$ term is\n\n$5+4(2009) = \\textbf{(A) }8041$\n *)\n\ntheorem\nfixes p q :: real and a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 1 = p\"\nand h1 : \"a 2 = 9\"\nand h2 : \"a 3 = 3 * p - q\"\nand h3 : \"a 4 = 3 * p + q\"\nand h4 : \"\\<forall> n. n \\<ge> 2 \\<longrightarrow> a (n + 1) - a n = a n - a (n - 1)\"\nshows  \"a 2010 = 8041\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence of real numbers $a_n$ such that $a_1 = p$, $a_2 = 9$, $a_3 = 3p - q$, and $a_4 = 3p + q$. The sequence follows the rule that the difference between consecutive terms is the same as the difference between the previous two terms, i.e., $a_{n+1} - a_n = a_n - a_{n-1}$ for all $n \\geq 2$. Find the value of $a_{2010}$. The final answer is $8041$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9920461773872375,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes p q :: int and a_n :: \"int \\<Rightarrow> int\"\nassumes h0 : \"a_n 1 = p\"\nand h1 : \"a_n 2 = 9\"\nand h2 : \"a_n 3 = 3 * p - q\"\nand h3 : \"a_n 4 = 3 * p + q\"\nand h4 : \"\\<forall>n. n \\<ge> 2 \\<longrightarrow> a_n (n + 1) - a_n n = a_n n - a_n (n - 1)\"\nshows  \"a_n 2010 = 8041\"",
+        "formal solution": "(* ### Problem\n The first four terms of an arithmetic sequence are $p$, $9$, $3p-q$, and $3p+q$. What is the $2010^\\text{th}$ term of this sequence?\n\n$\\textbf{(A)}\\ 8041 \\qquad \\textbf{(B)}\\ 8043 \\qquad \\textbf{(C)}\\ 8045 \\qquad \\textbf{(D)}\\ 8047 \\qquad \\textbf{(E)}\\ 8049$ Show that it is \\textbf{(A) }8041.\n ### Proof\n $3p-q$ and $3p+q$ are consecutive terms, so the common difference is $(3p+q)-(3p-q) = 2q$.\n\n$\\begin{align*}p+2q &= 9\\\\\n9+2q &= 3p-q\\\\\nq&=2\\\\\np&=5\\end{align*}$\n\nThe common difference is $4$. The first term is $5$ and the $2010^\\text{th}$ term is\n\n$5+4(2009) = \\textbf{(A) }8041$\n *)\n\ntheorem\nfixes p q :: int and a_n :: \"int \\<Rightarrow> int\"\nassumes h0 : \"a_n 1 = p\"\nand h1 : \"a_n 2 = 9\"\nand h2 : \"a_n 3 = 3 * p - q\"\nand h3 : \"a_n 4 = 3 * p + q\"\nand h4 : \"\\<forall>n. n \\<ge> 2 \\<longrightarrow> a_n (n + 1) - a_n n = a_n n - a_n (n - 1)\"\nshows  \"a_n 2010 = 8041\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence of integers $a_n$ such that $a_1 = p$, $a_2 = 9$, $a_3 = 3p - q$, $a_4 = 3p + q$, and for all integers $n \\geq 2$, the difference between consecutive terms is constant, i.e., $a_{n+1} - a_n = a_n - a_{n-1}$. Find the value of $a_{2010}$. The final answer is $8041$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9928462505340576,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes p q :: real\nand a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<And>n. a (n+2) - a (n+1) = a (n+1) - a n\"\nand h1 : \"a 1 = p\"\nand h2 : \"a 2 = 9\"\nand h3 : \"a 3 = 3 * p - q\"\nand h4 : \"a 4 = 3 * p + q\"\nshows \"a 2010 = 8041\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    }
+}

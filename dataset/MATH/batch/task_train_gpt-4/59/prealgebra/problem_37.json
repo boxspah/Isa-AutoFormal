@@ -1,0 +1,59 @@
+{
+    "natural problem": "Given the four digits 2, 4, 6, and 7, how many different positive two-digit integers can be formed using these digits if a digit may not be repeated in an integer?",
+    "natural solution": [
+        "There are 4 choices for the first digit and 3 for the second, for a total of $4\\cdot3=\\boxed{12}$ integers possible."
+    ],
+    "natural answer": "12",
+    "a_0": {
+        "formal problem": "theorem\nfixes a b :: nat\nassumes h0 : \"a \\<in> {2, 4, 6, 7}\"\nand h1 : \"b \\<in> {2, 4, 6, 7}\"\nand h2 : \"a \\<noteq> b\"\nshows  \"card {(a, b). a \\<in> {2, 4, 6, 7} \\<and> b \\<in> {2, 4, 6, 7} \\<and> a \\<noteq> b} = 12\"",
+        "formal solution": "(* ### Problem\n Given the four digits 2, 4, 6, and 7, how many different positive two-digit integers can be formed using these digits if a digit may not be repeated in an integer? The final Answer is 12\n ### Proof\n There are 4 choices for the first digit and 3 for the second, for a total of $4\\cdot3=\\boxed{12}$ integers possible.\n *)\n\ntheorem\nfixes a b :: nat\nassumes h0 : \"a \\<in> {2, 4, 6, 7}\"\nand h1 : \"b \\<in> {2, 4, 6, 7}\"\nand h2 : \"a \\<noteq> b\"\nshows  \"card {(a, b). a \\<in> {2, 4, 6, 7} \\<and> b \\<in> {2, 4, 6, 7} \\<and> a \\<noteq> b} = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many pairs of distinct numbers can be formed from the set {2, 4, 6, 7}? The final answer is 12."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b c d :: nat and N :: \"nat set\"\nassumes h0 : \"a = 2\"\nand h1 : \"b = 4\"\nand h2 : \"c = 6\"\nand h3 : \"d = 7\"\nand h4 : \"N = {10*a+b, 10*a+c, 10*a+d, 10*b+a, 10*b+c, 10*b+d, 10*c+a, 10*c+b, 10*c+d, 10*d+a, 10*d+b, 10*d+c}\"\nshows  \"card N = 12\"",
+        "formal solution": "(* ### Problem\n Given the four digits 2, 4, 6, and 7, how many different positive two-digit integers can be formed using these digits if a digit may not be repeated in an integer? The final Answer is 12\n ### Proof\n There are 4 choices for the first digit and 3 for the second, for a total of $4\\cdot3=\\boxed{12}$ integers possible.\n *)\n\ntheorem\nfixes a b c d :: nat and N :: \"nat set\"\nassumes h0 : \"a = 2\"\nand h1 : \"b = 4\"\nand h2 : \"c = 6\"\nand h3 : \"d = 7\"\nand h4 : \"N = {10*a+b, 10*a+c, 10*a+d, 10*b+a, 10*b+c, 10*b+d, 10*c+a, 10*c+b, 10*c+d, 10*d+a, 10*d+b, 10*d+c}\"\nshows  \"card N = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the numbers a=2, b=4, c=6 and d=7, form a set N of two-digit numbers where each number is formed by concatenating two of the given numbers (in any order). How many distinct numbers are there in the set? The answer is 12."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a b c d :: nat\nassumes h0 : \"distinct [a, b, c, d]\"\nand h1 : \"{a, b, c, d} = {2, 4, 6, 7}\"\nshows  \"card {10 * a + b, 10 * a + c, 10 * a + d, 10 * b + a, 10 * b + c, 10 * b + d, 10 * c + a, 10 * c + b, 10 * c + d, 10 * d + a, 10 * d + b, 10 * d + c} = 12\"",
+        "formal solution": "(* ### Problem\n Given the four digits 2, 4, 6, and 7, how many different positive two-digit integers can be formed using these digits if a digit may not be repeated in an integer? The final Answer is 12\n ### Proof\n There are 4 choices for the first digit and 3 for the second, for a total of $4\\cdot3=\\boxed{12}$ integers possible.\n *)\n\ntheorem\nfixes a b c d :: nat\nassumes h0 : \"distinct [a, b, c, d]\"\nand h1 : \"{a, b, c, d} = {2, 4, 6, 7}\"\nshows  \"card {10 * a + b, 10 * a + c, 10 * a + d, 10 * b + a, 10 * b + c, 10 * b + d, 10 * c + a, 10 * c + b, 10 * c + d, 10 * d + a, 10 * d + b, 10 * d + c} = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Assume that a, b, c, and d are distinct natural numbers that form the set {2, 4, 6, 7}. Show that when forming two-digit numbers by pairing each of these numbers with every other number in every possible way (where each number is used as the tens digit), you get 12 unique two-digit numbers.\""
+    },
+    "a_3": {
+        "formal problem": "\n\nfun count_two_digit :: \"nat \\<Rightarrow> nat\"\nwhere\n\"count_two_digit 0 = 0\" |\n\"count_two_digit 1 = 0\" |\n\"count_two_digit 2 = 1\" |\n\"count_two_digit n = n * (n - 1)\"\n\nvalue \"count_two_digit 4\"\n\nend",
+        "formal solution": "(* ### Problem\n Given the four digits 2, 4, 6, and 7, how many different positive two-digit integers can be formed using these digits if a digit may not be repeated in an integer? The final Answer is 12\n ### Proof\n There are 4 choices for the first digit and 3 for the second, for a total of $4\\cdot3=\\boxed{12}$ integers possible.\n *)\n\n\n\nfun count_two_digit :: \"nat \\<Rightarrow> nat\"\nwhere\n\"count_two_digit 0 = 0\" |\n\"count_two_digit 1 = 0\" |\n\"count_two_digit 2 = 1\" |\n\"count_two_digit n = n * (n - 1)\"\n\nvalue \"count_two_digit 4\"\n\nend\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function count_two_digit that takes a natural number as input. If the input is 0 or 1, the function returns 0. If the input is 2, the function returns 1. For any other input n, the function returns the product of n and (n-1). What is the value of count_two_digit when the input is 4?"
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes digits :: \"int set\" and two_digit_numbers :: \"int set\"\nassumes h0 : \"digits = {2, 4, 6, 7}\"\nand h1 : \"two_digit_numbers = {10 * x + y | x y. x \\<in> digits \\<and> y \\<in> digits \\<and> x \\<noteq> y}\"\nshows  \"card two_digit_numbers = 12\"",
+        "formal solution": "(* ### Problem\n Given the four digits 2, 4, 6, and 7, how many different positive two-digit integers can be formed using these digits if a digit may not be repeated in an integer? The final Answer is 12\n ### Proof\n There are 4 choices for the first digit and 3 for the second, for a total of $4\\cdot3=\\boxed{12}$ integers possible.\n *)\n\ntheorem\nfixes digits :: \"int set\" and two_digit_numbers :: \"int set\"\nassumes h0 : \"digits = {2, 4, 6, 7}\"\nand h1 : \"two_digit_numbers = {10 * x + y | x y. x \\<in> digits \\<and> y \\<in> digits \\<and> x \\<noteq> y}\"\nshows  \"card two_digit_numbers = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit numbers can be formed using the digits 2, 4, 6, 7 without repeating any digit in a number? The final answer is 12."
+    },
+    "a_5": {
+        "formal problem": "theorem \nfixes a b c d :: nat\nassumes h0 : \"a = 2\"\nand h1 : \"b = 4\"\nand h2 : \"c = 6\"\nand h3 : \"d = 7\"\nand h4 : \"\\<forall>x y. x \\<noteq> y \\<longrightarrow> 10 * x + y > 9 \\<and> 10 * x + y < 100\"\nshows  \"card {(x, y). x \\<in> {a, b, c, d} \\<and> y \\<in> {a, b, c, d} \\<and> x \\<noteq> y} = 12\"",
+        "formal solution": "(* ### Problem\n Given the four digits 2, 4, 6, and 7, how many different positive two-digit integers can be formed using these digits if a digit may not be repeated in an integer? The final Answer is 12\n ### Proof\n There are 4 choices for the first digit and 3 for the second, for a total of $4\\cdot3=\\boxed{12}$ integers possible.\n *)\n\ntheorem \nfixes a b c d :: nat\nassumes h0 : \"a = 2\"\nand h1 : \"b = 4\"\nand h2 : \"c = 6\"\nand h3 : \"d = 7\"\nand h4 : \"\\<forall>x y. x \\<noteq> y \\<longrightarrow> 10 * x + y > 9 \\<and> 10 * x + y < 100\"\nshows  \"card {(x, y). x \\<in> {a, b, c, d} \\<and> y \\<in> {a, b, c, d} \\<and> x \\<noteq> y} = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given four distinct numbers 2, 4, 6 and 7, how many two-digit numbers can be formed such that no number is repeated in the tens and units place? The final answer is 12."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 4\"\nshows  \"fact n / fact (n - 2) = 12\"",
+        "formal solution": "(* ### Problem\n Given the four digits 2, 4, 6, and 7, how many different positive two-digit integers can be formed using these digits if a digit may not be repeated in an integer? The final Answer is 12\n ### Proof\n There are 4 choices for the first digit and 3 for the second, for a total of $4\\cdot3=\\boxed{12}$ integers possible.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 4\"\nshows  \"fact n / fact (n - 2) = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the value of $\\frac{n!}{(n-2)!}$ for $n=4$. The final answer is $12$."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes d :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"d 1 = 2\"\nand h1 : \"d 2 = 4\"\nand h2 : \"d 3 = 6\"\nand h3 : \"d 4 = 7\"\nand h4 : \"distinct [d 1, d 2, d 3, d 4]\"\nshows  \"card {10 * d i + d j |i j. i \\<in> {1, 2, 3, 4} \\<and> j \\<in> {1, 2, 3, 4} \\<and> i \\<noteq> j} = 12\"",
+        "formal solution": "(* ### Problem\n Given the four digits 2, 4, 6, and 7, how many different positive two-digit integers can be formed using these digits if a digit may not be repeated in an integer? The final Answer is 12\n ### Proof\n There are 4 choices for the first digit and 3 for the second, for a total of $4\\cdot3=\\boxed{12}$ integers possible.\n *)\n\ntheorem\nfixes d :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"d 1 = 2\"\nand h1 : \"d 2 = 4\"\nand h2 : \"d 3 = 6\"\nand h3 : \"d 4 = 7\"\nand h4 : \"distinct [d 1, d 2, d 3, d 4]\"\nshows  \"card {10 * d i + d j |i j. i \\<in> {1, 2, 3, 4} \\<and> j \\<in> {1, 2, 3, 4} \\<and> i \\<noteq> j} = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $d$ where $d(1) = 2$, $d(2) = 4$, $d(3) = 6$ and $d(4) = 7$, and these four values are distinct. Find the number of distinct values of $10 * d(i) + d(j)$ where $i$ and $j$ are distinct and each is one of {1, 2, 3, 4}. The final Answer is 12."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes d :: \"nat set\"\nassumes h0 : \"d = {2, 4, 6, 7}\"\nand h1 : \"\\<forall>n \\<in> d. n < 10\"\nshows  \"card {10 * a + b |a b. a \\<in> d \\<and> b \\<in> d \\<and> a \\<noteq> b} = 12\"",
+        "formal solution": "(* ### Problem\n Given the four digits 2, 4, 6, and 7, how many different positive two-digit integers can be formed using these digits if a digit may not be repeated in an integer? The final Answer is 12\n ### Proof\n There are 4 choices for the first digit and 3 for the second, for a total of $4\\cdot3=\\boxed{12}$ integers possible.\n *)\n\ntheorem\nfixes d :: \"nat set\"\nassumes h0 : \"d = {2, 4, 6, 7}\"\nand h1 : \"\\<forall>n \\<in> d. n < 10\"\nshows  \"card {10 * a + b |a b. a \\<in> d \\<and> b \\<in> d \\<and> a \\<noteq> b} = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many different two-digit numbers can be formed using the digits 2, 4, 6, and 7, without repeating any digit in the same number? The final answer is 12."
+    },
+    "a_9": {
+        "formal problem": "theorem\n  fixes n :: nat\n  assumes h0 : \"n = 4\"\nand h1 : \"n > 0\"\nshows  \"fact n / (fact (n - 2)) = 12\"",
+        "formal solution": "(* ### Problem\n Given the four digits 2, 4, 6, and 7, how many different positive two-digit integers can be formed using these digits if a digit may not be repeated in an integer? The final Answer is 12\n ### Proof\n There are 4 choices for the first digit and 3 for the second, for a total of $4\\cdot3=\\boxed{12}$ integers possible.\n *)\n\ntheorem\n  fixes n :: nat\n  assumes h0 : \"n = 4\"\nand h1 : \"n > 0\"\nshows  \"fact n / (fact (n - 2)) = 12\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the value of $\\frac{n!}{(n-2)!}$ where $n$ is 4. The final answer is 12."
+    },
+    "level": "Level 3",
+    "type": "Prealgebra"
+}

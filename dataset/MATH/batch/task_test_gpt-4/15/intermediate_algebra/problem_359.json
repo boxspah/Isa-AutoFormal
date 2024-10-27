@@ -1,0 +1,135 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes sum :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. sum n = n / 10^n\"\nshows  \"(\\<Sum>n. sum n) = 10 / 81\"",
+        "formal solution": "(* ### Problem\n Find the sum\n\\[0.1 + 0.02 + 0.003 + 0.0004 + \\dots + \\frac{n}{10^n} + \\dotsb.\\] The final Answer is \\frac{10}{81}\n ### Proof\n Let \\[S = \\frac{1}{10} + \\frac{2}{10^2} + \\frac{3}{10^3} + \\dotsb.\\]Then \\[\\frac{1}{10} S = \\frac{1}{10^2} + \\frac{2}{10^3} + \\frac{3}{10^4} + \\dotsb.\\]Subtracting these equations, get \\[\\frac{9}{10} S = \\frac{1}{10} + \\frac{1}{10^2} + \\frac{1}{10^3} + \\dots = \\frac{1/10}{1 - 1/10} = \\frac{1}{9}.\\]Therefore, \\[S = \\boxed{\\frac{10}{81}}.\\]\n *)\n\ntheorem\nfixes sum :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. sum n = n / 10^n\"\nshows  \"(\\<Sum>n. sum n) = 10 / 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the series where each term is defined as the nth natural number divided by 10 to the power of n. The final answer is $10/81$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7586100697517395,
+        "symbolic_score": 0.5
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes sum :: real\nassumes h0 : \"sum (\\<lambda>n. n / 10 ^ n) UNIV = sum\"\nshows  \"sum = 10 / 81\"",
+        "formal solution": "(* ### Problem\n Find the sum\n\\[0.1 + 0.02 + 0.003 + 0.0004 + \\dots + \\frac{n}{10^n} + \\dotsb.\\] The final Answer is \\frac{10}{81}\n ### Proof\n Let \\[S = \\frac{1}{10} + \\frac{2}{10^2} + \\frac{3}{10^3} + \\dotsb.\\]Then \\[\\frac{1}{10} S = \\frac{1}{10^2} + \\frac{2}{10^3} + \\frac{3}{10^4} + \\dotsb.\\]Subtracting these equations, get \\[\\frac{9}{10} S = \\frac{1}{10} + \\frac{1}{10^2} + \\frac{1}{10^3} + \\dots = \\frac{1/10}{1 - 1/10} = \\frac{1}{9}.\\]Therefore, \\[S = \\boxed{\\frac{10}{81}}.\\]\n *)\n\ntheorem\nfixes sum :: real\nassumes h0 : \"sum (\\<lambda>n. n / 10 ^ n) UNIV = sum\"\nshows  \"sum = 10 / 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the series $n / 10^n$ for all natural numbers $n$. The final answer is $10 / 81$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.691249668598175,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n :: nat and s :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. s n = n / (10 ^ n)\"\nand h1 : \"suminf s = 10 / 81\"\nshows  \"suminf s = 10 / 81\"",
+        "formal solution": "(* ### Problem\n Find the sum\n\\[0.1 + 0.02 + 0.003 + 0.0004 + \\dots + \\frac{n}{10^n} + \\dotsb.\\] The final Answer is \\frac{10}{81}\n ### Proof\n Let \\[S = \\frac{1}{10} + \\frac{2}{10^2} + \\frac{3}{10^3} + \\dotsb.\\]Then \\[\\frac{1}{10} S = \\frac{1}{10^2} + \\frac{2}{10^3} + \\frac{3}{10^4} + \\dotsb.\\]Subtracting these equations, get \\[\\frac{9}{10} S = \\frac{1}{10} + \\frac{1}{10^2} + \\frac{1}{10^3} + \\dots = \\frac{1/10}{1 - 1/10} = \\frac{1}{9}.\\]Therefore, \\[S = \\boxed{\\frac{10}{81}}.\\]\n *)\n\ntheorem\nfixes n :: nat and s :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. s n = n / (10 ^ n)\"\nand h1 : \"suminf s = 10 / 81\"\nshows  \"suminf s = 10 / 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider the infinite series where the nth term is given by $s(n) = \\frac{n}{10^n}$. If the sum of this infinite series is $\\frac{10}{81}$, confirm that the sum of the infinite series is indeed $\\frac{10}{81}$.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.680246114730835,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. f n = n / (10 ^ n)\"\nand h1 : \"summable f\"\nshows  \"suminf f = 10 / 81\"",
+        "formal solution": "(* ### Problem\n Find the sum\n\\[0.1 + 0.02 + 0.003 + 0.0004 + \\dots + \\frac{n}{10^n} + \\dotsb.\\] The final Answer is \\frac{10}{81}\n ### Proof\n Let \\[S = \\frac{1}{10} + \\frac{2}{10^2} + \\frac{3}{10^3} + \\dotsb.\\]Then \\[\\frac{1}{10} S = \\frac{1}{10^2} + \\frac{2}{10^3} + \\frac{3}{10^4} + \\dotsb.\\]Subtracting these equations, get \\[\\frac{9}{10} S = \\frac{1}{10} + \\frac{1}{10^2} + \\frac{1}{10^3} + \\dots = \\frac{1/10}{1 - 1/10} = \\frac{1}{9}.\\]Therefore, \\[S = \\boxed{\\frac{10}{81}}.\\]\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. f n = n / (10 ^ n)\"\nand h1 : \"summable f\"\nshows  \"suminf f = 10 / 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose a sequence is defined by $f(n) = \\frac{n}{10^n}$ for all natural numbers $n$. If the series formed by this sequence is summable, what is the sum of this infinite series? The final answer is $\\frac{10}{81}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9828340411186218,
+        "symbolic_score": 0.5
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n :: real\nassumes h0 : \"n \\<ge> 0\"\nshows  \"(\\<Sum>i=0..n. i / 10^i) = 10 / 81\"",
+        "formal solution": "(* ### Problem\n Find the sum\n\\[0.1 + 0.02 + 0.003 + 0.0004 + \\dots + \\frac{n}{10^n} + \\dotsb.\\] The final Answer is \\frac{10}{81}\n ### Proof\n Let \\[S = \\frac{1}{10} + \\frac{2}{10^2} + \\frac{3}{10^3} + \\dotsb.\\]Then \\[\\frac{1}{10} S = \\frac{1}{10^2} + \\frac{2}{10^3} + \\frac{3}{10^4} + \\dotsb.\\]Subtracting these equations, get \\[\\frac{9}{10} S = \\frac{1}{10} + \\frac{1}{10^2} + \\frac{1}{10^3} + \\dots = \\frac{1/10}{1 - 1/10} = \\frac{1}{9}.\\]Therefore, \\[S = \\boxed{\\frac{10}{81}}.\\]\n *)\n\ntheorem\nfixes n :: real\nassumes h0 : \"n \\<ge> 0\"\nshows  \"(\\<Sum>i=0..n. i / 10^i) = 10 / 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the series where the nth term is given by $\\frac{n}{10^n}$ for all non-negative n. The final answer is $\\frac{10}{81}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.862223207950592,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat\ndefines f_def: \"f n \\<equiv> n / 10^n\"\nassumes h0 : \"summable f\"\nshows  \"suminf f = 10 / 81\"",
+        "formal solution": "(* ### Problem\n Find the sum\n\\[0.1 + 0.02 + 0.003 + 0.0004 + \\dots + \\frac{n}{10^n} + \\dotsb.\\] The final Answer is \\frac{10}{81}\n ### Proof\n Let \\[S = \\frac{1}{10} + \\frac{2}{10^2} + \\frac{3}{10^3} + \\dotsb.\\]Then \\[\\frac{1}{10} S = \\frac{1}{10^2} + \\frac{2}{10^3} + \\frac{3}{10^4} + \\dotsb.\\]Subtracting these equations, get \\[\\frac{9}{10} S = \\frac{1}{10} + \\frac{1}{10^2} + \\frac{1}{10^3} + \\dots = \\frac{1/10}{1 - 1/10} = \\frac{1}{9}.\\]Therefore, \\[S = \\boxed{\\frac{10}{81}}.\\]\n *)\n\ntheorem\nfixes n :: nat\ndefines f_def: \"f n \\<equiv> n / 10^n\"\nassumes h0 : \"summable f\"\nshows  \"suminf f = 10 / 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a series where the nth term is defined by the function $f(n) = \\frac{n}{10^n}$, find the sum of this infinite series. The final answer is $\\frac{10}{81}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7107920050621033,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes sum :: \"nat => real\"\nassumes h0 : \"\\<forall> n. sum n = n / (10 ^ n)\"\nshows  \"(\\<Sum> n. sum n) = 10 / 81\"",
+        "formal solution": "(* ### Problem\n Find the sum\n\\[0.1 + 0.02 + 0.003 + 0.0004 + \\dots + \\frac{n}{10^n} + \\dotsb.\\] The final Answer is \\frac{10}{81}\n ### Proof\n Let \\[S = \\frac{1}{10} + \\frac{2}{10^2} + \\frac{3}{10^3} + \\dotsb.\\]Then \\[\\frac{1}{10} S = \\frac{1}{10^2} + \\frac{2}{10^3} + \\frac{3}{10^4} + \\dotsb.\\]Subtracting these equations, get \\[\\frac{9}{10} S = \\frac{1}{10} + \\frac{1}{10^2} + \\frac{1}{10^3} + \\dots = \\frac{1/10}{1 - 1/10} = \\frac{1}{9}.\\]Therefore, \\[S = \\boxed{\\frac{10}{81}}.\\]\n *)\n\ntheorem\nfixes sum :: \"nat => real\"\nassumes h0 : \"\\<forall> n. sum n = n / (10 ^ n)\"\nshows  \"(\\<Sum> n. sum n) = 10 / 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the series where the nth term is given by the formula $n / 10^n$. The final answer is $10 / 81$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7981613874435425,
+        "symbolic_score": 0.5
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes sum :: real\nassumes h0 : \"sum = (\\<Sum>n. n / 10 ^ n)\"\nshows  \"sum = 10 / 81\"",
+        "formal solution": "(* ### Problem\n Find the sum\n\\[0.1 + 0.02 + 0.003 + 0.0004 + \\dots + \\frac{n}{10^n} + \\dotsb.\\] The final Answer is \\frac{10}{81}\n ### Proof\n Let \\[S = \\frac{1}{10} + \\frac{2}{10^2} + \\frac{3}{10^3} + \\dotsb.\\]Then \\[\\frac{1}{10} S = \\frac{1}{10^2} + \\frac{2}{10^3} + \\frac{3}{10^4} + \\dotsb.\\]Subtracting these equations, get \\[\\frac{9}{10} S = \\frac{1}{10} + \\frac{1}{10^2} + \\frac{1}{10^3} + \\dots = \\frac{1/10}{1 - 1/10} = \\frac{1}{9}.\\]Therefore, \\[S = \\boxed{\\frac{10}{81}}.\\]\n *)\n\ntheorem\nfixes sum :: real\nassumes h0 : \"sum = (\\<Sum>n. n / 10 ^ n)\"\nshows  \"sum = 10 / 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the series $n / 10^n$ for all natural numbers $n$. The final answer is $10 / 81$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.691249668598175,
+        "symbolic_score": 0.5
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes sum :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. sum n = (\\<Sum> i \\<in> {1..n}. i / (10 ^ i))\"\nshows  \"sum (\\<infinity>) = 10 / 81\"",
+        "formal solution": "(* ### Problem\n Find the sum\n\\[0.1 + 0.02 + 0.003 + 0.0004 + \\dots + \\frac{n}{10^n} + \\dotsb.\\] The final Answer is \\frac{10}{81}\n ### Proof\n Let \\[S = \\frac{1}{10} + \\frac{2}{10^2} + \\frac{3}{10^3} + \\dotsb.\\]Then \\[\\frac{1}{10} S = \\frac{1}{10^2} + \\frac{2}{10^3} + \\frac{3}{10^4} + \\dotsb.\\]Subtracting these equations, get \\[\\frac{9}{10} S = \\frac{1}{10} + \\frac{1}{10^2} + \\frac{1}{10^3} + \\dots = \\frac{1/10}{1 - 1/10} = \\frac{1}{9}.\\]Therefore, \\[S = \\boxed{\\frac{10}{81}}.\\]\n *)\n\ntheorem\nfixes sum :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. sum n = (\\<Sum> i \\<in> {1..n}. i / (10 ^ i))\"\nshows  \"sum (\\<infinity>) = 10 / 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the infinite series where the nth term is given by $n/10^n$. The final answer is $10 / 81$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7332244515419006,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. f n = n / (10 ^ n)\"\nand h1 : \"convergent (\\<lambda>n. sum f {..n})\"\nshows  \"suminf f = 10 / 81\"",
+        "formal solution": "(* ### Problem\n Find the sum\n\\[0.1 + 0.02 + 0.003 + 0.0004 + \\dots + \\frac{n}{10^n} + \\dotsb.\\] The final Answer is \\frac{10}{81}\n ### Proof\n Let \\[S = \\frac{1}{10} + \\frac{2}{10^2} + \\frac{3}{10^3} + \\dotsb.\\]Then \\[\\frac{1}{10} S = \\frac{1}{10^2} + \\frac{2}{10^3} + \\frac{3}{10^4} + \\dotsb.\\]Subtracting these equations, get \\[\\frac{9}{10} S = \\frac{1}{10} + \\frac{1}{10^2} + \\frac{1}{10^3} + \\dots = \\frac{1/10}{1 - 1/10} = \\frac{1}{9}.\\]Therefore, \\[S = \\boxed{\\frac{10}{81}}.\\]\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. f n = n / (10 ^ n)\"\nand h1 : \"convergent (\\<lambda>n. sum f {..n})\"\nshows  \"suminf f = 10 / 81\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The function $f(n)$ is defined for all natural numbers and equals $n$ divided by $10^n$. If the series formed by the sum of the function $f(n)$ from $0$ to $n$ is convergent, find the sum of the infinite series of $f(n)$. The final answer is $\\frac{10}{81}$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9855421781539917,
+        "symbolic_score": 0.5
+    },
+    "natural answer": "\\frac{10}{81}",
+    "natural problem": "Find the sum\n\\[0.1 + 0.02 + 0.003 + 0.0004 + \\dots + \\frac{n}{10^n} + \\dotsb.\\]",
+    "natural solution": [
+        "Let \\[S = \\frac{1}{10} + \\frac{2}{10^2} + \\frac{3}{10^3} + \\dotsb.\\]Then \\[\\frac{1}{10} S = \\frac{1}{10^2} + \\frac{2}{10^3} + \\frac{3}{10^4} + \\dotsb.\\]Subtracting these equations, get \\[\\frac{9}{10} S = \\frac{1}{10} + \\frac{1}{10^2} + \\frac{1}{10^3} + \\dots = \\frac{1/10}{1 - 1/10} = \\frac{1}{9}.\\]Therefore, \\[S = \\boxed{\\frac{10}{81}}.\\]"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0,
+            3,
+            6,
+            7,
+            9
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            8
+        ]
+    },
+    "str_pred": "[[0, 3, 6, 7, 9], [1], [2], [4], [5], [8]]",
+    "level": "Level 3",
+    "type": "Intermediate Algebra"
+}

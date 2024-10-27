@@ -1,0 +1,136 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes x y :: int\nassumes h0 : \"x mod 11 = 0 \\<and> x > 1000 \\<and> (\\<forall> z. z mod 11 = 0 \\<and> z > 1000 \\<longrightarrow> z \\<ge> x)\"\nand h1 : \"y mod 11 = 0 \\<and> y < 11*11 \\<and> (\\<forall> z. z mod 11 = 0 \\<and> z < 11*11 \\<longrightarrow> z \\<le> y)\"\nshows  \"x - y = 891\"",
+        "formal solution": "(* ### Problem\n Let $x$ be the smallest multiple of $11$ that is greater than $1000$ and $y$ be the greatest multiple of $11$ less than $11^2$.  Compute $x - y$. The final Answer is 891\n ### Proof\n $1001$ is the smallest integer greater than $1000$. It also happens to be a multiple of $11$, since $1001 = 11 \\cdot 91$.\n So $1001$ is the smallest multiple of $11$ greater than $1000$ and thus $x = 1001$. The greatest multiple of $11$ that is less than $11^2 = 11 \\cdot 11$ is  $$11 \\cdot (11 - 1) = 11 \\cdot 10 = 110$$Thus $y = 110$, and we compute $$x - y = 1001 - 110 = \\boxed{891}$$\n *)\n\ntheorem\nfixes x y :: int\nassumes h0 : \"x mod 11 = 0 \\<and> x > 1000 \\<and> (\\<forall> z. z mod 11 = 0 \\<and> z > 1000 \\<longrightarrow> z \\<ge> x)\"\nand h1 : \"y mod 11 = 0 \\<and> y < 11*11 \\<and> (\\<forall> z. z mod 11 = 0 \\<and> z < 11*11 \\<longrightarrow> z \\<le> y)\"\nshows  \"x - y = 891\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the difference between the smallest integer greater than 1000 that is divisible by 11 and the largest integer less than 11*11 that is divisible by 11. The difference is 891.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.5997627377510071,
+        "symbolic_score": 0.3
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x = 11 * ceiling (1000 / 11)\"\nand h1 : \"y = 11 * floor (11 powr 2 / 11)\"\nshows  \"x - y = 891\"",
+        "formal solution": "(* ### Problem\n Let $x$ be the smallest multiple of $11$ that is greater than $1000$ and $y$ be the greatest multiple of $11$ less than $11^2$.  Compute $x - y$. The final Answer is 891\n ### Proof\n $1001$ is the smallest integer greater than $1000$. It also happens to be a multiple of $11$, since $1001 = 11 \\cdot 91$.\n So $1001$ is the smallest multiple of $11$ greater than $1000$ and thus $x = 1001$. The greatest multiple of $11$ that is less than $11^2 = 11 \\cdot 11$ is  $$11 \\cdot (11 - 1) = 11 \\cdot 10 = 110$$Thus $y = 110$, and we compute $$x - y = 1001 - 110 = \\boxed{891}$$\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x = 11 * ceiling (1000 / 11)\"\nand h1 : \"y = 11 * floor (11 powr 2 / 11)\"\nshows  \"x - y = 891\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x = 11 \\times \\lceil\\frac{1000}{11}\\rceil$ and $y = 11 \\times \\lfloor\\frac{11^2}{11}\\rfloor$, find the difference between $x$ and $y$. The final answer is 891.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9230270981788635,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x y :: int\nassumes h0 : \"x mod 11 = 0 \\<and> x > 1000 \\<and> (\\<forall> z. z > x \\<longrightarrow> z mod 11 \\<noteq> 0)\"\nand h1 : \"y mod 11 = 0 \\<and> y < 11*11 \\<and> (\\<forall> z. z < y \\<longrightarrow> z mod 11 \\<noteq> 0)\"\nshows  \"x - y = 891\"",
+        "formal solution": "(* ### Problem\n Let $x$ be the smallest multiple of $11$ that is greater than $1000$ and $y$ be the greatest multiple of $11$ less than $11^2$.  Compute $x - y$. The final Answer is 891\n ### Proof\n $1001$ is the smallest integer greater than $1000$. It also happens to be a multiple of $11$, since $1001 = 11 \\cdot 91$.\n So $1001$ is the smallest multiple of $11$ greater than $1000$ and thus $x = 1001$. The greatest multiple of $11$ that is less than $11^2 = 11 \\cdot 11$ is  $$11 \\cdot (11 - 1) = 11 \\cdot 10 = 110$$Thus $y = 110$, and we compute $$x - y = 1001 - 110 = \\boxed{891}$$\n *)\n\ntheorem\nfixes x y :: int\nassumes h0 : \"x mod 11 = 0 \\<and> x > 1000 \\<and> (\\<forall> z. z > x \\<longrightarrow> z mod 11 \\<noteq> 0)\"\nand h1 : \"y mod 11 = 0 \\<and> y < 11*11 \\<and> (\\<forall> z. z < y \\<longrightarrow> z mod 11 \\<noteq> 0)\"\nshows  \"x - y = 891\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two numbers, $x$ and $y$, where $x$ is the smallest number greater than 1000 that is divisible by 11 and no number larger than $x$ is divisible by 11, and $y$ is the largest number less than $11*11$ that is divisible by 11 and no number smaller than $y$ is divisible by 11. What is the value of $x - y$? The final answer is 891.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.990281343460083,
+        "symbolic_score": 0.3
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x y :: int\nassumes h0 : \"x > 1000 \\<and> x mod 11 = 0 \\<and> (\\<forall> k. k > 1000 \\<and> k mod 11 = 0 \\<longrightarrow> x \\<le> k)\"\nand h1 : \"y < 11^2 \\<and> y mod 11 = 0 \\<and> (\\<forall> k. k < 11^2 \\<and> k mod 11 = 0 \\<longrightarrow> y \\<ge> k)\"\nshows  \"x - y = 891\"",
+        "formal solution": "(* ### Problem\n Let $x$ be the smallest multiple of $11$ that is greater than $1000$ and $y$ be the greatest multiple of $11$ less than $11^2$.  Compute $x - y$. The final Answer is 891\n ### Proof\n $1001$ is the smallest integer greater than $1000$. It also happens to be a multiple of $11$, since $1001 = 11 \\cdot 91$.\n So $1001$ is the smallest multiple of $11$ greater than $1000$ and thus $x = 1001$. The greatest multiple of $11$ that is less than $11^2 = 11 \\cdot 11$ is  $$11 \\cdot (11 - 1) = 11 \\cdot 10 = 110$$Thus $y = 110$, and we compute $$x - y = 1001 - 110 = \\boxed{891}$$\n *)\n\ntheorem\nfixes x y :: int\nassumes h0 : \"x > 1000 \\<and> x mod 11 = 0 \\<and> (\\<forall> k. k > 1000 \\<and> k mod 11 = 0 \\<longrightarrow> x \\<le> k)\"\nand h1 : \"y < 11^2 \\<and> y mod 11 = 0 \\<and> (\\<forall> k. k < 11^2 \\<and> k mod 11 = 0 \\<longrightarrow> y \\<ge> k)\"\nshows  \"x - y = 891\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest integer $x$ greater than 1000 that is divisible by 11 and the largest integer $y$ less than 121 that is divisible by 11. What is the value of $x - y$? The final answer is 891.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9000416994094849,
+        "symbolic_score": 0.3
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x = (ceiling (1000 / 11)) * 11\"\nand h1 : \"y = (floor ((11^2) / 11)) * 11\"\nshows  \"x - y = 891\"",
+        "formal solution": "(* ### Problem\n Let $x$ be the smallest multiple of $11$ that is greater than $1000$ and $y$ be the greatest multiple of $11$ less than $11^2$.  Compute $x - y$. The final Answer is 891\n ### Proof\n $1001$ is the smallest integer greater than $1000$. It also happens to be a multiple of $11$, since $1001 = 11 \\cdot 91$.\n So $1001$ is the smallest multiple of $11$ greater than $1000$ and thus $x = 1001$. The greatest multiple of $11$ that is less than $11^2 = 11 \\cdot 11$ is  $$11 \\cdot (11 - 1) = 11 \\cdot 10 = 110$$Thus $y = 110$, and we compute $$x - y = 1001 - 110 = \\boxed{891}$$\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x = (ceiling (1000 / 11)) * 11\"\nand h1 : \"y = (floor ((11^2) / 11)) * 11\"\nshows  \"x - y = 891\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the difference between the smallest multiple of 11 that is greater than or equal to 1000 and the largest multiple of 11 that is less than or equal to the square of 11. The final answer is 891.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9230493903160095,
+        "symbolic_score": 0.2
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x y :: nat\nassumes h0 : \"x > 1000\"\nand h1 : \"x mod 11 = 0\"\nand h2 : \"\\<forall> z. z > 1000 \\<and> z mod 11 = 0 \\<longrightarrow> z \\<ge> x\"\nand h3 : \"y < 11^2\"\nand h4 : \"y mod 11 = 0\"\nand h5 : \"\\<forall> z. z < 11^2 \\<and> z mod 11 = 0 \\<longrightarrow> z \\<le> y\"\nshows  \"x - y = 891\"",
+        "formal solution": "(* ### Problem\n Let $x$ be the smallest multiple of $11$ that is greater than $1000$ and $y$ be the greatest multiple of $11$ less than $11^2$.  Compute $x - y$. The final Answer is 891\n ### Proof\n $1001$ is the smallest integer greater than $1000$. It also happens to be a multiple of $11$, since $1001 = 11 \\cdot 91$.\n So $1001$ is the smallest multiple of $11$ greater than $1000$ and thus $x = 1001$. The greatest multiple of $11$ that is less than $11^2 = 11 \\cdot 11$ is  $$11 \\cdot (11 - 1) = 11 \\cdot 10 = 110$$Thus $y = 110$, and we compute $$x - y = 1001 - 110 = \\boxed{891}$$\n *)\n\ntheorem\nfixes x y :: nat\nassumes h0 : \"x > 1000\"\nand h1 : \"x mod 11 = 0\"\nand h2 : \"\\<forall> z. z > 1000 \\<and> z mod 11 = 0 \\<longrightarrow> z \\<ge> x\"\nand h3 : \"y < 11^2\"\nand h4 : \"y mod 11 = 0\"\nand h5 : \"\\<forall> z. z < 11^2 \\<and> z mod 11 = 0 \\<longrightarrow> z \\<le> y\"\nshows  \"x - y = 891\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest number greater than 1000 that is divisible by 11 and the largest number less than $11^2$ that is divisible by 11. What is the difference between these two numbers? The final answer is 891.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.7874827980995178,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x = (ceiling (1000/11)) * 11\"\nand h1 : \"y = (floor ((11*11)/11)) * 11\"\nshows  \"x - y = 891\"",
+        "formal solution": "(* ### Problem\n Let $x$ be the smallest multiple of $11$ that is greater than $1000$ and $y$ be the greatest multiple of $11$ less than $11^2$.  Compute $x - y$. The final Answer is 891\n ### Proof\n $1001$ is the smallest integer greater than $1000$. It also happens to be a multiple of $11$, since $1001 = 11 \\cdot 91$.\n So $1001$ is the smallest multiple of $11$ greater than $1000$ and thus $x = 1001$. The greatest multiple of $11$ that is less than $11^2 = 11 \\cdot 11$ is  $$11 \\cdot (11 - 1) = 11 \\cdot 10 = 110$$Thus $y = 110$, and we compute $$x - y = 1001 - 110 = \\boxed{891}$$\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x = (ceiling (1000/11)) * 11\"\nand h1 : \"y = (floor ((11*11)/11)) * 11\"\nshows  \"x - y = 891\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $x$ be 11 times the smallest integer larger than 1000/11 and let $y$ be 11 times the largest integer smaller than 121/11. Find the difference between $x$ and $y$. The final answer is 891.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9942795634269714,
+        "symbolic_score": 0.2
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x y :: nat\nassumes h0 : \"x > 1000\"\nand h1 : \"x mod 11 = 0\"\nand h2 : \"y < 11^2\"\nand h3 : \"y mod 11 = 0\"\nshows  \"x - y = 891\"",
+        "formal solution": "(* ### Problem\n Let $x$ be the smallest multiple of $11$ that is greater than $1000$ and $y$ be the greatest multiple of $11$ less than $11^2$.  Compute $x - y$. The final Answer is 891\n ### Proof\n $1001$ is the smallest integer greater than $1000$. It also happens to be a multiple of $11$, since $1001 = 11 \\cdot 91$.\n So $1001$ is the smallest multiple of $11$ greater than $1000$ and thus $x = 1001$. The greatest multiple of $11$ that is less than $11^2 = 11 \\cdot 11$ is  $$11 \\cdot (11 - 1) = 11 \\cdot 10 = 110$$Thus $y = 110$, and we compute $$x - y = 1001 - 110 = \\boxed{891}$$\n *)\n\ntheorem\nfixes x y :: nat\nassumes h0 : \"x > 1000\"\nand h1 : \"x mod 11 = 0\"\nand h2 : \"y < 11^2\"\nand h3 : \"y mod 11 = 0\"\nshows  \"x - y = 891\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two numbers such that the first number is greater than 1000 and is divisible by 11, and the second number is less than 121 and is divisible by 11. The difference between the first and second number is 891.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.6167937517166138,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x y :: int\nassumes h0 : \"x mod 11 = 0\"\nand h1 : \"x > 1000\"\nand h2 : \"\\<forall>n. n > x \\<longrightarrow> n mod 11 \\<noteq> 0\"\nand h3 : \"y mod 11 = 0\"\nand h4 : \"y < 11 powr 2\"\nand h5 : \"\\<forall>n. n < y \\<longrightarrow> n mod 11 \\<noteq> 0\"\nshows  \"x - y = 891\"",
+        "formal solution": "(* ### Problem\n Let $x$ be the smallest multiple of $11$ that is greater than $1000$ and $y$ be the greatest multiple of $11$ less than $11^2$.  Compute $x - y$. The final Answer is 891\n ### Proof\n $1001$ is the smallest integer greater than $1000$. It also happens to be a multiple of $11$, since $1001 = 11 \\cdot 91$.\n So $1001$ is the smallest multiple of $11$ greater than $1000$ and thus $x = 1001$. The greatest multiple of $11$ that is less than $11^2 = 11 \\cdot 11$ is  $$11 \\cdot (11 - 1) = 11 \\cdot 10 = 110$$Thus $y = 110$, and we compute $$x - y = 1001 - 110 = \\boxed{891}$$\n *)\n\ntheorem\nfixes x y :: int\nassumes h0 : \"x mod 11 = 0\"\nand h1 : \"x > 1000\"\nand h2 : \"\\<forall>n. n > x \\<longrightarrow> n mod 11 \\<noteq> 0\"\nand h3 : \"y mod 11 = 0\"\nand h4 : \"y < 11 powr 2\"\nand h5 : \"\\<forall>n. n < y \\<longrightarrow> n mod 11 \\<noteq> 0\"\nshows  \"x - y = 891\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two numbers, $x$ and $y$, such that:\n\n- $x$ is divisible by 11 and greater than 1000, and all numbers greater than $x$ are not divisible by 11,\n- $y$ is divisible by 11 and less than $11^2$, and all numbers less than $y$ are not divisible by 11,\n\nThe difference between $x$ and $y$ is 891.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.675199031829834,
+        "symbolic_score": 0.2
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x y :: int\nassumes h0 : \"x mod 11 = 0\"\nand h1 : \"x > 1000\"\nand h2 : \"next (x mod 11) > 0\"\nand h3 : \"y mod 11 = 0\"\nand h4 : \"y < 11*11\"\nand h5 : \"next (y mod 11) < 0\"\nshows  \"x - y = 891\"",
+        "formal solution": "(* ### Problem\n Let $x$ be the smallest multiple of $11$ that is greater than $1000$ and $y$ be the greatest multiple of $11$ less than $11^2$.  Compute $x - y$. The final Answer is 891\n ### Proof\n $1001$ is the smallest integer greater than $1000$. It also happens to be a multiple of $11$, since $1001 = 11 \\cdot 91$.\n So $1001$ is the smallest multiple of $11$ greater than $1000$ and thus $x = 1001$. The greatest multiple of $11$ that is less than $11^2 = 11 \\cdot 11$ is  $$11 \\cdot (11 - 1) = 11 \\cdot 10 = 110$$Thus $y = 110$, and we compute $$x - y = 1001 - 110 = \\boxed{891}$$\n *)\n\ntheorem\nfixes x y :: int\nassumes h0 : \"x mod 11 = 0\"\nand h1 : \"x > 1000\"\nand h2 : \"next (x mod 11) > 0\"\nand h3 : \"y mod 11 = 0\"\nand h4 : \"y < 11*11\"\nand h5 : \"next (y mod 11) < 0\"\nshows  \"x - y = 891\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two integers $x$ and $y$ such that $x$ is divisible by 11, $x > 1000$, and the remainder when $x$ is divided by 11 is greater than 0 after increment, whereas $y$ is divisible by 11, $y < 11*11$, and the remainder when $y$ is divided by 11 is less than 0 after increment, find the difference between $x$ and $y$. The final answer is 891.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9903057813644409,
+        "symbolic_score": 0.2
+    },
+    "natural answer": "891",
+    "natural problem": "Let $x$ be the smallest multiple of $11$ that is greater than $1000$ and $y$ be the greatest multiple of $11$ less than $11^2$.  Compute $x - y$.",
+    "natural solution": [
+        "$1001$ is the smallest integer greater than $1000$. It also happens to be a multiple of $11$, since $1001 = 11 \\cdot 91$.",
+        "So $1001$ is the smallest multiple of $11$ greater than $1000$ and thus $x = 1001$. The greatest multiple of $11$ that is less than $11^2 = 11 \\cdot 11$ is  $$11 \\cdot (11 - 1) = 11 \\cdot 10 = 110$$Thus $y = 110$, and we compute $$x - y = 1001 - 110 = \\boxed{891}$$"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0,
+            2,
+            3
+        ],
+        "1": [
+            4,
+            6
+        ],
+        "2": [
+            8,
+            9
+        ],
+        "3": [
+            1
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            7
+        ]
+    },
+    "str_pred": "[[0, 2, 3], [4, 6], [8, 9], [1], [5], [7]]",
+    "level": "Level 3",
+    "type": "Prealgebra"
+}

@@ -1,0 +1,59 @@
+{
+    "natural problem": "My co-worker Erich is very odd.  He only likes numbers that are divisible by 5.  How many different last digits are possible in numbers that Erich likes?",
+    "natural solution": [
+        "A number is divisible by 5 if and only if it ends in 0 or 5, so there are only $\\boxed{2}$ possible last digits."
+    ],
+    "natural answer": "2",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n mod 5 = 0\"\nshows  \"card {d. \\<exists> n. n mod 5 = 0 \\<and> d = n mod 10} = 2\"",
+        "formal solution": "(* ### Problem\n My co-worker Erich is very odd.  He only likes numbers that are divisible by 5.  How many different last digits are possible in numbers that Erich likes? The final Answer is 2\n ### Proof\n A number is divisible by 5 if and only if it ends in 0 or 5, so there are only $\\boxed{2}$ possible last digits.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n mod 5 = 0\"\nshows  \"card {d. \\<exists> n. n mod 5 = 0 \\<and> d = n mod 10} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many distinct remainders do we get when we divide by 10 all natural numbers that give a remainder of 0 when divided by 5? The final answer is 2."
+    },
+    "a_1": {
+        "formal problem": "theorem \nfixes Erich_likes :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>n. Erich_likes n = (n mod 5 = 0)\"\nshows  \"card {n. Erich_likes n \\<and> n mod 10 \\<ge> 0 \\<and> n mod 10 < 10} = 2\"",
+        "formal solution": "(* ### Problem\n My co-worker Erich is very odd.  He only likes numbers that are divisible by 5.  How many different last digits are possible in numbers that Erich likes? The final Answer is 2\n ### Proof\n A number is divisible by 5 if and only if it ends in 0 or 5, so there are only $\\boxed{2}$ possible last digits.\n *)\n\ntheorem \nfixes Erich_likes :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall>n. Erich_likes n = (n mod 5 = 0)\"\nshows  \"card {n. Erich_likes n \\<and> n mod 10 \\<ge> 0 \\<and> n mod 10 < 10} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Erich likes a number if and only if it is divisible by 5. How many numbers does Erich like that are also non-negative and less than 10 when divided by 10? The final answer is 2.\""
+    },
+    "a_2": {
+        "formal problem": "\n\ndatatype digit = Zero | One | Two | Three | Four | Five | Six | Seven | Eight | Nine\n\nfun digits_Erich_likes :: \"digit list\" where\n\"digits_Erich_likes = [Zero, Five]\"\n\ntheorem Erich_oddity:\n  \"length (digits_Erich_likes) = 2\"\n  by simp\n\nend\n",
+        "formal solution": "(* ### Problem\n My co-worker Erich is very odd.  He only likes numbers that are divisible by 5.  How many different last digits are possible in numbers that Erich likes? The final Answer is 2\n ### Proof\n A number is divisible by 5 if and only if it ends in 0 or 5, so there are only $\\boxed{2}$ possible last digits.\n *)\n\n\n\ndatatype digit = Zero | One | Two | Three | Four | Five | Six | Seven | Eight | Nine\n\nfun digits_Erich_likes :: \"digit list\" where\n\"digits_Erich_likes = [Zero, Five]\"\n\ntheorem Erich_oddity:\n  \"length (digits_Erich_likes) = 2\"\n  by simp\n\nend\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Erich has a list of digits that he likes. The digits Erich likes are Zero and Five. How many digits are there in Erich's list? The final answer is 2.\""
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n mod 10 \\<in> {0, 5}\"\nshows  \"card {x. x \\<in> {0..9} \\<and> x mod 5 = 0} = 2\"",
+        "formal solution": "(* ### Problem\n My co-worker Erich is very odd.  He only likes numbers that are divisible by 5.  How many different last digits are possible in numbers that Erich likes? The final Answer is 2\n ### Proof\n A number is divisible by 5 if and only if it ends in 0 or 5, so there are only $\\boxed{2}$ possible last digits.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n mod 10 \\<in> {0, 5}\"\nshows  \"card {x. x \\<in> {0..9} \\<and> x mod 5 = 0} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Count the number of integers between 0 and 9 inclusive that leave a remainder of 0 when divided by 5. The final answer is 2."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes digits :: \"int set\"\nassumes h0 : \"digits = {d. \\<exists> n. n mod 10 = d \\<and> n mod 5 = 0}\"\nshows  \"card digits = 2\"",
+        "formal solution": "(* ### Problem\n My co-worker Erich is very odd.  He only likes numbers that are divisible by 5.  How many different last digits are possible in numbers that Erich likes? The final Answer is 2\n ### Proof\n A number is divisible by 5 if and only if it ends in 0 or 5, so there are only $\\boxed{2}$ possible last digits.\n *)\n\ntheorem\nfixes digits :: \"int set\"\nassumes h0 : \"digits = {d. \\<exists> n. n mod 10 = d \\<and> n mod 5 = 0}\"\nshows  \"card digits = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many integers are there such that they are the last digit of a multiple of 10 and also a multiple of 5? The answer is 2."
+    },
+    "a_5": {
+        "formal problem": "theorem erich_likes_numbers\nfixes n :: nat\nassumes h0 : \"n mod 5 = 0\"\nshows  \"card {d. \\<exists> n. n mod 10 = d \\<and> n mod 5 = 0} = 2\"",
+        "formal solution": "(* ### Problem\n My co-worker Erich is very odd.  He only likes numbers that are divisible by 5.  How many different last digits are possible in numbers that Erich likes? The final Answer is 2\n ### Proof\n A number is divisible by 5 if and only if it ends in 0 or 5, so there are only $\\boxed{2}$ possible last digits.\n *)\n\ntheorem erich_likes_numbers\nfixes n :: nat\nassumes h0 : \"n mod 5 = 0\"\nshows  \"card {d. \\<exists> n. n mod 10 = d \\<and> n mod 5 = 0} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of distinct remainders when a natural number divisible by 5 is divided by 10. The final answer is 2."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes erich_likes :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. erich_likes n = (n mod 5 = 0)\"\nshows  \"card {n. erich_likes n \\<and> n \\<ge> 0 \\<and> n < 10} = 2\"",
+        "formal solution": "(* ### Problem\n My co-worker Erich is very odd.  He only likes numbers that are divisible by 5.  How many different last digits are possible in numbers that Erich likes? The final Answer is 2\n ### Proof\n A number is divisible by 5 if and only if it ends in 0 or 5, so there are only $\\boxed{2}$ possible last digits.\n *)\n\ntheorem\nfixes erich_likes :: \"int \\<Rightarrow> bool\"\nassumes h0 : \"\\<forall> n. erich_likes n = (n mod 5 = 0)\"\nshows  \"card {n. erich_likes n \\<and> n \\<ge> 0 \\<and> n < 10} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Erich only likes numbers that are divisible by 5. How many non-negative numbers less than 10 does Erich like? The final answer is 2.\""
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes A :: \"int set\"\nassumes h0 : \"A = {x. x mod 5 = 0}\"\nshows  \"card {x mod 10 | x. x \\<in> A} = 2\"",
+        "formal solution": "(* ### Problem\n My co-worker Erich is very odd.  He only likes numbers that are divisible by 5.  How many different last digits are possible in numbers that Erich likes? The final Answer is 2\n ### Proof\n A number is divisible by 5 if and only if it ends in 0 or 5, so there are only $\\boxed{2}$ possible last digits.\n *)\n\ntheorem\nfixes A :: \"int set\"\nassumes h0 : \"A = {x. x mod 5 = 0}\"\nshows  \"card {x mod 10 | x. x \\<in> A} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many distinct remainders are obtained when the numbers that are divisible by 5 are divided by 10? The final answer is 2."
+    },
+    "a_8": {
+        "formal problem": "theorem \nfixes n :: int and lastDigit :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. lastDigit n = n mod 10\"\nand h1 : \"ErichLikes n = (n mod 5 = 0)\"\nshows  \"card {d. \\<exists> n. ErichLikes n \\<and> lastDigit n = d} = 2\"",
+        "formal solution": "(* ### Problem\n My co-worker Erich is very odd.  He only likes numbers that are divisible by 5.  How many different last digits are possible in numbers that Erich likes? The final Answer is 2\n ### Proof\n A number is divisible by 5 if and only if it ends in 0 or 5, so there are only $\\boxed{2}$ possible last digits.\n *)\n\ntheorem \nfixes n :: int and lastDigit :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. lastDigit n = n mod 10\"\nand h1 : \"ErichLikes n = (n mod 5 = 0)\"\nshows  \"card {d. \\<exists> n. ErichLikes n \\<and> lastDigit n = d} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many final digits can a number that Erich likes have? Erich likes a number if it is divisible by 5. Consider that the final digit of a number is the remainder when the number is divided by 10. The answer is 2."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"\\<forall> n. n mod 5 = 0\"\nshows  \"card {d. \\<exists> n. n mod 10 = d \\<and> n mod 5 = 0} = 2\"",
+        "formal solution": "(* ### Problem\n My co-worker Erich is very odd.  He only likes numbers that are divisible by 5.  How many different last digits are possible in numbers that Erich likes? The final Answer is 2\n ### Proof\n A number is divisible by 5 if and only if it ends in 0 or 5, so there are only $\\boxed{2}$ possible last digits.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"\\<forall> n. n mod 5 = 0\"\nshows  \"card {d. \\<exists> n. n mod 10 = d \\<and> n mod 5 = 0} = 2\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of distinct remainders when integers divisible by 5 are divided by 10. The final answer is 2."
+    },
+    "level": "Level 1",
+    "type": "Prealgebra"
+}

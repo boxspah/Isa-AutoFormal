@@ -1,0 +1,592 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 = 1\"\nand h1 : \"PF2 = 1\"\nand h2 : \"\\<forall> x y. x powr 2 / PF1 powr 2 + y powr 2 / PF2 powr 2 = 1\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 = 1\"\nand h1 : \"PF2 = 1\"\nand h2 : \"\\<forall> x y. x powr 2 / PF1 powr 2 + y powr 2 / PF2 powr 2 = 1\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the two principal focal lengths (PF1 and PF2) of an ellipse are both equal to 1, find the value of 'd' that satisfies the equation $x^2 / PF1^2 + y^2 / PF2^2 = 1$ for all x, y. The final answer is 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.913631021976471,
+        "symbolic_score": 0.7
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes F1 F2 P :: \"real * real\" and d :: real\nassumes h0 : \"F1 = (-1, 0)\"\nand h1 : \"F2 = (1, 0)\"\nand h2 : \"\\<forall> P. sqrt ((fst P - fst F1)^2 + (snd P - snd F1)^2) + sqrt ((fst P - fst F2)^2 + (snd P - snd F2)^2) = d\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes F1 F2 P :: \"real * real\" and d :: real\nassumes h0 : \"F1 = (-1, 0)\"\nand h1 : \"F2 = (1, 0)\"\nand h2 : \"\\<forall> P. sqrt ((fst P - fst F1)^2 + (snd P - snd F1)^2) + sqrt ((fst P - fst F2)^2 + (snd P - snd F2)^2) = d\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two points F1 and F2 at (-1,0) and (1,0) respectively on a 2D plane, find a constant distance d such that for any point P, the sum of the distance from P to F1 and the distance from P to F2 is equal to d. The final answer is d = 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9815015196800232,
+        "symbolic_score": 0.7
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f1 f2 :: real and d :: real and x :: real\nassumes h0 : \"x \\<in> ellipse f1 f2 d\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes f1 f2 :: real and d :: real and x :: real\nassumes h0 : \"x \\<in> ellipse f1 f2 d\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the distance $d$ for a point $x$ in an ellipse with foci $f1$ and $f2$, such that $d$ equals 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.5611076354980469,
+        "symbolic_score": 0.7
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes d :: real and PF1 PF2 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. PF1 x = sqrt((x + 1)^2)\"\nand h1 : \"\\<forall> x. PF2 x = sqrt((x - 1)^2)\"\nand h2 : \"\\<forall> x. PF1 x + PF2 x = d\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes d :: real and PF1 PF2 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. PF1 x = sqrt((x + 1)^2)\"\nand h1 : \"\\<forall> x. PF2 x = sqrt((x - 1)^2)\"\nand h2 : \"\\<forall> x. PF1 x + PF2 x = d\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two functions $PF1(x) = \\sqrt{(x + 1)^2}$ and $PF2(x) = \\sqrt{(x - 1)^2}$, find a constant $d$ such that for all $x$, $PF1(x) + PF2(x) = d$. The final answer is $14$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.5563622117042542,
+        "symbolic_score": 0.7
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes P F1 F2 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"P = ellipse (F1, F2)\"\nshows  \"distance (F1, P) + distance (F2, P) = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"P = ellipse (F1, F2)\"\nshows  \"distance (F1, P) + distance (F2, P) = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two fixed points F1 and F2 on a plane, at positions -1 and 1 respectively, an ellipse is drawn such that the sum of the distances from any point P on the ellipse to F1 and F2 is constant. What is the sum of the distances from any point P on the ellipse to F1 and F2? The final answer is 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.978121280670166,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes P F1 F2 :: \"real*real\" and d :: real\nassumes h0 : \"F1 = (-1, 0)\"\nand h1 : \"F2 = (1, 0)\"\nand h2 : \"d = dist P F1 + dist P F2\"\nand h3 : \"\\<forall> P. P \\<in> set (points_on_ellipse 7 5)\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 :: \"real*real\" and d :: real\nassumes h0 : \"F1 = (-1, 0)\"\nand h1 : \"F2 = (1, 0)\"\nand h2 : \"d = dist P F1 + dist P F2\"\nand h3 : \"\\<forall> P. P \\<in> set (points_on_ellipse 7 5)\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The points P on an ellipse are defined by the condition that the sum of the distances from P to two fixed points F1 and F2 (the foci of the ellipse) is a constant. If F1 is at (-1, 0), F2 is at (1, 0), and this constant distance is 14, find the set of points P on the ellipse with semi-major axis of 7 and semi-minor axis of 5.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.4909503757953644,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes P F1 F2 :: real\nassumes h0 : \"\\<forall> P. dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = -7\"\nand h2 : \"F2 = 7\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 :: real\nassumes h0 : \"\\<forall> P. dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = -7\"\nand h2 : \"F2 = 7\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The distance between a point P and two fixed points F1 and F2 always sums up to a constant d. If F1 is at position -7 and F2 is at position 7, what is the value of d? The final answer is 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9424800276756287,
+        "symbolic_score": 0.7
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"ellipse PF1 PF2 d\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"ellipse PF1 PF2 d\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given an ellipse with foci at points PF1 and PF2, find the distance 'd' between these two points. The final answer is 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.6890164017677307,
+        "symbolic_score": 0.7
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes F1 F2 P :: \"real*real\" and d :: real\nassumes h0 : \"F1 = (-1, 0)\"\nand h1 : \"F2 = (1, 0)\"\nand h2 : \"d = dist F1 P + dist F2 P\"\nand h3 : \"\\<forall> P. P \\<in> ellipse F1 F2 d\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes F1 F2 P :: \"real*real\" and d :: real\nassumes h0 : \"F1 = (-1, 0)\"\nand h1 : \"F2 = (1, 0)\"\nand h2 : \"d = dist F1 P + dist F2 P\"\nand h3 : \"\\<forall> P. P \\<in> ellipse F1 F2 d\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two foci of an ellipse at $(-1, 0)$ and $(1, 0)$, find the value of $d$ such that for all points $P$ on the ellipse, the sum of the distances from $P$ to each focus is equal to $d$. The final answer is $d = 14$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.6543738842010498,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 + PF2 = d\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 + PF2 = d\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of two numbers PF1 and PF2 equals d. Find the value of d if it's given that d equals 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.5334908962249756,
+        "symbolic_score": 0.7
+    },
+    "natural answer": "14",
+    "natural problem": "The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy]",
+    "natural solution": [
+        "The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$"
+    ],
+    "oracle": "no image",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            6,
+            7,
+            9
+        ],
+        "1": [
+            4
+        ],
+        "2": [
+            5
+        ],
+        "3": [
+            8
+        ]
+    },
+    "level": "Level 4",
+    "type": "Intermediate Algebra",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: real\nassumes h0 : \"P \\<in> {x. x \\<ge> -7 \\<and> x \\<le> 7}\"\nand h1 : \"F1 = -1\"\nand h2 : \"F2 = 1\"\nand h3 : \"sqrt((P - F1) powr 2 + (0 - 0) powr 2) + sqrt((P - F2) powr 2 + (0 - 0) powr 2) = d\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: real\nassumes h0 : \"P \\<in> {x. x \\<ge> -7 \\<and> x \\<le> 7}\"\nand h1 : \"F1 = -1\"\nand h2 : \"F2 = 1\"\nand h3 : \"sqrt((P - F1) powr 2 + (0 - 0) powr 2) + sqrt((P - F2) powr 2 + (0 - 0) powr 2) = d\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P that lies within the interval from -7 to 7 on the number line. There are two fixed points F1 and F2, with F1 being -1 and F2 being 1. The distance from P to F1, plus the distance from P to F2, is equal to a constant value d. The problem asks to find the value of d. The final answer is d = 14.",
+        "syntax": 1,
+        "semantic_score": 0.6482841622757534,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes d :: real and P F1 F2 :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. let (x, y) = p in x^2/7^2 + y^2/5^2 = 1}\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes d :: real and P F1 F2 :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. let (x, y) = p in x^2/7^2 + y^2/5^2 = 1}\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P in a plane, and two fixed points F1 and F2. The sum of the distances from P to F1 and P to F2 is a constant d. Given that F1 is located at (-1, 0) and F2 is located at (1, 0), and point P lies on the ellipse defined by the equation (x^2/7^2) + (y^2/5^2) = 1, find the value of d. The final answer is d = 14.",
+        "syntax": 0,
+        "semantic_score": 0.569317066233355,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. (p\\<^sup>2 / 7\\<^sup>2) + (p\\<^sup>2 / 5\\<^sup>2) = 1}\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. (p\\<^sup>2 / 7\\<^sup>2) + (p\\<^sup>2 / 5\\<^sup>2) = 1}\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P in the plane such that the sum of its distances to two fixed points F1 and F2 is a constant d. Given that F1 is at (-1, 0) and F2 is at (1, 0), and point P lies on the ellipse with the equation (x^2 / 7^2) + (y^2 / 5^2) = 1, find the value of d. The answer is d = 14.",
+        "syntax": 0,
+        "semantic_score": 0.4529486252243413,
+        "symbolic_score": 0.2
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> { (x, y) . x^2/49 + y^2/25 = 1 }\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> { (x, y) . x^2/49 + y^2/25 = 1 }\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P in a plane that lies on an ellipse with equation (x^2)/49 + (y^2)/25 = 1. The coordinates of two fixed points F1 and F2 are (-1, 0) and (1, 0), respectively. The sum of the distances from point P to points F1 and F2 is a constant d. Prove that the value of d is 14.",
+        "syntax": 0,
+        "semantic_score": 0.496097169832874,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: real\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"P = (x, y)\"\nand h3 : \"x^2 / 7^2 + y^2 / 5^2 = 1\"\nand h4 : \"dist P F1 + dist P F2 = d\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: real\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"P = (x, y)\"\nand h3 : \"x^2 / 7^2 + y^2 / 5^2 = 1\"\nand h4 : \"dist P F1 + dist P F2 = d\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P with coordinates (x, y) on an ellipse with equation (x^2 / 7^2) + (y^2 / 5^2) = 1. There are two fixed points F1 and F2 with coordinates (-1, 0) and (1, 0) respectively. The sum of the distances from point P to F1 and F2 is denoted by d. Given that F1 = -1, F2 = 1, and P = (x, y), prove that d = 14.",
+        "syntax": 0,
+        "semantic_score": 0.3824479224750815,
+        "symbolic_score": 0.2
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. let (x, y) = p in x^2/49 + y^2/25 = 1}\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. let (x, y) = p in x^2/49 + y^2/25 = 1}\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P in a plane, and two fixed points F1 and F2, such that the sum of the distances from P to F1 and P to F2 is a constant d. Given that F1 is located at (-1, 0) and F2 is located at (1, 0), and point P lies on the ellipse with the equation (x^2/49) + (y^2/25) = 1, find the value of d. The final answer is d = 14.",
+        "syntax": 0,
+        "semantic_score": 0.9682934508842655,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: real\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"P = (x, y)\"\nand h3 : \"x^2 / 7^2 + y^2 / 5^2 = 1\"\nand h4 : \"dist P F1 + dist P F2 = d\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: real\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"P = (x, y)\"\nand h3 : \"x^2 / 7^2 + y^2 / 5^2 = 1\"\nand h4 : \"dist P F1 + dist P F2 = d\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P with coordinates (x, y) on an ellipse with equation (x^2 / 7^2) + (y^2 / 5^2) = 1. There are two foci F1 and F2 of the ellipse, where F1 is at (-1, 0) and F2 is at (1, 0). The sum of the distances from point P to F1 and F2 is equal to a constant d. Prove that d is equal to 14.",
+        "syntax": 0,
+        "semantic_score": 0.42395678374531176,
+        "symbolic_score": 0.2
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: real\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"PF1 + PF2 = d\"\nand h3 : \"P = (x, y)\"\nand h4 : \"x^2/49 + y^2/25 = 1\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: real\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"PF1 + PF2 = d\"\nand h3 : \"P = (x, y)\"\nand h4 : \"x^2/49 + y^2/25 = 1\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given an ellipse with the equation $\\frac{x^2}{49} + \\frac{y^2}{25} = 1$, and a point $P$ on the ellipse with coordinates $(x, y)$, find the distance $d$ between point $P$ and two fixed points $F1$ and $F2$ on the x-axis, where $F1$ is at $(-1, 0)$ and $F2$ is at $(1, 0)$. The sum of the distances from $P$ to $F1$ and $P$ to $F2$ is equal to $d$. The final answer is $d = 14$.",
+        "syntax": 0,
+        "semantic_score": 0.801512180019264,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: real\nassumes h0 : \"P F1 + P F2 = d\"\nand h1 : \"F1 = -1\"\nand h2 : \"F2 = 1\"\nand h3 : \"P = (7 * cos t, 5 * sin t)\"\nand h4 : \"t \\<in> {0..2 * pi}\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: real\nassumes h0 : \"P F1 + P F2 = d\"\nand h1 : \"F1 = -1\"\nand h2 : \"F2 = 1\"\nand h3 : \"P = (7 * cos t, 5 * sin t)\"\nand h4 : \"t \\<in> {0..2 * pi}\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a function P that maps real numbers F1 and F2 to a point in the plane, defined by P(F1) = (7 * cos(t), 5 * sin(t)) and P(F2) = (7 * cos(t), 5 * sin(t)), where t is a real number in the interval [0, 2\u03c0], and F1 = -1 and F2 = 1, find the value of d such that P(F1) + P(F2) = d. The answer is d = 14.",
+        "syntax": 0,
+        "semantic_score": 0.7811465798984835,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. (p\\<^sup>2 / 7\\<^sup>2) + (p\\<^sup>2 / 5\\<^sup>2) = 1}\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. (p\\<^sup>2 / 7\\<^sup>2) + (p\\<^sup>2 / 5\\<^sup>2) = 1}\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P in a plane, and two fixed points F1 and F2, such that the sum of the distances from P to F1 and P to F2 is a constant d. Given that F1 is located at (-1, 0) and F2 is located at (1, 0), and point P lies on the ellipse defined by the equation (x^2 / 7^2) + (y^2 / 5^2) = 1, find the value of d. The answer is d = 14.",
+        "syntax": 0,
+        "semantic_score": 0.7333568589926348,
+        "symbolic_score": 0.2
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 = 1\"\nand h1 : \"PF2 = 1\"\nand h2 : \"d = 2 * 7\"\nshows \"PF1 + PF2 = d\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 = 1\"\nand h1 : \"PF2 = 1\"\nand h2 : \"d = 2 * 7\"\nshows \"PF1 + PF2 = d\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $PF1$ is equal to $1$, $PF2$ is equal to $1$, and $d$ is equal to twice the product of $2$ and $7$, what is the sum of $PF1$ and $PF2$? The final answer is $d$.",
+        "syntax": 1,
+        "semantic_score": 0.9801084112466575,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 + PF2 = d\"\nand h1 : \"PF1 / 7 powr 2 + PF2 / 5 powr 2 = 1\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 + PF2 = d\"\nand h1 : \"PF1 / 7 powr 2 + PF2 / 5 powr 2 = 1\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Two points, $PF1$ and $PF2$, are located on a plane. The sum of the distances from these points to two foci is $d$, and the distance between the foci is $14$. If the distance between each point and its corresponding focus is divided by the corresponding distance between the foci and a vertex of the ellipse, then the sum of the resulting squares is $1$. What is the value of $d$? The final answer is $14$.",
+        "syntax": 1,
+        "semantic_score": 0.9874616846478602,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes d :: real\nassumes h0 : \"d > 0\"\nand h1 : \"(\\<exists> F1 F2 P. F1 \\<noteq> F2 \\<and> P \\<in> {F1, F2} \\<and> dist F1 P + dist F2 P = d) \\<and> d = 14\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes d :: real\nassumes h0 : \"d > 0\"\nand h1 : \"(\\<exists> F1 F2 P. F1 \\<noteq> F2 \\<and> P \\<in> {F1, F2} \\<and> dist F1 P + dist F2 P = d) \\<and> d = 14\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If there are two distinct points $F_1$ and $F_2$ in the plane and $P$ is a point such that the sum of the distances from $P$ to $F_1$ and $F_2$ is $14$ units, then $d=14$.",
+        "syntax": 1,
+        "semantic_score": 0.5934082596239749,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes d :: real\nassumes h0 : \"d > 0\"\nand h1 : \"\\<forall> P. P = (x, y) \\<longrightarrow> ((x + 1)^2 / 49 + y^2 / 25 + (x - 1)^2 / 49 + y^2 / 25 = d^2)\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes d :: real\nassumes h0 : \"d > 0\"\nand h1 : \"\\<forall> P. P = (x, y) \\<longrightarrow> ((x + 1)^2 / 49 + y^2 / 25 + (x - 1)^2 / 49 + y^2 / 25 = d^2)\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $d$ is a positive real number, suppose we have a point $P$ with coordinates $(x,y)$. If $\\frac{(x+1)^2}{49} + \\frac{y^2}{25} + \\frac{(x-1)^2}{49} + \\frac{y^2}{25} = d^2$ for all points $P$, what is the value of $d$? The final answer is $14$.",
+        "syntax": 1,
+        "semantic_score": 0.9909899000574519,
+        "symbolic_score": 0.1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes d :: real\nassumes h0 : \"d > 0\"\nand h1 : \"\\<forall> P. dist P (-1, 0) + dist P (1, 0) = d\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes d :: real\nassumes h0 : \"d > 0\"\nand h1 : \"\\<forall> P. dist P (-1, 0) + dist P (1, 0) = d\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $d$ is a positive real number. For any point $P$ in the plane, the sum of its distance to $(-1,0)$ and its distance to $(1,0)$ is equal to $d$. What is the value of $d$ if the distance between the two points $(-1,0)$ and $(1,0)$ is $14$ units? The final answer is $d=14$.",
+        "syntax": 0,
+        "semantic_score": 0.9415183324582899,
+        "symbolic_score": 0.1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 = sqrt ((7 - (-1))^2 + 0^2)\"\nand h1 : \"PF2 = sqrt ((-7 - (-1))^2 + 0^2)\"\nand h2 : \"d = PF1 + PF2\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 = sqrt ((7 - (-1))^2 + 0^2)\"\nand h1 : \"PF2 = sqrt ((-7 - (-1))^2 + 0^2)\"\nand h2 : \"d = PF1 + PF2\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the distance $d$ between two points with coordinates $(-1,0)$ and $(7,0)$. The final answer is $d=14$.",
+        "syntax": 1,
+        "semantic_score": 0.6521676919131542,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 + PF2 = d\"\nand h1 : \"PF1 = 1\"\nand h2 : \"PF2 = sqrt (24)\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 + PF2 = d\"\nand h1 : \"PF1 = 1\"\nand h2 : \"PF2 = sqrt (24)\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The distance between point $P_1$ and point $P_2$ is $d$. $P_1$ is one unit away from $P_0$ and $P_2$ is $\\sqrt{24}$ units away from $P_0$. If $P_1$ and $P_2$ are added together, they equal $d$. What is the value of $d$? The final answer is $14$.",
+        "syntax": 1,
+        "semantic_score": 0.8950834802156202,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes d :: real\nassumes h0 : \"\\<forall> P. P = (x,y) \\<longrightarrow> sqrt ((x + 1)^2 + y^2) + sqrt ((x - 1)^2 + y^2) = d\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes d :: real\nassumes h0 : \"\\<forall> P. P = (x,y) \\<longrightarrow> sqrt ((x + 1)^2 + y^2) + sqrt ((x - 1)^2 + y^2) = d\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "What is the value of $d$ such that for any point $P$ in the plane, the sum of the distances from $P$ to $(1,0)$ and $(-1,0)$ is equal to $d$? The final answer is $d=14$.",
+        "syntax": 1,
+        "semantic_score": 0.7628233330514942,
+        "symbolic_score": 0.1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 + PF2 = d\"\nand h1 : \"PF1 = 7\"\nand h2 : \"PF2 = 1\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 + PF2 = d\"\nand h1 : \"PF1 = 7\"\nand h2 : \"PF2 = 1\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Two points $PF1$ and $PF2$ are on a line segment $d$. Given that $PF1$ is located 7 units away from the starting point of $d$ and $PF2$ is located 1 unit away from the starting point of $d$, what is the total length of $d$? The final answer is 14 units.\"",
+        "syntax": 1,
+        "semantic_score": 0.7522378514239322,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes d :: real\nassumes h0 : \"d > 0\"\nand h1 : \"(\\<lambda> P. dist P (-1, 0) + dist P (1, 0)) ` {P. dist P (-1, 0) + dist P (1, 0) = d} = {d}\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes d :: real\nassumes h0 : \"d > 0\"\nand h1 : \"(\\<lambda> P. dist P (-1, 0) + dist P (1, 0)) ` {P. dist P (-1, 0) + dist P (1, 0) = d} = {d}\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a point $P$ in the plane, let $d$ be the sum of the distances from $P$ to the points $(-1,0)$ and $(1,0)$. Suppose that the set of all possible values of $d$ is $\\{d\\}$, where $d$ is a positive real number. What is the value of $d$? The final answer is $14$.",
+        "syntax": 0,
+        "semantic_score": 0.9839848083225534,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek": {
+        "0": [
+            9,
+            2
+        ],
+        "1": [
+            4,
+            6
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            1
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 = 1\"\nand h1 : \"PF2 = 1\"\nand h2 : \"\\<forall> x y. x powr 2 / PF1 powr 2 + y powr 2 / PF2 powr 2 = 1\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 = 1\"\nand h1 : \"PF2 = 1\"\nand h2 : \"\\<forall> x y. x powr 2 / PF1 powr 2 + y powr 2 / PF2 powr 2 = 1\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the two principal focal lengths (PF1 and PF2) of an ellipse are both equal to 1, find the value of 'd' that satisfies the equation $x^2 / PF1^2 + y^2 / PF2^2 = 1$ for all x, y. The final answer is 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8939697886037744,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes F1 F2 P :: \"real * real\" and d :: real\nassumes h0 : \"F1 = (-1, 0)\"\nand h1 : \"F2 = (1, 0)\"\nand h2 : \"\\<forall> P. sqrt ((fst P - fst F1)^2 + (snd P - snd F1)^2) + sqrt ((fst P - fst F2)^2 + (snd P - snd F2)^2) = d\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes F1 F2 P :: \"real * real\" and d :: real\nassumes h0 : \"F1 = (-1, 0)\"\nand h1 : \"F2 = (1, 0)\"\nand h2 : \"\\<forall> P. sqrt ((fst P - fst F1)^2 + (snd P - snd F1)^2) + sqrt ((fst P - fst F2)^2 + (snd P - snd F2)^2) = d\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two points F1 and F2 at (-1,0) and (1,0) respectively on a 2D plane, find a constant distance d such that for any point P, the sum of the distance from P to F1 and the distance from P to F2 is equal to d. The final answer is d = 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8459470111835078,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes f1 f2 :: real and d :: real and x :: real\nassumes h0 : \"x \\<in> ellipse f1 f2 d\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes f1 f2 :: real and d :: real and x :: real\nassumes h0 : \"x \\<in> ellipse f1 f2 d\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the distance $d$ for a point $x$ in an ellipse with foci $f1$ and $f2$, such that $d$ equals 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8498224200804261,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes d :: real and PF1 PF2 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. PF1 x = sqrt((x + 1)^2)\"\nand h1 : \"\\<forall> x. PF2 x = sqrt((x - 1)^2)\"\nand h2 : \"\\<forall> x. PF1 x + PF2 x = d\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes d :: real and PF1 PF2 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. PF1 x = sqrt((x + 1)^2)\"\nand h1 : \"\\<forall> x. PF2 x = sqrt((x - 1)^2)\"\nand h2 : \"\\<forall> x. PF1 x + PF2 x = d\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two functions $PF1(x) = \\sqrt{(x + 1)^2}$ and $PF2(x) = \\sqrt{(x - 1)^2}$, find a constant $d$ such that for all $x$, $PF1(x) + PF2(x) = d$. The final answer is $14$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8495140792514357,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes P F1 F2 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"P = ellipse (F1, F2)\"\nshows  \"distance (F1, P) + distance (F2, P) = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"P = ellipse (F1, F2)\"\nshows  \"distance (F1, P) + distance (F2, P) = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two fixed points F1 and F2 on a plane, at positions -1 and 1 respectively, an ellipse is drawn such that the sum of the distances from any point P on the ellipse to F1 and F2 is constant. What is the sum of the distances from any point P on the ellipse to F1 and F2? The final answer is 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.865734294365489,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes P F1 F2 :: \"real*real\" and d :: real\nassumes h0 : \"F1 = (-1, 0)\"\nand h1 : \"F2 = (1, 0)\"\nand h2 : \"d = dist P F1 + dist P F2\"\nand h3 : \"\\<forall> P. P \\<in> set (points_on_ellipse 7 5)\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 :: \"real*real\" and d :: real\nassumes h0 : \"F1 = (-1, 0)\"\nand h1 : \"F2 = (1, 0)\"\nand h2 : \"d = dist P F1 + dist P F2\"\nand h3 : \"\\<forall> P. P \\<in> set (points_on_ellipse 7 5)\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The points P on an ellipse are defined by the condition that the sum of the distances from P to two fixed points F1 and F2 (the foci of the ellipse) is a constant. If F1 is at (-1, 0), F2 is at (1, 0), and this constant distance is 14, find the set of points P on the ellipse with semi-major axis of 7 and semi-minor axis of 5.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8362067704830722,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes P F1 F2 :: real\nassumes h0 : \"\\<forall> P. dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = -7\"\nand h2 : \"F2 = 7\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 :: real\nassumes h0 : \"\\<forall> P. dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = -7\"\nand h2 : \"F2 = 7\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The distance between a point P and two fixed points F1 and F2 always sums up to a constant d. If F1 is at position -7 and F2 is at position 7, what is the value of d? The final answer is 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8280402102391193,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"ellipse PF1 PF2 d\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"ellipse PF1 PF2 d\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given an ellipse with foci at points PF1 and PF2, find the distance 'd' between these two points. The final answer is 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8760690204864557,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes F1 F2 P :: \"real*real\" and d :: real\nassumes h0 : \"F1 = (-1, 0)\"\nand h1 : \"F2 = (1, 0)\"\nand h2 : \"d = dist F1 P + dist F2 P\"\nand h3 : \"\\<forall> P. P \\<in> ellipse F1 F2 d\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes F1 F2 P :: \"real*real\" and d :: real\nassumes h0 : \"F1 = (-1, 0)\"\nand h1 : \"F2 = (1, 0)\"\nand h2 : \"d = dist F1 P + dist F2 P\"\nand h3 : \"\\<forall> P. P \\<in> ellipse F1 F2 d\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two foci of an ellipse at $(-1, 0)$ and $(1, 0)$, find the value of $d$ such that for all points $P$ on the ellipse, the sum of the distances from $P$ to each focus is equal to $d$. The final answer is $d = 14$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8825722369646137,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 + PF2 = d\"\nshows  \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is 14\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes PF1 PF2 d :: real\nassumes h0 : \"PF1 + PF2 = d\"\nshows  \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of two numbers PF1 and PF2 equals d. Find the value of d if it's given that d equals 14.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8177306932778475,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: real\nassumes h0 : \"P \\<in> {x. x \\<ge> -7 \\<and> x \\<le> 7}\"\nand h1 : \"F1 = -1\"\nand h2 : \"F2 = 1\"\nand h3 : \"sqrt((P - F1) powr 2 + (0 - 0) powr 2) + sqrt((P - F2) powr 2 + (0 - 0) powr 2) = d\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: real\nassumes h0 : \"P \\<in> {x. x \\<ge> -7 \\<and> x \\<le> 7}\"\nand h1 : \"F1 = -1\"\nand h2 : \"F2 = 1\"\nand h3 : \"sqrt((P - F1) powr 2 + (0 - 0) powr 2) + sqrt((P - F2) powr 2 + (0 - 0) powr 2) = d\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P that lies within the interval from -7 to 7 on the number line. There are two fixed points F1 and F2, with F1 being -1 and F2 being 1. The distance from P to F1, plus the distance from P to F2, is equal to a constant value d. The problem asks to find the value of d. The final answer is d = 14.",
+        "syntax": 1,
+        "semantic_score": 0.8206796952084917,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes d :: real and P F1 F2 :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. let (x, y) = p in x^2/7^2 + y^2/5^2 = 1}\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes d :: real and P F1 F2 :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. let (x, y) = p in x^2/7^2 + y^2/5^2 = 1}\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P in a plane, and two fixed points F1 and F2. The sum of the distances from P to F1 and P to F2 is a constant d. Given that F1 is located at (-1, 0) and F2 is located at (1, 0), and point P lies on the ellipse defined by the equation (x^2/7^2) + (y^2/5^2) = 1, find the value of d. The final answer is d = 14.",
+        "syntax": 0,
+        "semantic_score": 0.8626722844721985,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. (p\\<^sup>2 / 7\\<^sup>2) + (p\\<^sup>2 / 5\\<^sup>2) = 1}\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. (p\\<^sup>2 / 7\\<^sup>2) + (p\\<^sup>2 / 5\\<^sup>2) = 1}\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P in the plane such that the sum of its distances to two fixed points F1 and F2 is a constant d. Given that F1 is at (-1, 0) and F2 is at (1, 0), and point P lies on the ellipse with the equation (x^2 / 7^2) + (y^2 / 5^2) = 1, find the value of d. The answer is d = 14.",
+        "syntax": 0,
+        "semantic_score": 0.8553751728628919,
+        "symbolic_score": 0.2
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> { (x, y) . x^2/49 + y^2/25 = 1 }\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> { (x, y) . x^2/49 + y^2/25 = 1 }\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P in a plane that lies on an ellipse with equation (x^2)/49 + (y^2)/25 = 1. The coordinates of two fixed points F1 and F2 are (-1, 0) and (1, 0), respectively. The sum of the distances from point P to points F1 and F2 is a constant d. Prove that the value of d is 14.",
+        "syntax": 0,
+        "semantic_score": 0.8423942618122623,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: real\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"P = (x, y)\"\nand h3 : \"x^2 / 7^2 + y^2 / 5^2 = 1\"\nand h4 : \"dist P F1 + dist P F2 = d\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: real\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"P = (x, y)\"\nand h3 : \"x^2 / 7^2 + y^2 / 5^2 = 1\"\nand h4 : \"dist P F1 + dist P F2 = d\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P with coordinates (x, y) on an ellipse with equation (x^2 / 7^2) + (y^2 / 5^2) = 1. There are two fixed points F1 and F2 with coordinates (-1, 0) and (1, 0) respectively. The sum of the distances from point P to F1 and F2 is denoted by d. Given that F1 = -1, F2 = 1, and P = (x, y), prove that d = 14.",
+        "syntax": 0,
+        "semantic_score": 0.8200641087837516,
+        "symbolic_score": 0.2
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. let (x, y) = p in x^2/49 + y^2/25 = 1}\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. let (x, y) = p in x^2/49 + y^2/25 = 1}\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P in a plane, and two fixed points F1 and F2, such that the sum of the distances from P to F1 and P to F2 is a constant d. Given that F1 is located at (-1, 0) and F2 is located at (1, 0), and point P lies on the ellipse with the equation (x^2/49) + (y^2/25) = 1, find the value of d. The final answer is d = 14.",
+        "syntax": 0,
+        "semantic_score": 0.8533845973010947,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: real\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"P = (x, y)\"\nand h3 : \"x^2 / 7^2 + y^2 / 5^2 = 1\"\nand h4 : \"dist P F1 + dist P F2 = d\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: real\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"P = (x, y)\"\nand h3 : \"x^2 / 7^2 + y^2 / 5^2 = 1\"\nand h4 : \"dist P F1 + dist P F2 = d\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P with coordinates (x, y) on an ellipse with equation (x^2 / 7^2) + (y^2 / 5^2) = 1. There are two foci F1 and F2 of the ellipse, where F1 is at (-1, 0) and F2 is at (1, 0). The sum of the distances from point P to F1 and F2 is equal to a constant d. Prove that d is equal to 14.",
+        "syntax": 0,
+        "semantic_score": 0.8197976729545213,
+        "symbolic_score": 0.2
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: real\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"PF1 + PF2 = d\"\nand h3 : \"P = (x, y)\"\nand h4 : \"x^2/49 + y^2/25 = 1\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: real\nassumes h0 : \"F1 = -1\"\nand h1 : \"F2 = 1\"\nand h2 : \"PF1 + PF2 = d\"\nand h3 : \"P = (x, y)\"\nand h4 : \"x^2/49 + y^2/25 = 1\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given an ellipse with the equation $\\frac{x^2}{49} + \\frac{y^2}{25} = 1$, and a point $P$ on the ellipse with coordinates $(x, y)$, find the distance $d$ between point $P$ and two fixed points $F1$ and $F2$ on the x-axis, where $F1$ is at $(-1, 0)$ and $F2$ is at $(1, 0)$. The sum of the distances from $P$ to $F1$ and $P$ to $F2$ is equal to $d$. The final answer is $d = 14$.",
+        "syntax": 0,
+        "semantic_score": 0.8383089814606037,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: real\nassumes h0 : \"P F1 + P F2 = d\"\nand h1 : \"F1 = -1\"\nand h2 : \"F2 = 1\"\nand h3 : \"P = (7 * cos t, 5 * sin t)\"\nand h4 : \"t \\<in> {0..2 * pi}\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: real\nassumes h0 : \"P F1 + P F2 = d\"\nand h1 : \"F1 = -1\"\nand h2 : \"F2 = 1\"\nand h3 : \"P = (7 * cos t, 5 * sin t)\"\nand h4 : \"t \\<in> {0..2 * pi}\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a function P that maps real numbers F1 and F2 to a point in the plane, defined by P(F1) = (7 * cos(t), 5 * sin(t)) and P(F2) = (7 * cos(t), 5 * sin(t)), where t is a real number in the interval [0, 2\u03c0], and F1 = -1 and F2 = 1, find the value of d such that P(F1) + P(F2) = d. The answer is d = 14.",
+        "syntax": 0,
+        "semantic_score": 0.8006110289336564,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. (p\\<^sup>2 / 7\\<^sup>2) + (p\\<^sup>2 / 5\\<^sup>2) = 1}\"\nshows \"d = 14\"",
+        "formal solution": "(* ### Problem\n The ellipse shown below is defined by the equation\n\\[PF_1 + PF_2 = d.\\]Find $d.$\n\n[asy]\nunitsize(0.3 cm);\n\nint i, n = 10;\n\nfor (i = -n; i <= n; ++i) {\n  draw((i,-n)--(i,n),gray(0.7));\n  draw((-n,i)--(n,i),gray(0.7));\n}\n\ndraw((0,-n)--(0,n));\ndraw((-n,0)--(n,0));\n\ndraw(shift((-1,0))*xscale(7)*yscale(5)*Circle((0,0),1),red);\n\ndot((-1,0));\n[/asy] The final Answer is $14$\n ### Proof\n The semi-major axis is 7, so $d = 2 \\cdot 7 = \\boxed{14}.$\n *)\n\ntheorem\nfixes P F1 F2 d :: \"real \\<times> real\"\nassumes h0 : \"dist P F1 + dist P F2 = d\"\nand h1 : \"F1 = (-1, 0)\"\nand h2 : \"F2 = (1, 0)\"\nand h3 : \"P \\<in> {p. (p\\<^sup>2 / 7\\<^sup>2) + (p\\<^sup>2 / 5\\<^sup>2) = 1}\"\nshows \"d = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a point P in a plane, and two fixed points F1 and F2, such that the sum of the distances from P to F1 and P to F2 is a constant d. Given that F1 is located at (-1, 0) and F2 is located at (1, 0), and point P lies on the ellipse defined by the equation (x^2 / 7^2) + (y^2 / 5^2) = 1, find the value of d. The answer is d = 14.",
+        "syntax": 0,
+        "semantic_score": 0.8419580628869276,
+        "symbolic_score": 0.2
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            9,
+            2
+        ],
+        "1": [
+            4,
+            6
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            1
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

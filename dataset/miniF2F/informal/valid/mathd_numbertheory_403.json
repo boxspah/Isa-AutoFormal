@@ -1,0 +1,114 @@
+{
+    "problem_name": "mathd_numbertheory_403",
+    "informal_statement": "The sum of the proper divisors of 18 is 21. What is the sum of the proper divisors of 198? Show that it is 270.",
+    "informal_proof": "There are many ways to solve this problem, the most obvious being to list all of the proper divisors and add them up. There is, however, a creative solution that uses the fact that the sum of the proper divisors of 18 is 21. Note that we can factor 198 into $11\\cdot 18=11\\cdot 2\\cdot 3\\cdot 3$. Each proper divisor will be composed of three or fewer of these factors. Those divisors that do not contain the factor 11 will be either the proper divisors of 18 or 18 itself, contributing 21 and 18, respectively, to the sum. Those divisors that do contain the factor 11 will again by the proper divisors of 18, only multiplied by 11. The sum of these divisors, therefore, is $11\\cdot 21=231$. Since these are all possible divisors, the sum of the proper divisors of 198 is $21+18+231=270$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes sum_divisors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_divisors 18 = 21\"\nand h1 : \"18 * 11 = 198\"\nshows  \"sum_divisors 198 = 270\"",
+        "formal solution": "(* ### Problem\n The sum of the proper divisors of 18 is 21. What is the sum of the proper divisors of 198? The final Answer is $270$\n ### Proof\n There are many ways to solve this problem, the most obvious being to list all of the proper divisors and add them up. There is, however, a creative solution that uses the fact that the sum of the proper divisors of 18 is 21. Note that we can factor 198 into $11\\cdot 18=11\\cdot 2\\cdot 3\\cdot 3$. Each proper divisor will be composed of three or fewer of these factors. Those divisors that do not contain the factor 11 will be either the proper divisors of 18 or 18 itself, contributing 21 and 18, respectively, to the sum. Those divisors that do contain the factor 11 will again by the proper divisors of 18, only multiplied by 11. The sum of these divisors, therefore, is $11\\cdot 21=231$. Since these are all possible divisors, the sum of the proper divisors of 198 is $21+18+231=270$.\n *)\n\ntheorem\nfixes sum_divisors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_divisors 18 = 21\"\nand h1 : \"18 * 11 = 198\"\nshows  \"sum_divisors 198 = 270\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of divisors of 198, given that the sum of divisors of 18 is 21 and that 18 times 11 equals 198. The final answer is 270.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9874943494796753,
+        "symbolic_score": 0.8
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes sum_of_divisors :: \"int \\<Rightarrow> int\"\nassumes h0 : \"sum_of_divisors 18 = 21\"\nand h1 : \"\\<forall>n. n > 0 \\<longrightarrow> sum_of_divisors (11 * n) = sum_of_divisors n * sum_of_divisors 11\"\nshows  \"sum_of_divisors 198 = 270\"",
+        "formal solution": "(* ### Problem\n The sum of the proper divisors of 18 is 21. What is the sum of the proper divisors of 198? The final Answer is $270$\n ### Proof\n There are many ways to solve this problem, the most obvious being to list all of the proper divisors and add them up. There is, however, a creative solution that uses the fact that the sum of the proper divisors of 18 is 21. Note that we can factor 198 into $11\\cdot 18=11\\cdot 2\\cdot 3\\cdot 3$. Each proper divisor will be composed of three or fewer of these factors. Those divisors that do not contain the factor 11 will be either the proper divisors of 18 or 18 itself, contributing 21 and 18, respectively, to the sum. Those divisors that do contain the factor 11 will again by the proper divisors of 18, only multiplied by 11. The sum of these divisors, therefore, is $11\\cdot 21=231$. Since these are all possible divisors, the sum of the proper divisors of 198 is $21+18+231=270$.\n *)\n\ntheorem\nfixes sum_of_divisors :: \"int \\<Rightarrow> int\"\nassumes h0 : \"sum_of_divisors 18 = 21\"\nand h1 : \"\\<forall>n. n > 0 \\<longrightarrow> sum_of_divisors (11 * n) = sum_of_divisors n * sum_of_divisors 11\"\nshows  \"sum_of_divisors 198 = 270\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of the divisors of 18 is 21. If the sum of the divisors of any positive integer $n$ is multiplied by the sum of the divisors of 11, the result is the sum of the divisors of $11n$. Find the sum of the divisors of 198. The final answer is 270.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9386194348335266,
+        "symbolic_score": 0.8
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes sum_divisors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_divisors 18 = 21\"\nand h1 : \"sum_divisors 198 = x\"\nshows  \"x = 270\"",
+        "formal solution": "(* ### Problem\n The sum of the proper divisors of 18 is 21. What is the sum of the proper divisors of 198? The final Answer is $270$\n ### Proof\n There are many ways to solve this problem, the most obvious being to list all of the proper divisors and add them up. There is, however, a creative solution that uses the fact that the sum of the proper divisors of 18 is 21. Note that we can factor 198 into $11\\cdot 18=11\\cdot 2\\cdot 3\\cdot 3$. Each proper divisor will be composed of three or fewer of these factors. Those divisors that do not contain the factor 11 will be either the proper divisors of 18 or 18 itself, contributing 21 and 18, respectively, to the sum. Those divisors that do contain the factor 11 will again by the proper divisors of 18, only multiplied by 11. The sum of these divisors, therefore, is $11\\cdot 21=231$. Since these are all possible divisors, the sum of the proper divisors of 198 is $21+18+231=270$.\n *)\n\ntheorem\nfixes sum_divisors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_divisors 18 = 21\"\nand h1 : \"sum_divisors 198 = x\"\nshows  \"x = 270\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the divisors of the number 198, given that the sum of the divisors of 18 is 21. The final answer is 270.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9904927611351013,
+        "symbolic_score": 0.8
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes sum_divisors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_divisors 18 = 21\"\nand h1 : \"sum_divisors 198 = x\"\nshows  \"x = 270\"",
+        "formal solution": "(* ### Problem\n The sum of the proper divisors of 18 is 21. What is the sum of the proper divisors of 198? The final Answer is $270$\n ### Proof\n There are many ways to solve this problem, the most obvious being to list all of the proper divisors and add them up. There is, however, a creative solution that uses the fact that the sum of the proper divisors of 18 is 21. Note that we can factor 198 into $11\\cdot 18=11\\cdot 2\\cdot 3\\cdot 3$. Each proper divisor will be composed of three or fewer of these factors. Those divisors that do not contain the factor 11 will be either the proper divisors of 18 or 18 itself, contributing 21 and 18, respectively, to the sum. Those divisors that do contain the factor 11 will again by the proper divisors of 18, only multiplied by 11. The sum of these divisors, therefore, is $11\\cdot 21=231$. Since these are all possible divisors, the sum of the proper divisors of 198 is $21+18+231=270$.\n *)\n\ntheorem\nfixes sum_divisors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_divisors 18 = 21\"\nand h1 : \"sum_divisors 198 = x\"\nshows  \"x = 270\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the sum of the divisors of 18 is 21, find the sum of the divisors of 198. The final answer is 270.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9724008440971375,
+        "symbolic_score": 0.8
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes sum_divisors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_divisors 18 = 21\"\nand h1 : \"\\<forall>n. sum_divisors n = (\\<Sum>d | d dvd n \\<and> d < n. d)\"\nshows  \"sum_divisors 198 = 270\"",
+        "formal solution": "(* ### Problem\n The sum of the proper divisors of 18 is 21. What is the sum of the proper divisors of 198? The final Answer is $270$\n ### Proof\n There are many ways to solve this problem, the most obvious being to list all of the proper divisors and add them up. There is, however, a creative solution that uses the fact that the sum of the proper divisors of 18 is 21. Note that we can factor 198 into $11\\cdot 18=11\\cdot 2\\cdot 3\\cdot 3$. Each proper divisor will be composed of three or fewer of these factors. Those divisors that do not contain the factor 11 will be either the proper divisors of 18 or 18 itself, contributing 21 and 18, respectively, to the sum. Those divisors that do contain the factor 11 will again by the proper divisors of 18, only multiplied by 11. The sum of these divisors, therefore, is $11\\cdot 21=231$. Since these are all possible divisors, the sum of the proper divisors of 198 is $21+18+231=270$.\n *)\n\ntheorem\nfixes sum_divisors :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"sum_divisors 18 = 21\"\nand h1 : \"\\<forall>n. sum_divisors n = (\\<Sum>d | d dvd n \\<and> d < n. d)\"\nshows  \"sum_divisors 198 = 270\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of divisors of the number 198, given that the sum of divisors of 18 is 21. The final answer is 270.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9853317737579346,
+        "symbolic_score": 0.8
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes sum_divisors_18 sum_divisors_198 :: nat\nassumes h0 : \"sum_divisors_18 = 21\"\nand h1 : \"\\<forall> n. sum_divisors_198 = sum_divisors_18 * n\"\nshows  \"sum_divisors_198 = 270\"",
+        "formal solution": "(* ### Problem\n The sum of the proper divisors of 18 is 21. What is the sum of the proper divisors of 198? The final Answer is $270$\n ### Proof\n There are many ways to solve this problem, the most obvious being to list all of the proper divisors and add them up. There is, however, a creative solution that uses the fact that the sum of the proper divisors of 18 is 21. Note that we can factor 198 into $11\\cdot 18=11\\cdot 2\\cdot 3\\cdot 3$. Each proper divisor will be composed of three or fewer of these factors. Those divisors that do not contain the factor 11 will be either the proper divisors of 18 or 18 itself, contributing 21 and 18, respectively, to the sum. Those divisors that do contain the factor 11 will again by the proper divisors of 18, only multiplied by 11. The sum of these divisors, therefore, is $11\\cdot 21=231$. Since these are all possible divisors, the sum of the proper divisors of 198 is $21+18+231=270$.\n *)\n\ntheorem\nfixes sum_divisors_18 sum_divisors_198 :: nat\nassumes h0 : \"sum_divisors_18 = 21\"\nand h1 : \"\\<forall> n. sum_divisors_198 = sum_divisors_18 * n\"\nshows  \"sum_divisors_198 = 270\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of the divisors of 18 is 21. Find the sum of the divisors of 198 if it is equal to the sum of the divisors of 18 multiplied by an integer $n$. The final answer is 270.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9822018146514893,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes sum_divisors :: \"int \\<Rightarrow> int\"\nassumes h0 : \"sum_divisors 18 = 21\"\nand h1 : \"\\<forall> n. sum_divisors n = (\\<Sum> d | d dvd n \\<and> d < n. d)\"\nshows  \"sum_divisors 198 = 270\"",
+        "formal solution": "(* ### Problem\n The sum of the proper divisors of 18 is 21. What is the sum of the proper divisors of 198? The final Answer is $270$\n ### Proof\n There are many ways to solve this problem, the most obvious being to list all of the proper divisors and add them up. There is, however, a creative solution that uses the fact that the sum of the proper divisors of 18 is 21. Note that we can factor 198 into $11\\cdot 18=11\\cdot 2\\cdot 3\\cdot 3$. Each proper divisor will be composed of three or fewer of these factors. Those divisors that do not contain the factor 11 will be either the proper divisors of 18 or 18 itself, contributing 21 and 18, respectively, to the sum. Those divisors that do contain the factor 11 will again by the proper divisors of 18, only multiplied by 11. The sum of these divisors, therefore, is $11\\cdot 21=231$. Since these are all possible divisors, the sum of the proper divisors of 198 is $21+18+231=270$.\n *)\n\ntheorem\nfixes sum_divisors :: \"int \\<Rightarrow> int\"\nassumes h0 : \"sum_divisors 18 = 21\"\nand h1 : \"\\<forall> n. sum_divisors n = (\\<Sum> d | d dvd n \\<and> d < n. d)\"\nshows  \"sum_divisors 198 = 270\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of the proper divisors of 18 is 21. Find the sum of the proper divisors of 198. The final answer is 270.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9823523759841919,
+        "symbolic_score": 0.8
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes divisor_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"divisor_sum 18 = 21\"\nand h1 : \"\\<forall> n. divisor_sum n = (\\<Sum>d | d dvd n \\<and> d < n. d)\"\nshows  \"divisor_sum 198 = 270\"",
+        "formal solution": "(* ### Problem\n The sum of the proper divisors of 18 is 21. What is the sum of the proper divisors of 198? The final Answer is $270$\n ### Proof\n There are many ways to solve this problem, the most obvious being to list all of the proper divisors and add them up. There is, however, a creative solution that uses the fact that the sum of the proper divisors of 18 is 21. Note that we can factor 198 into $11\\cdot 18=11\\cdot 2\\cdot 3\\cdot 3$. Each proper divisor will be composed of three or fewer of these factors. Those divisors that do not contain the factor 11 will be either the proper divisors of 18 or 18 itself, contributing 21 and 18, respectively, to the sum. Those divisors that do contain the factor 11 will again by the proper divisors of 18, only multiplied by 11. The sum of these divisors, therefore, is $11\\cdot 21=231$. Since these are all possible divisors, the sum of the proper divisors of 198 is $21+18+231=270$.\n *)\n\ntheorem\nfixes divisor_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"divisor_sum 18 = 21\"\nand h1 : \"\\<forall> n. divisor_sum n = (\\<Sum>d | d dvd n \\<and> d < n. d)\"\nshows  \"divisor_sum 198 = 270\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the sum of the proper divisors of 18 is 21, find the sum of the proper divisors of 198. The final answer is 270.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9848437905311584,
+        "symbolic_score": 0.8
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes proper_divisors_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"proper_divisors_sum 18 = 21\"\nshows  \"proper_divisors_sum 198 = 270\"",
+        "formal solution": "(* ### Problem\n The sum of the proper divisors of 18 is 21. What is the sum of the proper divisors of 198? The final Answer is $270$\n ### Proof\n There are many ways to solve this problem, the most obvious being to list all of the proper divisors and add them up. There is, however, a creative solution that uses the fact that the sum of the proper divisors of 18 is 21. Note that we can factor 198 into $11\\cdot 18=11\\cdot 2\\cdot 3\\cdot 3$. Each proper divisor will be composed of three or fewer of these factors. Those divisors that do not contain the factor 11 will be either the proper divisors of 18 or 18 itself, contributing 21 and 18, respectively, to the sum. Those divisors that do contain the factor 11 will again by the proper divisors of 18, only multiplied by 11. The sum of these divisors, therefore, is $11\\cdot 21=231$. Since these are all possible divisors, the sum of the proper divisors of 198 is $21+18+231=270$.\n *)\n\ntheorem\nfixes proper_divisors_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"proper_divisors_sum 18 = 21\"\nshows  \"proper_divisors_sum 198 = 270\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The sum of the proper divisors of 18 is 21. What is the sum of the proper divisors of 198? The final answer is 270.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9750800132751465,
+        "symbolic_score": 0.8
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes divisor_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"divisor_sum 18 = 21\"\nand h1 : \"divisor_sum 198 = 270\"\nshows  \"divisor_sum 198 = 270\"",
+        "formal solution": "(* ### Problem\n The sum of the proper divisors of 18 is 21. What is the sum of the proper divisors of 198? The final Answer is $270$\n ### Proof\n There are many ways to solve this problem, the most obvious being to list all of the proper divisors and add them up. There is, however, a creative solution that uses the fact that the sum of the proper divisors of 18 is 21. Note that we can factor 198 into $11\\cdot 18=11\\cdot 2\\cdot 3\\cdot 3$. Each proper divisor will be composed of three or fewer of these factors. Those divisors that do not contain the factor 11 will be either the proper divisors of 18 or 18 itself, contributing 21 and 18, respectively, to the sum. Those divisors that do contain the factor 11 will again by the proper divisors of 18, only multiplied by 11. The sum of these divisors, therefore, is $11\\cdot 21=231$. Since these are all possible divisors, the sum of the proper divisors of 198 is $21+18+231=270$.\n *)\n\ntheorem\nfixes divisor_sum :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"divisor_sum 18 = 21\"\nand h1 : \"divisor_sum 198 = 270\"\nshows  \"divisor_sum 198 = 270\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of divisors for the number 198. Given that the sum of divisors for 18 is 21, and the sum of divisors for 198 is 270, confirm that the sum of divisors for 198 is indeed 270.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.5618752837181091,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nshows  \"(\\<Sum> k \\<in> ({n. n dvd 198 \\<and> n\\<noteq> 198}). k) = (270::nat)\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8
+        ],
+        "1": [
+            5
+        ],
+        "2": [
+            9
+        ]
+    }
+}

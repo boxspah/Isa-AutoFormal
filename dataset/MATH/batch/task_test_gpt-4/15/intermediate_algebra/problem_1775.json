@@ -1,0 +1,134 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes a :: \"int \\<Rightarrow> int\"\nand n p q r :: int\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall>n. n \\<ge> 2 \\<longrightarrow> a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<forall>n. a n = p * q^n + r\"\nshows  \"p + q + r = -3\"",
+        "formal solution": "(* ### Problem\n The sequence $(a_n)$ is defined by $a_1 = 14$ and\n\\[a_n = 24 - 5a_{n - 1}\\]for all $n \\ge 2.$  Then the formula for the $n$th term can be expressed in the form $a_n = p \\cdot q^n + r,$ where $p,$ $q,$ and $r$ are constants.  Find $p + q + r.$ The final Answer is -3\n ### Proof\n Taking $n = 1,$ we get $pq + r = 14.$  Also, from the formula $a_n = 24 - 5a_{n - 1},$ \\[p \\cdot q^n + r = 24 - 5(p \\cdot q^{n - 1} + r) = 24 - 5p \\cdot q^{n - 1} - 5r.\\]We can write this as \\[pq \\cdot q^{n - 1} + r = 24 - 5p \\cdot q^{n - 1} - 5r.\\]Then we must have $pq = -5p$ and $r = 24 - 5r.$  Hence, $6r = 24,$ so $r = 4.$\n From $pq + 5p = 0,$ $p(q + 5) = 0,$ so $p = 0$ or $q = -5.$  If $p = 0,$ then $r = 14,$ contradiction, so $q = -5.$  Then \\[-5p + 4 = 14,\\]whence $p = -2.$  Therefore, $p + q + r = (-2) + (-5) + 4 = \\boxed{-3}.$\n *)\n\ntheorem\nfixes a :: \"int \\<Rightarrow> int\"\nand n p q r :: int\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall>n. n \\<ge> 2 \\<longrightarrow> a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<forall>n. a n = p * q^n + r\"\nshows  \"p + q + r = -3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $a$ is defined as follows: $a(1)=14$ and for all integers $n \\geq 2$, $a(n) = 24 - 5a(n - 1)$. Moreover, it is known that $a(n)$ can be written in the form $p*q^n + r$ for all $n$. Find the sum of $p$, $q$, and $r$. The final Answer is $-3$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9834195971488953,
+        "symbolic_score": 0.4
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> int\" and n :: nat\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall>n \\<ge> 2. a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<exists>p q r. \\<forall>n. a n = p * q^n + r\"\nshows  \"\\<exists>p q r. p + q + r = -3\"",
+        "formal solution": "(* ### Problem\n The sequence $(a_n)$ is defined by $a_1 = 14$ and\n\\[a_n = 24 - 5a_{n - 1}\\]for all $n \\ge 2.$  Then the formula for the $n$th term can be expressed in the form $a_n = p \\cdot q^n + r,$ where $p,$ $q,$ and $r$ are constants.  Find $p + q + r.$ The final Answer is -3\n ### Proof\n Taking $n = 1,$ we get $pq + r = 14.$  Also, from the formula $a_n = 24 - 5a_{n - 1},$ \\[p \\cdot q^n + r = 24 - 5(p \\cdot q^{n - 1} + r) = 24 - 5p \\cdot q^{n - 1} - 5r.\\]We can write this as \\[pq \\cdot q^{n - 1} + r = 24 - 5p \\cdot q^{n - 1} - 5r.\\]Then we must have $pq = -5p$ and $r = 24 - 5r.$  Hence, $6r = 24,$ so $r = 4.$\n From $pq + 5p = 0,$ $p(q + 5) = 0,$ so $p = 0$ or $q = -5.$  If $p = 0,$ then $r = 14,$ contradiction, so $q = -5.$  Then \\[-5p + 4 = 14,\\]whence $p = -2.$  Therefore, $p + q + r = (-2) + (-5) + 4 = \\boxed{-3}.$\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> int\" and n :: nat\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall>n \\<ge> 2. a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<exists>p q r. \\<forall>n. a n = p * q^n + r\"\nshows  \"\\<exists>p q r. p + q + r = -3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "An integer sequence $a$ is defined by $a(1) = 14$ and $a(n) = 24 - 5a(n-1)$ for all $n \\geq 2$. The sequence can be expressed in the form $a(n) = p * q^n + r$ for some integers $p$, $q$, and $r$. Find the values of $p$, $q$, and $r$ such that $p + q + r = -3$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.2029813975095749,
+        "symbolic_score": 0.3
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> int\" and p q r :: int\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall>n \\<ge> 2. a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<forall>n. a n = p * q^n + r\"\nshows  \"p + q + r = -3\"",
+        "formal solution": "(* ### Problem\n The sequence $(a_n)$ is defined by $a_1 = 14$ and\n\\[a_n = 24 - 5a_{n - 1}\\]for all $n \\ge 2.$  Then the formula for the $n$th term can be expressed in the form $a_n = p \\cdot q^n + r,$ where $p,$ $q,$ and $r$ are constants.  Find $p + q + r.$ The final Answer is -3\n ### Proof\n Taking $n = 1,$ we get $pq + r = 14.$  Also, from the formula $a_n = 24 - 5a_{n - 1},$ \\[p \\cdot q^n + r = 24 - 5(p \\cdot q^{n - 1} + r) = 24 - 5p \\cdot q^{n - 1} - 5r.\\]We can write this as \\[pq \\cdot q^{n - 1} + r = 24 - 5p \\cdot q^{n - 1} - 5r.\\]Then we must have $pq = -5p$ and $r = 24 - 5r.$  Hence, $6r = 24,$ so $r = 4.$\n From $pq + 5p = 0,$ $p(q + 5) = 0,$ so $p = 0$ or $q = -5.$  If $p = 0,$ then $r = 14,$ contradiction, so $q = -5.$  Then \\[-5p + 4 = 14,\\]whence $p = -2.$  Therefore, $p + q + r = (-2) + (-5) + 4 = \\boxed{-3}.$\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> int\" and p q r :: int\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall>n \\<ge> 2. a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<forall>n. a n = p * q^n + r\"\nshows  \"p + q + r = -3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the sequence defined by $a_1 = 14$ and $a_n = 24 - 5a_{n-1}$ for all integers $n \\geq 2$, it is also given that for all $n$, $a_n = p * q^n + r$. Find the values of $p$, $q$, and $r$ such that $p + q + r = -3$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": -0.03372955694794655,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a :: \"int \\<Rightarrow> int\"\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall> n. n \\<ge> 2 \\<longrightarrow> a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<exists> p q r. \\<forall> n. a n = p * q ^ n + r\"\nshows  \"(\\<Sum> (p, q, r) \\<leftarrow> [(p, q, r)]. p + q + r) = -3\"",
+        "formal solution": "(* ### Problem\n The sequence $(a_n)$ is defined by $a_1 = 14$ and\n\\[a_n = 24 - 5a_{n - 1}\\]for all $n \\ge 2.$  Then the formula for the $n$th term can be expressed in the form $a_n = p \\cdot q^n + r,$ where $p,$ $q,$ and $r$ are constants.  Find $p + q + r.$ The final Answer is -3\n ### Proof\n Taking $n = 1,$ we get $pq + r = 14.$  Also, from the formula $a_n = 24 - 5a_{n - 1},$ \\[p \\cdot q^n + r = 24 - 5(p \\cdot q^{n - 1} + r) = 24 - 5p \\cdot q^{n - 1} - 5r.\\]We can write this as \\[pq \\cdot q^{n - 1} + r = 24 - 5p \\cdot q^{n - 1} - 5r.\\]Then we must have $pq = -5p$ and $r = 24 - 5r.$  Hence, $6r = 24,$ so $r = 4.$\n From $pq + 5p = 0,$ $p(q + 5) = 0,$ so $p = 0$ or $q = -5.$  If $p = 0,$ then $r = 14,$ contradiction, so $q = -5.$  Then \\[-5p + 4 = 14,\\]whence $p = -2.$  Therefore, $p + q + r = (-2) + (-5) + 4 = \\boxed{-3}.$\n *)\n\ntheorem\nfixes a :: \"int \\<Rightarrow> int\"\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall> n. n \\<ge> 2 \\<longrightarrow> a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<exists> p q r. \\<forall> n. a n = p * q ^ n + r\"\nshows  \"(\\<Sum> (p, q, r) \\<leftarrow> [(p, q, r)]. p + q + r) = -3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given an integer sequence defined by $a_1 = 14$ and $a_n = 24 - 5a_{n-1}$ for all integers $n \\geq 2$. If there exist integers $p$, $q$, and $r$ such that $a_n = p \\cdot q^n + r$ for all $n$, find the sum of $p$, $q$, and $r$. The final answer is $-3$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.41544976830482483,
+        "symbolic_score": 0.4
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall> n \\<ge> 2. a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<exists> p q r. \\<forall> n. a n = p * q^n + r\"\nshows  \"(\\<Sum>(p, q, r)\\<leftarrow>the (SOME x. \\<forall> n. a n = case x of (p, q, r) \\<Rightarrow> p * q^n + r). case (p, q, r) of (p, q, r) \\<Rightarrow> p + q + r) = -3\"",
+        "formal solution": "(* ### Problem\n The sequence $(a_n)$ is defined by $a_1 = 14$ and\n\\[a_n = 24 - 5a_{n - 1}\\]for all $n \\ge 2.$  Then the formula for the $n$th term can be expressed in the form $a_n = p \\cdot q^n + r,$ where $p,$ $q,$ and $r$ are constants.  Find $p + q + r.$ The final Answer is -3\n ### Proof\n Taking $n = 1,$ we get $pq + r = 14.$  Also, from the formula $a_n = 24 - 5a_{n - 1},$ \\[p \\cdot q^n + r = 24 - 5(p \\cdot q^{n - 1} + r) = 24 - 5p \\cdot q^{n - 1} - 5r.\\]We can write this as \\[pq \\cdot q^{n - 1} + r = 24 - 5p \\cdot q^{n - 1} - 5r.\\]Then we must have $pq = -5p$ and $r = 24 - 5r.$  Hence, $6r = 24,$ so $r = 4.$\n From $pq + 5p = 0,$ $p(q + 5) = 0,$ so $p = 0$ or $q = -5.$  If $p = 0,$ then $r = 14,$ contradiction, so $q = -5.$  Then \\[-5p + 4 = 14,\\]whence $p = -2.$  Therefore, $p + q + r = (-2) + (-5) + 4 = \\boxed{-3}.$\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall> n \\<ge> 2. a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<exists> p q r. \\<forall> n. a n = p * q^n + r\"\nshows  \"(\\<Sum>(p, q, r)\\<leftarrow>the (SOME x. \\<forall> n. a n = case x of (p, q, r) \\<Rightarrow> p * q^n + r). case (p, q, r) of (p, q, r) \\<Rightarrow> p + q + r) = -3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $a$ is defined recursively as follows: $a(1) = 14$, and for all integers $n \\geq 2$, $a(n) = 24 - 5 * a(n - 1)$. There exist integers $p$, $q$, and $r$ such that for all $n$, $a(n) = p * q^n + r$. What is the sum of $p$, $q$, and $r$? The final answer is $-3$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9610503315925598,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> int\" and n :: nat\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall> n \\<ge> 2. a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<exists> p q r. \\<forall> n. a n = p * q^n + r\"\nshows  \"\\<exists> p q r. p + q + r = -3\"",
+        "formal solution": "(* ### Problem\n The sequence $(a_n)$ is defined by $a_1 = 14$ and\n\\[a_n = 24 - 5a_{n - 1}\\]for all $n \\ge 2.$  Then the formula for the $n$th term can be expressed in the form $a_n = p \\cdot q^n + r,$ where $p,$ $q,$ and $r$ are constants.  Find $p + q + r.$ The final Answer is -3\n ### Proof\n Taking $n = 1,$ we get $pq + r = 14.$  Also, from the formula $a_n = 24 - 5a_{n - 1},$ \\[p \\cdot q^n + r = 24 - 5(p \\cdot q^{n - 1} + r) = 24 - 5p \\cdot q^{n - 1} - 5r.\\]We can write this as \\[pq \\cdot q^{n - 1} + r = 24 - 5p \\cdot q^{n - 1} - 5r.\\]Then we must have $pq = -5p$ and $r = 24 - 5r.$  Hence, $6r = 24,$ so $r = 4.$\n From $pq + 5p = 0,$ $p(q + 5) = 0,$ so $p = 0$ or $q = -5.$  If $p = 0,$ then $r = 14,$ contradiction, so $q = -5.$  Then \\[-5p + 4 = 14,\\]whence $p = -2.$  Therefore, $p + q + r = (-2) + (-5) + 4 = \\boxed{-3}.$\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> int\" and n :: nat\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall> n \\<ge> 2. a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<exists> p q r. \\<forall> n. a n = p * q^n + r\"\nshows  \"\\<exists> p q r. p + q + r = -3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $(a_n)$ is defined by $a_1 = 14$ and for $n \\geq 2$, $a_n = 24 - 5 a_{n - 1}$. Suppose there exist integers $p$, $q$, and $r$ such that $a_n = p * q^n + r$ for all $n$. Find the values of $p$, $q$, and $r$ for which $p + q + r = -3$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.23444895446300507,
+        "symbolic_score": 0.3
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a :: \"int \\<Rightarrow> int\" and p q r :: int\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall> n. n \\<ge> 2 \\<longrightarrow> a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<forall> n. a n = p * q^n + r\"\nshows  \"p + q + r = -3\"",
+        "formal solution": "(* ### Problem\n The sequence $(a_n)$ is defined by $a_1 = 14$ and\n\\[a_n = 24 - 5a_{n - 1}\\]for all $n \\ge 2.$  Then the formula for the $n$th term can be expressed in the form $a_n = p \\cdot q^n + r,$ where $p,$ $q,$ and $r$ are constants.  Find $p + q + r.$ The final Answer is -3\n ### Proof\n Taking $n = 1,$ we get $pq + r = 14.$  Also, from the formula $a_n = 24 - 5a_{n - 1},$ \\[p \\cdot q^n + r = 24 - 5(p \\cdot q^{n - 1} + r) = 24 - 5p \\cdot q^{n - 1} - 5r.\\]We can write this as \\[pq \\cdot q^{n - 1} + r = 24 - 5p \\cdot q^{n - 1} - 5r.\\]Then we must have $pq = -5p$ and $r = 24 - 5r.$  Hence, $6r = 24,$ so $r = 4.$\n From $pq + 5p = 0,$ $p(q + 5) = 0,$ so $p = 0$ or $q = -5.$  If $p = 0,$ then $r = 14,$ contradiction, so $q = -5.$  Then \\[-5p + 4 = 14,\\]whence $p = -2.$  Therefore, $p + q + r = (-2) + (-5) + 4 = \\boxed{-3}.$\n *)\n\ntheorem\nfixes a :: \"int \\<Rightarrow> int\" and p q r :: int\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall> n. n \\<ge> 2 \\<longrightarrow> a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<forall> n. a n = p * q^n + r\"\nshows  \"p + q + r = -3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence $a_n$ defined by $a_1 = 14$ and $a_n = 24 - 5a_{n-1}$ for all integers $n \\geq 2$. If $a_n$ can also be expressed in the form $p*q^n + r$ for some integers $p$, $q$, and $r$, find the value of $p + q + r$. The final answer is $-3$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.5201479196548462,
+        "symbolic_score": 0.4
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a :: \"int \\<Rightarrow> int\" and p q r :: int\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall>n. n \\<ge> 2 \\<longrightarrow> a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<forall>n. a n = p * q^n + r\"\nshows  \"p + q + r = -3\"",
+        "formal solution": "(* ### Problem\n The sequence $(a_n)$ is defined by $a_1 = 14$ and\n\\[a_n = 24 - 5a_{n - 1}\\]for all $n \\ge 2.$  Then the formula for the $n$th term can be expressed in the form $a_n = p \\cdot q^n + r,$ where $p,$ $q,$ and $r$ are constants.  Find $p + q + r.$ The final Answer is -3\n ### Proof\n Taking $n = 1,$ we get $pq + r = 14.$  Also, from the formula $a_n = 24 - 5a_{n - 1},$ \\[p \\cdot q^n + r = 24 - 5(p \\cdot q^{n - 1} + r) = 24 - 5p \\cdot q^{n - 1} - 5r.\\]We can write this as \\[pq \\cdot q^{n - 1} + r = 24 - 5p \\cdot q^{n - 1} - 5r.\\]Then we must have $pq = -5p$ and $r = 24 - 5r.$  Hence, $6r = 24,$ so $r = 4.$\n From $pq + 5p = 0,$ $p(q + 5) = 0,$ so $p = 0$ or $q = -5.$  If $p = 0,$ then $r = 14,$ contradiction, so $q = -5.$  Then \\[-5p + 4 = 14,\\]whence $p = -2.$  Therefore, $p + q + r = (-2) + (-5) + 4 = \\boxed{-3}.$\n *)\n\ntheorem\nfixes a :: \"int \\<Rightarrow> int\" and p q r :: int\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall>n. n \\<ge> 2 \\<longrightarrow> a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<forall>n. a n = p * q^n + r\"\nshows  \"p + q + r = -3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sequence defined recursively by $a_1 = 14$ and $a_n = 24 - 5a_{n - 1}$ for all integers $n \\geq 2$. If every term of this sequence can also be written in the form $pq^n + r$ for some constants $p$, $q$ and $r$, find the value of $p + q + r$. The final answer is $-3$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.38923829793930054,
+        "symbolic_score": 0.4
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall>n. n \\<ge> 2 \\<longrightarrow> a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<exists>p q r. (\\<forall>n. a n = p * q^n + r)\"\nshows  \"\\<exists>p q r. p + q + r = -3\"",
+        "formal solution": "(* ### Problem\n The sequence $(a_n)$ is defined by $a_1 = 14$ and\n\\[a_n = 24 - 5a_{n - 1}\\]for all $n \\ge 2.$  Then the formula for the $n$th term can be expressed in the form $a_n = p \\cdot q^n + r,$ where $p,$ $q,$ and $r$ are constants.  Find $p + q + r.$ The final Answer is -3\n ### Proof\n Taking $n = 1,$ we get $pq + r = 14.$  Also, from the formula $a_n = 24 - 5a_{n - 1},$ \\[p \\cdot q^n + r = 24 - 5(p \\cdot q^{n - 1} + r) = 24 - 5p \\cdot q^{n - 1} - 5r.\\]We can write this as \\[pq \\cdot q^{n - 1} + r = 24 - 5p \\cdot q^{n - 1} - 5r.\\]Then we must have $pq = -5p$ and $r = 24 - 5r.$  Hence, $6r = 24,$ so $r = 4.$\n From $pq + 5p = 0,$ $p(q + 5) = 0,$ so $p = 0$ or $q = -5.$  If $p = 0,$ then $r = 14,$ contradiction, so $q = -5.$  Then \\[-5p + 4 = 14,\\]whence $p = -2.$  Therefore, $p + q + r = (-2) + (-5) + 4 = \\boxed{-3}.$\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall>n. n \\<ge> 2 \\<longrightarrow> a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<exists>p q r. (\\<forall>n. a n = p * q^n + r)\"\nshows  \"\\<exists>p q r. p + q + r = -3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence of integers $a_n$ where $a_1 = 14$ and for all $n \\geq 2$, $a_n = 24 - 5a_{n-1}$. Suppose there exist integers $p$, $q$, and $r$ such that $a_n = p*q^n + r$ for all $n$. Find the values of $p$, $q$, and $r$ such that their sum is $-3$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.16526563465595245,
+        "symbolic_score": 0.3
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a :: \"int \\<Rightarrow> int\"\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall>n. n \\<ge> 2 \\<longrightarrow> a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<exists>p q r. (\\<forall>n. a n = p * q^n + r)\"\nshows  \"\u2203p q r. p + q + r = -3\"",
+        "formal solution": "(* ### Problem\n The sequence $(a_n)$ is defined by $a_1 = 14$ and\n\\[a_n = 24 - 5a_{n - 1}\\]for all $n \\ge 2.$  Then the formula for the $n$th term can be expressed in the form $a_n = p \\cdot q^n + r,$ where $p,$ $q,$ and $r$ are constants.  Find $p + q + r.$ The final Answer is -3\n ### Proof\n Taking $n = 1,$ we get $pq + r = 14.$  Also, from the formula $a_n = 24 - 5a_{n - 1},$ \\[p \\cdot q^n + r = 24 - 5(p \\cdot q^{n - 1} + r) = 24 - 5p \\cdot q^{n - 1} - 5r.\\]We can write this as \\[pq \\cdot q^{n - 1} + r = 24 - 5p \\cdot q^{n - 1} - 5r.\\]Then we must have $pq = -5p$ and $r = 24 - 5r.$  Hence, $6r = 24,$ so $r = 4.$\n From $pq + 5p = 0,$ $p(q + 5) = 0,$ so $p = 0$ or $q = -5.$  If $p = 0,$ then $r = 14,$ contradiction, so $q = -5.$  Then \\[-5p + 4 = 14,\\]whence $p = -2.$  Therefore, $p + q + r = (-2) + (-5) + 4 = \\boxed{-3}.$\n *)\n\ntheorem\nfixes a :: \"int \\<Rightarrow> int\"\nassumes h0 : \"a 1 = 14\"\nand h1 : \"\\<forall>n. n \\<ge> 2 \\<longrightarrow> a n = 24 - 5 * a (n - 1)\"\nand h2 : \"\\<exists>p q r. (\\<forall>n. a n = p * q^n + r)\"\nshows  \"\u2203p q r. p + q + r = -3\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $a$ is defined for all integers where $a(1) = 14$ and for all $n$ greater than or equal to 2, $a(n) = 24 - 5 \\times a(n - 1)$. There exist integers $p$, $q$, and $r$ such that $a(n) = p \\times q^n + r$ for all $n$. Find the values of $p$, $q$, and $r$ such that their sum equals $-3$.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.15766020119190216,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "-3",
+    "natural problem": "The sequence $(a_n)$ is defined by $a_1 = 14$ and\n\\[a_n = 24 - 5a_{n - 1}\\]for all $n \\ge 2.$  Then the formula for the $n$th term can be expressed in the form $a_n = p \\cdot q^n + r,$ where $p,$ $q,$ and $r$ are constants.  Find $p + q + r.$",
+    "natural solution": [
+        "Taking $n = 1,$ we get $pq + r = 14.$  Also, from the formula $a_n = 24 - 5a_{n - 1},$ \\[p \\cdot q^n + r = 24 - 5(p \\cdot q^{n - 1} + r) = 24 - 5p \\cdot q^{n - 1} - 5r.\\]We can write this as \\[pq \\cdot q^{n - 1} + r = 24 - 5p \\cdot q^{n - 1} - 5r.\\]Then we must have $pq = -5p$ and $r = 24 - 5r.$  Hence, $6r = 24,$ so $r = 4.$",
+        "From $pq + 5p = 0,$ $p(q + 5) = 0,$ so $p = 0$ or $q = -5.$  If $p = 0,$ then $r = 14,$ contradiction, so $q = -5.$  Then \\[-5p + 4 = 14,\\]whence $p = -2.$  Therefore, $p + q + r = (-2) + (-5) + 4 = \\boxed{-3}.$"
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            0,
+            3,
+            6,
+            7
+        ],
+        "1": [
+            8,
+            1,
+            5
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            4
+        ],
+        "4": [
+            9
+        ]
+    },
+    "str_pred": "[[0, 3, 7], [8, 1, 5], [2], [4], [6], [9]]",
+    "level": "Level 5",
+    "type": "Intermediate Algebra"
+}

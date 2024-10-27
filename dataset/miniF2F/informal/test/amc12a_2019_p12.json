@@ -1,0 +1,119 @@
+{
+    "problem_name": "amc12a_2019_p12",
+    "informal_statement": "Positive real numbers $x \\neq 1$ and $y \\neq 1$ satisfy $\\log_2{x} = \\log_y{16}$ and $xy = 64$. What is $(\\log_2{\\tfrac{x}{y}})^2$?\n\n$\\textbf{(A) } \\frac{25}{2} \\qquad\\textbf{(B) } 20 \\qquad\\textbf{(C) } \\frac{45}{2} \\qquad\\textbf{(D) } 25 \\qquad\\textbf{(E) } 32$ Show that it is \\textbf{(B) } 20.",
+    "informal_proof": "Let $\\log_2{x} = \\log_y{16}=k$, so that $2^k=x$ and $y^k=16 \\implies y=2^{\\frac{4}{k}}$. Then we have $(2^k)(2^{\\frac{4}{k}})=2^{k+\\frac{4}{k}}=2^6$.\n\nWe therefore have $k+\\frac{4}{k}=6$, and deduce $k^2-6k+4=0$. The solutions to this are $k = 3 \\pm \\sqrt{5}$. \n\nTo solve the problem, we now find \n$\\begin{align*}\n(\\log_2\\tfrac{x}{y})^2&=(\\log_2 x - \\log_2 y)^2\\\\\n&=(k-\\tfrac{4}{k})^2=(3 \\pm \\sqrt{5} - \\tfrac{4}{3 \\pm \\sqrt{5}})^2 \\\\\n&= (3 \\pm \\sqrt{5} - [3 \\mp \\sqrt{5}])^2\\\\\n&= (3 \\pm \\sqrt{5} - 3 \\pm \\sqrt{5})^2\\\\\n&=(\\pm 2\\sqrt{5})^2 \\\\\n&= \\textbf{(B) } 20. \\\\\n\\end{align*}$\n~Edits by BakedPotato66",
+    "a_0": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"(log 2 (x / y)) powr 2 = 20\"",
+        "formal solution": "(* ### Problem\n Positive real numbers $x \\neq 1$ and $y \\neq 1$ satisfy $\\log_2{x} = \\log_y{16}$ and $xy = 64$. What is $(\\log_2{\\tfrac{x}{y}})^2$?\n\n$\\textbf{(A) } \\frac{25}{2} \\qquad\\textbf{(B) } 20 \\qquad\\textbf{(C) } \\frac{45}{2} \\qquad\\textbf{(D) } 25 \\qquad\\textbf{(E) } 32$ Show that it is \\textbf{(B) } 20.\n ### Proof\n Let $\\log_2{x} = \\log_y{16}=k$, so that $2^k=x$ and $y^k=16 \\implies y=2^{\\frac{4}{k}}$. Then we have $(2^k)(2^{\\frac{4}{k}})=2^{k+\\frac{4}{k}}=2^6$.\n\nWe therefore have $k+\\frac{4}{k}=6$, and deduce $k^2-6k+4=0$. The solutions to this are $k = 3 \\pm \\sqrt{5}$. \n\nTo solve the problem, we now find \n$\\begin{align*}\n(\\log_2\\tfrac{x}{y})^2&=(\\log_2 x - \\log_2 y)^2\\\\\n&=(k-\\tfrac{4}{k})^2=(3 \\pm \\sqrt{5} - \\tfrac{4}{3 \\pm \\sqrt{5}})^2 \\\\\n&= (3 \\pm \\sqrt{5} - [3 \\mp \\sqrt{5}])^2\\\\\n&= (3 \\pm \\sqrt{5} - 3 \\pm \\sqrt{5})^2\\\\\n&=(\\pm 2\\sqrt{5})^2 \\\\\n&= \\textbf{(B) } 20. \\\\\n\\end{align*}$\n~Edits by BakedPotato66\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"(log 2 (x / y)) powr 2 = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive numbers $x$ and $y$ such that $x \\neq 1$, $y \\neq 1$, $\\log_2{x}=\\log_y{16}$, and $x \\cdot y=64$, find the value of $(\\log_2{\\frac{x}{y}})^2$. The final answer is $20$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9198693633079529,
+        "symbolic_score": 0.6
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \u2260 1\"\nand h3 : \"y \u2260 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"((log 2 (x / y)) powr 2) = 20\"",
+        "formal solution": "(* ### Problem\n Positive real numbers $x \\neq 1$ and $y \\neq 1$ satisfy $\\log_2{x} = \\log_y{16}$ and $xy = 64$. What is $(\\log_2{\\tfrac{x}{y}})^2$?\n\n$\\textbf{(A) } \\frac{25}{2} \\qquad\\textbf{(B) } 20 \\qquad\\textbf{(C) } \\frac{45}{2} \\qquad\\textbf{(D) } 25 \\qquad\\textbf{(E) } 32$ Show that it is \\textbf{(B) } 20.\n ### Proof\n Let $\\log_2{x} = \\log_y{16}=k$, so that $2^k=x$ and $y^k=16 \\implies y=2^{\\frac{4}{k}}$. Then we have $(2^k)(2^{\\frac{4}{k}})=2^{k+\\frac{4}{k}}=2^6$.\n\nWe therefore have $k+\\frac{4}{k}=6$, and deduce $k^2-6k+4=0$. The solutions to this are $k = 3 \\pm \\sqrt{5}$. \n\nTo solve the problem, we now find \n$\\begin{align*}\n(\\log_2\\tfrac{x}{y})^2&=(\\log_2 x - \\log_2 y)^2\\\\\n&=(k-\\tfrac{4}{k})^2=(3 \\pm \\sqrt{5} - \\tfrac{4}{3 \\pm \\sqrt{5}})^2 \\\\\n&= (3 \\pm \\sqrt{5} - [3 \\mp \\sqrt{5}])^2\\\\\n&= (3 \\pm \\sqrt{5} - 3 \\pm \\sqrt{5})^2\\\\\n&=(\\pm 2\\sqrt{5})^2 \\\\\n&= \\textbf{(B) } 20. \\\\\n\\end{align*}$\n~Edits by BakedPotato66\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \u2260 1\"\nand h3 : \"y \u2260 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"((log 2 (x / y)) powr 2) = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive real numbers $x$ and $y$, such that $x \\neq 1$, $y \\neq 1$, $\\log_2{x} = \\log_y{16}$, and $xy = 64$. Find the value of $(\\log_2{\\frac{x}{y}})^2$. The final answer is $20$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7717390656471252,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"log 2 (x / y) powr 2 = 20\"",
+        "formal solution": "(* ### Problem\n Positive real numbers $x \\neq 1$ and $y \\neq 1$ satisfy $\\log_2{x} = \\log_y{16}$ and $xy = 64$. What is $(\\log_2{\\tfrac{x}{y}})^2$?\n\n$\\textbf{(A) } \\frac{25}{2} \\qquad\\textbf{(B) } 20 \\qquad\\textbf{(C) } \\frac{45}{2} \\qquad\\textbf{(D) } 25 \\qquad\\textbf{(E) } 32$ Show that it is \\textbf{(B) } 20.\n ### Proof\n Let $\\log_2{x} = \\log_y{16}=k$, so that $2^k=x$ and $y^k=16 \\implies y=2^{\\frac{4}{k}}$. Then we have $(2^k)(2^{\\frac{4}{k}})=2^{k+\\frac{4}{k}}=2^6$.\n\nWe therefore have $k+\\frac{4}{k}=6$, and deduce $k^2-6k+4=0$. The solutions to this are $k = 3 \\pm \\sqrt{5}$. \n\nTo solve the problem, we now find \n$\\begin{align*}\n(\\log_2\\tfrac{x}{y})^2&=(\\log_2 x - \\log_2 y)^2\\\\\n&=(k-\\tfrac{4}{k})^2=(3 \\pm \\sqrt{5} - \\tfrac{4}{3 \\pm \\sqrt{5}})^2 \\\\\n&= (3 \\pm \\sqrt{5} - [3 \\mp \\sqrt{5}])^2\\\\\n&= (3 \\pm \\sqrt{5} - 3 \\pm \\sqrt{5})^2\\\\\n&=(\\pm 2\\sqrt{5})^2 \\\\\n&= \\textbf{(B) } 20. \\\\\n\\end{align*}$\n~Edits by BakedPotato66\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"log 2 (x / y) powr 2 = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive numbers $x$ and $y$, such that $x \\neq 1$, $y \\neq 1$, $\\log_2 x = \\log_y 16$, and $x \\cdot y = 64$, find the value of $\\log_2 \\left(\\frac{x}{y}\\right)^2$. The final answer is 20.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7365156412124634,
+        "symbolic_score": 0.6
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"((log 2 (x / y)) powr 2) = 20\"",
+        "formal solution": "(* ### Problem\n Positive real numbers $x \\neq 1$ and $y \\neq 1$ satisfy $\\log_2{x} = \\log_y{16}$ and $xy = 64$. What is $(\\log_2{\\tfrac{x}{y}})^2$?\n\n$\\textbf{(A) } \\frac{25}{2} \\qquad\\textbf{(B) } 20 \\qquad\\textbf{(C) } \\frac{45}{2} \\qquad\\textbf{(D) } 25 \\qquad\\textbf{(E) } 32$ Show that it is \\textbf{(B) } 20.\n ### Proof\n Let $\\log_2{x} = \\log_y{16}=k$, so that $2^k=x$ and $y^k=16 \\implies y=2^{\\frac{4}{k}}$. Then we have $(2^k)(2^{\\frac{4}{k}})=2^{k+\\frac{4}{k}}=2^6$.\n\nWe therefore have $k+\\frac{4}{k}=6$, and deduce $k^2-6k+4=0$. The solutions to this are $k = 3 \\pm \\sqrt{5}$. \n\nTo solve the problem, we now find \n$\\begin{align*}\n(\\log_2\\tfrac{x}{y})^2&=(\\log_2 x - \\log_2 y)^2\\\\\n&=(k-\\tfrac{4}{k})^2=(3 \\pm \\sqrt{5} - \\tfrac{4}{3 \\pm \\sqrt{5}})^2 \\\\\n&= (3 \\pm \\sqrt{5} - [3 \\mp \\sqrt{5}])^2\\\\\n&= (3 \\pm \\sqrt{5} - 3 \\pm \\sqrt{5})^2\\\\\n&=(\\pm 2\\sqrt{5})^2 \\\\\n&= \\textbf{(B) } 20. \\\\\n\\end{align*}$\n~Edits by BakedPotato66\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"((log 2 (x / y)) powr 2) = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive numbers $x$ and $y$, where $x \\neq 1$ and $y \\neq 1$, such that $\\log_2{x} = \\log_y{16}$ and $xy = 64$. Find the value of $(\\log_2{\\frac{x}{y}})^2$. The final answer is $20$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7905828356742859,
+        "symbolic_score": 0.6
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"((log 2 (x / y)) powr 2) = 20\"",
+        "formal solution": "(* ### Problem\n Positive real numbers $x \\neq 1$ and $y \\neq 1$ satisfy $\\log_2{x} = \\log_y{16}$ and $xy = 64$. What is $(\\log_2{\\tfrac{x}{y}})^2$?\n\n$\\textbf{(A) } \\frac{25}{2} \\qquad\\textbf{(B) } 20 \\qquad\\textbf{(C) } \\frac{45}{2} \\qquad\\textbf{(D) } 25 \\qquad\\textbf{(E) } 32$ Show that it is \\textbf{(B) } 20.\n ### Proof\n Let $\\log_2{x} = \\log_y{16}=k$, so that $2^k=x$ and $y^k=16 \\implies y=2^{\\frac{4}{k}}$. Then we have $(2^k)(2^{\\frac{4}{k}})=2^{k+\\frac{4}{k}}=2^6$.\n\nWe therefore have $k+\\frac{4}{k}=6$, and deduce $k^2-6k+4=0$. The solutions to this are $k = 3 \\pm \\sqrt{5}$. \n\nTo solve the problem, we now find \n$\\begin{align*}\n(\\log_2\\tfrac{x}{y})^2&=(\\log_2 x - \\log_2 y)^2\\\\\n&=(k-\\tfrac{4}{k})^2=(3 \\pm \\sqrt{5} - \\tfrac{4}{3 \\pm \\sqrt{5}})^2 \\\\\n&= (3 \\pm \\sqrt{5} - [3 \\mp \\sqrt{5}])^2\\\\\n&= (3 \\pm \\sqrt{5} - 3 \\pm \\sqrt{5})^2\\\\\n&=(\\pm 2\\sqrt{5})^2 \\\\\n&= \\textbf{(B) } 20. \\\\\n\\end{align*}$\n~Edits by BakedPotato66\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"((log 2 (x / y)) powr 2) = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given positive real numbers $x$ and $y$ such that $x \\neq 1$, $y \\neq 1$, $\\log_2{x} = \\log_y{16}$, and $xy = 64$, find the value of $(\\log_2{\\frac{x}{y}})^2$. The final answer is $20$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8877440690994263,
+        "symbolic_score": 0.6
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"x \\<noteq> 1\"\nand h2 : \"y > 0\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"(log 2 x) = (log y 16)\"\nand h5 : \"x * y = 64\"\nshows  \"((log 2 (x / y))^2) = 20\"",
+        "formal solution": "(* ### Problem\n Positive real numbers $x \\neq 1$ and $y \\neq 1$ satisfy $\\log_2{x} = \\log_y{16}$ and $xy = 64$. What is $(\\log_2{\\tfrac{x}{y}})^2$?\n\n$\\textbf{(A) } \\frac{25}{2} \\qquad\\textbf{(B) } 20 \\qquad\\textbf{(C) } \\frac{45}{2} \\qquad\\textbf{(D) } 25 \\qquad\\textbf{(E) } 32$ Show that it is \\textbf{(B) } 20.\n ### Proof\n Let $\\log_2{x} = \\log_y{16}=k$, so that $2^k=x$ and $y^k=16 \\implies y=2^{\\frac{4}{k}}$. Then we have $(2^k)(2^{\\frac{4}{k}})=2^{k+\\frac{4}{k}}=2^6$.\n\nWe therefore have $k+\\frac{4}{k}=6$, and deduce $k^2-6k+4=0$. The solutions to this are $k = 3 \\pm \\sqrt{5}$. \n\nTo solve the problem, we now find \n$\\begin{align*}\n(\\log_2\\tfrac{x}{y})^2&=(\\log_2 x - \\log_2 y)^2\\\\\n&=(k-\\tfrac{4}{k})^2=(3 \\pm \\sqrt{5} - \\tfrac{4}{3 \\pm \\sqrt{5}})^2 \\\\\n&= (3 \\pm \\sqrt{5} - [3 \\mp \\sqrt{5}])^2\\\\\n&= (3 \\pm \\sqrt{5} - 3 \\pm \\sqrt{5})^2\\\\\n&=(\\pm 2\\sqrt{5})^2 \\\\\n&= \\textbf{(B) } 20. \\\\\n\\end{align*}$\n~Edits by BakedPotato66\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"x \\<noteq> 1\"\nand h2 : \"y > 0\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"(log 2 x) = (log y 16)\"\nand h5 : \"x * y = 64\"\nshows  \"((log 2 (x / y))^2) = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive numbers $x$ and $y$ such that $x \\neq 1$ and $y \\neq 1$, if $\\log_{2}(x) = \\log_{y}(16)$ and $x \\cdot y = 64$, find the value of $(\\log_{2}(\\frac{x}{y}))^2$. The final answer is $20$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8827812075614929,
+        "symbolic_score": 0.3
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"(log 2 (x / y))^2 = 20\"",
+        "formal solution": "(* ### Problem\n Positive real numbers $x \\neq 1$ and $y \\neq 1$ satisfy $\\log_2{x} = \\log_y{16}$ and $xy = 64$. What is $(\\log_2{\\tfrac{x}{y}})^2$?\n\n$\\textbf{(A) } \\frac{25}{2} \\qquad\\textbf{(B) } 20 \\qquad\\textbf{(C) } \\frac{45}{2} \\qquad\\textbf{(D) } 25 \\qquad\\textbf{(E) } 32$ Show that it is \\textbf{(B) } 20.\n ### Proof\n Let $\\log_2{x} = \\log_y{16}=k$, so that $2^k=x$ and $y^k=16 \\implies y=2^{\\frac{4}{k}}$. Then we have $(2^k)(2^{\\frac{4}{k}})=2^{k+\\frac{4}{k}}=2^6$.\n\nWe therefore have $k+\\frac{4}{k}=6$, and deduce $k^2-6k+4=0$. The solutions to this are $k = 3 \\pm \\sqrt{5}$. \n\nTo solve the problem, we now find \n$\\begin{align*}\n(\\log_2\\tfrac{x}{y})^2&=(\\log_2 x - \\log_2 y)^2\\\\\n&=(k-\\tfrac{4}{k})^2=(3 \\pm \\sqrt{5} - \\tfrac{4}{3 \\pm \\sqrt{5}})^2 \\\\\n&= (3 \\pm \\sqrt{5} - [3 \\mp \\sqrt{5}])^2\\\\\n&= (3 \\pm \\sqrt{5} - 3 \\pm \\sqrt{5})^2\\\\\n&=(\\pm 2\\sqrt{5})^2 \\\\\n&= \\textbf{(B) } 20. \\\\\n\\end{align*}$\n~Edits by BakedPotato66\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"(log 2 (x / y))^2 = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive numbers $x$ and $y$, where $x \\neq 1$ and $y \\neq 1$, the equations $\\log_2{x} = \\log_y{16}$ and $xy = 64$ hold. Find the value of $(\\log_2{\\frac{x}{y}})^2$. The final answer is $20$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.728788435459137,
+        "symbolic_score": 0.3
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x y log_x log_y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"(log 2 (x / y))^2 = 20\"",
+        "formal solution": "(* ### Problem\n Positive real numbers $x \\neq 1$ and $y \\neq 1$ satisfy $\\log_2{x} = \\log_y{16}$ and $xy = 64$. What is $(\\log_2{\\tfrac{x}{y}})^2$?\n\n$\\textbf{(A) } \\frac{25}{2} \\qquad\\textbf{(B) } 20 \\qquad\\textbf{(C) } \\frac{45}{2} \\qquad\\textbf{(D) } 25 \\qquad\\textbf{(E) } 32$ Show that it is \\textbf{(B) } 20.\n ### Proof\n Let $\\log_2{x} = \\log_y{16}=k$, so that $2^k=x$ and $y^k=16 \\implies y=2^{\\frac{4}{k}}$. Then we have $(2^k)(2^{\\frac{4}{k}})=2^{k+\\frac{4}{k}}=2^6$.\n\nWe therefore have $k+\\frac{4}{k}=6$, and deduce $k^2-6k+4=0$. The solutions to this are $k = 3 \\pm \\sqrt{5}$. \n\nTo solve the problem, we now find \n$\\begin{align*}\n(\\log_2\\tfrac{x}{y})^2&=(\\log_2 x - \\log_2 y)^2\\\\\n&=(k-\\tfrac{4}{k})^2=(3 \\pm \\sqrt{5} - \\tfrac{4}{3 \\pm \\sqrt{5}})^2 \\\\\n&= (3 \\pm \\sqrt{5} - [3 \\mp \\sqrt{5}])^2\\\\\n&= (3 \\pm \\sqrt{5} - 3 \\pm \\sqrt{5})^2\\\\\n&=(\\pm 2\\sqrt{5})^2 \\\\\n&= \\textbf{(B) } 20. \\\\\n\\end{align*}$\n~Edits by BakedPotato66\n *)\n\ntheorem\nfixes x y log_x log_y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"(log 2 (x / y))^2 = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x > 0$, $y > 0$, $x \\neq 1$, and $y \\neq 1$, with the conditions $\\log_2{x} = \\log_y{16}$ and $xy = 64$, find the value of $(\\log_2{\\frac{x}{y}})^2$. The final answer is $20$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9922376871109009,
+        "symbolic_score": 0.3
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"((log 2 (x / y)) powr 2) = 20\"",
+        "formal solution": "(* ### Problem\n Positive real numbers $x \\neq 1$ and $y \\neq 1$ satisfy $\\log_2{x} = \\log_y{16}$ and $xy = 64$. What is $(\\log_2{\\tfrac{x}{y}})^2$?\n\n$\\textbf{(A) } \\frac{25}{2} \\qquad\\textbf{(B) } 20 \\qquad\\textbf{(C) } \\frac{45}{2} \\qquad\\textbf{(D) } 25 \\qquad\\textbf{(E) } 32$ Show that it is \\textbf{(B) } 20.\n ### Proof\n Let $\\log_2{x} = \\log_y{16}=k$, so that $2^k=x$ and $y^k=16 \\implies y=2^{\\frac{4}{k}}$. Then we have $(2^k)(2^{\\frac{4}{k}})=2^{k+\\frac{4}{k}}=2^6$.\n\nWe therefore have $k+\\frac{4}{k}=6$, and deduce $k^2-6k+4=0$. The solutions to this are $k = 3 \\pm \\sqrt{5}$. \n\nTo solve the problem, we now find \n$\\begin{align*}\n(\\log_2\\tfrac{x}{y})^2&=(\\log_2 x - \\log_2 y)^2\\\\\n&=(k-\\tfrac{4}{k})^2=(3 \\pm \\sqrt{5} - \\tfrac{4}{3 \\pm \\sqrt{5}})^2 \\\\\n&= (3 \\pm \\sqrt{5} - [3 \\mp \\sqrt{5}])^2\\\\\n&= (3 \\pm \\sqrt{5} - 3 \\pm \\sqrt{5})^2\\\\\n&=(\\pm 2\\sqrt{5})^2 \\\\\n&= \\textbf{(B) } 20. \\\\\n\\end{align*}$\n~Edits by BakedPotato66\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"((log 2 (x / y)) powr 2) = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given two positive real numbers $x$ and $y$ such that $x \\neq 1$, $y \\neq 1$, $\\log_2{x} = \\log_y{16}$, and $x \\cdot y = 64$, find the value of $(\\log_2{\\frac{x}{y}})^2$. The final answer is $20$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8948736786842346,
+        "symbolic_score": 0.6
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"(log 2 (x / y)) powr 2 = 20\"",
+        "formal solution": "(* ### Problem\n Positive real numbers $x \\neq 1$ and $y \\neq 1$ satisfy $\\log_2{x} = \\log_y{16}$ and $xy = 64$. What is $(\\log_2{\\tfrac{x}{y}})^2$?\n\n$\\textbf{(A) } \\frac{25}{2} \\qquad\\textbf{(B) } 20 \\qquad\\textbf{(C) } \\frac{45}{2} \\qquad\\textbf{(D) } 25 \\qquad\\textbf{(E) } 32$ Show that it is \\textbf{(B) } 20.\n ### Proof\n Let $\\log_2{x} = \\log_y{16}=k$, so that $2^k=x$ and $y^k=16 \\implies y=2^{\\frac{4}{k}}$. Then we have $(2^k)(2^{\\frac{4}{k}})=2^{k+\\frac{4}{k}}=2^6$.\n\nWe therefore have $k+\\frac{4}{k}=6$, and deduce $k^2-6k+4=0$. The solutions to this are $k = 3 \\pm \\sqrt{5}$. \n\nTo solve the problem, we now find \n$\\begin{align*}\n(\\log_2\\tfrac{x}{y})^2&=(\\log_2 x - \\log_2 y)^2\\\\\n&=(k-\\tfrac{4}{k})^2=(3 \\pm \\sqrt{5} - \\tfrac{4}{3 \\pm \\sqrt{5}})^2 \\\\\n&= (3 \\pm \\sqrt{5} - [3 \\mp \\sqrt{5}])^2\\\\\n&= (3 \\pm \\sqrt{5} - 3 \\pm \\sqrt{5})^2\\\\\n&=(\\pm 2\\sqrt{5})^2 \\\\\n&= \\textbf{(B) } 20. \\\\\n\\end{align*}$\n~Edits by BakedPotato66\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x > 0\"\nand h1 : \"y > 0\"\nand h2 : \"x \\<noteq> 1\"\nand h3 : \"y \\<noteq> 1\"\nand h4 : \"log 2 x = log y 16\"\nand h5 : \"x * y = 64\"\nshows  \"(log 2 (x / y)) powr 2 = 20\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $x > 0$, $y > 0$, $x \\neq 1$, and $y \\neq 1$, such that $\\log_2{x} = \\log_y{16}$ and $xy = 64$, find the value of $(\\log_2{\\frac{x}{y}})^2$. The final answer is $20$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9602810144424438,
+        "symbolic_score": 0.6
+    },
+    "oracle": "theorem\nfixes x y :: real\nassumes \"x \\<noteq> 1 \\<and> y \\<noteq> 1\"\nand \"ln x / ln 2 = ln 16 / ln y\"\nand \"x * y = 64\"\nshows \"(ln (x / y) / ln 2)^2 = 20\"",
+    "prediction": {
+        "0": [
+            0,
+            2,
+            3,
+            4,
+            8,
+            9
+        ],
+        "1": [
+            5,
+            6,
+            7
+        ],
+        "2": [
+            1
+        ]
+    },
+    "equivalence_oracle": [
+        5,
+        6,
+        7
+    ]
+}

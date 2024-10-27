@@ -1,0 +1,544 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes n segments :: nat\nassumes h0 : \"segments = (\\<lambda> n. 3 * n + 2 * (\\<Sum>i=0..n-1. i))\"\nand h1 : \"n = 25\"\nshows  \"segments n = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n segments :: nat\nassumes h0 : \"segments = (\\<lambda> n. 3 * n + 2 * (\\<Sum>i=0..n-1. i))\"\nand h1 : \"n = 25\"\nshows  \"segments n = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the expression $3n + 2\\sum_{i=0}^{n-1} i$ when $n = 25$. The final answer is 51.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.6824077367782593,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n congruent_segments :: nat\nassumes h0 : \"congruent_segments = (\\<lambda>n. n * (n + 1) div 2)\"\nand h1 : \"n = 25\"\nshows  \"congruent_segments n = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n congruent_segments :: nat\nassumes h0 : \"congruent_segments = (\\<lambda>n. n * (n + 1) div 2)\"\nand h1 : \"n = 25\"\nshows  \"congruent_segments n = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If there are 25 congruent line segments, find the total number of segments when they are arranged in a triangular pattern. The final answer is 51.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.5952433347702026,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 3\"\nand h1 : \"\\<forall> n. n \\<ge> 2 \\<longrightarrow> f n = f (n-1) + 2\"\nshows  \"f 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 3\"\nand h1 : \"\\<forall> n. n \\<ge> 2 \\<longrightarrow> f n = f (n-1) + 2\"\nshows  \"f 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively by $f(1)=3$ and $f(n)=f(n-1)+2$ for all natural numbers $n \\geq 2$. What is the value of $f(25)$? The final answer is 51.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.33522829413414,
+        "symbolic_score": 0.4
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes num_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"num_segments 1 = 3\"\nand h1 : \"num_segments 2 = 5\"\nand h2 : \"\\<forall> n. n \\<ge> 3 \\<longrightarrow> num_segments n = num_segments (n - 1) + 2\"\nshows  \"num_segments 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes num_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"num_segments 1 = 3\"\nand h1 : \"num_segments 2 = 5\"\nand h2 : \"\\<forall> n. n \\<ge> 3 \\<longrightarrow> num_segments n = num_segments (n - 1) + 2\"\nshows  \"num_segments 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of numbers is defined such that the first number is 3, the second number is 5, and from the third number onwards, each number is the sum of the previous number and 2. What is the 25th number in the sequence? The final answer is 51.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.18831311166286469,
+        "symbolic_score": 0.4
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes figure_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"figure_segments 1 = 3\"\nand h1 : \"figure_segments 2 = 5\"\nand h2 : \"\\<forall> n. n \\<ge> 3 \\<longrightarrow> figure_segments n = figure_segments (n - 1) + 2\"\nshows  \"figure_segments 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes figure_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"figure_segments 1 = 3\"\nand h1 : \"figure_segments 2 = 5\"\nand h2 : \"\\<forall> n. n \\<ge> 3 \\<longrightarrow> figure_segments n = figure_segments (n - 1) + 2\"\nshows  \"figure_segments 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of figures is created such that the first figure has 3 segments, the second figure has 5 segments, and each subsequent figure has 2 more segments than the previous figure. What is the number of segments in the 25th figure? The final answer is 51.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.2786344289779663,
+        "symbolic_score": 0.4
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 25\"\nshows  \"segments n = 51\"\n  where \"segments k = (k * (k + 1) div 2) + 1\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 25\"\nshows  \"segments n = 51\"\n  where \"segments k = (k * (k + 1) div 2) + 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a pattern where the number of segments is given by the formula $segments(k) = \\frac{k(k + 1)}{2} + 1$. If $n = 25$, find the number of segments when $k = n$. The final answer is 51.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.4127446413040161,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes n :: nat and num_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"num_segments 1 = 3\"\nand h1 : \"num_segments 2 = 5\"\nand h2 : \"num_segments 3 = 7\"\nand h3 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> num_segments n = 2 * n + 1\"\nshows  \"num_segments 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat and num_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"num_segments 1 = 3\"\nand h1 : \"num_segments 2 = 5\"\nand h2 : \"num_segments 3 = 7\"\nand h3 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> num_segments n = 2 * n + 1\"\nshows  \"num_segments 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence where the number of segments for each term is represented by the function $num\\_segments(n)$. The first three terms of the sequence are given by $num\\_segments(1) = 3$, $num\\_segments(2) = 5$, and $num\\_segments(3) = 7$. The general formula for the sequence is given by $num\\_segments(n) = 2n + 1$ for all positive integers $n$. Find the number of segments for the 25th term of the sequence. The final answer is 51.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.189003586769104,
+        "symbolic_score": 0.4
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes n :: nat and num_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"num_segments 1 = 3\"\nand h1 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> num_segments (n + 1) = num_segments n + 2 * n + 1\"\nshows  \"num_segments 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat and num_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"num_segments 1 = 3\"\nand h1 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> num_segments (n + 1) = num_segments n + 2 * n + 1\"\nshows  \"num_segments 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of natural numbers is defined by the following rules: $num\\_segments(1) = 3$ and for every $n \\geq 1$, $num\\_segments(n+1) = num\\_segments(n) + 2n + 1$. Find the value of $num\\_segments(25)$. The final answer is 51.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.14152008295059204,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes n segments :: nat\nassumes h0 : \"segments = (\\<Sum>i=1..n. 2*i-1)\"\nand h1 : \"n = 25\"\nshows  \"segments = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n segments :: nat\nassumes h0 : \"segments = (\\<Sum>i=1..n. 2*i-1)\"\nand h1 : \"n = 25\"\nshows  \"segments = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the first 25 odd integers. The final answer is 51.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7729330062866211,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: nat and congruent_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"congruent_segments 1 = 3\"\nand h1 : \"\\<forall> n. congruent_segments (n+1) = congruent_segments n + n + 2\"\nshows  \"congruent_segments 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat and congruent_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"congruent_segments 1 = 3\"\nand h1 : \"\\<forall> n. congruent_segments (n+1) = congruent_segments n + n + 2\"\nshows  \"congruent_segments 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of numbers is defined recursively as follows: the first term is 3, and each subsequent term is found by adding the previous term, the index of the previous term, and 2. What is the 25th term of the sequence? The final answer is 51.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.17756570875644684,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "51",
+    "natural problem": "Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy]",
+    "natural solution": [
+        "It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments."
+    ],
+    "oracle": "no image",
+    "prediction": {
+        "0": [
+            2,
+            3,
+            4,
+            6
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            5
+        ],
+        "4": [
+            7
+        ],
+        "5": [
+            8
+        ],
+        "6": [
+            9
+        ]
+    },
+    "level": "Level 2",
+    "type": "Counting & Probability",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2 * i - 1)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. 2 * i - 1)\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2 * i - 1)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. 2 * i - 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If we know that n is a natural number greater than or equal to 1, and if n equals 3, then the sum of the series from i=1 to n, where each term is 2i - 1, equals 7. We are asked to show that if n equals 25, then the sum of the same series equals 51.",
+        "syntax": 1,
+        "semantic_score": 0.8815117911430921,
+        "symbolic_score": 0.3
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nand h2 : \"n = 25 \\<longrightarrow> x = (\\<Sum>i=1..n. i)\"\nshows \"x = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nand h2 : \"n = 25 \\<longrightarrow> x = (\\<Sum>i=1..n. i)\"\nshows \"x = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that there is a theorem with a natural number variable n, which is greater than or equal to 1. The theorem includes two implications: if n equals 3, then the sum of the integers from 1 to n equals 7; and if n equals 25, then a variable x equals the sum of the integers from 1 to n. The conclusion of the theorem is that x equals 51.\n\nIn natural language, the problem can be stated as follows:\n\nConsider a natural number n that is at least 1. If n is 3, then the sum of the integers from 1 to 3 is 7. If n is 25, then a certain value x is equal to the sum of the integers from 1 to 25. Based on these conditions, we need to determine the value of x, which is given to be 51.",
+        "syntax": 1,
+        "semantic_score": 0.9272472593898037,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> (\\<Sum>i=1..n. i) = (n * (n + 1)) div 2\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. i)\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> (\\<Sum>i=1..n. i) = (n * (n + 1)) div 2\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. i)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If we have a natural number n that is greater than or equal to 1, and we know that when n equals 3, the sum of all integers from 1 to n is 7, and for any natural number n greater than or equal to 1, the sum of all integers from 1 to n is equal to (n * (n + 1)) divided by 2, then we can conclude that if n equals 25, the sum of all integers from 1 to n will be 51.",
+        "syntax": 1,
+        "semantic_score": 0.8380177507605984,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2*i - 1)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. 2*i - 1)\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2*i - 1)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. 2*i - 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If n is a natural number greater than or equal to 3, and it is true that when n equals 3, the sum of the series from 1 to n where each term is 2i - 1 equals 7, then it must also be true that when n equals 25, the sum of the series from 1 to n where each term is 2i - 1 equals 51.",
+        "syntax": 1,
+        "semantic_score": 0.728692691011646,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2*i-1)\"\nshows \"n = 25 \\<longrightarrow> (\\<Sum>i=1..n. 2*i-1) = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2*i-1)\"\nshows \"n = 25 \\<longrightarrow> (\\<Sum>i=1..n. 2*i-1) = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If n is a natural number greater than or equal to 1, and if n equals 3, then the sum of the series from 1 to n where each term is (2*i - 1) equals 7. Show that if n equals 25, then the sum of the same series from 1 to n equals 51.",
+        "syntax": 1,
+        "semantic_score": 0.8276988012915405,
+        "symbolic_score": 0.3
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"Figure n = 2 * (n - 1) + 1\"\nshows \"Figure 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"Figure n = 2 * (n - 1) + 1\"\nshows \"Figure 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number n that is greater than or equal to 3, and a function \"Figure\" defined as Figure(n) = 2 * (n - 1) + 1, find the value of Figure(25). The final answer is 51.",
+        "syntax": 1,
+        "semantic_score": 0.3852866825369491,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum> i = 1..n. i)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum> i = 1..n. i)\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum> i = 1..n. i)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum> i = 1..n. i)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If n is a natural number greater than or equal to 1, and it is true that if n equals 3, then the sum of all integers from 1 to n equals 7, then it must also be true that if n equals 25, then the sum of all integers from 1 to n equals 51.",
+        "syntax": 1,
+        "semantic_score": 0.7284688029062248,
+        "symbolic_score": 0.2
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> (\\<Sum>i=1..n. i) = n * (n + 1) div 2\"\nshows \"n = 25 \\<longrightarrow> (\\<Sum>i=1..n. i) = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> (\\<Sum>i=1..n. i) = n * (n + 1) div 2\"\nshows \"n = 25 \\<longrightarrow> (\\<Sum>i=1..n. i) = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If n is a natural number greater than or equal to 1, and if n equals 3, then the sum of the integers from 1 to n is 7. Furthermore, for any natural number n greater than or equal to 1, the sum of the integers from 1 to n is equal to n times (n + 1) divided by 2. Show that if n equals 25, then the sum of the integers from 1 to n is 51.",
+        "syntax": 1,
+        "semantic_score": 0.8861646345741204,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. i)\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. i)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If the natural number n is greater than or equal to 1, and if n equals 3, then the sum of the numbers from 1 to n equals 7. Prove that if n equals 25, then the sum of the numbers from 1 to n equals 51.",
+        "syntax": 1,
+        "semantic_score": 0.9041360502015799,
+        "symbolic_score": 0.2
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2*i - 1)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. 2*i - 1)\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2*i - 1)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. 2*i - 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If we know that n is a natural number greater than or equal to 1, and if n equals 3, then the sum of the series from 1 to n where each term is 2i - 1 equals 7. Show that if n equals 25, then the sum of the series from 1 to n where each term is 2i - 1 equals 51.",
+        "syntax": 1,
+        "semantic_score": 0.900337041358303,
+        "symbolic_score": 0.3
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> sqrt(3) * n = 2 ^ (n+1) / 2\"\nand h1 : \"n = 25\"\nshows \"7 * 2^n = 51 * 2^(n-3)\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n > 0 \\<longrightarrow> sqrt(3) * n = 2 ^ (n+1) / 2\"\nand h1 : \"n = 25\"\nshows \"7 * 2^n = 51 * 2^(n-3)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $n$ is a positive integer such that $\\sqrt{3} \\cdot n = \\frac{2^{n+1}}{2}$, and $n=25$, what is the value of $7 \\cdot 2^n$ in terms of $2^{n-3}$? The final answer is $51 \\cdot 2^{n-3}$.\"",
+        "syntax": 1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"2^(n - 3) * 7 = x\"\nand h2 : \"2^(25 - 3) * 7 = y\"\nshows \"y = 51 * x\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"2^(n - 3) * 7 = x\"\nand h2 : \"2^(25 - 3) * 7 = y\"\nshows \"y = 51 * x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $n$ is a natural number greater than or equal to $3$, and $x$ is equal to $2^{n-3}\\cdot 7$, and $y$ is equal to $2^{22}\\cdot 7$, then find whether $y$ is equal to $51$ times $x$.",
+        "syntax": 1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"2^n - 1 = 3k\"\nand h2 : \"2^{n-1} - 1 = m\"\nshows \"k = 2^m\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"2^n - 1 = 3k\"\nand h2 : \"2^{n-1} - 1 = m\"\nshows \"k = 2^m\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $n$ is a natural number greater than or equal to $3$ and $2^n - 1$ is divisible by $3$, and if $2^{n-1} - 1$ equals $m$, then $k$ equals $2^m$.\"",
+        "syntax": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes n s :: nat\nassumes h0 : \"s = 7\"\nand h1 : \"\\<forall> n. n \\<ge> 3 \\<longrightarrow> s(n) = s(n-1) + 3 * (n - 2)\"\nand h2 : \"s 3 = 7\"\nand h3 : \"s 25 = n * (n-1) div 2\"\nand h4 : \"n > 0\"\nshows \"n = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n s :: nat\nassumes h0 : \"s = 7\"\nand h1 : \"\\<forall> n. n \\<ge> 3 \\<longrightarrow> s(n) = s(n-1) + 3 * (n - 2)\"\nand h2 : \"s 3 = 7\"\nand h3 : \"s 25 = n * (n-1) div 2\"\nand h4 : \"n > 0\"\nshows \"n = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a sequence $s$ is defined recursively by $s_3 = 7$, and for all $n \\geq 3$, $s_n = s_{n-1} + 3(n-2)$, then the $25$th term of the sequence is equal to $n(n-1)/2$. If $n$ is a positive integer, what is the value of $n$? The final answer is $51$.",
+        "syntax": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> n * (n + 2) = 2 * (Suc n choose 3)\"\nand h1 : \"n = 3 \\<longrightarrow> 7 * x = y\"\nand h2 : \"n = 25 \\<longrightarrow> y = z\"\nshows \"z = 51 * x\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> n * (n + 2) = 2 * (Suc n choose 3)\"\nand h1 : \"n = 3 \\<longrightarrow> 7 * x = y\"\nand h2 : \"n = 25 \\<longrightarrow> y = z\"\nshows \"z = 51 * x\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $n$ is a natural number such that $n(n+2) = 2 \\binom{n+1}{3}$ for all $n \\geq 1$, and $n=3$ implies $7x=y$, and $n=25$ implies $y=z$, find $z$ in terms of $x$. The final answer is $51x$.\"",
+        "syntax": 1
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"\\<forall> k. k \\<ge> 1 \\<longrightarrow> k \\<le> n - 2 \\<longrightarrow> f (Suc k) = 2 * f k + 1\"\nand h2 : \"f 1 = 2\"\nand h3 : \"f 2 = 4\"\nand h4 : \"f (n - 1) = 2 ^ {n - 1} + 1\"\nshows \"f n = 2 ^ n - 1\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"\\<forall> k. k \\<ge> 1 \\<longrightarrow> k \\<le> n - 2 \\<longrightarrow> f (Suc k) = 2 * f k + 1\"\nand h2 : \"f 1 = 2\"\nand h3 : \"f 2 = 4\"\nand h4 : \"f (n - 1) = 2 ^ {n - 1} + 1\"\nshows \"f n = 2 ^ n - 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ defined for natural numbers, where $f(1)=2$ and $f(2)=4$, and for all $k \\geq 1$ and $1 \\leq k \\leq n-2$, $f(Suc(k))=2f(k)+1$. If $n \\geq 3$ and $f(n-1)=2^{n-1}+1$, find $f(n)$. The final answer is $2^n-1$.",
+        "syntax": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"n + 2 = 25\"\nand h2 : \"\\<forall> i. i > 0 \\<longrightarrow> (i + 2)\\<^sup>2 = i\\<^sup>2 + n\\<^sup>2\"\nshows \"n = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n > 0\"\nand h1 : \"n + 2 = 25\"\nand h2 : \"\\<forall> i. i > 0 \\<longrightarrow> (i + 2)\\<^sup>2 = i\\<^sup>2 + n\\<^sup>2\"\nshows \"n = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find a positive integer $n$ such that $n+2=25$ and for all positive integers $i$, $(i+2)^2 = i^2 + n^2$. The final answer is $n=51$.",
+        "syntax": 1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"((n-2) choose 2) + n-2 + 1 = 7\"\nand h2 : \"\\<forall>k. k < n \\<longrightarrow> ((n-1) choose 2) + n-1 - k = ((k-1) choose 2) + k\"\nshows \"((25-2) choose 2) + 25-2 + 1 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"((n-2) choose 2) + n-2 + 1 = 7\"\nand h2 : \"\\<forall>k. k < n \\<longrightarrow> ((n-1) choose 2) + n-1 - k = ((k-1) choose 2) + k\"\nshows \"((25-2) choose 2) + 25-2 + 1 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose there are $n$ people at a party, where $n$ is at least $3$. We know that $1$ plus the sum of $(n-2)$ and $\\binom{n-2}{2}$ equals $7$. Furthermore, for any $k$ less than $n$, the sum of $(n-1)$ and $\\binom{n-1}{2}$, minus $k$, equals the sum of $k$ and $\\binom{k-1}{2}$. What is the value of $\\binom{23}{2} + 23 - 1$? The final answer is $51$.",
+        "syntax": 1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"((n - 2) * (n - 1)) div 2 + 1 = 7\"\nand h2 : \"((24 - 2) * (24 - 1)) div 2 + 1 = k\"\nshows \"k = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"((n - 2) * (n - 1)) div 2 + 1 = 7\"\nand h2 : \"((24 - 2) * (24 - 1)) div 2 + 1 = k\"\nshows \"k = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If the sum of the first $n$ positive integers, minus the sum of the first two positive integers, is $7$, and if the sum of the first $24$ positive integers, minus the sum of the first two positive integers, is $k$, what is the value of $k$? The final answer is $51$.\"",
+        "syntax": 1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"sum_list [0..<n] = 0 + 1 + 2 + ... + (n - 1) = (n - 1) * n div 2\"\nand h2 : \"\\<forall> i \\<in> {1..<n}. (i * (i + 1)) div 2 = i + sum_list [0..<i]\"\nand h3 : \"n = 25\"\nshows \"sum_list [0..<n] + 1 = 51 * 7\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"sum_list [0..<n] = 0 + 1 + 2 + ... + (n - 1) = (n - 1) * n div 2\"\nand h2 : \"\\<forall> i \\<in> {1..<n}. (i * (i + 1)) div 2 = i + sum_list [0..<i]\"\nand h3 : \"n = 25\"\nshows \"sum_list [0..<n] + 1 = 51 * 7\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a list of numbers from $0$ to $24$, inclusive. Find the sum of this list plus $1$. The final answer is $51 \\cdot 7$.",
+        "syntax": 0
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            9,
+            4
+        ],
+        "1": [
+            8,
+            6
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            7
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes n segments :: nat\nassumes h0 : \"segments = (\\<lambda> n. 3 * n + 2 * (\\<Sum>i=0..n-1. i))\"\nand h1 : \"n = 25\"\nshows  \"segments n = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n segments :: nat\nassumes h0 : \"segments = (\\<lambda> n. 3 * n + 2 * (\\<Sum>i=0..n-1. i))\"\nand h1 : \"n = 25\"\nshows  \"segments n = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the expression $3n + 2\\sum_{i=0}^{n-1} i$ when $n = 25$. The final answer is 51.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7717503304419546,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes n congruent_segments :: nat\nassumes h0 : \"congruent_segments = (\\<lambda>n. n * (n + 1) div 2)\"\nand h1 : \"n = 25\"\nshows  \"congruent_segments n = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n congruent_segments :: nat\nassumes h0 : \"congruent_segments = (\\<lambda>n. n * (n + 1) div 2)\"\nand h1 : \"n = 25\"\nshows  \"congruent_segments n = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If there are 25 congruent line segments, find the total number of segments when they are arranged in a triangular pattern. The final answer is 51.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8757213977166706,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 3\"\nand h1 : \"\\<forall> n. n \\<ge> 2 \\<longrightarrow> f n = f (n-1) + 2\"\nshows  \"f 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 1 = 3\"\nand h1 : \"\\<forall> n. n \\<ge> 2 \\<longrightarrow> f n = f (n-1) + 2\"\nshows  \"f 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined recursively by $f(1)=3$ and $f(n)=f(n-1)+2$ for all natural numbers $n \\geq 2$. What is the value of $f(25)$? The final answer is 51.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.7509499074310643,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes num_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"num_segments 1 = 3\"\nand h1 : \"num_segments 2 = 5\"\nand h2 : \"\\<forall> n. n \\<ge> 3 \\<longrightarrow> num_segments n = num_segments (n - 1) + 2\"\nshows  \"num_segments 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes num_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"num_segments 1 = 3\"\nand h1 : \"num_segments 2 = 5\"\nand h2 : \"\\<forall> n. n \\<ge> 3 \\<longrightarrow> num_segments n = num_segments (n - 1) + 2\"\nshows  \"num_segments 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of numbers is defined such that the first number is 3, the second number is 5, and from the third number onwards, each number is the sum of the previous number and 2. What is the 25th number in the sequence? The final answer is 51.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.7892673047430019,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes figure_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"figure_segments 1 = 3\"\nand h1 : \"figure_segments 2 = 5\"\nand h2 : \"\\<forall> n. n \\<ge> 3 \\<longrightarrow> figure_segments n = figure_segments (n - 1) + 2\"\nshows  \"figure_segments 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes figure_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"figure_segments 1 = 3\"\nand h1 : \"figure_segments 2 = 5\"\nand h2 : \"\\<forall> n. n \\<ge> 3 \\<longrightarrow> figure_segments n = figure_segments (n - 1) + 2\"\nshows  \"figure_segments 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of figures is created such that the first figure has 3 segments, the second figure has 5 segments, and each subsequent figure has 2 more segments than the previous figure. What is the number of segments in the 25th figure? The final answer is 51.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.8783002941377354,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n = 25\"\nshows  \"segments n = 51\"\n  where \"segments k = (k * (k + 1) div 2) + 1\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n = 25\"\nshows  \"segments n = 51\"\n  where \"segments k = (k * (k + 1) div 2) + 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a pattern where the number of segments is given by the formula $segments(k) = \\frac{k(k + 1)}{2} + 1$. If $n = 25$, find the number of segments when $k = n$. The final answer is 51.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8563989196295665,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and num_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"num_segments 1 = 3\"\nand h1 : \"num_segments 2 = 5\"\nand h2 : \"num_segments 3 = 7\"\nand h3 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> num_segments n = 2 * n + 1\"\nshows  \"num_segments 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat and num_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"num_segments 1 = 3\"\nand h1 : \"num_segments 2 = 5\"\nand h2 : \"num_segments 3 = 7\"\nand h3 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> num_segments n = 2 * n + 1\"\nshows  \"num_segments 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence where the number of segments for each term is represented by the function $num\\_segments(n)$. The first three terms of the sequence are given by $num\\_segments(1) = 3$, $num\\_segments(2) = 5$, and $num\\_segments(3) = 7$. The general formula for the sequence is given by $num\\_segments(n) = 2n + 1$ for all positive integers $n$. Find the number of segments for the 25th term of the sequence. The final answer is 51.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.8562545969550696,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and num_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"num_segments 1 = 3\"\nand h1 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> num_segments (n + 1) = num_segments n + 2 * n + 1\"\nshows  \"num_segments 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat and num_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"num_segments 1 = 3\"\nand h1 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> num_segments (n + 1) = num_segments n + 2 * n + 1\"\nshows  \"num_segments 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of natural numbers is defined by the following rules: $num\\_segments(1) = 3$ and for every $n \\geq 1$, $num\\_segments(n+1) = num\\_segments(n) + 2n + 1$. Find the value of $num\\_segments(25)$. The final answer is 51.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8569951439394904,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes n segments :: nat\nassumes h0 : \"segments = (\\<Sum>i=1..n. 2*i-1)\"\nand h1 : \"n = 25\"\nshows  \"segments = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n segments :: nat\nassumes h0 : \"segments = (\\<Sum>i=1..n. 2*i-1)\"\nand h1 : \"n = 25\"\nshows  \"segments = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the first 25 odd integers. The final answer is 51.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7487652779576736,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat and congruent_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"congruent_segments 1 = 3\"\nand h1 : \"\\<forall> n. congruent_segments (n+1) = congruent_segments n + n + 2\"\nshows  \"congruent_segments 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is 51\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat and congruent_segments :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"congruent_segments 1 = 3\"\nand h1 : \"\\<forall> n. congruent_segments (n+1) = congruent_segments n + n + 2\"\nshows  \"congruent_segments 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence of numbers is defined recursively as follows: the first term is 3, and each subsequent term is found by adding the previous term, the index of the previous term, and 2. What is the 25th term of the sequence? The final answer is 51.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7732158488922093,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2 * i - 1)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. 2 * i - 1)\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2 * i - 1)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. 2 * i - 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If we know that n is a natural number greater than or equal to 1, and if n equals 3, then the sum of the series from i=1 to n, where each term is 2i - 1, equals 7. We are asked to show that if n equals 25, then the sum of the same series equals 51.",
+        "syntax": 1,
+        "semantic_score": 0.7652137730096884,
+        "symbolic_score": 0.2
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nand h2 : \"n = 25 \\<longrightarrow> x = (\\<Sum>i=1..n. i)\"\nshows \"x = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nand h2 : \"n = 25 \\<longrightarrow> x = (\\<Sum>i=1..n. i)\"\nshows \"x = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " The Isabelle version states that there is a theorem with a natural number variable n, which is greater than or equal to 1. The theorem includes two implications: if n equals 3, then the sum of the integers from 1 to n equals 7; and if n equals 25, then a variable x equals the sum of the integers from 1 to n. The conclusion of the theorem is that x equals 51.\n\nIn natural language, the problem can be stated as follows:\n\nConsider a natural number n that is at least 1. If n is 3, then the sum of the integers from 1 to 3 is 7. If n is 25, then a certain value x is equal to the sum of the integers from 1 to 25. Based on these conditions, we need to determine the value of x, which is given to be 51.",
+        "syntax": 1,
+        "semantic_score": 0.7125333841919054,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> (\\<Sum>i=1..n. i) = (n * (n + 1)) div 2\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. i)\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> (\\<Sum>i=1..n. i) = (n * (n + 1)) div 2\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. i)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If we have a natural number n that is greater than or equal to 1, and we know that when n equals 3, the sum of all integers from 1 to n is 7, and for any natural number n greater than or equal to 1, the sum of all integers from 1 to n is equal to (n * (n + 1)) divided by 2, then we can conclude that if n equals 25, the sum of all integers from 1 to n will be 51.",
+        "syntax": 1,
+        "semantic_score": 0.7472810109317982,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2*i - 1)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. 2*i - 1)\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2*i - 1)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. 2*i - 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If n is a natural number greater than or equal to 3, and it is true that when n equals 3, the sum of the series from 1 to n where each term is 2i - 1 equals 7, then it must also be true that when n equals 25, the sum of the series from 1 to n where each term is 2i - 1 equals 51.",
+        "syntax": 1,
+        "semantic_score": 0.7640735878450142,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2*i-1)\"\nshows \"n = 25 \\<longrightarrow> (\\<Sum>i=1..n. 2*i-1) = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2*i-1)\"\nshows \"n = 25 \\<longrightarrow> (\\<Sum>i=1..n. 2*i-1) = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If n is a natural number greater than or equal to 1, and if n equals 3, then the sum of the series from 1 to n where each term is (2*i - 1) equals 7. Show that if n equals 25, then the sum of the same series from 1 to n equals 51.",
+        "syntax": 1,
+        "semantic_score": 0.7617286856709601,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"Figure n = 2 * (n - 1) + 1\"\nshows \"Figure 25 = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 3\"\nand h1 : \"Figure n = 2 * (n - 1) + 1\"\nshows \"Figure 25 = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a natural number n that is greater than or equal to 3, and a function \"Figure\" defined as Figure(n) = 2 * (n - 1) + 1, find the value of Figure(25). The final answer is 51.",
+        "syntax": 1,
+        "semantic_score": 0.7675248578883416,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum> i = 1..n. i)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum> i = 1..n. i)\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum> i = 1..n. i)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum> i = 1..n. i)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If n is a natural number greater than or equal to 1, and it is true that if n equals 3, then the sum of all integers from 1 to n equals 7, then it must also be true that if n equals 25, then the sum of all integers from 1 to n equals 51.",
+        "syntax": 1,
+        "semantic_score": 0.7374912661334169,
+        "symbolic_score": 0.2
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> (\\<Sum>i=1..n. i) = n * (n + 1) div 2\"\nshows \"n = 25 \\<longrightarrow> (\\<Sum>i=1..n. i) = 51\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nand h2 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> (\\<Sum>i=1..n. i) = n * (n + 1) div 2\"\nshows \"n = 25 \\<longrightarrow> (\\<Sum>i=1..n. i) = 51\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If n is a natural number greater than or equal to 1, and if n equals 3, then the sum of the integers from 1 to n is 7. Furthermore, for any natural number n greater than or equal to 1, the sum of the integers from 1 to n is equal to n times (n + 1) divided by 2. Show that if n equals 25, then the sum of the integers from 1 to n is 51.",
+        "syntax": 1,
+        "semantic_score": 0.7270194344554747,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. i)\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. i)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. i)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If the natural number n is greater than or equal to 1, and if n equals 3, then the sum of the numbers from 1 to n equals 7. Prove that if n equals 25, then the sum of the numbers from 1 to n equals 51.",
+        "syntax": 1,
+        "semantic_score": 0.7372011800083903,
+        "symbolic_score": 0.2
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2*i - 1)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. 2*i - 1)\"",
+        "formal solution": "(* ### Problem\n Congruent segments are used to form equilateral triangles in this sequence so that each figure contains one more triangle than the preceding figure. Figure 3 of the sequence is made with seven congruent segments. How many congruent segments must be used to make Figure 25 of the sequence?\n\n[asy]\ndraw((0,0)--(10,0)--(5,8.7)--cycle);\ndraw((15,0)--(25,0)--(30,8.7)--(20,8.7)--cycle);\ndraw((20,8.7)--(25,0));\ndraw((35,0)--(55,0)--(50,8.7)--(40,8.7)--cycle);\ndraw((40,8.7)--(45,0)--(50,8.7));\ndraw((60,0)--(80,0)--(85,8.7)--(65,8.7)--cycle);\ndraw((65,8.7)--(70,0)--(75,8.7)--(80,0));\nlabel(\"Figure 1\",(2,0),S);\nlabel(\"Figure 2\",(20,-10),S);\nlabel(\"Figure 3\",(45,0),S);\nlabel(\"Figure 4\",(76,-10),S);\n[/asy] The final Answer is $51$\n ### Proof\n It takes 2 additional segments to create an additional triangle after the first. Since Figure $n$ has $n$ triangles, Figure 25 has 25 triangles. It takes 3 segments to create the first triangle and $2\\cdot24=48$ segments to create the 24 additional triangles, for a total of $3+48=\\boxed{51}$ segments.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"n \\<ge> 1\"\nand h1 : \"n = 3 \\<longrightarrow> 7 = (\\<Sum>i=1..n. 2*i - 1)\"\nshows \"n = 25 \\<longrightarrow> 51 = (\\<Sum>i=1..n. 2*i - 1)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " If we know that n is a natural number greater than or equal to 1, and if n equals 3, then the sum of the series from 1 to n where each term is 2i - 1 equals 7. Show that if n equals 25, then the sum of the series from 1 to n where each term is 2i - 1 equals 51.",
+        "syntax": 1,
+        "semantic_score": 0.7476792665391182,
+        "symbolic_score": 0.2
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0,
+            9
+        ],
+        "1": [
+            8,
+            6
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            4
+        ],
+        "6": [
+            5
+        ],
+        "7": [
+            7
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

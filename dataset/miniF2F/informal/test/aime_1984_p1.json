@@ -1,0 +1,124 @@
+{
+    "problem_name": "aime_1984_p1",
+    "informal_statement": "Find the value of $a_2+a_4+a_6+a_8+\\ldots+a_{98}$ if $a_1$, $a_2$, $a_3\\ldots$ is an [[arithmetic progression]] with common difference 1, and $a_1+a_2+a_3+\\ldots+a_{98}=137$. Show that it is 093.",
+    "informal_proof": "One approach to this problem is to apply the formula for the sum of an [[arithmetic series]] in order to find the value of $a_1$, then use that to calculate $a_2$ and sum another arithmetic series to get our answer.\n\nA somewhat quicker method is to do the following: for each $n \\geq 1$, we have $a_{2n - 1} = a_{2n} - 1$.  We can substitute this into our given equation to get $(a_2 - 1) + a_2 + (a_4 - 1) + a_4 + \\ldots + (a_{98} - 1) + a_{98} = 137$.  The left-hand side of this equation is simply $2(a_2 + a_4 + \\ldots + a_{98}) - 49$, so our desired value is $\\frac{137 + 49}{2} = 093$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 1 + a 2 + a 3 + ... + a 98 = 137\"\nand h1 : \"\\<forall>n. a (n + 1) = a n + 1\"\nshows  \"a 2 + a 4 + a 6 + a 8 + ... + a 98 = 93\"",
+        "formal solution": "(* ### Problem\n Find the value of $a_2+a_4+a_6+a_8+\\ldots+a_{98}$ if $a_1$, $a_2$, $a_3\\ldots$ is an [[arithmetic progression]] with common difference 1, and $a_1+a_2+a_3+\\ldots+a_{98}=137$. The final Answer is $093$\n ### Proof\n One approach to this problem is to apply the formula for the sum of an [[arithmetic series]] in order to find the value of $a_1$, then use that to calculate $a_2$ and sum another arithmetic series to get our answer.\n\nA somewhat quicker method is to do the following: for each $n \\geq 1$, we have $a_{2n - 1} = a_{2n} - 1$.  We can substitute this into our given equation to get $(a_2 - 1) + a_2 + (a_4 - 1) + a_4 + \\ldots + (a_{98} - 1) + a_{98} = 137$.  The left-hand side of this equation is simply $2(a_2 + a_4 + \\ldots + a_{98}) - 49$, so our desired value is $\\frac{137 + 49}{2} = 093$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"a 1 + a 2 + a 3 + ... + a 98 = 137\"\nand h1 : \"\\<forall>n. a (n + 1) = a n + 1\"\nshows  \"a 2 + a 4 + a 6 + a 8 + ... + a 98 = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose there is a sequence $a_n$ such that $a_{n+1} = a_n + 1$ for all natural numbers $n$. If the sum of the first 98 terms of the sequence is 137, what is the sum of the even-indexed terms from $a_2$ to $a_{98}$? The final answer is 93.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.6377888917922974,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"arith_prog a 1\"\nand h1 : \"(\\<Sum>i=1..98. a i) = 137\"\nshows  \"(\\<Sum>i=2..98. a i) = 93\"",
+        "formal solution": "(* ### Problem\n Find the value of $a_2+a_4+a_6+a_8+\\ldots+a_{98}$ if $a_1$, $a_2$, $a_3\\ldots$ is an [[arithmetic progression]] with common difference 1, and $a_1+a_2+a_3+\\ldots+a_{98}=137$. The final Answer is $093$\n ### Proof\n One approach to this problem is to apply the formula for the sum of an [[arithmetic series]] in order to find the value of $a_1$, then use that to calculate $a_2$ and sum another arithmetic series to get our answer.\n\nA somewhat quicker method is to do the following: for each $n \\geq 1$, we have $a_{2n - 1} = a_{2n} - 1$.  We can substitute this into our given equation to get $(a_2 - 1) + a_2 + (a_4 - 1) + a_4 + \\ldots + (a_{98} - 1) + a_{98} = 137$.  The left-hand side of this equation is simply $2(a_2 + a_4 + \\ldots + a_{98}) - 49$, so our desired value is $\\frac{137 + 49}{2} = 093$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"arith_prog a 1\"\nand h1 : \"(\\<Sum>i=1..98. a i) = 137\"\nshows  \"(\\<Sum>i=2..98. a i) = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given an arithmetic sequence $a$ with a common difference of $1$, if the sum of the first 98 terms is $137$, find the sum of the terms from the second term to the 98th term. The final answer is $93$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9930387735366821,
+        "symbolic_score": 0.2
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a :: \"int \\<Rightarrow> int\" and S n :: int\nassumes h0 : \"\\<forall> n. a (n + 1) = a n + 1\"\nand h1 : \"\\<forall> n. S n = (\\<Sum>i=1..n. a i)\"\nand h2 : \"S 98 = 137\"\nshows  \"(\\<Sum>i=2..98. a (2*i)) = 93\"",
+        "formal solution": "(* ### Problem\n Find the value of $a_2+a_4+a_6+a_8+\\ldots+a_{98}$ if $a_1$, $a_2$, $a_3\\ldots$ is an [[arithmetic progression]] with common difference 1, and $a_1+a_2+a_3+\\ldots+a_{98}=137$. The final Answer is $093$\n ### Proof\n One approach to this problem is to apply the formula for the sum of an [[arithmetic series]] in order to find the value of $a_1$, then use that to calculate $a_2$ and sum another arithmetic series to get our answer.\n\nA somewhat quicker method is to do the following: for each $n \\geq 1$, we have $a_{2n - 1} = a_{2n} - 1$.  We can substitute this into our given equation to get $(a_2 - 1) + a_2 + (a_4 - 1) + a_4 + \\ldots + (a_{98} - 1) + a_{98} = 137$.  The left-hand side of this equation is simply $2(a_2 + a_4 + \\ldots + a_{98}) - 49$, so our desired value is $\\frac{137 + 49}{2} = 093$.\n *)\n\ntheorem\nfixes a :: \"int \\<Rightarrow> int\" and S n :: int\nassumes h0 : \"\\<forall> n. a (n + 1) = a n + 1\"\nand h1 : \"\\<forall> n. S n = (\\<Sum>i=1..n. a i)\"\nand h2 : \"S 98 = 137\"\nshows  \"(\\<Sum>i=2..98. a (2*i)) = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $a_n$ is defined by the recursive formula $a_{n+1} = a_n + 1$. The sum of the first 98 terms of this sequence is 137. What is the sum of the even-indexed terms from the second term to the 98th term? The final answer is 93.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.4969029128551483,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> int\" and S S_even :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. a (n + 1) = a n + 1\"\nand h1 : \"S 98 = 137\"\nand h2 : \"S_even = (\\<lambda> n. a (2 * n))\"\nand h3 : \"\\<forall> n. S_even n = (\\<Sum>k = 1..n. a (2 * k))\"\nshows  \"S_even 49 = 93\"",
+        "formal solution": "(* ### Problem\n Find the value of $a_2+a_4+a_6+a_8+\\ldots+a_{98}$ if $a_1$, $a_2$, $a_3\\ldots$ is an [[arithmetic progression]] with common difference 1, and $a_1+a_2+a_3+\\ldots+a_{98}=137$. The final Answer is $093$\n ### Proof\n One approach to this problem is to apply the formula for the sum of an [[arithmetic series]] in order to find the value of $a_1$, then use that to calculate $a_2$ and sum another arithmetic series to get our answer.\n\nA somewhat quicker method is to do the following: for each $n \\geq 1$, we have $a_{2n - 1} = a_{2n} - 1$.  We can substitute this into our given equation to get $(a_2 - 1) + a_2 + (a_4 - 1) + a_4 + \\ldots + (a_{98} - 1) + a_{98} = 137$.  The left-hand side of this equation is simply $2(a_2 + a_4 + \\ldots + a_{98}) - 49$, so our desired value is $\\frac{137 + 49}{2} = 093$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> int\" and S S_even :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. a (n + 1) = a n + 1\"\nand h1 : \"S 98 = 137\"\nand h2 : \"S_even = (\\<lambda> n. a (2 * n))\"\nand h3 : \"\\<forall> n. S_even n = (\\<Sum>k = 1..n. a (2 * k))\"\nshows  \"S_even 49 = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $a_n$ is defined by $a_{n+1} = a_n + 1$. Let $S_{even}(n)$ be the sum of the first $n$ even terms of the sequence, i.e., $S_{even}(n) = \\sum_{k=1}^{n} a_{2k}$. Given that $S(98) = 137$, find the value of $S_{even}(49)$. The final answer is 93.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.48009324073791504,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. a (n + 1) = a n + 1\"\nand h1 : \"sum a {1..98} = 137\"\nshows  \"sum a {2, 4..98} = 93\"",
+        "formal solution": "(* ### Problem\n Find the value of $a_2+a_4+a_6+a_8+\\ldots+a_{98}$ if $a_1$, $a_2$, $a_3\\ldots$ is an [[arithmetic progression]] with common difference 1, and $a_1+a_2+a_3+\\ldots+a_{98}=137$. The final Answer is $093$\n ### Proof\n One approach to this problem is to apply the formula for the sum of an [[arithmetic series]] in order to find the value of $a_1$, then use that to calculate $a_2$ and sum another arithmetic series to get our answer.\n\nA somewhat quicker method is to do the following: for each $n \\geq 1$, we have $a_{2n - 1} = a_{2n} - 1$.  We can substitute this into our given equation to get $(a_2 - 1) + a_2 + (a_4 - 1) + a_4 + \\ldots + (a_{98} - 1) + a_{98} = 137$.  The left-hand side of this equation is simply $2(a_2 + a_4 + \\ldots + a_{98}) - 49$, so our desired value is $\\frac{137 + 49}{2} = 093$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. a (n + 1) = a n + 1\"\nand h1 : \"sum a {1..98} = 137\"\nshows  \"sum a {2, 4..98} = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A sequence $a_n$ is defined recursively by $a_{n+1} = a_n + 1$. The sum of the first 98 terms of the sequence is 137. Find the sum of the even-indexed terms from 2 to 98. The final answer is 93.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.5874323844909668,
+        "symbolic_score": 0.2
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\"\nand S :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. a (n + 1) = a n + 1\"\nand h1 : \"S 98 = (\\<Sum>k = 1..98. a k)\"\nand h2 : \"S 98 = 137\"\nshows  \"(\\<Sum>k = 2..98. a k) - (\\<Sum>k = 2..48. a (2 * k - 1)) = 93\"",
+        "formal solution": "(* ### Problem\n Find the value of $a_2+a_4+a_6+a_8+\\ldots+a_{98}$ if $a_1$, $a_2$, $a_3\\ldots$ is an [[arithmetic progression]] with common difference 1, and $a_1+a_2+a_3+\\ldots+a_{98}=137$. The final Answer is $093$\n ### Proof\n One approach to this problem is to apply the formula for the sum of an [[arithmetic series]] in order to find the value of $a_1$, then use that to calculate $a_2$ and sum another arithmetic series to get our answer.\n\nA somewhat quicker method is to do the following: for each $n \\geq 1$, we have $a_{2n - 1} = a_{2n} - 1$.  We can substitute this into our given equation to get $(a_2 - 1) + a_2 + (a_4 - 1) + a_4 + \\ldots + (a_{98} - 1) + a_{98} = 137$.  The left-hand side of this equation is simply $2(a_2 + a_4 + \\ldots + a_{98}) - 49$, so our desired value is $\\frac{137 + 49}{2} = 093$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\"\nand S :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>n. a (n + 1) = a n + 1\"\nand h1 : \"S 98 = (\\<Sum>k = 1..98. a k)\"\nand h2 : \"S 98 = 137\"\nshows  \"(\\<Sum>k = 2..98. a k) - (\\<Sum>k = 2..48. a (2 * k - 1)) = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sequence $a_n$ where $a_{n+1} = a_n + 1$, the sum of the first 98 terms is 137, i.e., $S_{98} = \\sum_{k=1}^{98} a_k = 137$. Find the difference between the sum of terms 2 to 98 and the sum of the odd terms from 2 to 48, i.e., find $\\sum_{k=2}^{98} a_k - \\sum_{k=2}^{48} a_{2k-1}$. The final answer is 93.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6685875654220581,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. a (n + 1) = a n + 1\"\nand h1 : \"(\\<Sum> i = 1..98. a i) = 137\"\nshows  \"(\\<Sum> i = 2..98. a i) = 93\"",
+        "formal solution": "(* ### Problem\n Find the value of $a_2+a_4+a_6+a_8+\\ldots+a_{98}$ if $a_1$, $a_2$, $a_3\\ldots$ is an [[arithmetic progression]] with common difference 1, and $a_1+a_2+a_3+\\ldots+a_{98}=137$. The final Answer is $093$\n ### Proof\n One approach to this problem is to apply the formula for the sum of an [[arithmetic series]] in order to find the value of $a_1$, then use that to calculate $a_2$ and sum another arithmetic series to get our answer.\n\nA somewhat quicker method is to do the following: for each $n \\geq 1$, we have $a_{2n - 1} = a_{2n} - 1$.  We can substitute this into our given equation to get $(a_2 - 1) + a_2 + (a_4 - 1) + a_4 + \\ldots + (a_{98} - 1) + a_{98} = 137$.  The left-hand side of this equation is simply $2(a_2 + a_4 + \\ldots + a_{98}) - 49$, so our desired value is $\\frac{137 + 49}{2} = 093$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. a (n + 1) = a n + 1\"\nand h1 : \"(\\<Sum> i = 1..98. a i) = 137\"\nshows  \"(\\<Sum> i = 2..98. a i) = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence $a_n$ such that $a_{n+1} = a_n + 1$. If the sum of the first 98 terms of this sequence is 137, find the sum of the terms from the second term to the 98th term. The final answer is 93.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7340868711471558,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. a (n + 1) = a n + 1\"\nand h1 : \"sum a {1..98} = 137\"\nshows  \"sum a {2, 4..98} = 93\"",
+        "formal solution": "(* ### Problem\n Find the value of $a_2+a_4+a_6+a_8+\\ldots+a_{98}$ if $a_1$, $a_2$, $a_3\\ldots$ is an [[arithmetic progression]] with common difference 1, and $a_1+a_2+a_3+\\ldots+a_{98}=137$. The final Answer is $093$\n ### Proof\n One approach to this problem is to apply the formula for the sum of an [[arithmetic series]] in order to find the value of $a_1$, then use that to calculate $a_2$ and sum another arithmetic series to get our answer.\n\nA somewhat quicker method is to do the following: for each $n \\geq 1$, we have $a_{2n - 1} = a_{2n} - 1$.  We can substitute this into our given equation to get $(a_2 - 1) + a_2 + (a_4 - 1) + a_4 + \\ldots + (a_{98} - 1) + a_{98} = 137$.  The left-hand side of this equation is simply $2(a_2 + a_4 + \\ldots + a_{98}) - 49$, so our desired value is $\\frac{137 + 49}{2} = 093$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> n. a (n + 1) = a n + 1\"\nand h1 : \"sum a {1..98} = 137\"\nshows  \"sum a {2, 4..98} = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence $a_n$ where $a_{n+1} = a_n + 1$. If the sum of the first 98 terms of the sequence is 137, find the sum of the even-indexed terms from 2 to 98. The final answer is 93.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7307447195053101,
+        "symbolic_score": 0.2
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> int\" and n :: nat\nassumes h0 : \"a 1 + a 2 + a 3 + ... + a 98 = 137\"\nand h1 : \"\\<forall> n. a (n + 1) - a n = 1\"\nshows  \"a 2 + a 4 + a 6 + ... + a 98 = 93\"",
+        "formal solution": "(* ### Problem\n Find the value of $a_2+a_4+a_6+a_8+\\ldots+a_{98}$ if $a_1$, $a_2$, $a_3\\ldots$ is an [[arithmetic progression]] with common difference 1, and $a_1+a_2+a_3+\\ldots+a_{98}=137$. The final Answer is $093$\n ### Proof\n One approach to this problem is to apply the formula for the sum of an [[arithmetic series]] in order to find the value of $a_1$, then use that to calculate $a_2$ and sum another arithmetic series to get our answer.\n\nA somewhat quicker method is to do the following: for each $n \\geq 1$, we have $a_{2n - 1} = a_{2n} - 1$.  We can substitute this into our given equation to get $(a_2 - 1) + a_2 + (a_4 - 1) + a_4 + \\ldots + (a_{98} - 1) + a_{98} = 137$.  The left-hand side of this equation is simply $2(a_2 + a_4 + \\ldots + a_{98}) - 49$, so our desired value is $\\frac{137 + 49}{2} = 093$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> int\" and n :: nat\nassumes h0 : \"a 1 + a 2 + a 3 + ... + a 98 = 137\"\nand h1 : \"\\<forall> n. a (n + 1) - a n = 1\"\nshows  \"a 2 + a 4 + a 6 + ... + a 98 = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sequence of integers $a_n$ such that $a_1 + a_2 + a_3 + \\dots + a_{98} = 137$ and $a_{n+1} - a_n = 1$ for all natural numbers $n$. Find the sum of every second term in the sequence from $a_2$ to $a_{98}$. The final answer is $93$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7723991870880127,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a :: \"nat \\<Rightarrow> int\" and n :: nat\nassumes h0 : \"arith_prog a 1\"\nand h1 : \"(\\<Sum>i = 1..98. a i) = 137\"\nshows  \"(\\<Sum>i = 2..98. a i) = 93\"",
+        "formal solution": "(* ### Problem\n Find the value of $a_2+a_4+a_6+a_8+\\ldots+a_{98}$ if $a_1$, $a_2$, $a_3\\ldots$ is an [[arithmetic progression]] with common difference 1, and $a_1+a_2+a_3+\\ldots+a_{98}=137$. The final Answer is $093$\n ### Proof\n One approach to this problem is to apply the formula for the sum of an [[arithmetic series]] in order to find the value of $a_1$, then use that to calculate $a_2$ and sum another arithmetic series to get our answer.\n\nA somewhat quicker method is to do the following: for each $n \\geq 1$, we have $a_{2n - 1} = a_{2n} - 1$.  We can substitute this into our given equation to get $(a_2 - 1) + a_2 + (a_4 - 1) + a_4 + \\ldots + (a_{98} - 1) + a_{98} = 137$.  The left-hand side of this equation is simply $2(a_2 + a_4 + \\ldots + a_{98}) - 49$, so our desired value is $\\frac{137 + 49}{2} = 093$.\n *)\n\ntheorem\nfixes a :: \"nat \\<Rightarrow> int\" and n :: nat\nassumes h0 : \"arith_prog a 1\"\nand h1 : \"(\\<Sum>i = 1..98. a i) = 137\"\nshows  \"(\\<Sum>i = 2..98. a i) = 93\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In an arithmetic progression with the first term being 1, the sum of the first 98 terms is 137. Find the sum of the terms from the second term to the 98th term. The final answer is 93.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.840518593788147,
+        "symbolic_score": 0.2
+    },
+    "oracle": "theorem\nfixes u :: \"nat \\<Rightarrow> rat\"\nassumes h0: \"\\<forall> n. u (n + 1) = u n + 1\"\nand h1: \"(\\<Sum> k < 98. u (k+1)) = 137\"\nshows \"(\\<Sum> k < 49. u (2 * (k+1))) = 93\"",
+    "prediction": {
+        "0": [
+            1,
+            9
+        ],
+        "1": [
+            4,
+            7
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            8
+        ]
+    }
+}

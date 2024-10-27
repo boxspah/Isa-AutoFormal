@@ -1,0 +1,145 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes count_digit :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n d. count_digit n d = card {i. i < length (digits n) \\<and> nth (digits n) i = d}\"\nshows  \"card {n. n \\<in> {1..800} \\<and> count_digit n 6 \\<ge> 2} = 26\"",
+        "formal solution": "(* ### Problem\n How many of the natural numbers from $1$ to $800,$ inclusive, contain the digit $6$ at least twice? (The numbers $266$ and $663$ are two natural numbers that contain the digit $6$ at least twice, but $430$ or $16$ are not.) The final Answer is 26\n ### Proof\n There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the units place. There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the tens place. There are $8$ numbers with a $6$ in the tens place and a $6$ in the units place.\n (Remember, we only have the numbers from $1$ to $800.$)\n Adding them up, we have $10+10+8 = 28.$ However, we counted $666$ three times.\n Therefore subtract $2$ from $28$ to get $\\boxed{26}$ numbers containing the digit $6$ at least twice.\n *)\n\ntheorem\nfixes count_digit :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n d. count_digit n d = card {i. i < length (digits n) \\<and> nth (digits n) i = d}\"\nshows  \"card {n. n \\<in> {1..800} \\<and> count_digit n 6 \\<ge> 2} = 26\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many numbers between 1 and 800, inclusive, contain the digit 6 at least twice? The final answer is 26.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9720205068588257,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes count :: nat and contains_two_sixes :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"contains_two_sixes n = (\\<exists> i j. i \\<noteq> j \\<and> i < length (nat_to_digit_list n) \\<and> j < length (nat_to_digit_list n) \\<and> nth (nat_to_digit_list n) i = 6 \\<and> nth (nat_to_digit_list n) j = 6)\"\nand h1 : \"count = card {n. n \\<in> {1..800} \\<and> contains_two_sixes n}\"\nshows  \"count = 26\"",
+        "formal solution": "(* ### Problem\n How many of the natural numbers from $1$ to $800,$ inclusive, contain the digit $6$ at least twice? (The numbers $266$ and $663$ are two natural numbers that contain the digit $6$ at least twice, but $430$ or $16$ are not.) The final Answer is 26\n ### Proof\n There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the units place. There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the tens place. There are $8$ numbers with a $6$ in the tens place and a $6$ in the units place.\n (Remember, we only have the numbers from $1$ to $800.$)\n Adding them up, we have $10+10+8 = 28.$ However, we counted $666$ three times.\n Therefore subtract $2$ from $28$ to get $\\boxed{26}$ numbers containing the digit $6$ at least twice.\n *)\n\ntheorem\nfixes count :: nat and contains_two_sixes :: \"nat \\<Rightarrow> bool\"\nassumes h0 : \"contains_two_sixes n = (\\<exists> i j. i \\<noteq> j \\<and> i < length (nat_to_digit_list n) \\<and> j < length (nat_to_digit_list n) \\<and> nth (nat_to_digit_list n) i = 6 \\<and> nth (nat_to_digit_list n) j = 6)\"\nand h1 : \"count = card {n. n \\<in> {1..800} \\<and> contains_two_sixes n}\"\nshows  \"count = 26\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many numbers between 1 and 800 (inclusive) have at least two occurrences of the digit 6? The final answer is 26.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9397122859954834,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes count_numbers_with_two_sixes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. count_numbers_with_two_sixes n = card {x. x \\<in> {1..n} \\<and> (\\<exists>a b. a < b \\<and> digit_at x a = 6 \\<and> digit_at x b = 6)}\"\nshows  \"count_numbers_with_two_sixes 800 = 26\"",
+        "formal solution": "(* ### Problem\n How many of the natural numbers from $1$ to $800,$ inclusive, contain the digit $6$ at least twice? (The numbers $266$ and $663$ are two natural numbers that contain the digit $6$ at least twice, but $430$ or $16$ are not.) The final Answer is 26\n ### Proof\n There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the units place. There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the tens place. There are $8$ numbers with a $6$ in the tens place and a $6$ in the units place.\n (Remember, we only have the numbers from $1$ to $800.$)\n Adding them up, we have $10+10+8 = 28.$ However, we counted $666$ three times.\n Therefore subtract $2$ from $28$ to get $\\boxed{26}$ numbers containing the digit $6$ at least twice.\n *)\n\ntheorem\nfixes count_numbers_with_two_sixes :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. count_numbers_with_two_sixes n = card {x. x \\<in> {1..n} \\<and> (\\<exists>a b. a < b \\<and> digit_at x a = 6 \\<and> digit_at x b = 6)}\"\nshows  \"count_numbers_with_two_sixes 800 = 26\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many numbers between 1 and 800 have exactly two 6's in their decimal representation? The final answer is 26.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.975265622138977,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes n :: nat\nassumes h0 : \"set (filter (\\<lambda> n. count (digits n) 6 \\<ge> 2) [1..800]) = {n}\"\nshows  \"card {n} = 26\"",
+        "formal solution": "(* ### Problem\n How many of the natural numbers from $1$ to $800,$ inclusive, contain the digit $6$ at least twice? (The numbers $266$ and $663$ are two natural numbers that contain the digit $6$ at least twice, but $430$ or $16$ are not.) The final Answer is 26\n ### Proof\n There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the units place. There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the tens place. There are $8$ numbers with a $6$ in the tens place and a $6$ in the units place.\n (Remember, we only have the numbers from $1$ to $800.$)\n Adding them up, we have $10+10+8 = 28.$ However, we counted $666$ three times.\n Therefore subtract $2$ from $28$ to get $\\boxed{26}$ numbers containing the digit $6$ at least twice.\n *)\n\ntheorem\nfixes n :: nat\nassumes h0 : \"set (filter (\\<lambda> n. count (digits n) 6 \\<ge> 2) [1..800]) = {n}\"\nshows  \"card {n} = 26\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many numbers between 1 and 800 have at least two occurrences of the digit 6? The final answer is 26.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9242640733718872,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes count :: nat\nassumes h0 : \"count = card {n :: nat. 1 \\<le> n \\<and> n \\<le> 800 \\<and> (\\<exists> x y. x \\<noteq> y \\<and> nth_digit 10 n x = 6 \\<and> nth_digit 10 n y = 6)}\"\nshows  \"count = 26\"",
+        "formal solution": "(* ### Problem\n How many of the natural numbers from $1$ to $800,$ inclusive, contain the digit $6$ at least twice? (The numbers $266$ and $663$ are two natural numbers that contain the digit $6$ at least twice, but $430$ or $16$ are not.) The final Answer is 26\n ### Proof\n There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the units place. There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the tens place. There are $8$ numbers with a $6$ in the tens place and a $6$ in the units place.\n (Remember, we only have the numbers from $1$ to $800.$)\n Adding them up, we have $10+10+8 = 28.$ However, we counted $666$ three times.\n Therefore subtract $2$ from $28$ to get $\\boxed{26}$ numbers containing the digit $6$ at least twice.\n *)\n\ntheorem\nfixes count :: nat\nassumes h0 : \"count = card {n :: nat. 1 \\<le> n \\<and> n \\<le> 800 \\<and> (\\<exists> x y. x \\<noteq> y \\<and> nth_digit 10 n x = 6 \\<and> nth_digit 10 n y = 6)}\"\nshows  \"count = 26\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many natural numbers between 1 and 800 contain the digit 6 at least twice in their decimal representation? The final answer is 26.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9936510324478149,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes count_contains_6_twice :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"count_contains_6_twice = card {n. n \\<in> {1..800} \\<and> (\\<exists> i j. i < j \\<and> nth_digit n i = 6 \\<and> nth_digit n j = 6)}\"\nshows  \"count_contains_6_twice = 26\"",
+        "formal solution": "(* ### Problem\n How many of the natural numbers from $1$ to $800,$ inclusive, contain the digit $6$ at least twice? (The numbers $266$ and $663$ are two natural numbers that contain the digit $6$ at least twice, but $430$ or $16$ are not.) The final Answer is 26\n ### Proof\n There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the units place. There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the tens place. There are $8$ numbers with a $6$ in the tens place and a $6$ in the units place.\n (Remember, we only have the numbers from $1$ to $800.$)\n Adding them up, we have $10+10+8 = 28.$ However, we counted $666$ three times.\n Therefore subtract $2$ from $28$ to get $\\boxed{26}$ numbers containing the digit $6$ at least twice.\n *)\n\ntheorem\nfixes count_contains_6_twice :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"count_contains_6_twice = card {n. n \\<in> {1..800} \\<and> (\\<exists> i j. i < j \\<and> nth_digit n i = 6 \\<and> nth_digit n j = 6)}\"\nshows  \"count_contains_6_twice = 26\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many two-digit numbers between 1 and 800 contain the digit 6 exactly twice? The final answer is 26.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.972901463508606,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes count_nat_with_two_sixes :: \"int set \\<Rightarrow> int\"\nassumes h0 : \"count_nat_with_two_sixes S = card {n \\<in> S. count_digit 6 n \\<ge> 2}\"\nand h1 : \"S = {1..800}\"\nshows  \"count_nat_with_two_sixes S = 26\"",
+        "formal solution": "(* ### Problem\n How many of the natural numbers from $1$ to $800,$ inclusive, contain the digit $6$ at least twice? (The numbers $266$ and $663$ are two natural numbers that contain the digit $6$ at least twice, but $430$ or $16$ are not.) The final Answer is 26\n ### Proof\n There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the units place. There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the tens place. There are $8$ numbers with a $6$ in the tens place and a $6$ in the units place.\n (Remember, we only have the numbers from $1$ to $800.$)\n Adding them up, we have $10+10+8 = 28.$ However, we counted $666$ three times.\n Therefore subtract $2$ from $28$ to get $\\boxed{26}$ numbers containing the digit $6$ at least twice.\n *)\n\ntheorem\nfixes count_nat_with_two_sixes :: \"int set \\<Rightarrow> int\"\nassumes h0 : \"count_nat_with_two_sixes S = card {n \\<in> S. count_digit 6 n \\<ge> 2}\"\nand h1 : \"S = {1..800}\"\nshows  \"count_nat_with_two_sixes S = 26\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many numbers in the range from 1 to 800 have at least two occurrences of the digit 6? The final answer is 26.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9169631600379944,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes count_nat_with_two_sixes :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. count_nat_with_two_sixes n = (if (\\<exists>a b c. n = a * 100 + b * 10 + c \\<and> (a = 6 \\<and> b = 6 \\<or> a = 6 \\<and> c = 6 \\<or> b = 6 \\<and> c = 6)) then 1 else 0)\"\nshows  \"(\\<Sum>n = 1..800. count_nat_with_two_sixes n) = 26\"",
+        "formal solution": "(* ### Problem\n How many of the natural numbers from $1$ to $800,$ inclusive, contain the digit $6$ at least twice? (The numbers $266$ and $663$ are two natural numbers that contain the digit $6$ at least twice, but $430$ or $16$ are not.) The final Answer is 26\n ### Proof\n There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the units place. There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the tens place. There are $8$ numbers with a $6$ in the tens place and a $6$ in the units place.\n (Remember, we only have the numbers from $1$ to $800.$)\n Adding them up, we have $10+10+8 = 28.$ However, we counted $666$ three times.\n Therefore subtract $2$ from $28$ to get $\\boxed{26}$ numbers containing the digit $6$ at least twice.\n *)\n\ntheorem\nfixes count_nat_with_two_sixes :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. count_nat_with_two_sixes n = (if (\\<exists>a b c. n = a * 100 + b * 10 + c \\<and> (a = 6 \\<and> b = 6 \\<or> a = 6 \\<and> c = 6 \\<or> b = 6 \\<and> c = 6)) then 1 else 0)\"\nshows  \"(\\<Sum>n = 1..800. count_nat_with_two_sixes n) = 26\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many three-digit numbers from 1 to 800 contain exactly two sixes? The final answer is 26.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.955229640007019,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes count_contains_6_twice :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. count_contains_6_twice n = card {x \\<in> {1..n}. contains_digit_6_twice x}\"\nand h1 : \"contains_digit_6_twice = (\\<lambda>x. count_digit x 6 \\<ge> 2)\"\nshows  \"count_contains_6_twice 800 = 26\"",
+        "formal solution": "(* ### Problem\n How many of the natural numbers from $1$ to $800,$ inclusive, contain the digit $6$ at least twice? (The numbers $266$ and $663$ are two natural numbers that contain the digit $6$ at least twice, but $430$ or $16$ are not.) The final Answer is 26\n ### Proof\n There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the units place. There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the tens place. There are $8$ numbers with a $6$ in the tens place and a $6$ in the units place.\n (Remember, we only have the numbers from $1$ to $800.$)\n Adding them up, we have $10+10+8 = 28.$ However, we counted $666$ three times.\n Therefore subtract $2$ from $28$ to get $\\boxed{26}$ numbers containing the digit $6$ at least twice.\n *)\n\ntheorem\nfixes count_contains_6_twice :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. count_contains_6_twice n = card {x \\<in> {1..n}. contains_digit_6_twice x}\"\nand h1 : \"contains_digit_6_twice = (\\<lambda>x. count_digit x 6 \\<ge> 2)\"\nshows  \"count_contains_6_twice 800 = 26\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many numbers between 1 and 800 (inclusive) contain the digit 6 at least twice? The final answer is 26.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9633374810218811,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes count_numbers_with_six :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1 \\<and> n \\<le> 800 \\<and> count_numbers_with_six n = (if (digit_count 6 n) \\<ge> 2 then 1 else 0)\"\nshows  \"(\\<Sum>n=1..800. count_numbers_with_six n) = 26\"",
+        "formal solution": "(* ### Problem\n How many of the natural numbers from $1$ to $800,$ inclusive, contain the digit $6$ at least twice? (The numbers $266$ and $663$ are two natural numbers that contain the digit $6$ at least twice, but $430$ or $16$ are not.) The final Answer is 26\n ### Proof\n There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the units place. There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the tens place. There are $8$ numbers with a $6$ in the tens place and a $6$ in the units place.\n (Remember, we only have the numbers from $1$ to $800.$)\n Adding them up, we have $10+10+8 = 28.$ However, we counted $666$ three times.\n Therefore subtract $2$ from $28$ to get $\\boxed{26}$ numbers containing the digit $6$ at least twice.\n *)\n\ntheorem\nfixes count_numbers_with_six :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1 \\<and> n \\<le> 800 \\<and> count_numbers_with_six n = (if (digit_count 6 n) \\<ge> 2 then 1 else 0)\"\nshows  \"(\\<Sum>n=1..800. count_numbers_with_six n) = 26\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "How many numbers between 1 and 800, inclusive, have at least two occurrences of the digit 6? The final answer is 26.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9444710612297058,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "26",
+    "natural problem": "How many of the natural numbers from $1$ to $800,$ inclusive, contain the digit $6$ at least twice? (The numbers $266$ and $663$ are two natural numbers that contain the digit $6$ at least twice, but $430$ or $16$ are not.)",
+    "natural solution": [
+        "There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the units place. There are $10$ numbers with a $6$ in the hundreds place and a $6$ in the tens place. There are $8$ numbers with a $6$ in the tens place and a $6$ in the units place.",
+        "(Remember, we only have the numbers from $1$ to $800.$)",
+        "Adding them up, we have $10+10+8 = 28.$ However, we counted $666$ three times.",
+        "Therefore subtract $2$ from $28$ to get $\\boxed{26}$ numbers containing the digit $6$ at least twice."
+    ],
+    "oracle": "function digits :: \"nat \\<Rightarrow> nat list\" where \n   \"digits n = (if n div 10 = 0 then [n] else (n mod 10) # (digits (n div 10)))\"\n   by auto\n termination by (relation \"measure id\") auto\n\n(* count number of 6 in digits n *)\ndefinition count :: \"nat list \\<Rightarrow> nat \\<Rightarrow> nat\" where\n\"count xs n = length (filter (\\<lambda> x. x = n) xs)\"\n\ntheorem\nshows \"card {n \\<in> {1..800}. (count (digits n) 6) \\<ge> 2} = 26\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "level": "Level 4",
+    "type": "Counting & Probability"
+}

@@ -1,0 +1,578 @@
+{
+    "problem_name": "numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown",
+    "informal_statement": "Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.",
+    "informal_proof": "Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.",
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nand m n :: nat\nassumes h0 : \"\\<forall> x. f x = (4 powr x) + (6 powr x) + (9 powr x)\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nand m n :: nat\nassumes h0 : \"\\<forall> x. f x = (4 powr x) + (6 powr x) + (9 powr x)\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = 4^x + 6^x + 9^x$, where $m$ and $n$ are positive integers such that $m \\leq n$, prove that $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9953591227531433,
+        "symbolic_score": 0.5
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = (4 powr x) + (6 powr x) + (9 powr x)\"\nand h1 : \"0 < m\"\nand h2 : \"0 < n\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = (4 powr x) + (6 powr x) + (9 powr x)\"\nand h1 : \"0 < m\"\nand h2 : \"0 < n\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(x) = 4^x + 6^x + 9^x$. If $m$ and $n$ are positive integers with $m \\leq n$, show that $f(2^m)$ is a divisor of $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9297690987586975,
+        "symbolic_score": 0.5
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(x) = 4^x + 6^x + 9^x$. Given two positive integers $m$ and $n$ such that $m \\leq n$, determine if $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9696845412254333,
+        "symbolic_score": 0.5
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(x) = 4^x + 6^x + 9^x$. If $m$ and $n$ are positive integers with $m \\leq n$, prove that $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9591161608695984,
+        "symbolic_score": 0.5
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = 4^x + 6^x + 9^x$, and two positive integers $m$ and $n$ such that $m \\leq n$, show that $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9875087141990662,
+        "symbolic_score": 0.5
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = 4^x + 6^x + 9^x$, and two natural numbers $m$ and $n$ such that $0 < m \\leq n$, show that $f(2^m)$ is a divisor of $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9859444499015808,
+        "symbolic_score": 0.5
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(x) = 4^x + 6^x + 9^x$. If $m$ and $n$ are positive integers, and $m \\leq n$, show that $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.948792040348053,
+        "symbolic_score": 0.5
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the function $f(x) = 4^x + 6^x + 9^x$, prove that for any positive integers $m$ and $n$ where $m \\leq n$, $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9501782059669495,
+        "symbolic_score": 0.5
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2^m) dvd f (2^n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2^m) dvd f (2^n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a function $f(x)$ is defined by $f(x) = 4^x + 6^x + 9^x$, show that for any positive integers $m$ and $n$ with $m \\leq n$, $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9886135458946228,
+        "symbolic_score": 0.5
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = 4^x + 6^x + 9^x$, for positive integers $m$ and $n$ such that $m \\le n$, show that $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9921623468399048,
+        "symbolic_score": 0.5
+    },
+    "oracle": "theorem\nfixes m n ::nat\nand f :: \"nat \\<Rightarrow> nat\"\nassumes \"\\<forall> x. f x = 4^x + 6^x + 9^x\"\nand \"0 < m \\<and> 0 < n\"\nand \"m \\<le> n\"\nshows \"f (2^m) dvd f (2^n)\"",
+    "prediction": {
+        "0": [
+            0,
+            2,
+            5,
+            6,
+            9
+        ],
+        "1": [
+            1,
+            3,
+            4,
+            7,
+            8
+        ]
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "lemma\nfixes m n :: nat\nand f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>x. f x = 4^x + 6^x + 9^x\"\nand h1 : \"m \\<le> n\"\nshows  \"f (2^m) dvd f (2^n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\nlemma\nfixes m n :: nat\nand f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>x. f x = 4^x + 6^x + 9^x\"\nand h1 : \"m \\<le> n\"\nshows  \"f (2^m) dvd f (2^n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $f(x) = 4^x + 6^x + 9^x$, show that $f(2^m)$ divides $f(2^n)$ for any non-negative integers $m$ and $n$ such that $m$ is less than or equal to $n$.\"",
+        "semantic_score": 0.04203318385136867,
+        "symbolic_score": 0.4,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "lemma\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nshows  \"f (2 pow m) dvd f (2 pow n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\nlemma\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nshows  \"f (2 pow m) dvd f (2 pow n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $f(x) = 4^x + 6^x + 9^x$, show that for any integers $m$ and $n$ with $m \\leq n$, $f(2^m)$ divides $f(2^n)$.\"",
+        "semantic_score": 0.09405315388876423,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<in> \\<nat>\"\nand h2 : \"n \\<in> \\<nat>\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 pow m) dvd f (2 pow n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<in> \\<nat>\"\nand h2 : \"n \\<in> \\<nat>\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 pow m) dvd f (2 pow n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = 4^x + 6^x + 9^x$, and $m$ and $n$ are natural numbers with $m \\leq n$, then the value of $f(2^m)$ divides $f(2^n)$.",
+        "semantic_score": 0.9565769808634154,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. f x = 4 ^ x + 6 ^ x + 9 ^ x\"\nand h1 : \"m \\<le> n\"\nshows  \"f (2^m) dvd f (2^n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. f x = 4 ^ x + 6 ^ x + 9 ^ x\"\nand h1 : \"m \\<le> n\"\nshows  \"f (2^m) dvd f (2^n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = 4^x + 6^x + 9^x$ for all natural numbers $x$, and $m$ and $n$ are natural numbers such that $m$ is less than or equal to $n$, then $f(2^m)$ divides $f(2^n)$.",
+        "semantic_score": 0.9720343986456852,
+        "symbolic_score": 0.4,
+        "naive_label": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "lemma\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. f x = 4^x + 6^x + 9^x\"\nand h1 : \"m \\<le> n\"\nshows  \"f (2^m) dvd f (2^n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\nlemma\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. f x = 4^x + 6^x + 9^x\"\nand h1 : \"m \\<le> n\"\nshows  \"f (2^m) dvd f (2^n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = 4^x + 6^x + 9^x$ for all natural numbers $x$, and $m$ is less than or equal to $n$, then $f(2^m)$ divides $f(2^n)$.",
+        "semantic_score": 0.9146330151360396,
+        "symbolic_score": 0.4,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "lemma\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. f x = 4^x + 6^x + 9^x\"\nand h1 : \"m \\<le> n\"\nshows  \"(f (2^m)) dvd (f (2^n))\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\nlemma\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. f x = 4^x + 6^x + 9^x\"\nand h1 : \"m \\<le> n\"\nshows  \"(f (2^m)) dvd (f (2^n))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = 4^x + 6^x + 9^x$, show that $f(2^m)$ divides $f(2^n)$ when $m$ is less than or equal to $n$.",
+        "semantic_score": 0.9856942297990632,
+        "symbolic_score": 0.4,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "lemma\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<in> \\<nat> \\<and> n \\<in> \\<nat> \\<and> m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\nlemma\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<in> \\<nat> \\<and> n \\<in> \\<nat> \\<and> m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(x) = 4^x + 6^x + 9^x$ for all real numbers $x.$ If $m$ and $n$ are natural numbers such that $m \\leq n,$ prove that $f(2^m)$ divides $f(2^n)$.",
+        "semantic_score": 0.9109908657658089,
+        "symbolic_score": 0.3,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "lemma\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<in> \\<nat>\"\nand h2 : \"n \\<in> \\<nat>\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\nlemma\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<in> \\<nat>\"\nand h2 : \"n \\<in> \\<nat>\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $f(x) = 4^x + 6^x + 9^x$, and $m$ and $n$ are natural numbers such that $m \\leq n$, is it true that $f(2^m)$ divides $f(2^n)$?",
+        "semantic_score": 0.7405690085295379,
+        "symbolic_score": 0.3,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "lemma\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<in> \\<nat>\"\nand h2 : \"n \\<in> \\<nat>\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\nlemma\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<in> \\<nat>\"\nand h2 : \"n \\<in> \\<nat>\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Prove that for any natural numbers $m$ and $n$ such that $m$ is less than or equal to $n$, $4^{2^m} + 6^{2^m} + 9^{2^m}$ divides $4^{2^n} + 6^{2^n} + 9^{2^n}$.",
+        "semantic_score": 0.9806649036843939,
+        "symbolic_score": 0.3,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "lemma\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<in> \\<nat>\"\nand h2 : \"n \\<in> \\<nat>\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 pow m) dvd f (2 pow n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\nlemma\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<in> \\<nat>\"\nand h2 : \"n \\<in> \\<nat>\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 pow m) dvd f (2 pow n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(x) = 4^x + 6^x + 9^x$. Suppose $m$ and $n$ are positive integers such that $m \\leq n$. Is it true that $f(2^m)$ divides $f(2^n)$?",
+        "semantic_score": 0.4958708686074518,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0,
+            3,
+            4,
+            5
+        ],
+        "1": [
+            8,
+            6,
+            7
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            9
+        ]
+    },
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes m n :: nat and P :: \"nat \\<Rightarrow> int\" and f :: \"int \\<Rightarrow> int\"\nassumes m_positive : \"m > 0\"\nand n_positive : \"n > 0\"\nand m_less_than_n : \"m <= n\"\nand P_def : \"\\<forall> x. P x = 4 x powr x + 6 x powr x + 9 x powr x\"\nand h0 : \"f (2 ^ m) divides f (2 ^ n)\"\n",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes m n :: nat and P :: \"nat \\<Rightarrow> int\" and f :: \"int \\<Rightarrow> int\"\nassumes m_positive : \"m > 0\"\nand n_positive : \"n > 0\"\nand m_less_than_n : \"m <= n\"\nand P_def : \"\\<forall> x. P x = 4 x powr x + 6 x powr x + 9 x powr x\"\nand h0 : \"f (2 ^ m) divides f (2 ^ n)\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $m$ and $n$ are positive natural numbers with $m$ less than or equal to $n$, find a relationship between $f(2^m)$ and $f(2^n)$. The function $f$ is defined as $f(x) = 4x^3 + 6x^2 + 9x$. Assume that $f(2^m)$ is a divisor of $f(2^n)$. No explicit answer is required."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem\nfixes m n :: nat and P :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"m > 0\"\nand h1 : \"n > 0\"\nand h2 : \"m <= n\"\nand h3 : \"\\<forall> x. P x = 4 pow x + 6 pow x + 9 pow x\"\nshows  \"P m divides P n\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes m n :: nat and P :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"m > 0\"\nand h1 : \"n > 0\"\nand h2 : \"m <= n\"\nand h3 : \"\\<forall> x. P x = 4 pow x + 6 pow x + 9 pow x\"\nshows  \"P m divides P n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given $m$ and $n$ are positive natural numbers with $m$ less than or equal to $n$, find if the sum of $4^m$, $6^m$, and $9^m$ divides the sum of $4^n$, $6^n$, and $9^n$."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes m n :: nat and x :: real\nassumes h0 : \"m >= 0\"\nand h1 : \"n >= 0\"\nand h2 : \"n > m\"\nand h3 : \"\\<forall> x. 4 ^ x + 6 ^ x + 9 ^ x = (4 ^ x) * (1 + 4 ^ 1 + 4 ^ 2) * (1 + 4 ^ 1) ^ x\"\nshows  \"f 2 ^ m divides f 2 ^ n\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes m n :: nat and x :: real\nassumes h0 : \"m >= 0\"\nand h1 : \"n >= 0\"\nand h2 : \"n > m\"\nand h3 : \"\\<forall> x. 4 ^ x + 6 ^ x + 9 ^ x = (4 ^ x) * (1 + 4 ^ 1 + 4 ^ 2) * (1 + 4 ^ 1) ^ x\"\nshows  \"f 2 ^ m divides f 2 ^ n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find $m$ and $n$, where $m$ and $n$ are non-negative integers with $n$ being greater than $m$, such that $4^{2^m}$ divides $4^{2^n}$.\n\nThe given equation is: $4^x +6^x+9^x = (4^x) * (1+4+4^2) * (1+4)^x$ for all real $x$."
+    },
+    "a_3_mistral": {
+        "formal problem": "theorem\nfixes m n :: nat and P :: \"nat \\<Rightarrow> int\" and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. 2 ^ n = (P n)\"\nshows  \"f (P m) divides f (P n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes m n :: nat and P :: \"nat \\<Rightarrow> int\" and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. 2 ^ n = (P n)\"\nshows  \"f (P m) divides f (P n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $2^n = P(n)$, then $f(P(m))$ divides $f(P(n))$.\n\nIn other words, if $2^n$ is equal to some integer $P(n)$, then $f(P(m))$ can be divided evenly by $f(P(n))$.\n\nFor example, if $2^3 = 8$ and $f(8) = 4$, then $f(8)$ divides $f(P(n))$, where $P(n)$ is some integer such that $2^n = P(n)$."
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes m n :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"m > 0\"\nand h1 : \"n > 0\"\nand h2 : \"m <= n\"\nand h3 : \"\\<forall>k. 2 <= k => 4^(2^k) + 6^(2^k) + 9^(2^k) = pow 4 (2^k) * (1 + pow 4 1 + pow 9 1)\"\nshows  \"f 2^m | f 2^n\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes m n :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"m > 0\"\nand h1 : \"n > 0\"\nand h2 : \"m <= n\"\nand h3 : \"\\<forall>k. 2 <= k => 4^(2^k) + 6^(2^k) + 9^(2^k) = pow 4 (2^k) * (1 + pow 4 1 + pow 9 1)\"\nshows  \"f 2^m | f 2^n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Given integers $m$ and $n$, where $m$ and $n$ are positive integers with $m$ less than or equal to $n$, prove that $f(2^m)$ is a factor of $f(2^n)$. The base case $f(2^k)$ for $k = 2$ is given by the assumption $h3$. \"\n\nIn other words, the natural language version of the problem states that we need to prove that the value of the function $f$ at the power of 2 raised to the power of $m$ is a factor of the value of the function $f$ at the power of 2 raised to the power of $n$, under the given conditions."
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes m n :: nat and P :: \"nat \\<Rightarrow> int\" and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"P 0 = 1\"\nand h1 : \"\\<forall> x. P x = 4 ^ x + 6 ^ x + 9 ^ x\"\nand h2 : \"m <= n\"\nshows  \"f (2 ^ m) divides f (2 ^ n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes m n :: nat and P :: \"nat \\<Rightarrow> int\" and f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"P 0 = 1\"\nand h1 : \"\\<forall> x. P x = 4 ^ x + 6 ^ x + 9 ^ x\"\nand h2 : \"m <= n\"\nshows  \"f (2 ^ m) divides f (2 ^ n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find two natural numbers $m$ and $n$ such that $2^m$ and $2^n$ are related by the divisibility property of the function $f(x) = (4^x + 6^x + 9^x)$. Specifically, $f(2^m)$ should divide $f(2^n)$.\n\nThe function $f(x)$ is defined as the sum of the $x$-th powers of $4$, $6$, and $9$.\n\nGiven conditions $P(0) = 1$ and $\\forall x, P(x) = 4^x + 6^x + 9^x$, find the relationship between $f(2^m)$ and $f(2^n)$ for $m \\leq n$."
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nfixes m n :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f x = 4 pow x + 6 pow x + 9 pow x\"\nshows  \"m <= n => f (2 ^ m) divides f (2 ^ n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes m n :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f x = 4 pow x + 6 pow x + 9 pow x\"\nshows  \"m <= n => f (2 ^ m) divides f (2 ^ n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = 4^x + 6^x + 9^x$, if $m$ is less than or equal to $n$, then $f(2^m)$ divides $f(2^n)$."
+    },
+    "a_7_mistral": {
+        "formal problem": "theorem\nfixes m n :: nat and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"m > 0\"\nand h1 : \"n > 0\"\nand h2 : \"m <= n\"\nand h3 : \"\\<forall> x. f x = 4 x powr EXP + 6 x powr EXP + 9 x powr EXP\"\nshows  \"f (2 pow m) divides f (2 pow n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes m n :: nat and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"m > 0\"\nand h1 : \"n > 0\"\nand h2 : \"m <= n\"\nand h3 : \"\\<forall> x. f x = 4 x powr EXP + 6 x powr EXP + 9 x powr EXP\"\nshows  \"f (2 pow m) divides f (2 pow n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given integers $m$ and $n$ with $m < n$ and $m, n > 0$, if the function $f(x) = 4x^3 + 6x^2 + 9x^3$ is defined. Determine if $f(2^m)$ divides $f(2^n)$."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes m n :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f x = 4 x powr EXP 4 + 6 x powr EXP 6 + 9 x powr EXP 9\"\nand h1 : \"m \\<leq> n\"\nand h2 : \"2 \\<le> 2 ^ m\"\nand h3 : \"2 \\<le> 2 ^ n\"\nshows  \"f 2 ^ m \\<divides> f 2 ^ n\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes m n :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f x = 4 x powr EXP 4 + 6 x powr EXP 6 + 9 x powr EXP 9\"\nand h1 : \"m \\<leq> n\"\nand h2 : \"2 \\<le> 2 ^ m\"\nand h3 : \"2 \\<le> 2 ^ n\"\nshows  \"f 2 ^ m \\<divides> f 2 ^ n\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the relationship between $4(2^m)^4 + 6(2^m)^6 + 9(2^m)^9$ and $4(2^n)^4 + 6(2^n)^6 + 9(2^n)^9$. Given that $2^m$ and $2^n$ are both powers of 2 with $m$ being less than or equal to $n$ and $2$ being less than or equal to $2^m$ and $2^n$, determine if $4(2^m)^4 + 6(2^m)^6 + 9(2^m)^9$ divides $4(2^n)^4 + 6(2^n)^6 + 9(2^n)^9$."
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes m n :: nat and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = 4 ^ x + 6 ^ x + 9 ^ x\"\nand h1 : \"m \\<leq> n\"\nshows  \"f (2 ^ m) \\<|> f (2 ^ n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes m n :: nat and f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = 4 ^ x + 6 ^ x + 9 ^ x\"\nand h1 : \"m \\<leq> n\"\nshows  \"f (2 ^ m) \\<|> f (2 ^ n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $4^2^m +6^2^m+9^2^m$ or $4^2^n+6^2^n+9^2^n$, whichever is greater, given that $m$ is less than or equal to $n$."
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\nassumes h0 : \"f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\nassumes h0 : \"f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number x and returns the sum of 4 raised to the power of x, 6 raised to the power of x, and 9 raised to the power of x. Given two natural numbers m and n, where m is less than or equal to n, and both m and n are greater than 0, prove that f(2 raised to the power of m) divides f(2 raised to the power of n)."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number x and returns the sum of 4 raised to the power of x, 6 raised to the power of x, and 9 raised to the power of x. Given two natural numbers m and n, where m is less than or equal to n, and both m and n are greater than 0, prove that f(2 raised to the power of m) divides f(2 raised to the power of n). In other words, show that there exists a natural number k such that f(2^m) * k = f(2^n)."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes m n :: nat\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes m n :: nat\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f defined for all natural numbers x as f(x) = 4^x + 6^x + 9^x, where \"^\" denotes exponentiation. Given that m and n are natural numbers such that m is less than or equal to n, and both m and n are greater than 0, prove that f(2^m) is a divisor of f(2^n). In other words, show that f(2^n) can be expressed as a multiple of f(2^m)."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<ge> 0\"\nand h1 : \"n \\<ge> 0\"\nand h2 : \"m \\<le> n\"\nand h3 : \"m > 0\"\nand h4 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<ge> 0\"\nand h1 : \"n \\<ge> 0\"\nand h2 : \"m \\<le> n\"\nand h3 : \"m > 0\"\nand h4 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number x and returns the sum of 4 raised to the power of x, 6 raised to the power of x, and 9 raised to the power of x. Given two natural numbers m and n, where m is greater than 0, n is greater than 0, m is less than or equal to n, and both m and n are greater than or equal to 0, prove that f(2^m) is a divisor of f(2^n)."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f defined for natural numbers x such that f(x) = 4^x + 6^x + 9^x. Given two natural numbers m and n, where m is less than or equal to n, and both m and n are greater than 0, prove that f(2^m) divides f(2^n). In other words, show that f(2^n) is divisible by f(2^m)."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a function f defined for natural numbers such that f(x) = 4^x + 6^x + 9^x, where x is a natural number, and given two natural numbers m and n such that m is less than or equal to n, and both m and n are greater than 0, prove that f(2^m) divides f(2^n). In other words, show that f(2^m) is a factor of f(2^n)."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number x as input and returns the sum of 4 raised to the power of x, 6 raised to the power of x, and 9 raised to the power of x. Given two natural numbers m and n, where m is less than or equal to n, and both m and n are greater than 0, prove that f(2^m) divides f(2^n)."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes f m n :: nat\ndefines f_def : \"f \\<equiv> \\<lambda>x. 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f m n :: nat\ndefines f_def : \"f \\<equiv> \\<lambda>x. 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f defined as f(x) = 4^x + 6^x + 9^x, where x is a natural number. Given that m and n are positive natural numbers with m \u2264 n, prove that f(2^m) divides f(2^n). In other words, show that f(2^n) is divisible by f(2^m)."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number x as input and returns the sum of 4 raised to the power of x, 6 raised to the power of x, and 9 raised to the power of x. Given two positive natural numbers m and n, where m is less than or equal to n, prove that f(2^m) divides f(2^n)."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number x and returns the sum of 4 raised to the power of x, 6 raised to the power of x, and 9 raised to the power of x. Given two natural numbers m and n, where m is less than or equal to n, and both m and n are greater than 0, we need to show that f(2 raised to the power of m) divides f(2 raised to the power of n). In other words, f(2^m) is a divisor of f(2^n)."
+    },
+    "prediction_deepseek": {
+        "0": [
+            1,
+            9,
+            6,
+            7
+        ],
+        "1": [
+            8,
+            4,
+            5
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            8,
+            3,
+            4,
+            7
+        ],
+        "1": [
+            9,
+            5,
+            6
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            1
+        ],
+        "4": [
+            2
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nand m n :: nat\nassumes h0 : \"\\<forall> x. f x = (4 powr x) + (6 powr x) + (9 powr x)\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nand m n :: nat\nassumes h0 : \"\\<forall> x. f x = (4 powr x) + (6 powr x) + (9 powr x)\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = 4^x + 6^x + 9^x$, where $m$ and $n$ are positive integers such that $m \\leq n$, prove that $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9627377791437088,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = (4 powr x) + (6 powr x) + (9 powr x)\"\nand h1 : \"0 < m\"\nand h2 : \"0 < n\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = (4 powr x) + (6 powr x) + (9 powr x)\"\nand h1 : \"0 < m\"\nand h2 : \"0 < n\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(x) = 4^x + 6^x + 9^x$. If $m$ and $n$ are positive integers with $m \\leq n$, show that $f(2^m)$ is a divisor of $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9928747813036485,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(x) = 4^x + 6^x + 9^x$. Given two positive integers $m$ and $n$ such that $m \\leq n$, determine if $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9424314382958648,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(x) = 4^x + 6^x + 9^x$. If $m$ and $n$ are positive integers with $m \\leq n$, prove that $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9940503332732183,
+        "symbolic_score": 0.4
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = 4^x + 6^x + 9^x$, and two positive integers $m$ and $n$ such that $m \\leq n$, show that $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9696228900897818,
+        "symbolic_score": 0.4
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = 4^x + 6^x + 9^x$, and two natural numbers $m$ and $n$ such that $0 < m \\leq n$, show that $f(2^m)$ is a divisor of $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9603510137343215,
+        "symbolic_score": 0.3
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(x) = 4^x + 6^x + 9^x$. If $m$ and $n$ are positive integers, and $m \\leq n$, show that $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9980311887402024,
+        "symbolic_score": 0.3
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 ^ m) dvd f (2 ^ n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the function $f(x) = 4^x + 6^x + 9^x$, prove that for any positive integers $m$ and $n$ where $m \\leq n$, $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.971803403831827,
+        "symbolic_score": 0.4
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2^m) dvd f (2^n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2^m) dvd f (2^n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a function $f(x)$ is defined by $f(x) = 4^x + 6^x + 9^x$, show that for any positive integers $m$ and $n$ with $m \\leq n$, $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9869237137435649,
+        "symbolic_score": 0.4
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\" and m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"m \\<le> n\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(x) = 4^x + 6^x + 9^x$, for positive integers $m$ and $n$ such that $m \\le n$, show that $f(2^m)$ divides $f(2^n)$.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9789951612758079,
+        "symbolic_score": 0.3
+    },
+    "equivalence_oracle_solve_direct": [],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\nassumes h0 : \"f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\nassumes h0 : \"f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number x and returns the sum of 4 raised to the power of x, 6 raised to the power of x, and 9 raised to the power of x. Given two natural numbers m and n, where m is less than or equal to n, and both m and n are greater than 0, prove that f(2 raised to the power of m) divides f(2 raised to the power of n).",
+        "semantic_score": 0.9249756896774932,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number x and returns the sum of 4 raised to the power of x, 6 raised to the power of x, and 9 raised to the power of x. Given two natural numbers m and n, where m is less than or equal to n, and both m and n are greater than 0, prove that f(2 raised to the power of m) divides f(2 raised to the power of n). In other words, show that there exists a natural number k such that f(2^m) * k = f(2^n).",
+        "semantic_score": 0.9124614419499334,
+        "symbolic_score": 0.3
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes m n :: nat\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes m n :: nat\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nand h3 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f defined for all natural numbers x as f(x) = 4^x + 6^x + 9^x, where \"^\" denotes exponentiation. Given that m and n are natural numbers such that m is less than or equal to n, and both m and n are greater than 0, prove that f(2^m) is a divisor of f(2^n). In other words, show that f(2^n) can be expressed as a multiple of f(2^m).",
+        "semantic_score": 0.9050308777878834,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<ge> 0\"\nand h1 : \"n \\<ge> 0\"\nand h2 : \"m \\<le> n\"\nand h3 : \"m > 0\"\nand h4 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<ge> 0\"\nand h1 : \"n \\<ge> 0\"\nand h2 : \"m \\<le> n\"\nand h3 : \"m > 0\"\nand h4 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number x and returns the sum of 4 raised to the power of x, 6 raised to the power of x, and 9 raised to the power of x. Given two natural numbers m and n, where m is greater than 0, n is greater than 0, m is less than or equal to n, and both m and n are greater than or equal to 0, prove that f(2^m) is a divisor of f(2^n).",
+        "semantic_score": 0.921303411505293,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f defined for natural numbers x such that f(x) = 4^x + 6^x + 9^x. Given two natural numbers m and n, where m is less than or equal to n, and both m and n are greater than 0, prove that f(2^m) divides f(2^n). In other words, show that f(2^n) is divisible by f(2^m).",
+        "semantic_score": 0.9241854388216971,
+        "symbolic_score": 0.2
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a function f defined for natural numbers such that f(x) = 4^x + 6^x + 9^x, where x is a natural number, and given two natural numbers m and n such that m is less than or equal to n, and both m and n are greater than 0, prove that f(2^m) divides f(2^n). In other words, show that f(2^m) is a factor of f(2^n).",
+        "semantic_score": 0.9163189061419067,
+        "symbolic_score": 0.2
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number x as input and returns the sum of 4 raised to the power of x, 6 raised to the power of x, and 9 raised to the power of x. Given two natural numbers m and n, where m is less than or equal to n, and both m and n are greater than 0, prove that f(2^m) divides f(2^n).",
+        "semantic_score": 0.9249946406325018,
+        "symbolic_score": 0.3
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f m n :: nat\ndefines f_def : \"f \\<equiv> \\<lambda>x. 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f m n :: nat\ndefines f_def : \"f \\<equiv> \\<lambda>x. 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f defined as f(x) = 4^x + 6^x + 9^x, where x is a natural number. Given that m and n are positive natural numbers with m \u2264 n, prove that f(2^m) divides f(2^n). In other words, show that f(2^n) is divisible by f(2^m).",
+        "semantic_score": 0.9211950405234636,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. f x = 4 powr x + 6 powr x + 9 powr x\"\nand h1 : \"m \\<le> n\"\nand h2 : \"m > 0\"\nand h3 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number x as input and returns the sum of 4 raised to the power of x, 6 raised to the power of x, and 9 raised to the power of x. Given two positive natural numbers m and n, where m is less than or equal to n, prove that f(2^m) divides f(2^n).",
+        "semantic_score": 0.9285547761030111,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"",
+        "formal solution": "(* ### Problem\n Let $f(x) = 4^x + 6^x + 9^x$. Show that if $m$ and $n$ are positive integers with $m \\leq n$, then $f(2^m)$ divides $f(2^n)$.\n ### Proof\n Since $m \\leq n$, we can have $k=n-m$ to be a natural number. Then we can do induction on $k$.\nBase case is trivial when $k=0$.\nFor the inductive case, we assume that $f(2^m) | f(2^{m+k})$, which means that there exists a natural number $p$ where $p * f(2^m) = f(2^{m+k})$.\nThen, $f(2^{m+k+1}) = 4^{2^{m+k+1}} + 6^{2^{m+k+1}} + 9^{2^{m+k+1}} = (4^{2^{m+k}})^2 + (6^{2^{m+k}})^2 + (9^{2^{m+k}})^2 = f(2\u02c6{m+k})^2 -  2 *(4^{2^{m+k}}*6^{2^{m+k}} + 4^{2^{m+k}}*9^{2^{m+k}} + 6^{2^{m+k}}*9^{2^{m+k}}) \\equiv -2 * (2^{2^{m+k}*2}*2^{2^{m+k}}*3^{2^{m+k}} + 2^{2^{m+k}*2}*3^{2^{m+k}*2} + 2^{2^{m+k}}*3^{2^{m+k}}*3^{2^{m+k}*2} \\equiv -2 * 2^{2^{m+k}}*3^{2^{m+k}} *(f(2^m))) \\equiv 0 \\pmod {f(2^m)}$.\nHence by induction, the statement holds.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nand m n :: nat\ndefines f_def : \"f x \\<equiv> 4 powr x + 6 powr x + 9 powr x\"\nassumes h0 : \"m \\<le> n\"\nand h1 : \"m > 0\"\nand h2 : \"n > 0\"\nshows  \"f (2 powr m) dvd f (2 powr n)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number x and returns the sum of 4 raised to the power of x, 6 raised to the power of x, and 9 raised to the power of x. Given two natural numbers m and n, where m is less than or equal to n, and both m and n are greater than 0, we need to show that f(2 raised to the power of m) divides f(2 raised to the power of n). In other words, f(2^m) is a divisor of f(2^n).",
+        "semantic_score": 0.926167800128658,
+        "symbolic_score": 0.3
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            1,
+            6,
+            9
+        ],
+        "1": [
+            4,
+            5
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            7
+        ],
+        "6": [
+            8
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": []
+}

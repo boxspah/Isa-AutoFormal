@@ -1,0 +1,146 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes a b c :: complex\nassumes h0 : \"cmod a = cmod b\"\nand h1 : \"cmod b = cmod c\"\nand h2 : \"arg a = arg b - pi/2\"\nand h3 : \"arg b = arg c - pi/2\"\nshows  \"(a * c + b\\<^sup>2) / (a * b) = Complex (Re (3/2)) (Im (3/2))\"",
+        "formal solution": "(* ### Problem\n Let $0, a, b, c$ be the vertices of a square in counterclockwise order.  Compute\n\\[\\frac{ac + b^2}{ab}.\\]Enter your answer in rectangular form. The final Answer is \\frac{3}{2} + \\frac{3}{2} i\n ### Proof\n Here's a labelled picture of our square, with the vertices connected to the origin: [asy] import TrigMacros;  size(180);  pair O, A, B, C; rr_cartesian_axes(-2, 8, -5, 7, complexplane = true, usegrid = false); \n O = (0,0);  A = (3, -1);  B = scale(sqrt(2))*rotate(45)*A;  C = rotate(90)*A;  draw(A--B--C--O--cycle);  draw(O--B);  dot(\"$a$\", A, S);  dot(\"$b$\", B, E);  dot(\"$c$\", C, N);  dot(\"$0$\", O, SW);  [/asy]\n We know $b$ is a rotation of $a$ by $\\pi/4$ around the origin, scaled by a factor of $\\sqrt{2}$. That means that $b = \\sqrt{2}e^{\\pi i/4} a$, which becomes \\begin{align}  b &= \\sqrt{2}(\\cos (\\pi/4) + i \\sin(\\pi/4))a \\\\\n     &= \\sqrt{2}\\left( \\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{2}}{2} i\\right)a \\\\     &= (1+i)a. \\end{align}Therefore, $\\frac{b}{a} = 1+i.$\n Similarly, $c$ is a rotation of $b$ by $\\pi/4$ around the origin, scaled by a factor of $\\frac{1}{\\sqrt{2}},$  That means $c = \\frac{e^{\\pi i/4}}{\\sqrt{2}} b,$ which becomes \\[c = \\frac{\\sqrt{2}/2 + \\sqrt{2}/2 \\cdot i}{\\sqrt{2}} b = \\frac{1 + i}{2} b.\\]Therefore, $\\frac{c}{b} = \\frac{1 + i}{2}.$\n Then \\[\\frac{ac + b^2}{ab} = \\frac{c}{b} + \\frac{b}{a} = \\frac{1 + i}{2} + 1 + i = \\boxed{\\frac{3}{2} + \\frac{3}{2} i}.\\]\n *)\n\ntheorem\nfixes a b c :: complex\nassumes h0 : \"cmod a = cmod b\"\nand h1 : \"cmod b = cmod c\"\nand h2 : \"arg a = arg b - pi/2\"\nand h3 : \"arg b = arg c - pi/2\"\nshows  \"(a * c + b\\<^sup>2) / (a * b) = Complex (Re (3/2)) (Im (3/2))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three complex numbers $a, b, c$ such that the magnitudes of $a, b$ and $c$ are all equal, the argument of $a$ is the argument of $b$ minus $\\frac{\\pi}{2}$, and the argument of $b$ is the argument of $c$ minus $\\frac{\\pi}{2}$. Find the value of $\\frac{a \\cdot c + b^2}{a \\cdot b}$. The final answer is a complex number with real and imaginary parts both equal to $\\frac{3}{2}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.6732017993927002,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b c :: complex\nassumes h0 : \"cmod (a - 0) = cmod (b - a)\"\nand h1 : \"cmod (b - c) = cmod (c - 0)\"\nand h2 : \"arg (a - 0) = arg (b - a) - pi / 2\"\nand h3 : \"arg (b - c) = arg (c - 0) - pi / 2\"\nshows  \"(c * a + b * b) / (a * b) = Complex (Re (3/2)) (Im (3/2))\"",
+        "formal solution": "(* ### Problem\n Let $0, a, b, c$ be the vertices of a square in counterclockwise order.  Compute\n\\[\\frac{ac + b^2}{ab}.\\]Enter your answer in rectangular form. The final Answer is \\frac{3}{2} + \\frac{3}{2} i\n ### Proof\n Here's a labelled picture of our square, with the vertices connected to the origin: [asy] import TrigMacros;  size(180);  pair O, A, B, C; rr_cartesian_axes(-2, 8, -5, 7, complexplane = true, usegrid = false); \n O = (0,0);  A = (3, -1);  B = scale(sqrt(2))*rotate(45)*A;  C = rotate(90)*A;  draw(A--B--C--O--cycle);  draw(O--B);  dot(\"$a$\", A, S);  dot(\"$b$\", B, E);  dot(\"$c$\", C, N);  dot(\"$0$\", O, SW);  [/asy]\n We know $b$ is a rotation of $a$ by $\\pi/4$ around the origin, scaled by a factor of $\\sqrt{2}$. That means that $b = \\sqrt{2}e^{\\pi i/4} a$, which becomes \\begin{align}  b &= \\sqrt{2}(\\cos (\\pi/4) + i \\sin(\\pi/4))a \\\\\n     &= \\sqrt{2}\\left( \\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{2}}{2} i\\right)a \\\\     &= (1+i)a. \\end{align}Therefore, $\\frac{b}{a} = 1+i.$\n Similarly, $c$ is a rotation of $b$ by $\\pi/4$ around the origin, scaled by a factor of $\\frac{1}{\\sqrt{2}},$  That means $c = \\frac{e^{\\pi i/4}}{\\sqrt{2}} b,$ which becomes \\[c = \\frac{\\sqrt{2}/2 + \\sqrt{2}/2 \\cdot i}{\\sqrt{2}} b = \\frac{1 + i}{2} b.\\]Therefore, $\\frac{c}{b} = \\frac{1 + i}{2}.$\n Then \\[\\frac{ac + b^2}{ab} = \\frac{c}{b} + \\frac{b}{a} = \\frac{1 + i}{2} + 1 + i = \\boxed{\\frac{3}{2} + \\frac{3}{2} i}.\\]\n *)\n\ntheorem\nfixes a b c :: complex\nassumes h0 : \"cmod (a - 0) = cmod (b - a)\"\nand h1 : \"cmod (b - c) = cmod (c - 0)\"\nand h2 : \"arg (a - 0) = arg (b - a) - pi / 2\"\nand h3 : \"arg (b - c) = arg (c - 0) - pi / 2\"\nshows  \"(c * a + b * b) / (a * b) = Complex (Re (3/2)) (Im (3/2))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three complex numbers $a$, $b$, and $c$, if the modulus of $a$ is equal to the modulus of $b - a$ and the modulus of $b - c$ is equal to the modulus of $c$, and the argument of $a$ is equal to the argument of $b - a$ minus $\\frac{\\pi}{2}$, and the argument of $b - c$ is equal to the argument of $c$ minus $\\frac{\\pi}{2}$, then find the value of $\\frac{ca+bb}{ab}$. The final answer is $\\frac{3}{2} + \\frac{3}{2}i$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7222933173179626,
+        "symbolic_score": 0.2
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a b c :: complex\nassumes h0 : \"a \\<noteq> 0\"\nand h1 : \"b \\<noteq> 0\"\nand h2 : \"c \\<noteq> 0\"\nand h3 : \"a*c + b*b = Complex (Re (3/2)) (Im (3/2))\"\nshows  \"a*b = Complex (Re (3/2)) (Im (3/2))\"",
+        "formal solution": "(* ### Problem\n Let $0, a, b, c$ be the vertices of a square in counterclockwise order.  Compute\n\\[\\frac{ac + b^2}{ab}.\\]Enter your answer in rectangular form. The final Answer is \\frac{3}{2} + \\frac{3}{2} i\n ### Proof\n Here's a labelled picture of our square, with the vertices connected to the origin: [asy] import TrigMacros;  size(180);  pair O, A, B, C; rr_cartesian_axes(-2, 8, -5, 7, complexplane = true, usegrid = false); \n O = (0,0);  A = (3, -1);  B = scale(sqrt(2))*rotate(45)*A;  C = rotate(90)*A;  draw(A--B--C--O--cycle);  draw(O--B);  dot(\"$a$\", A, S);  dot(\"$b$\", B, E);  dot(\"$c$\", C, N);  dot(\"$0$\", O, SW);  [/asy]\n We know $b$ is a rotation of $a$ by $\\pi/4$ around the origin, scaled by a factor of $\\sqrt{2}$. That means that $b = \\sqrt{2}e^{\\pi i/4} a$, which becomes \\begin{align}  b &= \\sqrt{2}(\\cos (\\pi/4) + i \\sin(\\pi/4))a \\\\\n     &= \\sqrt{2}\\left( \\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{2}}{2} i\\right)a \\\\     &= (1+i)a. \\end{align}Therefore, $\\frac{b}{a} = 1+i.$\n Similarly, $c$ is a rotation of $b$ by $\\pi/4$ around the origin, scaled by a factor of $\\frac{1}{\\sqrt{2}},$  That means $c = \\frac{e^{\\pi i/4}}{\\sqrt{2}} b,$ which becomes \\[c = \\frac{\\sqrt{2}/2 + \\sqrt{2}/2 \\cdot i}{\\sqrt{2}} b = \\frac{1 + i}{2} b.\\]Therefore, $\\frac{c}{b} = \\frac{1 + i}{2}.$\n Then \\[\\frac{ac + b^2}{ab} = \\frac{c}{b} + \\frac{b}{a} = \\frac{1 + i}{2} + 1 + i = \\boxed{\\frac{3}{2} + \\frac{3}{2} i}.\\]\n *)\n\ntheorem\nfixes a b c :: complex\nassumes h0 : \"a \\<noteq> 0\"\nand h1 : \"b \\<noteq> 0\"\nand h2 : \"c \\<noteq> 0\"\nand h3 : \"a*c + b*b = Complex (Re (3/2)) (Im (3/2))\"\nshows  \"a*b = Complex (Re (3/2)) (Im (3/2))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three non-zero complex numbers $a$, $b$, and $c$ such that $ac + b^2 = \\frac{3}{2} + \\frac{3}{2}i$, find the values of $a$ and $b$ for which $ab = \\frac{3}{2} + \\frac{3}{2}i$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.17701838910579681,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes a b c :: complex\nassumes h0 : \"is_square 0 a b c\"\nshows  \"(a*c + b*b) / (a*b) = Complex (Re (3/2)) (Im (3/2))\"",
+        "formal solution": "(* ### Problem\n Let $0, a, b, c$ be the vertices of a square in counterclockwise order.  Compute\n\\[\\frac{ac + b^2}{ab}.\\]Enter your answer in rectangular form. The final Answer is \\frac{3}{2} + \\frac{3}{2} i\n ### Proof\n Here's a labelled picture of our square, with the vertices connected to the origin: [asy] import TrigMacros;  size(180);  pair O, A, B, C; rr_cartesian_axes(-2, 8, -5, 7, complexplane = true, usegrid = false); \n O = (0,0);  A = (3, -1);  B = scale(sqrt(2))*rotate(45)*A;  C = rotate(90)*A;  draw(A--B--C--O--cycle);  draw(O--B);  dot(\"$a$\", A, S);  dot(\"$b$\", B, E);  dot(\"$c$\", C, N);  dot(\"$0$\", O, SW);  [/asy]\n We know $b$ is a rotation of $a$ by $\\pi/4$ around the origin, scaled by a factor of $\\sqrt{2}$. That means that $b = \\sqrt{2}e^{\\pi i/4} a$, which becomes \\begin{align}  b &= \\sqrt{2}(\\cos (\\pi/4) + i \\sin(\\pi/4))a \\\\\n     &= \\sqrt{2}\\left( \\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{2}}{2} i\\right)a \\\\     &= (1+i)a. \\end{align}Therefore, $\\frac{b}{a} = 1+i.$\n Similarly, $c$ is a rotation of $b$ by $\\pi/4$ around the origin, scaled by a factor of $\\frac{1}{\\sqrt{2}},$  That means $c = \\frac{e^{\\pi i/4}}{\\sqrt{2}} b,$ which becomes \\[c = \\frac{\\sqrt{2}/2 + \\sqrt{2}/2 \\cdot i}{\\sqrt{2}} b = \\frac{1 + i}{2} b.\\]Therefore, $\\frac{c}{b} = \\frac{1 + i}{2}.$\n Then \\[\\frac{ac + b^2}{ab} = \\frac{c}{b} + \\frac{b}{a} = \\frac{1 + i}{2} + 1 + i = \\boxed{\\frac{3}{2} + \\frac{3}{2} i}.\\]\n *)\n\ntheorem\nfixes a b c :: complex\nassumes h0 : \"is_square 0 a b c\"\nshows  \"(a*c + b*b) / (a*b) = Complex (Re (3/2)) (Im (3/2))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a$, $b$, and $c$ are complex numbers and $a$, $b$, and $c$ form a square, find the value of $\\frac{ac + b^2}{ab}$. The final answer is a complex number with real and imaginary parts both equal to $\\frac{3}{2}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.5032876133918762,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b c :: complex\nassumes h0 : \"dist 0 a = dist a b\"\nand h1 : \"dist b c = dist c 0\"\nand h2 : \"dist 0 b = dist a c\"\nshows  \"(a*c + b^2) / (a*b) = Complex (Re (3 / 2)) (Im (3 / 2))\"",
+        "formal solution": "(* ### Problem\n Let $0, a, b, c$ be the vertices of a square in counterclockwise order.  Compute\n\\[\\frac{ac + b^2}{ab}.\\]Enter your answer in rectangular form. The final Answer is \\frac{3}{2} + \\frac{3}{2} i\n ### Proof\n Here's a labelled picture of our square, with the vertices connected to the origin: [asy] import TrigMacros;  size(180);  pair O, A, B, C; rr_cartesian_axes(-2, 8, -5, 7, complexplane = true, usegrid = false); \n O = (0,0);  A = (3, -1);  B = scale(sqrt(2))*rotate(45)*A;  C = rotate(90)*A;  draw(A--B--C--O--cycle);  draw(O--B);  dot(\"$a$\", A, S);  dot(\"$b$\", B, E);  dot(\"$c$\", C, N);  dot(\"$0$\", O, SW);  [/asy]\n We know $b$ is a rotation of $a$ by $\\pi/4$ around the origin, scaled by a factor of $\\sqrt{2}$. That means that $b = \\sqrt{2}e^{\\pi i/4} a$, which becomes \\begin{align}  b &= \\sqrt{2}(\\cos (\\pi/4) + i \\sin(\\pi/4))a \\\\\n     &= \\sqrt{2}\\left( \\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{2}}{2} i\\right)a \\\\     &= (1+i)a. \\end{align}Therefore, $\\frac{b}{a} = 1+i.$\n Similarly, $c$ is a rotation of $b$ by $\\pi/4$ around the origin, scaled by a factor of $\\frac{1}{\\sqrt{2}},$  That means $c = \\frac{e^{\\pi i/4}}{\\sqrt{2}} b,$ which becomes \\[c = \\frac{\\sqrt{2}/2 + \\sqrt{2}/2 \\cdot i}{\\sqrt{2}} b = \\frac{1 + i}{2} b.\\]Therefore, $\\frac{c}{b} = \\frac{1 + i}{2}.$\n Then \\[\\frac{ac + b^2}{ab} = \\frac{c}{b} + \\frac{b}{a} = \\frac{1 + i}{2} + 1 + i = \\boxed{\\frac{3}{2} + \\frac{3}{2} i}.\\]\n *)\n\ntheorem\nfixes a b c :: complex\nassumes h0 : \"dist 0 a = dist a b\"\nand h1 : \"dist b c = dist c 0\"\nand h2 : \"dist 0 b = dist a c\"\nshows  \"(a*c + b^2) / (a*b) = Complex (Re (3 / 2)) (Im (3 / 2))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three complex numbers $a$, $b$, and $c$ with the following distance relations: the distance from $0$ to $a$ is equal to the distance from $a$ to $b$, the distance from $b$ to $c$ is equal to the distance from $c$ to $0$, and the distance from $0$ to $b$ is equal to the distance from $a$ to $c$. Find the value of the expression $\\frac{ac+b^2}{ab}$, which should be equal to the complex number with real and imaginary parts both equal to $\\frac{3}{2}$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.14695872366428375,
+        "symbolic_score": 0.2
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes a b c :: complex\nassumes h0 : \"cmod (a - 0) = cmod (b - a) = cmod (c - b) = cmod (0 - c)\"\nand h1 : \"arg (b - a) - arg (c - b) = arg (0 - c) - arg (a - 0) = pi / 2\"\nshows  \"(a * c + b^2) / (a * b) = Complex (Re (3/2)) (Im (3/2))\"",
+        "formal solution": "(* ### Problem\n Let $0, a, b, c$ be the vertices of a square in counterclockwise order.  Compute\n\\[\\frac{ac + b^2}{ab}.\\]Enter your answer in rectangular form. The final Answer is \\frac{3}{2} + \\frac{3}{2} i\n ### Proof\n Here's a labelled picture of our square, with the vertices connected to the origin: [asy] import TrigMacros;  size(180);  pair O, A, B, C; rr_cartesian_axes(-2, 8, -5, 7, complexplane = true, usegrid = false); \n O = (0,0);  A = (3, -1);  B = scale(sqrt(2))*rotate(45)*A;  C = rotate(90)*A;  draw(A--B--C--O--cycle);  draw(O--B);  dot(\"$a$\", A, S);  dot(\"$b$\", B, E);  dot(\"$c$\", C, N);  dot(\"$0$\", O, SW);  [/asy]\n We know $b$ is a rotation of $a$ by $\\pi/4$ around the origin, scaled by a factor of $\\sqrt{2}$. That means that $b = \\sqrt{2}e^{\\pi i/4} a$, which becomes \\begin{align}  b &= \\sqrt{2}(\\cos (\\pi/4) + i \\sin(\\pi/4))a \\\\\n     &= \\sqrt{2}\\left( \\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{2}}{2} i\\right)a \\\\     &= (1+i)a. \\end{align}Therefore, $\\frac{b}{a} = 1+i.$\n Similarly, $c$ is a rotation of $b$ by $\\pi/4$ around the origin, scaled by a factor of $\\frac{1}{\\sqrt{2}},$  That means $c = \\frac{e^{\\pi i/4}}{\\sqrt{2}} b,$ which becomes \\[c = \\frac{\\sqrt{2}/2 + \\sqrt{2}/2 \\cdot i}{\\sqrt{2}} b = \\frac{1 + i}{2} b.\\]Therefore, $\\frac{c}{b} = \\frac{1 + i}{2}.$\n Then \\[\\frac{ac + b^2}{ab} = \\frac{c}{b} + \\frac{b}{a} = \\frac{1 + i}{2} + 1 + i = \\boxed{\\frac{3}{2} + \\frac{3}{2} i}.\\]\n *)\n\ntheorem\nfixes a b c :: complex\nassumes h0 : \"cmod (a - 0) = cmod (b - a) = cmod (c - b) = cmod (0 - c)\"\nand h1 : \"arg (b - a) - arg (c - b) = arg (0 - c) - arg (a - 0) = pi / 2\"\nshows  \"(a * c + b^2) / (a * b) = Complex (Re (3/2)) (Im (3/2))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given four points in a complex plane, a, b, c, and 0, such that the distance between each consecutive pair is equal (|a-0| = |b-a| = |c-b| = |0-c|), and the angle between each consecutive pair is pi/2 (arg(b-a) - arg(c-b) = arg(0-c) - arg(a-0) = pi/2), find a complex number such that (a * c + b^2) / (a * b) equals that number. The final answer is 3/2 + 3/2i.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7125200629234314,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b c :: complex\nassumes h0 : \"arg a = 0\"\nand h1 : \"arg c = pi / 2\"\nand h2 : \"arg b = pi\"\nand h3 : \"norm a = norm b\"\nand h4 : \"norm b = norm c\"\nshows  \"(a * c + b * b) / (a * b) = Complex (Re (3/2)) (Im (3/2))\"",
+        "formal solution": "(* ### Problem\n Let $0, a, b, c$ be the vertices of a square in counterclockwise order.  Compute\n\\[\\frac{ac + b^2}{ab}.\\]Enter your answer in rectangular form. The final Answer is \\frac{3}{2} + \\frac{3}{2} i\n ### Proof\n Here's a labelled picture of our square, with the vertices connected to the origin: [asy] import TrigMacros;  size(180);  pair O, A, B, C; rr_cartesian_axes(-2, 8, -5, 7, complexplane = true, usegrid = false); \n O = (0,0);  A = (3, -1);  B = scale(sqrt(2))*rotate(45)*A;  C = rotate(90)*A;  draw(A--B--C--O--cycle);  draw(O--B);  dot(\"$a$\", A, S);  dot(\"$b$\", B, E);  dot(\"$c$\", C, N);  dot(\"$0$\", O, SW);  [/asy]\n We know $b$ is a rotation of $a$ by $\\pi/4$ around the origin, scaled by a factor of $\\sqrt{2}$. That means that $b = \\sqrt{2}e^{\\pi i/4} a$, which becomes \\begin{align}  b &= \\sqrt{2}(\\cos (\\pi/4) + i \\sin(\\pi/4))a \\\\\n     &= \\sqrt{2}\\left( \\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{2}}{2} i\\right)a \\\\     &= (1+i)a. \\end{align}Therefore, $\\frac{b}{a} = 1+i.$\n Similarly, $c$ is a rotation of $b$ by $\\pi/4$ around the origin, scaled by a factor of $\\frac{1}{\\sqrt{2}},$  That means $c = \\frac{e^{\\pi i/4}}{\\sqrt{2}} b,$ which becomes \\[c = \\frac{\\sqrt{2}/2 + \\sqrt{2}/2 \\cdot i}{\\sqrt{2}} b = \\frac{1 + i}{2} b.\\]Therefore, $\\frac{c}{b} = \\frac{1 + i}{2}.$\n Then \\[\\frac{ac + b^2}{ab} = \\frac{c}{b} + \\frac{b}{a} = \\frac{1 + i}{2} + 1 + i = \\boxed{\\frac{3}{2} + \\frac{3}{2} i}.\\]\n *)\n\ntheorem\nfixes a b c :: complex\nassumes h0 : \"arg a = 0\"\nand h1 : \"arg c = pi / 2\"\nand h2 : \"arg b = pi\"\nand h3 : \"norm a = norm b\"\nand h4 : \"norm b = norm c\"\nshows  \"(a * c + b * b) / (a * b) = Complex (Re (3/2)) (Im (3/2))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three complex numbers $a$, $b$, and $c$ such that the argument of $a$ is $0$, the argument of $b$ is $\\pi$, and the argument of $c$ is $\\pi/2$. Also, the norms of $a$, $b$, and $c$ are all equal. What is the value of the expression $(a*c + b^2) / (a*b)$? The final answer is a complex number with a real part of $3/2$ and an imaginary part of $3/2$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.5051214694976807,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a b c :: complex\nassumes h0 : \"cmod a = cmod b\"\nand h1 : \"cmod b = cmod c\"\nand h2 : \"arg a = (arg b - pi / 2) mod (2 * pi)\"\nand h3 : \"arg b = (arg c - pi / 2) mod (2 * pi)\"\nshows  \"(a * c + b\\<^sup>2) / (a * b) = Complex (Re (3/2)) (Im (3/2))\"",
+        "formal solution": "(* ### Problem\n Let $0, a, b, c$ be the vertices of a square in counterclockwise order.  Compute\n\\[\\frac{ac + b^2}{ab}.\\]Enter your answer in rectangular form. The final Answer is \\frac{3}{2} + \\frac{3}{2} i\n ### Proof\n Here's a labelled picture of our square, with the vertices connected to the origin: [asy] import TrigMacros;  size(180);  pair O, A, B, C; rr_cartesian_axes(-2, 8, -5, 7, complexplane = true, usegrid = false); \n O = (0,0);  A = (3, -1);  B = scale(sqrt(2))*rotate(45)*A;  C = rotate(90)*A;  draw(A--B--C--O--cycle);  draw(O--B);  dot(\"$a$\", A, S);  dot(\"$b$\", B, E);  dot(\"$c$\", C, N);  dot(\"$0$\", O, SW);  [/asy]\n We know $b$ is a rotation of $a$ by $\\pi/4$ around the origin, scaled by a factor of $\\sqrt{2}$. That means that $b = \\sqrt{2}e^{\\pi i/4} a$, which becomes \\begin{align}  b &= \\sqrt{2}(\\cos (\\pi/4) + i \\sin(\\pi/4))a \\\\\n     &= \\sqrt{2}\\left( \\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{2}}{2} i\\right)a \\\\     &= (1+i)a. \\end{align}Therefore, $\\frac{b}{a} = 1+i.$\n Similarly, $c$ is a rotation of $b$ by $\\pi/4$ around the origin, scaled by a factor of $\\frac{1}{\\sqrt{2}},$  That means $c = \\frac{e^{\\pi i/4}}{\\sqrt{2}} b,$ which becomes \\[c = \\frac{\\sqrt{2}/2 + \\sqrt{2}/2 \\cdot i}{\\sqrt{2}} b = \\frac{1 + i}{2} b.\\]Therefore, $\\frac{c}{b} = \\frac{1 + i}{2}.$\n Then \\[\\frac{ac + b^2}{ab} = \\frac{c}{b} + \\frac{b}{a} = \\frac{1 + i}{2} + 1 + i = \\boxed{\\frac{3}{2} + \\frac{3}{2} i}.\\]\n *)\n\ntheorem\nfixes a b c :: complex\nassumes h0 : \"cmod a = cmod b\"\nand h1 : \"cmod b = cmod c\"\nand h2 : \"arg a = (arg b - pi / 2) mod (2 * pi)\"\nand h3 : \"arg b = (arg c - pi / 2) mod (2 * pi)\"\nshows  \"(a * c + b\\<^sup>2) / (a * b) = Complex (Re (3/2)) (Im (3/2))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three complex numbers $a$, $b$, and $c$ such that the magnitude of $a$ equals the magnitude of $b$, the magnitude of $b$ equals the magnitude of $c$, the argument of $a$ equals the argument of $b$ minus $\\pi/2$ mod $2\\pi$, and the argument of $b$ equals the argument of $c$ minus $\\pi/2$ mod $2\\pi$, find the value of $\\frac{(a \\cdot c + b^2)}{(a \\cdot b)}$. The final answer is $1.5 + 1.5i$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.6544814109802246,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes a b c :: complex\nassumes h0 : \"cmod (a - 0) = cmod (b - a) = cmod (c - b) = cmod (0 - c)\"\nand h1 : \"arg (a - 0) = arg (b - a) + pi / 2 = arg (c - b) + pi = arg (0 - c) + 3 * pi / 2\"\nshows  \"(a * c + b * b) / (a * b) = Complex (3 / 2) (3 / 2)\"",
+        "formal solution": "(* ### Problem\n Let $0, a, b, c$ be the vertices of a square in counterclockwise order.  Compute\n\\[\\frac{ac + b^2}{ab}.\\]Enter your answer in rectangular form. The final Answer is \\frac{3}{2} + \\frac{3}{2} i\n ### Proof\n Here's a labelled picture of our square, with the vertices connected to the origin: [asy] import TrigMacros;  size(180);  pair O, A, B, C; rr_cartesian_axes(-2, 8, -5, 7, complexplane = true, usegrid = false); \n O = (0,0);  A = (3, -1);  B = scale(sqrt(2))*rotate(45)*A;  C = rotate(90)*A;  draw(A--B--C--O--cycle);  draw(O--B);  dot(\"$a$\", A, S);  dot(\"$b$\", B, E);  dot(\"$c$\", C, N);  dot(\"$0$\", O, SW);  [/asy]\n We know $b$ is a rotation of $a$ by $\\pi/4$ around the origin, scaled by a factor of $\\sqrt{2}$. That means that $b = \\sqrt{2}e^{\\pi i/4} a$, which becomes \\begin{align}  b &= \\sqrt{2}(\\cos (\\pi/4) + i \\sin(\\pi/4))a \\\\\n     &= \\sqrt{2}\\left( \\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{2}}{2} i\\right)a \\\\     &= (1+i)a. \\end{align}Therefore, $\\frac{b}{a} = 1+i.$\n Similarly, $c$ is a rotation of $b$ by $\\pi/4$ around the origin, scaled by a factor of $\\frac{1}{\\sqrt{2}},$  That means $c = \\frac{e^{\\pi i/4}}{\\sqrt{2}} b,$ which becomes \\[c = \\frac{\\sqrt{2}/2 + \\sqrt{2}/2 \\cdot i}{\\sqrt{2}} b = \\frac{1 + i}{2} b.\\]Therefore, $\\frac{c}{b} = \\frac{1 + i}{2}.$\n Then \\[\\frac{ac + b^2}{ab} = \\frac{c}{b} + \\frac{b}{a} = \\frac{1 + i}{2} + 1 + i = \\boxed{\\frac{3}{2} + \\frac{3}{2} i}.\\]\n *)\n\ntheorem\nfixes a b c :: complex\nassumes h0 : \"cmod (a - 0) = cmod (b - a) = cmod (c - b) = cmod (0 - c)\"\nand h1 : \"arg (a - 0) = arg (b - a) + pi / 2 = arg (c - b) + pi = arg (0 - c) + 3 * pi / 2\"\nshows  \"(a * c + b * b) / (a * b) = Complex (3 / 2) (3 / 2)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given three complex numbers a, b, and c, where the modulus (magnitude) of (a-0), (b-a), (c-b), and (0-c) are all equal, and the argument (angle) of (a-0), (b-a), (c-b), and (0-c) are in a geometric progression with a common ratio of pi/2, find the value of the expression (a*c + b^2) / (a*b). The final answer is a complex number with real part 3/2 and imaginary part 3/2.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.2940247058868408,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a b c :: complex\nassumes h0 : \"is_square 0 a b c\"\nshows  \"(a*c + b^2) / (a*b) = Complex (Re (3/2)) (Im (3/2))\"",
+        "formal solution": "(* ### Problem\n Let $0, a, b, c$ be the vertices of a square in counterclockwise order.  Compute\n\\[\\frac{ac + b^2}{ab}.\\]Enter your answer in rectangular form. The final Answer is \\frac{3}{2} + \\frac{3}{2} i\n ### Proof\n Here's a labelled picture of our square, with the vertices connected to the origin: [asy] import TrigMacros;  size(180);  pair O, A, B, C; rr_cartesian_axes(-2, 8, -5, 7, complexplane = true, usegrid = false); \n O = (0,0);  A = (3, -1);  B = scale(sqrt(2))*rotate(45)*A;  C = rotate(90)*A;  draw(A--B--C--O--cycle);  draw(O--B);  dot(\"$a$\", A, S);  dot(\"$b$\", B, E);  dot(\"$c$\", C, N);  dot(\"$0$\", O, SW);  [/asy]\n We know $b$ is a rotation of $a$ by $\\pi/4$ around the origin, scaled by a factor of $\\sqrt{2}$. That means that $b = \\sqrt{2}e^{\\pi i/4} a$, which becomes \\begin{align}  b &= \\sqrt{2}(\\cos (\\pi/4) + i \\sin(\\pi/4))a \\\\\n     &= \\sqrt{2}\\left( \\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{2}}{2} i\\right)a \\\\     &= (1+i)a. \\end{align}Therefore, $\\frac{b}{a} = 1+i.$\n Similarly, $c$ is a rotation of $b$ by $\\pi/4$ around the origin, scaled by a factor of $\\frac{1}{\\sqrt{2}},$  That means $c = \\frac{e^{\\pi i/4}}{\\sqrt{2}} b,$ which becomes \\[c = \\frac{\\sqrt{2}/2 + \\sqrt{2}/2 \\cdot i}{\\sqrt{2}} b = \\frac{1 + i}{2} b.\\]Therefore, $\\frac{c}{b} = \\frac{1 + i}{2}.$\n Then \\[\\frac{ac + b^2}{ab} = \\frac{c}{b} + \\frac{b}{a} = \\frac{1 + i}{2} + 1 + i = \\boxed{\\frac{3}{2} + \\frac{3}{2} i}.\\]\n *)\n\ntheorem\nfixes a b c :: complex\nassumes h0 : \"is_square 0 a b c\"\nshows  \"(a*c + b^2) / (a*b) = Complex (Re (3/2)) (Im (3/2))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $a$, $b$, and $c$ are complex numbers and $a$, $b$, and $c$ form a square with side length 0, find the value of $\\frac{ac+b^2}{ab}$. The final answer is $3/2 + 3/2i$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.5435026288032532,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "\\frac{3}{2} + \\frac{3}{2} i",
+    "natural problem": "Let $0, a, b, c$ be the vertices of a square in counterclockwise order.  Compute\n\\[\\frac{ac + b^2}{ab}.\\]Enter your answer in rectangular form.",
+    "natural solution": [
+        "Here's a labelled picture of our square, with the vertices connected to the origin: [asy] import TrigMacros;  size(180);  pair O, A, B, C; rr_cartesian_axes(-2, 8, -5, 7, complexplane = true, usegrid = false); ",
+        "O = (0,0);  A = (3, -1);  B = scale(sqrt(2))*rotate(45)*A;  C = rotate(90)*A;  draw(A--B--C--O--cycle);  draw(O--B);  dot(\"$a$\", A, S);  dot(\"$b$\", B, E);  dot(\"$c$\", C, N);  dot(\"$0$\", O, SW);  [/asy]",
+        "We know $b$ is a rotation of $a$ by $\\pi/4$ around the origin, scaled by a factor of $\\sqrt{2}$. That means that $b = \\sqrt{2}e^{\\pi i/4} a$, which becomes \\begin{align}  b &= \\sqrt{2}(\\cos (\\pi/4) + i \\sin(\\pi/4))a \\\\",
+        "    &= \\sqrt{2}\\left( \\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{2}}{2} i\\right)a \\\\     &= (1+i)a. \\end{align}Therefore, $\\frac{b}{a} = 1+i.$",
+        "Similarly, $c$ is a rotation of $b$ by $\\pi/4$ around the origin, scaled by a factor of $\\frac{1}{\\sqrt{2}},$  That means $c = \\frac{e^{\\pi i/4}}{\\sqrt{2}} b,$ which becomes \\[c = \\frac{\\sqrt{2}/2 + \\sqrt{2}/2 \\cdot i}{\\sqrt{2}} b = \\frac{1 + i}{2} b.\\]Therefore, $\\frac{c}{b} = \\frac{1 + i}{2}.$",
+        "Then \\[\\frac{ac + b^2}{ab} = \\frac{c}{b} + \\frac{b}{a} = \\frac{1 + i}{2} + 1 + i = \\boxed{\\frac{3}{2} + \\frac{3}{2} i}.\\]"
+    ],
+    "oracle": "theorem\nfixes a b c :: complex and r :: real\nassumes h0 : \"a = (Re r) (Im 0)\"\nand h1 : \"b = (Re r) (Im (r))\"\nand h2 : \"c = (Re 0) (Im (r))\"\nshows \"(a*c + b*b) / (a*b) = Complex (Re (3/2)) (Im (3/2))\"",
+    "prediction": {
+        "0": [
+            1,
+            4
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "str_pred": "[[1, 4], [0], [2], [3], [5], [6], [7], [8], [9]]",
+    "level": "Level 5",
+    "type": "Precalculus"
+}

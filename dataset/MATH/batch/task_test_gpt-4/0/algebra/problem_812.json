@@ -1,0 +1,144 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes price p0 n0 dp dn delta_max_revenue :: real\nassumes h0 : \"price = p0 - dp * delta_max_revenue\"\nand h1 : \"p0 = 450\"\nand h2 : \"n0 = 500\"\nand h3 : \"dp = 5\"\nand h4 : \"dn = 10\"\nand h5 : \"delta_max_revenue = (GREATEST delta. \\<exists> price. price = p0 - dp * delta \\<and> (n0 + dn * delta) * price > (n0 + dn * (delta - 1)) * (price + dp))\"\nshows  \"price = 350\"",
+        "formal solution": "(* ### Problem\n A shop sells 500 smartphones a week for $\\$450$ each. A market survey shows that each decrease of $\\$5$ on the price will result in the sale of an additional 10 smartphones per week. What price of the smartphone would result in maximum revenue, in dollars? The final Answer is 350\n ### Proof\n Suppose the price of the cellphone is reduced to $450 - 5x$ dollars; then it will sell $500 + 10x$ units, so the revenue will be \\begin{align} (450 - 5x)(500 + 10x) &= 5(90 - x) 10(50 + x) \\\\ &= 50 (90 - x)(50 + x) \\\\\n &= 50 (-x^2  + 40x + 4500), \\end{align}in dollars. Completing the square on $-x^2 + 40x + 4500,$ we get \\begin{align} 50 (-x^2 + 40x + 4500) &= 50 (-(x - 20)^2 + 400 + 4500) \\\\ &= 50 (-(x - 20)^2 + 4900) \\\\\n &= -50 (x - 20)^2 + 245000. \\end{align}This is maximized when $x = 20,$ so the optimal price of the smartphone is $450 - 5(20) = \\boxed{350}$ dollars.\n *)\n\ntheorem\nfixes price p0 n0 dp dn delta_max_revenue :: real\nassumes h0 : \"price = p0 - dp * delta_max_revenue\"\nand h1 : \"p0 = 450\"\nand h2 : \"n0 = 500\"\nand h3 : \"dp = 5\"\nand h4 : \"dn = 10\"\nand h5 : \"delta_max_revenue = (GREATEST delta. \\<exists> price. price = p0 - dp * delta \\<and> (n0 + dn * delta) * price > (n0 + dn * (delta - 1)) * (price + dp))\"\nshows  \"price = 350\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A company sells a product at an initial price of $450 per unit. They found that for every $5 decrease in price, they sell 10 more units. Find the price that maximizes the revenue. The final answer is $350.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9360049366950989,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes price smartphones revenue :: real\nassumes h0 : \"price = 450\"\nand h1 : \"smartphones = 500\"\nand h2 : \"\\<forall> n. n > 0 \\<longrightarrow> (price - 5 * n) * (smartphones + 10 * n) \\<ge> price * smartphones\"\nshows  \"maximum_revenue_price = 350\"",
+        "formal solution": "(* ### Problem\n A shop sells 500 smartphones a week for $\\$450$ each. A market survey shows that each decrease of $\\$5$ on the price will result in the sale of an additional 10 smartphones per week. What price of the smartphone would result in maximum revenue, in dollars? The final Answer is 350\n ### Proof\n Suppose the price of the cellphone is reduced to $450 - 5x$ dollars; then it will sell $500 + 10x$ units, so the revenue will be \\begin{align} (450 - 5x)(500 + 10x) &= 5(90 - x) 10(50 + x) \\\\ &= 50 (90 - x)(50 + x) \\\\\n &= 50 (-x^2  + 40x + 4500), \\end{align}in dollars. Completing the square on $-x^2 + 40x + 4500,$ we get \\begin{align} 50 (-x^2 + 40x + 4500) &= 50 (-(x - 20)^2 + 400 + 4500) \\\\ &= 50 (-(x - 20)^2 + 4900) \\\\\n &= -50 (x - 20)^2 + 245000. \\end{align}This is maximized when $x = 20,$ so the optimal price of the smartphone is $450 - 5(20) = \\boxed{350}$ dollars.\n *)\n\ntheorem\nfixes price smartphones revenue :: real\nassumes h0 : \"price = 450\"\nand h1 : \"smartphones = 500\"\nand h2 : \"\\<forall> n. n > 0 \\<longrightarrow> (price - 5 * n) * (smartphones + 10 * n) \\<ge> price * smartphones\"\nshows  \"maximum_revenue_price = 350\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A company sells smartphones at a price of $450 per unit. They find that for every $5$ decrease in the price, they can sell $10$ more smartphones. What is the new price that will maximize the company's revenue? The final answer is $350.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9108441472053528,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes price decrease additional_sales total_sales revenue :: real\nassumes h0 : \"price = 450\"\nand h1 : \"decrease = 5\"\nand h2 : \"additional_sales = 10\"\nand h3 : \"total_sales = 500 + (price - h0) / decrease * additional_sales\"\nand h4 : \"revenue = price * total_sales\"\nshows  \"GREATEST price. \\<exists>revenue. revenue = price * total_sales\"",
+        "formal solution": "(* ### Problem\n A shop sells 500 smartphones a week for $\\$450$ each. A market survey shows that each decrease of $\\$5$ on the price will result in the sale of an additional 10 smartphones per week. What price of the smartphone would result in maximum revenue, in dollars? The final Answer is 350\n ### Proof\n Suppose the price of the cellphone is reduced to $450 - 5x$ dollars; then it will sell $500 + 10x$ units, so the revenue will be \\begin{align} (450 - 5x)(500 + 10x) &= 5(90 - x) 10(50 + x) \\\\ &= 50 (90 - x)(50 + x) \\\\\n &= 50 (-x^2  + 40x + 4500), \\end{align}in dollars. Completing the square on $-x^2 + 40x + 4500,$ we get \\begin{align} 50 (-x^2 + 40x + 4500) &= 50 (-(x - 20)^2 + 400 + 4500) \\\\ &= 50 (-(x - 20)^2 + 4900) \\\\\n &= -50 (x - 20)^2 + 245000. \\end{align}This is maximized when $x = 20,$ so the optimal price of the smartphone is $450 - 5(20) = \\boxed{350}$ dollars.\n *)\n\ntheorem\nfixes price decrease additional_sales total_sales revenue :: real\nassumes h0 : \"price = 450\"\nand h1 : \"decrease = 5\"\nand h2 : \"additional_sales = 10\"\nand h3 : \"total_sales = 500 + (price - h0) / decrease * additional_sales\"\nand h4 : \"revenue = price * total_sales\"\nshows  \"GREATEST price. \\<exists>revenue. revenue = price * total_sales\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A company sells a product for $450 per unit. They found that for each $5 decrease in price, they sell 10 more units. What is the price that will maximize their revenue?",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9874029159545898,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes price smartphones revenue :: real\nassumes h0 : \"price = 450\"\nand h1 : \"smartphones = 500\"\nand h2 : \"\\<forall> n. revenue (price - 5 * n) = (smartphones + 10 * n) * (price - 5 * n)\"\nshows  \"MAXIMUM revenue = 350\"",
+        "formal solution": "(* ### Problem\n A shop sells 500 smartphones a week for $\\$450$ each. A market survey shows that each decrease of $\\$5$ on the price will result in the sale of an additional 10 smartphones per week. What price of the smartphone would result in maximum revenue, in dollars? The final Answer is 350\n ### Proof\n Suppose the price of the cellphone is reduced to $450 - 5x$ dollars; then it will sell $500 + 10x$ units, so the revenue will be \\begin{align} (450 - 5x)(500 + 10x) &= 5(90 - x) 10(50 + x) \\\\ &= 50 (90 - x)(50 + x) \\\\\n &= 50 (-x^2  + 40x + 4500), \\end{align}in dollars. Completing the square on $-x^2 + 40x + 4500,$ we get \\begin{align} 50 (-x^2 + 40x + 4500) &= 50 (-(x - 20)^2 + 400 + 4500) \\\\ &= 50 (-(x - 20)^2 + 4900) \\\\\n &= -50 (x - 20)^2 + 245000. \\end{align}This is maximized when $x = 20,$ so the optimal price of the smartphone is $450 - 5(20) = \\boxed{350}$ dollars.\n *)\n\ntheorem\nfixes price smartphones revenue :: real\nassumes h0 : \"price = 450\"\nand h1 : \"smartphones = 500\"\nand h2 : \"\\<forall> n. revenue (price - 5 * n) = (smartphones + 10 * n) * (price - 5 * n)\"\nshows  \"MAXIMUM revenue = 350\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A company sells smartphones for a price of $450 each. They discovered that for every $5 decrease in price, they will sell 10 more smartphones. What is the maximum revenue they can achieve by adjusting the price? The final answer is $350$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9122469425201416,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes price smartphones revenue :: real\nassumes h0 : \"price = 450\"\nand h1 : \"smartphones = 500\"\nand h2 : \"\\<forall> p delta. p \\<ge> 0 \\<and> delta \\<ge> 0 \\<longrightarrow> (smartphones + 10 * delta) * (price - 5 * delta) \\<ge> revenue\"\nshows  \"max_revenue_price = 350\"",
+        "formal solution": "(* ### Problem\n A shop sells 500 smartphones a week for $\\$450$ each. A market survey shows that each decrease of $\\$5$ on the price will result in the sale of an additional 10 smartphones per week. What price of the smartphone would result in maximum revenue, in dollars? The final Answer is 350\n ### Proof\n Suppose the price of the cellphone is reduced to $450 - 5x$ dollars; then it will sell $500 + 10x$ units, so the revenue will be \\begin{align} (450 - 5x)(500 + 10x) &= 5(90 - x) 10(50 + x) \\\\ &= 50 (90 - x)(50 + x) \\\\\n &= 50 (-x^2  + 40x + 4500), \\end{align}in dollars. Completing the square on $-x^2 + 40x + 4500,$ we get \\begin{align} 50 (-x^2 + 40x + 4500) &= 50 (-(x - 20)^2 + 400 + 4500) \\\\ &= 50 (-(x - 20)^2 + 4900) \\\\\n &= -50 (x - 20)^2 + 245000. \\end{align}This is maximized when $x = 20,$ so the optimal price of the smartphone is $450 - 5(20) = \\boxed{350}$ dollars.\n *)\n\ntheorem\nfixes price smartphones revenue :: real\nassumes h0 : \"price = 450\"\nand h1 : \"smartphones = 500\"\nand h2 : \"\\<forall> p delta. p \\<ge> 0 \\<and> delta \\<ge> 0 \\<longrightarrow> (smartphones + 10 * delta) * (price - 5 * delta) \\<ge> revenue\"\nshows  \"max_revenue_price = 350\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A company sells smartphones at a price of $450 each and currently sells 500 smartphones. For every $5 decrease in price, they sell 10 more smartphones. What is the maximum revenue they can achieve by adjusting the price? The final answer is when the price is $350.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.981688380241394,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes price smartphones :: real\nassumes h0 : \"price = 450\"\nand h1 : \"smartphones = 500\"\nand h2 : \"\\<forall> n. smartphones + 10 * n = 500 + 10 * n\"\nand h3 : \"\\<forall> n. price - 5 * n = 450 - 5 * n\"\nand h4 : \"maximum revenue = (GREATEST revenue. \\<exists> n. revenue = (price - 5 * n) * (smartphones + 10 * n))\"\nshows  \"maximum revenue = 350\"",
+        "formal solution": "(* ### Problem\n A shop sells 500 smartphones a week for $\\$450$ each. A market survey shows that each decrease of $\\$5$ on the price will result in the sale of an additional 10 smartphones per week. What price of the smartphone would result in maximum revenue, in dollars? The final Answer is 350\n ### Proof\n Suppose the price of the cellphone is reduced to $450 - 5x$ dollars; then it will sell $500 + 10x$ units, so the revenue will be \\begin{align} (450 - 5x)(500 + 10x) &= 5(90 - x) 10(50 + x) \\\\ &= 50 (90 - x)(50 + x) \\\\\n &= 50 (-x^2  + 40x + 4500), \\end{align}in dollars. Completing the square on $-x^2 + 40x + 4500,$ we get \\begin{align} 50 (-x^2 + 40x + 4500) &= 50 (-(x - 20)^2 + 400 + 4500) \\\\ &= 50 (-(x - 20)^2 + 4900) \\\\\n &= -50 (x - 20)^2 + 245000. \\end{align}This is maximized when $x = 20,$ so the optimal price of the smartphone is $450 - 5(20) = \\boxed{350}$ dollars.\n *)\n\ntheorem\nfixes price smartphones :: real\nassumes h0 : \"price = 450\"\nand h1 : \"smartphones = 500\"\nand h2 : \"\\<forall> n. smartphones + 10 * n = 500 + 10 * n\"\nand h3 : \"\\<forall> n. price - 5 * n = 450 - 5 * n\"\nand h4 : \"maximum revenue = (GREATEST revenue. \\<exists> n. revenue = (price - 5 * n) * (smartphones + 10 * n))\"\nshows  \"maximum revenue = 350\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A store sells smartphones at a price of $450 each. They currently have 500 smartphones in stock. For every 10 additional smartphones they sell, the price per smartphone decreases by $5. What is the maximum revenue the store can obtain? The final answer is $350.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9773918986320496,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes initial_price initial_sales price_decrease additional_sales revenue :: real\nassumes h0 : \"initial_price = 450\"\nand h1 : \"initial_sales = 500\"\nand h2 : \"price_decrease = 5\"\nand h3 : \"additional_sales = 10\"\nand h4 : \"\\<forall> n. revenue n = (initial_price - n * price_decrease) * (initial_sales + n * additional_sales)\"\nshows  \"max_revenue = (GREATEST r. \\<exists> n. r = revenue n)\" \"max_revenue_price = initial_price - max_revenue_n * price_decrease\" \"max_revenue_price = 350\"",
+        "formal solution": "(* ### Problem\n A shop sells 500 smartphones a week for $\\$450$ each. A market survey shows that each decrease of $\\$5$ on the price will result in the sale of an additional 10 smartphones per week. What price of the smartphone would result in maximum revenue, in dollars? The final Answer is 350\n ### Proof\n Suppose the price of the cellphone is reduced to $450 - 5x$ dollars; then it will sell $500 + 10x$ units, so the revenue will be \\begin{align} (450 - 5x)(500 + 10x) &= 5(90 - x) 10(50 + x) \\\\ &= 50 (90 - x)(50 + x) \\\\\n &= 50 (-x^2  + 40x + 4500), \\end{align}in dollars. Completing the square on $-x^2 + 40x + 4500,$ we get \\begin{align} 50 (-x^2 + 40x + 4500) &= 50 (-(x - 20)^2 + 400 + 4500) \\\\ &= 50 (-(x - 20)^2 + 4900) \\\\\n &= -50 (x - 20)^2 + 245000. \\end{align}This is maximized when $x = 20,$ so the optimal price of the smartphone is $450 - 5(20) = \\boxed{350}$ dollars.\n *)\n\ntheorem\nfixes initial_price initial_sales price_decrease additional_sales revenue :: real\nassumes h0 : \"initial_price = 450\"\nand h1 : \"initial_sales = 500\"\nand h2 : \"price_decrease = 5\"\nand h3 : \"additional_sales = 10\"\nand h4 : \"\\<forall> n. revenue n = (initial_price - n * price_decrease) * (initial_sales + n * additional_sales)\"\nshows  \"max_revenue = (GREATEST r. \\<exists> n. r = revenue n)\" \"max_revenue_price = initial_price - max_revenue_n * price_decrease\" \"max_revenue_price = 350\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A company sells a product at an initial price of $450 per unit and makes an initial sale of 500 units. For every $5 decrease in price, they sell an additional 10 units. The revenue function can be described as $R(n) = (450 - 5n)(500 + 10n)$, where $n$ is the number of price decreases. Find the maximum revenue, the price at which the maximum revenue is achieved, and the maximum revenue price. The final answer is: Maximum revenue price is $350.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9132162928581238,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes price smartphones revenue :: real\nassumes h0 : \"price = 450\"\nand h1 : \"smartphones = 500\"\nand h2 : \"\\<forall> n . 0 \\<le> n \\<longrightarrow> revenue (price - 5 * n) = (price - 5 * n) * (smartphones + 10 * n)\"\nshows  \"Max {revenue p |p. \\<exists> n . 0 \\<le> n \\<and> p = price - 5 * n} = 350\"",
+        "formal solution": "(* ### Problem\n A shop sells 500 smartphones a week for $\\$450$ each. A market survey shows that each decrease of $\\$5$ on the price will result in the sale of an additional 10 smartphones per week. What price of the smartphone would result in maximum revenue, in dollars? The final Answer is 350\n ### Proof\n Suppose the price of the cellphone is reduced to $450 - 5x$ dollars; then it will sell $500 + 10x$ units, so the revenue will be \\begin{align} (450 - 5x)(500 + 10x) &= 5(90 - x) 10(50 + x) \\\\ &= 50 (90 - x)(50 + x) \\\\\n &= 50 (-x^2  + 40x + 4500), \\end{align}in dollars. Completing the square on $-x^2 + 40x + 4500,$ we get \\begin{align} 50 (-x^2 + 40x + 4500) &= 50 (-(x - 20)^2 + 400 + 4500) \\\\ &= 50 (-(x - 20)^2 + 4900) \\\\\n &= -50 (x - 20)^2 + 245000. \\end{align}This is maximized when $x = 20,$ so the optimal price of the smartphone is $450 - 5(20) = \\boxed{350}$ dollars.\n *)\n\ntheorem\nfixes price smartphones revenue :: real\nassumes h0 : \"price = 450\"\nand h1 : \"smartphones = 500\"\nand h2 : \"\\<forall> n . 0 \\<le> n \\<longrightarrow> revenue (price - 5 * n) = (price - 5 * n) * (smartphones + 10 * n)\"\nshows  \"Max {revenue p |p. \\<exists> n . 0 \\<le> n \\<and> p = price - 5 * n} = 350\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A company sells smartphones at a price of $450 each. They find that for every $5$ decrease in price, they sell $10$ more smartphones. What is the maximum revenue they can achieve by adjusting the price? The final answer is $350$.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9866968989372253,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes price :: real and revenue :: real\nassumes h0 : \"price = 450\"\nand h1 : \"\\<forall> n. revenue n = (500 + 10 * n) * (price - 5 * n)\"\nshows  \"maximal revenue = (GREATEST a. \\<exists> n. revenue n = a) \\<Longrightarrow> optimal_price = 350\"",
+        "formal solution": "(* ### Problem\n A shop sells 500 smartphones a week for $\\$450$ each. A market survey shows that each decrease of $\\$5$ on the price will result in the sale of an additional 10 smartphones per week. What price of the smartphone would result in maximum revenue, in dollars? The final Answer is 350\n ### Proof\n Suppose the price of the cellphone is reduced to $450 - 5x$ dollars; then it will sell $500 + 10x$ units, so the revenue will be \\begin{align} (450 - 5x)(500 + 10x) &= 5(90 - x) 10(50 + x) \\\\ &= 50 (90 - x)(50 + x) \\\\\n &= 50 (-x^2  + 40x + 4500), \\end{align}in dollars. Completing the square on $-x^2 + 40x + 4500,$ we get \\begin{align} 50 (-x^2 + 40x + 4500) &= 50 (-(x - 20)^2 + 400 + 4500) \\\\ &= 50 (-(x - 20)^2 + 4900) \\\\\n &= -50 (x - 20)^2 + 245000. \\end{align}This is maximized when $x = 20,$ so the optimal price of the smartphone is $450 - 5(20) = \\boxed{350}$ dollars.\n *)\n\ntheorem\nfixes price :: real and revenue :: real\nassumes h0 : \"price = 450\"\nand h1 : \"\\<forall> n. revenue n = (500 + 10 * n) * (price - 5 * n)\"\nshows  \"maximal revenue = (GREATEST a. \\<exists> n. revenue n = a) \\<Longrightarrow> optimal_price = 350\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A company sells a product at a price of $450 per unit. The total revenue from selling $n$ units is given by the formula $(500 + 10n)(450 - 5n)$. Find the optimal price to maximize the revenue. The final answer is $350 per unit.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9039148092269897,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes price :: real\nand revenue smartphones :: \"real \\<Rightarrow> real\"\nassumes h0 : \"smartphones price = 500 + 10 * ((450 - price) / 5)\"\nand h1 : \"revenue price = price * smartphones price\"\nshows  \"MAXIMUM revenue price = 350\"",
+        "formal solution": "(* ### Problem\n A shop sells 500 smartphones a week for $\\$450$ each. A market survey shows that each decrease of $\\$5$ on the price will result in the sale of an additional 10 smartphones per week. What price of the smartphone would result in maximum revenue, in dollars? The final Answer is 350\n ### Proof\n Suppose the price of the cellphone is reduced to $450 - 5x$ dollars; then it will sell $500 + 10x$ units, so the revenue will be \\begin{align} (450 - 5x)(500 + 10x) &= 5(90 - x) 10(50 + x) \\\\ &= 50 (90 - x)(50 + x) \\\\\n &= 50 (-x^2  + 40x + 4500), \\end{align}in dollars. Completing the square on $-x^2 + 40x + 4500,$ we get \\begin{align} 50 (-x^2 + 40x + 4500) &= 50 (-(x - 20)^2 + 400 + 4500) \\\\ &= 50 (-(x - 20)^2 + 4900) \\\\\n &= -50 (x - 20)^2 + 245000. \\end{align}This is maximized when $x = 20,$ so the optimal price of the smartphone is $450 - 5(20) = \\boxed{350}$ dollars.\n *)\n\ntheorem\nfixes price :: real\nand revenue smartphones :: \"real \\<Rightarrow> real\"\nassumes h0 : \"smartphones price = 500 + 10 * ((450 - price) / 5)\"\nand h1 : \"revenue price = price * smartphones price\"\nshows  \"MAXIMUM revenue price = 350\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A company sells smartphones at a certain price. The number of smartphones sold can be modeled by the function $s(p) = 500 + 10 \\cdot \\frac{450 - p}{5}$, where $p$ is the price of a smartphone. The revenue generated by selling smartphones can be modeled by the function $r(p) = p \\cdot s(p)$. Find the maximum revenue that can be achieved by the company. The final answer is $350$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9358879923820496,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "350",
+    "natural problem": "A shop sells 500 smartphones a week for $\\$450$ each. A market survey shows that each decrease of $\\$5$ on the price will result in the sale of an additional 10 smartphones per week. What price of the smartphone would result in maximum revenue, in dollars?",
+    "natural solution": [
+        "Suppose the price of the cellphone is reduced to $450 - 5x$ dollars; then it will sell $500 + 10x$ units, so the revenue will be \\begin{align} (450 - 5x)(500 + 10x) &= 5(90 - x) 10(50 + x) \\\\ &= 50 (90 - x)(50 + x) \\\\",
+        "&= 50 (-x^2  + 40x + 4500), \\end{align}in dollars. Completing the square on $-x^2 + 40x + 4500,$ we get \\begin{align} 50 (-x^2 + 40x + 4500) &= 50 (-(x - 20)^2 + 400 + 4500) \\\\ &= 50 (-(x - 20)^2 + 4900) \\\\",
+        "&= -50 (x - 20)^2 + 245000. \\end{align}This is maximized when $x = 20,$ so the optimal price of the smartphone is $450 - 5(20) = \\boxed{350}$ dollars."
+    ],
+    "oracle": "theorem\nfixes price initial_sales :: real and revenue :: \"real \\<Rightarrow> real\"\nand h2 : \"initial_sales = 500\"\nassumes h0 : \"price = 450\"\nand h1 : \"\\<forall> n. revenue n = (initial_sales + 10 * n) * (price - 5 * n)\"\nshows \"(GREATEST a. \\<exists> n. revenue n = a) \\<Longrightarrow> price - 5 * n = 350\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "level": "Level 5",
+    "type": "Algebra"
+}

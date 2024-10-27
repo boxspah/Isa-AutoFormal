@@ -1,0 +1,131 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes m n :: nat and roots :: \"nat list\"\nassumes h0 : \"\\<forall>x. x\\<^sup>2 - m * x + n = poly ([:n, -m, 1:]) x\"\nand h1 : \"length roots = 2\"\nand h2 : \"\\<forall>r \\<in> set roots. is_prime r \\<and> (\\<exists>k \\<ge> 0. r = poly ([:n, -m, 1:]) k)\"\nand h3 : \"m < 20\"\nshows  \"card {n. \\<exists>m roots. m < 20 \\<and> n = fst (split_poly_roots ([:n, -m, 1:]) roots)} = 18\"",
+        "formal solution": "(* ### Problem\n Suppose the roots of the polynomial $x^2 - mx + n$ are positive prime integers (not necessarily distinct). Given that $m < 20,$ how many possible values of $n$ are there? The final Answer is 18\n ### Proof\n Let $p$ and $q$ be the prime roots. Then, we know that $m = p+q$ and $n = pq$. Since $m < 20$, the primes $p$ and $q$ must both be less than $20$. The primes less than $20$ are $2,$ $3,$ $5,$ $7,$ $11,$ $13,$ $17,$ $19.$ Now we list all possible pairs $(p, q)$ such that $p + q < 20$, remembering to also include the cases in which $p=q$: \\[\\begin{aligned} & (2,2),(2,3),(2,5),(2,7),(2,11),(2,13),(2,17) \\\\\n &(3,3),(3,5),(3,7),(3,11),(3,13) \\\\ &(5,5),(5,7),(5,11),(5,13) \\\\ &(7,7),(7,11) \\end{aligned}\\]There are $7 + 5 + 4 + 2 = 18$ pairs in total. Each pair produces a value for $n$, and furthermore, these values are all distinct, because every positive integer has a unique prime factorization.\n Therefore, there are $\\boxed{18}$ possible values for $n$.\n *)\n\ntheorem\nfixes m n :: nat and roots :: \"nat list\"\nassumes h0 : \"\\<forall>x. x\\<^sup>2 - m * x + n = poly ([:n, -m, 1:]) x\"\nand h1 : \"length roots = 2\"\nand h2 : \"\\<forall>r \\<in> set roots. is_prime r \\<and> (\\<exists>k \\<ge> 0. r = poly ([:n, -m, 1:]) k)\"\nand h3 : \"m < 20\"\nshows  \"card {n. \\<exists>m roots. m < 20 \\<and> n = fst (split_poly_roots ([:n, -m, 1:]) roots)} = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a quadratic equation of the form $x^2 - mx + n = 0$, where $m$ and $n$ are natural numbers. Let the roots of the equation be prime numbers. If there are exactly two distinct prime roots for the given equation and $m < 20$, find the total number of distinct values of $n$ that satisfy these conditions. The final answer is 18.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.7013407349586487,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes x m n :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 2 - m * x + n\"\nand h1 : \"\\<exists> p q. prime p \\<and> prime q \\<and> p \\<ge> 0 \\<and> q \\<ge> 0 \\<and> P p = 0 \\<and> P q = 0\"\nand h2 : \"m < 20\"\nshows  \"card {n. \\<exists> p q. prime p \\<and> prime q \\<and> P p = 0 \\<and> P q = 0} = 18\"",
+        "formal solution": "(* ### Problem\n Suppose the roots of the polynomial $x^2 - mx + n$ are positive prime integers (not necessarily distinct). Given that $m < 20,$ how many possible values of $n$ are there? The final Answer is 18\n ### Proof\n Let $p$ and $q$ be the prime roots. Then, we know that $m = p+q$ and $n = pq$. Since $m < 20$, the primes $p$ and $q$ must both be less than $20$. The primes less than $20$ are $2,$ $3,$ $5,$ $7,$ $11,$ $13,$ $17,$ $19.$ Now we list all possible pairs $(p, q)$ such that $p + q < 20$, remembering to also include the cases in which $p=q$: \\[\\begin{aligned} & (2,2),(2,3),(2,5),(2,7),(2,11),(2,13),(2,17) \\\\\n &(3,3),(3,5),(3,7),(3,11),(3,13) \\\\ &(5,5),(5,7),(5,11),(5,13) \\\\ &(7,7),(7,11) \\end{aligned}\\]There are $7 + 5 + 4 + 2 = 18$ pairs in total. Each pair produces a value for $n$, and furthermore, these values are all distinct, because every positive integer has a unique prime factorization.\n Therefore, there are $\\boxed{18}$ possible values for $n$.\n *)\n\ntheorem\nfixes x m n :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 2 - m * x + n\"\nand h1 : \"\\<exists> p q. prime p \\<and> prime q \\<and> p \\<ge> 0 \\<and> q \\<ge> 0 \\<and> P p = 0 \\<and> P q = 0\"\nand h2 : \"m < 20\"\nshows  \"card {n. \\<exists> p q. prime p \\<and> prime q \\<and> P p = 0 \\<and> P q = 0} = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A quadratic function is defined as $P(x) = x^2 - mx + n$. Given that there are two distinct non-negative prime numbers $p$ and $q$ for which $P(p) = P(q) = 0$ and $m < 20$, find the number of possible values of $n$. The final answer is 18.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8836417198181152,
+        "symbolic_score": 0.8
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes m n :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 2 - m * x + n\"\nand h1 : \"m < 20\"\nand h2 : \"\\<forall> x. P x = 0 \\<longrightarrow> (is_prime x \\<and> x > 0)\"\nshows  \"card {n. \\<exists> x. P x = 0 \\<and> is_prime x \\<and> x > 0} = 18\"",
+        "formal solution": "(* ### Problem\n Suppose the roots of the polynomial $x^2 - mx + n$ are positive prime integers (not necessarily distinct). Given that $m < 20,$ how many possible values of $n$ are there? The final Answer is 18\n ### Proof\n Let $p$ and $q$ be the prime roots. Then, we know that $m = p+q$ and $n = pq$. Since $m < 20$, the primes $p$ and $q$ must both be less than $20$. The primes less than $20$ are $2,$ $3,$ $5,$ $7,$ $11,$ $13,$ $17,$ $19.$ Now we list all possible pairs $(p, q)$ such that $p + q < 20$, remembering to also include the cases in which $p=q$: \\[\\begin{aligned} & (2,2),(2,3),(2,5),(2,7),(2,11),(2,13),(2,17) \\\\\n &(3,3),(3,5),(3,7),(3,11),(3,13) \\\\ &(5,5),(5,7),(5,11),(5,13) \\\\ &(7,7),(7,11) \\end{aligned}\\]There are $7 + 5 + 4 + 2 = 18$ pairs in total. Each pair produces a value for $n$, and furthermore, these values are all distinct, because every positive integer has a unique prime factorization.\n Therefore, there are $\\boxed{18}$ possible values for $n$.\n *)\n\ntheorem\nfixes m n :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 2 - m * x + n\"\nand h1 : \"m < 20\"\nand h2 : \"\\<forall> x. P x = 0 \\<longrightarrow> (is_prime x \\<and> x > 0)\"\nshows  \"card {n. \\<exists> x. P x = 0 \\<and> is_prime x \\<and> x > 0} = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a quadratic function $P(x) = x^2 - mx + n$. If $m < 20$ and the roots of $P(x) = 0$ are prime numbers greater than 0, find the number of possible values of $n$. The final answer is 18.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8168699741363525,
+        "symbolic_score": 0.8
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes m n :: nat and roots :: \"nat set\"\nassumes h0 : \"finite roots\"\nand h1 : \"card roots \\<le> 2\"\nand h2 : \"\\<forall>x \\<in> roots. is_prime x \\<and> x > 0\"\nand h3 : \"polynomial_roots_nat (x^2 - m * x + n) roots\"\nand h4 : \"m < 20\"\nshows  \"card {n. \\<exists>roots. finite roots \\<and> card roots \\<le> 2 \\<and> (\\<forall>x \\<in> roots. is_prime x \\<and> x > 0) \\<and> polynomial_roots_nat (x^2 - m * x + n) roots \\<and> m < 20} = 18\"",
+        "formal solution": "(* ### Problem\n Suppose the roots of the polynomial $x^2 - mx + n$ are positive prime integers (not necessarily distinct). Given that $m < 20,$ how many possible values of $n$ are there? The final Answer is 18\n ### Proof\n Let $p$ and $q$ be the prime roots. Then, we know that $m = p+q$ and $n = pq$. Since $m < 20$, the primes $p$ and $q$ must both be less than $20$. The primes less than $20$ are $2,$ $3,$ $5,$ $7,$ $11,$ $13,$ $17,$ $19.$ Now we list all possible pairs $(p, q)$ such that $p + q < 20$, remembering to also include the cases in which $p=q$: \\[\\begin{aligned} & (2,2),(2,3),(2,5),(2,7),(2,11),(2,13),(2,17) \\\\\n &(3,3),(3,5),(3,7),(3,11),(3,13) \\\\ &(5,5),(5,7),(5,11),(5,13) \\\\ &(7,7),(7,11) \\end{aligned}\\]There are $7 + 5 + 4 + 2 = 18$ pairs in total. Each pair produces a value for $n$, and furthermore, these values are all distinct, because every positive integer has a unique prime factorization.\n Therefore, there are $\\boxed{18}$ possible values for $n$.\n *)\n\ntheorem\nfixes m n :: nat and roots :: \"nat set\"\nassumes h0 : \"finite roots\"\nand h1 : \"card roots \\<le> 2\"\nand h2 : \"\\<forall>x \\<in> roots. is_prime x \\<and> x > 0\"\nand h3 : \"polynomial_roots_nat (x^2 - m * x + n) roots\"\nand h4 : \"m < 20\"\nshows  \"card {n. \\<exists>roots. finite roots \\<and> card roots \\<le> 2 \\<and> (\\<forall>x \\<in> roots. is_prime x \\<and> x > 0) \\<and> polynomial_roots_nat (x^2 - m * x + n) roots \\<and> m < 20} = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a quadratic polynomial with integer coefficients given by $P(x) = x^2 - mx + n$, where $m$ is a positive integer less than 20. Let $roots$ be the set of natural number roots of $P(x)$ such that $roots$ has at most two elements and all elements in $roots$ are prime numbers. How many possible values of $n$ are there such that there exists a set $roots$ satisfying these conditions? The final answer is 18.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.6853819489479065,
+        "symbolic_score": 0.8
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes m n :: nat and P :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. P x = x ^ 2 - m * x + n\"\nand h1 : \"\\<forall>x. x > 0 \\<and> is_prime x \\<longrightarrow> P x = 0\"\nand h2 : \"m < 20\"\nshows  \"card {n. \\<exists>m. m < 20 \\<and> (\\<forall>x. x > 0 \\<and> is_prime x \\<longrightarrow> P x = 0)} = 18\"",
+        "formal solution": "(* ### Problem\n Suppose the roots of the polynomial $x^2 - mx + n$ are positive prime integers (not necessarily distinct). Given that $m < 20,$ how many possible values of $n$ are there? The final Answer is 18\n ### Proof\n Let $p$ and $q$ be the prime roots. Then, we know that $m = p+q$ and $n = pq$. Since $m < 20$, the primes $p$ and $q$ must both be less than $20$. The primes less than $20$ are $2,$ $3,$ $5,$ $7,$ $11,$ $13,$ $17,$ $19.$ Now we list all possible pairs $(p, q)$ such that $p + q < 20$, remembering to also include the cases in which $p=q$: \\[\\begin{aligned} & (2,2),(2,3),(2,5),(2,7),(2,11),(2,13),(2,17) \\\\\n &(3,3),(3,5),(3,7),(3,11),(3,13) \\\\ &(5,5),(5,7),(5,11),(5,13) \\\\ &(7,7),(7,11) \\end{aligned}\\]There are $7 + 5 + 4 + 2 = 18$ pairs in total. Each pair produces a value for $n$, and furthermore, these values are all distinct, because every positive integer has a unique prime factorization.\n Therefore, there are $\\boxed{18}$ possible values for $n$.\n *)\n\ntheorem\nfixes m n :: nat and P :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. P x = x ^ 2 - m * x + n\"\nand h1 : \"\\<forall>x. x > 0 \\<and> is_prime x \\<longrightarrow> P x = 0\"\nand h2 : \"m < 20\"\nshows  \"card {n. \\<exists>m. m < 20 \\<and> (\\<forall>x. x > 0 \\<and> is_prime x \\<longrightarrow> P x = 0)} = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a polynomial $P(x) = x^2 - mx + n$, where $m$ and $n$ are natural numbers. If $P(x) = 0$ for every prime number $x > 0$ and $m < 20$, find the number of possible values for $n$ given the constraints on $m$. The final answer is 18.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7792510986328125,
+        "symbolic_score": 0.8
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes m n :: real\nassumes h0 : \"\\<exists> p q. (prime p \\<and> prime q \\<and> p > 0 \\<and> q > 0) \\<and> (p * q = n) \\<and> (p + q = m)\"\nand h1 : \"m < 20\"\nshows  \"card {n. \\<exists> m. h0} = 18\"",
+        "formal solution": "(* ### Problem\n Suppose the roots of the polynomial $x^2 - mx + n$ are positive prime integers (not necessarily distinct). Given that $m < 20,$ how many possible values of $n$ are there? The final Answer is 18\n ### Proof\n Let $p$ and $q$ be the prime roots. Then, we know that $m = p+q$ and $n = pq$. Since $m < 20$, the primes $p$ and $q$ must both be less than $20$. The primes less than $20$ are $2,$ $3,$ $5,$ $7,$ $11,$ $13,$ $17,$ $19.$ Now we list all possible pairs $(p, q)$ such that $p + q < 20$, remembering to also include the cases in which $p=q$: \\[\\begin{aligned} & (2,2),(2,3),(2,5),(2,7),(2,11),(2,13),(2,17) \\\\\n &(3,3),(3,5),(3,7),(3,11),(3,13) \\\\ &(5,5),(5,7),(5,11),(5,13) \\\\ &(7,7),(7,11) \\end{aligned}\\]There are $7 + 5 + 4 + 2 = 18$ pairs in total. Each pair produces a value for $n$, and furthermore, these values are all distinct, because every positive integer has a unique prime factorization.\n Therefore, there are $\\boxed{18}$ possible values for $n$.\n *)\n\ntheorem\nfixes m n :: real\nassumes h0 : \"\\<exists> p q. (prime p \\<and> prime q \\<and> p > 0 \\<and> q > 0) \\<and> (p * q = n) \\<and> (p + q = m)\"\nand h1 : \"m < 20\"\nshows  \"card {n. \\<exists> m. h0} = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the total number of positive integers $n$ such that there exist two prime numbers $p$ and $q$ with $p * q = n$ and $p + q < 20$. The final answer is 18.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9249876141548157,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes m n :: nat and poly :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. poly x = x^2 - m * x + n\"\nand h1 : \"m < 20\"\nand h2 : \"\\<forall> x. is_prime (poly x) \\<longrightarrow> poly x > 0\"\nshows  \"card {n. \\<exists> x. is_prime (poly x)} = 18\"",
+        "formal solution": "(* ### Problem\n Suppose the roots of the polynomial $x^2 - mx + n$ are positive prime integers (not necessarily distinct). Given that $m < 20,$ how many possible values of $n$ are there? The final Answer is 18\n ### Proof\n Let $p$ and $q$ be the prime roots. Then, we know that $m = p+q$ and $n = pq$. Since $m < 20$, the primes $p$ and $q$ must both be less than $20$. The primes less than $20$ are $2,$ $3,$ $5,$ $7,$ $11,$ $13,$ $17,$ $19.$ Now we list all possible pairs $(p, q)$ such that $p + q < 20$, remembering to also include the cases in which $p=q$: \\[\\begin{aligned} & (2,2),(2,3),(2,5),(2,7),(2,11),(2,13),(2,17) \\\\\n &(3,3),(3,5),(3,7),(3,11),(3,13) \\\\ &(5,5),(5,7),(5,11),(5,13) \\\\ &(7,7),(7,11) \\end{aligned}\\]There are $7 + 5 + 4 + 2 = 18$ pairs in total. Each pair produces a value for $n$, and furthermore, these values are all distinct, because every positive integer has a unique prime factorization.\n Therefore, there are $\\boxed{18}$ possible values for $n$.\n *)\n\ntheorem\nfixes m n :: nat and poly :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> x. poly x = x^2 - m * x + n\"\nand h1 : \"m < 20\"\nand h2 : \"\\<forall> x. is_prime (poly x) \\<longrightarrow> poly x > 0\"\nshows  \"card {n. \\<exists> x. is_prime (poly x)} = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a quadratic polynomial $p(x) = x^2 - mx + n$ with integer coefficients, where $m < 20$. Let the set of all positive integers $n$ for which there exists an integer $x$ such that $p(x)$ is prime be $S$. Find the number of elements in set $S$. The final answer is 18.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.6636450290679932,
+        "symbolic_score": 0.8
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes x m n :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 2 - m * x + n\"\nand h1 : \"m < 20\"\nand h2 : \"\\<exists> p q. prime p \\<and> prime q \\<and> positive p \\<and> positive q \\<and> (P p = 0 \\<and> P q = 0)\"\nshows  \"card {n. \\<exists> m x P. P x = x powr 2 - m * x + n \\<and> m < 20 \\<and> (\\<exists> p q. prime p \\<and> prime q \\<and> positive p \\<and> positive q \\<and> (P p = 0 \\<and> P q = 0))} = 18\"",
+        "formal solution": "(* ### Problem\n Suppose the roots of the polynomial $x^2 - mx + n$ are positive prime integers (not necessarily distinct). Given that $m < 20,$ how many possible values of $n$ are there? The final Answer is 18\n ### Proof\n Let $p$ and $q$ be the prime roots. Then, we know that $m = p+q$ and $n = pq$. Since $m < 20$, the primes $p$ and $q$ must both be less than $20$. The primes less than $20$ are $2,$ $3,$ $5,$ $7,$ $11,$ $13,$ $17,$ $19.$ Now we list all possible pairs $(p, q)$ such that $p + q < 20$, remembering to also include the cases in which $p=q$: \\[\\begin{aligned} & (2,2),(2,3),(2,5),(2,7),(2,11),(2,13),(2,17) \\\\\n &(3,3),(3,5),(3,7),(3,11),(3,13) \\\\ &(5,5),(5,7),(5,11),(5,13) \\\\ &(7,7),(7,11) \\end{aligned}\\]There are $7 + 5 + 4 + 2 = 18$ pairs in total. Each pair produces a value for $n$, and furthermore, these values are all distinct, because every positive integer has a unique prime factorization.\n Therefore, there are $\\boxed{18}$ possible values for $n$.\n *)\n\ntheorem\nfixes x m n :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 2 - m * x + n\"\nand h1 : \"m < 20\"\nand h2 : \"\\<exists> p q. prime p \\<and> prime q \\<and> positive p \\<and> positive q \\<and> (P p = 0 \\<and> P q = 0)\"\nshows  \"card {n. \\<exists> m x P. P x = x powr 2 - m * x + n \\<and> m < 20 \\<and> (\\<exists> p q. prime p \\<and> prime q \\<and> positive p \\<and> positive q \\<and> (P p = 0 \\<and> P q = 0))} = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $P(x) = x^2 - mx + n$. Given that $m < 20$ and there exist two positive prime numbers $p$ and $q$ such that $P(p) = 0$ and $P(q) = 0$, find the number of distinct values of $n$. The final answer is 18.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8508504033088684,
+        "symbolic_score": 0.8
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x m n :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 2 - m * x + n\"\nand h1 : \"\\<forall> x. is_root P x \\<longrightarrow> is_prime x \\<and> x > 0\"\nand h2 : \"m < 20\"\nshows  \"card {n. \\<exists> r1 r2. is_root P r1 \\<and> is_root P r2 \\<and> r1 * r2 = n} = 18\"",
+        "formal solution": "(* ### Problem\n Suppose the roots of the polynomial $x^2 - mx + n$ are positive prime integers (not necessarily distinct). Given that $m < 20,$ how many possible values of $n$ are there? The final Answer is 18\n ### Proof\n Let $p$ and $q$ be the prime roots. Then, we know that $m = p+q$ and $n = pq$. Since $m < 20$, the primes $p$ and $q$ must both be less than $20$. The primes less than $20$ are $2,$ $3,$ $5,$ $7,$ $11,$ $13,$ $17,$ $19.$ Now we list all possible pairs $(p, q)$ such that $p + q < 20$, remembering to also include the cases in which $p=q$: \\[\\begin{aligned} & (2,2),(2,3),(2,5),(2,7),(2,11),(2,13),(2,17) \\\\\n &(3,3),(3,5),(3,7),(3,11),(3,13) \\\\ &(5,5),(5,7),(5,11),(5,13) \\\\ &(7,7),(7,11) \\end{aligned}\\]There are $7 + 5 + 4 + 2 = 18$ pairs in total. Each pair produces a value for $n$, and furthermore, these values are all distinct, because every positive integer has a unique prime factorization.\n Therefore, there are $\\boxed{18}$ possible values for $n$.\n *)\n\ntheorem\nfixes x m n :: real and P :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. P x = x powr 2 - m * x + n\"\nand h1 : \"\\<forall> x. is_root P x \\<longrightarrow> is_prime x \\<and> x > 0\"\nand h2 : \"m < 20\"\nshows  \"card {n. \\<exists> r1 r2. is_root P r1 \\<and> is_root P r2 \\<and> r1 * r2 = n} = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of quadratic equations of the form $x^2 - mx + n$ with positive prime roots, where $m$ is a constant less than 20. How many possible values of $n$ are there if the product of the roots ($r_1$ and $r_2$) is equal to $n$? The final answer is 18.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9030348658561707,
+        "symbolic_score": 0.8
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes m n :: real\nassumes h0 : \"\\<forall>x. x^2 - m * x + n = 0\"\nand h1 : \"\\<forall>x. prime (x::nat) \\<and> x > 0 \\<longrightarrow> x^2 - m * x + n = 0\"\nand h2 : \"m < 20\"\nshows  \"card {n. \\<exists>m. (\\<forall>x. prime (x::nat) \\<and> x > 0 \\<longrightarrow> x^2 - m * x + n = 0) \\<and> m < 20} = 18\"",
+        "formal solution": "(* ### Problem\n Suppose the roots of the polynomial $x^2 - mx + n$ are positive prime integers (not necessarily distinct). Given that $m < 20,$ how many possible values of $n$ are there? The final Answer is 18\n ### Proof\n Let $p$ and $q$ be the prime roots. Then, we know that $m = p+q$ and $n = pq$. Since $m < 20$, the primes $p$ and $q$ must both be less than $20$. The primes less than $20$ are $2,$ $3,$ $5,$ $7,$ $11,$ $13,$ $17,$ $19.$ Now we list all possible pairs $(p, q)$ such that $p + q < 20$, remembering to also include the cases in which $p=q$: \\[\\begin{aligned} & (2,2),(2,3),(2,5),(2,7),(2,11),(2,13),(2,17) \\\\\n &(3,3),(3,5),(3,7),(3,11),(3,13) \\\\ &(5,5),(5,7),(5,11),(5,13) \\\\ &(7,7),(7,11) \\end{aligned}\\]There are $7 + 5 + 4 + 2 = 18$ pairs in total. Each pair produces a value for $n$, and furthermore, these values are all distinct, because every positive integer has a unique prime factorization.\n Therefore, there are $\\boxed{18}$ possible values for $n$.\n *)\n\ntheorem\nfixes m n :: real\nassumes h0 : \"\\<forall>x. x^2 - m * x + n = 0\"\nand h1 : \"\\<forall>x. prime (x::nat) \\<and> x > 0 \\<longrightarrow> x^2 - m * x + n = 0\"\nand h2 : \"m < 20\"\nshows  \"card {n. \\<exists>m. (\\<forall>x. prime (x::nat) \\<and> x > 0 \\<longrightarrow> x^2 - m * x + n = 0) \\<and> m < 20} = 18\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the number of values of $n$ for which there exists a value $m < 20$ such that for all prime numbers $x > 0$, the quadratic equation $x^2 - mx + n = 0$ holds true. The final answer is 18.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9692260026931763,
+        "symbolic_score": 0.8
+    },
+    "natural answer": "18",
+    "natural problem": "Suppose the roots of the polynomial $x^2 - mx + n$ are positive prime integers (not necessarily distinct). Given that $m < 20,$ how many possible values of $n$ are there?",
+    "natural solution": [
+        "Let $p$ and $q$ be the prime roots. Then, we know that $m = p+q$ and $n = pq$. Since $m < 20$, the primes $p$ and $q$ must both be less than $20$. The primes less than $20$ are $2,$ $3,$ $5,$ $7,$ $11,$ $13,$ $17,$ $19.$ Now we list all possible pairs $(p, q)$ such that $p + q < 20$, remembering to also include the cases in which $p=q$: \\[\\begin{aligned} & (2,2),(2,3),(2,5),(2,7),(2,11),(2,13),(2,17) \\\\",
+        "&(3,3),(3,5),(3,7),(3,11),(3,13) \\\\ &(5,5),(5,7),(5,11),(5,13) \\\\ &(7,7),(7,11) \\end{aligned}\\]There are $7 + 5 + 4 + 2 = 18$ pairs in total. Each pair produces a value for $n$, and furthermore, these values are all distinct, because every positive integer has a unique prime factorization.",
+        "Therefore, there are $\\boxed{18}$ possible values for $n$."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            5
+        ]
+    },
+    "str_pred": "[[1, 2, 3, 4, 6, 7, 8, 9], [0], [5]]",
+    "level": "Level 5",
+    "type": "Algebra"
+}

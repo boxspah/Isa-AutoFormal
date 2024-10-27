@@ -1,0 +1,135 @@
+{
+    "a_0": {
+        "formal problem": "\n\ndefinition choose :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\" (infixl \"choose\" 65)\n  where \"n choose k = (if k > n then 0 else fact n div (fact k * fact (n-k)))\"\n\ntheorem\n  assumes h0 : \"\\<forall> boys. boys = 8\"\nand h1 : \"\\<forall> girls. girls = 6\"\nand h2 : \"\\<forall> boys_in_quintet. boys_in_quintet = 3\"\nand h3 : \"\\<forall> girls_in_quintet. girls_in_quintet = 2\"\nshows  \"quintets = 840\"\n",
+        "formal solution": "(* ### Problem\n There are eight boys and six girls who are members of the trumpet section in the band. From the members of the trumpet section, a quintet is being formed. If the quintet must consist of three boys and two girls, how many quintets are possible? The final Answer is 840\n ### Proof\n First, we consider how many ways there are to choose three boys from eight. There are $8$ choices for the first boy, $7$ for the second, and $6$ for the third.\n However, because the boys are indistinct from one another, we have overcounted, and must divide by $3 \\cdot 2$.\n Similarly, there are $6 \\cdot 5$ ways to choose the two girls, divided by $2$ for overcounting.\n Thus, there are $\\frac{8 \\cdot 7 \\cdot 6 \\cdot 6 \\cdot 5}{3 \\cdot 2 \\cdot 2} = \\boxed{840}$ possible quintets.\n *)\n\n\n\ndefinition choose :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\" (infixl \"choose\" 65)\n  where \"n choose k = (if k > n then 0 else fact n div (fact k * fact (n-k)))\"\n\ntheorem\n  assumes h0 : \"\\<forall> boys. boys = 8\"\nand h1 : \"\\<forall> girls. girls = 6\"\nand h2 : \"\\<forall> boys_in_quintet. boys_in_quintet = 3\"\nand h3 : \"\\<forall> girls_in_quintet. girls_in_quintet = 2\"\nshows  \"quintets = 840\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a group of 8 boys and 6 girls, how many ways are there to form a quintet (a group of 5 people) consisting of 3 boys and 2 girls? The final answer is 840.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.955229640007019,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n_choose_k :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n k. n_choose_k n k = fact n div (fact k * fact (n-k))\"\nand h1 : \"n_choose_k 8 3 = 56\"\nand h2 : \"n_choose_k 6 2 = 15\"\nshows  \"n_choose_k 8 3 * n_choose_k 6 2 = 840\"",
+        "formal solution": "(* ### Problem\n There are eight boys and six girls who are members of the trumpet section in the band. From the members of the trumpet section, a quintet is being formed. If the quintet must consist of three boys and two girls, how many quintets are possible? The final Answer is 840\n ### Proof\n First, we consider how many ways there are to choose three boys from eight. There are $8$ choices for the first boy, $7$ for the second, and $6$ for the third.\n However, because the boys are indistinct from one another, we have overcounted, and must divide by $3 \\cdot 2$.\n Similarly, there are $6 \\cdot 5$ ways to choose the two girls, divided by $2$ for overcounting.\n Thus, there are $\\frac{8 \\cdot 7 \\cdot 6 \\cdot 6 \\cdot 5}{3 \\cdot 2 \\cdot 2} = \\boxed{840}$ possible quintets.\n *)\n\ntheorem\nfixes n_choose_k :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>n k. n_choose_k n k = fact n div (fact k * fact (n-k))\"\nand h1 : \"n_choose_k 8 3 = 56\"\nand h2 : \"n_choose_k 6 2 = 15\"\nshows  \"n_choose_k 8 3 * n_choose_k 6 2 = 840\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given the definition of combinations, $\\binom{n}{k} = \\frac{n!}{k!(n-k)!}$, find the product of $\\binom{8}{3}$ and $\\binom{6}{2}$. The final answer is 840.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9470811486244202,
+        "symbolic_score": 0.6
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n k :: nat and C :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 8\"\nand h1 : \"k = 3\"\nand h2 : \"C n k = fact n div (fact k * fact (n - k))\"\nand h3 : \"n = 6\"\nand h4 : \"k = 2\"\nand h5 : \"C n k = fact n div (fact k * fact (n - k))\"\nshows  \"C 8 3 * C 6 2 = 840\"",
+        "formal solution": "(* ### Problem\n There are eight boys and six girls who are members of the trumpet section in the band. From the members of the trumpet section, a quintet is being formed. If the quintet must consist of three boys and two girls, how many quintets are possible? The final Answer is 840\n ### Proof\n First, we consider how many ways there are to choose three boys from eight. There are $8$ choices for the first boy, $7$ for the second, and $6$ for the third.\n However, because the boys are indistinct from one another, we have overcounted, and must divide by $3 \\cdot 2$.\n Similarly, there are $6 \\cdot 5$ ways to choose the two girls, divided by $2$ for overcounting.\n Thus, there are $\\frac{8 \\cdot 7 \\cdot 6 \\cdot 6 \\cdot 5}{3 \\cdot 2 \\cdot 2} = \\boxed{840}$ possible quintets.\n *)\n\ntheorem\nfixes n k :: nat and C :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"n = 8\"\nand h1 : \"k = 3\"\nand h2 : \"C n k = fact n div (fact k * fact (n - k))\"\nand h3 : \"n = 6\"\nand h4 : \"k = 2\"\nand h5 : \"C n k = fact n div (fact k * fact (n - k))\"\nshows  \"C 8 3 * C 6 2 = 840\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the product of the binomial coefficients $\\binom{8}{3}$ and $\\binom{6}{2}$. The final answer is 840.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9122735857963562,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes boys girls quintets :: nat\nassumes h0 : \"boys = 8\"\nand h1 : \"girls = 6\"\nand h2 : \"quintets = nchoosek boys 3 * nchoosek girls 2\"\nshows  \"quintets = 840\"",
+        "formal solution": "(* ### Problem\n There are eight boys and six girls who are members of the trumpet section in the band. From the members of the trumpet section, a quintet is being formed. If the quintet must consist of three boys and two girls, how many quintets are possible? The final Answer is 840\n ### Proof\n First, we consider how many ways there are to choose three boys from eight. There are $8$ choices for the first boy, $7$ for the second, and $6$ for the third.\n However, because the boys are indistinct from one another, we have overcounted, and must divide by $3 \\cdot 2$.\n Similarly, there are $6 \\cdot 5$ ways to choose the two girls, divided by $2$ for overcounting.\n Thus, there are $\\frac{8 \\cdot 7 \\cdot 6 \\cdot 6 \\cdot 5}{3 \\cdot 2 \\cdot 2} = \\boxed{840}$ possible quintets.\n *)\n\ntheorem\nfixes boys girls quintets :: nat\nassumes h0 : \"boys = 8\"\nand h1 : \"girls = 6\"\nand h2 : \"quintets = nchoosek boys 3 * nchoosek girls 2\"\nshows  \"quintets = 840\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a class, there are 8 boys and 6 girls. How many different quintets (groups of 5) can be formed with 3 boys and 2 girls? The final answer is 840.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.992215633392334,
+        "symbolic_score": 0.6
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes n k :: nat\nassumes h0 : \"n = 8\"\nand h1 : \"k = 3\"\nand h2 : \"nchoosek n k = 56\"\nand h3 : \"nchoosek (14 - n) (5 - k) = 15\"\nshows  \"nchoosek n k * nchoosek (14 - n) (5 - k) = 840\"",
+        "formal solution": "(* ### Problem\n There are eight boys and six girls who are members of the trumpet section in the band. From the members of the trumpet section, a quintet is being formed. If the quintet must consist of three boys and two girls, how many quintets are possible? The final Answer is 840\n ### Proof\n First, we consider how many ways there are to choose three boys from eight. There are $8$ choices for the first boy, $7$ for the second, and $6$ for the third.\n However, because the boys are indistinct from one another, we have overcounted, and must divide by $3 \\cdot 2$.\n Similarly, there are $6 \\cdot 5$ ways to choose the two girls, divided by $2$ for overcounting.\n Thus, there are $\\frac{8 \\cdot 7 \\cdot 6 \\cdot 6 \\cdot 5}{3 \\cdot 2 \\cdot 2} = \\boxed{840}$ possible quintets.\n *)\n\ntheorem\nfixes n k :: nat\nassumes h0 : \"n = 8\"\nand h1 : \"k = 3\"\nand h2 : \"nchoosek n k = 56\"\nand h3 : \"nchoosek (14 - n) (5 - k) = 15\"\nshows  \"nchoosek n k * nchoosek (14 - n) (5 - k) = 840\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the product of the binomial coefficients $\\binom{8}{3}$ and $\\binom{14-8}{5-3}$. The final answer is 840.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8751410841941833,
+        "symbolic_score": 0.6
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n_b n_g n_b_q n_g_q quintets :: nat\nassumes h0 : \"n_b = 8\"\nand h1 : \"n_g = 6\"\nand h2 : \"n_b_q = 3\"\nand h3 : \"n_g_q = 2\"\nand h4 : \"quintets = (n_b choose n_b_q) * (n_g choose n_g_q)\"\nshows  \"quintets = 840\"",
+        "formal solution": "(* ### Problem\n There are eight boys and six girls who are members of the trumpet section in the band. From the members of the trumpet section, a quintet is being formed. If the quintet must consist of three boys and two girls, how many quintets are possible? The final Answer is 840\n ### Proof\n First, we consider how many ways there are to choose three boys from eight. There are $8$ choices for the first boy, $7$ for the second, and $6$ for the third.\n However, because the boys are indistinct from one another, we have overcounted, and must divide by $3 \\cdot 2$.\n Similarly, there are $6 \\cdot 5$ ways to choose the two girls, divided by $2$ for overcounting.\n Thus, there are $\\frac{8 \\cdot 7 \\cdot 6 \\cdot 6 \\cdot 5}{3 \\cdot 2 \\cdot 2} = \\boxed{840}$ possible quintets.\n *)\n\ntheorem\nfixes n_b n_g n_b_q n_g_q quintets :: nat\nassumes h0 : \"n_b = 8\"\nand h1 : \"n_g = 6\"\nand h2 : \"n_b_q = 3\"\nand h3 : \"n_g_q = 2\"\nand h4 : \"quintets = (n_b choose n_b_q) * (n_g choose n_g_q)\"\nshows  \"quintets = 840\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a group of 8 boys and 6 girls, a quintet (group of 5) is formed consisting of 3 boys and 2 girls. How many different quintets can be formed? The final answer is 840.",
+        "label": 0,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9948118329048157,
+        "symbolic_score": 0.6
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes boys girls :: nat and quintets :: nat\nassumes h0 : \"boys = 8\"\nand h1 : \"girls = 6\"\nand h2 : \"quintets = (binomial boys 3) * (binomial girls 2)\"\nshows  \"quintets = 840\"",
+        "formal solution": "(* ### Problem\n There are eight boys and six girls who are members of the trumpet section in the band. From the members of the trumpet section, a quintet is being formed. If the quintet must consist of three boys and two girls, how many quintets are possible? The final Answer is 840\n ### Proof\n First, we consider how many ways there are to choose three boys from eight. There are $8$ choices for the first boy, $7$ for the second, and $6$ for the third.\n However, because the boys are indistinct from one another, we have overcounted, and must divide by $3 \\cdot 2$.\n Similarly, there are $6 \\cdot 5$ ways to choose the two girls, divided by $2$ for overcounting.\n Thus, there are $\\frac{8 \\cdot 7 \\cdot 6 \\cdot 6 \\cdot 5}{3 \\cdot 2 \\cdot 2} = \\boxed{840}$ possible quintets.\n *)\n\ntheorem\nfixes boys girls :: nat and quintets :: nat\nassumes h0 : \"boys = 8\"\nand h1 : \"girls = 6\"\nand h2 : \"quintets = (binomial boys 3) * (binomial girls 2)\"\nshows  \"quintets = 840\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a group of 8 boys and 6 girls, how many different quintets (groups of 5) can be formed with exactly 3 boys and 2 girls? The final answer is 840.",
+        "label": 1,
+        "naive_label": 1,
+        "syntax": 1,
+        "semantic_score": 0.9894955158233643,
+        "symbolic_score": 0.6
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes boys girls quintet :: nat\nassumes h0 : \"boys = 8\"\nand h1 : \"girls = 6\"\nand h2 : \"quintet = 3 * boys + 2 * girls\"\nshows  \"quintet = 840\"",
+        "formal solution": "(* ### Problem\n There are eight boys and six girls who are members of the trumpet section in the band. From the members of the trumpet section, a quintet is being formed. If the quintet must consist of three boys and two girls, how many quintets are possible? The final Answer is 840\n ### Proof\n First, we consider how many ways there are to choose three boys from eight. There are $8$ choices for the first boy, $7$ for the second, and $6$ for the third.\n However, because the boys are indistinct from one another, we have overcounted, and must divide by $3 \\cdot 2$.\n Similarly, there are $6 \\cdot 5$ ways to choose the two girls, divided by $2$ for overcounting.\n Thus, there are $\\frac{8 \\cdot 7 \\cdot 6 \\cdot 6 \\cdot 5}{3 \\cdot 2 \\cdot 2} = \\boxed{840}$ possible quintets.\n *)\n\ntheorem\nfixes boys girls quintet :: nat\nassumes h0 : \"boys = 8\"\nand h1 : \"girls = 6\"\nand h2 : \"quintet = 3 * boys + 2 * girls\"\nshows  \"quintet = 840\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "There are 8 boys and 6 girls. If a quintet consists of 3 boys and 2 girls, what is the total number of quintets that can be formed? The final answer is 840.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.989511251449585,
+        "symbolic_score": 0.6
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes boys girls quintet :: nat\nassumes h0 : \"boys = 8\"\nand h1 : \"girls = 6\"\nand h2 : \"quintet = 5\"\nshows  \"n_choose_k boys 3 * n_choose_k girls 2 = 840\"\nwhere \"n_choose_k n k = fact n div (fact k * fact (n - k))\"",
+        "formal solution": "(* ### Problem\n There are eight boys and six girls who are members of the trumpet section in the band. From the members of the trumpet section, a quintet is being formed. If the quintet must consist of three boys and two girls, how many quintets are possible? The final Answer is 840\n ### Proof\n First, we consider how many ways there are to choose three boys from eight. There are $8$ choices for the first boy, $7$ for the second, and $6$ for the third.\n However, because the boys are indistinct from one another, we have overcounted, and must divide by $3 \\cdot 2$.\n Similarly, there are $6 \\cdot 5$ ways to choose the two girls, divided by $2$ for overcounting.\n Thus, there are $\\frac{8 \\cdot 7 \\cdot 6 \\cdot 6 \\cdot 5}{3 \\cdot 2 \\cdot 2} = \\boxed{840}$ possible quintets.\n *)\n\ntheorem\nfixes boys girls quintet :: nat\nassumes h0 : \"boys = 8\"\nand h1 : \"girls = 6\"\nand h2 : \"quintet = 5\"\nshows  \"n_choose_k boys 3 * n_choose_k girls 2 = 840\"\nwhere \"n_choose_k n k = fact n div (fact k * fact (n - k))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a group, there are 8 boys and 6 girls. How many ways can a quintet (a group of 5 people) be formed such that it contains exactly 3 boys and 2 girls? The final answer is 840.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.980656623840332,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "\n\ntheorem quintet_combinations:\n  fixes boys girls quintet :: nat\n  assumes h0 : \"boys = 8\"\nand h1 : \"girls = 6\"\nand h2 : \"quintet = 5\"\nshows  \"n_choose_k boys 3 * n_choose_k girls 2 = 840\"\n",
+        "formal solution": "(* ### Problem\n There are eight boys and six girls who are members of the trumpet section in the band. From the members of the trumpet section, a quintet is being formed. If the quintet must consist of three boys and two girls, how many quintets are possible? The final Answer is 840\n ### Proof\n First, we consider how many ways there are to choose three boys from eight. There are $8$ choices for the first boy, $7$ for the second, and $6$ for the third.\n However, because the boys are indistinct from one another, we have overcounted, and must divide by $3 \\cdot 2$.\n Similarly, there are $6 \\cdot 5$ ways to choose the two girls, divided by $2$ for overcounting.\n Thus, there are $\\frac{8 \\cdot 7 \\cdot 6 \\cdot 6 \\cdot 5}{3 \\cdot 2 \\cdot 2} = \\boxed{840}$ possible quintets.\n *)\n\n\n\ntheorem quintet_combinations:\n  fixes boys girls quintet :: nat\n  assumes h0 : \"boys = 8\"\nand h1 : \"girls = 6\"\nand h2 : \"quintet = 5\"\nshows  \"n_choose_k boys 3 * n_choose_k girls 2 = 840\"\n\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a group of 8 boys and 6 girls, how many different quintets can be formed consisting of 3 boys and 2 girls? The final answer is 840.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9480716586112976,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "840",
+    "natural problem": "There are eight boys and six girls who are members of the trumpet section in the band. From the members of the trumpet section, a quintet is being formed. If the quintet must consist of three boys and two girls, how many quintets are possible?",
+    "natural solution": [
+        "First, we consider how many ways there are to choose three boys from eight. There are $8$ choices for the first boy, $7$ for the second, and $6$ for the third.",
+        "However, because the boys are indistinct from one another, we have overcounted, and must divide by $3 \\cdot 2$.",
+        "Similarly, there are $6 \\cdot 5$ ways to choose the two girls, divided by $2$ for overcounting.",
+        "Thus, there are $\\frac{8 \\cdot 7 \\cdot 6 \\cdot 6 \\cdot 5}{3 \\cdot 2 \\cdot 2} = \\boxed{840}$ possible quintets."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            1,
+            3,
+            4,
+            5,
+            6,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            8
+        ],
+        "4": [
+            9
+        ]
+    },
+    "level": "Level 3",
+    "type": "Counting & Probability"
+}

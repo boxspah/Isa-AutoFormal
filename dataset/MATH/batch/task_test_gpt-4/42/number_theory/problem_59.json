@@ -1,0 +1,60 @@
+{
+    "natural problem": "February $1$, $2008$ is a Friday.  The last Friday of February $2008$ will be February $x$, $2008$.  If $2008$ is a leap year, what is the value of $x$?",
+    "natural solution": [
+        "If 2008 is a leap year, that means there are 29 days in February, and February 29 is $28=7\\cdot4$ days after February 1, so it is also a Friday.",
+        "Thus, $x=\\boxed{29}$."
+    ],
+    "natural answer": "29",
+    "a_0": {
+        "formal problem": "theorem\nfixes leap_year :: bool and feb_days :: int\nassumes h0 : \"leap_year = True\"\nand h1 : \"leap_year \\<Longrightarrow> feb_days = 29\"\nand h2 : \"feb_days mod 7 = 5\"\nshows  \"feb_days = 29\"",
+        "formal solution": "(* ### Problem\n February $1$, $2008$ is a Friday.  The last Friday of February $2008$ will be February $x$, $2008$.  If $2008$ is a leap year, what is the value of $x$? The final Answer is 29\n ### Proof\n If 2008 is a leap year, that means there are 29 days in February, and February 29 is $28=7\\cdot4$ days after February 1, so it is also a Friday.\n Thus, $x=\\boxed{29}$.\n *)\n\ntheorem\nfixes leap_year :: bool and feb_days :: int\nassumes h0 : \"leap_year = True\"\nand h1 : \"leap_year \\<Longrightarrow> feb_days = 29\"\nand h2 : \"feb_days mod 7 = 5\"\nshows  \"feb_days = 29\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a leap year, February has 29 days. If February days mod 7 equals 5, what is the total number of days in February? The final answer is 29."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes leap_year :: bool and x :: int\nassumes h0 : \"leap_year = True\"\nand h1 : \"x = (if leap_year then 29 else 28)\"\nshows  \"x = 29\"",
+        "formal solution": "(* ### Problem\n February $1$, $2008$ is a Friday.  The last Friday of February $2008$ will be February $x$, $2008$.  If $2008$ is a leap year, what is the value of $x$? The final Answer is 29\n ### Proof\n If 2008 is a leap year, that means there are 29 days in February, and February 29 is $28=7\\cdot4$ days after February 1, so it is also a Friday.\n Thus, $x=\\boxed{29}$.\n *)\n\ntheorem\nfixes leap_year :: bool and x :: int\nassumes h0 : \"leap_year = True\"\nand h1 : \"x = (if leap_year then 29 else 28)\"\nshows  \"x = 29\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If it's a leap year, then February has 29 days. If it's not a leap year, then February has 28 days. What's the number of days in February during a leap year?\" The final answer is 29."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes x :: int\nassumes h0 : \"is_leap_year 2008\"\nand h1 : \"day_of_week (Date 1 2 2008) = Friday\"\nand h2 : \"last_day_of_month (2, 2008) = x\"\nand h3 : \"day_of_week (Date x 2 2008) = Friday\"\nshows  \"x = 29\"",
+        "formal solution": "(* ### Problem\n February $1$, $2008$ is a Friday.  The last Friday of February $2008$ will be February $x$, $2008$.  If $2008$ is a leap year, what is the value of $x$? The final Answer is 29\n ### Proof\n If 2008 is a leap year, that means there are 29 days in February, and February 29 is $28=7\\cdot4$ days after February 1, so it is also a Friday.\n Thus, $x=\\boxed{29}$.\n *)\n\ntheorem\nfixes x :: int\nassumes h0 : \"is_leap_year 2008\"\nand h1 : \"day_of_week (Date 1 2 2008) = Friday\"\nand h2 : \"last_day_of_month (2, 2008) = x\"\nand h3 : \"day_of_week (Date x 2 2008) = Friday\"\nshows  \"x = 29\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"In the leap year of 2008, February starts on a Friday. What is the last date of February that also falls on a Friday? The final answer is 29.\""
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes x :: nat\nassumes h0 : \"leapyear 2008\"\nand h1 : \"weekday (2008, 2, 1) = Friday\"\nand h2 : \"weekday (2008, 2, x) = Friday\"\nand h3 : \"x > 22\"\nand h4 : \"\\<forall> y. y > x \\<longrightarrow> weekday (2008, 2, y) \\<noteq> Friday\"\nshows  \"x = 29\"",
+        "formal solution": "(* ### Problem\n February $1$, $2008$ is a Friday.  The last Friday of February $2008$ will be February $x$, $2008$.  If $2008$ is a leap year, what is the value of $x$? The final Answer is 29\n ### Proof\n If 2008 is a leap year, that means there are 29 days in February, and February 29 is $28=7\\cdot4$ days after February 1, so it is also a Friday.\n Thus, $x=\\boxed{29}$.\n *)\n\ntheorem\nfixes x :: nat\nassumes h0 : \"leapyear 2008\"\nand h1 : \"weekday (2008, 2, 1) = Friday\"\nand h2 : \"weekday (2008, 2, x) = Friday\"\nand h3 : \"x > 22\"\nand h4 : \"\\<forall> y. y > x \\<longrightarrow> weekday (2008, 2, y) \\<noteq> Friday\"\nshows  \"x = 29\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"In the leap year 2008, February 1st fell on a Friday. Find the last Friday of February in that year. The final answer is the 29th.\""
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes x :: nat\nassumes h0 : \"leap_year 2008\"\nand h1 : \"day_of_week (1, 2, 2008) = Friday\"\nand h2 : \"last_day_of_week_in_month (Friday, 2, 2008) = x\"\nshows  \"x = 29\"",
+        "formal solution": "(* ### Problem\n February $1$, $2008$ is a Friday.  The last Friday of February $2008$ will be February $x$, $2008$.  If $2008$ is a leap year, what is the value of $x$? The final Answer is 29\n ### Proof\n If 2008 is a leap year, that means there are 29 days in February, and February 29 is $28=7\\cdot4$ days after February 1, so it is also a Friday.\n Thus, $x=\\boxed{29}$.\n *)\n\ntheorem\nfixes x :: nat\nassumes h0 : \"leap_year 2008\"\nand h1 : \"day_of_week (1, 2, 2008) = Friday\"\nand h2 : \"last_day_of_week_in_month (Friday, 2, 2008) = x\"\nshows  \"x = 29\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In the year 2008, which was a leap year, February 1st was a Friday. Find the last day of February 2008 which falls on a Friday. The final answer is the 29th."
+    },
+    "a_5": {
+        "formal problem": "definition leap_year :: \"nat \\<Rightarrow> bool\" where\n\"leap_year y = (if y mod 4 = 0 then (if y mod 100 = 0 then y mod 400 = 0 else True) else False)\"\n\ndefinition feb_last_friday :: \"nat \\<Rightarrow> nat\" where\n\"feb_last_friday y = (if leap_year y then 29 else 28)\"\n\ntheorem\nshows  \"feb_last_friday 2008 = 29\" using leap_year_def feb_last_friday_def by simp",
+        "formal solution": "(* ### Problem\n February $1$, $2008$ is a Friday.  The last Friday of February $2008$ will be February $x$, $2008$.  If $2008$ is a leap year, what is the value of $x$? The final Answer is 29\n ### Proof\n If 2008 is a leap year, that means there are 29 days in February, and February 29 is $28=7\\cdot4$ days after February 1, so it is also a Friday.\n Thus, $x=\\boxed{29}$.\n *)\n\ndefinition leap_year :: \"nat \\<Rightarrow> bool\" where\n\"leap_year y = (if y mod 4 = 0 then (if y mod 100 = 0 then y mod 400 = 0 else True) else False)\"\n\ndefinition feb_last_friday :: \"nat \\<Rightarrow> nat\" where\n\"feb_last_friday y = (if leap_year y then 29 else 28)\"\n\ntheorem\nshows  \"feb_last_friday 2008 = 29\" using leap_year_def feb_last_friday_def by simp\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Define a leap year as a year that is divisible by 4, unless it is divisible by 100 but not 400. The last Friday in February falls on the 29th day if it's a leap year, otherwise, it falls on the 28th day. What date does the last Friday in February fall on in the year 2008? The final answer is the 29th.\""
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes x :: nat and feb_days :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"feb_days 2008 = 29\"\nand h1 : \"x = 1 + 7 * ((feb_days 2008 - 1) div 7)\"\nshows  \"x = 29\"",
+        "formal solution": "(* ### Problem\n February $1$, $2008$ is a Friday.  The last Friday of February $2008$ will be February $x$, $2008$.  If $2008$ is a leap year, what is the value of $x$? The final Answer is 29\n ### Proof\n If 2008 is a leap year, that means there are 29 days in February, and February 29 is $28=7\\cdot4$ days after February 1, so it is also a Friday.\n Thus, $x=\\boxed{29}$.\n *)\n\ntheorem\nfixes x :: nat and feb_days :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"feb_days 2008 = 29\"\nand h1 : \"x = 1 + 7 * ((feb_days 2008 - 1) div 7)\"\nshows  \"x = 29\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Given that the month of February in the year 2008 has 29 days, find the value of $x$ when $x = 1 + 7 * ((\\text{the number of February days in 2008} - 1) \\div 7)$. The final answer is $x = 29$.\""
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes leap_year_feb :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. leap_year_feb y = (if leap_year y then 29 else 28)\"\nand h1 : \"leap_year 2008\"\nshows  \"leap_year_feb 2008 = 29\"",
+        "formal solution": "(* ### Problem\n February $1$, $2008$ is a Friday.  The last Friday of February $2008$ will be February $x$, $2008$.  If $2008$ is a leap year, what is the value of $x$? The final Answer is 29\n ### Proof\n If 2008 is a leap year, that means there are 29 days in February, and February 29 is $28=7\\cdot4$ days after February 1, so it is also a Friday.\n Thus, $x=\\boxed{29}$.\n *)\n\ntheorem\nfixes leap_year_feb :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall>y. leap_year_feb y = (if leap_year y then 29 else 28)\"\nand h1 : \"leap_year 2008\"\nshows  \"leap_year_feb 2008 = 29\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Determine how many days are in February of a leap year. If the year is a leap year, February has 29 days, otherwise, it has 28 days. What is the number of days in February of the leap year 2008? The final answer is 29."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x :: nat\nassumes h0 : \"is_leap_year 2008\"\nand h1 : \"first_day_of_month 2 2008 = Friday\"\nand h2 : \"last_friday_of_month 2 2008 = x\"\nshows  \"x = 29\"",
+        "formal solution": "(* ### Problem\n February $1$, $2008$ is a Friday.  The last Friday of February $2008$ will be February $x$, $2008$.  If $2008$ is a leap year, what is the value of $x$? The final Answer is 29\n ### Proof\n If 2008 is a leap year, that means there are 29 days in February, and February 29 is $28=7\\cdot4$ days after February 1, so it is also a Friday.\n Thus, $x=\\boxed{29}$.\n *)\n\ntheorem\nfixes x :: nat\nassumes h0 : \"is_leap_year 2008\"\nand h1 : \"first_day_of_month 2 2008 = Friday\"\nand h2 : \"last_friday_of_month 2 2008 = x\"\nshows  \"x = 29\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In the leap year 2008, if the first day of February falls on a Friday, what is the date of the last Friday in February? The final answer is 29."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes leap_year :: bool and feb_days :: nat\nassumes h0 : \"leap_year = True\"\nand h1 : \"leap_year \\<Longrightarrow> feb_days = 29\"\nshows  \"feb_days = 29\"",
+        "formal solution": "(* ### Problem\n February $1$, $2008$ is a Friday.  The last Friday of February $2008$ will be February $x$, $2008$.  If $2008$ is a leap year, what is the value of $x$? The final Answer is 29\n ### Proof\n If 2008 is a leap year, that means there are 29 days in February, and February 29 is $28=7\\cdot4$ days after February 1, so it is also a Friday.\n Thus, $x=\\boxed{29}$.\n *)\n\ntheorem\nfixes leap_year :: bool and feb_days :: nat\nassumes h0 : \"leap_year = True\"\nand h1 : \"leap_year \\<Longrightarrow> feb_days = 29\"\nshows  \"feb_days = 29\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If a year is a leap year, then February has 29 days. Given that this year is a leap year, how many days does February have? The final answer is 29.\""
+    },
+    "level": "Level 2",
+    "type": "Number Theory"
+}

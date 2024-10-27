@@ -1,0 +1,144 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. f n = 6 * n\"\nand h1 : \"\\<forall>n. 490 \\<le> n \\<and> n \\<le> 751 \\<and> n mod 3 = 1\"\nshows  \"sum f {490,493..751} = 516\"",
+        "formal solution": "(* ### Problem\n Evaluate the expression \\[(751 - 745) + (748 - 742) + (745 - 739) + (742 - 736) + \\cdots + (499 - 493) + (496 - 490).\\] The final Answer is 516\n ### Proof\n We could view the sum as the sum of a bunch of 6's, but a closer look simplifies the sum considerably. Both $-745$ and $+745$ appear in the expression, as do both $-742$ and $+742$, and both $-739$ and $+739$, and so on down to $-496$ and $+496$.\n These all cancel out, leaving $751 + 748 - 493 - 490 = \\boxed{516}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. f n = 6 * n\"\nand h1 : \"\\<forall>n. 490 \\<le> n \\<and> n \\<le> 751 \\<and> n mod 3 = 1\"\nshows  \"sum f {490,493..751} = 516\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of multiples of 6 for the integers between 490 and 751, inclusive, that leave a remainder of 1 when divided by 3. The final answer is 516.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7855483293533325,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes seq :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. seq n = (n + 3) * 6 - (n * 6)\"\nand h1 : \"sum seq {1..128} = 516\"\nshows  \"sum seq {1..128} = 516\"",
+        "formal solution": "(* ### Problem\n Evaluate the expression \\[(751 - 745) + (748 - 742) + (745 - 739) + (742 - 736) + \\cdots + (499 - 493) + (496 - 490).\\] The final Answer is 516\n ### Proof\n We could view the sum as the sum of a bunch of 6's, but a closer look simplifies the sum considerably. Both $-745$ and $+745$ appear in the expression, as do both $-742$ and $+742$, and both $-739$ and $+739$, and so on down to $-496$ and $+496$.\n These all cancel out, leaving $751 + 748 - 493 - 490 = \\boxed{516}$.\n *)\n\ntheorem\nfixes seq :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. seq n = (n + 3) * 6 - (n * 6)\"\nand h1 : \"sum seq {1..128} = 516\"\nshows  \"sum seq {1..128} = 516\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the first 128 terms of the sequence defined by $seq(n) = (n + 3) * 6 - (n * 6)$. The final answer is 516.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8106759786605835,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 0 \\<longrightarrow> f n = 751 - 3 * n\"\nand h1 : \"\\<forall>n. n \\<ge> 0 \\<longrightarrow> f n = f (n + 1) - 3\"\nshows  \"(\\<Sum>n=0..86. f n) = 516\"",
+        "formal solution": "(* ### Problem\n Evaluate the expression \\[(751 - 745) + (748 - 742) + (745 - 739) + (742 - 736) + \\cdots + (499 - 493) + (496 - 490).\\] The final Answer is 516\n ### Proof\n We could view the sum as the sum of a bunch of 6's, but a closer look simplifies the sum considerably. Both $-745$ and $+745$ appear in the expression, as do both $-742$ and $+742$, and both $-739$ and $+739$, and so on down to $-496$ and $+496$.\n These all cancel out, leaving $751 + 748 - 493 - 490 = \\boxed{516}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 0 \\<longrightarrow> f n = 751 - 3 * n\"\nand h1 : \"\\<forall>n. n \\<ge> 0 \\<longrightarrow> f n = f (n + 1) - 3\"\nshows  \"(\\<Sum>n=0..86. f n) = 516\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f(n) = 751 - 3n$ for all integers $n \\geq 0$, and that for each $n$, $f(n) = f(n + 1) - 3$, what is the sum of $f(n)$ for $n$ from $0$ to $86$? The final answer is $516$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9077274203300476,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem \nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = (6 * (n div 3) + 751) - (6 * (n div 3) + 745)\"\nand h1 : \"sum f {1..86} = 516\"\nshows  \"sum f {1..86} = 516\"",
+        "formal solution": "(* ### Problem\n Evaluate the expression \\[(751 - 745) + (748 - 742) + (745 - 739) + (742 - 736) + \\cdots + (499 - 493) + (496 - 490).\\] The final Answer is 516\n ### Proof\n We could view the sum as the sum of a bunch of 6's, but a closer look simplifies the sum considerably. Both $-745$ and $+745$ appear in the expression, as do both $-742$ and $+742$, and both $-739$ and $+739$, and so on down to $-496$ and $+496$.\n These all cancel out, leaving $751 + 748 - 493 - 490 = \\boxed{516}$.\n *)\n\ntheorem \nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = (6 * (n div 3) + 751) - (6 * (n div 3) + 745)\"\nand h1 : \"sum f {1..86} = 516\"\nshows  \"sum f {1..86} = 516\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined such that $f(n) = (6 * \\text{the integer part of } \\frac{n}{3} + 751) - (6 * \\text{the integer part of } \\frac{n}{3} + 745)$ for all integers $n$. What is the sum of the function values $f(1), f(2), ..., f(86)$? The final answer is $516$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9887799620628357,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = (751 - 6 * n) + (748 - 6 * n) + (745 - 6 * n) + (742 - 6 * n) + ... + (499 - 6 * n) + (496 - 6 * n)\"\nshows  \"f 42 = 516\"",
+        "formal solution": "(* ### Problem\n Evaluate the expression \\[(751 - 745) + (748 - 742) + (745 - 739) + (742 - 736) + \\cdots + (499 - 493) + (496 - 490).\\] The final Answer is 516\n ### Proof\n We could view the sum as the sum of a bunch of 6's, but a closer look simplifies the sum considerably. Both $-745$ and $+745$ appear in the expression, as do both $-742$ and $+742$, and both $-739$ and $+739$, and so on down to $-496$ and $+496$.\n These all cancel out, leaving $751 + 748 - 493 - 490 = \\boxed{516}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = (751 - 6 * n) + (748 - 6 * n) + (745 - 6 * n) + (742 - 6 * n) + ... + (499 - 6 * n) + (496 - 6 * n)\"\nshows  \"f 42 = 516\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the function $f(n)$, where $f(n)$ is defined as the sum of the arithmetic sequence starting at 751 and decreasing by 6 at each step until it reaches 496, but at each step, the value is decreased by $6n$. What is the value of $f$ at $n=42$? The final answer is 516.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.7243765592575073,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f(n) = 6 * n\"\nand h1 : \"\\<forall>n \\<in> {82..125}. f(n) = n - (n-1)\"\nshows  \"sum f {82..125} = 516\"",
+        "formal solution": "(* ### Problem\n Evaluate the expression \\[(751 - 745) + (748 - 742) + (745 - 739) + (742 - 736) + \\cdots + (499 - 493) + (496 - 490).\\] The final Answer is 516\n ### Proof\n We could view the sum as the sum of a bunch of 6's, but a closer look simplifies the sum considerably. Both $-745$ and $+745$ appear in the expression, as do both $-742$ and $+742$, and both $-739$ and $+739$, and so on down to $-496$ and $+496$.\n These all cancel out, leaving $751 + 748 - 493 - 490 = \\boxed{516}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f(n) = 6 * n\"\nand h1 : \"\\<forall>n \\<in> {82..125}. f(n) = n - (n-1)\"\nshows  \"sum f {82..125} = 516\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The function $f$ is defined as $f(n)=6n$ for any integer $n$, but for all integers $n$ in the range from 82 to 125, $f(n)$ is defined as $n - (n-1)$. What is the sum of $f(n)$ for all $n$ from 82 to 125? The final answer is 516.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9755679368972778,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = (751 - n*3) - (745 - n*3)\"\nand h1 : \"\\<forall> n. 0 \\<le> n \\<and> n \\<le> 84 \\<longrightarrow> f n \\<ge> 0\"\nshows  \"sum f {0..84} = 516\"",
+        "formal solution": "(* ### Problem\n Evaluate the expression \\[(751 - 745) + (748 - 742) + (745 - 739) + (742 - 736) + \\cdots + (499 - 493) + (496 - 490).\\] The final Answer is 516\n ### Proof\n We could view the sum as the sum of a bunch of 6's, but a closer look simplifies the sum considerably. Both $-745$ and $+745$ appear in the expression, as do both $-742$ and $+742$, and both $-739$ and $+739$, and so on down to $-496$ and $+496$.\n These all cancel out, leaving $751 + 748 - 493 - 490 = \\boxed{516}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = (751 - n*3) - (745 - n*3)\"\nand h1 : \"\\<forall> n. 0 \\<le> n \\<and> n \\<le> 84 \\<longrightarrow> f n \\<ge> 0\"\nshows  \"sum f {0..84} = 516\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "For every integer $n$ from 0 to 84, a function $f(n)$ is defined as $f(n) = (751 - 3n) - (745 - 3n)$. If $f(n)$ is always greater than or equal to 0, what is the sum of $f(n)$ for all $n$ from 0 to 84? The final answer is 516.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9847121238708496,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f n = n - (n - 6)\"\nand h1 : \"sum f {490..751} = 516\"\nshows  \"sum f {490..751} = 516\"",
+        "formal solution": "(* ### Problem\n Evaluate the expression \\[(751 - 745) + (748 - 742) + (745 - 739) + (742 - 736) + \\cdots + (499 - 493) + (496 - 490).\\] The final Answer is 516\n ### Proof\n We could view the sum as the sum of a bunch of 6's, but a closer look simplifies the sum considerably. Both $-745$ and $+745$ appear in the expression, as do both $-742$ and $+742$, and both $-739$ and $+739$, and so on down to $-496$ and $+496$.\n These all cancel out, leaving $751 + 748 - 493 - 490 = \\boxed{516}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f n = n - (n - 6)\"\nand h1 : \"sum f {490..751} = 516\"\nshows  \"sum f {490..751} = 516\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a function $f(n)$ is defined such that $f(n) = n - (n - 6)$, find the sum of the function $f$ from $490$ to $751$. The final answer is $516$.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9153786301612854,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f n = (6 * n - 5) - (6 * n - 11)\"\nand h1 : \"(\\<Sum> n = 82..125. f n) = 516\"\nshows  \"516 = 516\"",
+        "formal solution": "(* ### Problem\n Evaluate the expression \\[(751 - 745) + (748 - 742) + (745 - 739) + (742 - 736) + \\cdots + (499 - 493) + (496 - 490).\\] The final Answer is 516\n ### Proof\n We could view the sum as the sum of a bunch of 6's, but a closer look simplifies the sum considerably. Both $-745$ and $+745$ appear in the expression, as do both $-742$ and $+742$, and both $-739$ and $+739$, and so on down to $-496$ and $+496$.\n These all cancel out, leaving $751 + 748 - 493 - 490 = \\boxed{516}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f n = (6 * n - 5) - (6 * n - 11)\"\nand h1 : \"(\\<Sum> n = 82..125. f n) = 516\"\nshows  \"516 = 516\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If a function $f(n)$ is defined as $f(n) = (6n - 5) - (6n - 11)$, find the sum of $f(n)$ for $n$ from 82 to 125. The final answer is 516.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9656057357788086,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes sum_seq :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_seq n = n - (n - 6)\"\nand h1 : \"sum (\\<lambda>n. sum_seq (751 - 6 * n)) {0..42} = 516\"\nshows  \"sum (\\<lambda>n. sum_seq (751 - 6 * n)) {0..42} = 516\"",
+        "formal solution": "(* ### Problem\n Evaluate the expression \\[(751 - 745) + (748 - 742) + (745 - 739) + (742 - 736) + \\cdots + (499 - 493) + (496 - 490).\\] The final Answer is 516\n ### Proof\n We could view the sum as the sum of a bunch of 6's, but a closer look simplifies the sum considerably. Both $-745$ and $+745$ appear in the expression, as do both $-742$ and $+742$, and both $-739$ and $+739$, and so on down to $-496$ and $+496$.\n These all cancel out, leaving $751 + 748 - 493 - 490 = \\boxed{516}$.\n *)\n\ntheorem\nfixes sum_seq :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. sum_seq n = n - (n - 6)\"\nand h1 : \"sum (\\<lambda>n. sum_seq (751 - 6 * n)) {0..42} = 516\"\nshows  \"sum (\\<lambda>n. sum_seq (751 - 6 * n)) {0..42} = 516\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a sequence where each term is calculated by the formula $n - (n - 6)$. Given that the sum of terms from the 0th to the 42nd in the sequence, where each term is calculated as $751 - 6n$, is 516, what is the sum of terms from the 0th to the 42nd in the sequence, where each term is calculated as $751 - 6n$? The final answer is 516.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8746339678764343,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "516",
+    "natural problem": "Evaluate the expression \\[(751 - 745) + (748 - 742) + (745 - 739) + (742 - 736) + \\cdots + (499 - 493) + (496 - 490).\\]",
+    "natural solution": [
+        "We could view the sum as the sum of a bunch of 6's, but a closer look simplifies the sum considerably. Both $-745$ and $+745$ appear in the expression, as do both $-742$ and $+742$, and both $-739$ and $+739$, and so on down to $-496$ and $+496$.",
+        "These all cancel out, leaving $751 + 748 - 493 - 490 = \\boxed{516}$."
+    ],
+    "oracle": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = (751 - n*3) - (745 - n*3)\"\nshows \"sum f {0..85} = 516\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 3",
+    "type": "Intermediate Algebra"
+}

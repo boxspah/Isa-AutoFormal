@@ -1,0 +1,123 @@
+{
+    "problem_name": "mathd_numbertheory_254",
+    "informal_statement": "Sally, Wei-Hwa, and Zoe are playing a game of marbles involving first arranging as many piles of 10 marbles as possible.  Sally brought 239 marbles, Wei-Hwa brought 174 marbles, and Zoe brought 83 marbles.  If all their marbles are grouped together, how many must be removed in order to start the game? Show that it is 6.",
+    "informal_proof": "The marbles will be grouped into piles of 10.  We might as well group the number of marbles each of Sally, Wei-Hwa, and Zoe brought into as many piles of 10 as possible before sorting out the rest.  This means we only need to consider the modulo 10 residues of the numbers of marbles each of them brought:  \\begin{align*} 239 &\\equiv 9 \\pmod{10} \\\\\n174 &\\equiv 4 \\pmod{10} \\\\\n83 &\\equiv 3 \\pmod{10}\n\\end{align*}  Our goal is to find the modulo 10 residue of the total number of marbles.  We find this by adding the residues above: $9 + 4 + 3 = 16 \\equiv 6 \\pmod{10}$.  Since we were working in modulo 10, this is the same as a units digit calculation.",
+    "a_0": {
+        "formal problem": "theorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles marbles_removed :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"marbles_removed + 10 * ((sally_marbles + wei_hwa_marbles + zoe_marbles - marbles_removed) div 10) = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nshows  \"marbles_removed = 6\"",
+        "formal solution": "(* ### Problem\n Sally, Wei-Hwa, and Zoe are playing a game of marbles involving first arranging as many piles of 10 marbles as possible.  Sally brought 239 marbles, Wei-Hwa brought 174 marbles, and Zoe brought 83 marbles.  If all their marbles are grouped together, how many must be removed in order to start the game? The final Answer is $6$\n ### Proof\n The marbles will be grouped into piles of 10.  We might as well group the number of marbles each of Sally, Wei-Hwa, and Zoe brought into as many piles of 10 as possible before sorting out the rest.  This means we only need to consider the modulo 10 residues of the numbers of marbles each of them brought:  \\begin{align*} 239 &\\equiv 9 \\pmod{10} \\\\\n174 &\\equiv 4 \\pmod{10} \\\\\n83 &\\equiv 3 \\pmod{10}\n\\end{align*}  Our goal is to find the modulo 10 residue of the total number of marbles.  We find this by adding the residues above: $9 + 4 + 3 = 16 \\equiv 6 \\pmod{10}$.  Since we were working in modulo 10, this is the same as a units digit calculation.\n *)\n\ntheorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles marbles_removed :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"marbles_removed + 10 * ((sally_marbles + wei_hwa_marbles + zoe_marbles - marbles_removed) div 10) = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nshows  \"marbles_removed = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Sally has 239 marbles, Wei Hwa has 174 marbles, and Zoe has 83 marbles. They want to divide their marbles into groups of 10, but they need to remove a certain number of marbles before they can do so. How many marbles should they remove to be able to divide their marbles into groups of 10? The final answer is 6.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9893721342086792,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles remaining_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"remaining_marbles = total_marbles mod 10\"\nshows  \"remaining_marbles = 6\"",
+        "formal solution": "(* ### Problem\n Sally, Wei-Hwa, and Zoe are playing a game of marbles involving first arranging as many piles of 10 marbles as possible.  Sally brought 239 marbles, Wei-Hwa brought 174 marbles, and Zoe brought 83 marbles.  If all their marbles are grouped together, how many must be removed in order to start the game? The final Answer is $6$\n ### Proof\n The marbles will be grouped into piles of 10.  We might as well group the number of marbles each of Sally, Wei-Hwa, and Zoe brought into as many piles of 10 as possible before sorting out the rest.  This means we only need to consider the modulo 10 residues of the numbers of marbles each of them brought:  \\begin{align*} 239 &\\equiv 9 \\pmod{10} \\\\\n174 &\\equiv 4 \\pmod{10} \\\\\n83 &\\equiv 3 \\pmod{10}\n\\end{align*}  Our goal is to find the modulo 10 residue of the total number of marbles.  We find this by adding the residues above: $9 + 4 + 3 = 16 \\equiv 6 \\pmod{10}$.  Since we were working in modulo 10, this is the same as a units digit calculation.\n *)\n\ntheorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles remaining_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"remaining_marbles = total_marbles mod 10\"\nshows  \"remaining_marbles = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Sally has 239 marbles, Wei Hwa has 174 marbles, and Zoe has 83 marbles. If you add up all their marbles and divide the total by 10, how many marbles will be left? The final answer is 6 marbles.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9900033473968506,
+        "symbolic_score": 0.9
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles remaining_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"remaining_marbles = total_marbles mod 10\"\nshows  \"remaining_marbles = 6\"",
+        "formal solution": "(* ### Problem\n Sally, Wei-Hwa, and Zoe are playing a game of marbles involving first arranging as many piles of 10 marbles as possible.  Sally brought 239 marbles, Wei-Hwa brought 174 marbles, and Zoe brought 83 marbles.  If all their marbles are grouped together, how many must be removed in order to start the game? The final Answer is $6$\n ### Proof\n The marbles will be grouped into piles of 10.  We might as well group the number of marbles each of Sally, Wei-Hwa, and Zoe brought into as many piles of 10 as possible before sorting out the rest.  This means we only need to consider the modulo 10 residues of the numbers of marbles each of them brought:  \\begin{align*} 239 &\\equiv 9 \\pmod{10} \\\\\n174 &\\equiv 4 \\pmod{10} \\\\\n83 &\\equiv 3 \\pmod{10}\n\\end{align*}  Our goal is to find the modulo 10 residue of the total number of marbles.  We find this by adding the residues above: $9 + 4 + 3 = 16 \\equiv 6 \\pmod{10}$.  Since we were working in modulo 10, this is the same as a units digit calculation.\n *)\n\ntheorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles remaining_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"remaining_marbles = total_marbles mod 10\"\nshows  \"remaining_marbles = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Sally has 239 marbles, Wei Hwa has 174 marbles, and Zoe has 83 marbles. If all their marbles were combined and then divided into groups of 10, how many marbles would be left in the last incomplete group? The final answer is 6.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9912471771240234,
+        "symbolic_score": 0.9
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes sally marbles :: nat and wei_hwa_marbles :: nat and zoe_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nshows  \"((sally_marbles + wei_hwa_marbles + zoe_marbles) mod 10) = 6\"",
+        "formal solution": "(* ### Problem\n Sally, Wei-Hwa, and Zoe are playing a game of marbles involving first arranging as many piles of 10 marbles as possible.  Sally brought 239 marbles, Wei-Hwa brought 174 marbles, and Zoe brought 83 marbles.  If all their marbles are grouped together, how many must be removed in order to start the game? The final Answer is $6$\n ### Proof\n The marbles will be grouped into piles of 10.  We might as well group the number of marbles each of Sally, Wei-Hwa, and Zoe brought into as many piles of 10 as possible before sorting out the rest.  This means we only need to consider the modulo 10 residues of the numbers of marbles each of them brought:  \\begin{align*} 239 &\\equiv 9 \\pmod{10} \\\\\n174 &\\equiv 4 \\pmod{10} \\\\\n83 &\\equiv 3 \\pmod{10}\n\\end{align*}  Our goal is to find the modulo 10 residue of the total number of marbles.  We find this by adding the residues above: $9 + 4 + 3 = 16 \\equiv 6 \\pmod{10}$.  Since we were working in modulo 10, this is the same as a units digit calculation.\n *)\n\ntheorem\nfixes sally marbles :: nat and wei_hwa_marbles :: nat and zoe_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nshows  \"((sally_marbles + wei_hwa_marbles + zoe_marbles) mod 10) = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Sally has 239 marbles, Wei-Hwa has 174 marbles, and Zoe has 83 marbles. What is the last digit of the sum of their marbles? The final answer is 6.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9805771708488464,
+        "symbolic_score": 0.9
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles left_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"left_marbles = total_marbles mod 10\"\nshows  \"left_marbles = 6\"",
+        "formal solution": "(* ### Problem\n Sally, Wei-Hwa, and Zoe are playing a game of marbles involving first arranging as many piles of 10 marbles as possible.  Sally brought 239 marbles, Wei-Hwa brought 174 marbles, and Zoe brought 83 marbles.  If all their marbles are grouped together, how many must be removed in order to start the game? The final Answer is $6$\n ### Proof\n The marbles will be grouped into piles of 10.  We might as well group the number of marbles each of Sally, Wei-Hwa, and Zoe brought into as many piles of 10 as possible before sorting out the rest.  This means we only need to consider the modulo 10 residues of the numbers of marbles each of them brought:  \\begin{align*} 239 &\\equiv 9 \\pmod{10} \\\\\n174 &\\equiv 4 \\pmod{10} \\\\\n83 &\\equiv 3 \\pmod{10}\n\\end{align*}  Our goal is to find the modulo 10 residue of the total number of marbles.  We find this by adding the residues above: $9 + 4 + 3 = 16 \\equiv 6 \\pmod{10}$.  Since we were working in modulo 10, this is the same as a units digit calculation.\n *)\n\ntheorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles left_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"left_marbles = total_marbles mod 10\"\nshows  \"left_marbles = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Sally has 239 marbles, Wei Hwa has 174 marbles, and Zoe has 83 marbles. If you add all their marbles together and then divide by 10, how many marbles are left over? The final answer is 6.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9896718859672546,
+        "symbolic_score": 0.9
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles remove_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"remove_marbles = total_marbles mod 10\"\nshows  \"remove_marbles = 6\"",
+        "formal solution": "(* ### Problem\n Sally, Wei-Hwa, and Zoe are playing a game of marbles involving first arranging as many piles of 10 marbles as possible.  Sally brought 239 marbles, Wei-Hwa brought 174 marbles, and Zoe brought 83 marbles.  If all their marbles are grouped together, how many must be removed in order to start the game? The final Answer is $6$\n ### Proof\n The marbles will be grouped into piles of 10.  We might as well group the number of marbles each of Sally, Wei-Hwa, and Zoe brought into as many piles of 10 as possible before sorting out the rest.  This means we only need to consider the modulo 10 residues of the numbers of marbles each of them brought:  \\begin{align*} 239 &\\equiv 9 \\pmod{10} \\\\\n174 &\\equiv 4 \\pmod{10} \\\\\n83 &\\equiv 3 \\pmod{10}\n\\end{align*}  Our goal is to find the modulo 10 residue of the total number of marbles.  We find this by adding the residues above: $9 + 4 + 3 = 16 \\equiv 6 \\pmod{10}$.  Since we were working in modulo 10, this is the same as a units digit calculation.\n *)\n\ntheorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles remove_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"remove_marbles = total_marbles mod 10\"\nshows  \"remove_marbles = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Sally has 239 marbles, Wei Hwa has 174 marbles, and Zoe has 83 marbles. If they combine all their marbles and then remove a number of marbles such that the remaining total is divisible by 10, how many marbles must they remove? The final answer is 6.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9707720875740051,
+        "symbolic_score": 0.9
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles removed_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"total_marbles = 10 * (total_marbles div 10) + removed_marbles\"\nshows  \"removed_marbles = 6\"",
+        "formal solution": "(* ### Problem\n Sally, Wei-Hwa, and Zoe are playing a game of marbles involving first arranging as many piles of 10 marbles as possible.  Sally brought 239 marbles, Wei-Hwa brought 174 marbles, and Zoe brought 83 marbles.  If all their marbles are grouped together, how many must be removed in order to start the game? The final Answer is $6$\n ### Proof\n The marbles will be grouped into piles of 10.  We might as well group the number of marbles each of Sally, Wei-Hwa, and Zoe brought into as many piles of 10 as possible before sorting out the rest.  This means we only need to consider the modulo 10 residues of the numbers of marbles each of them brought:  \\begin{align*} 239 &\\equiv 9 \\pmod{10} \\\\\n174 &\\equiv 4 \\pmod{10} \\\\\n83 &\\equiv 3 \\pmod{10}\n\\end{align*}  Our goal is to find the modulo 10 residue of the total number of marbles.  We find this by adding the residues above: $9 + 4 + 3 = 16 \\equiv 6 \\pmod{10}$.  Since we were working in modulo 10, this is the same as a units digit calculation.\n *)\n\ntheorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles removed_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"total_marbles = 10 * (total_marbles div 10) + removed_marbles\"\nshows  \"removed_marbles = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Sally has 239 marbles, Wei-Hwa has 174 marbles, and Zoe has 83 marbles. They combined their marbles and noticed that when they tried to divide the total number of marbles into groups of 10, there were some marbles left over. How many marbles were left over? The final answer is 6.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9886304140090942,
+        "symbolic_score": 0.9
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles pile_size removed :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"pile_size = 10\"\nand h4 : \"removed = (sally_marbles + wei_hwa_marbles + zoe_marbles) mod pile_size\"\nshows  \"removed = 6\"",
+        "formal solution": "(* ### Problem\n Sally, Wei-Hwa, and Zoe are playing a game of marbles involving first arranging as many piles of 10 marbles as possible.  Sally brought 239 marbles, Wei-Hwa brought 174 marbles, and Zoe brought 83 marbles.  If all their marbles are grouped together, how many must be removed in order to start the game? The final Answer is $6$\n ### Proof\n The marbles will be grouped into piles of 10.  We might as well group the number of marbles each of Sally, Wei-Hwa, and Zoe brought into as many piles of 10 as possible before sorting out the rest.  This means we only need to consider the modulo 10 residues of the numbers of marbles each of them brought:  \\begin{align*} 239 &\\equiv 9 \\pmod{10} \\\\\n174 &\\equiv 4 \\pmod{10} \\\\\n83 &\\equiv 3 \\pmod{10}\n\\end{align*}  Our goal is to find the modulo 10 residue of the total number of marbles.  We find this by adding the residues above: $9 + 4 + 3 = 16 \\equiv 6 \\pmod{10}$.  Since we were working in modulo 10, this is the same as a units digit calculation.\n *)\n\ntheorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles pile_size removed :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"pile_size = 10\"\nand h4 : \"removed = (sally_marbles + wei_hwa_marbles + zoe_marbles) mod pile_size\"\nshows  \"removed = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Sally has 239 marbles, Wei Hwa has 174 marbles, and Zoe has 83 marbles. They decide to combine their marbles into a pile, and then remove marbles in groups of 10 until they can't remove any more groups. How many marbles will be left in the pile after they remove as many groups of 10 as possible? The final answer is 6.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9776306748390198,
+        "symbolic_score": 0.9
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles remove_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"total_marbles - remove_marbles = 10 * (total_marbles div 10)\"\nshows  \"remove_marbles = 6\"",
+        "formal solution": "(* ### Problem\n Sally, Wei-Hwa, and Zoe are playing a game of marbles involving first arranging as many piles of 10 marbles as possible.  Sally brought 239 marbles, Wei-Hwa brought 174 marbles, and Zoe brought 83 marbles.  If all their marbles are grouped together, how many must be removed in order to start the game? The final Answer is $6$\n ### Proof\n The marbles will be grouped into piles of 10.  We might as well group the number of marbles each of Sally, Wei-Hwa, and Zoe brought into as many piles of 10 as possible before sorting out the rest.  This means we only need to consider the modulo 10 residues of the numbers of marbles each of them brought:  \\begin{align*} 239 &\\equiv 9 \\pmod{10} \\\\\n174 &\\equiv 4 \\pmod{10} \\\\\n83 &\\equiv 3 \\pmod{10}\n\\end{align*}  Our goal is to find the modulo 10 residue of the total number of marbles.  We find this by adding the residues above: $9 + 4 + 3 = 16 \\equiv 6 \\pmod{10}$.  Since we were working in modulo 10, this is the same as a units digit calculation.\n *)\n\ntheorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles remove_marbles :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"total_marbles - remove_marbles = 10 * (total_marbles div 10)\"\nshows  \"remove_marbles = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Sally has 239 marbles, Wei Hwa has 174 marbles, and Zoe has 83 marbles. If they combine all their marbles, how many marbles must they remove to have a total number of marbles that is a multiple of 10? The final answer is 6.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.9914061427116394,
+        "symbolic_score": 0.9
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles marbles_to_remove :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"marbles_to_remove = total_marbles mod 10\"\nshows  \"marbles_to_remove = 6\"",
+        "formal solution": "(* ### Problem\n Sally, Wei-Hwa, and Zoe are playing a game of marbles involving first arranging as many piles of 10 marbles as possible.  Sally brought 239 marbles, Wei-Hwa brought 174 marbles, and Zoe brought 83 marbles.  If all their marbles are grouped together, how many must be removed in order to start the game? The final Answer is $6$\n ### Proof\n The marbles will be grouped into piles of 10.  We might as well group the number of marbles each of Sally, Wei-Hwa, and Zoe brought into as many piles of 10 as possible before sorting out the rest.  This means we only need to consider the modulo 10 residues of the numbers of marbles each of them brought:  \\begin{align*} 239 &\\equiv 9 \\pmod{10} \\\\\n174 &\\equiv 4 \\pmod{10} \\\\\n83 &\\equiv 3 \\pmod{10}\n\\end{align*}  Our goal is to find the modulo 10 residue of the total number of marbles.  We find this by adding the residues above: $9 + 4 + 3 = 16 \\equiv 6 \\pmod{10}$.  Since we were working in modulo 10, this is the same as a units digit calculation.\n *)\n\ntheorem\nfixes sally_marbles wei_hwa_marbles zoe_marbles total_marbles marbles_to_remove :: nat\nassumes h0 : \"sally_marbles = 239\"\nand h1 : \"wei_hwa_marbles = 174\"\nand h2 : \"zoe_marbles = 83\"\nand h3 : \"total_marbles = sally_marbles + wei_hwa_marbles + zoe_marbles\"\nand h4 : \"marbles_to_remove = total_marbles mod 10\"\nshows  \"marbles_to_remove = 6\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Sally has 239 marbles, Wei Hwa has 174 marbles, and Zoe has 83 marbles. If they combine all their marbles and want to equally distribute them into groups of 10, how many marbles do they need to remove? The final answer is 6.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.985937237739563,
+        "symbolic_score": 0.9
+    },
+    "oracle": "theorem\nshows  \"(239 + 174 + 83) mod 10 = (6::nat)\"",
+    "prediction": {
+        "0": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            0
+        ]
+    },
+    "equivalence_oracle": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+    ]
+}

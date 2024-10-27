@@ -1,0 +1,59 @@
+{
+    "natural problem": "The average (mean) of 20 numbers is 30, and the average of 30 other numbers is 20. What is the average of all 50 numbers?",
+    "natural solution": [
+        "The sum of the 50 numbers is $20\\cdot 30+30\\cdot 20=1200$. Their average is $1200/50=\\boxed{24}$."
+    ],
+    "natural answer": "24",
+    "a_0": {
+        "formal problem": "theorem\nfixes avg :: \"(nat \\<Rightarrow> real) \\<Rightarrow> real\"\nassumes h0 : \"avg (\\<lambda> i. if i < 20 then 30 else 0) = 30\"\nand h1 : \"avg (\\<lambda> i. if i < 30 then 20 else 0) = 20\"\nshows  \"avg (\\<lambda> i. if i < 50 then (if i < 20 then 30 else 20) else 0) = 24\"",
+        "formal solution": "(* ### Problem\n The average (mean) of 20 numbers is 30, and the average of 30 other numbers is 20. What is the average of all 50 numbers? The final Answer is 24\n ### Proof\n The sum of the 50 numbers is $20\\cdot 30+30\\cdot 20=1200$. Their average is $1200/50=\\boxed{24}$.\n *)\n\ntheorem\nfixes avg :: \"(nat \\<Rightarrow> real) \\<Rightarrow> real\"\nassumes h0 : \"avg (\\<lambda> i. if i < 20 then 30 else 0) = 30\"\nand h1 : \"avg (\\<lambda> i. if i < 30 then 20 else 0) = 20\"\nshows  \"avg (\\<lambda> i. if i < 50 then (if i < 20 then 30 else 20) else 0) = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the average of the first 20 natural numbers is 30 and the average of the first 30 natural numbers is 20, find the average of the first 50 natural numbers such that the first 20 numbers are 30 and the remaining 30 numbers are 20. The final answer is 24."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes n1 n2 :: real\nand a1 a2 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"sum a1 {1..20} / 20 = 30\"\nand h1 : \"sum a2 {1..30} / 30 = 20\"\nshows  \"sum (\\<lambda>i. if i \\<le> 20 then a1 i else a2 (i - 20)) {1..50} / 50 = 24\"",
+        "formal solution": "(* ### Problem\n The average (mean) of 20 numbers is 30, and the average of 30 other numbers is 20. What is the average of all 50 numbers? The final Answer is 24\n ### Proof\n The sum of the 50 numbers is $20\\cdot 30+30\\cdot 20=1200$. Their average is $1200/50=\\boxed{24}$.\n *)\n\ntheorem\nfixes n1 n2 :: real\nand a1 a2 :: \"real \\<Rightarrow> real\"\nassumes h0 : \"sum a1 {1..20} / 20 = 30\"\nand h1 : \"sum a2 {1..30} / 30 = 20\"\nshows  \"sum (\\<lambda>i. if i \\<le> 20 then a1 i else a2 (i - 20)) {1..50} / 50 = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the average of a set of 20 numbers is 30 and the average of a different set of 30 numbers is 20, find the average of the combined set of 50 numbers. The final answer is 24."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes n1 n2 a1 a2 :: real\nassumes h0 : \"n1 = 20\"\nand h1 : \"a1 = 30\"\nand h2 : \"n2 = 30\"\nand h3 : \"a2 = 20\"\nshows  \"(n1 * a1 + n2 * a2) / (n1 + n2) = 24\"",
+        "formal solution": "(* ### Problem\n The average (mean) of 20 numbers is 30, and the average of 30 other numbers is 20. What is the average of all 50 numbers? The final Answer is 24\n ### Proof\n The sum of the 50 numbers is $20\\cdot 30+30\\cdot 20=1200$. Their average is $1200/50=\\boxed{24}$.\n *)\n\ntheorem\nfixes n1 n2 a1 a2 :: real\nassumes h0 : \"n1 = 20\"\nand h1 : \"a1 = 30\"\nand h2 : \"n2 = 30\"\nand h3 : \"a2 = 20\"\nshows  \"(n1 * a1 + n2 * a2) / (n1 + n2) = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the weighted average of two numbers, 20 and 30, with weights 30 and 20, respectively. The final answer is 24."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes avg1 avg2 avgTotal :: real\nassumes h0 : \"avg1 = 30\"\nand h1 : \"avg2 = 20\"\nand h2 : \"(20*avg1 + 30*avg2) / 50 = avgTotal\"\nshows  \"avgTotal = 24\"",
+        "formal solution": "(* ### Problem\n The average (mean) of 20 numbers is 30, and the average of 30 other numbers is 20. What is the average of all 50 numbers? The final Answer is 24\n ### Proof\n The sum of the 50 numbers is $20\\cdot 30+30\\cdot 20=1200$. Their average is $1200/50=\\boxed{24}$.\n *)\n\ntheorem\nfixes avg1 avg2 avgTotal :: real\nassumes h0 : \"avg1 = 30\"\nand h1 : \"avg2 = 20\"\nand h2 : \"(20*avg1 + 30*avg2) / 50 = avgTotal\"\nshows  \"avgTotal = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the average (avgTotal) of two groups, one with an average (avg1) of 30 and a size of 20, and the other with an average (avg2) of 20 and a size of 30. The final answer is 24."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b :: real\nassumes h0 : \"average a 20 = 30\"\nand h1 : \"average b 30 = 20\"\nshows  \"average (a @ b) 50 = 24\"",
+        "formal solution": "(* ### Problem\n The average (mean) of 20 numbers is 30, and the average of 30 other numbers is 20. What is the average of all 50 numbers? The final Answer is 24\n ### Proof\n The sum of the 50 numbers is $20\\cdot 30+30\\cdot 20=1200$. Their average is $1200/50=\\boxed{24}$.\n *)\n\ntheorem\nfixes a b :: real\nassumes h0 : \"average a 20 = 30\"\nand h1 : \"average b 30 = 20\"\nshows  \"average (a @ b) 50 = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that the average of a and 20 is 30, and the average of b and 30 is 20, find the average of a, b, and 50. The final answer is 24."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes avg1 avg2 avg3 :: real\nassumes h0 : \"avg1 = 30\"\nand h1 : \"avg2 = 20\"\nand h2 : \"avg3 = (avg1 * 20 + avg2 * 30) / 50\"\nshows  \"avg3 = 24\"",
+        "formal solution": "(* ### Problem\n The average (mean) of 20 numbers is 30, and the average of 30 other numbers is 20. What is the average of all 50 numbers? The final Answer is 24\n ### Proof\n The sum of the 50 numbers is $20\\cdot 30+30\\cdot 20=1200$. Their average is $1200/50=\\boxed{24}$.\n *)\n\ntheorem\nfixes avg1 avg2 avg3 :: real\nassumes h0 : \"avg1 = 30\"\nand h1 : \"avg2 = 20\"\nand h2 : \"avg3 = (avg1 * 20 + avg2 * 30) / 50\"\nshows  \"avg3 = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the average score of a class on the first test is 30 and on the second test is 20, what is the average score of the class on the two tests combined, given that the first test is worth 20% of the total grade and the second test is worth 30% of the total grade? The final answer is 24."
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes mean1 mean2 mean_total :: real\nassumes h0 : \"mean1 = 30\"\nand h1 : \"mean2 = 20\"\nand h2 : \"mean_total = (mean1 * 20 + mean2 * 30) / 50\"\nshows  \"mean_total = 24\"",
+        "formal solution": "(* ### Problem\n The average (mean) of 20 numbers is 30, and the average of 30 other numbers is 20. What is the average of all 50 numbers? The final Answer is 24\n ### Proof\n The sum of the 50 numbers is $20\\cdot 30+30\\cdot 20=1200$. Their average is $1200/50=\\boxed{24}$.\n *)\n\ntheorem\nfixes mean1 mean2 mean_total :: real\nassumes h0 : \"mean1 = 30\"\nand h1 : \"mean2 = 20\"\nand h2 : \"mean_total = (mean1 * 20 + mean2 * 30) / 50\"\nshows  \"mean_total = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the mean of a first group of 20 people is 30 and the mean of a second group of 30 people is 20, what is the mean of the total group of 50 people? The final answer is 24."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes avg1 avg2 avg :: real\nassumes h0 : \"avg1 = 30\"\nand h1 : \"avg2 = 20\"\nand h2 : \"avg = (avg1 * 20 + avg2 * 30) / 50\"\nshows  \"avg = 24\"",
+        "formal solution": "(* ### Problem\n The average (mean) of 20 numbers is 30, and the average of 30 other numbers is 20. What is the average of all 50 numbers? The final Answer is 24\n ### Proof\n The sum of the 50 numbers is $20\\cdot 30+30\\cdot 20=1200$. Their average is $1200/50=\\boxed{24}$.\n *)\n\ntheorem\nfixes avg1 avg2 avg :: real\nassumes h0 : \"avg1 = 30\"\nand h1 : \"avg2 = 20\"\nand h2 : \"avg = (avg1 * 20 + avg2 * 30) / 50\"\nshows  \"avg = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If the average of 20 observations is 30 and the average of 30 observations is 20, what is the average of all 50 observations? The final answer is 24."
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x y z :: real\nassumes h0 : \"x = 20\"\nand h1 : \"y = 30\"\nand h2 : \"z = 50\"\nand h3 : \"average x = 30\"\nand h4 : \"average y = 20\"\nshows  \"average z = 24\"",
+        "formal solution": "(* ### Problem\n The average (mean) of 20 numbers is 30, and the average of 30 other numbers is 20. What is the average of all 50 numbers? The final Answer is 24\n ### Proof\n The sum of the 50 numbers is $20\\cdot 30+30\\cdot 20=1200$. Their average is $1200/50=\\boxed{24}$.\n *)\n\ntheorem\nfixes x y z :: real\nassumes h0 : \"x = 20\"\nand h1 : \"y = 30\"\nand h2 : \"z = 50\"\nand h3 : \"average x = 30\"\nand h4 : \"average y = 20\"\nshows  \"average z = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The Isabelle code provided seems to have errors or inconsistencies, as it assumes \"average x = 30\" when \"x = 20\" and \"average y = 20\" when \"y = 30\". However, trying to interpret it in a meaningful way, it can be translated into a natural language problem as follows:\n\nIf we have three values, x equals to 20, y equals to 30 and z equals to 50, is the average of z equal to 24?"
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes avg :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"avg 20 30 = 30\"\nand h1 : \"avg 30 20 = 20\"\nshows  \"avg 50 (20 + 30) = 24\"",
+        "formal solution": "(* ### Problem\n The average (mean) of 20 numbers is 30, and the average of 30 other numbers is 20. What is the average of all 50 numbers? The final Answer is 24\n ### Proof\n The sum of the 50 numbers is $20\\cdot 30+30\\cdot 20=1200$. Their average is $1200/50=\\boxed{24}$.\n *)\n\ntheorem\nfixes avg :: \"nat \\<Rightarrow> nat \\<Rightarrow> nat\"\nassumes h0 : \"avg 20 30 = 30\"\nand h1 : \"avg 30 20 = 20\"\nshows  \"avg 50 (20 + 30) = 24\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the average of 50 and the sum of 20 and 30, given that the average of 20 and 30 is 30 and the average of 30 and 20 is 20. The final answer is 24."
+    },
+    "level": "Level 4",
+    "type": "Prealgebra"
+}

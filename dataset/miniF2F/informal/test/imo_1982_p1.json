@@ -1,0 +1,602 @@
+{
+    "problem_name": "imo_1982_p1",
+    "informal_statement": "The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. Show that it is 660.",
+    "informal_proof": "Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.",
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on the natural numbers with the following properties:\n\n1. $f(2) = 0$\n2. $f(3) > 0$\n3. $f(9999) = 3333$\n4. For all natural numbers $m$ and $n$, either $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$\n\nFind the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9889711737632751,
+        "symbolic_score": 1.0
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on natural numbers with the following properties:\n1. $f(2) = 0$\n2. $f(3) > 0$\n3. $f(9999) = 3333$\n4. For all natural numbers $m$ and $n$, either $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$\n\nFind the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9892278909683228,
+        "symbolic_score": 1.0
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ has the following properties: $f(2) = 0$, $f(3) > 0$, $f(9999) = 3333$, and for any integers $m$ and $n$, either $f(m+n) - f(m) - f(n) = 0$ or $f(m+n) - f(m) - f(n) = 1$. What is the value of $f(1982)$? The final answer is 660.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9906162023544312,
+        "symbolic_score": 1.0
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on natural numbers with the following properties: $f(2) = 0$, $f(3) > 0$, $f(9999) = 3333$, and for all natural numbers $m$ and $n$, either $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$. Find the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9439704418182373,
+        "symbolic_score": 1.0
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined over the natural numbers with the following properties:\n\n1. $f(2) = 0$.\n2. $f(3) > 0$.\n3. $f(9999) = 3333$.\n4. For any natural numbers $m$ and $n$, the difference $f(m + n) - f(m) - f(n)$ is either $0$ or $1$.\n\nFind the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9935736060142517,
+        "symbolic_score": 1.0
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f(n)$ is defined for natural numbers with the following properties:\n\n1. $f(2) = 0$\n2. $f(3) > 0$\n3. $f(9999) = 3333$\n4. For any natural numbers $m$ and $n$, either $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$.\n\nFind the value of $f(1982)$. The final answer is 660.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9948089122772217,
+        "symbolic_score": 1.0
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on natural numbers with the following properties:\n\n1. $f(2) = 0$\n2. $f(3) > 0$\n3. $f(9999) = 3333$\n4. For all natural numbers $m$ and $n$, $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$\n\nFind the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9769976139068604,
+        "symbolic_score": 1.0
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on natural numbers with the following properties:\n\n1. $f(2) = 0$\n2. $f(3) > 0$\n3. $f(9999) = 3333$\n4. For all natural numbers $m$ and $n$, $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$\n\nFind the value of $f(1982)$. The final answer is 660.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9946337342262268,
+        "symbolic_score": 1.0
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ defined on natural numbers with the following properties:\n\n1. $f(2) = 0$\n2. $f(3) > 0$\n3. $f(9999) = 3333$\n4. For any natural numbers $m$ and $n$, either $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$\n\nFind the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6754668354988098,
+        "symbolic_score": 1.0
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined for natural numbers with $f(2) = 0$, $f(3) > 0$, and $f(9999) = 3333$. Additionally, for all natural numbers $m$ and $n$, either $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$. Find the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.975895881652832,
+        "symbolic_score": 1.0
+    },
+    "oracle": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nand \"f 2 = 0\"\nand \"0 < f 3\"\nand \"f 9999 = 3333\"\nshows \"f 1982 = 660\"",
+    "prediction": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ]
+    },
+    "equivalence_oracle": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+    ],
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ defined on the natural numbers, with $f(2) = 0$, $f(3) > 0$, $f(9999) = 3333$, and for all $m, n \\in \\mathbb{N}$, we have $f(m+n) - f(m) - f(n) = 0 \\text{ or } 1$. Find $f(1982)$. The final answer is 660.",
+        "semantic_score": 0.6636148395885607,
+        "symbolic_score": 1.0,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m+n) - f m - f n = 0 \\<or> f (m+n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m+n) - f m - f n = 0 \\<or> f (m+n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on the set of natural numbers. It is known that $f(2) = 0$, $f(3) > 0$, $f(9999) = 3333$, and for any natural numbers $m$ and $n$, the difference between $f(m+n)$ and $f(m) + f(n)$ is either $0$ or $1$. What is the value of $f(1982)$? The final answer is $660$.",
+        "semantic_score": 0.9177166384558013,
+        "symbolic_score": 1.0,
+        "naive_label": 0
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose we have a function $f$ defined on the natural numbers, with $f(2)=0$, $f(3)>0$, $f(9999)=3333$, and such that for all $m$ and $n$, $f(m+n)-f(m)-f(n)$ is either $0$ or $1$. What is $f(1982)$? The final answer is $660$.",
+        "semantic_score": 0.9713223787018631,
+        "symbolic_score": 1.0,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a sequence $f$ of natural numbers, with $f(2)=0$, $f(3)>0$, $f(9999)=3333$, and for any $m$ and $n$, $f(m+n)-f(m)-f(n)$ is either $0$ or $1$. What is $f(1982)$? The final answer is $660$.",
+        "semantic_score": 0.8608036842447987,
+        "symbolic_score": 1.0,
+        "naive_label": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on the set of natural numbers. We know that $f(2) = 0$, $f(3) > 0$, $f(9999) = 3333$, and for all natural numbers $m$ and $n$, $f(m+n) - f(m) - f(n)$ is either $0$ or $1$. What is the value of $f(1982)$? The final answer is $660$.",
+        "semantic_score": 0.9550610941980934,
+        "symbolic_score": 1.0,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Suppose we have a function $f$ defined on the natural numbers. We know that $f(2) = 0$, $f(3) > 0$, $f(9999) = 3333$, and that for all natural numbers $m$ and $n$, either $f(m+n)-f(m)-f(n)=0$ or $f(m+n)-f(m)-f(n)=1$. What is $f(1982)$? The final answer is $660$.\"",
+        "semantic_score": 0.8838315982161152,
+        "symbolic_score": 1.0,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on the set of natural numbers. We know that $f(2)=0$, $f(3)>0$, $f(9999)=3333$, and for any natural numbers $m$ and $n$, $f(m+n) - f(m) - f(n) = 0$ or $1$. What is $f(1982)$? The final answer is $660$.",
+        "semantic_score": 0.8047048132615555,
+        "symbolic_score": 1.0,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ from natural numbers to natural numbers satisfies the following properties: $f(2)=0$, $f(3)>0$, $f(9999)=3333$, and for all $m$ and $n$, $f(m+n)-f(m)-f(n)$ is either $0$ or $1$. What is the value of $f(1982)$? The final answer is $660$.",
+        "semantic_score": 0.9855906461741406,
+        "symbolic_score": 1.0,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall>m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall>m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on the natural numbers such that $f(2) = 0$, $f(3) > 0$, $f(9999) = 3333$, and for all $m$ and $n$, $f(m + n) - f(m) - f(n) = 0$ or $1$. Find $f(1982)$. The final answer is $660$.",
+        "semantic_score": 0.9896359525372077,
+        "symbolic_score": 1.0,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $f$ is a function from the natural numbers to the natural numbers, and $f(2)=0$, $f(3)>0$, $f(9999)=3333$, and for all $m$ and $n$, $f(m+n)-f(m)-f(n)$ is either $0$ or $1$, what is the value of $f(1982)$? The final answer is $660$.\"",
+        "semantic_score": 0.7578769994667528,
+        "symbolic_score": 1.0,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+        ]
+    },
+    "equivalence_oracle_gpt3.5": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+    ],
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes f n m :: \"nat\" and assumes h0 : \"f 2 = 0\"\nand h1 : \"2 < n and 0 < f n => (f (S n) = S (f n) \\<or> f (S n) = S (f n) + 1)\"\nand h2 : \"f 3 > 0\"\nand h3 : \"f 9999 = 3333\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f n m :: \"nat\" and assumes h0 : \"f 2 = 0\"\nand h1 : \"2 < n and 0 < f n => (f (S n) = S (f n) \\<or> f (S n) = S (f n) + 1)\"\nand h2 : \"f 3 > 0\"\nand h3 : \"f 9999 = 3333\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Given a function $f$ that satisfies:\n- $f(2) = 0$\n- If $2 < n$ and $f(n) > 0$, then $f(S(n))$ equals either $f(n)$ or $f(n) + 1$\n- $f(3) > 0$ and $f(9999) = 3333$\nFind the value of $f(1982)$. The final answer is $660$."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem\nfixes n m :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. m + n > 2 \\<longrightarrow> (f(m + n) - f(m) - f(n) = 0 \\<vee> 1)\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes n m :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. m + n > 2 \\<longrightarrow> (f(m + n) - f(m) - f(n) = 0 \\<vee> 1)\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ defined for natural numbers, with $f(2) = 0$, $f(3) > 0$, $f(9999) = 3333$, and $f(m+n) = f(m) + f(n)$ for all $m,n$ such that $m+n > 2$, what is the value of $f(1982)$? The final answer is 660."
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes n m :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"2 <= n \\<Longrightarrow> 0 < f n\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (m + n = n1 \\<Longrightarrow> f n1 = f n + f m) \\<or> (m + n = n1 \\<Longrightarrow> f n1 = f n + f m + 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes n m :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"2 <= n \\<Longrightarrow> 0 < f n\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (m + n = n1 \\<Longrightarrow> f n1 = f n + f m) \\<or> (m + n = n1 \\<Longrightarrow> f n1 = f n + f m + 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the function $f$ when given that:\n- $f(2) = 0$\n- For all integers $n$, if $2$ is less than or equal to $n$, then $0$ is less than $f(n)$\n- $f(9999) = 3333$\n- For all integers $m$ and $n$, if $m+n$ equals some integer $n_1$, then $f(n_1)$ is either equal to $f(n)+f(m)$ or $f(n)+f(m)+1$.\n\nWhat is $f(1982)$? The final answer is $660$."
+    },
+    "a_3_mistral": {
+        "formal problem": "theorem\nfixes n m :: nat and f :: \"nat \\<Rightarrow> int\"\nassumptions [\nh0 : \"f(2) = 0\",\nh1 : \"2 <= n \\<Longrightarrow> 0 < f(n)\",\nh2 : \"f(9999) = 3333\",\nh3 : \"\\<forall> m n. (m + n = n1 \\<Longrightarrow> f(n1) - f(n) - f(m) = 0) \\<orb> 1\"\n]\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes n m :: nat and f :: \"nat \\<Rightarrow> int\"\nassumptions [\nh0 : \"f(2) = 0\",\nh1 : \"2 <= n \\<Longrightarrow> 0 < f(n)\",\nh2 : \"f(9999) = 3333\",\nh3 : \"\\<forall> m n. (m + n = n1 \\<Longrightarrow> f(n1) - f(n) - f(m) = 0) \\<orb> 1\"\n]\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the function $f(1982)$. The function $f$ is defined as follows: $f(2) = 0$, $f(n) > 0$ for all $n > 2$, $f(9999) = 3333$, and for any $m$ and $n$ such that $m + n = n_1$, we have $f(n_1) - f(n) - f(m) = 0$ or $1$. The values of $f(2)$ and $f(9999)$ are given, and we want to find the value of $f(1982)$."
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes n m :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) = f(m) + f(n) \\<or> f(m + n) = f(m) + f(n) + 1\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes n m :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) = f(m) + f(n) \\<or> f(m + n) = f(m) + f(n) + 1\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the integer value of the function $f$ when its argument is $1982$. The final answer is $660$.\n\nThe function $f$ satisfies the following conditions:\n\n1. $f(2) = 0$\n2. $f(3) > 0$\n3. $f(9999) = 3333$\n4. For all natural numbers $m$ and $n$, either $f(m+n) = f(m) + f(n)$ or $f(m+n) = f(m) + f(n) + 1$.\n\nTherefore, the value of $f(1982)$ is the solution to this problem."
+    },
+    "a_5_mistral": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> int\" and m n :: nat\nassumes h0 : \"f(2) = 0\"\nand h1 : \"2 < 3 \\<Longrightarrow> f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. (m + n) < 9999 \\<Longrightarrow> (f(m + n) = f(m) + f(n) \\<vee> f(m + n) = f(m) + f(n) + 1)\"\nand h4 : \"f(1982) = 660\"\nshows  true.\n\n(* The given assumptions define the function f recursively. We only need to prove that the final answer is correct. *)",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> int\" and m n :: nat\nassumes h0 : \"f(2) = 0\"\nand h1 : \"2 < 3 \\<Longrightarrow> f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. (m + n) < 9999 \\<Longrightarrow> (f(m + n) = f(m) + f(n) \\<vee> f(m + n) = f(m) + f(n) + 1)\"\nand h4 : \"f(1982) = 660\"\nshows  true.\n\n(* The given assumptions define the function f recursively. We only need to prove that the final answer is correct. *)\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ defined recursively such that $f(2) = 0$, $f(3) > 0$ if $2 < 3$, $f(9999) = 3333$, $f(m + n) = f(m) + f(n)$ or $f(m + n) = f(m) + f(n) + 1$ if $m + n < 9999$, and $f(1982) = 660$. Prove that the function $f$ is defined correctly. (No need to compute the final answer, just prove the definition is correct.)"
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> int\" and m n :: nat\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. m + n = m' \\<longrightarrow> (f m' = f m + f n \\<or> f m' = f m + f n + 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> int\" and m n :: nat\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. m + n = m' \\<longrightarrow> (f m' = f m + f n \\<or> f m' = f m + f n + 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $f(2) = 0$, $f(3) > 0$, $f(9999) = 3333$, and for all $m$ and $n$, if $m + n = m'$ then $f(m') = f(m) + f(n)$ or $f(m') = f(m) + f(n) + 1$. What is the value of $f(1982)$? The final answer is $660$."
+    },
+    "a_7_mistral": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> int\" and m n :: nat\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) = (f m + f n) | (f(m + n) = (S (f m)) + (S (f n)))\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> int\" and m n :: nat\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) = (f m + f n) | (f(m + n) = (S (f m)) + (S (f n)))\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Find the value of the function $f(1982)$. The function $f$ is defined such that $f(2)=0$, $f(3)>0$, $f(9999)=3333$, and $f(m+n) = f(m) + f(n)$ or $f(m+n) = S(f(m)) + S(f(n))$, where $S$ is the successor function.\"\n\nFinal answer: The value of $f(1982)$ is 660."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes n m :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"2 <= n \\<Longrightarrow> 0 < f n\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) = (f m + f n) \\<or> (Suc (f m) \\<and> Suc (f n))\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes n m :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"2 <= n \\<Longrightarrow> 0 < f n\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) = (f m + f n) \\<or> (Suc (f m) \\<and> Suc (f n))\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the function $f(1982)$. The function $f$ is defined as follows: $f(2)=0$, $f(n)>0$ for all $n>2$, $f(9999)=3333$, and $f(m+n) = f(m) + f(n)$ or $f(m+n) = Suc(f(m)) \\cdot Suc(f(n))$. The final answer is $660$."
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes n m :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (Suc m + Suc n) = (Suc (f (Suc m) + f n)) | (f (Suc m + Suc n) = f (Suc m) + f (Suc n) + 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes n m :: nat and f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (Suc m + Suc n) = (Suc (f (Suc m) + f n)) | (f (Suc m + Suc n) = f (Suc m) + f (Suc n) + 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of the function $f$ when $n=1982$. The final answer is $660$.\n\nThe function $f$ has the following properties: $f(2)=0$, $f(3)>0$, $f(9999)=3333$, and for all natural numbers $m$ and $n$, $f(Suc(m)+Suc(n))=Suc(f(Suc(m))+f(n))$ or $f(Suc(m)+Suc(n))=f(Suc(m))+f(Suc(n))+1$."
+    },
+    "prediction_mistral": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. We are given the following information:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For any natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nUsing this information, we need to find the value of f(1982). The answer is f(1982) = 660."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes natural numbers as input and returns natural numbers as output. We are given the following information:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For any natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nBased on these conditions, we need to find the value of f(1982). The answer is f(1982) = 660."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. Given the following conditions:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For all natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nDetermine the value of f(1982). The answer is f(1982) = 660."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number as input and returns a natural number as output. Given the following conditions:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For any natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nDetermine the value of f(1982). The answer is f(1982) = 660."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. We are given the following information:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For any natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nUsing this information, we need to find the value of f(1982). The answer is f(1982) = 660."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number as input and returns a natural number as output. We are given the following information:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For any natural numbers m and n, the difference between f(m + n) and the sum of f(m) and f(n) is either 0 or 1.\n\nUsing this information, we need to determine the value of f(1982). The answer is f(1982) = 660."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. Given the following conditions:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For all natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nDetermine the value of f(1982). The answer is f(1982) = 660."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There is a function f that takes natural numbers as input and returns natural numbers as output. We know the following facts about this function:\n\n1. f(2) = 0, which means when the input is 2, the output is 0.\n2. f(3) > 0, which means when the input is 3, the output is greater than 0.\n3. f(9999) = 3333, which means when the input is 9999, the output is 3333.\n4. For any two natural numbers m and n, the difference between f(m + n) and the sum of f(m) and f(n) is either 0 or 1. In other words, f(m + n) - f(m) - f(n) is either 0 or 1.\n\nGiven these facts, we want to find the value of f(1982). The answer is f(1982) = 660."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. Given the following conditions:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For all natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nDetermine the value of f(1982). The answer is f(1982) = 660."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number as input and returns a natural number as output. We are given the following information:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For any natural numbers m and n, the difference between f(m + n) and the sum of f(m) and f(n) is either 0 or 1.\n\nUsing this information, we need to determine the value of f(1982). The answer is f(1982) = 660."
+    },
+    "prediction_deepseek": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8
+        ],
+        "1": [
+            9,
+            5
+        ]
+    },
+    "equivalence_oracle_deepseek": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8
+    ],
+    "prediction_solve_direct": {
+        "0": [
+            0,
+            3,
+            4,
+            6,
+            7,
+            9
+        ],
+        "1": [
+            8,
+            1,
+            5
+        ],
+        "2": [
+            2
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on the natural numbers with the following properties:\n\n1. $f(2) = 0$\n2. $f(3) > 0$\n3. $f(9999) = 3333$\n4. For all natural numbers $m$ and $n$, either $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$\n\nFind the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9469762990607368,
+        "symbolic_score": 0.6
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on natural numbers with the following properties:\n1. $f(2) = 0$\n2. $f(3) > 0$\n3. $f(9999) = 3333$\n4. For all natural numbers $m$ and $n$, either $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$\n\nFind the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9523767291783067,
+        "symbolic_score": 0.3
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ has the following properties: $f(2) = 0$, $f(3) > 0$, $f(9999) = 3333$, and for any integers $m$ and $n$, either $f(m+n) - f(m) - f(n) = 0$ or $f(m+n) - f(m) - f(n) = 1$. What is the value of $f(1982)$? The final answer is 660.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9528257038297248,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on natural numbers with the following properties: $f(2) = 0$, $f(3) > 0$, $f(9999) = 3333$, and for all natural numbers $m$ and $n$, either $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$. Find the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9433544220670199,
+        "symbolic_score": 0.6
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined over the natural numbers with the following properties:\n\n1. $f(2) = 0$.\n2. $f(3) > 0$.\n3. $f(9999) = 3333$.\n4. For any natural numbers $m$ and $n$, the difference $f(m + n) - f(m) - f(n)$ is either $0$ or $1$.\n\nFind the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9448709839712914,
+        "symbolic_score": 0.6
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f(n)$ is defined for natural numbers with the following properties:\n\n1. $f(2) = 0$\n2. $f(3) > 0$\n3. $f(9999) = 3333$\n4. For any natural numbers $m$ and $n$, either $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$.\n\nFind the value of $f(1982)$. The final answer is 660.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9492404611914947,
+        "symbolic_score": 0.3
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall> m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on natural numbers with the following properties:\n\n1. $f(2) = 0$\n2. $f(3) > 0$\n3. $f(9999) = 3333$\n4. For all natural numbers $m$ and $n$, $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$\n\nFind the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9475021098920557,
+        "symbolic_score": 0.6
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined on natural numbers with the following properties:\n\n1. $f(2) = 0$\n2. $f(3) > 0$\n3. $f(9999) = 3333$\n4. For all natural numbers $m$ and $n$, $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$\n\nFind the value of $f(1982)$. The final answer is 660.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9486669263880598,
+        "symbolic_score": 0.6
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> f (m + n) - f m - f n = 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ defined on natural numbers with the following properties:\n\n1. $f(2) = 0$\n2. $f(3) > 0$\n3. $f(9999) = 3333$\n4. For any natural numbers $m$ and $n$, either $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$\n\nFind the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9429981758278766,
+        "symbolic_score": 0.3
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f(2) = 0\"\nand h1 : \"f(3) > 0\"\nand h2 : \"f(9999) = 3333\"\nand h3 : \"\\<forall>m n. f(m + n) - f(m) - f(n) = 0 \\<or> f(m + n) - f(m) - f(n) = 1\"\nshows  \"f(1982) = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined for natural numbers with $f(2) = 0$, $f(3) > 0$, and $f(9999) = 3333$. Additionally, for all natural numbers $m$ and $n$, either $f(m + n) - f(m) - f(n) = 0$ or $f(m + n) - f(m) - f(n) = 1$. Find the value of $f(1982)$. The final answer is $660$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9455889126254492,
+        "symbolic_score": 0.6
+    },
+    "equivalence_oracle_solve_direct": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+    ],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. We are given the following information:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For any natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nUsing this information, we need to find the value of f(1982). The answer is f(1982) = 660.",
+        "semantic_score": 0.8963827539347377,
+        "symbolic_score": 0.8
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes natural numbers as input and returns natural numbers as output. We are given the following information:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For any natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nBased on these conditions, we need to find the value of f(1982). The answer is f(1982) = 660.",
+        "semantic_score": 0.8938552632104243,
+        "symbolic_score": 0.8
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. Given the following conditions:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For all natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nDetermine the value of f(1982). The answer is f(1982) = 660.",
+        "semantic_score": 0.9083763676496522,
+        "symbolic_score": 0.8
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number as input and returns a natural number as output. Given the following conditions:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For any natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nDetermine the value of f(1982). The answer is f(1982) = 660.",
+        "semantic_score": 0.905524121922926,
+        "symbolic_score": 0.8
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. We are given the following information:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For any natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nUsing this information, we need to find the value of f(1982). The answer is f(1982) = 660.",
+        "semantic_score": 0.8963827539347377,
+        "symbolic_score": 0.8
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number as input and returns a natural number as output. We are given the following information:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For any natural numbers m and n, the difference between f(m + n) and the sum of f(m) and f(n) is either 0 or 1.\n\nUsing this information, we need to determine the value of f(1982). The answer is f(1982) = 660.",
+        "semantic_score": 0.891379105899017,
+        "symbolic_score": 0.2
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. Given the following conditions:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For all natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nDetermine the value of f(1982). The answer is f(1982) = 660.",
+        "semantic_score": 0.9083763676496522,
+        "symbolic_score": 0.8
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There is a function f that takes natural numbers as input and returns natural numbers as output. We know the following facts about this function:\n\n1. f(2) = 0, which means when the input is 2, the output is 0.\n2. f(3) > 0, which means when the input is 3, the output is greater than 0.\n3. f(9999) = 3333, which means when the input is 9999, the output is 3333.\n4. For any two natural numbers m and n, the difference between f(m + n) and the sum of f(m) and f(n) is either 0 or 1. In other words, f(m + n) - f(m) - f(n) is either 0 or 1.\n\nGiven these facts, we want to find the value of f(1982). The answer is f(1982) = 660.",
+        "semantic_score": 0.8919383938402536,
+        "symbolic_score": 0.8
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. (f (m + n) - f m - f n = 0) \\<or> (f (m + n) - f m - f n = 1)\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that maps natural numbers to natural numbers. Given the following conditions:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For all natural numbers m and n, either f(m + n) - f(m) - f(n) = 0 or f(m + n) - f(m) - f(n) = 1.\n\nDetermine the value of f(1982). The answer is f(1982) = 660.",
+        "semantic_score": 0.9083763676496522,
+        "symbolic_score": 0.8
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> 1\"\nshows  \"f 1982 = 660\"",
+        "formal solution": "(* ### Problem\n The function $f(n)$ is defined on the positive integers and takes non-negative integer values. $f(2)=0,f(3)>0,f(9999)=3333$ and for all $m,n:$$ f(m+n)-f(m)-f(n)=0 \\text{ or } 1. $Determine $f(1982)$. The final Answer is $660$\n ### Proof\n Clearly $f(1) \\ge 1 \\Rightarrow f(m+1) \\ge f(m)+f(1) \\ge f(m)+1$ so $f(9999) \\ge 9999$.Contradiction!So $f(1)=0$.This forces $f(3)=1$.Hence $f(3k+3) \\ge f(3k)+f(3)>f(3k)$ so the inequality $f(3)<f(6)<\\cdots<f(9999)=3333$ forces $f(3k)=k \\forall k \\le 3333$.Now $f(3k+2) \\ge k+1 \\Rightarrow f(6k+4) \\ge 2k+2 \\Rightarrow f(12k+8) \\ge 4k+4 \\le f(12k+9)=4k+3$(Note:This is valid for $12k+9 \\le 9999$ or $3k+2 \\le 2499$).Contradiction!Hence the non-decreasing nature of $f$ gives $f(3k+1)=k$.Hence $f(n)=\\lfloor\\frac{n}{3}\\rfloor \\forall 1\\le n \\le 2499$.\n\nSo $f(1982)=\\lfloor\\frac{1982}{3}\\rfloor=660$.\n *)\n\n theorem\nfixes f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"f 2 = 0\"\nand h1 : \"f 3 > 0\"\nand h2 : \"f 9999 = 3333\"\nand h3 : \"\\<forall> m n. f (m + n) - f m - f n = 0 \\<or> 1\"\nshows  \"f 1982 = 660\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a function f that takes a natural number as input and returns a natural number as output. We are given the following information:\n\n1. f(2) = 0\n2. f(3) > 0\n3. f(9999) = 3333\n4. For any natural numbers m and n, the difference between f(m + n) and the sum of f(m) and f(n) is either 0 or 1.\n\nUsing this information, we need to determine the value of f(1982). The answer is f(1982) = 660.",
+        "semantic_score": 0.891379105899017,
+        "symbolic_score": 0.2
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8
+        ],
+        "1": [
+            9,
+            5
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8
+    ]
+}

@@ -1,0 +1,596 @@
+{
+    "problem_name": "mathd_numbertheory_559",
+    "informal_statement": "A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? Show that it is 14.",
+    "informal_proof": "If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.",
+    "a_0": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10\"\nshows  \"Min {X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10)} = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10\"\nshows  \"Min {X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10)} = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X \\equiv 2 \\pmod{3}$ and there exists another integer $Y$ where $Y \\equiv 4 \\pmod{5}$ and the last digit of $X$ is the same as the last digit of $Y$. The final answer is 14.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8715676069259644,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k. X = 3 * k + 2\"\nand h2 : \"\\<exists> m. (X mod 10) = ((5 * m + 4) mod 10)\"\nshows  \"\\<exists> min_X. min_X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k. X = 3 * k + 2\"\nand h2 : \"\\<exists> m. (X mod 10) = ((5 * m + 4) mod 10)\"\nshows  \"\\<exists> min_X. min_X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X$ can be written in the form $3k+2$ for some integer $k$, and the last digit of $X$ is equal to the last digit of $5m+4$ for some integer $m$. The final answer is 14.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.8569456934928894,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"\\<exists>k. X = 3 * k + 2\"\nand h1 : \"\\<exists>m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = (LEAST X. \\<exists>k m. X = 3 * k + 2 \\<and> X mod 10 = (5 * m + 4) mod 10)\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"\\<exists>k. X = 3 * k + 2\"\nand h1 : \"\\<exists>m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = (LEAST X. \\<exists>k m. X = 3 * k + 2 \\<and> X mod 10 = (5 * m + 4) mod 10)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X$ can be written as $3k + 2$ for some integer $k$ and the last digit of $X$ is the same as the last digit of $5m + 4$ for some integer $m$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5271202325820923,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k1. X = 3 * k1 + 2\"\nand h2 : \"\\<exists> k2. X mod 10 = (5 * k2 + 4) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k1. X = 3 * k1 + 2\"\nand h2 : \"\\<exists> k2. X mod 10 = (5 * k2 + 4) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X$ can be written in the form $3k_1 + 2$ for some integer $k_1$ and $X \\equiv 5k_2 + 4 \\pmod{10}$ for some integer $k_2$. The final answer is $X = 14$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6804397702217102,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists>Y. Y mod 5 = 4 \\<and> (Y mod 10 = X mod 10)\"\nshows  \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists>Y. Y mod 5 = 4 \\<and> (Y mod 10 = X mod 10)))\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists>Y. Y mod 5 = 4 \\<and> (Y mod 10 = X mod 10)\"\nshows  \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists>Y. Y mod 5 = 4 \\<and> (Y mod 10 = X mod 10)))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X \\equiv 2 \\pmod{3}$ and there exists an integer $Y$ with $Y \\equiv 4 \\pmod{5}$ and $Y \\pmod{10} = X \\pmod{10}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5416837334632874,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X = 3 * n + 2\"\nand h2 : \"X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X = 3 * n + 2\"\nand h2 : \"X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ that can be written in the form $X = 3n + 2$ and has a remainder of $4$ when divided by $10$, where $n$ and $m$ are integers. The final answer is $X = 14$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6357780694961548,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists> Y. Y > 0 \\<and> Y mod 5 = 4 \\<and> (X mod 10) = (Y mod 10)\"\nshows  \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists> Y. Y > 0 \\<and> Y mod 5 = 4 \\<and> (X mod 10) = (Y mod 10)))\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists> Y. Y > 0 \\<and> Y mod 5 = 4 \\<and> (X mod 10) = (Y mod 10)\"\nshows  \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists> Y. Y > 0 \\<and> Y mod 5 = 4 \\<and> (X mod 10) = (Y mod 10)))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X$ leaves a remainder of 2 when divided by 3, and there exists a positive integer $Y$ that leaves a remainder of 4 when divided by 5, and both $X$ and $Y$ have the same remainder when divided by 10.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.6014223694801331,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists>k. X = 3 * k + 2\"\nand h2 : \"\\<exists>m n. m = 5 * n + 4 \\<and> (X mod 10) = (m mod 10)\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists>k. X = 3 * k + 2\"\nand h2 : \"\\<exists>m n. m = 5 * n + 4 \\<and> (X mod 10) = (m mod 10)\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X$ can be expressed as $3k + 2$ for some integer $k$ and the last digit of $X$ is the same as the last digit of $5n + 4$ for some integer $n$. The final answer is $X = 14$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.71724534034729,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10\"\nshows  \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10))\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10\"\nshows  \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X$ leaves a remainder of $2$ when divided by $3$, and there exists an integer $Y$ such that $Y$ leaves a remainder of $4$ when divided by $5$, and both $X$ and $Y$ leave the same remainder when divided by $10$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.5135835409164429,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k. X = 3 * k + 2\"\nand h2 : \"\\<exists> m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = (LEAST x. x > 0 \\<and> (\\<exists> k. x = 3 * k + 2) \\<and> (\\<exists> m. x mod 10 = (5 * m + 4) mod 10))\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k. X = 3 * k + 2\"\nand h2 : \"\\<exists> m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = (LEAST x. x > 0 \\<and> (\\<exists> k. x = 3 * k + 2) \\<and> (\\<exists> m. x mod 10 = (5 * m + 4) mod 10))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ that can be written as $X = 3k + 2$ for some integer $k$, and also satisfies the condition $X \\equiv 5m + 4 \\pmod{10}$ for some integer $m$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.33581528067588806,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes  x y ::nat\nassumes \"x mod 3 = 2\"\nand \"y mod 5 = 4\"\nand \"x mod 10 = y mod 10\"\nshows \"14 \\<le> x\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X = 3 * k + 2\"\nand h2 : \"(X mod 10) = ((5 * m + 4) mod 10)\"\nand h3 : \"m < 2\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X = 3 * k + 2\"\nand h2 : \"(X mod 10) = ((5 * m + 4) mod 10)\"\nand h3 : \"m < 2\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose that $X$ is a positive integer and $X$ has a remainder of $2$ when divided by $3$. Additionally, the units digit of $X$ is the same as the units digit of $5m+4$ where $m$ is a digit less than $2$. Find the value of $X$ if it is known that $X$ has a value of $14$.",
+        "semantic_score": 0.6066340912331823,
+        "symbolic_score": 0.3,
+        "naive_label": 0
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X = 3 * k + 2\"\nand h1 : \"X mod 10 = (5 * j + 4) mod 10\"\nand h2 : \"k \\<ge> 0\"\nand h3 : \"j \\<ge> 0\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X = 3 * k + 2\"\nand h1 : \"X mod 10 = (5 * j + 4) mod 10\"\nand h2 : \"k \\<ge> 0\"\nand h3 : \"j \\<ge> 0\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $X$ is a natural number that leaves a remainder of $4$ when divided by $10$, and if $X$ can be written in the form $X = 3k + 2$, where $k$ is a non-negative integer, then what is the smallest possible value of $X$? The final answer is $14$.",
+        "semantic_score": 0.9910728231410046,
+        "symbolic_score": 0.3,
+        "naive_label": 0
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k1. X = 3 * k1 + 2\"\nand h2 : \"\\<exists> k2. (X + 4) mod 5 = k2\"\nand h3 : \"\\<forall> k1 k2. X = 3 * k1 + 2 \\<and> (X + 4) mod 5 = k2 \\<longrightarrow> X \\<ge> 14\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k1. X = 3 * k1 + 2\"\nand h2 : \"\\<exists> k2. (X + 4) mod 5 = k2\"\nand h3 : \"\\<forall> k1 k2. X = 3 * k1 + 2 \\<and> (X + 4) mod 5 = k2 \\<longrightarrow> X \\<ge> 14\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $X$ is a positive integer that satisfies the following conditions: $X$ is equal to $3k_1+2$ for some integer $k_1$, and $X+4$ leaves a remainder of $k_2$ when divided by $5$ for some integer $k_2$. If $X$ is less than $14$, then there is no integer that satisfies these conditions. Find the value of $X$ that satisfies all of these conditions. The final answer is $14$.",
+        "semantic_score": 0.9887257618420295,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes X :: int\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> m1. X = 3 * m1 + 2\"\nand h2 : \"\\<exists> m2. (m2 * 5 + 4) mod 10 = X mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: int\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> m1. X = 3 * m1 + 2\"\nand h2 : \"\\<exists> m2. (m2 * 5 + 4) mod 10 = X mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $X$ is a positive integer, we know that $X$ is $2$ more than a multiple of $3$, and the ones digit of $5m+4$ is the same as the ones digit of $X$, where $m$ is a positive integer. Find the value of $X$. The final answer is $14$.",
+        "semantic_score": 0.9829027193634741,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes x :: nat\nassumes h0 : \"x > 0\"\nand h1 : \"x mod 3 = 2\"\nand h2 : \"\\<exists> y. (y - 4) mod 5 = x mod 10 \\<and> y mod 5 \\<noteq> x mod 10\"\nshows  \"x = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes x :: nat\nassumes h0 : \"x > 0\"\nand h1 : \"x mod 3 = 2\"\nand h2 : \"\\<exists> y. (y - 4) mod 5 = x mod 10 \\<and> y mod 5 \\<noteq> x mod 10\"\nshows  \"x = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $x$ such that when $x$ is divided by $3$, the remainder is $2$. Furthermore, there exists a integer $y$ such that when $y-4$ is divided by $5$, the remainder is the same as the remainder when $x$ is divided by $10$, but the remainder when $y$ is divided by $5$ is not the same as the remainder when $x$ is divided by $10$. The final answer is $x=14$.",
+        "semantic_score": 0.6631669460789342,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nassumes h0 : \"\\<exists> x :: nat. x > 0 \\<and> x mod 3 = 2\"\nand h1 : \"\\<exists> y :: nat. y > 0 \\<and> (y + 4) mod 5 = y mod 10\"\nshows  \"Min {x. \\<exists> y. x = y \\<and> (\\<exists> z :: nat. z > 0 \\<and> y mod 3 = 2) \\<and> (\\<exists> w :: nat. w > 0 \\<and> (w + 4) mod 5 = y mod 10)} = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nassumes h0 : \"\\<exists> x :: nat. x > 0 \\<and> x mod 3 = 2\"\nand h1 : \"\\<exists> y :: nat. y > 0 \\<and> (y + 4) mod 5 = y mod 10\"\nshows  \"Min {x. \\<exists> y. x = y \\<and> (\\<exists> z :: nat. z > 0 \\<and> y mod 3 = 2) \\<and> (\\<exists> w :: nat. w > 0 \\<and> (w + 4) mod 5 = y mod 10)} = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest integer $x$ such that there exists a positive integer $y$ satisfying $x = y$ and the conditions $y \\equiv 2 \\pmod{3}$ and $(y+4) \\equiv y \\pmod{10}$. The smallest such $x$ is $14$.",
+        "semantic_score": 0.6507386376831618,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists>k. X = 3 * k + 2\"\nand h2 : \"\\<exists>j. (4 + 5 * j) mod 10 = X mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists>k. X = 3 * k + 2\"\nand h2 : \"\\<exists>j. (4 + 5 * j) mod 10 = X mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $X$ is a positive integer such that $X$ leaves a remainder of $2$ when divided by $3$, and there exists a non-negative integer $j$ such that $4 + 5j$ has the same units digit as $X$, what is the value of $X$? The final answer is $14$.\"",
+        "semantic_score": 0.6650047491842345,
+        "symbolic_score": 0.1,
+        "naive_label": 0
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X = 3 * a + 2 \\<and> a > 0\"\nand h1 : \"X mod 10 = (5 * b + 4) mod 10 \\<and> b > 0\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X = 3 * a + 2 \\<and> a > 0\"\nand h1 : \"X mod 10 = (5 * b + 4) mod 10 \\<and> b > 0\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $X$ is a positive integer such that $X$ leaves a remainder of $5b + 4$ when divided by $10$, and $X$ is of the form $3a + 2$, where $a$ is a positive integer, what is the smallest possible value of $X$ if it is known that $b$ is a positive integer? The final answer is $14$.\"",
+        "semantic_score": 0.6804349946967373,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X = 3 * k + 2\"\nand h1 : \"X mod 10 = (5 * m + 4) mod 10\"\nand h2 : \"k \\<ge> 0\"\nand h3 : \"m \\<ge> 0\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X = 3 * k + 2\"\nand h1 : \"X mod 10 = (5 * m + 4) mod 10\"\nand h2 : \"k \\<ge> 0\"\nand h3 : \"m \\<ge> 0\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $X$ is a natural number that leaves a remainder of $4$ when divided by $10$, and $X$ is $2$ more than three times some non-negative integer $k$, then $X$ equals $14$.",
+        "semantic_score": 0.7667774610654611,
+        "symbolic_score": 0.3,
+        "naive_label": 0
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes x :: nat\nassumes h0 : \"x > 0\"\nand h1 : \"x = 3 * a + 2\"\nand h2 : \"x mod 10 = (5 * b + 4) mod 10\"\nand h3 : \"b < 2\"\nshows  \"x = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes x :: nat\nassumes h0 : \"x > 0\"\nand h1 : \"x = 3 * a + 2\"\nand h2 : \"x mod 10 = (5 * b + 4) mod 10\"\nand h3 : \"b < 2\"\nshows  \"x = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $x$ is a positive integer such that $x$ equals $3a+2$ for some integer $a$, and $x$ has the same units digit as $5b+4$, where $b$ is a non-negative integer less than $2$, then $x$ must equal $14$.\"",
+        "semantic_score": 0.5959990020255506,
+        "symbolic_score": 0.2,
+        "naive_label": 0
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            0,
+            1,
+            8
+        ],
+        "1": [
+            9,
+            7
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ]
+    },
+    "a_0_mistral": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X = 3 * n + 2\"\nand h1 : \"X mod 10 = (5 * m + 4) mod 10\"\nand h2 : \"n >= 0\"\nand h3 : \"m >= 0\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X = 3 * n + 2\"\nand h1 : \"X mod 10 = (5 * m + 4) mod 10\"\nand h2 : \"n >= 0\"\nand h3 : \"m >= 0\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that a number $X$ is equal to $3n+2$ and its last digit $(X \\mod 10)$ is the same as the last digit of $5m+4$, find the value of $X$. The final answer is $14$."
+    },
+    "a_1_mistral": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X = 3 * m + 2\"\nand h1 : \"X mod 10 = (5 * n + 4) mod 10\"\nshows  \"m = n + 1\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X = 3 * m + 2\"\nand h1 : \"X mod 10 = (5 * n + 4) mod 10\"\nshows  \"m = n + 1\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given $X = 3m +2$ and $X\\ mod 10 = 5n+4\\ mod 10$, determine if $m$ is one more than $n$.\n\nThe final answer is \"If $X = 3m+2$ and $X\\ mod 10 = 5n+4\\ mod 10$, then $m = n+1$.\""
+    },
+    "a_2_mistral": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X = 3 * n + 2\"\nand h1 : \"X mod 10 = (5 * m + 4) mod 10\"\nand h2 : \"n >= 0\"\nand h3 : \"m >= 0\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X = 3 * n + 2\"\nand h1 : \"X mod 10 = (5 * m + 4) mod 10\"\nand h2 : \"n >= 0\"\nand h3 : \"m >= 0\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $X = 3n +2$ and $X$ leaves a remainder of $5m+4$ when divided by $10$, find the value of $X$. The final answer is $14$.\n\n(Note: The Isabelle version assumes that $n$ and $m$ are non-negative.)"
+    },
+    "a_3_mistral": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X = 3 * n + 2\"\nand h1 : \"X mod 10 = (5 * m + 4) mod 10\"\nand h2 : \"n >= 0\"\nand h3 : \"m >= 0\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X = 3 * n + 2\"\nand h1 : \"X mod 10 = (5 * m + 4) mod 10\"\nand h2 : \"n >= 0\"\nand h3 : \"m >= 0\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"Given a number $X$, we know that $X = 3n +2$ for some integer $n$, and $X$ leaves a remainder of $5m+4$ when divided by 10. Moreover, $n$ and $m$ are non-negative. Determine the value of $X$. The final answer is 14.\""
+    },
+    "a_4_mistral": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X = 3 * n + 2\"\nand h1 : \"X mod 10 = (5 * m + 4) mod 10\"\nand h2 : \"n >= 0\"\nand h3 : \"m >= 0\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X = 3 * n + 2\"\nand h1 : \"X mod 10 = (5 * m + 4) mod 10\"\nand h2 : \"n >= 0\"\nand h3 : \"m >= 0\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $X = 3n +2$ and $X \\mod 10 = 5m+4 \\mod 10$, find two non-negative integers $n$ and $m$ such that $X = 14$.\n\nIn other words, find the values of $n$ and $m$ that satisfy the conditions:\n\n1. $X = 3n+2$\n2. $X \\mod 10 = 5m+4 \\mod 10$\n3. $n \\ge 0$\n4. $m \\ge 0$\n\nand determine if it is possible to have $X = 14$.\n\nSolution:\nLet's start by solving the second equation: $X \\mod 10 = 5m+4 \\mod 10$\n\nSince $X \\mod 10$ is the last digit of $X$, it is clear that $X=14$ implies that $X \\mod 10 = 4$. So we are looking for pairs $(n,m)$ such that $3n+2 = 14 \\mod 10$.\n\nNow we have $3n+2 = 14 \\implies 3n = 12 \\implies n = 4$.\n\nSo, we found one solution: $n=4$ and $m$ is arbitrary.\n\nSubstituting $n=4$ into the first equation, we get $X = 3n+2 = 14$, which is the desired result.\n\nTherefore, the conditions have exactly one solution: $X = 14$, $n = 4$, and $m$ is any integer."
+    },
+    "a_5_mistral": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X = 3 * m + 2\"\nand h1 : \"X mod 10 = (5 * n + 4) mod 10\"\nand h2 : \"m >= 0\"\nand h3 : \"n >= 0\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X = 3 * m + 2\"\nand h1 : \"X mod 10 = (5 * n + 4) mod 10\"\nand h2 : \"m >= 0\"\nand h3 : \"n >= 0\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $X = 3m +2$ and $X$ leaves a remainder of $5n+4$ when divided by $10$, find the value of $X$. The final answer is $14$."
+    },
+    "a_6_mistral": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"\\<exists> m. X = 3 * m + 2\"\nand h1 : \"\\<exists> n. X mod 10 = (4 + m) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"\\<exists> m. X = 3 * m + 2\"\nand h1 : \"\\<exists> n. X mod 10 = (4 + m) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the value of $X$ such that $X$ can be expressed as $3m+2$ for some integer $m$, and the last digit of $X$ is equal to the last digit of $(4+m)$. The final answer is $14$."
+    },
+    "a_7_mistral": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X = 3 * m + 2\"\nand h1 : \"X mod 10 = (5 * n + 4) mod 10\"\nand h2 : \"m >= 0\"\nand h3 : \"n >= 0\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X = 3 * m + 2\"\nand h1 : \"X mod 10 = (5 * n + 4) mod 10\"\nand h2 : \"m >= 0\"\nand h3 : \"n >= 0\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $X$ is equal to $3m+2$ and that $(X \\bmod 10)$ is congruent to $(5n+4) \\bmod 10$, find the value of $X$ when $m$ and $n$ are non-negative integers. The final answer is $14$."
+    },
+    "a_8_mistral": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X = 3 * m + 2\"\nand h1 : \"X mod 10 = (5 * n + 4) mod 10\"\nand h2 : \"m >= 0\"\nand h3 : \"n >= 0\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X = 3 * m + 2\"\nand h1 : \"X mod 10 = (5 * n + 4) mod 10\"\nand h2 : \"m >= 0\"\nand h3 : \"n >= 0\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find integers $m$ and $n$ such that $3m+2=X$ and $(5n+4) \\% 10 = X \\% 10$. Moreover, both $m$ and $n$ must be non-negative. The final answer is $X=14$."
+    },
+    "a_9_mistral": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X = 3 * n + 2\"\nand h1 : \"X mod 10 = (5 * m + 4) mod 10\"\nand h2 : \"n >= 0\"\nand h3 : \"m >= 0\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X = 3 * n + 2\"\nand h1 : \"X mod 10 = (5 * m + 4) mod 10\"\nand h2 : \"n >= 0\"\nand h3 : \"m >= 0\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given integers $n$ and $m$, if $X = 3n +2$ and $X \\bmod 10 = (5m+4) \\bmod 10$, and both $n$ and $m$ are non-negative, then $X = 14$.\n\nIn other words, find integers $n$ and $m$ such that:\n\n1. $X = 3n + 2$\n2. $X \\bmod 10 = (5m+4) \\bmod 10$\n3. $n \\geq 0$\n4. $m \\geq 0$\n\nIf such integers exist, then $X = 14$."
+    },
+    "prediction_mistral": {
+        "0": [
+            0,
+            2,
+            3,
+            4,
+            9
+        ],
+        "1": [
+            8,
+            5,
+            7
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            6
+        ]
+    },
+    "a_0_deepseek": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (a div 5)) mod 10\"\nand h3 : \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> X mod 10 = (4 + 5 * (a div 5)) mod 10)\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (a div 5)) mod 10\"\nand h3 : \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> X mod 10 = (4 + 5 * (a div 5)) mod 10)\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer X that satisfies the following conditions:\n1. X is greater than 0.\n2. When X is divided by 3, the remainder is 2.\n3. When X is divided by 10, the remainder is equal to the remainder of (4 + 5 * (a div 5)) when divided by 10.\n\nThe solution to this problem is X = 14."
+    },
+    "a_1_deepseek": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (X div 5)) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (X div 5)) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that is greater than 0, has a remainder of 2 when divided by 3, and satisfies the equation X mod 10 = (4 + 5 * (X div 5)) mod 10. The solution to this problem is X = 14."
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists> Y. Y mod 5 = 4 \\<and> (X mod 10) = (Y mod 10)\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists> Y. Y mod 5 = 4 \\<and> (X mod 10) = (Y mod 10)\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that satisfies the following conditions:\n\n1. X is greater than 0.\n2. When X is divided by 3, the remainder is 2.\n3. There exists another natural number Y such that when Y is divided by 5, the remainder is 4, and X and Y have the same remainder when divided by 10.\n\nThe solution to this problem is X = 14."
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (X div 5)) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (X div 5)) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that is greater than 0, has a remainder of 2 when divided by 3, and satisfies the equation X mod 10 = (4 + 5 * (X div 5)) mod 10. The solution to this problem is X = 14."
+    },
+    "a_4_deepseek": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists> Y. Y mod 5 = 4 \\<and> (X mod 10 = Y mod 10)\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists> Y. Y mod 5 = 4 \\<and> (X mod 10 = Y mod 10)\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that satisfies the following conditions:\n1. X is greater than 0.\n2. When X is divided by 3, the remainder is 2.\n3. There exists another natural number Y such that when Y is divided by 5, the remainder is 4, and X and Y have the same remainder when divided by 10.\n\nThe solution to this problem is X = 14."
+    },
+    "a_5_deepseek": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (X div 5)) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (X div 5)) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that is greater than 0, leaves a remainder of 2 when divided by 3, and satisfies the equation X mod 10 = (4 + 5 * (X div 5)) mod 10. The solution to this problem is X = 14."
+    },
+    "a_6_deepseek": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"\\<exists>k. X = 3 * k + 2\"\nand h1 : \"\\<exists>m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"\\<exists>k. X = 3 * k + 2\"\nand h1 : \"\\<exists>m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a natural number X such that X can be expressed in the form 3k + 2 for some natural number k. Additionally, there exists a natural number m such that the remainder of X when divided by 10 is equal to the remainder of (5m + 4) when divided by 10. Prove that X is equal to 14."
+    },
+    "a_7_deepseek": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists>k. X = 3 * k + 2\"\nand h2 : \"\\<exists>m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists>k. X = 3 * k + 2\"\nand h2 : \"\\<exists>m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number X greater than 0. It is known that X can be expressed in the form 3k + 2 for some natural number k. Additionally, there exists a natural number m such that the remainder of X when divided by 10 is equal to the remainder of (5m + 4) when divided by 10. Based on these conditions, determine the value of X. The answer is X = 14."
+    },
+    "a_8_deepseek": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k. X = 3 * k + 2\"\nand h2 : \"\\<exists> m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k. X = 3 * k + 2\"\nand h2 : \"\\<exists> m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that satisfies the following conditions:\n\n1. X is greater than 0.\n2. There exists a natural number k such that X can be expressed as 3 times k plus 2.\n3. There exists a natural number m such that the remainder of X when divided by 10 is the same as the remainder of (5 times m plus 4) when divided by 10.\n\nThe solution to this problem is X = 14."
+    },
+    "a_9_deepseek": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (SOME n. n * 5 = X - 4)) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (SOME n. n * 5 = X - 4)) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that is greater than 0, has a remainder of 2 when divided by 3, and has a remainder of the result of the expression (4 + 5 * (some n such that n * 5 = X - 4)) when divided by 10. The solution to this problem is X = 14."
+    },
+    "prediction_deepseek": {
+        "0": [
+            1,
+            3,
+            5
+        ],
+        "1": [
+            8,
+            6,
+            7
+        ],
+        "2": [
+            2,
+            4
+        ],
+        "3": [
+            0
+        ],
+        "4": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10\"\nshows  \"Min {X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10)} = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10\"\nshows  \"Min {X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10)} = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X \\equiv 2 \\pmod{3}$ and there exists another integer $Y$ where $Y \\equiv 4 \\pmod{5}$ and the last digit of $X$ is the same as the last digit of $Y$. The final answer is 14.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9069191688340125,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k. X = 3 * k + 2\"\nand h2 : \"\\<exists> m. (X mod 10) = ((5 * m + 4) mod 10)\"\nshows  \"\\<exists> min_X. min_X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k. X = 3 * k + 2\"\nand h2 : \"\\<exists> m. (X mod 10) = ((5 * m + 4) mod 10)\"\nshows  \"\\<exists> min_X. min_X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X$ can be written in the form $3k+2$ for some integer $k$, and the last digit of $X$ is equal to the last digit of $5m+4$ for some integer $m$. The final answer is 14.",
+        "syntax": 1,
+        "naive_label": 1,
+        "semantic_score": 0.911979764071154,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"\\<exists>k. X = 3 * k + 2\"\nand h1 : \"\\<exists>m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = (LEAST X. \\<exists>k m. X = 3 * k + 2 \\<and> X mod 10 = (5 * m + 4) mod 10)\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"\\<exists>k. X = 3 * k + 2\"\nand h1 : \"\\<exists>m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = (LEAST X. \\<exists>k m. X = 3 * k + 2 \\<and> X mod 10 = (5 * m + 4) mod 10)\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X$ can be written as $3k + 2$ for some integer $k$ and the last digit of $X$ is the same as the last digit of $5m + 4$ for some integer $m$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8792645592920246,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k1. X = 3 * k1 + 2\"\nand h2 : \"\\<exists> k2. X mod 10 = (5 * k2 + 4) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k1. X = 3 * k1 + 2\"\nand h2 : \"\\<exists> k2. X mod 10 = (5 * k2 + 4) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X$ can be written in the form $3k_1 + 2$ for some integer $k_1$ and $X \\equiv 5k_2 + 4 \\pmod{10}$ for some integer $k_2$. The final answer is $X = 14$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8874520771546269,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists>Y. Y mod 5 = 4 \\<and> (Y mod 10 = X mod 10)\"\nshows  \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists>Y. Y mod 5 = 4 \\<and> (Y mod 10 = X mod 10)))\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists>Y. Y mod 5 = 4 \\<and> (Y mod 10 = X mod 10)\"\nshows  \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists>Y. Y mod 5 = 4 \\<and> (Y mod 10 = X mod 10)))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X \\equiv 2 \\pmod{3}$ and there exists an integer $Y$ with $Y \\equiv 4 \\pmod{5}$ and $Y \\pmod{10} = X \\pmod{10}$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8445300021075208,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X = 3 * n + 2\"\nand h2 : \"X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X = 3 * n + 2\"\nand h2 : \"X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ that can be written in the form $X = 3n + 2$ and has a remainder of $4$ when divided by $10$, where $n$ and $m$ are integers. The final answer is $X = 14$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8727875950994759,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists> Y. Y > 0 \\<and> Y mod 5 = 4 \\<and> (X mod 10) = (Y mod 10)\"\nshows  \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists> Y. Y > 0 \\<and> Y mod 5 = 4 \\<and> (X mod 10) = (Y mod 10)))\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists> Y. Y > 0 \\<and> Y mod 5 = 4 \\<and> (X mod 10) = (Y mod 10)\"\nshows  \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists> Y. Y > 0 \\<and> Y mod 5 = 4 \\<and> (X mod 10) = (Y mod 10)))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X$ leaves a remainder of 2 when divided by 3, and there exists a positive integer $Y$ that leaves a remainder of 4 when divided by 5, and both $X$ and $Y$ have the same remainder when divided by 10.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8497414758564028,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists>k. X = 3 * k + 2\"\nand h2 : \"\\<exists>m n. m = 5 * n + 4 \\<and> (X mod 10) = (m mod 10)\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists>k. X = 3 * k + 2\"\nand h2 : \"\\<exists>m n. m = 5 * n + 4 \\<and> (X mod 10) = (m mod 10)\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X$ can be expressed as $3k + 2$ for some integer $k$ and the last digit of $X$ is the same as the last digit of $5n + 4$ for some integer $n$. The final answer is $X = 14$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9109060604211368,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10\"\nshows  \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10))\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10\"\nshows  \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> (\\<exists>Y. Y mod 5 = 4 \\<and> X mod 10 = Y mod 10))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ such that $X$ leaves a remainder of $2$ when divided by $3$, and there exists an integer $Y$ such that $Y$ leaves a remainder of $4$ when divided by $5$, and both $X$ and $Y$ leave the same remainder when divided by $10$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8370564050421561,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k. X = 3 * k + 2\"\nand h2 : \"\\<exists> m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = (LEAST x. x > 0 \\<and> (\\<exists> k. x = 3 * k + 2) \\<and> (\\<exists> m. x mod 10 = (5 * m + 4) mod 10))\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\ntheorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k. X = 3 * k + 2\"\nand h2 : \"\\<exists> m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = (LEAST x. x > 0 \\<and> (\\<exists> k. x = 3 * k + 2) \\<and> (\\<exists> m. x mod 10 = (5 * m + 4) mod 10))\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the smallest positive integer $X$ that can be written as $X = 3k + 2$ for some integer $k$, and also satisfies the condition $X \\equiv 5m + 4 \\pmod{10}$ for some integer $m$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8426009303162385,
+        "symbolic_score": 0.1
+    },
+    "equivalence_oracle_solve_direct": [],
+    "a_0_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (a div 5)) mod 10\"\nand h3 : \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> X mod 10 = (4 + 5 * (a div 5)) mod 10)\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (a div 5)) mod 10\"\nand h3 : \"X = (LEAST X. X > 0 \\<and> X mod 3 = 2 \\<and> X mod 10 = (4 + 5 * (a div 5)) mod 10)\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find the smallest positive integer X that satisfies the following conditions:\n1. X is greater than 0.\n2. When X is divided by 3, the remainder is 2.\n3. When X is divided by 10, the remainder is equal to the remainder of (4 + 5 * (a div 5)) when divided by 10.\n\nThe solution to this problem is X = 14.",
+        "semantic_score": 0.8355326828265129,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (X div 5)) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (X div 5)) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that is greater than 0, has a remainder of 2 when divided by 3, and satisfies the equation X mod 10 = (4 + 5 * (X div 5)) mod 10. The solution to this problem is X = 14.",
+        "semantic_score": 0.828685111023565,
+        "symbolic_score": 0.3
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists> Y. Y mod 5 = 4 \\<and> (X mod 10) = (Y mod 10)\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists> Y. Y mod 5 = 4 \\<and> (X mod 10) = (Y mod 10)\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that satisfies the following conditions:\n\n1. X is greater than 0.\n2. When X is divided by 3, the remainder is 2.\n3. There exists another natural number Y such that when Y is divided by 5, the remainder is 4, and X and Y have the same remainder when divided by 10.\n\nThe solution to this problem is X = 14.",
+        "semantic_score": 0.7778191266038712,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (X div 5)) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (X div 5)) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that is greater than 0, has a remainder of 2 when divided by 3, and satisfies the equation X mod 10 = (4 + 5 * (X div 5)) mod 10. The solution to this problem is X = 14.",
+        "semantic_score": 0.828685111023565,
+        "symbolic_score": 0.3
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists> Y. Y mod 5 = 4 \\<and> (X mod 10 = Y mod 10)\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"\\<exists> Y. Y mod 5 = 4 \\<and> (X mod 10 = Y mod 10)\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that satisfies the following conditions:\n1. X is greater than 0.\n2. When X is divided by 3, the remainder is 2.\n3. There exists another natural number Y such that when Y is divided by 5, the remainder is 4, and X and Y have the same remainder when divided by 10.\n\nThe solution to this problem is X = 14.",
+        "semantic_score": 0.7797117248278841,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (X div 5)) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (X div 5)) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that is greater than 0, leaves a remainder of 2 when divided by 3, and satisfies the equation X mod 10 = (4 + 5 * (X div 5)) mod 10. The solution to this problem is X = 14.",
+        "semantic_score": 0.8316693588673463,
+        "symbolic_score": 0.3
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"\\<exists>k. X = 3 * k + 2\"\nand h1 : \"\\<exists>m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"\\<exists>k. X = 3 * k + 2\"\nand h1 : \"\\<exists>m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " There exists a natural number X such that X can be expressed in the form 3k + 2 for some natural number k. Additionally, there exists a natural number m such that the remainder of X when divided by 10 is equal to the remainder of (5m + 4) when divided by 10. Prove that X is equal to 14.",
+        "semantic_score": 0.8042576300222343,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists>k. X = 3 * k + 2\"\nand h2 : \"\\<exists>m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists>k. X = 3 * k + 2\"\nand h2 : \"\\<exists>m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider a natural number X greater than 0. It is known that X can be expressed in the form 3k + 2 for some natural number k. Additionally, there exists a natural number m such that the remainder of X when divided by 10 is equal to the remainder of (5m + 4) when divided by 10. Based on these conditions, determine the value of X. The answer is X = 14.",
+        "semantic_score": 0.7922716199953872,
+        "symbolic_score": 0.2
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k. X = 3 * k + 2\"\nand h2 : \"\\<exists> m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"\\<exists> k. X = 3 * k + 2\"\nand h2 : \"\\<exists> m. X mod 10 = (5 * m + 4) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that satisfies the following conditions:\n\n1. X is greater than 0.\n2. There exists a natural number k such that X can be expressed as 3 times k plus 2.\n3. There exists a natural number m such that the remainder of X when divided by 10 is the same as the remainder of (5 times m plus 4) when divided by 10.\n\nThe solution to this problem is X = 14.",
+        "semantic_score": 0.7906212869801913,
+        "symbolic_score": 0.2
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (SOME n. n * 5 = X - 4)) mod 10\"\nshows  \"X = 14\"",
+        "formal solution": "(* ### Problem\n A positive integer $X$ is 2 more than a multiple of 3. Its units digit is the same as the units digit of a number that is 4 more than a multiple of 5. What is the smallest possible value of $X$? The final Answer is $14$\n ### Proof\n If a positive integer is 4 more than a multiple of 5, then its units digit must be 4 or 9.  We check positive integers ending in 4 or 9 until we find one which is 2 more than a multiple of 3: 4 is 1 more than a multiple of 3, 9 is a multiple of 3, and $14$ is 2 more than a multiple of 3.\n *)\n\n theorem\nfixes X :: nat\nassumes h0 : \"X > 0\"\nand h1 : \"X mod 3 = 2\"\nand h2 : \"X mod 10 = (4 + 5 * (SOME n. n * 5 = X - 4)) mod 10\"\nshows  \"X = 14\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Find a natural number X that is greater than 0, has a remainder of 2 when divided by 3, and has a remainder of the result of the expression (4 + 5 * (some n such that n * 5 = X - 4)) when divided by 10. The solution to this problem is X = 14.",
+        "semantic_score": 0.8321888164673018,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            1,
+            3,
+            5
+        ],
+        "1": [
+            8,
+            7
+        ],
+        "2": [
+            0
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": []
+}

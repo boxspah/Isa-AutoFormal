@@ -1,0 +1,59 @@
+{
+    "natural problem": "What is the value of the following expression: $100 - 99 +98 - 97 + 96 - 95 + \\cdots + 4 - 3 +2 - 1$?",
+    "natural solution": [
+        "Each pair of consecutive terms makes 1 (for example, $100-99=1$). Since there are $100/2=50$ such pairs, the entire expression is equal to $1\\cdot50=\\boxed{50}$."
+    ],
+    "natural answer": "50",
+    "a_0": {
+        "formal problem": "theorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = (if even n then n else -n)\"\nand h1 : \"sum f {1..100} = 50\"\nshows  \"sum f {1..100} = 50\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $100 - 99 +98 - 97 + 96 - 95 + \\cdots + 4 - 3 +2 - 1$? The final Answer is 50\n ### Proof\n Each pair of consecutive terms makes 1 (for example, $100-99=1$). Since there are $100/2=50$ such pairs, the entire expression is equal to $1\\cdot50=\\boxed{50}$.\n *)\n\ntheorem\nfixes n :: nat and f :: \"nat \\<Rightarrow> nat\"\nassumes h0 : \"\\<forall> n. f n = (if even n then n else -n)\"\nand h1 : \"sum f {1..100} = 50\"\nshows  \"sum f {1..100} = 50\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined for natural numbers $n$ such that $f(n)$ equals $n$ if $n$ is even and $-n$ if $n$ is odd. The sum of $f(n)$ for all $n$ from 1 to 100 is 50. Confirm that this sum is indeed 50."
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n - (n - 1)\"\nand h1 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> n \\<le> 100 \\<longrightarrow> f n = 1\"\nshows  \"sum f {1..100} = 50\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $100 - 99 +98 - 97 + 96 - 95 + \\cdots + 4 - 3 +2 - 1$? The final Answer is 50\n ### Proof\n Each pair of consecutive terms makes 1 (for example, $100-99=1$). Since there are $100/2=50$ such pairs, the entire expression is equal to $1\\cdot50=\\boxed{50}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n - (n - 1)\"\nand h1 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> n \\<le> 100 \\<longrightarrow> f n = 1\"\nshows  \"sum f {1..100} = 50\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined such that for any integer $n$, $f(n) = n - (n - 1)$. If $1 \\leq n \\leq 100$, then $f(n) = 1$. What is the sum of $f(n)$ for all integers $n$ from 1 to 100? The final answer is 50."
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> f n = (-1)^(n+1) * n\"\nshows  \"(\\<Sum>n=1..100. f n) = 50\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $100 - 99 +98 - 97 + 96 - 95 + \\cdots + 4 - 3 +2 - 1$? The final Answer is 50\n ### Proof\n Each pair of consecutive terms makes 1 (for example, $100-99=1$). Since there are $100/2=50$ such pairs, the entire expression is equal to $1\\cdot50=\\boxed{50}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. n \\<ge> 1 \\<longrightarrow> f n = (-1)^(n+1) * n\"\nshows  \"(\\<Sum>n=1..100. f n) = 50\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f$ defined as $f(n)=(-1)^{n+1} * n$ for all integers $n \\geq 1$. What is the sum of $f(n)$ from $n=1$ to $n=100$? The final answer is $50$."
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n - (n - 1)\"\nand h1 : \"sum f {1..100} = 50\"\nshows  \"sum f {1..100} = 50\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $100 - 99 +98 - 97 + 96 - 95 + \\cdots + 4 - 3 +2 - 1$? The final Answer is 50\n ### Proof\n Each pair of consecutive terms makes 1 (for example, $100-99=1$). Since there are $100/2=50$ such pairs, the entire expression is equal to $1\\cdot50=\\boxed{50}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. f n = n - (n - 1)\"\nand h1 : \"sum f {1..100} = 50\"\nshows  \"sum f {1..100} = 50\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ defined by $f(n) = n - (n - 1)$ for all integers $n$. If the sum of $f(n)$ for $n$ from $1$ to $100$ equals $50$, verify that this sum is indeed $50$."
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> f n = 100 - (n - 1) + (n - 2) - (n - 3) + (n - 4) - (n - 5) + ... + 4 - 3 + 2 - 1\"\nshows  \"f 100 = 50\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $100 - 99 +98 - 97 + 96 - 95 + \\cdots + 4 - 3 +2 - 1$? The final Answer is 50\n ### Proof\n Each pair of consecutive terms makes 1 (for example, $100-99=1$). Since there are $100/2=50$ such pairs, the entire expression is equal to $1\\cdot50=\\boxed{50}$.\n *)\n\ntheorem\nfixes f :: \"int \\<Rightarrow> int\"\nassumes h0 : \"\\<forall> n. n \\<ge> 1 \\<longrightarrow> f n = 100 - (n - 1) + (n - 2) - (n - 3) + (n - 4) - (n - 5) + ... + 4 - 3 + 2 - 1\"\nshows  \"f 100 = 50\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f$ is defined for all integers $n \\geq 1$ by $f(n) = 100 - (n - 1) + (n - 2) - (n - 3) + (n - 4) - (n - 5) + \\ldots + 4 - 3 + 2 - 1$. What is the value of $f(100)$? The final answer is $50$."
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes n :: nat\nshows  \"(\\<Sum>i = 1..100. (-1)^(i+1) * i) = 50\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $100 - 99 +98 - 97 + 96 - 95 + \\cdots + 4 - 3 +2 - 1$? The final Answer is 50\n ### Proof\n Each pair of consecutive terms makes 1 (for example, $100-99=1$). Since there are $100/2=50$ such pairs, the entire expression is equal to $1\\cdot50=\\boxed{50}$.\n *)\n\ntheorem\nfixes n :: nat\nshows  \"(\\<Sum>i = 1..100. (-1)^(i+1) * i) = 50\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the series from 1 to 100 where the $i$-th term is given by $(-1)^{i+1} * i$. The final answer is 50."
+    },
+    "a_6": {
+        "formal problem": "theorem \nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum (\\<lambda>i. if i mod 2 = 0 then i else -i) {1..n} = 50\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $100 - 99 +98 - 97 + 96 - 95 + \\cdots + 4 - 3 +2 - 1$? The final Answer is 50\n ### Proof\n Each pair of consecutive terms makes 1 (for example, $100-99=1$). Since there are $100/2=50$ such pairs, the entire expression is equal to $1\\cdot50=\\boxed{50}$.\n *)\n\ntheorem \nfixes n :: nat\nassumes h0 : \"n = 100\"\nshows  \"sum (\\<lambda>i. if i mod 2 = 0 then i else -i) {1..n} = 50\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the first 100 natural numbers such that if the number is even, you add the number, but if it's odd, you subtract the number. The final answer is 50."
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. (n > 0 \\<and> n \\<le> 100) \\<longrightarrow> f n = (-1)^(n+1) * int n\"\nshows  \"(\\<Sum>n\\<le>100. f n) = 50\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $100 - 99 +98 - 97 + 96 - 95 + \\cdots + 4 - 3 +2 - 1$? The final Answer is 50\n ### Proof\n Each pair of consecutive terms makes 1 (for example, $100-99=1$). Since there are $100/2=50$ such pairs, the entire expression is equal to $1\\cdot50=\\boxed{50}$.\n *)\n\ntheorem\nfixes f :: \"nat \\<Rightarrow> int\"\nassumes h0 : \"\\<forall>n. (n > 0 \\<and> n \\<le> 100) \\<longrightarrow> f n = (-1)^(n+1) * int n\"\nshows  \"(\\<Sum>n\\<le>100. f n) = 50\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a function $f$ such that for all natural numbers $n$ between 1 and 100, inclusive, $f(n)$ equals $n$ times $(-1)$ raised to the power of $n+1$, find the sum of $f(n)$ for all $n$ from 1 to 100. The final answer is 50."
+    },
+    "a_8": {
+        "formal problem": "theorem\nshows  \"(\\<Sum>i=1..100. ((-1)^(i+1))*i) = 50\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $100 - 99 +98 - 97 + 96 - 95 + \\cdots + 4 - 3 +2 - 1$? The final Answer is 50\n ### Proof\n Each pair of consecutive terms makes 1 (for example, $100-99=1$). Since there are $100/2=50$ such pairs, the entire expression is equal to $1\\cdot50=\\boxed{50}$.\n *)\n\ntheorem\nshows  \"(\\<Sum>i=1..100. ((-1)^(i+1))*i) = 50\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Calculate the sum of the first 100 terms of the series that alternates between positive and negative values, starting with negative for the first term: $-1+2-3+4-5...+100$. The final answer is $50$."
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes n :: int\nassumes h0 : \"n > 0\"\nand h1 : \"n = 100\"\nshows  \"sum (\\<lambda>i. (-1)^(i+1) * i) {1..n} = 50\"",
+        "formal solution": "(* ### Problem\n What is the value of the following expression: $100 - 99 +98 - 97 + 96 - 95 + \\cdots + 4 - 3 +2 - 1$? The final Answer is 50\n ### Proof\n Each pair of consecutive terms makes 1 (for example, $100-99=1$). Since there are $100/2=50$ such pairs, the entire expression is equal to $1\\cdot50=\\boxed{50}$.\n *)\n\ntheorem\nfixes n :: int\nassumes h0 : \"n > 0\"\nand h1 : \"n = 100\"\nshows  \"sum (\\<lambda>i. (-1)^(i+1) * i) {1..n} = 50\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the series where each term is $(-1)^{i+1} * i$ for $i$ ranging from 1 to 100. The final answer is 50."
+    },
+    "level": "Level 1",
+    "type": "Intermediate Algebra"
+}

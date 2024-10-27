@@ -1,0 +1,610 @@
+{
+    "a_0": {
+        "formal problem": "Unfortunately, Isabelle does not support geometric proofs in its standard library. Therefore, it is not possible to translate this problem directly into Isabelle. However, there are some geometry-specific theorem provers such as GeoGebra that can handle this kind of problem.",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\nUnfortunately, Isabelle does not support geometric proofs in its standard library. Therefore, it is not possible to translate this problem directly into Isabelle. However, there are some geometry-specific theorem provers such as GeoGebra that can handle this kind of problem.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The provided text seems to be an explanation that geometric proofs are not supported in the standard library of Isabelle. Therefore, there's no specific problem to translate. However, it suggests using GeoGebra for handling geometry-specific problems.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9314811825752258,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "Unfortunately, Isabelle language is not designed to handle geometric problems and figures directly. The problem you've provided is a geometric one and involves visual interpretation, which is outside the scope of what Isabelle can process. Isabelle is mainly used for formal proof verification involving mathematical and logical expressions.",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\nUnfortunately, Isabelle language is not designed to handle geometric problems and figures directly. The problem you've provided is a geometric one and involves visual interpretation, which is outside the scope of what Isabelle can process. Isabelle is mainly used for formal proof verification involving mathematical and logical expressions.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The text provided does not contain an Isabelle formulation of a mathematical problem to be translated. It is a statement about the limitations of the Isabelle proof assistant in handling geometric problems and figures directly.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9276342988014221,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes A B C D :: real\nassumes h0 : \"A = B\"\nand h1 : \"C = D\"\nand h2 : \"A + C = 180\"\nand h3 : \"B + 70 = 180\"\nshows  \"A = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: real\nassumes h0 : \"A = B\"\nand h1 : \"C = D\"\nand h2 : \"A + C = 180\"\nand h3 : \"B + 70 = 180\"\nshows  \"A = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If angles A and B are equal, angles C and D are equal, the sum of angles A and C is 180 degrees, and the sum of angles B and 70 is also 180 degrees, what is the measure of angle A in degrees? The final answer is 35 degrees.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.7565595507621765,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes A B C D :: real\nassumes h0 : \"A = 70\"\nand h1 : \"A = B + C\"\nand h2 : \"isosceles_triangle B D C\"\nand h3 : \"isosceles_triangle A C D\"\nshows  \"B = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: real\nassumes h0 : \"A = 70\"\nand h1 : \"A = B + C\"\nand h2 : \"isosceles_triangle B D C\"\nand h3 : \"isosceles_triangle A C D\"\nshows  \"B = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $A$ equals 70, and $A$ is the sum of $B$ and $C$. If $BDC$ and $ACD$ are isosceles triangles, what is the value of $B$? The final answer is 35.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9434442520141602,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "Since Isabelle is not specifically designed for geometrical proofs, it might be a bit challenging to model this particular problem. However, one could express the problem in terms of angles and their relationships, as follows:\n\ntheorem\nfixes angle_ABC :: real\nand angle_BAC :: real\nassumes h0 : \"angle_ABC = 70\"\nand h1 : \"triangle BDC is isosceles\"\nand h2 : \"triangle ACD is isosceles\"\nshows  \"angle_BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\nSince Isabelle is not specifically designed for geometrical proofs, it might be a bit challenging to model this particular problem. However, one could express the problem in terms of angles and their relationships, as follows:\n\ntheorem\nfixes angle_ABC :: real\nand angle_BAC :: real\nassumes h0 : \"angle_ABC = 70\"\nand h1 : \"triangle BDC is isosceles\"\nand h2 : \"triangle ACD is isosceles\"\nshows  \"angle_BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a given setup, angle ABC is 70 degrees. Triangle BDC and triangle ACD are both isosceles. What is the measure of angle BAC? The final answer is 35 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.8111563324928284,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "\n\ndatatype point = Point real real\ndatatype line = Line point point\ndatatype angle = Angle point point point\ndatatype triangle = Triangle point point point\n\nfun is_isosceles :: \"triangle \u21d2 bool\" where ...\n\nfun measure :: \"angle \u21d2 real\" where ...\n\nlemma\nassumes h0 : \"is_isosceles (Triangle A B C)\"\nand h1 : \"is_isosceles (Triangle A C D)\"\nand h2 : \"measure (Angle A B C) = 70\"\nshows  \"measure (Angle B A C) = 35\"\n```\nNote: This is an abstract and simplified representation of what the formalization might look like in Isabelle. A fully formalized version would be significantly more complex and would require a much more detailed geometrical theory.",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\n\n\ndatatype point = Point real real\ndatatype line = Line point point\ndatatype angle = Angle point point point\ndatatype triangle = Triangle point point point\n\nfun is_isosceles :: \"triangle \u21d2 bool\" where ...\n\nfun measure :: \"angle \u21d2 real\" where ...\n\nlemma\nassumes h0 : \"is_isosceles (Triangle A B C)\"\nand h1 : \"is_isosceles (Triangle A C D)\"\nand h2 : \"measure (Angle A B C) = 70\"\nshows  \"measure (Angle B A C) = 35\"\n```\nNote: This is an abstract and simplified representation of what the formalization might look like in Isabelle. A fully formalized version would be significantly more complex and would require a much more detailed geometrical theory.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given an isosceles triangle ABC and another isosceles triangle ACD, if the angle ABC measures 70 degrees, find the measure of angle BAC. The answer is 35 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9612295627593994,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes A B C D :: \"real \\<Rightarrow> real\"\nassumes h0 : \"isosceles BDC\"\nand h1 : \"isosceles ACD\"\nand h2 : \"angle ABC = 70\"\nshows  \"angle BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: \"real \\<Rightarrow> real\"\nassumes h0 : \"isosceles BDC\"\nand h1 : \"isosceles ACD\"\nand h2 : \"angle ABC = 70\"\nshows  \"angle BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given an isosceles triangle BDC and another isosceles triangle ACD, if the angle ABC is 70 degrees, find the measure of angle BAC. The final answer is 35 degrees.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9177957773208618,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "This problem involves geometric reasoning and visual interpretation, which is currently not directly supported by the Isabelle proof assistant. Isabelle is a generic proof assistant, primarily used for theorem proving in mathematics and computer science. Its language does not directly support geometric constructions or reasoning about diagrams. Therefore, it would not be possible to translate this problem into an Isabelle version.",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\nThis problem involves geometric reasoning and visual interpretation, which is currently not directly supported by the Isabelle proof assistant. Isabelle is a generic proof assistant, primarily used for theorem proving in mathematics and computer science. Its language does not directly support geometric constructions or reasoning about diagrams. Therefore, it would not be possible to translate this problem into an Isabelle version.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "It appears there is a misunderstanding. The text provided doesn't contain an Isabelle version of a math problem to be translated. Please provide a valid Isabelle version of a math problem.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.952679455280304,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "Unfortunately, the Isabelle proof assistant is not designed to handle geometric proofs involving angles and triangles directly. The problem you've described would typically be solved using geometric reasoning, which is not the domain of Isabelle. \n\nIsabelle excels at formal logical proofs and mathematical theorems that can be expressed in terms of symbolic logic, set theory, and similar constructs. While it is theoretically possible to formalize geometric concepts within such a framework, doing so would be a complex task beyond the scope of this exercise. \n\nTherefore, it is not feasible to translate this problem into an Isabelle version.",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\nUnfortunately, the Isabelle proof assistant is not designed to handle geometric proofs involving angles and triangles directly. The problem you've described would typically be solved using geometric reasoning, which is not the domain of Isabelle. \n\nIsabelle excels at formal logical proofs and mathematical theorems that can be expressed in terms of symbolic logic, set theory, and similar constructs. While it is theoretically possible to formalize geometric concepts within such a framework, doing so would be a complex task beyond the scope of this exercise. \n\nTherefore, it is not feasible to translate this problem into an Isabelle version.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "It appears there's been an error. No Isabelle version of a problem was provided for translation into a natural language version. Please provide an Isabelle version for translation.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9550049304962158,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "I'm sorry, but I'm unable to assist in translating this problem as it involves geometric concepts and diagrams which are not suitable for translation into the Isabelle language. Isabelle is a proof assistant used for formalizing mathematical proofs in logic and does not readily support geometric proofs involving diagrams and spatial reasoning.",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\nI'm sorry, but I'm unable to assist in translating this problem as it involves geometric concepts and diagrams which are not suitable for translation into the Isabelle language. Isabelle is a proof assistant used for formalizing mathematical proofs in logic and does not readily support geometric proofs involving diagrams and spatial reasoning.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Your request does not contain an Isabelle formulation to translate. Please provide a valid Isabelle theorem or proof for translation.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9038446545600891,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "35^\\circ",
+    "natural problem": "Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy]",
+    "natural solution": [
+        "Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.",
+        "Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$."
+    ],
+    "oracle": "TODO",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "str_pred": "[[0], [1], [2], [3], [4], [5], [6], [7], [8], [9]]",
+    "level": "Level 2",
+    "type": "Geometry",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"m_angle_ABC = 70\"\nand h1 : \"m_angle_BAC = 180 - 2 * (180 - m_angle_ABC)\"\nshows \"m_angle_BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"m_angle_ABC = 70\"\nand h1 : \"m_angle_BAC = 180 - 2 * (180 - m_angle_ABC)\"\nshows \"m_angle_BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " In a triangle ABC, the measure of angle ABC is 70 degrees. The measure of angle BAC is calculated as 180 minus twice the quantity of 180 minus the measure of angle ABC. What is the measure of angle BAC? The final answer is 35 degrees.",
+        "syntax": 1,
+        "semantic_score": 0.7524859829399902,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"m_angle_ABC = 70\"\nand h1 : \"Triangle BDC is isosceles\"\nand h2 : \"Triangle ACD is isosceles\"\nand h3 : \"BDC and ACD are coplanar\"\nshows \"m_angle_BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"m_angle_ABC = 70\"\nand h1 : \"Triangle BDC is isosceles\"\nand h2 : \"Triangle ACD is isosceles\"\nand h3 : \"BDC and ACD are coplanar\"\nshows \"m_angle_BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " In a triangle ABC, the measure of angle ABC is 70 degrees. There are two other triangles, BDC and ACD, which are both isosceles and lie in the same plane. Given these conditions, what is the measure of angle BAC? The answer is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9572485168112131,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": "theorem\nfixes A B C D :: \"real^2\"\nassumes h0 : \"is_iso_triangle (B, D, C)\"\nand h1 : \"is_iso_triangle (A, C, D)\"\nand h2 : \"is_coplanar (A, B, C, D)\"\nand h3 : \"m_angle (A, B, C) = 70\"\nshows \"m_angle (B, A, C) = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: \"real^2\"\nassumes h0 : \"is_iso_triangle (B, D, C)\"\nand h1 : \"is_iso_triangle (A, C, D)\"\nand h2 : \"is_coplanar (A, B, C, D)\"\nand h3 : \"m_angle (A, B, C) = 70\"\nshows \"m_angle (B, A, C) = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that triangle BDC and triangle ACD are isosceles triangles, and points A, B, C, and D are coplanar, and the measure of angle ABC is 70 degrees, find the measure of angle BAC. The final answer is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.8261710696229095,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek": {
+        "formal problem": "theorem\nfixes A B C D :: \"real^2\"\nassumes h0 : \"triangle BDC coplanar triangle ACD\"\nand h1 : \"triangle BDC isosceles\"\nand h2 : \"triangle ACD isosceles\"\nand h3 : \"measure (angle ABC) = 70\"\nshows \"measure (angle BAC) = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: \"real^2\"\nassumes h0 : \"triangle BDC coplanar triangle ACD\"\nand h1 : \"triangle BDC isosceles\"\nand h2 : \"triangle ACD isosceles\"\nand h3 : \"measure (angle ABC) = 70\"\nshows \"measure (angle BAC) = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a problem involving two triangles, triangle BDC and triangle ACD, which are coplanar (meaning they lie on the same plane). Triangle BDC is isosceles (meaning it has two sides of equal length), and triangle ACD is also isosceles. The measure of the angle ABC is given as 70 degrees. The problem asks to find the measure of the angle BAC. According to the theorem, the measure of the angle BAC is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.8342743085427542,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes A B C D :: \"real^2\"\nand m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"triangle B C D\"\nand h1 : \"triangle A C D\"\nand h2 : \"is_isosceles B C D\"\nand h3 : \"is_isosceles A C D\"\nand h4 : \"m_angle_ABC = 70\"\nshows \"m_angle_BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: \"real^2\"\nand m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"triangle B C D\"\nand h1 : \"triangle A C D\"\nand h2 : \"is_isosceles B C D\"\nand h3 : \"is_isosceles A C D\"\nand h4 : \"m_angle_ABC = 70\"\nshows \"m_angle_BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle BCD and another triangle ACD, where both triangles are isosceles (meaning two sides are equal in length), and the measure of angle ABC is 70 degrees, find the measure of angle BAC. The final answer is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.858021677478357,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes A B C D :: point\nassumes h0 : \"triangle BDC coplanar triangle ACD\"\nand h1 : \"isosceles_triangle BDC\"\nand h2 : \"isosceles_triangle ACD\"\nand h3 : \"m\\<angle> ABC = 70\"\nshows \"m\\<angle> BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: point\nassumes h0 : \"triangle BDC coplanar triangle ACD\"\nand h1 : \"isosceles_triangle BDC\"\nand h2 : \"isosceles_triangle ACD\"\nand h3 : \"m\\<angle> ABC = 70\"\nshows \"m\\<angle> BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two triangles, BDC and ACD, which are coplanar (meaning they lie in the same plane), and both triangles are isosceles (meaning they have two sides of equal length). The measure of angle ABC is 70 degrees. What is the measure of angle BAC? The answer is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9148393704378392,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes A B C D :: \"real^2\"\nassumes h0 : \"is_coplanar A B C D\"\nand h1 : \"is_isosceles_triangle B D C\"\nand h2 : \"is_isosceles_triangle A C D\"\nand h3 : \"measure_angle A B C = 70\"\nshows \"measure_angle B A C = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: \"real^2\"\nassumes h0 : \"is_coplanar A B C D\"\nand h1 : \"is_isosceles_triangle B D C\"\nand h2 : \"is_isosceles_triangle A C D\"\nand h3 : \"measure_angle A B C = 70\"\nshows \"measure_angle B A C = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a theorem in Isabelle:\n\nConsider four points in a 2-dimensional space, A, B, C, and D, which are coplanar (lie on the same plane). The triangle formed by points B, D, and C is isosceles, meaning BD = DC. Similarly, the triangle formed by points A, C, and D is also isosceles, indicating AD = DC. The measure of the angle formed by points A, B, and C is given as 70 degrees.\n\nThe theorem states that the measure of the angle formed by points B, A, and C is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9054504919520917,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes A B C D :: \"real^2\"\nand m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"is_coplanar {A, B, C, D}\"\nand h1 : \"is_isosceles_triangle B D C\"\nand h2 : \"is_isosceles_triangle A C D\"\nand h3 : \"m_angle_ABC = 70\"\nshows \"m_angle_BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: \"real^2\"\nand m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"is_coplanar {A, B, C, D}\"\nand h1 : \"is_isosceles_triangle B D C\"\nand h2 : \"is_isosceles_triangle A C D\"\nand h3 : \"m_angle_ABC = 70\"\nshows \"m_angle_BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a problem involving four points in a two-dimensional plane, A, B, C, and D, which are coplanar (meaning they all lie in the same plane), and two isosceles triangles are formed: one with base BC and vertex D (isosceles triangle BDC), and another with base AD and vertex C (isosceles triangle ACD). The measure of angle ABC is given as 70 degrees. We are asked to find the measure of angle BAC.\n\nThe final answer is that the measure of angle BAC is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.8875269417316649,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes mABC mBAC :: real\nassumes h0 : \"mABC = 70\"\nand h1 : \"Triangle BDC is isosceles\"\nand h2 : \"Triangle ACD is isosceles\"\nand h3 : \"BDC and ACD are coplanar\"\nshows \"mBAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes mABC mBAC :: real\nassumes h0 : \"mABC = 70\"\nand h1 : \"Triangle BDC is isosceles\"\nand h2 : \"Triangle ACD is isosceles\"\nand h3 : \"BDC and ACD are coplanar\"\nshows \"mBAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " In a plane, there is a triangle ABC with angle ABC measuring 70 degrees. There are two other triangles, BDC and ACD, which are both isosceles and lie in the same plane. Given these conditions, what is the measure of angle BAC in triangle ABC? The answer is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.8182032231961128,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes A B C D :: point\nassumes h0 : \"triangle BDC coplanar triangle ACD\"\nand h1 : \"isosceles triangle BDC\"\nand h2 : \"isosceles triangle ACD\"\nand h3 : \"m\\<angle> ABC = 70\"\nshows \"m\\<angle> BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: point\nassumes h0 : \"triangle BDC coplanar triangle ACD\"\nand h1 : \"isosceles triangle BDC\"\nand h2 : \"isosceles triangle ACD\"\nand h3 : \"m\\<angle> ABC = 70\"\nshows \"m\\<angle> BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a geometric configuration with four points A, B, C, and D, where triangles BDC and ACD are coplanar (i.e., they lie in the same plane), and both triangles BDC and ACD are isosceles (meaning they have two sides of equal length), if the measure of angle ABC is 70 degrees, what is the measure of angle BAC? The answer is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9681666110654721,
+        "symbolic_score": 0.1
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nassumes h0 : \"\\<triangle> B D C \\<cong> \\<triangle> A C D\"\nand h1 : \"ang_eq A B C 70\"\nshows \"ang_eq B A C 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nassumes h0 : \"\\<triangle> B D C \\<cong> \\<triangle> A C D\"\nand h1 : \"ang_eq A B C 70\"\nshows \"ang_eq B A C 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $\\triangle BDC$ is congruent to $\\triangle ACD$ and $\\angle ABC$ measures $70$ degrees, what is the measure of $\\angle BAC$? The final answer is $35$ degrees.",
+        "syntax": 0,
+        "semantic_score": 0.7419192666638772,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nassumes h0 : \"\\<triangle> B D C \\<cong> \\<triangle> A C D\"\nand h1 : \"ang_eq B A C 70\"\nshows \"ang_eq A B C 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nassumes h0 : \"\\<triangle> B D C \\<cong> \\<triangle> A C D\"\nand h1 : \"ang_eq B A C 70\"\nshows \"ang_eq A B C 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $\\triangle BDC \\cong \\triangle ACD$ and $\\angle BAC = 70^\\circ$, then what is the measure of $\\angle ABC$ if $\\angle BAC = 35^\\circ$?",
+        "syntax": 0,
+        "semantic_score": 0.8760452548721348,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes m_angle_BAC m_angle_ABC :: real\nassumes h0 : \"m_angle_ABC = 70\"\nand h1 : \"m_angle_BAC + m_angle_ABC = 180\"\nand h2 : \"m_angle_BAC = m_angle_ABC / 2\"\nshows \"m_angle_BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes m_angle_BAC m_angle_ABC :: real\nassumes h0 : \"m_angle_ABC = 70\"\nand h1 : \"m_angle_BAC + m_angle_ABC = 180\"\nand h2 : \"m_angle_BAC = m_angle_ABC / 2\"\nshows \"m_angle_BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The measure of angle $ABC$ is $70$ degrees. The measure of angle $BAC$ is half the measure of angle $ABC$. The sum of the measures of angles $BAC$ and $ABC$ is $180$ degrees. What is the measure of angle $BAC$? The final answer is $35$ degrees.",
+        "syntax": 1,
+        "semantic_score": 0.8487588930035678,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nassumes h0 : \"\\<exists> k. angle A B C = 70 + 2 * k * 180\"\nand h1 : \"angle B D C = angle C D A\"\nand h2 : \"angle D A C = angle D C A\"\nshows \"angle B A C = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nassumes h0 : \"\\<exists> k. angle A B C = 70 + 2 * k * 180\"\nand h1 : \"angle B D C = angle C D A\"\nand h2 : \"angle D A C = angle D C A\"\nshows \"angle B A C = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given a triangle $ABC$ and a point $D$ in its interior, it is known that $\\angle BDC = \\angle CAD$, $\\angle DAC = \\angle DCA$, and there exists an integer $k$ such that $\\angle ABC = 70^\\circ + 360^\\circ k$. Find the measure of $\\angle BAC$. The final answer is $35^\\circ$.",
+        "syntax": 1,
+        "semantic_score": 0.7731082814972118,
+        "symbolic_score": 0.3
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nassumes h0 : \"isosceles_triangle B D C\"\nand h1 : \"isosceles_triangle A C D\"\nand h2 : \"angle B C A = 70\"\nshows \"angle B A C = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nassumes h0 : \"isosceles_triangle B D C\"\nand h1 : \"isosceles_triangle A C D\"\nand h2 : \"angle B C A = 70\"\nshows \"angle B A C = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $\\triangle BDC$ is an isosceles triangle and $\\triangle ACD$ is an isosceles triangle with $\\angle BCA = 70^\\circ$, what is $\\angle BAC$? The final answer is $35^\\circ$.",
+        "syntax": 1,
+        "semantic_score": 0.8459387616763322,
+        "symbolic_score": 0.3
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nassumes h0 : \"\\<triangle> B D C \\<cong> \\<triangle> A C D\"\nand h1 : \"\\<triangle> B D C\"\nand h2 : \"\\<triangle> A C D\"\nand h3 : \"m \\<angle> A B C = 70\"\nshows \"m \\<angle> B A C = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nassumes h0 : \"\\<triangle> B D C \\<cong> \\<triangle> A C D\"\nand h1 : \"\\<triangle> B D C\"\nand h2 : \"\\<triangle> A C D\"\nand h3 : \"m \\<angle> A B C = 70\"\nshows \"m \\<angle> B A C = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $\\triangle BDC$ is congruent to $\\triangle ACD$, and $\\triangle BDC$ and $\\triangle ACD$ are triangles, and $\\angle ABC$ measures $70$ degrees, then what is the measure of $\\angle BAC$? The final answer is $35$ degrees.",
+        "syntax": 0,
+        "semantic_score": 0.7550656901273687,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nassumes h0 : \"bet B D C\"\nand h1 : \"bet A C D\"\nand h2 : \"seg_eq B C C D\"\nand h3 : \"\\<angle> A B C = 70\"\nshows \"\\<angle> B A C = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nassumes h0 : \"bet B D C\"\nand h1 : \"bet A C D\"\nand h2 : \"seg_eq B C C D\"\nand h3 : \"\\<angle> A B C = 70\"\nshows \"\\<angle> B A C = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In triangle $ABC$, points $B$ and $D$ lie on segment $AC$ such that $B$ is between $A$ and $C$, and $A$, $C$, and $D$ are collinear. Additionally, $BC = CD$. If $\\angle ABC = 70^\\circ$, what is the measure of $\\angle BAC$? The final answer is $35^\\circ$.",
+        "syntax": 0,
+        "semantic_score": 0.6837489859160076,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nassumes h0 : \"ang_isos A C D\"\nand h1 : \"ang_isos B D C\"\nand h2 : \"\\<angle>ABC = 70\\<degree>\"\nshows \"\\<angle>BAC = 35\\<degree>\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nassumes h0 : \"ang_isos A C D\"\nand h1 : \"ang_isos B D C\"\nand h2 : \"\\<angle>ABC = 70\\<degree>\"\nshows \"\\<angle>BAC = 35\\<degree>\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $\\angle ACD$ is congruent to $\\angle CAD$ and $\\angle BDC$ is congruent to $\\angle CBD$, and $\\angle ABC$ is $70$ degrees, what is the measure of $\\angle BAC$? The final answer is $35$ degrees.",
+        "syntax": 0,
+        "semantic_score": 0.7704933367457228,
+        "symbolic_score": 0.1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes a b c d :: \"real^2\"\nassumes h0 : \"b = (0,0)\"\nand h1 : \"c = (1,0)\"\nand h2 : \"d = c + polar 1.4 140\"\nand h3 : \"a = d + polar 1.4 70\"\nand h4 : \"norm (a - b) = norm (a - c)\"\nand h5 : \"norm (c - d) = norm (a - d)\"\nshows \"vector_angle (b - a) (c - a) = 35 * pi / 180\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes a b c d :: \"real^2\"\nassumes h0 : \"b = (0,0)\"\nand h1 : \"c = (1,0)\"\nand h2 : \"d = c + polar 1.4 140\"\nand h3 : \"a = d + polar 1.4 70\"\nand h4 : \"norm (a - b) = norm (a - c)\"\nand h5 : \"norm (c - d) = norm (a - d)\"\nshows \"vector_angle (b - a) (c - a) = 35 * pi / 180\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given four points $a$, $b$, $c$, and $d$ in the two-dimensional plane, with $b$ at the origin $(0,0)$ and $c$ at $(1,0)$, and $d$ obtained from $c$ by moving $1.4$ units in the direction of an angle of $140$ degrees from the positive $x$-axis, and $a$ obtained from $d$ by moving $1.4$ units in the direction of an angle of $70$ degrees from the positive $x$-axis. If the distance between $a$ and $b$ is equal to the distance between $a$ and $c$, and the distance between $c$ and $d$ is equal to the distance between $a$ and $d$, what is the angle between the vectors $\\overrightarrow{ab}$ and $\\overrightarrow{ac}$, measured in degrees? The final answer is $35$ degrees.",
+        "syntax": 0,
+        "semantic_score": 0.968605879853786,
+        "symbolic_score": 0.1
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nassumes h0 : \"isosceles_triangle A C D\"\nand h1 : \"isosceles_triangle B D C\"\nand h2 : \"angle A B C = 70\"\nshows \"angle B A C = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nassumes h0 : \"isosceles_triangle A C D\"\nand h1 : \"isosceles_triangle B D C\"\nand h2 : \"angle A B C = 70\"\nshows \"angle B A C = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "\"If $ABC$ and $BCD$ are isosceles triangles such that $\\angle ABC = 70^\\circ$, find $\\angle BAC$. The final answer is $35^\\circ$.\"",
+        "syntax": 1,
+        "semantic_score": 0.4422148441235185,
+        "symbolic_score": 0.3
+    },
+    "prediction_deepseek": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            9,
+            3,
+            4
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "Unfortunately, Isabelle does not support geometric proofs in its standard library. Therefore, it is not possible to translate this problem directly into Isabelle. However, there are some geometry-specific theorem provers such as GeoGebra that can handle this kind of problem.",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\nUnfortunately, Isabelle does not support geometric proofs in its standard library. Therefore, it is not possible to translate this problem directly into Isabelle. However, there are some geometry-specific theorem provers such as GeoGebra that can handle this kind of problem.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The provided text seems to be an explanation that geometric proofs are not supported in the standard library of Isabelle. Therefore, there's no specific problem to translate. However, it suggests using GeoGebra for handling geometry-specific problems.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.5941785753291416,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "Unfortunately, Isabelle language is not designed to handle geometric problems and figures directly. The problem you've provided is a geometric one and involves visual interpretation, which is outside the scope of what Isabelle can process. Isabelle is mainly used for formal proof verification involving mathematical and logical expressions.",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\nUnfortunately, Isabelle language is not designed to handle geometric problems and figures directly. The problem you've provided is a geometric one and involves visual interpretation, which is outside the scope of what Isabelle can process. Isabelle is mainly used for formal proof verification involving mathematical and logical expressions.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "The text provided does not contain an Isabelle formulation of a mathematical problem to be translated. It is a statement about the limitations of the Isabelle proof assistant in handling geometric problems and figures directly.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.5347910873104386,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes A B C D :: real\nassumes h0 : \"A = B\"\nand h1 : \"C = D\"\nand h2 : \"A + C = 180\"\nand h3 : \"B + 70 = 180\"\nshows  \"A = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: real\nassumes h0 : \"A = B\"\nand h1 : \"C = D\"\nand h2 : \"A + C = 180\"\nand h3 : \"B + 70 = 180\"\nshows  \"A = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If angles A and B are equal, angles C and D are equal, the sum of angles A and C is 180 degrees, and the sum of angles B and 70 is also 180 degrees, what is the measure of angle A in degrees? The final answer is 35 degrees.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8379430089859157,
+        "symbolic_score": 0.1
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes A B C D :: real\nassumes h0 : \"A = 70\"\nand h1 : \"A = B + C\"\nand h2 : \"isosceles_triangle B D C\"\nand h3 : \"isosceles_triangle A C D\"\nshows  \"B = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: real\nassumes h0 : \"A = 70\"\nand h1 : \"A = B + C\"\nand h2 : \"isosceles_triangle B D C\"\nand h3 : \"isosceles_triangle A C D\"\nshows  \"B = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $A$ equals 70, and $A$ is the sum of $B$ and $C$. If $BDC$ and $ACD$ are isosceles triangles, what is the value of $B$? The final answer is 35.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.8785491140958082,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "Since Isabelle is not specifically designed for geometrical proofs, it might be a bit challenging to model this particular problem. However, one could express the problem in terms of angles and their relationships, as follows:\n\ntheorem\nfixes angle_ABC :: real\nand angle_BAC :: real\nassumes h0 : \"angle_ABC = 70\"\nand h1 : \"triangle BDC is isosceles\"\nand h2 : \"triangle ACD is isosceles\"\nshows  \"angle_BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\nSince Isabelle is not specifically designed for geometrical proofs, it might be a bit challenging to model this particular problem. However, one could express the problem in terms of angles and their relationships, as follows:\n\ntheorem\nfixes angle_ABC :: real\nand angle_BAC :: real\nassumes h0 : \"angle_ABC = 70\"\nand h1 : \"triangle BDC is isosceles\"\nand h2 : \"triangle ACD is isosceles\"\nshows  \"angle_BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "In a given setup, angle ABC is 70 degrees. Triangle BDC and triangle ACD are both isosceles. What is the measure of angle BAC? The final answer is 35 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9103897219093985,
+        "symbolic_score": 0.1
+    },
+    "a_5_solve_direct": {
+        "formal problem": "\n\ndatatype point = Point real real\ndatatype line = Line point point\ndatatype angle = Angle point point point\ndatatype triangle = Triangle point point point\n\nfun is_isosceles :: \"triangle \u21d2 bool\" where ...\n\nfun measure :: \"angle \u21d2 real\" where ...\n\nlemma\nassumes h0 : \"is_isosceles (Triangle A B C)\"\nand h1 : \"is_isosceles (Triangle A C D)\"\nand h2 : \"measure (Angle A B C) = 70\"\nshows  \"measure (Angle B A C) = 35\"\n```\nNote: This is an abstract and simplified representation of what the formalization might look like in Isabelle. A fully formalized version would be significantly more complex and would require a much more detailed geometrical theory.",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\n\n\ndatatype point = Point real real\ndatatype line = Line point point\ndatatype angle = Angle point point point\ndatatype triangle = Triangle point point point\n\nfun is_isosceles :: \"triangle \u21d2 bool\" where ...\n\nfun measure :: \"angle \u21d2 real\" where ...\n\nlemma\nassumes h0 : \"is_isosceles (Triangle A B C)\"\nand h1 : \"is_isosceles (Triangle A C D)\"\nand h2 : \"measure (Angle A B C) = 70\"\nshows  \"measure (Angle B A C) = 35\"\n```\nNote: This is an abstract and simplified representation of what the formalization might look like in Isabelle. A fully formalized version would be significantly more complex and would require a much more detailed geometrical theory.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given an isosceles triangle ABC and another isosceles triangle ACD, if the angle ABC measures 70 degrees, find the measure of angle BAC. The answer is 35 degrees.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.91089816444452,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes A B C D :: \"real \\<Rightarrow> real\"\nassumes h0 : \"isosceles BDC\"\nand h1 : \"isosceles ACD\"\nand h2 : \"angle ABC = 70\"\nshows  \"angle BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: \"real \\<Rightarrow> real\"\nassumes h0 : \"isosceles BDC\"\nand h1 : \"isosceles ACD\"\nand h2 : \"angle ABC = 70\"\nshows  \"angle BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given an isosceles triangle BDC and another isosceles triangle ACD, if the angle ABC is 70 degrees, find the measure of angle BAC. The final answer is 35 degrees.",
+        "label": 0,
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9285968365791526,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "This problem involves geometric reasoning and visual interpretation, which is currently not directly supported by the Isabelle proof assistant. Isabelle is a generic proof assistant, primarily used for theorem proving in mathematics and computer science. Its language does not directly support geometric constructions or reasoning about diagrams. Therefore, it would not be possible to translate this problem into an Isabelle version.",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\nThis problem involves geometric reasoning and visual interpretation, which is currently not directly supported by the Isabelle proof assistant. Isabelle is a generic proof assistant, primarily used for theorem proving in mathematics and computer science. Its language does not directly support geometric constructions or reasoning about diagrams. Therefore, it would not be possible to translate this problem into an Isabelle version.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "It appears there is a misunderstanding. The text provided doesn't contain an Isabelle version of a math problem to be translated. Please provide a valid Isabelle version of a math problem.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.6524635209668037,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "Unfortunately, the Isabelle proof assistant is not designed to handle geometric proofs involving angles and triangles directly. The problem you've described would typically be solved using geometric reasoning, which is not the domain of Isabelle. \n\nIsabelle excels at formal logical proofs and mathematical theorems that can be expressed in terms of symbolic logic, set theory, and similar constructs. While it is theoretically possible to formalize geometric concepts within such a framework, doing so would be a complex task beyond the scope of this exercise. \n\nTherefore, it is not feasible to translate this problem into an Isabelle version.",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\nUnfortunately, the Isabelle proof assistant is not designed to handle geometric proofs involving angles and triangles directly. The problem you've described would typically be solved using geometric reasoning, which is not the domain of Isabelle. \n\nIsabelle excels at formal logical proofs and mathematical theorems that can be expressed in terms of symbolic logic, set theory, and similar constructs. While it is theoretically possible to formalize geometric concepts within such a framework, doing so would be a complex task beyond the scope of this exercise. \n\nTherefore, it is not feasible to translate this problem into an Isabelle version.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "It appears there's been an error. No Isabelle version of a problem was provided for translation into a natural language version. Please provide an Isabelle version for translation.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.6216059669540225,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "I'm sorry, but I'm unable to assist in translating this problem as it involves geometric concepts and diagrams which are not suitable for translation into the Isabelle language. Isabelle is a proof assistant used for formalizing mathematical proofs in logic and does not readily support geometric proofs involving diagrams and spatial reasoning.",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is 35^\\circ\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\n Triangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\nI'm sorry, but I'm unable to assist in translating this problem as it involves geometric concepts and diagrams which are not suitable for translation into the Isabelle language. Isabelle is a proof assistant used for formalizing mathematical proofs in logic and does not readily support geometric proofs involving diagrams and spatial reasoning.\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Your request does not contain an Isabelle formulation to translate. Please provide a valid Isabelle theorem or proof for translation.",
+        "label": 0,
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.6061531927261667,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"m_angle_ABC = 70\"\nand h1 : \"m_angle_BAC = 180 - 2 * (180 - m_angle_ABC)\"\nshows \"m_angle_BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"m_angle_ABC = 70\"\nand h1 : \"m_angle_BAC = 180 - 2 * (180 - m_angle_ABC)\"\nshows \"m_angle_BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " In a triangle ABC, the measure of angle ABC is 70 degrees. The measure of angle BAC is calculated as 180 minus twice the quantity of 180 minus the measure of angle ABC. What is the measure of angle BAC? The final answer is 35 degrees.",
+        "syntax": 1,
+        "semantic_score": 0.8403517528855573,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"m_angle_ABC = 70\"\nand h1 : \"Triangle BDC is isosceles\"\nand h2 : \"Triangle ACD is isosceles\"\nand h3 : \"BDC and ACD are coplanar\"\nshows \"m_angle_BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"m_angle_ABC = 70\"\nand h1 : \"Triangle BDC is isosceles\"\nand h2 : \"Triangle ACD is isosceles\"\nand h3 : \"BDC and ACD are coplanar\"\nshows \"m_angle_BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " In a triangle ABC, the measure of angle ABC is 70 degrees. There are two other triangles, BDC and ACD, which are both isosceles and lie in the same plane. Given these conditions, what is the measure of angle BAC? The answer is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9145886580228969,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C D :: \"real^2\"\nassumes h0 : \"is_iso_triangle (B, D, C)\"\nand h1 : \"is_iso_triangle (A, C, D)\"\nand h2 : \"is_coplanar (A, B, C, D)\"\nand h3 : \"m_angle (A, B, C) = 70\"\nshows \"m_angle (B, A, C) = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: \"real^2\"\nassumes h0 : \"is_iso_triangle (B, D, C)\"\nand h1 : \"is_iso_triangle (A, C, D)\"\nand h2 : \"is_coplanar (A, B, C, D)\"\nand h3 : \"m_angle (A, B, C) = 70\"\nshows \"m_angle (B, A, C) = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that triangle BDC and triangle ACD are isosceles triangles, and points A, B, C, and D are coplanar, and the measure of angle ABC is 70 degrees, find the measure of angle BAC. The final answer is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9333379001886057,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C D :: \"real^2\"\nassumes h0 : \"triangle BDC coplanar triangle ACD\"\nand h1 : \"triangle BDC isosceles\"\nand h2 : \"triangle ACD isosceles\"\nand h3 : \"measure (angle ABC) = 70\"\nshows \"measure (angle BAC) = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: \"real^2\"\nassumes h0 : \"triangle BDC coplanar triangle ACD\"\nand h1 : \"triangle BDC isosceles\"\nand h2 : \"triangle ACD isosceles\"\nand h3 : \"measure (angle ABC) = 70\"\nshows \"measure (angle BAC) = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a problem involving two triangles, triangle BDC and triangle ACD, which are coplanar (meaning they lie on the same plane). Triangle BDC is isosceles (meaning it has two sides of equal length), and triangle ACD is also isosceles. The measure of the angle ABC is given as 70 degrees. The problem asks to find the measure of the angle BAC. According to the theorem, the measure of the angle BAC is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.8761095472819013,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C D :: \"real^2\"\nand m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"triangle B C D\"\nand h1 : \"triangle A C D\"\nand h2 : \"is_isosceles B C D\"\nand h3 : \"is_isosceles A C D\"\nand h4 : \"m_angle_ABC = 70\"\nshows \"m_angle_BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: \"real^2\"\nand m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"triangle B C D\"\nand h1 : \"triangle A C D\"\nand h2 : \"is_isosceles B C D\"\nand h3 : \"is_isosceles A C D\"\nand h4 : \"m_angle_ABC = 70\"\nshows \"m_angle_BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a triangle BCD and another triangle ACD, where both triangles are isosceles (meaning two sides are equal in length), and the measure of angle ABC is 70 degrees, find the measure of angle BAC. The final answer is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.915563060947997,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C D :: point\nassumes h0 : \"triangle BDC coplanar triangle ACD\"\nand h1 : \"isosceles_triangle BDC\"\nand h2 : \"isosceles_triangle ACD\"\nand h3 : \"m\\<angle> ABC = 70\"\nshows \"m\\<angle> BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: point\nassumes h0 : \"triangle BDC coplanar triangle ACD\"\nand h1 : \"isosceles_triangle BDC\"\nand h2 : \"isosceles_triangle ACD\"\nand h3 : \"m\\<angle> ABC = 70\"\nshows \"m\\<angle> BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given two triangles, BDC and ACD, which are coplanar (meaning they lie in the same plane), and both triangles are isosceles (meaning they have two sides of equal length). The measure of angle ABC is 70 degrees. What is the measure of angle BAC? The answer is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9029080807086814,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C D :: \"real^2\"\nassumes h0 : \"is_coplanar A B C D\"\nand h1 : \"is_isosceles_triangle B D C\"\nand h2 : \"is_isosceles_triangle A C D\"\nand h3 : \"measure_angle A B C = 70\"\nshows \"measure_angle B A C = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: \"real^2\"\nassumes h0 : \"is_coplanar A B C D\"\nand h1 : \"is_isosceles_triangle B D C\"\nand h2 : \"is_isosceles_triangle A C D\"\nand h3 : \"measure_angle A B C = 70\"\nshows \"measure_angle B A C = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a theorem in Isabelle:\n\nConsider four points in a 2-dimensional space, A, B, C, and D, which are coplanar (lie on the same plane). The triangle formed by points B, D, and C is isosceles, meaning BD = DC. Similarly, the triangle formed by points A, C, and D is also isosceles, indicating AD = DC. The measure of the angle formed by points A, B, and C is given as 70 degrees.\n\nThe theorem states that the measure of the angle formed by points B, A, and C is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.8234794186009863,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C D :: \"real^2\"\nand m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"is_coplanar {A, B, C, D}\"\nand h1 : \"is_isosceles_triangle B D C\"\nand h2 : \"is_isosceles_triangle A C D\"\nand h3 : \"m_angle_ABC = 70\"\nshows \"m_angle_BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: \"real^2\"\nand m_angle_ABC m_angle_BAC :: real\nassumes h0 : \"is_coplanar {A, B, C, D}\"\nand h1 : \"is_isosceles_triangle B D C\"\nand h2 : \"is_isosceles_triangle A C D\"\nand h3 : \"m_angle_ABC = 70\"\nshows \"m_angle_BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a problem involving four points in a two-dimensional plane, A, B, C, and D, which are coplanar (meaning they all lie in the same plane), and two isosceles triangles are formed: one with base BC and vertex D (isosceles triangle BDC), and another with base AD and vertex C (isosceles triangle ACD). The measure of angle ABC is given as 70 degrees. We are asked to find the measure of angle BAC.\n\nThe final answer is that the measure of angle BAC is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.8919346928306158,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes mABC mBAC :: real\nassumes h0 : \"mABC = 70\"\nand h1 : \"Triangle BDC is isosceles\"\nand h2 : \"Triangle ACD is isosceles\"\nand h3 : \"BDC and ACD are coplanar\"\nshows \"mBAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes mABC mBAC :: real\nassumes h0 : \"mABC = 70\"\nand h1 : \"Triangle BDC is isosceles\"\nand h2 : \"Triangle ACD is isosceles\"\nand h3 : \"BDC and ACD are coplanar\"\nshows \"mBAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " In a plane, there is a triangle ABC with angle ABC measuring 70 degrees. There are two other triangles, BDC and ACD, which are both isosceles and lie in the same plane. Given these conditions, what is the measure of angle BAC in triangle ABC? The answer is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9093170284477023,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C D :: point\nassumes h0 : \"triangle BDC coplanar triangle ACD\"\nand h1 : \"isosceles triangle BDC\"\nand h2 : \"isosceles triangle ACD\"\nand h3 : \"m\\<angle> ABC = 70\"\nshows \"m\\<angle> BAC = 35\"",
+        "formal solution": "(* ### Problem\n Triangles $BDC$ and $ACD$ are coplanar and isosceles. If we have $m\\angle ABC = 70^\\circ$, what is $m\\angle BAC$, in degrees?\n\n[asy]\nunitsize(2 cm);\n\ndefaultpen(linewidth(1pt)+fontsize(10pt));\npair a,b,c,d;\nb = (0,0);\nc = (1,0);\nd = c+dir(140);\na = d+dir(70);\ndraw(a--b--c--cycle);\ndraw(d--c);\npair s,t;\ns = (.5,0)+(0,.05);\nt = (.5,0)+(0,-.05);\ndraw(s--t);\ns = .5*(c+d) + .05*dir(50);\nt = .5*(c+d) - .05*dir(50);\ndraw(s--t);\ns = .5*(a+d) + .05*dir(160);\nt = .5*(a+d) - .05*dir(160);\ndraw(s--t);\nlabel(\"A\",a,N);\nlabel(\"B\",b,SW);\nlabel(\"C\",c,SE);\nlabel(\"D\",d,NW);\nlabel(\"$70^\\circ$\",b+(.05,.03),NE);\n[/asy] The final Answer is $35^\\circ$\n ### Proof\n Since $\\overline{BC}\\cong\\overline{DC}$, that means $\\angle DBC\\cong\\angle BDC$ and $$m\\angle DBC=m\\angle BDC=70^\\circ.$$ We see that $\\angle BDC$ and $\\angle ADC$ must add up to $180^\\circ$, so $m\\angle ADC=180-70=110^\\circ$.\nTriangle $ACD$ is an isosceles triangle, so the base angles must be equal. If the base angles each have a measure of $x^\\circ$, then $m\\angle ADC+2x=180^\\circ.$  This gives us  $$110+2x=180,$$ so $2x=70$ and  $x=35.$  Since $\\angle BAC$ is one of the base angles, it has a measure of $\\boxed{35^\\circ}$.\n *)\n\ntheorem\nfixes A B C D :: point\nassumes h0 : \"triangle BDC coplanar triangle ACD\"\nand h1 : \"isosceles triangle BDC\"\nand h2 : \"isosceles triangle ACD\"\nand h3 : \"m\\<angle> ABC = 70\"\nshows \"m\\<angle> BAC = 35\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a geometric configuration with four points A, B, C, and D, where triangles BDC and ACD are coplanar (i.e., they lie in the same plane), and both triangles BDC and ACD are isosceles (meaning they have two sides of equal length), if the measure of angle ABC is 70 degrees, what is the measure of angle BAC? The answer is 35 degrees.",
+        "syntax": 0,
+        "semantic_score": 0.9021445976263579,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

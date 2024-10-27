@@ -1,0 +1,128 @@
+{
+    "problem_name": "mathd_algebra_282",
+    "informal_statement": "Let \\[f(x) =\n\\begin{cases}\n|\\lfloor{x}\\rfloor| &\\text{if }x\\text{ is rational}, \\\\\n\\lceil{x}\\rceil^2 &\\text{if }x\\text{ is irrational}.\n\\end{cases}\n\\] Find $f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)$. Show that it is 79.",
+    "informal_proof": "Since we know that $\\sqrt[3]{-8}=-2$ is a rational number, $$f(\\sqrt[3]{-8})=|\\lfloor{-2}\\rfloor|=2.$$Continuing from here, we know that $-\\pi$ is irrational, thus $$f(-\\pi)=\\lceil{-\\pi}\\rceil^2=(-3)^2=9.$$Because 50 is not a perfect square, $\\sqrt{50}$ must be irrational as well, so $$f(\\sqrt{50})=\\lceil{\\sqrt{50}}\\rceil^2=8^2=64.$$Finally, we know that $\\frac{9}{2}$ is a rational number, so $$f\\left(\\frac{9}{2}\\right)=\\left|\\left\\lfloor{\\frac92}\\right\\rfloor\\right|=4.$$Therefore $$f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)=2+9+64+4=79.$$",
+    "a_0": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (if (\\<exists> a b. b \\<noteq> 0 \\<and> x = real_of_rat (Fract a b)) then \\<bar>floor x\\<bar> else \\<lceil>x\\<rceil>^2)\"\nshows  \"f (root 3 (-8)) + f (- pi) + f (sqrt 50) + f (9 / 2) = 79\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\n|\\lfloor{x}\\rfloor| &\\text{if }x\\text{ is rational}, \\\\\n\\lceil{x}\\rceil^2 &\\text{if }x\\text{ is irrational}.\n\\end{cases}\n\\] Find $f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)$. Show that it is 79.\n ### Proof\n Since we know that $\\sqrt[3]{-8}=-2$ is a rational number, $$f(\\sqrt[3]{-8})=|\\lfloor{-2}\\rfloor|=2.$$Continuing from here, we know that $-\\pi$ is irrational, thus $$f(-\\pi)=\\lceil{-\\pi}\\rceil^2=(-3)^2=9.$$Because 50 is not a perfect square, $\\sqrt{50}$ must be irrational as well, so $$f(\\sqrt{50})=\\lceil{\\sqrt{50}}\\rceil^2=8^2=64.$$Finally, we know that $\\frac{9}{2}$ is a rational number, so $$f\\left(\\frac{9}{2}\\right)=\\left|\\left\\lfloor{\\frac92}\\right\\rfloor\\right|=4.$$Therefore $$f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)=2+9+64+4=79.$$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. f x = (if (\\<exists> a b. b \\<noteq> 0 \\<and> x = real_of_rat (Fract a b)) then \\<bar>floor x\\<bar> else \\<lceil>x\\<rceil>^2)\"\nshows  \"f (root 3 (-8)) + f (- pi) + f (sqrt 50) + f (9 / 2) = 79\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x)$ as follows: if $x$ can be expressed as a rational number $\\frac{a}{b}$, where $b \\neq 0$, then $f(x) = | \\lfloor x \\rfloor |$. Otherwise, $f(x) = \\lceil x \\rceil^2$. Calculate the value of $f(\\sqrt[3]{-8}) + f(-\\pi) + f(\\sqrt{50}) + f(\\frac{9}{2})$. The final answer is $79$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9316356182098389,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. (\\<exists>r. x = real_of_rat r) \\<longrightarrow> f x = \\<bar>\\<lfloor>x\\<rfloor>\\<bar>\"\nand h1 : \"\\<forall>x. (\\<nexists>r. x = real_of_rat r) \\<longrightarrow> f x = \\<lceil>x\\<rceil>\\<^sup>2\"\nshows  \"f(-2) + f(-\\<pi>) + f(\\<sqrt>50) + f(9/2) = 79\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\n|\\lfloor{x}\\rfloor| &\\text{if }x\\text{ is rational}, \\\\\n\\lceil{x}\\rceil^2 &\\text{if }x\\text{ is irrational}.\n\\end{cases}\n\\] Find $f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)$. Show that it is 79.\n ### Proof\n Since we know that $\\sqrt[3]{-8}=-2$ is a rational number, $$f(\\sqrt[3]{-8})=|\\lfloor{-2}\\rfloor|=2.$$Continuing from here, we know that $-\\pi$ is irrational, thus $$f(-\\pi)=\\lceil{-\\pi}\\rceil^2=(-3)^2=9.$$Because 50 is not a perfect square, $\\sqrt{50}$ must be irrational as well, so $$f(\\sqrt{50})=\\lceil{\\sqrt{50}}\\rceil^2=8^2=64.$$Finally, we know that $\\frac{9}{2}$ is a rational number, so $$f\\left(\\frac{9}{2}\\right)=\\left|\\left\\lfloor{\\frac92}\\right\\rfloor\\right|=4.$$Therefore $$f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)=2+9+64+4=79.$$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. (\\<exists>r. x = real_of_rat r) \\<longrightarrow> f x = \\<bar>\\<lfloor>x\\<rfloor>\\<bar>\"\nand h1 : \"\\<forall>x. (\\<nexists>r. x = real_of_rat r) \\<longrightarrow> f x = \\<lceil>x\\<rceil>\\<^sup>2\"\nshows  \"f(-2) + f(-\\<pi>) + f(\\<sqrt>50) + f(9/2) = 79\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x)$ such that for every rational number $x$, $f(x) = | \\lfloor x \\rfloor |$, and for every irrational number $x$, $f(x) = \\lceil x \\rceil^2$. Calculate the value of $f(-2) + f(-\\pi) + f(\\sqrt{50}) + f(\\frac{9}{2})$. The final answer is $79$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9826856255531311,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. is_rat x \\<longrightarrow> f x = abs (floor x)\"\nand h1 : \"\\<forall> x. \\<not> is_rat x \\<longrightarrow> f x = (ceiling x) powr 2\"\nshows  \"f (-2) + f (-pi) + f (sqrt 50) + f (9/2) = 79\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\n|\\lfloor{x}\\rfloor| &\\text{if }x\\text{ is rational}, \\\\\n\\lceil{x}\\rceil^2 &\\text{if }x\\text{ is irrational}.\n\\end{cases}\n\\] Find $f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)$. Show that it is 79.\n ### Proof\n Since we know that $\\sqrt[3]{-8}=-2$ is a rational number, $$f(\\sqrt[3]{-8})=|\\lfloor{-2}\\rfloor|=2.$$Continuing from here, we know that $-\\pi$ is irrational, thus $$f(-\\pi)=\\lceil{-\\pi}\\rceil^2=(-3)^2=9.$$Because 50 is not a perfect square, $\\sqrt{50}$ must be irrational as well, so $$f(\\sqrt{50})=\\lceil{\\sqrt{50}}\\rceil^2=8^2=64.$$Finally, we know that $\\frac{9}{2}$ is a rational number, so $$f\\left(\\frac{9}{2}\\right)=\\left|\\left\\lfloor{\\frac92}\\right\\rfloor\\right|=4.$$Therefore $$f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)=2+9+64+4=79.$$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. is_rat x \\<longrightarrow> f x = abs (floor x)\"\nand h1 : \"\\<forall> x. \\<not> is_rat x \\<longrightarrow> f x = (ceiling x) powr 2\"\nshows  \"f (-2) + f (-pi) + f (sqrt 50) + f (9/2) = 79\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x)$ as follows: \n- If $x$ is a rational number, then $f(x) = | \\lfloor x \\rfloor |$. \n- If $x$ is not a rational number, then $f(x) = \\lceil x \\rceil^2$.\n\nCalculate the sum $f(-2) + f(-\\pi) + f(\\sqrt{50}) + f(\\frac{9}{2})$. The final answer is 79.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.914933443069458,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. (x \\<in> \\<rat> \\<longrightarrow> f x = abs (floor x)) \\<and> (x \\<notin> \\<rat> \\<longrightarrow> f x = ceiling x ^ 2)\"\nshows  \"f (-2) + f (-\\<pi>) + f (sqrt 50) + f (9/2) = 79\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\n|\\lfloor{x}\\rfloor| &\\text{if }x\\text{ is rational}, \\\\\n\\lceil{x}\\rceil^2 &\\text{if }x\\text{ is irrational}.\n\\end{cases}\n\\] Find $f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)$. Show that it is 79.\n ### Proof\n Since we know that $\\sqrt[3]{-8}=-2$ is a rational number, $$f(\\sqrt[3]{-8})=|\\lfloor{-2}\\rfloor|=2.$$Continuing from here, we know that $-\\pi$ is irrational, thus $$f(-\\pi)=\\lceil{-\\pi}\\rceil^2=(-3)^2=9.$$Because 50 is not a perfect square, $\\sqrt{50}$ must be irrational as well, so $$f(\\sqrt{50})=\\lceil{\\sqrt{50}}\\rceil^2=8^2=64.$$Finally, we know that $\\frac{9}{2}$ is a rational number, so $$f\\left(\\frac{9}{2}\\right)=\\left|\\left\\lfloor{\\frac92}\\right\\rfloor\\right|=4.$$Therefore $$f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)=2+9+64+4=79.$$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. (x \\<in> \\<rat> \\<longrightarrow> f x = abs (floor x)) \\<and> (x \\<notin> \\<rat> \\<longrightarrow> f x = ceiling x ^ 2)\"\nshows  \"f (-2) + f (-\\<pi>) + f (sqrt 50) + f (9/2) = 79\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x)$ such that for any rational number $x$, $f(x) = | \\lfloor x \\rfloor |$, and for any irrational number $x$, $f(x) = \\lceil x \\rceil^2$. Calculate the value of $f(-2) + f(-\\pi) + f(\\sqrt{50}) + f(\\frac{9}{2})$. The final answer is 79.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.98048996925354,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. (is_rational x \\<longrightarrow> f x = abs (floor x)) \\<and> (\\<not> is_rational x \\<longrightarrow> f x = (ceiling x) powr 2)\"\nshows  \"f (-8 powr (1/3)) + f (-pi) + f (sqrt 50) + f (9 / 2) = 79\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\n|\\lfloor{x}\\rfloor| &\\text{if }x\\text{ is rational}, \\\\\n\\lceil{x}\\rceil^2 &\\text{if }x\\text{ is irrational}.\n\\end{cases}\n\\] Find $f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)$. Show that it is 79.\n ### Proof\n Since we know that $\\sqrt[3]{-8}=-2$ is a rational number, $$f(\\sqrt[3]{-8})=|\\lfloor{-2}\\rfloor|=2.$$Continuing from here, we know that $-\\pi$ is irrational, thus $$f(-\\pi)=\\lceil{-\\pi}\\rceil^2=(-3)^2=9.$$Because 50 is not a perfect square, $\\sqrt{50}$ must be irrational as well, so $$f(\\sqrt{50})=\\lceil{\\sqrt{50}}\\rceil^2=8^2=64.$$Finally, we know that $\\frac{9}{2}$ is a rational number, so $$f\\left(\\frac{9}{2}\\right)=\\left|\\left\\lfloor{\\frac92}\\right\\rfloor\\right|=4.$$Therefore $$f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)=2+9+64+4=79.$$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. (is_rational x \\<longrightarrow> f x = abs (floor x)) \\<and> (\\<not> is_rational x \\<longrightarrow> f x = (ceiling x) powr 2)\"\nshows  \"f (-8 powr (1/3)) + f (-pi) + f (sqrt 50) + f (9 / 2) = 79\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x)$ as follows: if $x$ is rational, then $f(x) = | \\lfloor x \\rfloor |$, and if $x$ is irrational, then $f(x) = \\lceil x \\rceil^2$. Calculate the sum $f(-8^{1/3}) + f(-\\pi) + f(\\sqrt{50}) + f(\\frac{9}{2})$. The final answer is $79$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9718230962753296,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. x \\<notin> \\<rat> \\<longrightarrow> f x = (ceiling x) ^ 2\"\nand h1 : \"\\<forall> x. x \\<in> \\<rat> \\<longrightarrow> f x = abs (floor x)\"\nshows  \"f (- 8 powr (1/3)) + f (- pi) + f (sqrt 50) + f (9 / 2) = 79\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\n|\\lfloor{x}\\rfloor| &\\text{if }x\\text{ is rational}, \\\\\n\\lceil{x}\\rceil^2 &\\text{if }x\\text{ is irrational}.\n\\end{cases}\n\\] Find $f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)$. Show that it is 79.\n ### Proof\n Since we know that $\\sqrt[3]{-8}=-2$ is a rational number, $$f(\\sqrt[3]{-8})=|\\lfloor{-2}\\rfloor|=2.$$Continuing from here, we know that $-\\pi$ is irrational, thus $$f(-\\pi)=\\lceil{-\\pi}\\rceil^2=(-3)^2=9.$$Because 50 is not a perfect square, $\\sqrt{50}$ must be irrational as well, so $$f(\\sqrt{50})=\\lceil{\\sqrt{50}}\\rceil^2=8^2=64.$$Finally, we know that $\\frac{9}{2}$ is a rational number, so $$f\\left(\\frac{9}{2}\\right)=\\left|\\left\\lfloor{\\frac92}\\right\\rfloor\\right|=4.$$Therefore $$f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)=2+9+64+4=79.$$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. x \\<notin> \\<rat> \\<longrightarrow> f x = (ceiling x) ^ 2\"\nand h1 : \"\\<forall> x. x \\<in> \\<rat> \\<longrightarrow> f x = abs (floor x)\"\nshows  \"f (- 8 powr (1/3)) + f (- pi) + f (sqrt 50) + f (9 / 2) = 79\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A function $f(x)$ is defined as follows:\n- If $x$ is not a rational number, then $f(x) = (\\lceil x \\rceil)^2$.\n- If $x$ is a rational number, then $f(x) = | \\lfloor x \\rfloor |$.\n\nFind the value of $f\\left(-\\sqrt[3]{8}\\right) + f(-\\pi) + f(\\sqrt{50}) + f\\left(\\frac{9}{2}\\right)$. The final answer is $79$.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9239212274551392,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. (Ratreal x = x \\<longrightarrow> f x = abs(floor x)) \\<and> (Ratreal x \\<noteq> x \\<longrightarrow> f x = (ceiling x) powr 2)\"\nshows  \"f (root 3 (-8)) + f (-pi) + f (sqrt 50) + f (9 / 2) = 79\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\n|\\lfloor{x}\\rfloor| &\\text{if }x\\text{ is rational}, \\\\\n\\lceil{x}\\rceil^2 &\\text{if }x\\text{ is irrational}.\n\\end{cases}\n\\] Find $f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)$. Show that it is 79.\n ### Proof\n Since we know that $\\sqrt[3]{-8}=-2$ is a rational number, $$f(\\sqrt[3]{-8})=|\\lfloor{-2}\\rfloor|=2.$$Continuing from here, we know that $-\\pi$ is irrational, thus $$f(-\\pi)=\\lceil{-\\pi}\\rceil^2=(-3)^2=9.$$Because 50 is not a perfect square, $\\sqrt{50}$ must be irrational as well, so $$f(\\sqrt{50})=\\lceil{\\sqrt{50}}\\rceil^2=8^2=64.$$Finally, we know that $\\frac{9}{2}$ is a rational number, so $$f\\left(\\frac{9}{2}\\right)=\\left|\\left\\lfloor{\\frac92}\\right\\rfloor\\right|=4.$$Therefore $$f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)=2+9+64+4=79.$$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall>x. (Ratreal x = x \\<longrightarrow> f x = abs(floor x)) \\<and> (Ratreal x \\<noteq> x \\<longrightarrow> f x = (ceiling x) powr 2)\"\nshows  \"f (root 3 (-8)) + f (-pi) + f (sqrt 50) + f (9 / 2) = 79\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x)$ as follows: if $x$ is a rational number, $f(x) = | \\lfloor x \\rfloor |$, and if $x$ is not a rational number, $f(x) = \\lceil x \\rceil^2$. Find the value of $f(\\sqrt[3]{-8}) + f(-\\pi) + f(\\sqrt{50}) + f(\\frac{9}{2})$. The final answer is 79.",
+        "syntax": 0,
+        "naive_label": 0,
+        "semantic_score": 0.9290900230407715,
+        "symbolic_score": 0.1
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nand x1 x2 x3 x4 :: real\nassumes h0 : \"x1 = - 2\"\nand h1 : \"x2 = - pi\"\nand h2 : \"x3 = sqrt 50\"\nand h3 : \"x4 = 9 / 2\"\nand h4 : \"\\<forall> x. f x = (if (\\<exists> m n. x = real_of_int m / real_of_int n \\<and> n \\<noteq> 0)\n                           then \\<bar>floor x\\<bar>\n                           else (ceiling x)\\<^sup>2)\"\nshows  \"f x1 + f x2 + f x3 + f x4 = 79\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\n|\\lfloor{x}\\rfloor| &\\text{if }x\\text{ is rational}, \\\\\n\\lceil{x}\\rceil^2 &\\text{if }x\\text{ is irrational}.\n\\end{cases}\n\\] Find $f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)$. Show that it is 79.\n ### Proof\n Since we know that $\\sqrt[3]{-8}=-2$ is a rational number, $$f(\\sqrt[3]{-8})=|\\lfloor{-2}\\rfloor|=2.$$Continuing from here, we know that $-\\pi$ is irrational, thus $$f(-\\pi)=\\lceil{-\\pi}\\rceil^2=(-3)^2=9.$$Because 50 is not a perfect square, $\\sqrt{50}$ must be irrational as well, so $$f(\\sqrt{50})=\\lceil{\\sqrt{50}}\\rceil^2=8^2=64.$$Finally, we know that $\\frac{9}{2}$ is a rational number, so $$f\\left(\\frac{9}{2}\\right)=\\left|\\left\\lfloor{\\frac92}\\right\\rfloor\\right|=4.$$Therefore $$f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)=2+9+64+4=79.$$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nand x1 x2 x3 x4 :: real\nassumes h0 : \"x1 = - 2\"\nand h1 : \"x2 = - pi\"\nand h2 : \"x3 = sqrt 50\"\nand h3 : \"x4 = 9 / 2\"\nand h4 : \"\\<forall> x. f x = (if (\\<exists> m n. x = real_of_int m / real_of_int n \\<and> n \\<noteq> 0)\n                           then \\<bar>floor x\\<bar>\n                           else (ceiling x)\\<^sup>2)\"\nshows  \"f x1 + f x2 + f x3 + f x4 = 79\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Let $f(x)$ be a function defined as follows: if $x$ can be expressed as a rational number $m/n$ where $n \\neq 0$, then $f(x) = | \\lfloor x \\rfloor |$. Otherwise, if $x$ is irrational, then $f(x) = \\lceil x \\rceil^2$. Calculate $f(-2) + f(-\\pi) + f(\\sqrt{50}) + f(\\frac{9}{2})$. The final answer is $79$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9302300810813904,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. (x \\<in> \\<rat> \\<longrightarrow> f x = abs(floor x)) \\<and> (\\<not>(x \\<in> \\<rat>) \\<longrightarrow> f x = ceil x ^ 2)\"\nshows  \"f (root 3 (- 8)) + f (-pi) + f (sqrt 50) + f (9 / 2) = 79\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\n|\\lfloor{x}\\rfloor| &\\text{if }x\\text{ is rational}, \\\\\n\\lceil{x}\\rceil^2 &\\text{if }x\\text{ is irrational}.\n\\end{cases}\n\\] Find $f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)$. Show that it is 79.\n ### Proof\n Since we know that $\\sqrt[3]{-8}=-2$ is a rational number, $$f(\\sqrt[3]{-8})=|\\lfloor{-2}\\rfloor|=2.$$Continuing from here, we know that $-\\pi$ is irrational, thus $$f(-\\pi)=\\lceil{-\\pi}\\rceil^2=(-3)^2=9.$$Because 50 is not a perfect square, $\\sqrt{50}$ must be irrational as well, so $$f(\\sqrt{50})=\\lceil{\\sqrt{50}}\\rceil^2=8^2=64.$$Finally, we know that $\\frac{9}{2}$ is a rational number, so $$f\\left(\\frac{9}{2}\\right)=\\left|\\left\\lfloor{\\frac92}\\right\\rfloor\\right|=4.$$Therefore $$f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)=2+9+64+4=79.$$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. (x \\<in> \\<rat> \\<longrightarrow> f x = abs(floor x)) \\<and> (\\<not>(x \\<in> \\<rat>) \\<longrightarrow> f x = ceil x ^ 2)\"\nshows  \"f (root 3 (- 8)) + f (-pi) + f (sqrt 50) + f (9 / 2) = 79\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Define a function $f(x)$ such that:\n\n1. If $x$ is a rational number, then $f(x) = | \\lfloor x \\rfloor |$.\n2. If $x$ is not a rational number, then $f(x) = \\lceil x \\rceil ^2$.\n\nCalculate the value of $f(\\sqrt[3]{-8}) + f(-\\pi) + f(\\sqrt{50}) + f(\\frac{9}{2})$. The final answer is 79.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.94313645362854,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. (is_rat x \\<longrightarrow> f x = abs (floor x)) \\<and> (\\<not> is_rat x \\<longrightarrow> f x = ceiling x ^ 2)\"\nshows  \"f (-2) + f (-pi) + f (sqrt 50) + f (9 / 2) = 79\"",
+        "formal solution": "(* ### Problem\n Let \\[f(x) =\n\\begin{cases}\n|\\lfloor{x}\\rfloor| &\\text{if }x\\text{ is rational}, \\\\\n\\lceil{x}\\rceil^2 &\\text{if }x\\text{ is irrational}.\n\\end{cases}\n\\] Find $f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)$. Show that it is 79.\n ### Proof\n Since we know that $\\sqrt[3]{-8}=-2$ is a rational number, $$f(\\sqrt[3]{-8})=|\\lfloor{-2}\\rfloor|=2.$$Continuing from here, we know that $-\\pi$ is irrational, thus $$f(-\\pi)=\\lceil{-\\pi}\\rceil^2=(-3)^2=9.$$Because 50 is not a perfect square, $\\sqrt{50}$ must be irrational as well, so $$f(\\sqrt{50})=\\lceil{\\sqrt{50}}\\rceil^2=8^2=64.$$Finally, we know that $\\frac{9}{2}$ is a rational number, so $$f\\left(\\frac{9}{2}\\right)=\\left|\\left\\lfloor{\\frac92}\\right\\rfloor\\right|=4.$$Therefore $$f(\\sqrt[3]{-8})+f(-\\pi)+f(\\sqrt{50})+f\\left(\\frac{9}{2}\\right)=2+9+64+4=79.$$\n *)\n\ntheorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes h0 : \"\\<forall> x. (is_rat x \\<longrightarrow> f x = abs (floor x)) \\<and> (\\<not> is_rat x \\<longrightarrow> f x = ceiling x ^ 2)\"\nshows  \"f (-2) + f (-pi) + f (sqrt 50) + f (9 / 2) = 79\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Consider a function $f(x)$ defined as follows:\n- If $x$ is rational, $f(x) = | \\lfloor x \\rfloor |$\n- If $x$ is not rational, $f(x) = \\lceil x \\rceil^2$\n\nFind the value of $f(-2) + f(-\\pi) + f(\\sqrt{50}) + f(\\frac{9}{2})$. The final answer is $79$.",
+        "syntax": 1,
+        "naive_label": 0,
+        "semantic_score": 0.9917370080947876,
+        "symbolic_score": 0.1
+    },
+    "oracle": "theorem\nfixes f :: \"real \\<Rightarrow> real\"\nassumes \"\\<forall> x. (x \\<in> \\<rat> ) \\<longrightarrow> f x = abs (floor x)\"\nand \"\\<forall> x. (x \\<notin> \\<rat>) \\<longrightarrow> f x = (ceiling x)^2\"\nshows \"f (8 powr (1/3)) + f (-pi) + f (sqrt 50) + f (9/2) = 79\"",
+    "prediction": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    }
+}

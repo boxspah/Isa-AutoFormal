@@ -1,0 +1,598 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = gcd A B\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = gcd A B\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $A > 0$, $A + B\\sqrt{3} = \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}$, and $C = \\text{gcd}(A, B)$. Find the sum $A + B + C$. The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.8486952185630798,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a + b * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"gcd a c = 1\"\nand h2 : \"a > 0\"\nshows  \"a + b + c = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a + b * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"gcd a c = 1\"\nand h2 : \"a > 0\"\nshows  \"a + b + c = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the values of $a$, $b$, and $c$ such that $a + b\\sqrt{3} = \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}$, the greatest common divisor of $a$ and $c$ is 1, and $a > 0$. What is the sum of $a$, $b$, and $c$? The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9711092114448547,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"gcd A C = 1\"\nand h5 : \"A > 0\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"gcd A C = 1\"\nand h5 : \"A > 0\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a = \\frac{2}{1 + 2\\sqrt{3}}$ and $b = \\frac{3}{2 - \\sqrt{3}}$, find the value of $c = a + b$. Express $c$ in the form $\\frac{A + B\\sqrt{3}}{C}$, where $A$, $B$, and $C$ are integers, $\\text{gcd}(A, C) = 1$, and $A > 0$. What is the sum $A + B + C$? The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.6910192966461182,
+        "symbolic_score": 0.6
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"gcd A C = 1\"\nand h2 : \"2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3) = (A + B * sqrt 3) / C\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"gcd A C = 1\"\nand h2 : \"2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3) = (A + B * sqrt 3) / C\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A > 0$, $gcd(A, C) = 1$, and $\\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} = \\frac{A + B\\sqrt{3}}{C}$, find the sum of $A$, $B$, and $C$. The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9126207232475281,
+        "symbolic_score": 0.1
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"gcd A C = 1\"\nand h5 : \"A > 0\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"gcd A C = 1\"\nand h5 : \"A > 0\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a = \\frac{2}{1 + 2\\sqrt{3}}$, $b = \\frac{3}{2 - \\sqrt{3}}$, and $c = a + b$, express $c$ in the form $\\frac{A + B\\sqrt{3}}{C}$, where $A$, $B$, and $C$ are integers with no common factors other than 1, and $A > 0$. What is $A + B + C$? The final answer is 112.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9921916723251343,
+        "symbolic_score": 0.6
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes A B C :: real\nassumes h0 : \"2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3) = (A + B * sqrt 3) / C\"\nand h1 : \"A > 0\"\nand h2 : \"gcd (int_of_real A) (int_of_real C) = 1\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: real\nassumes h0 : \"2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3) = (A + B * sqrt 3) / C\"\nand h1 : \"A > 0\"\nand h2 : \"gcd (int_of_real A) (int_of_real C) = 1\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the values of $A$, $B$, and $C$ such that $\\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} = \\frac{A + B\\sqrt{3}}{C}$, where $A > 0$ and the greatest common divisor of the integers $A$ and $C$ is 1. What is the sum of $A$, $B$, and $C$? The final answer is 112.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9896922707557678,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"a + b = (A + B * sqrt 3) / C\"\nand h3 : \"A > 0\"\nand h4 : \"gcd A C = 1\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"a + b = (A + B * sqrt 3) / C\"\nand h3 : \"A > 0\"\nand h4 : \"gcd A C = 1\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a = \\frac{2}{1 + 2\\sqrt{3}}$ and $b = \\frac{3}{2 - \\sqrt{3}}$, if $a + b = \\frac{A + B\\sqrt{3}}{C}$, where $A > 0$ and the greatest common divisor of $A$ and $C$ is 1, find the sum of $A$, $B$, and $C$. The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7034243941307068,
+        "symbolic_score": 0.6
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"A > 0\"\nand h5 : \"gcd A C = 1\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"A > 0\"\nand h5 : \"gcd A C = 1\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the numerators $A$, $B$, and $C$ of the fractions $a$, $b$, and $c$, where $a = \\frac{2}{1 + 2\\sqrt{3}}$, $b = \\frac{3}{2 - \\sqrt{3}}$, and $c = a + b$. Express $c$ as a fraction $\\frac{A + B\\sqrt{3}}{C}$, where $A > 0$ and the greatest common divisor of $A$ and $C$ is 1. The final answer is $A + B + C = 112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7197192907333374,
+        "symbolic_score": 0.6
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"y = 3 / (2 - sqrt 3)\"\nand h2 : \"x + y = (A + B * sqrt 3) / C\"\nand h3 : \"A > 0\"\nand h4 : \"gcd A C = 1\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"y = 3 / (2 - sqrt 3)\"\nand h2 : \"x + y = (A + B * sqrt 3) / C\"\nand h3 : \"A > 0\"\nand h4 : \"gcd A C = 1\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x = \\frac{2}{1 + 2\\sqrt{3}}$ and $y = \\frac{3}{2 - \\sqrt{3}}$, find the values of $A$, $B$, and $C$ such that $x + y = \\frac{A + B\\sqrt{3}}{C}$, where $A > 0$ and the greatest common divisor of $A$ and $C$ is $1$. What is the sum of $A$, $B$, and $C$? The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9924633502960205,
+        "symbolic_score": 0.6
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"A > 0\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"A > 0\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a = \\frac{2}{1 + 2\\sqrt{3}}$, $b = \\frac{3}{2 - \\sqrt{3}}$, and $c = a + b$, express $c$ in the form $\\frac{A + B\\sqrt{3}}{C}$, where $A > 0$. Find the sum of $A, B$, and $C$. The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.937874436378479,
+        "symbolic_score": 0.6
+    },
+    "natural answer": "112",
+    "natural problem": "Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$?",
+    "natural solution": [
+        "First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}",
+        "\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\",
+        "& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$."
+    ],
+    "oracle": "TODO",
+    "prediction": {
+        "0": [
+            2,
+            4,
+            6,
+            7,
+            8,
+            9
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            5
+        ]
+    },
+    "level": "Level 5",
+    "type": "Algebra",
+    "a_0_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = (A + B * sqrt 3) / C\"\nand h3 : \"A + B + C = 112\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = (A + B * sqrt 3) / C\"\nand h3 : \"A + B + C = 112\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider three real numbers A, B, and C. Given that A is greater than 0, and the equation A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3))) holds true, where sqrt(3) represents the square root of 3. Additionally, C is defined as (A + B * sqrt(3)) / C. The problem asks to prove that the sum of A, B, and C equals 112.",
+        "syntax": 1,
+        "semantic_score": 0.39343712691510135,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3)))\"\nand h2 : \"C = gcd A (B * sqrt(3))\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3)))\"\nand h2 : \"C = gcd A (B * sqrt(3))\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider three integers A, B, and C. Given that A is greater than 0, and the equation A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3))) holds true, where sqrt(3) represents the square root of 3. Additionally, C is defined as the greatest common divisor of A and B * sqrt(3). The task is to find the values of A, B, and C such that A + B + C equals 112.",
+        "syntax": 0,
+        "semantic_score": 0.3432480358464638,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek": {
+        "formal problem": " theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = C\"\nand h3 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h4 : \"A + B * sqrt 3 / C = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h5 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h6 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h7 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h8 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h9 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h10 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h11 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h12 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h13 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h14 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h15 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h16 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h17 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h18 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h19 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h20 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h21 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h22 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h23 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h24 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h25 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h26 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h27 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\n theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = C\"\nand h3 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h4 : \"A + B * sqrt 3 / C = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h5 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h6 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h7 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h8 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h9 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h10 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h11 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h12 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h13 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h14 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h15 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h16 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h17 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h18 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h19 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h20 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h21 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h22 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h23 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h24 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h25 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h26 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h27 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that A is a positive real number, and the equation A + B * sqrt(3) equals the sum of 2 / (1 + 2 * sqrt(3)) and 3 / (2 - sqrt(3)), find the value of A and B such that the expression (A + B * sqrt(3)) / C equals the sum of 2 / (1 + 2 * sqrt(3)) and 3 / (2 - sqrt(3)), where C is a constant.",
+        "syntax": 0,
+        "semantic_score": 0.3124073182366949,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek": {
+        "formal problem": " theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = 2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3)\"\nand h2 : \"C = C\"\nand h3 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h4 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h5 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h6 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h7 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h8 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h9 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h10 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h11 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h12 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h13 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h14 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h15 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h16 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h17 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h18 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h19 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h20 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h21 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h22 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h23 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h24 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h25 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h26 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h27 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h28 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h29 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h30 : \"A +",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\n theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = 2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3)\"\nand h2 : \"C = C\"\nand h3 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h4 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h5 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h6 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h7 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h8 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h9 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h10 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h11 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h12 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h13 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h14 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h15 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h16 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h17 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h18 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h19 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h20 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h21 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h22 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h23 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h24 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h25 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h26 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h27 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h28 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h29 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h30 : \"A +\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that A is a positive real number, and the equation A + B * sqrt(3) equals the sum of 2 / (1 + 2 * sqrt(3)) and 3 / (2 - sqrt(3)), find the value of C such that A + B * sqrt(3) equals (A + B * sqrt(3)) / C.",
+        "syntax": 0,
+        "semantic_score": 0.423103840029449,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"A > 0\"\nand h2 : \"C = gcd A (B * sqrt 3)\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"A > 0\"\nand h2 : \"C = gcd A (B * sqrt 3)\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider three integers A, B, and C. Given that A + B * sqrt(3) equals the sum of 2 / (1 + 2 * sqrt(3)) and 3 / (2 - sqrt(3)), and A is greater than 0, and C is the greatest common divisor of A and B * sqrt(3), find the value of A + B + C. The answer is 112.",
+        "syntax": 0,
+        "semantic_score": 0.5811809597032688,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"A > 0\"\nand h2 : \"C = gcd A (C * B)\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"A > 0\"\nand h2 : \"C = gcd A (C * B)\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider three integers A, B, and C. Given that A plus B times the square root of 3 equals the sum of 2 divided by (1 plus 2 times the square root of 3) and 3 divided by (2 minus the square root of 3), and A is greater than 0. Additionally, C is equal to the greatest common divisor of A and C times B. Prove that the sum of A, B, and C equals 112.",
+        "syntax": 1,
+        "semantic_score": 0.3657616695277557,
+        "symbolic_score": 0.2
+    },
+    "a_6_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"A > 0\"\nand h2 : \"C = C\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"A > 0\"\nand h2 : \"C = C\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that A, B, and C are integers, and the equation A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3))) holds true, with A being greater than 0, and C being equal to itself, find the value of A + B + C. The final answer is 112.",
+        "syntax": 1,
+        "semantic_score": 0.9828138223509848,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = gcd A (C * B)\"\nand h3 : \"C = gcd A C\"\nand h4 : \"C = gcd B C\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = gcd A (C * B)\"\nand h3 : \"C = gcd A C\"\nand h4 : \"C = gcd B C\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given positive integer A, find the values of A, B, and C such that the following conditions are satisfied:\n\n1. A is a positive integer.\n2. The equation A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3))) holds true.\n3. C is the greatest common divisor (gcd) of A and C * B.\n4. C is the gcd of A and C.\n5. C is the gcd of B and C.\n\nThe goal is to find the values of A, B, and C that satisfy these conditions, and then calculate the sum A + B + C, which should equal 112.",
+        "syntax": 1,
+        "semantic_score": 0.8460734987322257,
+        "symbolic_score": 0.2
+    },
+    "a_8_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = CARDINALITY {d. d dvd A + B * sqrt 3}\"\nand h3 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = CARDINALITY {d. d dvd A + B * sqrt 3}\"\nand h3 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a positive integer A, find the values of A, B, and C such that the following conditions are satisfied:\n\n1. A + B * sqrt(3) equals the sum of 2 / (1 + 2 * sqrt(3)) and 3 / (2 - sqrt(3)).\n2. C is the number of distinct divisors of A + B * sqrt(3).\n3. A + B * sqrt(3) equals (A + B * sqrt(3)) divided by C.\n\nThe goal is to find the values of A, B, and C that satisfy these conditions, and then calculate the sum A + B + C, which should equal 112.",
+        "syntax": 1,
+        "semantic_score": 0.8666877806135969,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = gcd A (B * sqrt 3)\"\nand h3 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = gcd A (B * sqrt 3)\"\nand h3 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider three integers A, B, and C, where A is positive. We have the equation A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3))). Let C be the greatest common divisor of A and B * sqrt(3). The equation A + B * sqrt(3) = (A + B * sqrt(3)) / C holds true. Find the value of A + B + C, which is equal to 112.",
+        "syntax": 0,
+        "semantic_score": 0.8971452865343672,
+        "symbolic_score": 0.1
+    },
+    "a_0_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"C > 0\"\nand h2 : \"frac ((2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))) = (A + B * sqrt 3) / C\"\nand h3 : \"gcd A (gcd B C) = 1\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"C > 0\"\nand h2 : \"frac ((2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))) = (A + B * sqrt 3) / C\"\nand h3 : \"gcd A (gcd B C) = 1\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Suppose $A$, $B$, and $C$ are positive integers, and $\\frac{2/(1+2\\sqrt{3}) + 3/(2-\\sqrt{3})}{1} = \\frac{A+B\\sqrt{3}}{C}$, where $\\gcd(A,\\gcd(B,C))=1$. Find $A+B+C$. The final answer is $112$.",
+        "syntax": 1,
+        "semantic_score": 0.9666191750042336,
+        "symbolic_score": 0.1
+    },
+    "a_1_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: nat\nand x y :: real\nassumes h0 : \"x = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"y = 3 / (2 - sqrt 3)\"\nand h2 : \"A = nat \\<lfloor>x + y\\<rfloor>\"\nand h3 : \"B = nat \\<lfloor>(x - y) * sqrt 3\\<rfloor>\"\nand h4 : \"C = nat \\<lfloor>x\\<rfloor>\"\nand h5 : \"A > 0\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: nat\nand x y :: real\nassumes h0 : \"x = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"y = 3 / (2 - sqrt 3)\"\nand h2 : \"A = nat \\<lfloor>x + y\\<rfloor>\"\nand h3 : \"B = nat \\<lfloor>(x - y) * sqrt 3\\<rfloor>\"\nand h4 : \"C = nat \\<lfloor>x\\<rfloor>\"\nand h5 : \"A > 0\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x = \\frac{2}{1 + 2\\sqrt{3}}$ and $y = \\frac{3}{2 - \\sqrt{3}}$, let $A$ be the greatest integer less than or equal to $x + y$, $B$ be the greatest integer less than or equal to $(x - y)\\sqrt{3}$, and $C$ be the greatest integer less than or equal to $x$. If $A > 0$, find $A + B + C$. The final answer is $112$.",
+        "syntax": 1,
+        "semantic_score": 0.9659503903519575,
+        "symbolic_score": 0.1
+    },
+    "a_2_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"C = gcd (2 * 2 - 3) (2 * 2 + 6)\"\nand h2 : \"B = (2 * 2 - 3) div C\"\nand h3 : \"A = (2 div C) + (3 div (2 - sqrt 3))\"\nand h4 : \"112 = A + B + C\"\nshows \"(2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3)) = (A + B * sqrt 3) / C\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"C = gcd (2 * 2 - 3) (2 * 2 + 6)\"\nand h2 : \"B = (2 * 2 - 3) div C\"\nand h3 : \"A = (2 div C) + (3 div (2 - sqrt 3))\"\nand h4 : \"112 = A + B + C\"\nshows \"(2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3)) = (A + B * sqrt 3) / C\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A$, $B$, and $C$ are positive integers such that $112=A+B+C$, and $C$ is the greatest common divisor of $2^2-3$ and $2^2+6$, and $B$ is $(2^2-3)$ divided by $C$, and $A$ is $(2/C) + (3/(2-\\sqrt{3}))$, find the value of $\\frac{2}{1+2\\sqrt{3}}+\\frac{3}{2-\\sqrt{3}}$ as a fraction $\\frac{A+B\\sqrt{3}}{C}$.",
+        "syntax": 1,
+        "semantic_score": 0.18683928036491826,
+        "symbolic_score": 0.1
+    },
+    "a_3_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"B = 2\"\nand h2 : \"C = 1\"\nand h3 : \"frac(2 / (1 + 2 * sqrt(3)) + 3 / (2 - sqrt(3))) = ((A + B * sqrt(3)) / C)\"\nand h4 : \"coprime A (C * C)\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"B = 2\"\nand h2 : \"C = 1\"\nand h3 : \"frac(2 / (1 + 2 * sqrt(3)) + 3 / (2 - sqrt(3))) = ((A + B * sqrt(3)) / C)\"\nand h4 : \"coprime A (C * C)\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $B = 2$, $C = 1$, and $\\frac{2}{1+2\\sqrt{3}}+\\frac{3}{2-\\sqrt{3}} = \\frac{A+B\\sqrt{3}}{C}$, where $A$ and $C$ are coprime, find $A+B+C$. The final answer is $112$.",
+        "syntax": 1,
+        "semantic_score": 0.9921353756152064,
+        "symbolic_score": 0.1
+    },
+    "a_4_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: nat\nand a b c :: real\nassumes h0 : \"a = 2\"\nand h1 : \"b = 1 + 2 * sqrt 3\"\nand h2 : \"c = 3\"\nand h3 : \"d = 2 - sqrt 3\"\nand h4 : \"A = (a * c + b * d) div (c * c - 3)\"\nand h5 : \"B = (a * d + b * c) div (c * c - 3)\"\nand h6 : \"C = (a * c - b * d) div (c * c - 3)\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: nat\nand a b c :: real\nassumes h0 : \"a = 2\"\nand h1 : \"b = 1 + 2 * sqrt 3\"\nand h2 : \"c = 3\"\nand h3 : \"d = 2 - sqrt 3\"\nand h4 : \"A = (a * c + b * d) div (c * c - 3)\"\nand h5 : \"B = (a * d + b * c) div (c * c - 3)\"\nand h6 : \"C = (a * c - b * d) div (c * c - 3)\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a=2$, $b=1+2\\sqrt{3}$, $c=3$, and $d=2-\\sqrt{3}$, find the sum of the integers $A$, $B$, and $C$ where $A = (ac+bd)/(c^2-3)$, $B = (ad+bc)/(c^2-3)$, and $C = (ac-bd)/(c^2-3)$. The final answer is $112$.",
+        "syntax": 1,
+        "semantic_score": 0.9792256492086322,
+        "symbolic_score": 0.2
+    },
+    "a_5_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: nat\nand x y :: real\nassumes h0 : \"x = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"y = 3 / (2 - sqrt 3)\"\nand h2 : \"A = 2 * (1 + sqrt 3) + 3 * (2 + sqrt 3)\"\nand h3 : \"B = 5 * sqrt 3 - 3\"\nand h4 : \"C = 1\"\nshows \"x + y = (real A + real B * sqrt 3) / C\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: nat\nand x y :: real\nassumes h0 : \"x = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"y = 3 / (2 - sqrt 3)\"\nand h2 : \"A = 2 * (1 + sqrt 3) + 3 * (2 + sqrt 3)\"\nand h3 : \"B = 5 * sqrt 3 - 3\"\nand h4 : \"C = 1\"\nshows \"x + y = (real A + real B * sqrt 3) / C\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x = \\frac{2}{1 + 2\\sqrt{3}}$ and $y = \\frac{3}{2 - \\sqrt{3}}$, find the value of $x+y$ in the form of $(A\\sqrt{3}+B)/C$, where $A$, $B$, and $C$ are integers with $C \\neq 0$. The given values are $A = 2(1 + \\sqrt{3}) + 3(2 + \\sqrt{3})$, $B = 5\\sqrt{3} - 3$, and $C = 1$. The final Answer is $(2 + \\sqrt{3})/2$.",
+        "syntax": 1,
+        "semantic_score": 0.7803617445117155,
+        "symbolic_score": 0.1
+    },
+    "a_6_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"frac ((2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))) = (A + B * sqrt 3) / C\"\nand h2 : \"gcd A (gcd B C) = 1\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"frac ((2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))) = (A + B * sqrt 3) / C\"\nand h2 : \"gcd A (gcd B C) = 1\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A$, $B$, and $C$ are positive integers such that $\\frac{2}{1+2\\sqrt{3}} + \\frac{3}{2-\\sqrt{3}} = \\frac{A+B\\sqrt{3}}{C}$ and $\\gcd(A,\\gcd(B,C))=1$, what is the value of $A+B+C$? The final answer is $112$.",
+        "syntax": 1,
+        "semantic_score": 0.9417175301114198,
+        "symbolic_score": 0.1
+    },
+    "a_7_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"C = gcd (2*A - 3*B) 3\"\nand h2 : \"C = 1\"\nand h3 : \"B = 2*A - 3\"\nand h4 : \"(2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3)) = (A + B * sqrt 3) / C\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"C = gcd (2*A - 3*B) 3\"\nand h2 : \"C = 1\"\nand h3 : \"B = 2*A - 3\"\nand h4 : \"(2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3)) = (A + B * sqrt 3) / C\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A$, $B$, and $C$ are positive integers such that $C$ is the greatest common divisor of $2A-3B$ and $3$, $C=1$, $B=2A-3$, and $(2/(1+2\\sqrt{3}))+(3/(2-\\sqrt{3}))=(A+B\\sqrt{3})/C$, what is the value of $A+B+C$? The final answer is $112$.",
+        "syntax": 1,
+        "semantic_score": 0.9865130426346073,
+        "symbolic_score": 0.1
+    },
+    "a_8_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"C = gcd (2 * 2 - 3) (2 * 2 + 3)\"\nand h2 : \"B = (2 * 2 - 3) div C\"\nand h3 : \"a = 2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3)\"\nand h4 : \"a = (A + B * sqrt 3) / C\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"C = gcd (2 * 2 - 3) (2 * 2 + 3)\"\nand h2 : \"B = (2 * 2 - 3) div C\"\nand h3 : \"a = 2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3)\"\nand h4 : \"a = (A + B * sqrt 3) / C\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a=\\frac{2}{1+2\\sqrt{3}}+\\frac{3}{2-\\sqrt{3}}$, $A>0$, $C$ is the greatest common divisor of $2\\cdot 2-3$ and $2\\cdot 2+3$, and $B$ is the quotient when $2\\cdot 2-3$ is divided by $C$. If $a=\\frac{A+B\\sqrt{3}}{C}$, find $A+B+C$. The final answer is $112$.",
+        "syntax": 1,
+        "semantic_score": 0.9731807795445515,
+        "symbolic_score": 0.2
+    },
+    "a_9_gpt3.5": {
+        "formal problem": "theorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"C > 0\"\nand h2 : \"gcd A (gcd B C) = 1\"\nand h3 : \"real_of_rat (2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3)) = real_of_nat A + real_of_nat B * sqrt 3 / real_of_nat C\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: nat\nassumes h0 : \"A > 0\"\nand h1 : \"C > 0\"\nand h2 : \"gcd A (gcd B C) = 1\"\nand h3 : \"real_of_rat (2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3)) = real_of_nat A + real_of_nat B * sqrt 3 / real_of_nat C\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given positive integers $A$, $B$, and $C$, where $A$ and $C$ are coprime and $C$ is positive, find $A+B+C$ if $2/(1+2\\sqrt{3}) + 3/(2-\\sqrt{3}) = A+\\frac{B\\sqrt{3}}{C}$. The final answer is $112$.",
+        "syntax": 0,
+        "semantic_score": 0.8674705655783981,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek": {
+        "0": [
+            5,
+            7
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            4
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "prediction_gpt3.5": {
+        "0": [
+            8,
+            4
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            3
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            9
+        ]
+    },
+    "prediction_solve_direct": {
+        "0": [
+            2,
+            4
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            5
+        ],
+        "5": [
+            6
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "a_0_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = gcd A B\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = gcd A B\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $A > 0$, $A + B\\sqrt{3} = \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}$, and $C = \\text{gcd}(A, B)$. Find the sum $A + B + C$. The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9064456782213162,
+        "symbolic_score": 0.1
+    },
+    "a_1_solve_direct": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a + b * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"gcd a c = 1\"\nand h2 : \"a > 0\"\nshows  \"a + b + c = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a + b * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"gcd a c = 1\"\nand h2 : \"a > 0\"\nshows  \"a + b + c = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the values of $a$, $b$, and $c$ such that $a + b\\sqrt{3} = \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}$, the greatest common divisor of $a$ and $c$ is 1, and $a > 0$. What is the sum of $a$, $b$, and $c$? The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9134156907593666,
+        "symbolic_score": 0.1
+    },
+    "a_2_solve_direct": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"gcd A C = 1\"\nand h5 : \"A > 0\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"gcd A C = 1\"\nand h5 : \"A > 0\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a = \\frac{2}{1 + 2\\sqrt{3}}$ and $b = \\frac{3}{2 - \\sqrt{3}}$, find the value of $c = a + b$. Express $c$ in the form $\\frac{A + B\\sqrt{3}}{C}$, where $A$, $B$, and $C$ are integers, $\\text{gcd}(A, C) = 1$, and $A > 0$. What is the sum $A + B + C$? The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9016925399658212,
+        "symbolic_score": 0.2
+    },
+    "a_3_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"gcd A C = 1\"\nand h2 : \"2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3) = (A + B * sqrt 3) / C\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"gcd A C = 1\"\nand h2 : \"2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3) = (A + B * sqrt 3) / C\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "If $A > 0$, $gcd(A, C) = 1$, and $\\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} = \\frac{A + B\\sqrt{3}}{C}$, find the sum of $A$, $B$, and $C$. The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 0,
+        "semantic_score": 0.9042313960406203,
+        "symbolic_score": 0.1
+    },
+    "a_4_solve_direct": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"gcd A C = 1\"\nand h5 : \"A > 0\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"gcd A C = 1\"\nand h5 : \"A > 0\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a = \\frac{2}{1 + 2\\sqrt{3}}$, $b = \\frac{3}{2 - \\sqrt{3}}$, and $c = a + b$, express $c$ in the form $\\frac{A + B\\sqrt{3}}{C}$, where $A$, $B$, and $C$ are integers with no common factors other than 1, and $A > 0$. What is $A + B + C$? The final answer is 112.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9181066456964609,
+        "symbolic_score": 0.2
+    },
+    "a_5_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: real\nassumes h0 : \"2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3) = (A + B * sqrt 3) / C\"\nand h1 : \"A > 0\"\nand h2 : \"gcd (int_of_real A) (int_of_real C) = 1\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: real\nassumes h0 : \"2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3) = (A + B * sqrt 3) / C\"\nand h1 : \"A > 0\"\nand h2 : \"gcd (int_of_real A) (int_of_real C) = 1\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the values of $A$, $B$, and $C$ such that $\\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} = \\frac{A + B\\sqrt{3}}{C}$, where $A > 0$ and the greatest common divisor of the integers $A$ and $C$ is 1. What is the sum of $A$, $B$, and $C$? The final answer is 112.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9284350695287135,
+        "symbolic_score": 0.1
+    },
+    "a_6_solve_direct": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"a + b = (A + B * sqrt 3) / C\"\nand h3 : \"A > 0\"\nand h4 : \"gcd A C = 1\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"a + b = (A + B * sqrt 3) / C\"\nand h3 : \"A > 0\"\nand h4 : \"gcd A C = 1\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a = \\frac{2}{1 + 2\\sqrt{3}}$ and $b = \\frac{3}{2 - \\sqrt{3}}$, if $a + b = \\frac{A + B\\sqrt{3}}{C}$, where $A > 0$ and the greatest common divisor of $A$ and $C$ is 1, find the sum of $A$, $B$, and $C$. The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.907995134454025,
+        "symbolic_score": 0.1
+    },
+    "a_7_solve_direct": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"A > 0\"\nand h5 : \"gcd A C = 1\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"A > 0\"\nand h5 : \"gcd A C = 1\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Find the sum of the numerators $A$, $B$, and $C$ of the fractions $a$, $b$, and $c$, where $a = \\frac{2}{1 + 2\\sqrt{3}}$, $b = \\frac{3}{2 - \\sqrt{3}}$, and $c = a + b$. Express $c$ as a fraction $\\frac{A + B\\sqrt{3}}{C}$, where $A > 0$ and the greatest common divisor of $A$ and $C$ is 1. The final answer is $A + B + C = 112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8823504814023213,
+        "symbolic_score": 0.1
+    },
+    "a_8_solve_direct": {
+        "formal problem": "theorem\nfixes x y :: real\nassumes h0 : \"x = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"y = 3 / (2 - sqrt 3)\"\nand h2 : \"x + y = (A + B * sqrt 3) / C\"\nand h3 : \"A > 0\"\nand h4 : \"gcd A C = 1\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes x y :: real\nassumes h0 : \"x = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"y = 3 / (2 - sqrt 3)\"\nand h2 : \"x + y = (A + B * sqrt 3) / C\"\nand h3 : \"A > 0\"\nand h4 : \"gcd A C = 1\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $x = \\frac{2}{1 + 2\\sqrt{3}}$ and $y = \\frac{3}{2 - \\sqrt{3}}$, find the values of $A$, $B$, and $C$ such that $x + y = \\frac{A + B\\sqrt{3}}{C}$, where $A > 0$ and the greatest common divisor of $A$ and $C$ is $1$. What is the sum of $A$, $B$, and $C$? The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.902370406215818,
+        "symbolic_score": 0.1
+    },
+    "a_9_solve_direct": {
+        "formal problem": "theorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"A > 0\"\nshows  \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is 112\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n \\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n & = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes a b c :: real\nassumes h0 : \"a = 2 / (1 + 2 * sqrt 3)\"\nand h1 : \"b = 3 / (2 - sqrt 3)\"\nand h2 : \"c = a + b\"\nand h3 : \"c = (A + B * sqrt 3) / C\"\nand h4 : \"A > 0\"\nshows  \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Given that $a = \\frac{2}{1 + 2\\sqrt{3}}$, $b = \\frac{3}{2 - \\sqrt{3}}$, and $c = a + b$, express $c$ in the form $\\frac{A + B\\sqrt{3}}{C}$, where $A > 0$. Find the sum of $A, B$, and $C$. The final answer is $112$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9233553762951806,
+        "symbolic_score": 0.1
+    },
+    "a_0_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = (A + B * sqrt 3) / C\"\nand h3 : \"A + B + C = 112\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = (A + B * sqrt 3) / C\"\nand h3 : \"A + B + C = 112\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider three real numbers A, B, and C. Given that A is greater than 0, and the equation A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3))) holds true, where sqrt(3) represents the square root of 3. Additionally, C is defined as (A + B * sqrt(3)) / C. The problem asks to prove that the sum of A, B, and C equals 112.",
+        "syntax": 1,
+        "semantic_score": 0.8036428776301995,
+        "symbolic_score": 0.1
+    },
+    "a_1_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3)))\"\nand h2 : \"C = gcd A (B * sqrt(3))\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3)))\"\nand h2 : \"C = gcd A (B * sqrt(3))\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider three integers A, B, and C. Given that A is greater than 0, and the equation A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3))) holds true, where sqrt(3) represents the square root of 3. Additionally, C is defined as the greatest common divisor of A and B * sqrt(3). The task is to find the values of A, B, and C such that A + B + C equals 112.",
+        "syntax": 0,
+        "semantic_score": 0.7964072977542525,
+        "symbolic_score": 0.1
+    },
+    "a_2_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = C\"\nand h3 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h4 : \"A + B * sqrt 3 / C = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h5 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h6 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h7 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h8 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h9 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h10 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h11 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h12 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h13 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h14 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h15 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h16 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h17 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h18 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h19 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h20 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h21 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h22 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h23 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h24 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h25 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h26 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h27 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\n theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = C\"\nand h3 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h4 : \"A + B * sqrt 3 / C = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h5 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h6 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h7 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h8 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h9 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h10 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h11 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h12 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h13 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h14 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h15 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h16 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h17 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h18 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h19 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h20 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h21 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h22 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h23 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h24 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h25 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h26 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\"\nand h27 : \"A + B * sqrt 3 / C = (A + B * sqrt 3) / C\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that A is a positive real number, and the equation A + B * sqrt(3) equals the sum of 2 / (1 + 2 * sqrt(3)) and 3 / (2 - sqrt(3)), find the value of A and B such that the expression (A + B * sqrt(3)) / C equals the sum of 2 / (1 + 2 * sqrt(3)) and 3 / (2 - sqrt(3)), where C is a constant.",
+        "syntax": 0,
+        "semantic_score": 0.8188480884338017,
+        "symbolic_score": 0.1
+    },
+    "a_3_deepseek_solve_direct": {
+        "formal problem": " theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = 2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3)\"\nand h2 : \"C = C\"\nand h3 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h4 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h5 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h6 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h7 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h8 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h9 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h10 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h11 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h12 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h13 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h14 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h15 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h16 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h17 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h18 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h19 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h20 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h21 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h22 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h23 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h24 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h25 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h26 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h27 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h28 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h29 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h30 : \"A +",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\n theorem\nfixes A B C :: real\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = 2 / (1 + 2 * sqrt 3) + 3 / (2 - sqrt 3)\"\nand h2 : \"C = C\"\nand h3 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h4 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h5 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h6 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h7 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h8 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h9 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h10 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h11 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h12 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h13 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h14 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h15 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h16 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h17 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h18 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h19 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h20 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h21 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h22 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h23 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h24 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h25 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h26 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h27 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h28 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h29 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nand h30 : \"A +\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that A is a positive real number, and the equation A + B * sqrt(3) equals the sum of 2 / (1 + 2 * sqrt(3)) and 3 / (2 - sqrt(3)), find the value of C such that A + B * sqrt(3) equals (A + B * sqrt(3)) / C.",
+        "syntax": 0,
+        "semantic_score": 0.8408537795074318,
+        "symbolic_score": 0.1
+    },
+    "a_4_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"A > 0\"\nand h2 : \"C = gcd A (B * sqrt 3)\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"A > 0\"\nand h2 : \"C = gcd A (B * sqrt 3)\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider three integers A, B, and C. Given that A + B * sqrt(3) equals the sum of 2 / (1 + 2 * sqrt(3)) and 3 / (2 - sqrt(3)), and A is greater than 0, and C is the greatest common divisor of A and B * sqrt(3), find the value of A + B + C. The answer is 112.",
+        "syntax": 0,
+        "semantic_score": 0.8561295558573748,
+        "symbolic_score": 0.1
+    },
+    "a_5_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"A > 0\"\nand h2 : \"C = gcd A (C * B)\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"A > 0\"\nand h2 : \"C = gcd A (C * B)\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider three integers A, B, and C. Given that A plus B times the square root of 3 equals the sum of 2 divided by (1 plus 2 times the square root of 3) and 3 divided by (2 minus the square root of 3), and A is greater than 0. Additionally, C is equal to the greatest common divisor of A and C times B. Prove that the sum of A, B, and C equals 112.",
+        "syntax": 1,
+        "semantic_score": 0.8129352688104339,
+        "symbolic_score": 0.1
+    },
+    "a_6_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"A > 0\"\nand h2 : \"C = C\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h1 : \"A > 0\"\nand h2 : \"C = C\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given that A, B, and C are integers, and the equation A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3))) holds true, with A being greater than 0, and C being equal to itself, find the value of A + B + C. The final answer is 112.",
+        "syntax": 1,
+        "semantic_score": 0.8716276219516572,
+        "symbolic_score": 0.1
+    },
+    "a_7_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = gcd A (C * B)\"\nand h3 : \"C = gcd A C\"\nand h4 : \"C = gcd B C\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = gcd A (C * B)\"\nand h3 : \"C = gcd A C\"\nand h4 : \"C = gcd B C\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given positive integer A, find the values of A, B, and C such that the following conditions are satisfied:\n\n1. A is a positive integer.\n2. The equation A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3))) holds true.\n3. C is the greatest common divisor (gcd) of A and C * B.\n4. C is the gcd of A and C.\n5. C is the gcd of B and C.\n\nThe goal is to find the values of A, B, and C that satisfy these conditions, and then calculate the sum A + B + C, which should equal 112.",
+        "syntax": 1,
+        "semantic_score": 0.8027610870601655,
+        "symbolic_score": 0.1
+    },
+    "a_8_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = CARDINALITY {d. d dvd A + B * sqrt 3}\"\nand h3 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = CARDINALITY {d. d dvd A + B * sqrt 3}\"\nand h3 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Given a positive integer A, find the values of A, B, and C such that the following conditions are satisfied:\n\n1. A + B * sqrt(3) equals the sum of 2 / (1 + 2 * sqrt(3)) and 3 / (2 - sqrt(3)).\n2. C is the number of distinct divisors of A + B * sqrt(3).\n3. A + B * sqrt(3) equals (A + B * sqrt(3)) divided by C.\n\nThe goal is to find the values of A, B, and C that satisfy these conditions, and then calculate the sum A + B + C, which should equal 112.",
+        "syntax": 1,
+        "semantic_score": 0.8166231151372568,
+        "symbolic_score": 0.1
+    },
+    "a_9_deepseek_solve_direct": {
+        "formal problem": "theorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = gcd A (B * sqrt 3)\"\nand h3 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nshows \"A + B + C = 112\"",
+        "formal solution": "(* ### Problem\n Find $\\displaystyle{ \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}}}$, and write your answer in the form $\\displaystyle \\frac{A + B\\sqrt{3}}{C}$, with the fraction in lowest terms and $A > 0$. What is $A+B+C$? The final Answer is $112$\n ### Proof\n First we add the two fractions: \\begin{align} \\frac{2}{1 + 2\\sqrt{3}} + \\frac{3}{2 - \\sqrt{3}} & = \\frac{2(2-\\sqrt{3}) + 3(1 + 2\\sqrt{3})}{(1+ 2\\sqrt{3})(2 - \\sqrt{3})} \\\\ & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4}\n\\end{align}Now we rationalize the denominator to get the result in the desired form: \\begin{align} \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} & = \\frac{4\\sqrt{3} + 7}{3\\sqrt{3}-4} \\cdot \\frac{3\\sqrt{3}+4}{3\\sqrt{3}+4} \\\\\n& = \\frac{(4\\sqrt{3} + 7)(3\\sqrt{3}+4)}{3^2(3) - 4^2} \\\\ & = \\frac{64 + 37\\sqrt{3}}{11}. \\end{align}This gives $A = 64$, $B = 37$, and $C = 11$, so $A+B+C = \\boxed{112}$.\n *)\n\ntheorem\nfixes A B C :: int\nassumes h0 : \"A > 0\"\nand h1 : \"A + B * sqrt 3 = (2 / (1 + 2 * sqrt 3)) + (3 / (2 - sqrt 3))\"\nand h2 : \"C = gcd A (B * sqrt 3)\"\nand h3 : \"A + B * sqrt 3 = (A + B * sqrt 3) / C\"\nshows \"A + B + C = 112\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": " Consider three integers A, B, and C, where A is positive. We have the equation A + B * sqrt(3) = (2 / (1 + 2 * sqrt(3))) + (3 / (2 - sqrt(3))). Let C be the greatest common divisor of A and B * sqrt(3). The equation A + B * sqrt(3) = (A + B * sqrt(3)) / C holds true. Find the value of A + B + C, which is equal to 112.",
+        "syntax": 0,
+        "semantic_score": 0.8340041979667069,
+        "symbolic_score": 0.1
+    },
+    "prediction_deepseek_solve_direct": {
+        "0": [
+            0
+        ],
+        "1": [
+            1
+        ],
+        "2": [
+            2
+        ],
+        "3": [
+            3
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            6
+        ],
+        "7": [
+            7
+        ],
+        "8": [
+            8
+        ],
+        "9": [
+            9
+        ]
+    },
+    "equivalence_oracle_deepseek_solve_direct": [],
+    "equivalence_oracle_solve_direct": []
+}

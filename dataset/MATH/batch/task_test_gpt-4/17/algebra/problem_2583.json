@@ -1,0 +1,143 @@
+{
+    "a_0": {
+        "formal problem": "theorem\nfixes well_hours ted_hours vino_hours :: real\nand well_cost ted_cost vino_cost :: real\nand free_hours extra_cost :: real\nassumes h0 : \"well_hours + ted_hours = 105\"\nand h1 : \"well_hours = free_hours\"\nand h2 : \"ted_hours = free_hours\"\nand h3 : \"well_cost + ted_cost = 10\"\nand h4 : \"vino_hours = 105\"\nand h5 : \"vino_cost = 26\"\nand h6 : \"well_cost = extra_cost * (well_hours - free_hours)\"\nand h7 : \"ted_cost = extra_cost * (ted_hours - free_hours)\"\nand h8 : \"vino_cost = extra_cost * (vino_hours - free_hours)\"\nshows  \"extra_cost = 0.4\"",
+        "formal solution": "(* ### Problem\n An Internet service provider allows a certain number of free hours each month and then charges for each additional hour used. Wells, Ted, and Vino each have separate accounts. This month the total hours used by Wells and Ted was 105, and each used all of their free hours. Their total cost was $\\$10$. Vino used 105 hours by himself and had to pay $\\$26$. What is the number of cents charged for each extra hour? The final Answer is 40\n ### Proof\n Let $f$ be the number of free hours per month, and let $c$ be the cost for each extra hour, in dollars. Wells and Ted together have $2f$ free hours, so they used $105-2f$ extra hours. Since the cost for each extra hour is $c$ dollars, we are given $c(105-2f)=10$.\n Similarly, Vino's bill implies $c(105-f)=26$.\n Subtracting the first equation from the second equation, we find $fc=16$. Rewrite the second equation as $105c-fc=26$, substitute 16 for $fc$, and solve to get $c=2/5$. Two-fifths of a dollar is $\\boxed{40}$ cents.\n *)\n\ntheorem\nfixes well_hours ted_hours vino_hours :: real\nand well_cost ted_cost vino_cost :: real\nand free_hours extra_cost :: real\nassumes h0 : \"well_hours + ted_hours = 105\"\nand h1 : \"well_hours = free_hours\"\nand h2 : \"ted_hours = free_hours\"\nand h3 : \"well_cost + ted_cost = 10\"\nand h4 : \"vino_hours = 105\"\nand h5 : \"vino_cost = 26\"\nand h6 : \"well_cost = extra_cost * (well_hours - free_hours)\"\nand h7 : \"ted_cost = extra_cost * (ted_hours - free_hours)\"\nand h8 : \"vino_cost = extra_cost * (vino_hours - free_hours)\"\nshows  \"extra_cost = 0.4\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Well and Ted rent bicycles for a total of 105 hours. They both receive the same number of free hours and pay an extra cost per hour for any time beyond the free hours. The combined cost of Well's and Ted's bike rentals is $10. Meanwhile, Vino rents a bicycle for 105 hours and pays a total of $26. If the extra cost per hour and the number of free hours are the same for all three of them, what is the extra cost per hour for renting a bicycle? The final answer is $0.4$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.5953733921051025,
+        "symbolic_score": 0.1
+    },
+    "a_1": {
+        "formal problem": "theorem\nfixes wells_hours ted_hours vino_hours :: real\nand wells_cost ted_cost vino_cost free_hours :: real\nand rate :: real\nassumes h0 : \"wells_hours + ted_hours = 105\"\nand h1 : \"wells_hours = free_hours\"\nand h2 : \"ted_hours = free_hours\"\nand h3 : \"wells_cost + ted_cost = 10\"\nand h4 : \"vino_hours = 105\"\nand h5 : \"vino_cost = 26\"\nand h6 : \"vino_hours - free_hours = vino_cost / rate\"\nand h7 : \"wells_hours - free_hours + ted_hours - free_hours = (wells_cost + ted_cost) / rate\"\nshows  \"rate = 40\"",
+        "formal solution": "(* ### Problem\n An Internet service provider allows a certain number of free hours each month and then charges for each additional hour used. Wells, Ted, and Vino each have separate accounts. This month the total hours used by Wells and Ted was 105, and each used all of their free hours. Their total cost was $\\$10$. Vino used 105 hours by himself and had to pay $\\$26$. What is the number of cents charged for each extra hour? The final Answer is 40\n ### Proof\n Let $f$ be the number of free hours per month, and let $c$ be the cost for each extra hour, in dollars. Wells and Ted together have $2f$ free hours, so they used $105-2f$ extra hours. Since the cost for each extra hour is $c$ dollars, we are given $c(105-2f)=10$.\n Similarly, Vino's bill implies $c(105-f)=26$.\n Subtracting the first equation from the second equation, we find $fc=16$. Rewrite the second equation as $105c-fc=26$, substitute 16 for $fc$, and solve to get $c=2/5$. Two-fifths of a dollar is $\\boxed{40}$ cents.\n *)\n\ntheorem\nfixes wells_hours ted_hours vino_hours :: real\nand wells_cost ted_cost vino_cost free_hours :: real\nand rate :: real\nassumes h0 : \"wells_hours + ted_hours = 105\"\nand h1 : \"wells_hours = free_hours\"\nand h2 : \"ted_hours = free_hours\"\nand h3 : \"wells_cost + ted_cost = 10\"\nand h4 : \"vino_hours = 105\"\nand h5 : \"vino_cost = 26\"\nand h6 : \"vino_hours - free_hours = vino_cost / rate\"\nand h7 : \"wells_hours - free_hours + ted_hours - free_hours = (wells_cost + ted_cost) / rate\"\nshows  \"rate = 40\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Wells and Ted spent a total of 105 hours on a task. They each had some free hours, and the number of free hours for Wells was the same as the number of free hours for Ted. They were charged a combined total of $10 for the non-free hours they spent working on the task. Vino also spent 105 hours on the same task and was charged $26. The relationship between Vino's hours, free hours, and the rate is given by $vino\\_hours - free\\_hours = \\frac{vino\\_cost}{rate}$. Similarly, the relationship between Wells' and Ted's hours, free hours, and the rate is given by $(wells\\_hours - free\\_hours) + (ted\\_hours - free\\_hours) = \\frac{(wells\\_cost + ted\\_cost)}{rate}$. Find the rate. The final answer is 40.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8634761571884155,
+        "symbolic_score": 0.1
+    },
+    "a_2": {
+        "formal problem": "theorem\nfixes wells ted vino :: real\nassumes h0 : \"wells + ted = 105\"\nand h1 : \"10 = cost_function wells + cost_function ted\"\nand h2 : \"26 = cost_function vino\"\nand h3 : \"vino = 105\"\nand h4 : \"\\<forall> x. cost_function x = free_hours * x + extra_hour_cost * (x - free_hours)\"\nshows  \"extra_hour_cost = 40\"",
+        "formal solution": "(* ### Problem\n An Internet service provider allows a certain number of free hours each month and then charges for each additional hour used. Wells, Ted, and Vino each have separate accounts. This month the total hours used by Wells and Ted was 105, and each used all of their free hours. Their total cost was $\\$10$. Vino used 105 hours by himself and had to pay $\\$26$. What is the number of cents charged for each extra hour? The final Answer is 40\n ### Proof\n Let $f$ be the number of free hours per month, and let $c$ be the cost for each extra hour, in dollars. Wells and Ted together have $2f$ free hours, so they used $105-2f$ extra hours. Since the cost for each extra hour is $c$ dollars, we are given $c(105-2f)=10$.\n Similarly, Vino's bill implies $c(105-f)=26$.\n Subtracting the first equation from the second equation, we find $fc=16$. Rewrite the second equation as $105c-fc=26$, substitute 16 for $fc$, and solve to get $c=2/5$. Two-fifths of a dollar is $\\boxed{40}$ cents.\n *)\n\ntheorem\nfixes wells ted vino :: real\nassumes h0 : \"wells + ted = 105\"\nand h1 : \"10 = cost_function wells + cost_function ted\"\nand h2 : \"26 = cost_function vino\"\nand h3 : \"vino = 105\"\nand h4 : \"\\<forall> x. cost_function x = free_hours * x + extra_hour_cost * (x - free_hours)\"\nshows  \"extra_hour_cost = 40\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Wells and Ted worked a total of 105 hours together. The cost of their work is calculated using a cost function, which charges a certain amount for the first few free hours and a different amount for any additional hours beyond the free hours. The total cost for Wells and Ted is $10. Vino also worked 105 hours, and the total cost for Vino is $26. Find the cost per hour for the additional hours beyond the free hours. The final answer is $40.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9792468547821045,
+        "symbolic_score": 0.1
+    },
+    "a_3": {
+        "formal problem": "theorem\nfixes wells_hours ted_hours vino_hours :: real\nand free_hours charge_extra_hour :: real\nand wells_cost ted_cost vino_cost :: real\nassumes h0 : \"wells_hours + ted_hours = 105\"\nand h1 : \"wells_hours \\<le> free_hours\"\nand h2 : \"ted_hours \\<le> free_hours\"\nand h3 : \"wells_cost + ted_cost = 10\"\nand h4 : \"vino_hours = 105\"\nand h5 : \"vino_cost = 26\"\nand h6 : \"wells_cost = (wells_hours - free_hours) * charge_extra_hour\"\nand h7 : \"ted_cost = (ted_hours - free_hours) * charge_extra_hour\"\nand h8 : \"vino_cost = (vino_hours - free_hours) * charge_extra_hour\"\nshows  \"charge_extra_hour = 40 / 100\"",
+        "formal solution": "(* ### Problem\n An Internet service provider allows a certain number of free hours each month and then charges for each additional hour used. Wells, Ted, and Vino each have separate accounts. This month the total hours used by Wells and Ted was 105, and each used all of their free hours. Their total cost was $\\$10$. Vino used 105 hours by himself and had to pay $\\$26$. What is the number of cents charged for each extra hour? The final Answer is 40\n ### Proof\n Let $f$ be the number of free hours per month, and let $c$ be the cost for each extra hour, in dollars. Wells and Ted together have $2f$ free hours, so they used $105-2f$ extra hours. Since the cost for each extra hour is $c$ dollars, we are given $c(105-2f)=10$.\n Similarly, Vino's bill implies $c(105-f)=26$.\n Subtracting the first equation from the second equation, we find $fc=16$. Rewrite the second equation as $105c-fc=26$, substitute 16 for $fc$, and solve to get $c=2/5$. Two-fifths of a dollar is $\\boxed{40}$ cents.\n *)\n\ntheorem\nfixes wells_hours ted_hours vino_hours :: real\nand free_hours charge_extra_hour :: real\nand wells_cost ted_cost vino_cost :: real\nassumes h0 : \"wells_hours + ted_hours = 105\"\nand h1 : \"wells_hours \\<le> free_hours\"\nand h2 : \"ted_hours \\<le> free_hours\"\nand h3 : \"wells_cost + ted_cost = 10\"\nand h4 : \"vino_hours = 105\"\nand h5 : \"vino_cost = 26\"\nand h6 : \"wells_cost = (wells_hours - free_hours) * charge_extra_hour\"\nand h7 : \"ted_cost = (ted_hours - free_hours) * charge_extra_hour\"\nand h8 : \"vino_cost = (vino_hours - free_hours) * charge_extra_hour\"\nshows  \"charge_extra_hour = 40 / 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Three friends, Wells, Ted, and Vino, used a shared facility for a total of 105 hours. Wells and Ted paid $10 combined, and each of them used the facility for less than or equal to the number of free hours. Vino used the facility for the entire 105 hours and paid $26.\n\nLet the cost per extra hour (beyond the free hours) be the same for all three friends. Find the cost per extra hour in dollars. The final answer is $0.40 per extra hour.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9877374768257141,
+        "symbolic_score": 0.2
+    },
+    "a_4": {
+        "formal problem": "theorem\nfixes w t v :: real\nassumes h0 : \"w + t = 105\"\nand h1 : \"10 = (\\<lambda>x. x/100) (w + t)\"\nand h2 : \"26 = (\\<lambda>x. x/100) v\"\nand h3 : \"v = 105\"\nshows  \"1 = (\\<lambda>x. x/100) 40\"",
+        "formal solution": "(* ### Problem\n An Internet service provider allows a certain number of free hours each month and then charges for each additional hour used. Wells, Ted, and Vino each have separate accounts. This month the total hours used by Wells and Ted was 105, and each used all of their free hours. Their total cost was $\\$10$. Vino used 105 hours by himself and had to pay $\\$26$. What is the number of cents charged for each extra hour? The final Answer is 40\n ### Proof\n Let $f$ be the number of free hours per month, and let $c$ be the cost for each extra hour, in dollars. Wells and Ted together have $2f$ free hours, so they used $105-2f$ extra hours. Since the cost for each extra hour is $c$ dollars, we are given $c(105-2f)=10$.\n Similarly, Vino's bill implies $c(105-f)=26$.\n Subtracting the first equation from the second equation, we find $fc=16$. Rewrite the second equation as $105c-fc=26$, substitute 16 for $fc$, and solve to get $c=2/5$. Two-fifths of a dollar is $\\boxed{40}$ cents.\n *)\n\ntheorem\nfixes w t v :: real\nassumes h0 : \"w + t = 105\"\nand h1 : \"10 = (\\<lambda>x. x/100) (w + t)\"\nand h2 : \"26 = (\\<lambda>x. x/100) v\"\nand h3 : \"v = 105\"\nshows  \"1 = (\\<lambda>x. x/100) 40\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "A group of people consists of walkers and travelers. There are 105 people in total. 10% of the people are walkers and 26% are travelers. If the total number of people is 105, find the percentage of the remaining group. The final answer is 1%.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.7942017912864685,
+        "symbolic_score": 0.1
+    },
+    "a_5": {
+        "formal problem": "theorem\nfixes wells ted vino :: real\nand free_hours :: real\nand wells_cost ted_cost vino_cost :: real\nand cost_per_hour :: real\nassumes h0 : \"wells + ted = 105\"\nand h1 : \"wells = free_hours\"\nand h2 : \"ted = free_hours\"\nand h3 : \"wells_cost + ted_cost = 10\"\nand h4 : \"vino = 105\"\nand h5 : \"vino_cost = 26\"\nand h6 : \"wells_cost = (wells - free_hours) * cost_per_hour\"\nand h7 : \"ted_cost = (ted - free_hours) * cost_per_hour\"\nand h8 : \"vino_cost = (vino - free_hours) * cost_per_hour\"\nshows  \"cost_per_hour = 40 / 100\"",
+        "formal solution": "(* ### Problem\n An Internet service provider allows a certain number of free hours each month and then charges for each additional hour used. Wells, Ted, and Vino each have separate accounts. This month the total hours used by Wells and Ted was 105, and each used all of their free hours. Their total cost was $\\$10$. Vino used 105 hours by himself and had to pay $\\$26$. What is the number of cents charged for each extra hour? The final Answer is 40\n ### Proof\n Let $f$ be the number of free hours per month, and let $c$ be the cost for each extra hour, in dollars. Wells and Ted together have $2f$ free hours, so they used $105-2f$ extra hours. Since the cost for each extra hour is $c$ dollars, we are given $c(105-2f)=10$.\n Similarly, Vino's bill implies $c(105-f)=26$.\n Subtracting the first equation from the second equation, we find $fc=16$. Rewrite the second equation as $105c-fc=26$, substitute 16 for $fc$, and solve to get $c=2/5$. Two-fifths of a dollar is $\\boxed{40}$ cents.\n *)\n\ntheorem\nfixes wells ted vino :: real\nand free_hours :: real\nand wells_cost ted_cost vino_cost :: real\nand cost_per_hour :: real\nassumes h0 : \"wells + ted = 105\"\nand h1 : \"wells = free_hours\"\nand h2 : \"ted = free_hours\"\nand h3 : \"wells_cost + ted_cost = 10\"\nand h4 : \"vino = 105\"\nand h5 : \"vino_cost = 26\"\nand h6 : \"wells_cost = (wells - free_hours) * cost_per_hour\"\nand h7 : \"ted_cost = (ted - free_hours) * cost_per_hour\"\nand h8 : \"vino_cost = (vino - free_hours) * cost_per_hour\"\nshows  \"cost_per_hour = 40 / 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Wells and Ted together worked for a total of 105 hours on a project. Both of them had a certain number of free hours. The cost for Wells and Ted together is $10. Vino worked for 105 hours as well, and his cost is $26. If the cost per hour is the same for all three, calculate the cost per hour after accounting for the free hours for each worker. The final answer is $0.40 per hour.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9857263565063477,
+        "symbolic_score": 0.1
+    },
+    "a_6": {
+        "formal problem": "theorem\nfixes wells_hours ted_hours vino_hours :: real\nand total_cost_wells_ted total_cost_vino extra_cost_per_hour :: real\nassumes h0 : \"wells_hours + ted_hours = 105\"\nand h1 : \"total_cost_wells_ted = 10\"\nand h2 : \"vino_hours = 105\"\nand h3 : \"total_cost_vino = 26\"\nand h4 : \"total_cost_wells_ted + extra_cost_per_hour * (vino_hours - wells_hours - ted_hours) = total_cost_vino\"\nshows  \"extra_cost_per_hour = 40 / 100\"",
+        "formal solution": "(* ### Problem\n An Internet service provider allows a certain number of free hours each month and then charges for each additional hour used. Wells, Ted, and Vino each have separate accounts. This month the total hours used by Wells and Ted was 105, and each used all of their free hours. Their total cost was $\\$10$. Vino used 105 hours by himself and had to pay $\\$26$. What is the number of cents charged for each extra hour? The final Answer is 40\n ### Proof\n Let $f$ be the number of free hours per month, and let $c$ be the cost for each extra hour, in dollars. Wells and Ted together have $2f$ free hours, so they used $105-2f$ extra hours. Since the cost for each extra hour is $c$ dollars, we are given $c(105-2f)=10$.\n Similarly, Vino's bill implies $c(105-f)=26$.\n Subtracting the first equation from the second equation, we find $fc=16$. Rewrite the second equation as $105c-fc=26$, substitute 16 for $fc$, and solve to get $c=2/5$. Two-fifths of a dollar is $\\boxed{40}$ cents.\n *)\n\ntheorem\nfixes wells_hours ted_hours vino_hours :: real\nand total_cost_wells_ted total_cost_vino extra_cost_per_hour :: real\nassumes h0 : \"wells_hours + ted_hours = 105\"\nand h1 : \"total_cost_wells_ted = 10\"\nand h2 : \"vino_hours = 105\"\nand h3 : \"total_cost_vino = 26\"\nand h4 : \"total_cost_wells_ted + extra_cost_per_hour * (vino_hours - wells_hours - ted_hours) = total_cost_vino\"\nshows  \"extra_cost_per_hour = 40 / 100\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Wells and Ted worked a total of 105 hours together, and their combined payment is $10. Vino worked 105 hours alone and was paid $26. If Wells and Ted received an extra payment per hour for the hours Vino worked alone, find the extra cost per hour. The final answer is $0.40$.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.8309946656227112,
+        "symbolic_score": 0.2
+    },
+    "a_7": {
+        "formal problem": "theorem\nfixes wells_hours ted_hours vino_hours free_hours :: real\nand rate_wells_ted rate_vino :: real\nassumes h0 : \"wells_hours + ted_hours = 105\"\nand h1 : \"wells_hours = free_hours\"\nand h2 : \"ted_hours = free_hours\"\nand h3 : \"rate_wells_ted * (wells_hours + ted_hours - 2 * free_hours) = 1000\"\nand h4 : \"vino_hours = 105\"\nand h5 : \"rate_vino * (vino_hours - free_hours) = 2600\"\nshows  \"rate_vino = 40\"",
+        "formal solution": "(* ### Problem\n An Internet service provider allows a certain number of free hours each month and then charges for each additional hour used. Wells, Ted, and Vino each have separate accounts. This month the total hours used by Wells and Ted was 105, and each used all of their free hours. Their total cost was $\\$10$. Vino used 105 hours by himself and had to pay $\\$26$. What is the number of cents charged for each extra hour? The final Answer is 40\n ### Proof\n Let $f$ be the number of free hours per month, and let $c$ be the cost for each extra hour, in dollars. Wells and Ted together have $2f$ free hours, so they used $105-2f$ extra hours. Since the cost for each extra hour is $c$ dollars, we are given $c(105-2f)=10$.\n Similarly, Vino's bill implies $c(105-f)=26$.\n Subtracting the first equation from the second equation, we find $fc=16$. Rewrite the second equation as $105c-fc=26$, substitute 16 for $fc$, and solve to get $c=2/5$. Two-fifths of a dollar is $\\boxed{40}$ cents.\n *)\n\ntheorem\nfixes wells_hours ted_hours vino_hours free_hours :: real\nand rate_wells_ted rate_vino :: real\nassumes h0 : \"wells_hours + ted_hours = 105\"\nand h1 : \"wells_hours = free_hours\"\nand h2 : \"ted_hours = free_hours\"\nand h3 : \"rate_wells_ted * (wells_hours + ted_hours - 2 * free_hours) = 1000\"\nand h4 : \"vino_hours = 105\"\nand h5 : \"rate_vino * (vino_hours - free_hours) = 2600\"\nshows  \"rate_vino = 40\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Wells and Ted work together for a total of 105 hours. Wells works the same number of hours as his free time, and Ted also works the same number of hours as his free time. Together, they earn $1000 at a combined hourly rate when they work outside of their free time. Vino works for 105 hours as well, and he earns $2600 at his hourly rate when working outside of his free time. Find Vino's hourly rate. The final answer is $40.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.6793789863586426,
+        "symbolic_score": 0.1
+    },
+    "a_8": {
+        "formal problem": "theorem\nfixes wells_hours ted_hours vino_hours :: real\nand wells_cost ted_cost vino_cost :: real\nand free_hours :: real\nand charge_per_hour :: real\nassumes h0 : \"wells_hours + ted_hours = 105\"\nand h1 : \"wells_hours - free_hours > 0\"\nand h2 : \"ted_hours - free_hours > 0\"\nand h3 : \"wells_cost = charge_per_hour * (wells_hours - free_hours)\"\nand h4 : \"ted_cost = charge_per_hour * (ted_hours - free_hours)\"\nand h5 : \"wells_cost + ted_cost = 1000\"\nand h6 : \"vino_hours = 105\"\nand h7 : \"vino_cost = charge_per_hour * (vino_hours - free_hours)\"\nand h8 : \"vino_cost = 2600\"\nshows  \"charge_per_hour = 40\"",
+        "formal solution": "(* ### Problem\n An Internet service provider allows a certain number of free hours each month and then charges for each additional hour used. Wells, Ted, and Vino each have separate accounts. This month the total hours used by Wells and Ted was 105, and each used all of their free hours. Their total cost was $\\$10$. Vino used 105 hours by himself and had to pay $\\$26$. What is the number of cents charged for each extra hour? The final Answer is 40\n ### Proof\n Let $f$ be the number of free hours per month, and let $c$ be the cost for each extra hour, in dollars. Wells and Ted together have $2f$ free hours, so they used $105-2f$ extra hours. Since the cost for each extra hour is $c$ dollars, we are given $c(105-2f)=10$.\n Similarly, Vino's bill implies $c(105-f)=26$.\n Subtracting the first equation from the second equation, we find $fc=16$. Rewrite the second equation as $105c-fc=26$, substitute 16 for $fc$, and solve to get $c=2/5$. Two-fifths of a dollar is $\\boxed{40}$ cents.\n *)\n\ntheorem\nfixes wells_hours ted_hours vino_hours :: real\nand wells_cost ted_cost vino_cost :: real\nand free_hours :: real\nand charge_per_hour :: real\nassumes h0 : \"wells_hours + ted_hours = 105\"\nand h1 : \"wells_hours - free_hours > 0\"\nand h2 : \"ted_hours - free_hours > 0\"\nand h3 : \"wells_cost = charge_per_hour * (wells_hours - free_hours)\"\nand h4 : \"ted_cost = charge_per_hour * (ted_hours - free_hours)\"\nand h5 : \"wells_cost + ted_cost = 1000\"\nand h6 : \"vino_hours = 105\"\nand h7 : \"vino_cost = charge_per_hour * (vino_hours - free_hours)\"\nand h8 : \"vino_cost = 2600\"\nshows  \"charge_per_hour = 40\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "Wells and Ted worked a total of 105 hours together. They both received a certain number of free hours, after which they were charged at the same hourly rate. Wells' cost plus Ted's cost was $1,000. Vino worked 105 hours as well and was charged at the same hourly rate after the free hours. Vino's total cost was $2,600. Find the charge per hour after the free hours. The final answer is $40 per hour.",
+        "label": 1,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9781755805015564,
+        "symbolic_score": 0.1
+    },
+    "a_9": {
+        "formal problem": "theorem\nfixes w t v c :: real\nassumes h0 : \"w + t = 105\"\nand h1 : \"c * (w + t) = 1000\"\nand h2 : \"c * v = 2600\"\nand h3 : \"v = 105\"\nshows  \"c = 40\"",
+        "formal solution": "(* ### Problem\n An Internet service provider allows a certain number of free hours each month and then charges for each additional hour used. Wells, Ted, and Vino each have separate accounts. This month the total hours used by Wells and Ted was 105, and each used all of their free hours. Their total cost was $\\$10$. Vino used 105 hours by himself and had to pay $\\$26$. What is the number of cents charged for each extra hour? The final Answer is 40\n ### Proof\n Let $f$ be the number of free hours per month, and let $c$ be the cost for each extra hour, in dollars. Wells and Ted together have $2f$ free hours, so they used $105-2f$ extra hours. Since the cost for each extra hour is $c$ dollars, we are given $c(105-2f)=10$.\n Similarly, Vino's bill implies $c(105-f)=26$.\n Subtracting the first equation from the second equation, we find $fc=16$. Rewrite the second equation as $105c-fc=26$, substitute 16 for $fc$, and solve to get $c=2/5$. Two-fifths of a dollar is $\\boxed{40}$ cents.\n *)\n\ntheorem\nfixes w t v c :: real\nassumes h0 : \"w + t = 105\"\nand h1 : \"c * (w + t) = 1000\"\nand h2 : \"c * v = 2600\"\nand h3 : \"v = 105\"\nshows  \"c = 40\"\n proof- \n  show ?thesis sledgehammer",
+        "informal problem": "You have a weighted average of two quantities, $w$ and $t$, with a combined value of 105. The total cost of these quantities is 1000, so the cost per unit, $c$, times the combined value equals 1000. In another scenario, the cost per unit times a different value, $v$, equals 2600, and this value is also 105. Find the cost per unit, $c$. The final answer is 40.",
+        "label": 0,
+        "naive_label": 0,
+        "syntax": 1,
+        "semantic_score": 0.9855013489723206,
+        "symbolic_score": 0.1
+    },
+    "natural answer": "40",
+    "natural problem": "An Internet service provider allows a certain number of free hours each month and then charges for each additional hour used. Wells, Ted, and Vino each have separate accounts. This month the total hours used by Wells and Ted was 105, and each used all of their free hours. Their total cost was $\\$10$. Vino used 105 hours by himself and had to pay $\\$26$. What is the number of cents charged for each extra hour?",
+    "natural solution": [
+        "Let $f$ be the number of free hours per month, and let $c$ be the cost for each extra hour, in dollars. Wells and Ted together have $2f$ free hours, so they used $105-2f$ extra hours. Since the cost for each extra hour is $c$ dollars, we are given $c(105-2f)=10$.",
+        "Similarly, Vino's bill implies $c(105-f)=26$.",
+        "Subtracting the first equation from the second equation, we find $fc=16$. Rewrite the second equation as $105c-fc=26$, substitute 16 for $fc$, and solve to get $c=2/5$. Two-fifths of a dollar is $\\boxed{40}$ cents."
+    ],
+    "oracle": "Insert oracle here...",
+    "prediction": {
+        "0": [
+            3,
+            6
+        ],
+        "1": [
+            0
+        ],
+        "2": [
+            1
+        ],
+        "3": [
+            2
+        ],
+        "4": [
+            4
+        ],
+        "5": [
+            5
+        ],
+        "6": [
+            7
+        ],
+        "7": [
+            8
+        ],
+        "8": [
+            9
+        ]
+    },
+    "str_pred": "[[3, 6], [0], [1], [2], [4], [5], [7], [8], [9]]",
+    "level": "Level 5",
+    "type": "Algebra"
+}
