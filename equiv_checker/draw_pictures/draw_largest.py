@@ -51,7 +51,7 @@ plt.rcParams["mathtext.fontset"] = "stix"
 
 # Create a new figure for the error graph
 plt.figure(figsize=(10, 5))
-color = '#f4c28f'
+color = "#f4c28f"
 # Plot the bars for average values
 plt.bar(
     x,

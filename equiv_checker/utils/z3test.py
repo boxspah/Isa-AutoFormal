@@ -1,32 +1,34 @@
 import z3
 import sys
-sys.path.append('/home/argustest/pysmt')
+
+sys.path.append("/home/argustest/pysmt")
 from pysmt.smtlib.parser import SmtLibParser, SmtLibScript
 from io import StringIO
 from pysmt.shortcuts import Solver
 
 # (declare-fun initial_amoebae () Int)
 # (assert (= 0 (log initial_amoebae)))
-# (check-sat)  
+# (check-sat)
 # (get-value (initial_amoebae))
 
 statement = """
 (declare-fun initial_amoebae () Real)
 (assert (= 1 initial_amoebae))
 (assert (= 0.0 (log initial_amoebae)))
-(check-sat)  
+(check-sat)
 (get-value (initial_amoebae))
 """
 
-# 
+#
 from z3 import *
+
 
 def solution():
     solver = Solver()
     # variables
-    initial_trees = Int('initial_trees')
-    final_trees = Int('final_trees')
-    trees_planted = Int('trees_planted')
+    initial_trees = Int("initial_trees")
+    final_trees = Int("final_trees")
+    trees_planted = Int("trees_planted")
     # conditions
     solver.add(initial_trees == 15)
     solver.add(final_trees == 21)
@@ -34,7 +36,9 @@ def solution():
 
     return trees_planted, solver
 
+
 import json
+
 *middle_book, solver = solution()
 print(json.dumps(solver.sexpr()))
 # if solver.check()== sat:
