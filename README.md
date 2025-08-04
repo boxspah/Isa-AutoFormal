@@ -35,5 +35,3 @@ An interface to Isabelle with Scala, and use python to call the scala interface.
 ### website
 The manual annotation website we developed which is used to manually judge whether the generation of gpt4 is correct.
 - notice: The data in the dataset will not be updated to git in real time with the annotations on the website. If you use multiple servers to perform different data operations, please manually synchronize the data.
-
-
