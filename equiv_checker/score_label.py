@@ -1,14 +1,14 @@
-import copy
-import os
-import json
-import tqdm
-import torch
-from torch import Tensor
-import re
-from transformers import BertTokenizer, BertModel, AutoTokenizer, AutoModel
-from scipy.spatial.distance import cosine
-import matplotlib.pyplot as plt
 import argparse
+import copy
+import json
+import os
+import re
+
+import torch
+import tqdm
+from scipy.spatial.distance import cosine
+from torch import Tensor
+from transformers import AutoTokenizer, AutoModel
 
 # tokenizer = BertTokenizer.from_pretrained('AnReu/math_pretrained_bert')
 # model = BertModel.from_pretrained('AnReu/math_pretrained_bert')

@@ -1,10 +1,9 @@
 import argparse
-import os
-import json
-import torch
 import json
 import math
-import time
+import os
+
+import torch
 
 
 def get_json_files(root_dir, suffix=[]):

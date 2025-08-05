@@ -1,7 +1,7 @@
-from fuzzywuzzy import fuzz
 import json
-from munkres import Munkres, print_matrix
 import re
+
+from munkres import Munkres
 
 
 def custom_edit_distance(s1, s2, vars):

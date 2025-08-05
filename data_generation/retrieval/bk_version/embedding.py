@@ -1,8 +1,7 @@
-import openai
-import requests
 import json
-from transformers import AutoTokenizer, AutoModel
+
 import torch
+from transformers import AutoTokenizer, AutoModel
 
 with open("./data/problem_examples.json") as file:
     prob_message = json.load(file)

@@ -1,12 +1,10 @@
-import pyspark
+import os
+import random
+import re
+
 from py4j.java_gateway import java_import
 from py4j.protocol import Py4JJavaError
 from pyspark.sql import SparkSession
-
-import os
-import random
-import time
-import re
 
 
 def getenv(env_var):

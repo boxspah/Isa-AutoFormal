@@ -1,12 +1,10 @@
-import os
-import json
-from tqdm import tqdm
-import re
-import numpy as np
-import networkx as nx
-import itertools
-import time
 import argparse
+import itertools
+import json
+import os
+import re
+
+import networkx as nx
 
 
 def check_labeled(file_path):

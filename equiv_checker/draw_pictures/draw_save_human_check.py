@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
 plt.rcParams["font.family"] = "Times New Roman"
 # plt.rcParams['text.usetex'] = True

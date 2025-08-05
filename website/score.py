@@ -1,13 +1,13 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, session
-from flask_cors import CORS
+import base64
+import glob
 import json
 import os
-import glob
 import subprocess
-import base64
-import argparse
-from pyngrok import ngrok
 import threading
+
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session
+from flask_cors import CORS
+from pyngrok import ngrok
 
 port = 4040
 

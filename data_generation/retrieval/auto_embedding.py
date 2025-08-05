@@ -1,13 +1,13 @@
-import openai
-import requests
 import json
-from transformers import AutoTokenizer, AutoModel
 import torch
-from rank_bm25 import BM25Okapi
 import nltk
+import json
+
+import nltk
+import torch
 
 nltk.download("punkt")
-from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.tokenize import word_tokenize
 from rank_bm25 import BM25Okapi
 
 with open("./data/auto_problem_examples.json") as file:

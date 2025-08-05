@@ -1,5 +1,6 @@
-import os
 import json
+import os
+
 import numpy as np
 
 path = "./batch/task_test_gpt-4/0"

@@ -1,7 +1,8 @@
-from pyspark.sql import SparkSession
-import pyspark
-import time
 import os
+import time
+
+import pyspark
+from pyspark.sql import SparkSession
 
 print(pyspark.__version__)
 

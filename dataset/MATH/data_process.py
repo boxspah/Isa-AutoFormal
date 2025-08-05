@@ -1,5 +1,5 @@
-import os
 import json
+import os
 
 folder_path = "./MATH/test/algebra"
 

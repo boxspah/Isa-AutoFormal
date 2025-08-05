@@ -1,8 +1,6 @@
 import torch
 from scipy.spatial.distance import cosine
 from transformers import BertTokenizer, BertModel
-from transformers import AutoTokenizer, AutoModel
-from transformers import RobertaTokenizer, RobertaModel
 
 # tokenizer = BertTokenizer.from_pretrained('tbs17/MathBERT', output_hidden_states=True)
 # tokenizer = AutoTokenizer.from_pretrained('witiko/mathberta')

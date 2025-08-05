@@ -1,15 +1,12 @@
-import os
+import argparse
 import json
-import tqdm
-import torch
-import re
+import os
 
 # from scipy.spatial.distance import cosine
 import matplotlib.pyplot as plt
-from scipy.interpolate import make_interp_spline
 import numpy as np
-import argparse
-import time
+import torch
+from scipy.interpolate import make_interp_spline
 
 
 def get_json_files(root_dir):

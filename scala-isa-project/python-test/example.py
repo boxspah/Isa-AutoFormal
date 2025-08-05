@@ -1,9 +1,7 @@
-from pyspark.sql import SparkSession
-import pyspark
-from py4j.java_gateway import java_import
-import re
-import random
 import os
+
+from py4j.java_gateway import java_import
+from pyspark.sql import SparkSession
 
 # Initialize the SparkSession
 spark = (

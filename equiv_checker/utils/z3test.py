@@ -1,9 +1,6 @@
-import z3
 import sys
 
 sys.path.append("/home/argustest/pysmt")
-from pysmt.smtlib.parser import SmtLibParser, SmtLibScript
-from io import StringIO
 from pysmt.shortcuts import Solver
 
 # (declare-fun initial_amoebae () Int)

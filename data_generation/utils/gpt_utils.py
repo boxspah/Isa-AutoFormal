@@ -1,9 +1,9 @@
-import json
 import io
+import json
 import sys
-import openai
 import time
-import re
+
+import openai
 
 
 def set_api_key(tag):
@@ -37,7 +37,7 @@ def gpt4_response(prompt, examples, max_tokens=800, top_p=0.95):
         except KeyboardInterrupt:
             print("Interrupted by Ctrl+C. Stopping the program...")
             break
-        except openai.error.InvalidRequestError as e:
+        except openai.BadRequestError as e:
             print(e)
             return gpt4_32k_response(prompt, examples, top_p=top_p)
         except Exception as e:
@@ -89,7 +89,7 @@ def gpt4_32k_response(prompt, examples, max_tokens=8192, top_p=0.1):
             except KeyboardInterrupt:
                 print("Interrupted by Ctrl+C. Stopping the program...")
                 break
-            except openai.error.RateLimitError as e:
+            except openai.RateLimitError as e:
                 print(e)
                 time.sleep(5)
                 continue
