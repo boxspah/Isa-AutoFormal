@@ -24,7 +24,7 @@ object RepHammer {
   def main(args: Array[String]): Unit = {
     // get the value of isabelleHome_str from env variable ISABELLE_HOME. If not set, raise an error
     val isabelleHome_str: String = sys.env.getOrElse("ISABELLE_HOME", throw new Exception("ISABELLE_HOME not set"))
-  
+
     val isabelleHome: Path = Paths.get(isabelleHome_str)
     val setup: Setup = Setup(isabelleHome = isabelleHome)
 
@@ -40,9 +40,9 @@ object RepHammer {
     println(theorySource)
 
     val thy0 = theoryManager.beginTheory(theorySource)
-    val init_toplevel: MLFunction0[ToplevelState] = 
+    val init_toplevel: MLFunction0[ToplevelState] =
       if (Version.from2023)
-        compileFunction0[ToplevelState]("fn _ => Toplevel.make_state NONE") 
+        compileFunction0[ToplevelState]("fn _ => Toplevel.make_state NONE")
       else
         compileFunction0[ToplevelState]("Toplevel.init_toplevel")
     var toplevel = init_toplevel().force.retrieveNow
@@ -61,16 +61,16 @@ object RepHammer {
     val command_exception = compileFunction[Boolean, Transition.T, ToplevelState, ToplevelState](
       "fn (int, tr, st) => Toplevel.command_exception int tr st")
 
-    val theory_of_state: MLFunction[_, _] =   
-    if (Version.from2023)  
-      compileFunction[Theory, ToplevelState]("Toplevel.make_state o SOME")  
-    else  
-      compileFunction[ToplevelState, Theory]("Toplevel.theory_of")  
+    val theory_of_state: MLFunction[_, _] =
+    if (Version.from2023)
+      compileFunction[Theory, ToplevelState]("Toplevel.make_state o SOME")
+    else
+      compileFunction[ToplevelState, Theory]("Toplevel.theory_of")
     val context_of_state: MLFunction[ToplevelState, Context] =
       compileFunction[ToplevelState, Context]("Toplevel.context_of")
     val name_of_transition: MLFunction[Transition.T, String] =
       compileFunction[Transition.T, String]("Toplevel.name_of")
-      
+
     for ((transition, text) <- parse_text(thy0, theorySource.text).force.retrieveNow) {
       println(context_of_state(toplevel).retrieveNow)
       println(s"""Transition: "${text.strip}"""")
@@ -98,7 +98,7 @@ object RepHammer {
            |             val results = ${Sledgehammer}.run_sledgehammer params ${Sledgehammer_Prover}.Normal NONE 1 override p_state;
            |             val (result, (outcome, step)) = results;
            |           in
-           |             (result, (${Sledgehammer}.short_string_of_sledgehammer_outcome outcome, [YXML.content_of step]))
+           |             (result, (${Sledgehammer}.short_string_of_sledgehammer_outcome outcome, [XML.content_of (YXML.parse_body step)]))
            |           end;
            |    in
            |      Timeout.apply (Time.fromSeconds 180) go_run (state, thy) end

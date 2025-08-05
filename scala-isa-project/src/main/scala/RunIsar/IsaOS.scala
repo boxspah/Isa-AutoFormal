@@ -77,9 +77,9 @@ class IsaOS(
     compileFunction[String, Theory, Theory](
       "fn (str,thy) => Thy_Info.script_thy Position.none str thy"
     )
-  val init_toplevel: MLFunction0[ToplevelState] = 
+  val init_toplevel: MLFunction0[ToplevelState] =
     if (Version.from2023)
-      compileFunction0[ToplevelState]("fn _ => Toplevel.make_state NONE") 
+      compileFunction0[ToplevelState]("fn _ => Toplevel.make_state NONE")
     else
       compileFunction0[ToplevelState]("Toplevel.init_toplevel")
   val is_proof: MLFunction[ToplevelState, Boolean] =
@@ -129,11 +129,11 @@ class IsaOS(
   ]("fn (int, tr, st) => Toplevel.command_errors int tr st")
   val toplevel_end_theory: MLFunction[ToplevelState, Theory] =
     compileFunction[ToplevelState, Theory]("Toplevel.end_theory Position.none")
-  val theory_of_state: MLFunction[_, _] =   
-  if (Version.from2023)  
-    compileFunction[Theory, ToplevelState]("Toplevel.make_state o SOME")  
-  else  
-    compileFunction[ToplevelState, Theory]("Toplevel.theory_of")  
+  val theory_of_state: MLFunction[_, _] =
+  if (Version.from2023)
+    compileFunction[Theory, ToplevelState]("Toplevel.make_state o SOME")
+  else
+    compileFunction[ToplevelState, Theory]("Toplevel.theory_of")
   val context_of_state: MLFunction[ToplevelState, Context] =
     compileFunction[ToplevelState, Context]("Toplevel.context_of")
   val name_of_transition: MLFunction[Transition.T, String] =
@@ -150,25 +150,25 @@ class IsaOS(
         |  in addtext (Symbol.explode text) transitions end""".stripMargin)
   val toplevel_string_of_state: MLFunction[ToplevelState, String] =
     compileFunction[ToplevelState, String](
-      "fn (s) => YXML.content_of (Toplevel.string_of_state s)"
+      "fn (s) => XML.content_of (YXML.parse_body (Toplevel.string_of_state s))"
     )
   val toplevel_string_of_goal: MLFunction[ToplevelState, String] =
-    compileFunction[ToplevelState, String]("""fn (s) => 
+    compileFunction[ToplevelState, String]("""fn (s) =>
     |  let
     |     val {context=ctxt, facts=_, goal=goal} = Proof.goal (Toplevel.proof_of s);
     |     val goal = Pretty.string_of (Syntax.pretty_term ctxt (Thm.concl_of goal));
-    |     val res = YXML.content_of goal;
-    |  in 
+    |     val res = XML.content_of (YXML.parse_body goal;)
+    |  in
     |     res end
     """.stripMargin
     )
   val toplevel_string_of_assms: MLFunction[ToplevelState, List[String]] =
-    compileFunction[ToplevelState, List[String]]("""fn (s) => 
+    compileFunction[ToplevelState, List[String]]("""fn (s) =>
     |  let
     |     val {context=ctxt, facts=_, goal=goal} = Proof.goal (Toplevel.proof_of s);
     |     val assms = map (Syntax.pretty_term ctxt) (map Thm.full_prop_of (Assumption.all_prems_of ctxt));
-    |     val res = map YXML.content_of (map Pretty.unformatted_string_of assms);
-    |  in 
+    |     val res = map XML.content_of (YXML.parse_body (map Pretty.unformatted_string_of assms);)
+    |  in
     |     res end
     """.stripMargin
     )
@@ -195,7 +195,7 @@ class IsaOS(
         |           else
         |           (map (fn e => #2 (#2 e)) (sort_by (#1 o #2) (map (`(Proof_Context.pretty_fact ctxt)) local_facts))));
         |      val condensed_thms = fold (fn x => fn y => (x @ y)) thms [];
-        |  in 
+        |  in
         |      map (fn thm => (
         |            Thm.get_name_hint thm,
         |            Pretty.unformatted_string_of
@@ -217,7 +217,7 @@ class IsaOS(
         | let val ctxt = Toplevel.context_of tls;
         |     val thm = Global_Theory.get_thms (Proof_Context.theory_of ctxt) name;
         | in
-        |     YXML.content_of (Pretty.unformatted_string_of (Element.pretty_statement ctxt "" (hd thm)))
+        |     XML.content_of (YXML.parse_body (Pretty.unformatted_string_of (Element.pretty_statement ctxt "" (hd thm))))
         | end""".stripMargin
     )
   def fact_definition(tls_name: String, theorem_name: String): String = {
@@ -251,7 +251,7 @@ class IsaOS(
     // println(relevant_locales)
 
     var dep_thms: List[String] = List()
-    
+
     Breaks.breakable {
       for (relevant_locale <- relevant_locales) {
         println("Trying locale: " + relevant_locale)
@@ -267,7 +267,7 @@ class IsaOS(
         }
       }
     }
-    
+
     dep_thms
   }
 
@@ -410,7 +410,7 @@ class IsaOS(
     }
     "This is wrong!!!"
   }
-  // starter_string is for example "theory Test imports Main HOL.Real begin" 
+  // starter_string is for example "theory Test imports Main HOL.Real begin"
   val starter_string: String = getStarterString.trim.replaceAll("\n", " ").trim
 
   // Find out what to import from the current directory
@@ -508,7 +508,7 @@ class IsaOS(
             |             val results = ${Sledgehammer}.run_sledgehammer params ${Sledgehammer_Prover}.Normal NONE 1 override p_state;
             |             val (result, (outcome, step)) = results;
             |           in
-            |             (result, (${Sledgehammer}.short_string_of_sledgehammer_outcome outcome, [YXML.content_of step]))
+            |             (result, (${Sledgehammer}.short_string_of_sledgehammer_outcome outcome, [XML.content_of (YXML.parse_body step)]))
             |           end;
             |    in
             |      Timeout.apply (Time.fromSeconds 180) go_run (state, thy) end
@@ -523,53 +523,53 @@ class IsaOS(
   val SMT_Normalize : String = thy1.importMLStructureNow("SMT_Normalize")
   val SMT_Util : String = thy1.importMLStructureNow("SMT_Util")
   val SMT_Translate : String = thy1.importMLStructureNow("SMT_Translate")
-  val translate_to_smt: MLFunction[ToplevelState, String] =  
-    compileFunction[ToplevelState, String](  
-      s""" fn (state) =>  
-          |    let  
-          |       val p_state = Toplevel.proof_of state;  
+  val translate_to_smt: MLFunction[ToplevelState, String] =
+    compileFunction[ToplevelState, String](
+      s""" fn (state) =>
+          |    let
+          |       val p_state = Toplevel.proof_of state;
           |       val thy = Toplevel.theory_of state;
-          |       val ctxt = Proof.context_of p_state;  
+          |       val ctxt = Proof.context_of p_state;
           |
-          |       (* Load some lemmas previously. *)  
+          |       (* Load some lemmas previously. *)
           |       val TrueI = Proof_Context.get_thm ctxt "TrueI";
           |       val ccontr = Proof_Context.get_thm ctxt "ccontr";
-          |  
-          |       (* Extract the assumptions and the conclusion of the theorem. *)  
-          |       val {context = _, facts, goal} = Proof.goal p_state;  
-          |       val assumptions = Assumption.all_prems_of ctxt;  
-          |       val goals = map (Skip_Proof.make_thm thy) (Thm.prems_of goal); 
-          |  
-          |  
-          |       (* Put the assumptions in facts and the conclusion in goal. *)  
-          |       val options = ${SMT_Config}.solver_options_of ctxt;  
-          |       val comments = [space_implode " " options];  
-          |       val has_topsort = Term.exists_type (Term.exists_subtype (fn  
-          |          TFree (_, []) => true  
-          |         | TVar (_, []) => true  
-          |         | _ => false));  
-          |       fun check_topsort ctxt thm =  
-          |         if has_topsort (Thm.prop_of thm) then (${SMT_Normalize}.drop_fact_warning ctxt thm; TrueI) else thm  
           |
-          |       val thms0 = facts @ assumptions;  
-          |       val thms = map (pair ${SMT_Util}.Axiom o check_topsort ctxt) thms0; 
+          |       (* Extract the assumptions and the conclusion of the theorem. *)
+          |       val {context = _, facts, goal} = Proof.goal p_state;
+          |       val assumptions = Assumption.all_prems_of ctxt;
+          |       val goals = map (Skip_Proof.make_thm thy) (Thm.prems_of goal);
+          |
+          |
+          |       (* Put the assumptions in facts and the conclusion in goal. *)
+          |       val options = ${SMT_Config}.solver_options_of ctxt;
+          |       val comments = [space_implode " " options];
+          |       val has_topsort = Term.exists_type (Term.exists_subtype (fn
+          |          TFree (_, []) => true
+          |         | TVar (_, []) => true
+          |         | _ => false));
+          |       fun check_topsort ctxt thm =
+          |         if has_topsort (Thm.prop_of thm) then (${SMT_Normalize}.drop_fact_warning ctxt thm; TrueI) else thm
+          |
+          |       val thms0 = facts @ assumptions;
+          |       val thms = map (pair ${SMT_Util}.Axiom o check_topsort ctxt) thms0;
           |       val assms_thms = (${SMT_Normalize}.normalize ctxt thms);
-          |       
-          |       val thms0 = goals;  
-          |       val thms = map (pair ${SMT_Util}.Conjecture o check_topsort ctxt) thms0; 
+          |
+          |       val thms0 = goals;
+          |       val thms = map (pair ${SMT_Util}.Conjecture o check_topsort ctxt) thms0;
           |       val conc_thms = (${SMT_Normalize}.normalize ctxt thms);
           |
           |       val ithms = assms_thms @ conc_thms;
-          |  
-          |       fun go_run () = 
-          |         let 
+          |
+          |       fun go_run () =
+          |         let
           |           val (str, _) = ${SMT_Translate}.translate ctxt "z3" [] comments ithms
-          |         in 
-          |           str  end  
-          |    in  
+          |         in
+          |           str  end
+          |    in
           |       Timeout.apply (Time.fromSeconds 180) go_run () end
-          |""".stripMargin  
-    )  
+          |""".stripMargin
+    )
 
   var toplevel: ToplevelState = init_toplevel().force.retrieveNow
   if (debug) println("Checkpoint 12")
@@ -713,7 +713,7 @@ class IsaOS(
               if (debug) println("singleTransition: " + timeout_in_millis)
               tls_to_return = if (timeout_in_millis > 10000 && timeout_in_millis <= 30000) {
                 singleTransitionWith30sTimeout(transition, tls_to_return)
-              } 
+              }
               else if (timeout_in_millis > 30000 && timeout_in_millis <= 300000) {
                 singleTransitionWith300sTimeout(transition, tls_to_return)
               }
@@ -751,16 +751,16 @@ class IsaOS(
     Await.result(f_res, Duration(timeout_in_millis, "millis"))
   }
 
-  def translate_to_smt_with_timeout(  
-      top_level_state: ToplevelState,  
-      timeout_in_millis: Int = 35000  
-  ): String = {  
-    val f_res: Future[String] = Future.apply {  
-      val result = translate_to_smt(top_level_state).force.retrieveNow 
-      result  
-    }  
-    Await.result(f_res, Duration(timeout_in_millis, "millis"))  
-  }  
+  def translate_to_smt_with_timeout(
+      top_level_state: ToplevelState,
+      timeout_in_millis: Int = 35000
+  ): String = {
+    val f_res: Future[String] = Future.apply {
+      val result = translate_to_smt(top_level_state).force.retrieveNow
+      result
+    }
+    Await.result(f_res, Duration(timeout_in_millis, "millis"))
+  }
 
   def state_retrive(
       top_level_state: ToplevelState
@@ -909,21 +909,21 @@ class IsaOS(
   }
 
   def get_assms(): String = {
-    val assms = assms_retrive(toplevel).mkString("###") 
+    val assms = assms_retrive(toplevel).mkString("###")
     assms
   }
 
   // todo: using java output
   def prove_by_hammer(timeout_in_millis: Int = 35000): (Boolean, String) = {
     val (ok, tactic) = normal_with_hammer(toplevel, List[String](), List[String](), timeout_in_millis)
-    val results: String = tactic.mkString("###")  
+    val results: String = tactic.mkString("###")
     (ok, results)
   }
 
-  def isa_to_smt(timeout_in_millis: Int = 35000): String = {  
-    val result = translate_to_smt_with_timeout(toplevel, timeout_in_millis)  
-    result  
-  }  
+  def isa_to_smt(timeout_in_millis: Int = 35000): String = {
+    val result = translate_to_smt_with_timeout(toplevel, timeout_in_millis)
+    result
+  }
 
   // todo: using java output
   // run the theory before proof, and slice the proof
@@ -945,7 +945,7 @@ class IsaOS(
       }
     steps.toString
   }
-  
+
   // reset isabelle and thy to be proved
   def reset_isabelle(path: String): String = {
     path_to_file = path
