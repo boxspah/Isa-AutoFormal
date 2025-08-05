@@ -1,8 +1,8 @@
 import argparse
-import os
 import json
+import os
+
 from tqdm import tqdm
-import utils.auto_utils as auto_utils
 
 parser = argparse.ArgumentParser(description="Generate answer for problem")
 parser.add_argument("--exp_name", default="", type=str, help="Exp name")

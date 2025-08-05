@@ -1,12 +1,10 @@
 import os
-import sys
-import utils.isa_utils as isa_utils
-import utils.all_exceptions as E
-from test_cases import cases
+from datetime import datetime
+
 import tqdm
 
-import utils.logging_utils as log_utils
-from datetime import datetime
+from .test_cases import cases
+from .utils import isa_utils, all_exceptions as E, logging_utils as log_utils
 
 log_utils.logging_init(
     os.path.join("./logs/log_%s.log" % (datetime.now().strftime("%Y-%m-%d_%H:%M:%S")))

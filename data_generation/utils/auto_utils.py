@@ -1,7 +1,9 @@
-import re
 import copy
+import re
+
 import nltk
-from utils.utils import timeout
+
+from .utils import timeout
 
 nltk.download("punkt")
 from nltk.tokenize import sent_tokenize, word_tokenize

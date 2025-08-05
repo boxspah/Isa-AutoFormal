@@ -2,12 +2,11 @@ import argparse
 import json
 import os
 import time
-import json
-import utils.gpt_utils as gpt_utils
-import utils.auto_utils as auto_utils
+
 import AutoMath.autoformalize.retrieval.auto_retrieval as auto_retrieval
-import math
 from tqdm import tqdm
+
+from ...utils import gpt_utils, auto_utils, utils
 
 parser = argparse.ArgumentParser(description="Generate answer for problem")
 parser.add_argument("--exp_name", default="", type=str, help="Exp name")
@@ -19,8 +18,6 @@ parser.add_argument(
     "--category", default="algebra", type=str, help="category of problems"
 )
 args = parser.parse_args()
-
-import utils.utils as utils
 
 utils.logging_init(
     os.path.join(
@@ -80,7 +77,7 @@ for json_file in tqdm(json_files):
         natural_answer = auto_utils.parse_answer(natural_solution)
         prompt = f' Natural language version: "{natural_problem} The final Answer is ${natural_answer}$". Translate the natural language version to an Isabelle version:'
         prob_examples = auto_retrieval.prob_retrieval(prompt, k=8)
-        symbolic_problem = gpt_utils.gpt4_response_problem(
+        symbolic_problem = gpt_utils.gpt4_response(
             problem_auto_criteria + prompt, prob_examples
         )
         symbolic_problem = (symbolic_problem).replace("”", '"').replace("“", '"')

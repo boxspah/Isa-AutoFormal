@@ -1,13 +1,11 @@
 import json
-import numpy as np
-import time
-from transformers import AutoTokenizer, AutoModel
-import torch
+
 import nltk
+import numpy as np
+import torch
+from transformers import AutoTokenizer, AutoModel
 
 nltk.download("punkt")
-from nltk.tokenize import sent_tokenize, word_tokenize
-from rank_bm25 import BM25Okapi
 
 with open("./retrieval/data/problem_examples.json") as file:
     prob_message = json.load(file)

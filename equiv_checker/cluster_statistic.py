@@ -1,9 +1,8 @@
-import os
-import json
-import tqdm
-import re
-import numpy as np
 import argparse
+import json
+import os
+
+import numpy as np
 
 
 def check_labeled(file_path):
@@ -116,7 +115,6 @@ if __name__ == "__main__":
         json_file_paths = []
         for path in root_dir_list:
             json_file_paths += get_json_files(path)
-        all_prob = []
         print(f"Totally have {len(json_file_paths)} to do in miniF2F")
         print("All data result:")
         main("All type", json_file_paths)

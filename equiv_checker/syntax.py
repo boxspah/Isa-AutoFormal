@@ -1,9 +1,11 @@
-import os
-import json
-import tqdm
-import numpy as np
-from checker import BatchChecker
 import argparse
+import json
+import os
+
+import tqdm
+
+from .checker import BatchChecker
+
 
 # path = '../dataset/miniF2F'
 
@@ -38,7 +40,6 @@ if __name__ == "__main__":
 
     checker = start_isa(port=40500)
     k = 10
-    passk = [[] for i in range(k)]
     for path in root_dir_list:
         for dirpath, dirnames, filenames in os.walk(path):
             json_files = [f for f in filenames if f.endswith(".json")]

@@ -1,12 +1,13 @@
 import argparse
-import os
 import json
+import os
+
 import torch
-from tqdm import tqdm
-from joblib import Parallel, delayed, parallel_config
-import utils.auto_utils as auto_utils
-from transformers import BertTokenizer, BertModel
 from scipy.spatial.distance import cosine
+from tqdm import tqdm
+from transformers import BertTokenizer, BertModel
+
+from .utils import auto_utils
 
 parser = argparse.ArgumentParser(description="Generate answer for problem")
 parser.add_argument("--exp_name", default="", type=str, help="Exp name")

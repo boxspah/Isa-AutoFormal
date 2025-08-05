@@ -1,17 +1,14 @@
 import argparse
 import json
-import os
-import time
-import json
-import math
-from tqdm import tqdm
-import re
 import logging
 import logging.handlers
 import multiprocessing
+import os
+import re
 import time
-from PathManager import *
 from datetime import datetime
+
+from .PathManager import PathManager, Parallel, delayed
 
 parser = argparse.ArgumentParser(description="Generate answer for problem")
 parser.add_argument("--exp_name", default="", type=str, help="Exp name")
@@ -28,7 +25,7 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-import utils.utils as utils
+from .utils import utils, gpt_utils, auto_utils
 
 utils.logging_init(
     os.path.join(
@@ -36,10 +33,7 @@ utils.logging_init(
         % (args.exp_name, args.version_name, args.data, args.category)
     )
 )
-import utils.gpt_utils as gpt_utils
-import utils.auto_utils as auto_utils
-import retrieval.auto_retrieval as auto_retrieval
-import retrieval.inauto_retrieval as inauto_retrieval
+from .retrieval import auto_retrieval, inauto_retrieval
 
 DEBUG = False
 

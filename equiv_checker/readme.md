@@ -10,14 +10,14 @@ We recommend using the [Dockerfile](../Dockerfile) for quick builds, but you can
 docker run -itd -v <repo_dir>:/app <image>
 ```
 
-Our project uses scala-isabelle to interact with isabelle. Please see [scala-isa-project](../scala-isa-project/readme.md) for more details. If you used a Dockerfile in the previous step, you only need to run ```sbt assembly``` 
+Our project uses scala-isabelle to interact with isabelle. Please see [scala-isa-project](../scala-isa-project/readme.md) for more details. If you used a Dockerfile in the previous step, you only need to run ```sbt assembly```
 
-### 2. check syntax 
+### 2. check syntax
 ```python3
 python3 syntax.py --root_dir_list <root_dir_list>
 ```
 ### 3. majority voting
- 
+
 - It is recommended that each process correspond to eight cpus
 - naive method is ATP only and symbolic is our method
 ```python3
@@ -52,7 +52,7 @@ python3 naive_predict.py --dataset <MATH or miniF2F> --root_dir_list <root_dir_l
 
 5. For dataset, please refer [dataset](../dataset/)
 
-6. For more data generation details, please see  [data-generation](../data-generation/)
+6. For more data generation details, please see  [data-generation](../data_generation/)
 
 7. For the For manual label websites, please see [website](../website/) or repo [MathData](https://dev.azure.com/ai4m/MathData/_git/MathData)
     - notice: The inter repo data is not synchronized automatically, you may need to manually synchronize some data between repos.

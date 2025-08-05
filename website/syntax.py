@@ -1,8 +1,9 @@
-import os
 import json
+import os
+
 import tqdm
-import numpy as np
-from checker import BatchChecker
+
+from .checker import BatchChecker
 
 path = "/datadisk/v-yifanwu/AutoMath/equiv_checker/batch/task_test_gpt-4/48"
 
@@ -24,7 +25,6 @@ def start_isa(port=40500):
 
 checker = start_isa(port=40500)
 k = 10
-passk = [[] for i in range(k)]
 for dirpath, dirnames, filenames in os.walk(path):
     json_files = [f for f in filenames if f.endswith(".json")]
     for json_file in tqdm.tqdm(json_files):

@@ -1,15 +1,16 @@
-from munkres import Munkres, print_matrix
-import numpy as np
-import re
-import z3
-import utils.z3_utils as z3_utils
-import utils.all_exceptions as E
-import os
-import logging
-from checker import BatchChecker
 import itertools
-from checker import DEBUG, init_port
+import logging
+import os
+import re
 import time
+
+import numpy as np
+import z3
+from munkres import Munkres
+
+from . import z3_utils
+from .all_exceptions import ThmFormatException, ConcException, SimplifyException
+from ..checker import BatchChecker, DEBUG, init_port
 
 
 def parse_statement(statement):
@@ -18,12 +19,12 @@ def parse_statement(statement):
     """
     quotes_pattern = re.compile(r'"([\s\S]*?)"')
     if "theorem" not in statement:
-        raise E.ThmFormatException("No theorem keyword in the statement", statement)
+        raise ThmFormatException("No theorem keyword in the statement", statement)
     cxts, thms = (item.strip() for item in statement.split("theorem", 1))
     ### parse and rewrite the conclusion
     match = re.search(r"shows(.*)", thms, re.DOTALL)
     if match is None:
-        raise E.ThmFormatException("No conclusion in the theorem", statement)
+        raise ThmFormatException("No conclusion in the theorem", statement)
     concls = quotes_pattern.findall(match.group(1))
     # if len(concls) > 1:
     #     raise E.ConcException('Multiple conclusions in the theorem', statement)
@@ -45,7 +46,7 @@ def split_equation(equation):
     )
     parts = equation.split("=")
     if len(parts) != 2:
-        raise E.ConcException(
+        raise ConcException(
             f"ConcError: Conclusion cannot be parsed: {equation}", equation
         )
     else:
@@ -54,7 +55,7 @@ def split_equation(equation):
 
 def ThmCheck(statement):
     if "shows" not in statement:
-        raise E.ThmFormatException("No conclusion in the theorem", statement)
+        raise ThmFormatException("No conclusion in the theorem", statement)
     answer = statement.split("shows")
     if "assumes" in answer[0]:
         header = answer[0].split("assumes")[0]
@@ -71,7 +72,7 @@ def ThmCheck(statement):
         (s in "\n".join(assumes_match) or s in "\n".join(header_match))
         for s in shows_match
     ):
-        raise E.ThmFormatException(
+        raise ThmFormatException(
             "The conclusion is written in the assumptions", statement
         )
     return True
@@ -80,7 +81,7 @@ def ThmCheck(statement):
 def normalize_statement(statement):
     quotes_pattern = re.compile(r'"([\s\S]*?)"')
     if "theorem" not in statement:
-        raise E.ThmFormatException("No theorem keyword in the statement", statement)
+        raise ThmFormatException("No theorem keyword in the statement", statement)
     cxts, thms = (item.strip() for item in statement.split("theorem", 1))
     ### parse and rewrite the conclusion
     ok = ThmCheck(statement)
@@ -96,9 +97,7 @@ def normalize_statement(statement):
     for i, con in enumerate(cons):
         lhs, rhs = split_equation(con)
         if lhs == rhs:
-            raise E.ConcException(
-                f"ConcError: Conclusion is trivial {lhs} = {rhs}", con
-            )
+            raise ConcException(f"ConcError: Conclusion is trivial {lhs} = {rhs}", con)
         add_ass.append(f"answer_{i} = {lhs} - {rhs}")
         ### if lhs is a float-point number, define answer :: real; else using general type instead
         if re.match(r"^-?\d+(\.\d+)?$", lhs):
@@ -334,7 +333,7 @@ def check_equivalence(statement1, statement2, checker, memory_heuristics=[]):
         cxts0, cxts1, vars0, vars1, assms0, assms1, tau=0.0
     )
     if len(norm_cons0) != len(norm_cons1):
-        raise E.ConcException(
+        raise ConcException(
             f"ConcError: Conclusions are not aligned: {norm_cons0} and {norm_cons1}",
             [norm_cons0, norm_cons1],
         )
@@ -380,7 +379,7 @@ def check_equivalence_simplify(statement1, statement2, checker, memory_heuristic
             or r"\<Longrightarrow>" not in state1
             or r"\<Longrightarrow>" not in state2
         ):
-            raise E.SimplifyException(
+            raise SimplifyException(
                 f"SimplifyError: Simplification failed in\n {statement1} \nOR\n {statement2}",
                 [statement1, statement2],
             )
@@ -394,7 +393,7 @@ def check_equivalence_simplify(statement1, statement2, checker, memory_heuristic
         )
         assms2 = assms2.replace(r"\<lbrakk>", "").replace(r"\<rbrakk>", "").split(";")
         assms2 = r" \<and> ".join([f"({a.strip()})" for a in sorted(assms2, key=len)])
-    except (E.SimplifyException, E.ConcException) as e:
+    except (SimplifyException, ConcException) as e:
         cxts1, assms1, concls1 = parse_statement(statement1)
         cxts2, assms2, concls2 = parse_statement(statement2)
 
@@ -426,7 +425,7 @@ def check_equivalence_simplify(statement1, statement2, checker, memory_heuristic
         match for match in matches2 if any([match in v for v in vars2_list])
     ]
     if len(set(vars_in_concls1)) != len(set(vars_in_concls2)):
-        raise E.ThmFormatException(
+        raise ThmFormatException(
             f"The variables of two statements are not aligned:\n{vars_in_concls1}\nAND\n{vars_in_concls2}",
             vars_in_concls1 + vars_in_concls2,
         )

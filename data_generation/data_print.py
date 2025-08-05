@@ -1,12 +1,12 @@
 import argparse
-import os
-import torch
 import json
+import os
+
+import matplotlib.pyplot as plt
+import torch
+from scipy.spatial.distance import cosine
 from tqdm import tqdm
 from transformers import BertTokenizer, BertModel
-import matplotlib.pyplot as plt
-from scipy.spatial.distance import cosine
-import utils.auto_utils as auto_utils
 
 parser = argparse.ArgumentParser(description="Generate answer for problem")
 parser.add_argument("--exp_name", default="", type=str, help="Exp name")

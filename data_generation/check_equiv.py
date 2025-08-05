@@ -1,9 +1,8 @@
 import os
-import sys
-import Similarity.equiv_checker as equiv_checker
-import equiv_checker.isa_utils as isa_utils
+
 from equiv_checker.checker import BatchChecker
-from test import cases
+from equiv_checker.test_cases import cases
+from equiv_checker.utils import isa_utils
 
 
 def define_test_case(idx=0):

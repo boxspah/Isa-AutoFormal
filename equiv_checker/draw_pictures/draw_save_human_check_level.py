@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
 levels = ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"]
 # pure_human_check: 109;auto_human_check: 57;save_human_check: 52;
@@ -8,10 +7,10 @@ levels = ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"]
 # pure_human_check: 422;auto_human_check: 315;save_human_check: 107;
 # pure_human_check: 624;auto_human_check: 448;save_human_check: 176;
 
-prob_num = [37, 70, 91, 91, 111]
-pure_human_check = [109, 256, 345, 422, 624]
-auto_human_check = [57, 184, 275, 315, 448]
-save_human_check = [52, 72, 70, 107, 176]
+prob_num: list[float] = [37, 70, 91, 91, 111]
+pure_human_check: list[float] = [109, 256, 345, 422, 624]
+auto_human_check: list[float] = [57, 184, 275, 315, 448]
+save_human_check: list[float] = [52, 72, 70, 107, 176]
 
 for i in range(5):
     pure_human_check[i] = pure_human_check[i] / prob_num[i]

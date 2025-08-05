@@ -15,7 +15,9 @@ dependencies = [
     "cryptography>=45.0.5",
     "dbus-python>=1.4.0",
     "flask>=3.1.1",
+    "flask-cors>=6.0.1",
     "func-timeout>=4.3.5",
+    "fuzzywuzzy>=0.18.0",
     "grpcio>=1.74.0",
     "grpcio-tools>=1.74.0",
     "httplib2>=0.22.0",
@@ -48,15 +50,19 @@ dependencies = [
     "pyasn1-modules>=0.4.2",
     "pyhamcrest>=2.1.0",
     "pyjwt>=2.10.1",
+    "pyngrok>=7.3.0",
     "pyopenssl>=25.1.0",
     "pyparsing>=3.2.3",
     "pyrsistent>=0.20.0",
     "pyserial>=3.5",
+    "pysmt>=0.9.6",
     "pyspark>=4.0.0",
     "python-magic>=0.4.27",
     "pytz>=2025.2",
     "pyyaml>=6.0.2",
+    "rank-bm25>=0.2.2",
     "requests>=2.32.4",
+    "scipy>=1.16.1",
     "secretstorage>=3.3.3",
     "service-identity>=24.2.0",
     "ssh-import-id>=5.11",
@@ -71,13 +77,31 @@ dependencies = [
     "z3-solver>=4.15.1.0",
 ]
 
-[tool.ruff.lint]
-select = ["NPY201"]
-
 [dependency-groups]
 dev = [
     "mypy>=1.17.1",
     "pre-commit>=4.2.0",
     "ruff>=0.12.7",
+    "scipy-stubs>=1.16.1.0",
+    "types-flask-cors>=6.0.0.20250520",
+    "types-networkx>=3.5.0.20250728",
     "types-tqdm>=4.67.0.20250516",
 ]
+
+[tool.ruff.lint]
+select = ["NPY201"]
+
+[[tool.mypy.overrides]]
+module = [
+    "nltk.*",
+    "py4j.*",
+    "joblib",
+    "timeout_decorator",
+    "z3",
+    "munkres",
+    "rank_bm25",
+    "pysmt.*",
+    "fuzzywuzzy",
+    "pyngrok"
+]
+ignore_missing_imports = true

@@ -1,4 +1,4 @@
-from z3 import *
+from z3 import Solver, sat
 
 
 def normalize_smt2_string(smt2_string):
